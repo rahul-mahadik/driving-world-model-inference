@@ -1,0 +1,9 @@
+{
+  "all_local_hashes_reverified": true,
+  "before_after_inventories_equal": true,
+  "copy_integrity_only": true,
+  "file_count": 244,
+  "independent_verification_sha256": "93f300d62d72f9e93b7e2484c95580765110fbc02c9f590f867362faa5132c65",
+  "inventory_sha256": "17436eaec02b147547cda788c6420b6853b47afe7962b1b0bfcb5ae618ba708a",
+  "total_bytes": 16840287
+}

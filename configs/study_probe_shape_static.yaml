@@ -1,0 +1,5 @@
+extends: study_probe_denoiser_default.yaml
+name: study-probe-static-shape-buckets-native-attention-boundary
+output: outputs/study-probes/shape-static
+probe:
+  kind: shape_static

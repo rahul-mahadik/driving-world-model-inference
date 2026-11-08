@@ -1,0 +1,13 @@
+# This is an experiment candidate, not a validated optimized baseline.
+extends: compiled.yaml
+name: combined-implementation-candidate-unvalidated
+output: outputs/combined-candidate
+optimizations:
+  compile_decoder: true
+  conditioning_cache_bytes: 2147483648
+  pinned_memory: true
+  async_transfer: true
+benchmark:
+  workload: candidate_set
+  candidate_count: 8
+  input_condition: reused_conditioning

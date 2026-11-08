@@ -1,0 +1,18 @@
+extends: study_eager_development.yaml
+name: study-probe-eager
+output: outputs/study-probes/eager
+benchmark:
+  requests: 1
+  warmup_requests: 0
+  max_warmup_requests: 0
+  save_outputs: 1
+  headline: false
+probe:
+  kind: eager
+  reference_run: outputs/study-bootstrap/upstream
+  request_index: 28
+  strict_atol: 0
+  strict_rtol: 0
+  max_warmups: 1
+  measurements: 1
+  cuda_graph_trace: false

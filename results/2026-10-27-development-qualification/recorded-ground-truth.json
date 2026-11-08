@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "scope": "Development recorded-future numeric/temporal proxies; diagnostic only",
+  "clips": 32,
+  "distinct_scenes": 32,
+  "direction": "candidate minus upstream; positive means greater proxy error",
+  "uncertainty": "2000 paired scene bootstrap resamples, seed 0; one clip per scene",
+  "preprocessing": "Existing evaluator center crop, Lanczos, RGB normalization; 24 future frames after conditioning frame",
+  "comparisons": {
+    "compiled-default": {
+      "mae": {
+        "upstream_mean": 0.0691789560776258,
+        "candidate_mean": 0.06917699623201357,
+        "paired_change": {
+          "mean": -1.9598456122395724e-06,
+          "ci95": [
+            -1.3764712399390902e-05,
+            8.455502191639228e-06
+          ],
+          "units": 32,
+          "minimum": -0.00012481205080072666,
+          "maximum": 6.471747683757523e-05,
+          "positive_clips": 17,
+          "negative_clips": 15,
+          "zero_clips": 0
+        }
+      },
+      "rmse": {
+        "upstream_mean": 0.11545074135772691,
+        "candidate_mean": 0.11544348566184655,
+        "paired_change": {
+          "mean": -7.255695880360562e-06,
+          "ci95": [
+            -2.253047781349579e-05,
+            6.732937035988356e-06
+          ],
+          "units": 32,
+          "minimum": -0.0001700745929890668,
+          "maximum": 7.884137384364664e-05,
+          "positive_clips": 15,
+          "negative_clips": 17,
+          "zero_clips": 0
+        }
+      },
+      "max_abs_error": {
+        "upstream_mean": 0.8509166315197945,
+        "candidate_mean": 0.8514050953090191,
+        "paired_change": {
+          "mean": 0.0004884637892246246,
+          "ci95": [
+            -0.00018870332278311252,
+            0.0014987352769821871
+          ],
+          "units": 32,
+          "minimum": -0.0020700693130493164,
+          "maximum": 0.012713015079498291,
+          "positive_clips": 15,
+          "negative_clips": 9,
+          "zero_clips": 8
+        }
+      },
+      "temporal_derivative_mae": {
+        "upstream_mean": 0.04380466198352885,
+        "candidate_mean": 0.043805160501310635,
+        "paired_change": {
+          "mean": 4.98517781784009e-07,
+          "ci95": [
+            -5.724010066703465e-06,
+            7.258812098036761e-06
+          ],
+          "units": 32,
+          "minimum": -4.256796335645047e-05,
+          "maximum": 5.3410954824389956e-05,
+          "positive_clips": 15,
+          "negative_clips": 17,
+          "zero_clips": 0
+        }
+      },
+      "temporal_change_error": {
+        "upstream_mean": 0.010305210126373946,
+        "candidate_mean": 0.010296848887440762,
+        "paired_change": {
+          "mean": -8.361238933183944e-06,
+          "ci95": [
+            -1.5998198923636584e-05,
+            -1.0017605564193935e-06
+          ],
+          "units": 32,
+          "minimum": -6.716763094582676e-05,
+          "maximum": 2.848818604943293e-05,
+          "positive_clips": 12,
+          "negative_clips": 20,
+          "zero_clips": 0
+        }
+      },
+      "freeze_fraction_increase": {
+        "upstream_mean": 0.1467391304347826,
+        "candidate_mean": 0.1467391304347826,
+        "paired_change": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 32,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "positive_clips": 0,
+          "negative_clips": 0,
+          "zero_clips": 32
+        }
+      },
+      "freeze_case_counts": {
+        "upstream_increase_vs_recorded": 7,
+        "candidate_increase_vs_recorded": 7,
+        "same_fraction_per_clip": true
+      }
+    },
+    "compiled-conditioning": {
+      "mae": {
+        "upstream_mean": 0.0691789560776258,
+        "candidate_mean": 0.06917699648592784,
+        "paired_change": {
+          "mean": -1.9595916979512143e-06,
+          "ci95": [
+            -1.3764707270327255e-05,
+            8.455899980530441e-06
+          ],
+          "units": 32,
+          "minimum": -0.00012481205080072666,
+          "maximum": 6.471846224911926e-05,
+          "positive_clips": 17,
+          "negative_clips": 15,
+          "zero_clips": 0
+        }
+      },
+      "rmse": {
+        "upstream_mean": 0.11545074135772691,
+        "candidate_mean": 0.11544348639414034,
+        "paired_change": {
+          "mean": -7.254963586567683e-06,
+          "ci95": [
+            -2.2529367825464352e-05,
+            6.733531630005815e-06
+          ],
+          "units": 32,
+          "minimum": -0.0001700745929890668,
+          "maximum": 7.884180151321307e-05,
+          "positive_clips": 15,
+          "negative_clips": 17,
+          "zero_clips": 0
+        }
+      },
+      "max_abs_error": {
+        "upstream_mean": 0.8509166315197945,
+        "candidate_mean": 0.8514049798250198,
+        "paired_change": {
+          "mean": 0.0004883483052253723,
+          "ci95": [
+            -0.00018827589228749276,
+            0.0014977915678173292
+          ],
+          "units": 32,
+          "minimum": -0.0020700693130493164,
+          "maximum": 0.012713015079498291,
+          "positive_clips": 15,
+          "negative_clips": 9,
+          "zero_clips": 8
+        }
+      },
+      "temporal_derivative_mae": {
+        "upstream_mean": 0.04380466198352885,
+        "candidate_mean": 0.04380516071051538,
+        "paired_change": {
+          "mean": 4.987269865274358e-07,
+          "ci95": [
+            -5.723929741416762e-06,
+            7.2589521941403266e-06
+          ],
+          "units": 32,
+          "minimum": -4.2568501096292705e-05,
+          "maximum": 5.341114964005356e-05,
+          "positive_clips": 15,
+          "negative_clips": 17,
+          "zero_clips": 0
+        }
+      },
+      "temporal_change_error": {
+        "upstream_mean": 0.010305210126373946,
+        "candidate_mean": 0.010296848520432738,
+        "paired_change": {
+          "mean": -8.361605941208285e-06,
+          "ci95": [
+            -1.599852558707543e-05,
+            -1.0023957374119134e-06
+          ],
+          "units": 32,
+          "minimum": -6.71678717612742e-05,
+          "maximum": 2.848818604943293e-05,
+          "positive_clips": 12,
+          "negative_clips": 20,
+          "zero_clips": 0
+        }
+      },
+      "freeze_fraction_increase": {
+        "upstream_mean": 0.1467391304347826,
+        "candidate_mean": 0.1467391304347826,
+        "paired_change": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "units": 32,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "positive_clips": 0,
+          "negative_clips": 0,
+          "zero_clips": 32
+        }
+      },
+      "freeze_case_counts": {
+        "upstream_increase_vs_recorded": 7,
+        "candidate_increase_vs_recorded": 7,
+        "same_fraction_per_clip": true
+      }
+    }
+  },
+  "source_metadata_sha256": {
+    "upstream-recorded-ground-truth-v1.json": "2215041529f43310266146b92296bbf96dc2ee510c5a15fe464cbc9842a7d0ed",
+    "upstream-recorded-ground-truth-v1.receipt.json": "ab93373026f3c0b3dfc0d2cbc4ccce5ebad093953af1265c03a2bf633ef7019a",
+    "compiled-default-vs-upstream.json": "0ec9e5ed974d8f7533008d5f65ae4795300c91e2aab82e4908df07fe4f03d4f3",
+    "compiled-conditioning-vs-upstream.json": "2c0cd6ff32c2873bdc3eaa31db642d2c465e8237e60fd3efa267d05f0922cf46"
+  },
+  "lpips_vs_recorded_computed": false,
+  "quality_acceptance": false,
+  "headline_claim": false,
+  "limitations": [
+    "This analysis rechecks collected metadata, pair identities and source-output hashes, not the remote arrays or images.",
+    "Error proxies are not trajectory adherence, safety, or object-motion correctness.",
+    "The same seven global-freeze cases occur upstream and in both compiled variants; no added global-freeze case is observed.",
+    "Mean MAE, RMSE and temporal-derivative changes have intervals spanning zero; no broad improvement claim.",
+    "The small temporal-change-error reduction is descriptive; these multiple proxy tests do not establish perceptual improvement."
+  ]
+}

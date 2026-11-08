@@ -1,0 +1,15 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 20063,
+      "sha256": "c8aaf384e8f504ad44f1b36e1b373de38f67854097bd90e5bdef30272f1e4b7d"
+    },
+    "summary.json": {
+      "bytes": 137481,
+      "sha256": "82831b996bf0729a8e85a44782666a167ab8163ba0df1f35802fdda5ae4fef1f"
+    }
+  },
+  "private_evidence_included": false,
+  "raw_frames_included": false,
+  "type": "sanitized_a100_pilot_failure_manifest_v1"
+}

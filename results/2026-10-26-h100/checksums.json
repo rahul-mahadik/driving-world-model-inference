@@ -1,0 +1,70 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 2023,
+      "sha256": "aa1e0bd69ea57c8291631d1fabedabdb14e05a0bf1399d5526ed09889bdc6999"
+    },
+    "compiler-attempt-1.json": {
+      "bytes": 1010,
+      "sha256": "f057cef14cddf6ab2f6144795d56f90efb2f65f1f00fa9472b814455f51c04d2"
+    },
+    "compiler-attempt-2.json": {
+      "bytes": 2674,
+      "sha256": "4be864c6cad9faf7d7238157249da04ebb0348257f2033caca5abcce30cb4045"
+    },
+    "conditioning-cache.json": {
+      "bytes": 4933,
+      "sha256": "0fb31c68db906500df426a467be97403ca524c50b97925067d5491c53cca2e75"
+    },
+    "data-readiness.json": {
+      "bytes": 1570,
+      "sha256": "e6fbe2d5e3d1f7a3aa0728b7a05d9f0fb84056c3ba941a3c8eee2d445983a895"
+    },
+    "isolation.json": {
+      "bytes": 3501,
+      "sha256": "cd391934768dcac851685c3df17688ff79d4b298c066410261ac95054d6b0c40"
+    },
+    "kernel-time.svg": {
+      "bytes": 15434,
+      "sha256": "df1e8cdf92840ff84cfcf99cfa706a261d6ddb1078af1b42175f4ffcacfc7322"
+    },
+    "nsys-profile.json": {
+      "bytes": 7301,
+      "sha256": "25f54a3616f038c50e5ea7509ab036b4b17fc997ee0eaeb54931f5e428e6d60a"
+    },
+    "provenance.json": {
+      "bytes": 3037,
+      "sha256": "7801c06b70b3adec357c954d2f79f8f63905287119f709cad2219fd0d259f1a5"
+    },
+    "software-verification.json": {
+      "bytes": 447,
+      "sha256": "09a4c1745a1f1370430bd92a955c0d4160612ad9d5f7d82af9643bdd183e3b34"
+    },
+    "source-origins.json": {
+      "bytes": 23179,
+      "sha256": "edf9baf7056c571ec06cf0ec146173eb5c3981d36d741b5f6bd499cfe8af83c5"
+    },
+    "strict-agreement.json": {
+      "bytes": 3956,
+      "sha256": "c31f72644bc17710c52e28ee1799364c7d6b3f589bbe2c35776e5abd5487ea0b"
+    },
+    "timing-metadata.json": {
+      "bytes": 1989,
+      "sha256": "80b169ead0cc6beda2501ef6d8075db93dae8fa5d8897054424ffd3e4b2ff721"
+    },
+    "timings.jsonl": {
+      "bytes": 2331,
+      "sha256": "d4ee087c76cf5bbbd1824ca49a5469f6c6e4b679385306ed414d4829d39f216b"
+    },
+    "torch-memory.json": {
+      "bytes": 3233,
+      "sha256": "c4dc901f76a140ac16efd13d4c652e91c114fb5cd05a5c7e25da03d506802712"
+    },
+    "trajectory-audit.json": {
+      "bytes": 1218,
+      "sha256": "8b24f0bad92e5933327e724c5a1b4a9e5033897098973013a272e030bc7f85b1"
+    }
+  },
+  "schema_version": 1,
+  "scope": "Published derived evidence bytes; this checksum file excludes itself."
+}

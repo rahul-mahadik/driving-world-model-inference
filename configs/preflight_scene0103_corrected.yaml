@@ -1,0 +1,73 @@
+# CUDA 11.8 / native sm90 compatibility environment; original binaries failed on H100.
+# Corrected adapter diagnostic: preserve upstream parameter flags and no_grad execution.
+# Fresh provenance and outputs; the original strict agreement and profiles are retained.
+name: preflight-scene0103-corrected-strict-agreement
+output: /workspace/outputs/preflight-scene0103-corrected
+numerical_validation: null
+environment_verification: /workspace/outputs/environment-upstream-cu118-sm90/verification.json
+environment_lock: /workspace/outputs/environment-upstream-cu118-sm90/reference-lock.json
+model:
+  backend: vista
+  upstream_dir: /workspace/vendor/Vista
+  upstream_commit: cc9821b4253ca7987c32757613d2fc2448fa9f5d
+  checkpoint: /workspace/checkpoints/vista.safetensors
+  checkpoint_sha256: 1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98
+  inference_config: /workspace/vendor/Vista/configs/inference/vista.yaml
+data:
+  manifest: /workspace/data/preflight/scene-0103-corrected.jsonl
+  root: /workspace/data/nuscenes
+  verify_checksums: true
+generation:
+  total_frames: 25
+  conditioning_frames: 1
+  height: 576
+  width: 1024
+  steps: 50
+  guidance_scale: 2.5
+  cond_aug: 0.0
+  dtype: fp16
+  decode_chunk_size: 14
+optimizations:
+  compile_denoiser: false
+  compile_decoder: false
+  compile_mode: default
+  dynamic_shapes: false
+  fullgraph: false
+  conditioning_cache_bytes: 0
+  max_batch_size: 1
+  feature_cache_interval: 1
+  feature_cache_module: null
+  keep_model_resident: true
+  pinned_memory: false
+  async_transfer: false
+  prefetch_depth: 0
+  attention_backend: upstream
+benchmark:
+  workload: single_future
+  candidate_count: 1
+  requests: 1
+  warmup_requests: 0
+  max_warmup_requests: 0
+  input_condition: uncached
+  save_outputs: 1
+  headline: false
+preflight:
+  scope: one preselected development clip; corrected upstream gradient flags and no_grad; strict numerical diagnostic only
+  headline_eligible: false
+  quality_validated: false
+  parent_row_index: 28
+  parent_manifest_sha256: f33ebf5dffa1ea1d27cb468112ddea6c4a5044def7595f026309d918491b68b1
+  parent_record_sha256: 3adc76e9721f962712c6daff1c9a3ab3808a091453767816fc37aa5e51510685
+  selection_plan_sha256: 0af23b939648a7dd8945fef97aeb06ef6c83ee2f368e4de1b049cce008821b53
+  required_file_list_sha256: ebba788ff9991b254a705d3550bcb45400148f8aac7c8c5650affdb8eeb74b7d
+  request_id: nuscenes-fcbccedd61424f1b85dcbf8f897f9754-054c2431ba324912bb4799b9217f5b7b
+  scene_id: fcbccedd61424f1b85dcbf8f897f9754
+  scene_name: scene-0103
+  archive_key: public/v1.0/v1.0-mini.tgz
+  archive_size_bytes: 4168148189
+  archive_etag: b62e28f60d4229ec0e76def01e84dc5f-497
+  validation_mode: agreement
+  candidate_count: 1
+  atol: 0.0
+  rtol: 0.0
+  validation_output: /workspace/outputs/preflight-scene0103-corrected/strict-agreement.json

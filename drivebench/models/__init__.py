@@ -1,0 +1,12 @@
+def create_backend(model, generation, optimizations):
+    kind = model.get("backend", "vista")
+    if kind == "synthetic":
+        from .synthetic import SyntheticBackend
+        return SyntheticBackend(model, generation, optimizations)
+    if kind == "vista":
+        from .vista import VistaBackend
+        return VistaBackend(model, generation, optimizations)
+    if kind == "upstream":
+        from .upstream import UpstreamBackend
+        return UpstreamBackend(model, generation, optimizations)
+    raise ValueError(f"unknown backend: {kind}")

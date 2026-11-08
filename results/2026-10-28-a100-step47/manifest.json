@@ -1,0 +1,20 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6856,
+      "sha256": "4fb35ac993deb0dcd779fbadafaef6ee20b40c1c5354c43181692e2a059ab9f3"
+    },
+    "builder-history.json": {
+      "bytes": 3204,
+      "sha256": "94d5d84912da0c5abf45b6176fbbb02bbc9df4f9daeca3a23510304ee6ab25e0"
+    },
+    "summary.json": {
+      "bytes": 36885,
+      "sha256": "c2118e0f720319875aa8f91957da3cb8b4767ae4ff983823c058b59514ff7265"
+    }
+  },
+  "private_operational_records_included": false,
+  "raw_data_included": false,
+  "schema_version": 1,
+  "status": "completed_four_scene_screen_no_acceptance"
+}

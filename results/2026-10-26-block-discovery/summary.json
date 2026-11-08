@@ -1,0 +1,210 @@
+{
+  "blocks": {
+    "input_blocks.0": {
+      "calls": 50,
+      "cuda_event_s": 0.06981510424613953,
+      "fraction_of_instrumented_denoising": 0.0013272476698665658
+    },
+    "input_blocks.1": {
+      "calls": 50,
+      "cuda_event_s": 5.571661575317385,
+      "fraction_of_instrumented_denoising": 0.10592227746381956
+    },
+    "input_blocks.10": {
+      "calls": 50,
+      "cuda_event_s": 0.1362166714668274,
+      "fraction_of_instrumented_denoising": 0.002589600943141516
+    },
+    "input_blocks.11": {
+      "calls": 50,
+      "cuda_event_s": 0.13465296006202698,
+      "fraction_of_instrumented_denoising": 0.0025598733886133727
+    },
+    "input_blocks.2": {
+      "calls": 50,
+      "cuda_event_s": 5.823747901916503,
+      "fraction_of_instrumented_denoising": 0.11071466434337368
+    },
+    "input_blocks.3": {
+      "calls": 50,
+      "cuda_event_s": 0.04367180812358855,
+      "fraction_of_instrumented_denoising": 0.0008302401922446141
+    },
+    "input_blocks.4": {
+      "calls": 50,
+      "cuda_event_s": 2.3911781539916976,
+      "fraction_of_instrumented_denoising": 0.04545843864863681
+    },
+    "input_blocks.5": {
+      "calls": 50,
+      "cuda_event_s": 2.4521046638488775,
+      "fraction_of_instrumented_denoising": 0.04661670617704941
+    },
+    "input_blocks.6": {
+      "calls": 50,
+      "cuda_event_s": 0.027846272170543664,
+      "fraction_of_instrumented_denoising": 0.0005293825777660132
+    },
+    "input_blocks.7": {
+      "calls": 50,
+      "cuda_event_s": 1.3014039363861087,
+      "fraction_of_instrumented_denoising": 0.024740854586909115
+    },
+    "input_blocks.8": {
+      "calls": 50,
+      "cuda_event_s": 1.346431489944458,
+      "fraction_of_instrumented_denoising": 0.025596868714302126
+    },
+    "input_blocks.9": {
+      "calls": 50,
+      "cuda_event_s": 0.020851711899042138,
+      "fraction_of_instrumented_denoising": 0.0003964097215003865
+    },
+    "middle_block": {
+      "calls": 50,
+      "cuda_event_s": 0.5338011531829834,
+      "fraction_of_instrumented_denoising": 0.010148038084085173
+    },
+    "output_blocks.0": {
+      "calls": 50,
+      "cuda_event_s": 0.17217206358909606,
+      "fraction_of_instrumented_denoising": 0.003273145155081278
+    },
+    "output_blocks.1": {
+      "calls": 50,
+      "cuda_event_s": 0.1719257271289826,
+      "fraction_of_instrumented_denoising": 0.0032684620783141635
+    },
+    "output_blocks.10": {
+      "calls": 50,
+      "cuda_event_s": 6.122964096069334,
+      "fraction_of_instrumented_denoising": 0.1164030322225586
+    },
+    "output_blocks.11": {
+      "calls": 50,
+      "cuda_event_s": 5.876468299865724,
+      "fraction_of_instrumented_denoising": 0.11171692633364222
+    },
+    "output_blocks.2": {
+      "calls": 50,
+      "cuda_event_s": 0.24845766496658328,
+      "fraction_of_instrumented_denoising": 0.0047234027714800715
+    },
+    "output_blocks.3": {
+      "calls": 50,
+      "cuda_event_s": 1.4705054378509517,
+      "fraction_of_instrumented_denoising": 0.027955625605496557
+    },
+    "output_blocks.4": {
+      "calls": 50,
+      "cuda_event_s": 1.474254369735718,
+      "fraction_of_instrumented_denoising": 0.02802689615879978
+    },
+    "output_blocks.5": {
+      "calls": 50,
+      "cuda_event_s": 1.7153803215026862,
+      "fraction_of_instrumented_denoising": 0.03261091649483993
+    },
+    "output_blocks.6": {
+      "calls": 50,
+      "cuda_event_s": 2.8778988456726076,
+      "fraction_of_instrumented_denoising": 0.0547114349863892
+    },
+    "output_blocks.7": {
+      "calls": 50,
+      "cuda_event_s": 2.6693880004882815,
+      "fraction_of_instrumented_denoising": 0.05074745704205909
+    },
+    "output_blocks.8": {
+      "calls": 50,
+      "cuda_event_s": 2.9548955497741707,
+      "fraction_of_instrumented_denoising": 0.05617521130255586
+    },
+    "output_blocks.9": {
+      "calls": 50,
+      "cuda_event_s": 6.444577468872072,
+      "fraction_of_instrumented_denoising": 0.12251719053055775
+    }
+  },
+  "denoising_gpu_s": 52.6014140625,
+  "finished_at": "2026-10-26T23:57:29.194283+00:00",
+  "generation": {
+    "cond_aug": 0.0,
+    "conditioning_frames": 1,
+    "decode_chunk_size": 14,
+    "dtype": "fp16",
+    "guidance_scale": 2.5,
+    "height": 576,
+    "steps": 50,
+    "total_frames": 25,
+    "width": 1024
+  },
+  "headline_eligible": false,
+  "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+  "ideal_interval2_bound": {
+    "assumption": "Half of measured block work is removed with zero cache/copy overhead, unchanged surrounding work and no quality loss. This is an idealized Amdahl bound, not an observed optimization result.",
+    "denoising_speedup_if_half_block_work_disappears": 1.0652560917802383,
+    "maximum_avoided_block_seconds": 3.222288734436036
+  },
+  "implementation_sha256": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00",
+  "instrumented": true,
+  "launcher_and_config_unchanged": true,
+  "manifest_sha256": "a3c6328d9f0d0b94149820f626db17e024e6fbc0e5523fe5ee19aa3316befbff",
+  "partition_role": "development",
+  "quality_validated": false,
+  "request_index": 28,
+  "runtime_fingerprint_method": "SHA256 of source package, helper and runtime patch identity; runtime patch is null.",
+  "runtime_implementation_sha256": "513edd350db5ca95e3b2b6b49eb04ee2ec9ebf79e1679f06b483956e0031bc72",
+  "schema_version": 1,
+  "scope": "One development request with CUDA-event instrumentation; this selects an experiment and does not establish a performance gain.",
+  "selected_block": "output_blocks.9",
+  "source_environment_sha256": "efcd23e908ca58160b4269d6a9e65839b593b4a57754e4f34462683992b01bd0",
+  "source_probe_sha256": "408589e7d843d0af989d4ee1af4963e44898e564fd284d549333fdfa05a41186",
+  "source_unchanged": true,
+  "span_note": "Exclusive top-level block CUDA-event spans. The sum excludes denoiser work outside those blocks; hooks add overhead.",
+  "started_at": "2026-10-26T23:55:03.645151+00:00",
+  "strict_atol": 0,
+  "strict_executions": [
+    {
+      "comparison": {
+        "candidates": [
+          {
+            "max_abs_error": 0.0,
+            "passed": true,
+            "rmse": 0.0,
+            "values": 44236800,
+            "values_outside_tolerance": 0
+          }
+        ],
+        "passed": true
+      },
+      "instrumented": false,
+      "label": "cold",
+      "output_sha256": "07dd10854fb24d53f474aa678fbda9ce8c2e338401ac10c30aebf1be2ef278fe",
+      "status": "ok"
+    },
+    {
+      "comparison": {
+        "candidates": [
+          {
+            "max_abs_error": 0.0,
+            "passed": true,
+            "rmse": 0.0,
+            "values": 44236800,
+            "values_outside_tolerance": 0
+          }
+        ],
+        "passed": true
+      },
+      "instrumented": true,
+      "label": "blocks-0",
+      "output_sha256": "07dd10854fb24d53f474aa678fbda9ce8c2e338401ac10c30aebf1be2ef278fe",
+      "status": "ok"
+    }
+  ],
+  "strict_passed": true,
+  "strict_rtol": 0,
+  "sum_of_exclusive_block_event_spans_s": 52.05227124807239,
+  "transfer_receipt_sha256": "bfabbe2fc1ba00781810e546028959672026a0ef488f4f9abb4d95f069b7c4a7",
+  "transfer_scope": "Metadata files only. Strict output comparison and output hashes were recorded remotely; raw arrays are not included in this publication."
+}

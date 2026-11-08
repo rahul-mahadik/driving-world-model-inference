@@ -1,0 +1,91 @@
+{
+  "autocast_cache_clear_ranges": [
+    {
+      "category": "python_function",
+      "end_us": 1793054474110166,
+      "name": "<built-in function clear_autocast_cache>",
+      "outside_stage_cuda_freed_bytes": 0,
+      "outside_stage_cuda_frees": 0,
+      "start_us": 1793054474110163
+    },
+    {
+      "category": "python_function",
+      "end_us": 1793054532416983,
+      "name": "<built-in function clear_autocast_cache>",
+      "outside_stage_cuda_freed_bytes": 3321616896,
+      "outside_stage_cuda_frees": 1024,
+      "start_us": 1793054532415909
+    }
+  ],
+  "baseline_live_before_first_event": 10216151040,
+  "cuda_memory_by_host_stage": {
+    "drivebench::conditioning_gpu": {
+      "allocated_bytes_sum": 868840760832,
+      "allocations": 3081,
+      "count": 6156,
+      "freed_bytes_sum": 868831773184,
+      "frees": 3075,
+      "max_live_allocated": 56058206720,
+      "max_reserved": 73677144064
+    },
+    "drivebench::decode_gpu": {
+      "allocated_bytes_sum": 1646735760384,
+      "allocations": 1337,
+      "count": 2672,
+      "freed_bytes_sum": 1646381865984,
+      "frees": 1335,
+      "max_live_allocated": 51901324288,
+      "max_reserved": 73681338368
+    },
+    "drivebench::denoising_gpu": {
+      "allocated_bytes_sum": 26495892629504,
+      "allocations": 213242,
+      "count": 425456,
+      "freed_bytes_sum": 26492559952896,
+      "frees": 212214,
+      "max_live_allocated": 21997400576,
+      "max_reserved": 73681338368
+    },
+    "drivebench::device_to_host_gpu": {
+      "allocated_bytes_sum": 176947200,
+      "allocations": 1,
+      "count": 2,
+      "freed_bytes_sum": 176947200,
+      "frees": 1,
+      "max_live_allocated": 14276368896,
+      "max_reserved": 73681338368
+    },
+    "drivebench::encode_gpu": {
+      "allocated_bytes_sum": 428271380480,
+      "allocations": 502,
+      "count": 1003,
+      "freed_bytes_sum": 428267694080,
+      "frees": 501,
+      "max_live_allocated": 42910825984,
+      "max_reserved": 73677144064
+    },
+    "outside_stage": {
+      "allocated_bytes_sum": 198181376,
+      "allocations": 5,
+      "count": 1047,
+      "freed_bytes_sum": 3897426432,
+      "frees": 1042,
+      "max_live_allocated": 14099216896,
+      "max_reserved": 73681338368
+    }
+  },
+  "cuda_memory_event_count": 436336,
+  "headline_eligible": false,
+  "method_notes": [
+    "Memory classification is by host allocation timestamp within stage NVTX ranges.",
+    "Allocation bytes are cumulative allocator bookkeeping, not live peak or DRAM traffic.",
+    "Shape counts have no per-shape CUDA duration and cannot rank per-shape GPU cost.",
+    "Operator table rows include overlapping CPU/operator/kernel/runtime levels; do not sum them."
+  ],
+  "profiled": true,
+  "raw_trace_sha256": "df875e5f0f0c70bd6e6cce482151d3d923553173aea2eb8ca829bcfaea1e7618",
+  "scope": "Separate instrumented request; allocator churn is not DRAM traffic or simultaneous batch capacity.",
+  "source_artifact": "outputs/preflight-scene0103-corrected-torch-analysis.json",
+  "source_sha256": "adde8de0cecf7ef8efdc038042991919ddee651c9672e315c63b98bad1e14636",
+  "transform": "Compact selected-field projection; original artifact retained privately. This derived file has its own published checksum."
+}

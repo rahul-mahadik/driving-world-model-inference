@@ -1,0 +1,288 @@
+{
+  "acceptance": {
+    "bitwise_upstream_compiler_agreement": false,
+    "full_original_study_complete": false,
+    "github_published": false,
+    "headline_speedup_validated": false,
+    "held_out_quality_validated": false,
+    "norm_qualification_established": false,
+    "same_seed_action_study_completed": false,
+    "second_seed_check_completed": false
+  },
+  "all_mode_validation": {
+    "atol": 0,
+    "candidate_count_is_gpu_batch_size": false,
+    "candidate_order_and_unrelated_action_exact": true,
+    "checks": {
+      "candidate_order": true,
+      "conditioning_cache_agreement": true,
+      "conditioning_cache_exercised": true,
+      "conditioning_cache_keys": true,
+      "unrelated_candidate_action_change": true,
+      "upstream_agreement": false
+    },
+    "completed": true,
+    "conditioning_cache_agreement_and_exercise_exact": true,
+    "diagnostic_only": true,
+    "overall_strict_passed": false,
+    "rtol": 0,
+    "two_serial_candidates": true,
+    "upstream_pairwise": [
+      {
+        "candidate_index": 0,
+        "max_abs_error": 0.2503611445426941,
+        "passed": false,
+        "rmse": 0.0025115692282660414,
+        "values": 44236800,
+        "values_outside_tolerance": 43335539
+      },
+      {
+        "candidate_index": 1,
+        "max_abs_error": 0.43937939405441284,
+        "passed": false,
+        "rmse": 0.0049219012695405125,
+        "values": 44236800,
+        "values_outside_tolerance": 43143645
+      }
+    ]
+  },
+  "compiler_boundary_control": {
+    "feature_cache_interval": 1,
+    "lpips_exceeding_scene_count": 1,
+    "lpips_limit": 0.003,
+    "matched_pairs": 32,
+    "maximum_metrics": {
+      "freeze_fraction_increase": 0.0,
+      "lpips": 0.0044389867325662635,
+      "max_abs_error": 0.6178257465362549,
+      "rmse": 0.007533660269079139,
+      "temporal_derivative_mae": 0.0036392231625866304
+    },
+    "quality_accepted": false,
+    "role": "Descriptive compiler-boundary control, excluded from primary norm-qualification contract."
+  },
+  "development": {
+    "candidate_count": 1,
+    "clips": 32,
+    "comparisons_vs_upstream": {
+      "compiled-default": {
+        "all_pairs_exact": false,
+        "distinct_scenes": 32,
+        "matched_pairs": 32,
+        "maximum_absolute_rgb_error": 0.5870721340179443,
+        "maximum_metrics": {
+          "freeze_fraction_increase": 0.0,
+          "lpips": 0.0018777011755446438,
+          "rmse": 0.007359182962884832,
+          "temporal_derivative_mae": 0.002356517786487846
+        },
+        "within_predeclared_development_metric_limits": true
+      },
+      "eager": {
+        "all_pairs_exact": true,
+        "distinct_scenes": 32,
+        "matched_pairs": 32,
+        "maximum_absolute_rgb_error": 0.0,
+        "maximum_metrics": {
+          "freeze_fraction_increase": 0.0,
+          "lpips": 0.0,
+          "rmse": 0.0,
+          "temporal_derivative_mae": 0.0
+        },
+        "within_predeclared_development_metric_limits": true
+      }
+    },
+    "descriptive_durations": {
+      "compiled-default": {
+        "headline_eligible": false,
+        "median_request_seconds": 43.64979105100065,
+        "requests": 32,
+        "scope": "Descriptive development duration; separate processes collected at different times, not randomized paired headline timing."
+      },
+      "eager": {
+        "headline_eligible": false,
+        "median_request_seconds": 57.41598353850031,
+        "requests": 32,
+        "scope": "Descriptive development duration; separate processes collected at different times, not randomized paired headline timing."
+      },
+      "upstream": {
+        "headline_eligible": false,
+        "median_request_seconds": 57.31239081399997,
+        "requests": 32,
+        "scope": "Descriptive development duration; separate processes collected at different times, not randomized paired headline timing."
+      }
+    },
+    "distinct_scenes": 32,
+    "eager_and_compiled_source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+    "existing_upstream_and_compiled_runs_adopted": true,
+    "frames_compared_each": 24,
+    "metric_limits": {
+      "freeze_fraction_increase": 0.0,
+      "lpips": 0.003,
+      "rmse": 0.01,
+      "temporal_derivative_mae": 0.00392156862745098
+    },
+    "new_eager_exact_anchor_verified": true,
+    "upstream_historical_source_identity": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00"
+  },
+  "evidence_sha256": {
+    "actual_norm_qualification": "a0896ef95ceff10833bf8fc3b9d2a1b10aff0921c21b239f42b7409fe63f6b46",
+    "assembled_sealed_review_receipt": "418f7a14581faac2b95bd5a7d99c5d41f1b4fb86d4d338b87d93b894e653a9c7",
+    "boundary_development_comparison": "76f302d485d16a80cf504dc19da4edc41b232545474ece80274a00781edc1c03",
+    "compact_development_aggregate": "17706ef1b407dc56043441cc16cb3ca7249d71874736ec17d422506db9ef3996",
+    "compact_development_completion": "329fa9d680d767bfc88348bb9496d186dcbf5f8862e144c5969d21f80e0b4852",
+    "compact_development_selection": "d942555072abe9be691a6c7814c59b3ed91544692f291492a9a4404312a63729",
+    "compiled-default_aggregate_summary": "84ffb824a7807752d47e2544e63985b650c4d64145e1a37bcfbe547960da70f5",
+    "compiler_all_mode_completion": "99598ef0e3619da5bb3ca040656f40c77bfd5926d9759d242cc40c64f704820d",
+    "compiler_all_mode_proof": "e838b39bcc98169bad3181981ba91ae7377215fd22431164fd3521bbb1d142df",
+    "compute_cleanup": "699a412a7bdd295e5d9a5f1e5af9a9c6a544914462d446bc37811854737d85f9",
+    "development-01_observation_seal": "82e09f2c9f32bc9821d3e445b1ad1b94d3ba9f6fbbf3c4043e25302d781b1573",
+    "development-02_observation_seal": "6ddd73ca74e00f82d32cbf398e3aff48126b845df8639b4a346836649e47e968",
+    "eager_aggregate_summary": "97aeebeda5dc8fe4742375c9ac4a3dd848f539a70610ca01aba01b7cacfff6df",
+    "norm_qualification_completion": "4beb368baa9c5426162054d3a14f7beddc216fe4663792dc308ed7bc30cc39f2",
+    "original_compiler_all_mode_interruption": "df91045d9ac25597b006e83f82d5f9886b8a3a870ce6ea534b50ba8ba6f699f2",
+    "original_compiler_partial_comparison": "32dfec471209b7fb96fd386fb72fbf6dfaf16daaa13be7ef14c450926da3da26",
+    "post_seal_unblinding_context": "8192e4f8dabb9b4df53a73b263d90d010835f8ce34a27e72957dc50da9ef67df",
+    "proof_observation_seal": "606a52135ea239f922fbf9ec186e5fc997a53a1af513188b6fab85bfe89648ed",
+    "sealed_development-01_observations": "a695d17c7a475929d4ac22abaeba7e37b8a7e5ddd316f9f57a548aa5b9afdf33",
+    "sealed_development-02_observations": "f9d37d2dab92ebb8294d2a3fd9cc8148253902240dbff9e04db5479739837425",
+    "sealed_proof_observations": "f12b39c9bee9a95cd735039f36989bb320c75a2279662757fa782946d1032e7b",
+    "upstream_aggregate_summary": "6b1bcd7dc65810c7a44336f9d80602cae02d8300e1b4906c5fc2d3a13ffcefe2"
+  },
+  "final_qualification": {
+    "development_quality_passed": true,
+    "exact_semantics_passed": true,
+    "finished_at": "2026-10-28T21:38:31.341592+00:00",
+    "legacy_strict_passed": false,
+    "localized_review_passed": false,
+    "numerical_contract_passed": true,
+    "preserve_any_new_localized_failure_reject_rule": true,
+    "public_projection": "qualification.json",
+    "qualified": false,
+    "source_qualification_sha256": "a0896ef95ceff10833bf8fc3b9d2a1b10aff0921c21b239f42b7409fe63f6b46",
+    "status": "completed_rejected"
+  },
+  "generation": {
+    "cond_aug": 0.0,
+    "conditioning_frames": 1,
+    "decode_chunk_size": 14,
+    "dtype": "fp16",
+    "guidance_scale": 2.5,
+    "height": 576,
+    "steps": 50,
+    "total_frames": 25,
+    "width": 1024
+  },
+  "hardware": {
+    "a100_timings_pooled": false,
+    "device_identifiers_omitted": true,
+    "gpu_model": "NVIDIA H100 80GB HBM3",
+    "same_full_runtime_verified_for_compact_diagnostic": true
+  },
+  "previous_publication_manifest_sha256": "4d670136c0402c866ae66addd25a33db36e485c6463e64579d293dc4c4cd5b06",
+  "privacy": "Allowlisted numeric/count/hash projection. No dataset identifiers, raw images/videos/tensors, opaque review images, review keys, credentials, account IDs, GPU UUIDs, host paths, addresses or provider-resource identifiers are distributed.",
+  "resource_cleanup": {
+    "allocation_deadline_unchanged": true,
+    "automatic_topup_audit_events": 0,
+    "completed_topup_count": 1,
+    "compute_instances": 0,
+    "cost_interpretation": "Observed funding minus provider balance at the recorded time; retained storage continues to accrue charges. This is not a final closed-account cost.",
+    "disk_detached": true,
+    "disk_preserved": true,
+    "disk_size_gb": 300,
+    "disk_storage_hourly_usd": 0.0821917808219178,
+    "funding_usd": 100,
+    "guard_armed": false,
+    "guard_state": "cleanup_verified",
+    "observed_cumulative_balance_decrease_usd": 82.75128000000001,
+    "project_complete": false,
+    "provider_balance_usd": 17.24872,
+    "publication_complete": false,
+    "source_receipt_sha256": "699a412a7bdd295e5d9a5f1e5af9a9c6a544914462d446bc37811854737d85f9",
+    "verified_at": "2026-10-28T21:41:02.049813+00:00"
+  },
+  "schema_version": 1,
+  "scope": "Compact single-future video-inference study; original18-variant plan and historical reports preserved. No held-out generation or final repeated timing result is claimed.",
+  "sealed_static_blind_review": {
+    "accept_count": 6,
+    "cases": 7,
+    "groups": [
+      {
+        "accept_count": 1,
+        "all24_ordered_generated_frame_pairs_inspected_each_case": true,
+        "cases": 2,
+        "geometry_change_case_count": 1,
+        "group": "proof",
+        "native_highlight_pairs_inspected": 2,
+        "observations_sha256": "f12b39c9bee9a95cd735039f36989bb320c75a2279662757fa782946d1032e7b",
+        "reject_count": 1,
+        "seal_sha256": "606a52135ea239f922fbf9ec186e5fc997a53a1af513188b6fab85bfe89648ed",
+        "tie_count": 1
+      },
+      {
+        "accept_count": 4,
+        "all24_ordered_generated_frame_pairs_inspected_each_case": true,
+        "cases": 4,
+        "geometry_change_case_count": 0,
+        "group": "development-01",
+        "native_highlight_pairs_inspected": 7,
+        "observations_sha256": "a695d17c7a475929d4ac22abaeba7e37b8a7e5ddd316f9f57a548aa5b9afdf33",
+        "reject_count": 0,
+        "seal_sha256": "82e09f2c9f32bc9821d3e445b1ad1b94d3ba9f6fbbf3c4043e25302d781b1573",
+        "tie_count": 4
+      },
+      {
+        "accept_count": 1,
+        "all24_ordered_generated_frame_pairs_inspected_each_case": true,
+        "cases": 1,
+        "geometry_change_case_count": 0,
+        "group": "development-02",
+        "native_highlight_pairs_inspected": 1,
+        "observations_sha256": "f9d37d2dab92ebb8294d2a3fd9cc8148253902240dbff9e04db5479739837425",
+        "reject_count": 0,
+        "seal_sha256": "6ddd73ca74e00f82d32cbf398e3aff48126b845df8639b4a346836649e47e968",
+        "tie_count": 1
+      }
+    ],
+    "image_files_published": false,
+    "limitations": [
+      "Ordered atlases are downscaled and palette-quantized.",
+      "Native PNG pairs are rounded display images.",
+      "Accepted pairs may contain defects shared by both sides; acceptance does not establish pixel equality, overall generation quality or safety."
+    ],
+    "native_highlight_pairs": 10,
+    "ordered_atlases": 7,
+    "playback_performed": false,
+    "post_seal_attribution": {
+      "acceptance_gates_changed": false,
+      "independent_observations_sealed_before_decode": true,
+      "interpretation": "The sealed rejection is preserved under the unchanged conservative no-localized-change gate; accepted norm behavior is not established by this review.",
+      "preferred_role": "compiled_candidate",
+      "reported_worse_role": "upstream_reference",
+      "review_decisions_changed": false
+    },
+    "reject_count": 1,
+    "rejected_category": "geometry_change",
+    "rejected_observation": "At generated frame 24, a localized front-car geometry/detail difference was observed. After the observations were sealed, attribution showed that the reviewer preferred the compiled display; the less coherent front-car contour and grille/headlight detail was on the upstream reference. This is not evidence that compilation introduced degradation.",
+    "reviewer_type": "Independent agents inspecting static displays; not human reviewers.",
+    "status": "all_seven_case_observations_sealed_qualification_rejected",
+    "ties": 6
+  },
+  "snapshot_at": "2026-10-28T21:42:07.697765+00:00",
+  "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "status": "completed_development_and_semantic_checks_norm_qualification_rejected_compute_released",
+  "validation_process_lifecycle": {
+    "cleanup_between_completed_engines_only": true,
+    "driver_sha256": "e15a9330b4b89eda3f2f2ddb85019ff6461d448b32f71e75b968ec32c0e44f01",
+    "driver_source": "../../research/performance-validation-v1/run_validation_cleanup.py",
+    "failure": "CUDA out of memory at initial isolation generation; no final all-mode report.",
+    "five_cleanup_boundaries_recorded": true,
+    "initial_attempt_failed": true,
+    "memory_cleanup_is_inference_optimization": false,
+    "oom_cause_proven": false,
+    "preserved_partial_pairwise_strict_passed": false,
+    "separate_retry_completed": true,
+    "sustained_multi_engine_memory_behavior_proven": false,
+    "within_engine_generation_unchanged": true
+  }
+}

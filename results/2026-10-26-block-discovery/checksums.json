@@ -1,0 +1,17 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 1042,
+      "sha256": "096570502b0d890941673c7415345cb7dddee9f8395a051c9d1b1fc56d8e6a7f"
+    },
+    "block-spans.svg": {
+      "bytes": 71106,
+      "sha256": "e741746073a75f00d3f21d1eb8e1b50821eafdc599cbb95e6543daa93ebd3199"
+    },
+    "summary.json": {
+      "bytes": 7251,
+      "sha256": "5188620cdcc8a1acf10a46bc67bccecfb4ff204bb73363b27e4d97a1b5a421c4"
+    }
+  },
+  "schema_version": 1
+}

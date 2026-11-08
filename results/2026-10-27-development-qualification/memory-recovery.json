@@ -1,0 +1,62 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "classification": "timeout_capacity_unknown",
+      "cleanup_verified": true,
+      "execution": {},
+      "host_exit_code": 124,
+      "inputs_unchanged": true,
+      "probe_status": "failed",
+      "requested_batch": 6,
+      "source_host_sha256": "eda2f2117e6d6d0ef9ba360f5542b92d01c223b395c2e512020453a0c78c59bd",
+      "source_probe_sha256": "7f0bd8f7a20b78acea6ebc11e9fd5a499b036f50595fb2b596a49c79578a0bd8",
+      "source_unchanged": true
+    },
+    {
+      "attempt": 1,
+      "classification": "timeout_capacity_unknown",
+      "cleanup_verified": true,
+      "execution": {},
+      "host_exit_code": 124,
+      "inputs_unchanged": true,
+      "probe_status": "failed",
+      "requested_batch": 5,
+      "source_host_sha256": "004c1d72c5c8953b8445a2cbf5200a09bad2e1900fcc8d59cd91505dd4264c30",
+      "source_probe_sha256": "4810e94fba8507fcba554fb9916b3f32c823d5a77c0348d4f2bd878e5ffeab72",
+      "source_unchanged": true
+    },
+    {
+      "attempt": 2,
+      "classification": "requested_batch_oom",
+      "cleanup_verified": true,
+      "execution": {
+        "actual_batch_sizes": [],
+        "attempted_batch_sizes": [
+          16
+        ],
+        "hardware_capacity_established": false,
+        "oom_cleanup_completed": true,
+        "oom_fallback_enabled": false,
+        "peak_allocated_bytes": 67324989952,
+        "peak_reserved_bytes": 81176559616,
+        "requested_batch_size": 16,
+        "retry_count": 0,
+        "status": "requested_batch_oom",
+        "wall_s_excluding_file_decode_and_export": 60.39016140300009
+      },
+      "host_exit_code": 2,
+      "inputs_unchanged": true,
+      "probe_status": "requested_batch_oom",
+      "requested_batch": 16,
+      "source_host_sha256": "02f216efd4b442f477e9ce52a54b7f1883c1075ec3bea5659d84903f7f456dcc",
+      "source_probe_sha256": "97f5e04b6a574f3ab78d97d786e4772b7203a0a808c0ecc6ca2d62ea4d6e731b",
+      "source_unchanged": true
+    }
+  ],
+  "headline_eligible": false,
+  "implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "limitation": "Timeout is unknown capacity, never OOM. Previously completed B2/B4 and failed B8 OOM remain in the preserved discovery bundle; no exact largest feasible batch is established.",
+  "quality_validated": false,
+  "schema_version": 1
+}

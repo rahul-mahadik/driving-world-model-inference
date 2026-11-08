@@ -1,0 +1,3 @@
+extends: study_memory_batch2.yaml
+name: study-first-denoiser-step-batch-permutation
+output: outputs/study-probes/batch-permutation

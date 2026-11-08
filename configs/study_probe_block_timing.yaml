@@ -1,0 +1,6 @@
+extends: study_probe_eager.yaml
+name: study-probe-block-timing-instrumented
+output: outputs/study-probes/block-timing
+probe:
+  kind: block_timing
+  max_warmups: 0

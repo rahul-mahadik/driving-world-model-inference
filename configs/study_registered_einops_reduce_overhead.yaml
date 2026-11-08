@@ -1,0 +1,17 @@
+extends: study_probe_denoiser_reduce_overhead.yaml
+name: study-registered-einops-reduce_overhead-limit512
+output: outputs/study-probes/registered-einops-reduce_overhead-limit512
+compiler_runtime:
+  kind: official_einops_registration_with_explicit_dynamo_cache_limit
+  einops_version: 0.6.1
+  registration_api: einops._torch_specific.allow_ops_in_compiled_graph
+  registered_functions:
+  - rearrange
+  - reduce
+  - repeat
+  - einsum
+  - pack
+  - unpack
+  cache_size_limit: 512
+  native_attention_boundary: true
+  suppress_errors: false

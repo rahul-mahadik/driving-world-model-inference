@@ -1,0 +1,18 @@
+{
+  "compute_capability": [
+    8,
+    0
+  ],
+  "cuda": "12.8",
+  "gpu_name": "NVIDIA A100-SXM4-80GB",
+  "packages": {
+    "gymnasium": "1.2.3",
+    "numpy": "2.2.0",
+    "torch": "2.10.0+cu128",
+    "triton": "3.6.0"
+  },
+  "python": "3.11.18",
+  "torch": "2.10.0+cu128",
+  "total_memory": 85093777408,
+  "triton": "3.6.0"
+}

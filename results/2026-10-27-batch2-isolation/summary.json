@@ -1,0 +1,49 @@
+{
+  "candidate_batching_exercised": true,
+  "checks": {
+    "candidate_order": {
+      "atol": 0.0,
+      "candidates": [
+        {
+          "max_abs_error": 0.16401788592338562,
+          "passed": false,
+          "rmse": 0.0024492688428377277,
+          "values": 44236800,
+          "values_outside_tolerance": 43335616
+        },
+        {
+          "max_abs_error": 0.7574358582496643,
+          "passed": false,
+          "rmse": 0.005997050863271028,
+          "values": 44236800,
+          "values_outside_tolerance": 43142114
+        }
+      ],
+      "passed": false,
+      "rtol": 0.0
+    },
+    "unrelated_candidate_action_change": {
+      "atol": 0.0,
+      "candidates": [
+        {
+          "max_abs_error": 0.0,
+          "passed": true,
+          "rmse": 0.0,
+          "values": 44236800,
+          "values_outside_tolerance": 0
+        }
+      ],
+      "passed": true,
+      "rtol": 0.0
+    }
+  },
+  "headline_eligible": false,
+  "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+  "passed": false,
+  "quality_validated": false,
+  "schema_version": 1,
+  "scope": "One development request, joint B2 normal/reversed/action-change execution. Exact candidate-order invariance failed; unrelated candidate remained exactly unchanged after the other action changed. No action-adherence or perceptual quality claim.",
+  "source_proof_sha256": "ac788abdd61fb20b08554c792aa60bd3b98e31f4f8ba3f3abc1fb9b8d4e1c51b",
+  "transfer_receipt_sha256": "2206ad9bf9b1796261deb3edf964dc53f47fd431a9ea322038408d5e2dec6ba4",
+  "transfer_scope": "Three metadata/host files independently match remote hashes; raw output arrays are excluded."
+}

@@ -1,0 +1,53 @@
+{
+  "assets": {
+    "alexnet_cached_weight": {
+      "bytes": 244408911,
+      "sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02"
+    },
+    "lpips_learned_weight": {
+      "bytes": 6009,
+      "sha256": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0"
+    },
+    "wheel": {
+      "bytes": 53763,
+      "sha256": "fd537af5828b69d2e6ffc0a397bd506dbc28ca183543617690844c08e102ec5e"
+    }
+  },
+  "cpu_verification": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "cuda_initialized_after": false,
+    "cuda_initialized_before": false,
+    "device": "cpu",
+    "different_lpips": 3.508684676489793e-05,
+    "identical_lpips": 0.0,
+    "input_range": [
+      -1,
+      1
+    ],
+    "input_shape": [
+      1,
+      3,
+      64,
+      64
+    ],
+    "model_state_dict_sha256": "cb2726fb57b9d7f1f7a7eb26f83bf40ef15f421885676460a0b2caa020b74d85",
+    "network_blocked_during_model_construction_and_forward": true,
+    "passed": true,
+    "reverse_lpips": 3.508684676489793e-05,
+    "scope": "Dependency/weight integrity and CPU execution smoke only; not calibration, model quality, or a perceptual acceptance threshold.",
+    "state_hash_method": "sorted name:dtype:shape plus contiguous tensor bytes; matches PerceptualMetric convention",
+    "versions": {
+      "lpips": "0.1.4",
+      "numpy": "1.24.4",
+      "scipy": "1.10.1",
+      "torch": "2.0.1+cu118",
+      "torchvision": "0.15.2+cu118"
+    }
+  },
+  "passed": true,
+  "schema_version": 1,
+  "source_receipt_sha256": "3327e3d117d02a88f83e6665c9a222f9de9acd322e52140fcd7f3d3990755d4f",
+  "source_script_sha256": "d0ca8bed525f27c334d0f91e30d0b2f3c8621bfc29b7db385b02ccbed149685c",
+  "status": "cpu_verified",
+  "transform": "Allowlisted projection; host paths excluded. This verifies evaluator setup, not inference quality or a GPU performance gain."
+}

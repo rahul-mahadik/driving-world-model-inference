@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "status": "planning_only_not_execution_or_a_cost_guarantee",
+  "specification": "configs/full_study_registered_draft.yaml",
+  "specification_sha256": "032d444fa2250530ec82be0abe2f09ac7e25333ec925a3e3a08ca69e43e57334",
+  "hourly_price_assumed_usd": 4.6608,
+  "rates_seconds_per_future": {
+    "eager": 57.3,
+    "registered_compiled": 43.6
+  },
+  "rate_scope": "Observed single-clip warm probes supplied by experiment coordinator; integrated full-set behavior remains to be measured. No extra speedup assumed for fewer steps, feature reuse, conditioning reuse or candidate batching.",
+  "selected_five_example": [
+    "upstream",
+    "conditioning-reuse",
+    "compiled-conditioning",
+    "feature-2",
+    "steps-47"
+  ],
+  "timing_finalists_example": [
+    "upstream",
+    "compiled-conditioning"
+  ],
+  "phase_estimates": {
+    "development_all_17": {
+      "requests": 544,
+      "futures": 544,
+      "generation_s": 25910.4,
+      "processes": 17,
+      "maximum_warmup_s": 4048.5,
+      "generation_hours": 7.197333333333334,
+      "generation_cost": 33.5453312
+    },
+    "held_out_128_selected_5": {
+      "requests": 640,
+      "futures": 640,
+      "generation_s": 31411.2,
+      "processes": 20,
+      "maximum_warmup_s": 4908.0,
+      "generation_hours": 8.725333333333333,
+      "generation_cost": 40.6670336
+    },
+    "second_seed_16_selected_5": {
+      "requests": 80,
+      "futures": 80,
+      "generation_s": 3926.4,
+      "processes": 5,
+      "maximum_warmup_s": 1227.0,
+      "generation_hours": 1.0906666666666667,
+      "generation_cost": 5.0833792
+    },
+    "development_actions_16x2_selected_5": {
+      "requests": 80,
+      "futures": 160,
+      "generation_s": 7852.8,
+      "processes": 5,
+      "maximum_warmup_s": 2454.0,
+      "generation_hours": 2.1813333333333333,
+      "generation_cost": 10.1667584
+    },
+    "held_out_actions_16x2_selected_5": {
+      "requests": 80,
+      "futures": 160,
+      "generation_s": 7852.8,
+      "processes": 5,
+      "maximum_warmup_s": 2454.0,
+      "generation_hours": 2.1813333333333333,
+      "generation_cost": 10.1667584
+    },
+    "single_timing_2x200": {
+      "requests": 400,
+      "futures": 400,
+      "generation_s": 20180.0,
+      "processes": 8,
+      "maximum_warmup_s": 2018.0,
+      "generation_hours": 5.605555555555555,
+      "generation_cost": 26.126373333333333
+    },
+    "candidate4_timing_2x200": {
+      "requests": 400,
+      "futures": 1600,
+      "generation_s": 80720.0,
+      "processes": 8,
+      "maximum_warmup_s": 8072.0,
+      "generation_hours": 22.42222222222222,
+      "generation_cost": 104.50549333333333
+    },
+    "single_pilot_4x50": {
+      "requests": 200,
+      "futures": 200,
+      "generation_s": 11460.0,
+      "processes": 4,
+      "maximum_warmup_s": 1146.0,
+      "generation_hours": 3.183333333333333,
+      "generation_cost": 14.836879999999999
+    },
+    "candidate4_pilot_4x50": {
+      "requests": 200,
+      "futures": 800,
+      "generation_s": 45840.0,
+      "processes": 4,
+      "maximum_warmup_s": 4584.0,
+      "generation_hours": 12.733333333333333,
+      "generation_cost": 59.347519999999996
+    }
+  },
+  "additional_bounded_diagnostics": {
+    "input_correctness_and_throughput": {
+      "futures": 72,
+      "processes": 18,
+      "generation_and_warmup_s": 4125.599999999999
+    },
+    "candidate_scaling_two_serial_implementations": {
+      "futures": 168,
+      "processes": 6,
+      "generation_and_warmup_s": 9626.4
+    },
+    "current_source_eager_and_cache_all_gates": {
+      "futures_upper": 28,
+      "processes_upper": 10,
+      "generation_and_warmup_s": 1604.3999999999999
+    }
+  },
+  "accounting": {
+    "generation_hours": 65.32044444444445,
+    "maximum_five_warmup_hours": 8.586527777777778,
+    "process_count": 76,
+    "model_loading_and_extra_cold_overhead_assumption_seconds_per_process": 120,
+    "model_loading_and_extra_cold_overhead_hours": 2.533333333333333,
+    "bounded_diagnostics_including_loading_hours": 5.399,
+    "subtotal_hours_before_evaluation_proofs_failures": 81.83930555555555,
+    "reserve_hours_for_LPIPS_reviews_additional_proofs_and_failures": [
+      8,
+      15
+    ],
+    "planning_hours_with_reserve": [
+      89.83930555555555,
+      96.83930555555555
+    ],
+    "planning_cost_with_reserve_usd": [
+      418.7230353333333,
+      451.34863533333333
+    ]
+  },
+  "adoption_generation_credit_hours": 1.2844444444444445,
+  "candidate4_same_gpu_window_hours_before_evaluation_or_failures": 39.07111111111111,
+  "limitations": [
+    "No study is materialized and no new jobs are launched by this estimate.",
+    "All 17 development variants, including adopted bootstrap outputs, are counted once; adoption credit is generation already performed, not a discount from the total experiment ledger.",
+    "Actual prior sessions, already executed discovery, storage, idle time, taxes and account funding are outside this estimate and must be added to the cumulative less-than-$500 guard.",
+    "A complete candidate4 confirmation can add about25h and invalidate the budget envelope. A rejected regression needs confirmation before a conclusive claim; otherwise leave it unresolved.",
+    "Quality can resume on verified equivalent replacement GPUs; each pilot and its entire headline comparison require the same GPU UUID/runtime.",
+    "The 4-variant alternative saves about2.52h only if removing one compiled finalist does not remove a required reference, exact anchor or matched-runtime control. The proposed accepted-compiler comparison needs all five roles."
+  ]
+}

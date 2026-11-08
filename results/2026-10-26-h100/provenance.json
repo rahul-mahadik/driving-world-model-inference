@@ -1,0 +1,88 @@
+{
+  "excluded": [
+    "credentials",
+    "provider/account IDs",
+    "SSH targets",
+    "machine home paths",
+    "GPU UUID",
+    "datasets and annotations",
+    "weights",
+    "raw images and generated videos",
+    "raw tensors",
+    "large profiler/compiler binaries"
+  ],
+  "execution_grad_mode": "no_grad",
+  "generation": {
+    "cond_aug": 0.0,
+    "conditioning_frames": 1,
+    "decode_chunk_size": 14,
+    "dtype": "fp16",
+    "guidance_scale": 2.5,
+    "height": 576,
+    "steps": 50,
+    "total_frames": 25,
+    "width": 1024
+  },
+  "gradient_policy": "preserve_upstream_loader_flags",
+  "implementation_sha256": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00",
+  "input_provenance": {
+    "actions_sha256": [
+      "3b713e4cc7c07fb1f84b92c06e973c9e0454ab1e0e612376d2af3bf4f13c57b5"
+    ],
+    "candidate_ids": [
+      "nuscenes-fcbccedd61424f1b85dcbf8f897f9754-054c2431ba324912bb4799b9217f5b7b:c00"
+    ],
+    "manifest_metadata_sha256": "f0c3baf44a0d2484719a89e3862415530c1c5f2ce484e5da4fc52ebfedc42001",
+    "manifest_sha256": "795c3d7a4ecb486afdeb5d3ea820ac4e48a465338f3786239a02a13efcb18cca",
+    "observed_sha256": "9a10ca49cd87b7f05e260e8d800f95425f6134b289cd46eb4d6d62e351a00fb0",
+    "partition_role": "development_subset",
+    "request_id": "nuscenes-fcbccedd61424f1b85dcbf8f897f9754-054c2431ba324912bb4799b9217f5b7b",
+    "scene_id": "fcbccedd61424f1b85dcbf8f897f9754",
+    "seeds": [
+      1900558798
+    ]
+  },
+  "model": {
+    "backend": "vista",
+    "checkpoint_sha256": "1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98",
+    "upstream_commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d"
+  },
+  "runtime": {
+    "gpu": {
+      "driver_version": "580.178.04",
+      "max_memory_clock_mhz": "2619",
+      "max_sm_clock_mhz": "1980",
+      "memory_total_mib": "81559",
+      "mig_mode": "Disabled",
+      "name": "NVIDIA H100 80GB HBM3",
+      "power_limit_w": "700.00"
+    },
+    "packages": {
+      "numpy": "1.24.4",
+      "scipy": "1.10.1",
+      "torch": "2.0.1+cu118",
+      "torchaudio": "2.0.2+cu118",
+      "torchvision": "0.15.2+cu118",
+      "triton": "2.0.0",
+      "xformers": "0.0.20"
+    },
+    "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+    "torch": {
+      "cuda": "11.8",
+      "cuda_available": true,
+      "cudnn": 8700,
+      "deterministic_algorithms": false,
+      "tf32_cudnn": true,
+      "tf32_matmul": false,
+      "version": "2.0.1+cu118"
+    }
+  },
+  "schema_version": 1,
+  "scope": "Initial one-development-clip diagnostic session; expanded study pending",
+  "session": "2026-10-26-h100",
+  "source_archive_sha256": "1bdb7d4e0951ef42f27d003fae1a55fa5334a8e2ec8095a4bc670f0df705132e",
+  "source_artifact": "outputs/preflight-scene0103-corrected/strict-agreement.json",
+  "source_sha256": "e0363bc4f4bb56ee6393d0754cdc0ebe0a985183d9726e462a61f1a7158c5c5a",
+  "source_snapshot_files": 106,
+  "transform": "Compact selected-field projection; original artifact retained privately. This derived file has its own published checksum."
+}

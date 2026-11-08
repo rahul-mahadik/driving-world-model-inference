@@ -1,0 +1,26 @@
+name: synthetic-contract-smoke
+output: outputs/demo
+model:
+  backend: synthetic
+data:
+  manifest: data/synthetic/smoke.jsonl
+  root: data/synthetic/synthetic_frames
+  verify_checksums: true
+generation:
+  total_frames: 25
+  conditioning_frames: 1
+  height: 32
+  width: 64
+  steps: 4
+  dtype: fp32
+optimizations:
+  conditioning_cache_bytes: 1048576
+  max_batch_size: 4
+benchmark:
+  workload: candidate_set
+  candidate_count: 4
+  requests: 8
+  warmup_requests: 2
+  input_condition: reused_conditioning
+  save_outputs: 8
+  headline: false

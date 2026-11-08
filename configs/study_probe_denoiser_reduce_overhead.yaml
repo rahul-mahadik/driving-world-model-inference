@@ -1,0 +1,8 @@
+extends: study_probe_denoiser_default.yaml
+name: study-probe-denoiser-reduce-overhead-native-attention-boundary
+output: outputs/study-probes/denoiser-reduce-overhead
+optimizations:
+  compile_mode: reduce-overhead
+probe:
+  kind: denoiser_reduce_overhead
+  cuda_graph_trace: true

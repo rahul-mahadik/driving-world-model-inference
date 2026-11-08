@@ -1,0 +1,39 @@
+{
+  "completed_at": "2026-10-26T22:58:00.000560+00:00",
+  "evidence_transfer_sha256": "95ec39bbb75b51544bdf7da134bd54b8f2bee5ec70857b65c217b6cf997b8648",
+  "file_identities_sha256": "3b5248755d8dab74f2466e84d109cf190e1a5129644c94d1e310bbc8a83eb738",
+  "local_selection_verification_sha256": "001c62e382743f82397638060d714e4c9783733927d09263b1c1f3521e98ea5a",
+  "plan_sha256": "0af23b939648a7dd8945fef97aeb06ef6c83ee2f368e4de1b049cce008821b53",
+  "prepared_manifest_counts": {
+    "calibration": {
+      "clips": 16,
+      "scenes": 16
+    },
+    "development": {
+      "clips": 32,
+      "scenes": 32
+    },
+    "evaluation": {
+      "clips": 128,
+      "scenes": 118
+    },
+    "evaluation_second_seed": {
+      "clips": 16,
+      "scenes": 16
+    },
+    "smoke": {
+      "clips": 4,
+      "scenes": 4
+    }
+  },
+  "remote_selection_verification_sha256": "6c738e53526481fde8e3b13ddd23f569e564b5f287f82040a02d95c226b56392",
+  "schema_version": 1,
+  "scope": "Exact original selection retained; all selected JPEGs and prepared manifests stored locally and independently SHA256-verified; no model quality/benchmark claims",
+  "selected_files_rsync_exit_code": 0,
+  "selected_frame_bytes": 636398932,
+  "selected_frame_count": 4358,
+  "source_artifact": "outputs/dataset-consolidation-20261026/completion-receipt.json",
+  "source_sha256": "2d2b4e7f86f6c331a53171aac8d80a989beae33229002cab344fb6128d72c3f5",
+  "status": "complete",
+  "transform": "Compact selected-field projection; original artifact retained privately. This derived file has its own published checksum."
+}

@@ -1,0 +1,489 @@
+{
+  "probes": [
+    {
+      "compiler_settings": {
+        "cache_size_limit": 64,
+        "dynamic_shapes": false,
+        "fullgraph": false,
+        "mode": "default",
+        "suppress_errors": false
+      },
+      "description": "Global BF16 failed at unsupported bicubic upsampling.",
+      "error_type": "RuntimeError",
+      "executions": [],
+      "exit_code": 1,
+      "finished_at": "2026-10-27T00:25:34.409802+00:00",
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 14,
+        "dtype": "bf16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+      "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+      "label": "bf16",
+      "launcher_and_config_unchanged": true,
+      "new_compiled_graphs": 0,
+      "positive_cuda_codegen_evidence": false,
+      "quality_validated": false,
+      "runtime_implementation_sha256": "39c13db9dc937c1b0de47c0359b3b77039e5503fb95162500a56026d752cd483",
+      "source_probe_sha256": "d1b7d551f9196b785b84d2edde0aed931de5ef6c4dc9e8bf6b7d337970c71da6",
+      "source_unchanged": true,
+      "started_at": "2026-10-27T00:25:04.167144+00:00",
+      "status": "failed",
+      "strict_passed": false,
+      "transfer_receipt_sha256": "97a498c21ab33a000dfa9f2eb72fcacc613f3e48f7fcc1270ec5f4ff7912eaed"
+    },
+    {
+      "compiler_settings": {
+        "cache_size_limit": 64,
+        "dynamic_shapes": false,
+        "fullgraph": false,
+        "mode": "default",
+        "suppress_errors": false
+      },
+      "description": "Denoiser-only BF16 failed at unsupported nearest upsampling; conditioning and decoding remained FP16.",
+      "error_type": "RuntimeError",
+      "executions": [],
+      "exit_code": 1,
+      "finished_at": "2026-10-27T00:33:22.968686+00:00",
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 14,
+        "dtype": "fp16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+      "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+      "label": "denoiser-bf16",
+      "launcher_and_config_unchanged": true,
+      "new_compiled_graphs": 0,
+      "positive_cuda_codegen_evidence": false,
+      "quality_validated": false,
+      "runtime_implementation_sha256": "8f7df6bce51f7905d3a585649bd05052410e0654c85e4228cdcf18facc9169d1",
+      "source_probe_sha256": "8c9377078099b3783b4c332fe8e4336213dd51d3c5d74024020b2e02b1733b5c",
+      "source_unchanged": true,
+      "started_at": "2026-10-27T00:32:49.812515+00:00",
+      "status": "failed",
+      "strict_passed": false,
+      "transfer_receipt_sha256": "1552ab4a9d77acfd381040469407fd3b4780acb30b5a7528ea175f077d9e9da0"
+    },
+    {
+      "compiler_settings": {
+        "cache_size_limit": 64,
+        "dynamic_shapes": false,
+        "fullgraph": false,
+        "mode": "default",
+        "suppress_errors": false
+      },
+      "description": "Decode chunk size 6 completed all three executions but failed the unchanged strict-zero comparison.",
+      "error_type": null,
+      "executions": [
+        {
+          "fallback_count": 0,
+          "instrumented": false,
+          "label": "cold",
+          "oom_attempts": 0,
+          "stage_timings_s": {
+            "conditioning_gpu": 1.6142098388671875,
+            "decode_gpu": 4.4988017578125,
+            "denoising_gpu": 52.5560390625,
+            "device_to_host_gpu": 0.1026882553100586,
+            "encode_gpu": 0.6423314819335938,
+            "generate_wall": 59.47388699699968,
+            "prepare_context": 0.033299593000265304
+          },
+          "status": "ok",
+          "strict_comparison": {
+            "candidates": [
+              {
+                "max_abs_error": 0.22358301281929016,
+                "passed": false,
+                "rmse": 0.004109687832983948,
+                "values": 44236800,
+                "values_outside_tolerance": 43431877
+              }
+            ],
+            "passed": false
+          },
+          "wall_s_excluding_file_decode_and_export": 59.50760194799932
+        },
+        {
+          "fallback_count": 0,
+          "instrumented": false,
+          "label": "warmup-0",
+          "oom_attempts": 0,
+          "stage_timings_s": {
+            "conditioning_gpu": 1.379731689453125,
+            "decode_gpu": 4.496935546875,
+            "denoising_gpu": 52.57349609375,
+            "device_to_host_gpu": 0.09740467071533203,
+            "encode_gpu": 0.6428154907226562,
+            "generate_wall": 59.24150899399956,
+            "prepare_context": 0.03304406799998105
+          },
+          "status": "ok",
+          "strict_comparison": {
+            "candidates": [
+              {
+                "max_abs_error": 0.22358301281929016,
+                "passed": false,
+                "rmse": 0.004109687832983948,
+                "values": 44236800,
+                "values_outside_tolerance": 43431877
+              }
+            ],
+            "passed": false
+          },
+          "wall_s_excluding_file_decode_and_export": 59.27493283500007
+        },
+        {
+          "fallback_count": 0,
+          "instrumented": false,
+          "label": "measured-0",
+          "oom_attempts": 0,
+          "stage_timings_s": {
+            "conditioning_gpu": 1.3805242919921874,
+            "decode_gpu": 4.496654296875,
+            "denoising_gpu": 52.5753046875,
+            "device_to_host_gpu": 0.09664889526367187,
+            "encode_gpu": 0.644211669921875,
+            "generate_wall": 59.244851097999344,
+            "prepare_context": 0.03222350899977755
+          },
+          "status": "ok",
+          "strict_comparison": {
+            "candidates": [
+              {
+                "max_abs_error": 0.22358301281929016,
+                "passed": false,
+                "rmse": 0.004109687832983948,
+                "values": 44236800,
+                "values_outside_tolerance": 43431877
+              }
+            ],
+            "passed": false
+          },
+          "wall_s_excluding_file_decode_and_export": 59.27749517000029
+        }
+      ],
+      "exit_code": 2,
+      "finished_at": "2026-10-27T00:29:05.890577+00:00",
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 6,
+        "dtype": "fp16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+      "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+      "label": "decode-chunk6",
+      "launcher_and_config_unchanged": true,
+      "new_compiled_graphs": 0,
+      "positive_cuda_codegen_evidence": false,
+      "quality_validated": false,
+      "runtime_implementation_sha256": "39c13db9dc937c1b0de47c0359b3b77039e5503fb95162500a56026d752cd483",
+      "source_probe_sha256": "727078f44c871aead394ecb477b8c6133a36ad43acaeb32f8366f94cf5566a73",
+      "source_unchanged": true,
+      "started_at": "2026-10-27T00:25:36.585423+00:00",
+      "status": "execution_complete_strict_failed",
+      "strict_passed": false,
+      "transfer_receipt_sha256": "71fd340f0918ada16670ddd6b0e2ecfe6aefb750672e06116fa0401501f4b3fb"
+    },
+    {
+      "compiler_settings": {
+        "cache_size_limit": 64,
+        "dynamic_shapes": false,
+        "fullgraph": false,
+        "mode": "default",
+        "suppress_errors": false
+      },
+      "description": "Decoder compilation stopped after detecting additional eager fallback frames.",
+      "error_type": "RuntimeError",
+      "executions": [
+        {
+          "fallback_count": 0,
+          "instrumented": false,
+          "label": "cold",
+          "oom_attempts": 0,
+          "stage_timings_s": {
+            "conditioning_gpu": 1.6134678955078126,
+            "decode_gpu": 16.991775390625,
+            "denoising_gpu": 52.54988671875,
+            "device_to_host_gpu": 0.09530995178222657,
+            "encode_gpu": 0.6439711303710938,
+            "generate_wall": 71.96314948899999,
+            "prepare_context": 0.035503936999703
+          },
+          "status": "ok",
+          "strict_comparison": {
+            "candidates": [
+              {
+                "max_abs_error": 0.0012046098709106445,
+                "passed": false,
+                "rmse": 1.5628757176946336e-05,
+                "values": 44236800,
+                "values_outside_tolerance": 43269190
+              }
+            ],
+            "passed": false
+          },
+          "wall_s_excluding_file_decode_and_export": 71.99916154499988
+        }
+      ],
+      "exit_code": 1,
+      "finished_at": "2026-10-27T00:17:02.114690+00:00",
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 14,
+        "dtype": "fp16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+      "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+      "label": "decoder-compile",
+      "launcher_and_config_unchanged": true,
+      "new_compiled_graphs": 49,
+      "positive_cuda_codegen_evidence": true,
+      "quality_validated": false,
+      "runtime_implementation_sha256": "39c13db9dc937c1b0de47c0359b3b77039e5503fb95162500a56026d752cd483",
+      "source_probe_sha256": "116ec3b00072ec53a3d4d4860bd8222939bca2c5fdf13af217b3d8baaff36be8",
+      "source_unchanged": true,
+      "started_at": "2026-10-27T00:15:19.825900+00:00",
+      "status": "failed",
+      "strict_passed": false,
+      "transfer_receipt_sha256": "1a6a714779db6aa117c27c791f1a3e7d410be201fd9bdeb9fb5b46b9858adf52"
+    },
+    {
+      "compiler_settings": {
+        "cache_size_limit": 64,
+        "dynamic_shapes": false,
+        "fullgraph": false,
+        "mode": "default",
+        "suppress_errors": false
+      },
+      "description": "Static compiler shape policy stopped after detecting additional eager fallback frames.",
+      "error_type": "RuntimeError",
+      "executions": [
+        {
+          "fallback_count": 0,
+          "instrumented": false,
+          "label": "cold",
+          "oom_attempts": 0,
+          "stage_timings_s": {
+            "conditioning_gpu": 1.61615576171875,
+            "decode_gpu": 2.657625,
+            "denoising_gpu": 124.4273125,
+            "device_to_host_gpu": 0.09726726531982421,
+            "encode_gpu": 0.6415061645507812,
+            "generate_wall": 129.50021250899954,
+            "prepare_context": 0.03159281899934285
+          },
+          "status": "ok",
+          "strict_comparison": {
+            "candidates": [
+              {
+                "max_abs_error": 0.17875921726226807,
+                "passed": false,
+                "rmse": 0.0020641363045261854,
+                "values": 44236800,
+                "values_outside_tolerance": 43335775
+              }
+            ],
+            "passed": false
+          },
+          "wall_s_excluding_file_decode_and_export": 129.5323498529997
+        }
+      ],
+      "exit_code": 1,
+      "finished_at": "2026-10-27T00:31:49.062785+00:00",
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 14,
+        "dtype": "fp16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+      "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+      "label": "shape-static",
+      "launcher_and_config_unchanged": true,
+      "new_compiled_graphs": 444,
+      "positive_cuda_codegen_evidence": true,
+      "quality_validated": false,
+      "runtime_implementation_sha256": "b4cef28417b2a5ca912e72e3ce521bcbce3b6540596f66acc8aab281a5c02248",
+      "source_probe_sha256": "2b047f64c4017d08f37197c53b68d2ac110bf072d1c4ff1c4855523991482729",
+      "source_unchanged": true,
+      "started_at": "2026-10-27T00:29:08.560383+00:00",
+      "status": "failed",
+      "strict_passed": false,
+      "transfer_receipt_sha256": "34b16eb84897ee6358409f018fe7a48bb0b1cd0d011df6e7aae8322aa40c2f23"
+    },
+    {
+      "compiler_settings": {
+        "cache_size_limit": 64,
+        "dynamic_shapes": true,
+        "fullgraph": false,
+        "mode": "default",
+        "suppress_errors": false
+      },
+      "description": "Dynamic compiler shape policy failed a symbolic-shape assertion.",
+      "error_type": "AssertionError",
+      "executions": [],
+      "exit_code": 1,
+      "finished_at": "2026-10-27T00:32:27.968034+00:00",
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 14,
+        "dtype": "fp16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+      "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+      "label": "shape-dynamic",
+      "launcher_and_config_unchanged": true,
+      "new_compiled_graphs": 3,
+      "positive_cuda_codegen_evidence": true,
+      "quality_validated": false,
+      "runtime_implementation_sha256": "b4cef28417b2a5ca912e72e3ce521bcbce3b6540596f66acc8aab281a5c02248",
+      "source_probe_sha256": "b26ea4fe0aa02eea69c1b844e793e4a71b5096d057b2bbc6ff6c75cdfe424dc6",
+      "source_unchanged": true,
+      "started_at": "2026-10-27T00:31:52.546116+00:00",
+      "status": "failed",
+      "strict_passed": false,
+      "transfer_receipt_sha256": "c70d8c15a6998d6c314327e92308ea9ebfff463c963c78042bce62add2160ffa"
+    },
+    {
+      "compiler_settings": {
+        "cache_size_limit": 512,
+        "dynamic_shapes": true,
+        "fullgraph": false,
+        "mode": "default",
+        "suppress_errors": false
+      },
+      "description": "Registered-einops dynamic compilation failed a symbolic-shape assertion.",
+      "error_type": "AssertionError",
+      "executions": [],
+      "exit_code": 1,
+      "finished_at": "2026-10-27T00:25:00.823290+00:00",
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 14,
+        "dtype": "fp16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+      "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+      "label": "registered-einops-dynamic",
+      "launcher_and_config_unchanged": true,
+      "new_compiled_graphs": 3,
+      "positive_cuda_codegen_evidence": true,
+      "quality_validated": false,
+      "runtime_implementation_sha256": "45325835efb353d1a89734aea6925a220802973c2e2fdc0354bff9ce5c30af52",
+      "source_probe_sha256": "3f1b4c1bab12c394ac1406f40499a2700f4fa453d11671b514024b9e22c2adef",
+      "source_unchanged": true,
+      "started_at": "2026-10-27T00:24:26.438858+00:00",
+      "status": "failed",
+      "strict_passed": false,
+      "transfer_receipt_sha256": "bfcd2708c3600fa1ada313750971d39d49763c530495afbff2b2db624c1be638"
+    },
+    {
+      "compiler_settings": {
+        "cache_size_limit": 512,
+        "dynamic_shapes": false,
+        "fullgraph": false,
+        "mode": "reduce-overhead",
+        "suppress_errors": false
+      },
+      "description": "Registered-einops reduce-overhead mode stopped after an OOM or retry was detected.",
+      "error_type": "RuntimeError",
+      "executions": [
+        {
+          "fallback_count": 0,
+          "instrumented": false,
+          "label": "cold",
+          "oom_attempts": 1,
+          "stage_timings_s": {
+            "generate_wall": 40.814858820000154,
+            "prepare_context": 0.03097136699989278
+          },
+          "status": "out_of_memory",
+          "strict_comparison": null,
+          "wall_s_excluding_file_decode_and_export": 40.846253575000446
+        }
+      ],
+      "exit_code": 1,
+      "finished_at": "2026-10-27T00:24:22.300087+00:00",
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 14,
+        "dtype": "fp16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+      "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+      "label": "registered-einops-reduce-overhead",
+      "launcher_and_config_unchanged": true,
+      "new_compiled_graphs": 85,
+      "positive_cuda_codegen_evidence": true,
+      "quality_validated": false,
+      "runtime_implementation_sha256": "5829e84d4f3197885d244fca490701f9474d19f0ce9929be89186d091365eda5",
+      "source_probe_sha256": "28e0a5f5787a91c8456506a37540302cf89b6e09fefe3ec1ebd1b4e6ff3dae41",
+      "source_unchanged": true,
+      "started_at": "2026-10-27T00:23:12.622203+00:00",
+      "status": "failed",
+      "strict_passed": false,
+      "transfer_receipt_sha256": "5537ad6f7419f508d7efc90ea079bb67ebb03687821f86b096ac501967deffce"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Bounded one-request discovery attempts. Timings are diagnostics, not comparable benchmark claims; file decode/export excluded and some requests failed. No accepted quality or speedup result.",
+  "transfer_scope": "Metadata and host logs independently matched remote hashes. Arrays, compiler binaries and private command/environment dumps are excluded."
+}

@@ -1,0 +1,906 @@
+{
+  "rows": [
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.72589832000085,
+      "paired_scene_index": 1,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.68568963399957,
+      "paired_scene_index": 2,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.69959673199992,
+      "paired_scene_index": 3,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.70564717999878,
+      "paired_scene_index": 4,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.744307654000295,
+      "paired_scene_index": 5,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.71262005999961,
+      "paired_scene_index": 6,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.75769501099785,
+      "paired_scene_index": 7,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.77524668899787,
+      "paired_scene_index": 8,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.723567777000426,
+      "paired_scene_index": 9,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.76554711300196,
+      "paired_scene_index": 10,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.76860413000031,
+      "paired_scene_index": 11,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.761310029000015,
+      "paired_scene_index": 12,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.765804630002094,
+      "paired_scene_index": 13,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.778691309998976,
+      "paired_scene_index": 14,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.73525163799786,
+      "paired_scene_index": 15,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.77706974100147,
+      "paired_scene_index": 16,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.7916622369994,
+      "paired_scene_index": 17,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.76950727900112,
+      "paired_scene_index": 18,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.78479145399979,
+      "paired_scene_index": 19,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.76678823700058,
+      "paired_scene_index": 20,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.74924538900086,
+      "paired_scene_index": 21,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.74838473999989,
+      "paired_scene_index": 22,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.728228236002906,
+      "paired_scene_index": 23,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.78047966300073,
+      "paired_scene_index": 24,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.776662550000765,
+      "paired_scene_index": 25,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.78393142200002,
+      "paired_scene_index": 26,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.772903690998646,
+      "paired_scene_index": 27,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.764827107999736,
+      "paired_scene_index": 28,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.764106657999946,
+      "paired_scene_index": 29,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.75757373600209,
+      "paired_scene_index": 30,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.75949231300183,
+      "paired_scene_index": 31,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.785038545000134,
+      "paired_scene_index": 32,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.76942622599745,
+      "paired_scene_index": 33,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.77241569800026,
+      "paired_scene_index": 34,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.78338821500074,
+      "paired_scene_index": 35,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.77508771200155,
+      "paired_scene_index": 36,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.76365807199909,
+      "paired_scene_index": 37,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.77009765799812,
+      "paired_scene_index": 38,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.7627432090012,
+      "paired_scene_index": 39,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.7907048929992,
+      "paired_scene_index": 40,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.76760978099992,
+      "paired_scene_index": 41,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.772708065996994,
+      "paired_scene_index": 42,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.74796422300278,
+      "paired_scene_index": 43,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.78678079200108,
+      "paired_scene_index": 44,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.79287601800024,
+      "paired_scene_index": 45,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.781346896998,
+      "paired_scene_index": 46,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.76132975799919,
+      "paired_scene_index": 47,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.75567043800038,
+      "paired_scene_index": 48,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.763001573999645,
+      "paired_scene_index": 49,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 0,
+      "denoiser_evaluations": 50,
+      "latency_s": 53.76031121699998,
+      "paired_scene_index": 50,
+      "peak_allocated_bytes": 56058206720,
+      "peak_reserved_bytes": 88780832768,
+      "role": "upstream"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.66745908099983,
+      "paired_scene_index": 1,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.68358412499947,
+      "paired_scene_index": 2,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.693871057999786,
+      "paired_scene_index": 3,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.674977296999714,
+      "paired_scene_index": 4,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.771237719000055,
+      "paired_scene_index": 5,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.78410802099825,
+      "paired_scene_index": 6,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.76905024500229,
+      "paired_scene_index": 7,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.767851230000815,
+      "paired_scene_index": 8,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.741343634999794,
+      "paired_scene_index": 9,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.83577129499827,
+      "paired_scene_index": 10,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.83003851199828,
+      "paired_scene_index": 11,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.790142119996744,
+      "paired_scene_index": 12,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.807501183997374,
+      "paired_scene_index": 13,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.866611301000376,
+      "paired_scene_index": 14,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.84164501200212,
+      "paired_scene_index": 15,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.787056355999084,
+      "paired_scene_index": 16,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.82049587300207,
+      "paired_scene_index": 17,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.86488339800053,
+      "paired_scene_index": 18,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.907104391997564,
+      "paired_scene_index": 19,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.756007550000504,
+      "paired_scene_index": 20,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.87560912099798,
+      "paired_scene_index": 21,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.79262622500028,
+      "paired_scene_index": 22,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.822120041000744,
+      "paired_scene_index": 23,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.8481549600001,
+      "paired_scene_index": 24,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.81216825500087,
+      "paired_scene_index": 25,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.84576037300212,
+      "paired_scene_index": 26,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.91236918999857,
+      "paired_scene_index": 27,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.88014058600311,
+      "paired_scene_index": 28,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.915465463000146,
+      "paired_scene_index": 29,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.90655088100175,
+      "paired_scene_index": 30,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.775916623999365,
+      "paired_scene_index": 31,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.7952650110019,
+      "paired_scene_index": 32,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.777836295997986,
+      "paired_scene_index": 33,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.858636943998135,
+      "paired_scene_index": 34,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.843879460997414,
+      "paired_scene_index": 35,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.858504244999494,
+      "paired_scene_index": 36,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.92502547500044,
+      "paired_scene_index": 37,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.891191617000004,
+      "paired_scene_index": 38,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.89779007800098,
+      "paired_scene_index": 39,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.783134278000944,
+      "paired_scene_index": 40,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.95107912000094,
+      "paired_scene_index": 41,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.91074017699793,
+      "paired_scene_index": 42,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.86238375399989,
+      "paired_scene_index": 43,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.92696455300029,
+      "paired_scene_index": 44,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.94991668199873,
+      "paired_scene_index": 45,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.93026835599812,
+      "paired_scene_index": 46,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.80333096200047,
+      "paired_scene_index": 47,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.94748655500007,
+      "paired_scene_index": 48,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.88655754000138,
+      "paired_scene_index": 49,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 1,
+      "denoiser_evaluations": 50,
+      "latency_s": 40.93050318499809,
+      "paired_scene_index": 50,
+      "peak_allocated_bytes": 60363113984,
+      "peak_reserved_bytes": 88717918208,
+      "role": "compiled-default"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "100 sanitized completed-block rows; local pair indices replace dataset identifiers."
+}

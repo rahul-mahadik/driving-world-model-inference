@@ -1,0 +1,85 @@
+{
+  "a100_development_companion": {
+    "completed_smoke_outputs_preserved": true,
+    "evaluation_pending": true,
+    "full_manifest_fresh_run": true,
+    "parent_plan_sha256": "a15bac95d6cd0d4376aa9bbf07cefb392d3cf91ffce9ee2ee7ef74d8ee121c1e",
+    "retire_outputs": false,
+    "reuse_smoke_timings": false,
+    "scope": "Separate A100 math-SDPA companion:32 fixed development scenes, recorded actions, one candidate,50 steps,3 warmups,32 retained arrays. Generation evidence only. Original18-variant H100 study unchanged; no full-scene numerical agreement, quality acceptance, threshold calibration, speedup, matched latency or headline claim."
+  },
+  "a100_pilot": {
+    "parent_config_sha256": "f2b1ffe9afaede699f3b3461b7ec6f844f5f953c7104c3b96b6418a72156a8a2",
+    "scope": "Separate A100 math-SDPA companion:32 fixed development scenes, recorded actions, one candidate,50 steps,3 warmups,32 retained arrays. Generation evidence only. Original18-variant H100 study unchanged; no full-scene numerical agreement, quality acceptance, threshold calibration, speedup, matched latency or headline claim.",
+    "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+    "target": "single_nvidia_a100_sxm4_80gb_pilot_v1"
+  },
+  "a100_quality_smoke": {
+    "evaluation_pending": true,
+    "retained_compatibility_field": true,
+    "retire_outputs": false,
+    "scope": "Separate A100 math-SDPA companion:32 fixed development scenes, recorded actions, one candidate,50 steps,3 warmups,32 retained arrays. Generation evidence only. Original18-variant H100 study unchanged; no full-scene numerical agreement, quality acceptance, threshold calibration, speedup, matched latency or headline claim.",
+    "strict_coverage": "Original selected development request only; not all32 scenes.",
+    "variant": "eager50"
+  },
+  "algorithm_policy": {
+    "lock": "/workspace/outputs/environment-a100-math-sdpa-v1/policy-lock.json",
+    "name": "a100_process_math_sdpa_v1",
+    "verification": "/workspace/outputs/environment-a100-math-sdpa-v1/policy-verification.json"
+  },
+  "benchmark": {
+    "candidate_count": 1,
+    "headline": false,
+    "input_condition": "uncached",
+    "max_warmup_requests": 3,
+    "requests": 32,
+    "save_outputs": 32,
+    "warmup_requests": 3,
+    "workload": "single_future"
+  },
+  "data": {
+    "manifest": "/workspace/data/manifests/development.jsonl",
+    "root": "/workspace/data/nuscenes",
+    "verify_checksums": true
+  },
+  "environment_lock": "/workspace/outputs/environment-a100-pilot-01/reference-lock.json",
+  "environment_verification": "/workspace/outputs/environment-a100-pilot-01/verification.json",
+  "generation": {
+    "cond_aug": 0.0,
+    "conditioning_frames": 1,
+    "decode_chunk_size": 14,
+    "dtype": "fp16",
+    "guidance_scale": 2.5,
+    "height": 576,
+    "steps": 50,
+    "total_frames": 25,
+    "width": 1024
+  },
+  "model": {
+    "backend": "vista",
+    "checkpoint": "/workspace/checkpoints/vista.safetensors",
+    "checkpoint_sha256": "1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98",
+    "inference_config": "/workspace/vendor/Vista/configs/inference/vista.yaml",
+    "upstream_commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d",
+    "upstream_dir": "/workspace/vendor/Vista"
+  },
+  "name": "a100-math-development-v1-eager50",
+  "numerical_validation": "/workspace/outputs/a100-math-sdpa-v1/strict-all.json",
+  "optimizations": {
+    "async_transfer": false,
+    "attention_backend": "upstream",
+    "compile_decoder": false,
+    "compile_denoiser": false,
+    "compile_mode": "default",
+    "conditioning_cache_bytes": 0,
+    "dynamic_shapes": false,
+    "feature_cache_interval": 1,
+    "feature_cache_module": null,
+    "fullgraph": false,
+    "keep_model_resident": true,
+    "max_batch_size": 1,
+    "pinned_memory": false,
+    "prefetch_depth": 0
+  },
+  "output": "/workspace/outputs/a100-math-development-v1/runs/eager50"
+}

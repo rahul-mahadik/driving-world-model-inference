@@ -1,0 +1,21 @@
+# CUDA 11.8 / native sm90 compatibility environment; original binaries failed on H100.
+# Exploratory repetition of one verified development clip; never headline evidence.
+extends: preflight_scene0103_corrected.yaml
+name: preflight-scene0103-corrected-eager-exploratory
+output: /workspace/outputs/preflight-scene0103-corrected-benchmark
+numerical_validation: /workspace/outputs/preflight-scene0103-corrected/strict-agreement.json
+benchmark:
+  workload: single_future
+  candidate_count: 1
+  requests: 3
+  warmup_requests: 2
+  # Explicit cap gives exactly two warmups for this eager configuration.
+  max_warmup_requests: 2
+  input_condition: uncached
+  # Strict diagnostic already retained the clip; avoid exports between timing repeats.
+  save_outputs: 0
+  headline: false
+preflight:
+  scope: three exploratory timing repeats of one development clip after two warmups
+  headline_eligible: false
+  quality_validated: false

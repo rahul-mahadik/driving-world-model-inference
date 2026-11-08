@@ -1,0 +1,886 @@
+{
+  "acceptance": {
+    "action_adherence_accepted": false,
+    "full_study_complete": false,
+    "h100_reference_eligible": false,
+    "headline_eligible": false,
+    "held_out_evaluation_completed": false,
+    "human_review_completed": false,
+    "legacy_numerical_passed": false,
+    "matched_latency_established": false,
+    "optimized_baseline_claimed": false,
+    "playback_review_completed": false,
+    "quality_preserving": false,
+    "safety_accepted": false,
+    "speedup_accepted": false,
+    "tolerances_calibrated": false,
+    "variant_exact_agreement_passed": false
+  },
+  "archives": {
+    "comparison": {
+      "archive_verification_sha256": "d000fd2551086f2de48e6c9b36269d470e509224b8d18f57607e23db90f99cf0",
+      "archive_verified_at": "2026-10-28T04:33:09.669088+00:00",
+      "bytes": 123361054,
+      "completed_artifact_bindings_verified_in_archive": 122,
+      "completed_sha256": "0e2e1785541540bc4d7243d41b24c992c4f25f32b4e320df9bdc00824f81c096",
+      "exact_local_file_set": true,
+      "files_independently_rehashed": 129,
+      "host_sha256": "303d5b39829dbd1aca8f3be8584379c893a28da64bdea01567fadfd9333153a0",
+      "input_binding_check": {
+        "common_pin_conflicts": 0,
+        "common_pins": 1159,
+        "completion_normalized_keys": 1177,
+        "completion_only_pins": 18,
+        "completion_original_keys": 1495,
+        "consistent_aliases": 318,
+        "host_and_specification_pins_exactly_equal": true,
+        "host_only_pins": 9,
+        "host_specification_pins": 1168,
+        "scope": "Different capture scopes; host-only historical operational records and comparison completion-only LPIPS/package dependencies. Equality of the complete sets is not claimed."
+      },
+      "local_files_stable_during_rehash": true,
+      "remote_before_after_equal_reported_by_archive_receipt": true,
+      "remote_inventory_sha256": "619c3c1853ca16136f23baca14437ac640ff0812459e8251b94f037c057dd4f5",
+      "root_verification_sha256": "5dd647593ab4176242fd103f9480127d020f507a236c8fb5e6ff726e501711ba",
+      "specification_sha256": "ca6f30c06280c1f0e8f7662aad08755613e814ccd6483257d93b164926f585a1"
+    },
+    "generation": {
+      "archive_verification_sha256": "8e4cd83621d1461617fb07bf603874d35ccaf7c8fe2067cdabc942de2689bb42",
+      "archive_verified_at": "2026-10-28T04:31:54.609951+00:00",
+      "bytes": 708341875,
+      "completed_artifact_bindings_verified_in_archive": 14,
+      "completed_sha256": "877e2c7f29e022947fdbf61aa6574fe292f6acfc55c919553b114a9f7dad44fb",
+      "exact_local_file_set": true,
+      "files_independently_rehashed": 27,
+      "host_sha256": "2afe46e6b116be926e795f33a4fcf1e498395f1d4f814d54310628b11900043c",
+      "input_binding_check": {
+        "common_pin_conflicts": 0,
+        "common_pins": 264,
+        "completion_normalized_keys": 264,
+        "completion_only_pins": 0,
+        "completion_original_keys": 268,
+        "consistent_aliases": 4,
+        "host_and_specification_pins_exactly_equal": true,
+        "host_only_pins": 12,
+        "host_specification_pins": 276,
+        "scope": "Different capture scopes; host-only historical operational records and comparison completion-only LPIPS/package dependencies. Equality of the complete sets is not claimed."
+      },
+      "local_files_stable_during_rehash": true,
+      "remote_before_after_equal_reported_by_archive_receipt": true,
+      "remote_inventory_sha256": "ab4755c1f3ae965fe0995ff40d443b934a88e65a9b426e2f9d4c677bee15f346",
+      "root_verification_sha256": "120452f37312052651a7d7ba74faab7a907f3443eea87f2242eb65b49b932247",
+      "specification_sha256": "6e68b08525b21e1783f0bdd9c07c71ae17739f33a83f049098db558cf9053d76"
+    }
+  },
+  "comparison": {
+    "aggregates": {
+      "freeze_fraction_increase": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "ci_unit": "scene",
+        "max": 0.0,
+        "mean": 0.0,
+        "pairs": 4,
+        "units": 4
+      },
+      "lpips": {
+        "ci95": [
+          0.00011520976833404953,
+          0.0024748675650698715
+        ],
+        "ci_unit": "scene",
+        "max": 0.0032538668650280065,
+        "mean": 0.000990859280401916,
+        "pairs": 4,
+        "units": 4
+      },
+      "mae": {
+        "ci95": [
+          0.00042960540531216063,
+          0.0019309884142597023
+        ],
+        "ci_unit": "scene",
+        "max": 0.0023977775854256305,
+        "mean": 0.0010506691189744043,
+        "pairs": 4,
+        "units": 4
+      },
+      "max_abs_error": {
+        "ci95": [
+          0.12929850816726685,
+          0.3536794185638428
+        ],
+        "ci_unit": "scene",
+        "max": 0.40939807891845703,
+        "mean": 0.2414889633655548,
+        "pairs": 4,
+        "units": 4
+      },
+      "rmse": {
+        "ci95": [
+          0.0010697557349928916,
+          0.006300867198106625
+        ],
+        "ci_unit": "scene",
+        "max": 0.008018967635219943,
+        "mean": 0.0031328018658766566,
+        "pairs": 4,
+        "units": 4
+      },
+      "temporal_change_error": {
+        "ci95": [
+          2.7934367675948356e-05,
+          0.00016615552579189166
+        ],
+        "ci_unit": "scene",
+        "max": 0.00020624682091167912,
+        "mean": 8.0967164083284e-05,
+        "pairs": 4,
+        "units": 4
+      },
+      "temporal_derivative_mae": {
+        "ci95": [
+          0.0002905326754830017,
+          0.0023489602469844205
+        ],
+        "ci_unit": "scene",
+        "max": 0.0030280827974436854,
+        "mean": 0.0010291013444873095,
+        "pairs": 4,
+        "units": 4
+      }
+    },
+    "all_pairs_complete": true,
+    "conditioning_frames_excluded": true,
+    "finished_at": "2026-10-28T04:31:40.596956+00:00",
+    "future_frames_per_pair": 24,
+    "inputs_and_source_unchanged": true,
+    "lpips": {
+      "cpu_gpu_equivalence_claimed": false,
+      "cuda_initialized_after": false,
+      "cuda_initialized_before": false,
+      "device": "cpu",
+      "name": "LPIPS/alex",
+      "package_version": "0.1.4",
+      "setup_receipt_sha256": "b158ef6962d310dc94ff74401dde8ade4709c35905450a93b7106987c5703d99",
+      "state_dict_sha256": "cb2726fb57b9d7f1f7a7eb26f83bf40ef15f421885676460a0b2caa020b74d85"
+    },
+    "matched_output_pairs": 4,
+    "pairs": [
+      {
+        "additional_thresholded_transitions": 0,
+        "candidate_output_sha256": "16968bc4da169d38fa9421b51f62066f5a57bab064b10b600cc16fe87b636dcf",
+        "candidate_thresholded_global_pixel_change_transitions": 0,
+        "future_frames": 24,
+        "metrics": {
+          "candidate_temporal": {
+            "frozen_transition_fraction": 0.0,
+            "temporal_acceleration": 0.05185942529568489,
+            "temporal_change": 0.035387857710624894,
+            "transitions": 23
+          },
+          "exact_match": false,
+          "freeze_fraction_increase": 0.0,
+          "lpips": 0.0032538668650280065,
+          "mae": 0.0023977775854256305,
+          "max_abs_error": 0.40939807891845703,
+          "psnr_db": 41.91763078690138,
+          "reference_temporal": {
+            "frozen_transition_fraction": 0.0,
+            "temporal_acceleration": 0.052248880675410676,
+            "temporal_change": 0.03559410453153657,
+            "transitions": 23
+          },
+          "rmse": 0.008018967635219943,
+          "temporal_change_error": 0.00020624682091167912,
+          "temporal_derivative_mae": 0.0030280827974436854
+        },
+        "pair_index": 1,
+        "reference_output_sha256": "6791293f2adae6aad1f7fe3da49cd741ff02fc8268a154db1a3369499207ee0c",
+        "reference_thresholded_global_pixel_change_transitions": 0
+      },
+      {
+        "additional_thresholded_transitions": 0,
+        "candidate_output_sha256": "d8585806d7e6eb6d0abc7ab5a281ce56e5db23c7ff501085e5fae8733423a6b8",
+        "candidate_thresholded_global_pixel_change_transitions": 19,
+        "future_frames": 24,
+        "metrics": {
+          "candidate_temporal": {
+            "frozen_transition_fraction": 0.8260869565217391,
+            "temporal_acceleration": 0.0043217285722137065,
+            "temporal_change": 0.002998521415511585,
+            "transitions": 23
+          },
+          "exact_match": false,
+          "freeze_fraction_increase": 0.0,
+          "lpips": 0.00047915071991155855,
+          "mae": 0.0009456880798476656,
+          "max_abs_error": 0.2979607582092285,
+          "psnr_db": 52.49503958241895,
+          "reference_temporal": {
+            "frozen_transition_fraction": 0.8260869565217391,
+            "temporal_acceleration": 0.004353983497358732,
+            "temporal_change": 0.0030185200533690178,
+            "transitions": 23
+          },
+          "rmse": 0.0023727283583009004,
+          "temporal_change_error": 1.999863785743291e-05,
+          "temporal_derivative_mae": 0.0005072572295395493
+        },
+        "pair_index": 2,
+        "reference_output_sha256": "c12f681fd2ffd9ebef932643c4cf5570be1149b7436c3712fc94c45b8de3646c",
+        "reference_thresholded_global_pixel_change_transitions": 19
+      },
+      {
+        "additional_thresholded_transitions": 0,
+        "candidate_output_sha256": "febe94e7736b97c2426d47ba3f986e0867a9d4ad16458d099ac9ab0ba3c218f1",
+        "candidate_thresholded_global_pixel_change_transitions": 3,
+        "future_frames": 24,
+        "metrics": {
+          "candidate_temporal": {
+            "frozen_transition_fraction": 0.13043478260869565,
+            "temporal_acceleration": 0.006442495637863679,
+            "temporal_change": 0.0065245617150655405,
+            "transitions": 23
+          },
+          "exact_match": false,
+          "freeze_fraction_increase": 0.0,
+          "lpips": 9.254987147263212e-05,
+          "mae": 0.000530620900761918,
+          "max_abs_error": 0.13087880611419678,
+          "psnr_db": 58.81201967455474,
+          "reference_temporal": {
+            "frozen_transition_fraction": 0.13043478260869565,
+            "temporal_acceleration": 0.006520729005589037,
+            "temporal_change": 0.006576303272197035,
+            "transitions": 23
+          },
+          "rmse": 0.0011465658867666722,
+          "temporal_change_error": 5.17415571314947e-05,
+          "temporal_derivative_mae": 0.0003115925956066255
+        },
+        "pair_index": 3,
+        "reference_output_sha256": "19f516859c373273e5a9bd88be4ff11fd832c34fdbaf93f32de625479805b409",
+        "reference_thresholded_global_pixel_change_transitions": 3
+      },
+      {
+        "additional_thresholded_transitions": 0,
+        "candidate_output_sha256": "5853d7c8f69882bf79bf67298fff0420c723ad7e1dbebbc5ce2fb5bf09bee8d1",
+        "candidate_thresholded_global_pixel_change_transitions": 1,
+        "future_frames": 24,
+        "metrics": {
+          "candidate_temporal": {
+            "frozen_transition_fraction": 0.043478260869565216,
+            "temporal_acceleration": 0.007763176664662837,
+            "temporal_change": 0.004875802634773862,
+            "transitions": 23
+          },
+          "exact_match": false,
+          "freeze_fraction_increase": 0.0,
+          "lpips": 0.00013786966519546695,
+          "mae": 0.00032858990986240336,
+          "max_abs_error": 0.12771821022033691,
+          "psnr_db": 60.06149103321892,
+          "reference_temporal": {
+            "frozen_transition_fraction": 0.043478260869565216,
+            "temporal_acceleration": 0.007850132495194723,
+            "temporal_change": 0.0049216842752063915,
+            "transitions": 23
+          },
+          "rmse": 0.0009929455832191107,
+          "temporal_change_error": 4.588164043252928e-05,
+          "temporal_derivative_mae": 0.0002694727553593779
+        },
+        "pair_index": 4,
+        "reference_output_sha256": "df60e8b806645ab0fcfd2e603b2e9f2bd5fbea593ae0bb55db9d859cc7c61901",
+        "reference_thresholded_global_pixel_change_transitions": 1
+      }
+    ],
+    "platform_restored": true,
+    "raw_metric_check": {
+      "absolute_and_relative_recheck_tolerance": 1e-12,
+      "all_four_nonperceptual_pair_metrics_recomputed_locally_by_root": true,
+      "checked_at": "2026-10-28T04:36:31.365816+00:00",
+      "lpips_basis": "Preserved verified remote CPU LPIPS; aggregate arithmetic only independently checked locally",
+      "lpips_recomputed_locally": false,
+      "metric_source_sha256": "0b8a482c4f1e8984dd59f161591cf5f4f8b40ec3557158c1e66fcdece2e84c33",
+      "receipt_sha256": "661ce0bca8d58d0847eab066c0127c1ecf1e641ec2fb27b869a23d47b2e472bf",
+      "recheck_tolerance_is_acceptance_tolerance": false,
+      "saved_aggregate_means_and_maxima_rechecked": true
+    },
+    "reference": "Earlier four-scene A100 math-SDPA eager50 generation; separate from the subsequent 32-scene companion and from recorded future video.",
+    "started_at": "2026-10-28T04:29:21.775677+00:00",
+    "thresholded_transition_scope": "Whole-frame pixel-change proxy over 23 future-frame transitions, not literal freezing, object motion, action adherence or safety. The counts are [0,19,3,1] for both generated sides; zero additional transitions does not mean all transitions change."
+  },
+  "evidence_sha256": {
+    "builder_history": "94d5d84912da0c5abf45b6176fbbb02bbc9df4f9daeca3a23510304ee6ab25e0",
+    "comparison_completed": "0e2e1785541540bc4d7243d41b24c992c4f25f32b4e320df9bdc00824f81c096",
+    "evaluation": "3f509c917d65ac4c74019ce7bc984d52a6af255d9dc453820354437587370387",
+    "generation_cold_start": "1aaf8e7643ed4a424d08baf0904078362d2ec812e4fd8935ef2b01fba511ef0d",
+    "generation_completed": "877e2c7f29e022947fdbf61aa6574fe292f6acfc55c919553b114a9f7dad44fb",
+    "generation_measurements": "7c19ce9c2bc1814765dd21471791cb09bf6ebcbd54427659bd41e9c45ce7819a",
+    "generation_summary": "4bb0b534d27f6758d2d7c0905f8a698e5bf62745a31a5a63a2d2fc1648872eb2",
+    "independent_archive_and_review_bindings": "ce59e3424ef786d183f06e20ed8e3be66590bf92719735b18ae549a0b67fa66c",
+    "metric_receipt": "701e27d715dc50a399fc1e032895b9ae17ac24efc37866187a362fdc2cf1e431",
+    "source_only_review": "45d52ffc0e90254f83c3eefa6e13e88e3aaf3cd6b274bb0ec71197ecd139b67e"
+  },
+  "generation": {
+    "algorithm_policy": {
+      "engine_source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+      "execution_contract": "same-process; every torch SDPA call checks active flags; no fallback",
+      "flash_sdp_enabled": false,
+      "math_sdp_enabled": true,
+      "mem_efficient_sdp_enabled": false,
+      "name": "a100_process_math_sdpa_v1",
+      "other_runtime_flags": "unchanged",
+      "scope": "process-wide torch SDPA from startup through model teardown",
+      "wrapper_sha256": "b9246c90ec52ba2e8c83ab238b9797fb76365f3c387fd1b8ffe1cd05ada53b94",
+      "xformers_attention_policy": "unchanged upstream"
+    },
+    "conditioning_frames_excluded": 1,
+    "descriptive_median_request_s": 96.21680711199951,
+    "descriptive_peak_allocated_bytes": 53210864128,
+    "descriptive_peak_reserved_bytes": 60400074752,
+    "failures": 0,
+    "fallbacks": 0,
+    "finished_at": "2026-10-28T04:22:42.767729+00:00",
+    "future_frames_each": 24,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "height": 576,
+    "inputs_and_source_unchanged": true,
+    "measured_requests": 4,
+    "model_load_s": 35.8656357079999,
+    "oom_attempts": 0,
+    "platform_restored": true,
+    "request_rows": [
+      {
+        "denoiser_evaluations": 47,
+        "raw_output_sha256": "16968bc4da169d38fa9421b51f62066f5a57bab064b10b600cc16fe87b636dcf",
+        "request_index": 1,
+        "request_s": 96.23736943900076
+      },
+      {
+        "denoiser_evaluations": 47,
+        "raw_output_sha256": "d8585806d7e6eb6d0abc7ab5a281ce56e5db23c7ff501085e5fae8733423a6b8",
+        "request_index": 2,
+        "request_s": 96.20445252799982
+      },
+      {
+        "denoiser_evaluations": 47,
+        "raw_output_sha256": "febe94e7736b97c2426d47ba3f986e0867a9d4ad16458d099ac9ab0ba3c218f1",
+        "request_index": 3,
+        "request_s": 96.22916169599921
+      },
+      {
+        "denoiser_evaluations": 47,
+        "raw_output_sha256": "5853d7c8f69882bf79bf67298fff0420c723ad7e1dbebbc5ce2fb5bf09bee8d1",
+        "request_index": 4,
+        "request_s": 96.2027476229996
+      }
+    ],
+    "runtime_policy_restoration": {
+      "active_flags_unchanged": true,
+      "callable_restored": true,
+      "flags_restored": true,
+      "sdpa_call_count": 340
+    },
+    "started_at": "2026-10-28T04:13:53.643332+00:00",
+    "steps": 47,
+    "successful_requests": 4,
+    "timing_scope": "Observed standalone request durations only. No matched latency, paired performance, speedup or pooling with historical H100/IO-confounded runs.",
+    "variant": "eager47",
+    "warmups": 1,
+    "width": 1024
+  },
+  "host_completion": {
+    "comparison": {
+      "cleanup_absence_checks": 2,
+      "client_stop_error": null,
+      "exit_code": 0,
+      "finished_at": "2026-10-28T04:31:53.962482+00:00",
+      "inputs_unchanged": true,
+      "source_unchanged": true,
+      "started_at": "2026-10-28T04:29:09.237164+00:00",
+      "status": "completed"
+    },
+    "generation": {
+      "cleanup_absence_checks": 2,
+      "client_stop_error": null,
+      "exit_code": 0,
+      "finished_at": "2026-10-28T04:22:50.325955+00:00",
+      "inputs_unchanged": true,
+      "source_unchanged": true,
+      "started_at": "2026-10-28T04:13:18.732943+00:00",
+      "status": "completed"
+    }
+  },
+  "limits": [
+    "The original default A100 exact check failed. A separate math-SDPA six-check pass covers one selected development request only and does not validate47-step output.",
+    "No calibrated or frozen tolerance is introduced. Saved evaluator quality gates remain false; later static observations do not retroactively promote them.",
+    "Both reviewers found shared vehicle deformation in two of four cases. Relative ties and small metrics are not absolute acceptability or statistical equivalence.",
+    "Review statements are independent agent judgments of static exported frames. Small defects, pacing, flicker and real-time motion may be missed.",
+    "All archive bytes were independently rehashed; copy integrity is distinct from scientific acceptance. Root recomputed pair RGB/temporal metrics, while LPIPS remains the verified remote CPU computation.",
+    "Raw arrays, media, private mappings, host specifications, operational proofs, identifiers, accounts, billing data, credentials and model/data assets are excluded.",
+    "Frozen engine, H100 evidence, prior A100 reports and18-variant study plan are unchanged. New source copies are historical inspection material with omitted dependencies; not portable execution.",
+    "V5 historical1095CPU and5synthetic CLI checks were not rerun or attributed to the six new helpers/configs. Five new Python sources AST-parse; one JSON config parses; all six hashes match."
+  ],
+  "previous_v9_manifest_sha256": "04b9d2e029d7c9e3136a107d548354eacbf28d3427a23ac7e61e4236b4d92125",
+  "schema_version": 1,
+  "scope": "Four fixed development smoke scenes; 47-step eager math-SDPA against earlier four-scene 50-step eager math-SDPA. One observed conditioning frame is excluded from the 24 future frames. This is a short screening study.",
+  "snapshot_at": "2026-10-28T04:46:09.012565+00:00",
+  "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "static_blind_reviews": {
+    "agreement": "Both independent static agent reviews give four ties and the same two both-unacceptable cases.",
+    "reviewers": [
+      {
+        "additional_native_crops_inspected": true,
+        "all_96_input_hashes_verified_against_archive": true,
+        "all_frame_pass_display_downscaled": true,
+        "blindness_declaration": {
+          "generation_outputs_seen": false,
+          "metrics_seen": false,
+          "other_reviews_seen": false,
+          "private_key_or_receipt_seen": false,
+          "source_mapping_seen": false,
+          "task_data_read": "Only PNG exports and index.html in the specified public directory."
+        },
+        "both_acceptable_cases": 2,
+        "both_unacceptable_cases": 2,
+        "cases": [
+          {
+            "A_static_visually_acceptable": false,
+            "B_static_visually_acceptable": false,
+            "case_id": "case-2ea54225405fd97c550e554f",
+            "issues": [
+              {
+                "confirmed_native_frames": [
+                  12,
+                  18,
+                  24
+                ],
+                "description": "The white delivery truck in the middle-right cross traffic changes from a coherent box body at frames 1 and 6 into an open-looking, mottled body with irregular windows/side edges. Its rear and adjacent pale car shapes smear together; by frame 24 wheel and lower-body boundaries are indistinct. This is visible shape/identity degradation, beyond an unreadable logo.",
+                "severity": "major",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              }
+            ],
+            "preference": "tie",
+            "reason": "Both retain stable foreground cars, lane boundaries, lights, and buildings, but the crossing delivery vehicle visibly loses coherent rigid-body structure. No consistent A/B advantage is apparent."
+          },
+          {
+            "A_static_visually_acceptable": true,
+            "B_static_visually_acceptable": true,
+            "case_id": "case-4420a818474ddddebad755d3",
+            "issues": [
+              {
+                "confirmed_native_frames": [
+                  1,
+                  12,
+                  24
+                ],
+                "description": "Distant traffic and the small central-left person are soft, limiting fine anatomy and object-boundary assessment. No clearly disqualifying shape change was observed at the available scale.",
+                "severity": "minor / unresolved distant detail",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              }
+            ],
+            "preference": "tie",
+            "reason": "Both preserve the central sedan, close cement mixer, wheel placement, construction barriers, street perspective, and building edges through frames 1-24. No conspicuous geometric collapse is visible."
+          },
+          {
+            "A_static_visually_acceptable": false,
+            "B_static_visually_acceptable": false,
+            "case_id": "case-aa3aceef38aaf397a06db31f",
+            "issues": [
+              {
+                "confirmed_native_frames": [
+                  16,
+                  18,
+                  20
+                ],
+                "description": "The truck rear-wheel area develops an extra narrow wheel-like oval ahead of/above the enlarged wheel. The wheel arch and lower side panel stretch and smear, producing inconsistent wheel/body geometry across the sequence.",
+                "severity": "major",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              },
+              {
+                "confirmed_native_frames": [
+                  18,
+                  24
+                ],
+                "description": "The lower side and front-wheel region become irregular and meld with a streaky road/white-line boundary. The truck side lettering and surface also deform substantially, supporting loss of rigid-object consistency.",
+                "severity": "major",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              }
+            ],
+            "preference": "tie",
+            "reason": "Both show the same conspicuous deformation of the large delivery truck while the viewpoint advances alongside it. Stable street perspective does not compensate for the foreground object failure."
+          },
+          {
+            "A_static_visually_acceptable": true,
+            "B_static_visually_acceptable": true,
+            "case_id": "case-c51605020789025602756532",
+            "issues": [
+              {
+                "confirmed_native_frames": [
+                  1,
+                  12,
+                  24
+                ],
+                "description": "Plates, roadside lettering, and lettering on the distant bus are soft or garbled. Some distant traffic detail is hard to resolve, but the larger silhouettes remain coherent.",
+                "severity": "minor",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              }
+            ],
+            "preference": "tie",
+            "reason": "Both preserve the nearest dark vehicle, red hatchback, white van, lane stripes, signal poles, and tree silhouettes over frames 1-24. No conspicuous geometric collapse is visible."
+          }
+        ],
+        "created_at": "2026-10-28T04:38:47.085810+00:00",
+        "human_review": false,
+        "limitations": [
+          "This is ordered static-frame inspection, not video playback. It cannot establish real-time smoothness, frame pacing, subtle flicker, or motion realism.",
+          "No action inputs, prompts, target trajectories, source images, ground-truth video, metrics, private mapping, or other reviewers were consulted. Action adherence and driving safety are not assessed.",
+          "Every frame was reviewed in reduced overview sheets; only the listed full pairs and crops were inspected at native pixel scale. Small defects outside those checks could be missed.",
+          "A tie means no visually meaningful advantage was discernible in this inspection; it does not imply pixel identity, statistical equivalence, or absolute acceptability.",
+          "Static acceptable judgments are subjective and limited to the visible evidence; no deployment or product quality gate is certified."
+        ],
+        "native_complete_pairs_inspected": 13,
+        "native_pair_frame_indices": {
+          "case-2ea54225405fd97c550e554f": [
+            1,
+            12,
+            24
+          ],
+          "case-4420a818474ddddebad755d3": [
+            1,
+            12,
+            24
+          ],
+          "case-aa3aceef38aaf397a06db31f": [
+            1,
+            12,
+            18,
+            24
+          ],
+          "case-c51605020789025602756532": [
+            1,
+            12,
+            24
+          ]
+        },
+        "ordered_future_pairs_inspected": 96,
+        "quality_gate_passed": false,
+        "reviewer": "independent_static_agent_1",
+        "source_review_sha256": "4bc0164fac9180a5b1bfcb59140e613141f8edfa8a31e1626b463d623ec49bdb",
+        "ties": 4,
+        "video_playback_performed": false
+      },
+      {
+        "additional_native_crops_inspected": false,
+        "all_96_input_hashes_verified_against_archive": true,
+        "all_frame_pass_display_downscaled": true,
+        "blindness_declaration": {
+          "generation_outputs_read": false,
+          "metrics_read": false,
+          "other_reviews_read": false,
+          "private_key_or_receipt_read": false,
+          "read_only_public_task_data": true,
+          "source_labels_known": false,
+          "source_metadata_read": [
+            "index.html"
+          ]
+        },
+        "both_acceptable_cases": 2,
+        "both_unacceptable_cases": 2,
+        "cases": [
+          {
+            "A_static_visually_acceptable": false,
+            "B_static_visually_acceptable": false,
+            "case_id": "case-2ea54225405fd97c550e554f",
+            "issues": [
+              {
+                "description": "The crossing white delivery truck in the middle-right background progressively loses its clean box outline. Its side markings distort into large irregular patches and its cab/body/wheel contours smear into adjacent vehicle shapes. The change is visible against the more coherent truck in frame 1.",
+                "frame_indices": [
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23,
+                  24
+                ],
+                "native_examples": [
+                  12,
+                  18,
+                  24
+                ],
+                "severity": "material",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              },
+              {
+                "description": "The gray oncoming car toward the far left becomes soft around its body and wheel contours as it crosses the frame; this reinforces a loss of moving-object detail.",
+                "frame_indices": [
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23,
+                  24
+                ],
+                "native_examples": [
+                  18,
+                  24
+                ],
+                "severity": "minor",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              }
+            ],
+            "preference": "tie",
+            "reason": "No consistent perceptible A/B advantage in geometry or ordered-frame consistency; both share the same prominent truck degradation."
+          },
+          {
+            "A_static_visually_acceptable": true,
+            "B_static_visually_acceptable": true,
+            "case_id": "case-4420a818474ddddebad755d3",
+            "issues": [
+              {
+                "description": "The small distant person and approaching blue car are soft, so fine limb and wheel consistency is difficult to assess; this does not establish a large structural failure.",
+                "frame_indices": [
+                  17,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23,
+                  24
+                ],
+                "native_examples": [
+                  24
+                ],
+                "severity": "minor_or_uncertain",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              }
+            ],
+            "preference": "tie",
+            "reason": "Both sides retain comparable stable foreground and background geometry; no repeatable advantage was visible."
+          },
+          {
+            "A_static_visually_acceptable": false,
+            "B_static_visually_acceptable": false,
+            "case_id": "case-aa3aceef38aaf397a06db31f",
+            "issues": [
+              {
+                "description": "The van rear emblem evolves from a shield-like mark into rounded scribbled rings while the adjacent lettering changes form. It is a temporal texture-identity change, beyond merely unreadable small text.",
+                "frame_indices": [
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
+                ],
+                "native_examples": [
+                  1,
+                  16
+                ],
+                "severity": "moderate",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              },
+              {
+                "description": "The van lower side and rear wheel region warp as the vehicle grows toward the right edge. Around frame 16 a small pale wheel-like lump sits above/beside the main wheel; the wheel arch and lower panel lose their rigid separation. By frame 21 the lower edge and wheel/road contact look smeared and distorted.",
+                "frame_indices": [
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23,
+                  24
+                ],
+                "native_examples": [
+                  16,
+                  21
+                ],
+                "severity": "material",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              },
+              {
+                "description": "The pale oncoming vehicle at the left develops softened and changing front/body contours; its wheels and lower outline become poorly separated.",
+                "frame_indices": [
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19
+                ],
+                "native_examples": [
+                  16
+                ],
+                "severity": "moderate",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              }
+            ],
+            "preference": "tie",
+            "reason": "Both sides show closely matched deformation of the same van; no meaningful consistent A/B improvement was visible."
+          },
+          {
+            "A_static_visually_acceptable": true,
+            "B_static_visually_acceptable": true,
+            "case_id": "case-c51605020789025602756532",
+            "issues": [
+              {
+                "description": "Small license-plate, road-sign, and distant vehicle text is blurred or malformed. Fine distant vehicle detail is limited, but no conspicuous large shape collapse was found.",
+                "frame_indices": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23,
+                  24
+                ],
+                "native_examples": [
+                  1,
+                  12,
+                  24
+                ],
+                "severity": "minor",
+                "sides": [
+                  "A",
+                  "B"
+                ]
+              }
+            ],
+            "preference": "tie",
+            "reason": "No reliable A/B difference in visible structural quality or frame ordering was found."
+          }
+        ],
+        "created_at": "2026-10-28T04:39:28.151070+00:00",
+        "human_review": false,
+        "limitations": [
+          "Static ordered-frame inspection is not video playback and cannot verify flicker, natural pacing, apparent frame rate, or smoothness at real time.",
+          "No prompts, actions, ground truth, source labels, private mapping, aggregate reports, or numeric quality metrics were used.",
+          "Four short cases are a limited sample. A tie here does not establish model equivalence, noninferiority, or a release decision.",
+          "All-frame atlases were display-downscaled; native checks covered selected frames only. Subtle A/B differences and small or occluded defects may be missed.",
+          "Positive visual acceptability is this reviewer\u2019s limited judgment of visible images, not safety, action compliance, benchmark success, or a passing project quality gate."
+        ],
+        "native_complete_pairs_inspected": 13,
+        "native_pair_frame_indices": {
+          "case-2ea54225405fd97c550e554f": [
+            1,
+            12,
+            18,
+            24
+          ],
+          "case-4420a818474ddddebad755d3": [
+            1,
+            12,
+            24
+          ],
+          "case-aa3aceef38aaf397a06db31f": [
+            1,
+            16,
+            21
+          ],
+          "case-c51605020789025602756532": [
+            1,
+            12,
+            24
+          ]
+        },
+        "ordered_future_pairs_inspected": 96,
+        "quality_gate_passed": false,
+        "reviewer": "independent_static_agent_2",
+        "source_review_sha256": "f400302f133db7645d2cd8961326743a366135d8c903aafc0646eb00e54b7fa7",
+        "ties": 4,
+        "video_playback_performed": false
+      }
+    ],
+    "scope": "All96 ordered future-frame pairs per reviewer inspected in downscaled atlases;13 selected complete native pairs each and additional native crops for reviewer1. Static geometry/coarse consistency only; not human review, playback, noninferiority or quality acceptance.",
+    "unacceptable_case_ids": [
+      "case-2ea54225405fd97c550e554f",
+      "case-aa3aceef38aaf397a06db31f"
+    ]
+  },
+  "status": "four_scene_generation_comparison_static_reviews_and_archives_completed_no_acceptance"
+}

@@ -1,0 +1,219 @@
+# UNMATERIALIZED DRAFT. Resolve the provisional reference before creating a plan.
+# Prior17-variant proposal is preserved in reports/study-proposals/reduced-step-controls-v2/.
+schema_version: 1
+base_config: configs/study_eager_development.yaml
+reference: upstream
+optimized_reference: compiled-conditioning
+manifests:
+  development: /workspace/data/manifests/development.jsonl
+  evaluation: /workspace/data/manifests/evaluation.jsonl
+  evaluation_second_seed: /workspace/data/manifests/evaluation_second_seed.jsonl
+quality:
+  shard_clips: 32
+  candidate_count: 1
+  action_candidate_count: 2
+  action_subset_clips: 16
+  retain_raw_clips: 1
+  review_pairs_per_shard: 4
+  warmups: 3
+  minimum_free_bytes: 12884901888
+  lpips: true
+  lpips_device: cuda
+  evaluation_threads: 4
+  evaluation_python_path: /workspace/outputs/evaluation-packages/lpips
+  evaluation_torch_home: /workspace/outputs/evaluation-packages/torch-home
+  evaluation_setup_receipt: /workspace/outputs/evaluation-packages/setup-receipt.json
+timing:
+  blocks: 4
+  requests_per_block: 50
+  candidate_count: 4
+  warmups: 3
+draft_status:
+  materialized: false
+  reference_decision: provisional_pending_all_32_development_metrics_and_blinded_review
+  provisional_optimized_reference: compiled-conditioning
+  fallback_optimized_reference: conditioning-reuse
+  source_identity: d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb
+  notice: This field is descriptive; the plan CLI does not enforce it. Resolve the
+    reference and save a separately named approved specification before planning.
+variants:
+  upstream:
+    model:
+      backend: upstream
+  eager: {}
+  conditioning-reuse:
+    optimizations:
+      conditioning_cache_bytes: 2147483648
+    benchmark:
+      input_condition: reused_conditioning
+  compiled-default:
+    model:
+      compiler_runtime: registered_einops_attention_v1
+      compiler_feature_boundary: null
+    optimizations:
+      compile_denoiser: true
+      compile_decoder: false
+      compile_mode: default
+      dynamic_shapes: false
+      fullgraph: false
+      conditioning_cache_bytes: 0
+      max_batch_size: 1
+      feature_cache_interval: 1
+      feature_cache_module: null
+    benchmark:
+      input_condition: uncached
+  compiled-conditioning:
+    model:
+      compiler_runtime: registered_einops_attention_v1
+      compiler_feature_boundary: null
+    optimizations:
+      compile_denoiser: true
+      compile_decoder: false
+      compile_mode: default
+      dynamic_shapes: false
+      fullgraph: false
+      conditioning_cache_bytes: 2147483648
+      max_batch_size: 1
+      feature_cache_interval: 1
+      feature_cache_module: null
+    benchmark:
+      input_condition: reused_conditioning
+  compiled-boundary-1:
+    model:
+      compiler_runtime: registered_einops_attention_v1
+      compiler_feature_boundary: output_blocks.9
+    optimizations:
+      compile_denoiser: true
+      compile_decoder: false
+      compile_mode: default
+      dynamic_shapes: false
+      fullgraph: false
+      conditioning_cache_bytes: 2147483648
+      max_batch_size: 1
+      feature_cache_interval: 1
+      feature_cache_module: output_blocks.9
+    benchmark: &id001
+      input_condition: reused_conditioning
+  steps-48:
+    model:
+      compiler_runtime: registered_einops_attention_v1
+      compiler_feature_boundary: null
+    optimizations:
+      compile_denoiser: true
+      compile_decoder: false
+      compile_mode: default
+      dynamic_shapes: false
+      fullgraph: false
+      conditioning_cache_bytes: 2147483648
+      max_batch_size: 1
+      feature_cache_interval: 1
+      feature_cache_module: null
+    benchmark:
+      input_condition: reused_conditioning
+    generation:
+      steps: 48
+  steps-47:
+    model: &id002
+      compiler_runtime: registered_einops_attention_v1
+      compiler_feature_boundary: null
+    optimizations: &id003
+      compile_denoiser: true
+      compile_decoder: false
+      compile_mode: default
+      dynamic_shapes: false
+      fullgraph: false
+      conditioning_cache_bytes: 2147483648
+      max_batch_size: 1
+      feature_cache_interval: 1
+      feature_cache_module: null
+    benchmark: *id001
+    generation:
+      steps: 47
+  steps-46:
+    model: *id002
+    optimizations: *id003
+    benchmark: *id001
+    generation:
+      steps: 46
+  steps-45:
+    model: *id002
+    optimizations: *id003
+    benchmark: *id001
+    generation:
+      steps: 45
+  steps-40:
+    model: *id002
+    optimizations: *id003
+    benchmark: *id001
+    generation:
+      steps: 40
+  steps-30:
+    model: *id002
+    optimizations: *id003
+    benchmark: *id001
+    generation:
+      steps: 30
+  steps-20:
+    model: *id002
+    optimizations: *id003
+    benchmark: *id001
+    generation:
+      steps: 20
+  feature-2:
+    model:
+      compiler_runtime: registered_einops_attention_v1
+      compiler_feature_boundary: output_blocks.9
+    optimizations:
+      compile_denoiser: true
+      compile_decoder: false
+      compile_mode: default
+      dynamic_shapes: false
+      fullgraph: false
+      conditioning_cache_bytes: 2147483648
+      max_batch_size: 1
+      feature_cache_interval: 2
+      feature_cache_module: output_blocks.9
+    benchmark: *id001
+  feature-3:
+    model:
+      compiler_runtime: registered_einops_attention_v1
+      compiler_feature_boundary: output_blocks.9
+    optimizations:
+      compile_denoiser: true
+      compile_decoder: false
+      compile_mode: default
+      dynamic_shapes: false
+      fullgraph: false
+      conditioning_cache_bytes: 2147483648
+      max_batch_size: 1
+      feature_cache_interval: 3
+      feature_cache_module: output_blocks.9
+    benchmark: *id001
+  feature-4:
+    model:
+      compiler_runtime: registered_einops_attention_v1
+      compiler_feature_boundary: output_blocks.9
+    optimizations:
+      compile_denoiser: true
+      compile_decoder: false
+      compile_mode: default
+      dynamic_shapes: false
+      fullgraph: false
+      conditioning_cache_bytes: 2147483648
+      max_batch_size: 1
+      feature_cache_interval: 4
+      feature_cache_module: output_blocks.9
+    benchmark: *id001
+  eager-feature-2:
+    optimizations:
+      conditioning_cache_bytes: 2147483648
+      feature_cache_interval: 2
+      feature_cache_module: output_blocks.9
+    benchmark: &id004
+      input_condition: reused_conditioning
+  eager-steps-47:
+    optimizations:
+      conditioning_cache_bytes: 2147483648
+    benchmark: *id004
+    generation:
+      steps: 47

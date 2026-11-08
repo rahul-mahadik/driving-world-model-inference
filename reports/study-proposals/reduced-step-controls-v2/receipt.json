@@ -1,0 +1,107 @@
+{
+  "added_variant": "steps-48",
+  "created_at": "2026-10-27T01:23:17.360354+00:00",
+  "current_files": {
+    "configs/full_study_registered_draft.yaml": "0875b69cc7a6fee9dfe210a92fb3a9a48fc708365825c07af1e40fe0d038c69f",
+    "reports/registered-study-budget-draft.json": "1425a159351a1e2d42caff721181f3785575293cd34a471b582206a1b6a94b92"
+  },
+  "limitations": [
+    "Linear per-step model uses denoising GPU duration and end-to-end warm wall time; actual step runtime is unmeasured.",
+    "Screens used conditioning cache 0; proposed study applies the same 2 GiB cache to paired compiled controls and feature variants. Full 32 paired measurements remain necessary.",
+    "Runtime match requires entire 95% paired scene-bootstrap interval inside [0.98,1.02]; exact and reviewed quality gates remain separate."
+  ],
+  "observed_probe_metadata": {
+    "compiled50": {
+      "denoising_gpu_seconds": 38.76530078125,
+      "headline_eligible": false,
+      "probe": "outputs/study-probes/integrated-compiler-default-attempt-1/probe.json",
+      "probe_sha256": "07fa1776d764dd28bc2a0b4c3ba1f4e49aa1f59024a48491edd17ecdc9ec0992",
+      "strict_passed": false,
+      "transfer_receipt": "reports/study-integrated-compiler-default-attempt-1-source-hashes.json",
+      "transfer_receipt_sha256": "30dbaeb0ed8cde3b28397ee737dec71b6e23cf9d00dc68bf204545ef38a8ae5e",
+      "warm_seconds": 43.59546963400044
+    },
+    "feature2": {
+      "denoising_gpu_seconds": 37.43785546875,
+      "headline_eligible": false,
+      "probe": "outputs/study-probes/integrated-feature2-attempt-2/probe.json",
+      "probe_sha256": "995c5553c08fd2435c7434704fd10b9641db08798bcdd9f3f44314fdb7b751ed",
+      "strict_passed": false,
+      "transfer_receipt": "reports/study-integrated-feature2-attempt-2-source-hashes.json",
+      "transfer_receipt_sha256": "4e886126e1d57cfa346e81a995b05c60e4fd0b9ad9bc8b9ff6a7a2f77cf1211b",
+      "warm_seconds": 42.270790025999304
+    },
+    "feature3": {
+      "denoising_gpu_seconds": 36.3787734375,
+      "headline_eligible": false,
+      "probe": "outputs/study-probes/integrated-feature3-attempt-2/probe.json",
+      "probe_sha256": "f455f3446caffa4138eb15d3484b2ece363d6272eec464fec2ec05ad49d1a55a",
+      "strict_passed": false,
+      "transfer_receipt": "reports/study-integrated-feature3-attempt-2-source-hashes.json",
+      "transfer_receipt_sha256": "c253960ba8cbcbcab5f20cb232a74bd530ae7a4ceae612d5f64bd25f0a05773c",
+      "warm_seconds": 41.21836658099983
+    },
+    "feature4": {
+      "denoising_gpu_seconds": 35.90084765625,
+      "headline_eligible": false,
+      "probe": "outputs/study-probes/integrated-feature4-attempt-2/probe.json",
+      "probe_sha256": "2eac5fc80e4fc70375b8d93e5243e7b8dcc19af86512016e634def3e56c6f1e7",
+      "strict_passed": false,
+      "transfer_receipt": "reports/study-integrated-feature4-attempt-2-source-hashes.json",
+      "transfer_receipt_sha256": "4edf005473a1b962162933ca3de0a229f58d6f0ca94f25bbf1e42340ceb04437",
+      "warm_seconds": 40.72805455900016
+    }
+  },
+  "planning_matches": [
+    {
+      "feature_interval": 2,
+      "observed_feature_seconds": 42.270790025999304,
+      "relative_gap_planning_estimate": 0.005373604196344806,
+      "step_control": 48,
+      "step_runtime_seconds_linear_estimate": 42.04485760275044
+    },
+    {
+      "feature_interval": 3,
+      "observed_feature_seconds": 41.21836658099983,
+      "relative_gap_planning_estimate": -0.0012402607771869745,
+      "step_control": 47,
+      "step_runtime_seconds_linear_estimate": 41.269551587125434
+    },
+    {
+      "feature_interval": 4,
+      "observed_feature_seconds": 40.72805455900016,
+      "relative_gap_planning_estimate": 0.005773881799745695,
+      "step_control": 46,
+      "step_runtime_seconds_linear_estimate": 40.494245571500436
+    }
+  ],
+  "previous_files": {
+    "configs/full_study_registered_draft.yaml": {
+      "preserved_copy": "reports/study-proposals/reduced-step-controls-v2/previous-full_study_registered_draft.yaml",
+      "sha256": "032d444fa2250530ec82be0abe2f09ac7e25333ec925a3e3a08ca69e43e57334"
+    },
+    "docs/registered-study-draft.md": {
+      "preserved_copy": "reports/study-proposals/reduced-step-controls-v2/previous-registered-study-draft.md.txt",
+      "sha256": "1559a41abf633976cb3c0f85722fcae876fce0863f3836e21c6b35e732ab4787"
+    },
+    "reports/registered-study-budget-draft.json": {
+      "preserved_copy": "reports/study-proposals/reduced-step-controls-v2/previous-registered-study-budget-draft.json",
+      "sha256": "b29387f81fe33851bf6fcf386749ecd79370eec3ef1523e8f0a05079447a4a48"
+    },
+    "tests/test_registered_study_draft.py": {
+      "preserved_copy": "reports/study-proposals/reduced-step-controls-v2/previous-test_registered_study_draft.py",
+      "sha256": "bcea8ac2c043ac030ae2c7208654930cfa589e5e87e1788d6e86527f2c0c4c38"
+    }
+  },
+  "publication_projection": {
+    "change": "Historical Markdown snapshot has .txt extension; all preserved file bytes and scientific fields unchanged.",
+    "source_receipt_sha256": "88f13ae303aac2c1f1ab5f54a109fdcfca357ce9ea5dc65115e3be95ea6fc26e"
+  },
+  "reason": "One-clip measured feature2/3/4 screens justify one additional reduced-step control before development. No runtime match or quality acceptance is established.",
+  "runtime_matching_criterion_sha256": "6e83d60f341a36afc27355ef80f2cc4d13af46cb1e3f0c2c9cdc72859903f8fc",
+  "schema_version": 1,
+  "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "status": "unmaterialized_proposal_only",
+  "variant_count_after": 18,
+  "variant_count_before": 17
+}

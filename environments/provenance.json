@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "status": "direct_versions_and_artifact_metadata_checked; Linux_installation_and_GPU_execution_pending",
+  "platform": "Linux x86_64, CPython 3.10; preserve full Python patch version in resolved environment metadata",
+  "vista": {
+    "repository": "https://github.com/OpenDriveLab/Vista",
+    "commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d"
+  },
+  "checkpoint": {
+    "repository": "OpenDriveLab/Vista",
+    "revision": "a92d28c7b3da931ec959d587153dc45fffe570ef",
+    "filename": "vista.safetensors",
+    "sha256": "1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98",
+    "size_bytes": 10053461572
+  },
+  "upstream": {
+    "torch": "2.0.1+cu117",
+    "torchvision": "0.15.2+cu117",
+    "torchaudio": "2.0.2+cu117",
+    "triton": "2.0.0",
+    "cuda_toolkit": "11.7",
+    "xformers_version": "0.0.20",
+    "xformers_source_commit": "1dc3d7a3077ff896cd42d573db9fafeefc97b815",
+    "xformers_source_reason": "PyPI 0.0.20 wheel cpp_lib.json identifies torch2.0.1+cu118/CUDA1108; build matching cu117 rather than loading mismatched binary",
+    "cuda_arch_list": "8.0+PTX",
+    "h100_support": "unverified; forward-compatible PTX must pass actual attention execution"
+  },
+  "modern": {
+    "torch": "2.5.1+cu124",
+    "torchvision": "0.20.1+cu124",
+    "torchaudio": "2.5.1+cu124",
+    "triton": "3.1.0",
+    "cuda_toolkit": "12.4",
+    "xformers_version": "0.0.28.post3",
+    "xformers_wheel": "official CUDA12.4 index, exact CPython3.10 wheel and hash in modern.in"
+  },
+  "sources": [
+    "https://pytorch.org/get-started/previous-versions/",
+    "https://pypi.org/pypi/xformers/0.0.20/json",
+    "https://pypi.org/pypi/xformers/0.0.28.post3/json",
+    "https://github.com/facebookresearch/xformers/releases/tag/v0.0.28.post3",
+    "https://download.pytorch.org/whl/cu124/xformers/",
+    "https://download.pytorch.org/whl/cu117/torch/"
+  ]
+}

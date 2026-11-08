@@ -1,0 +1,79 @@
+{
+  "binary_report": {
+    "bytes": 12135480,
+    "sha256": "e92573079e60975274cf28d913361d973d47c7009a64c30894c6ac57126725b6"
+  },
+  "block": "(128, 1, 1)",
+  "dtype": "torch.float16",
+  "grid": "(500, 1, 10)",
+  "headline_eligible": false,
+  "implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "interpretation": "Register allocation limits theoretical resident blocks more tightly than shared memory for this kernel.9 profiler replay passes affect timing/cache/traffic; these counters are not model-wide utilization or independent latency evidence.",
+  "kernel": "void fmha_fwd_loop_kernel<FMHA_kernel_traits<256, 64, 16, 1, 4, 8, __half>, 0, 0, 0>(FMHA_fprop_params)",
+  "metrics": {
+    "dram__bytes_read.sum": {
+      "unit": "byte",
+      "value": 74852971264.0
+    },
+    "dram__bytes_write.sum": {
+      "unit": "byte",
+      "value": 42500627200.0
+    },
+    "dram__throughput.avg.pct_of_peak_sustained_elapsed": {
+      "unit": "%",
+      "value": 47.98
+    },
+    "gpu__time_duration.sum": {
+      "unit": "ns",
+      "value": 72959648.0
+    },
+    "launch__occupancy_limit_registers": {
+      "unit": "block",
+      "value": 2.0
+    },
+    "launch__occupancy_limit_shared_mem": {
+      "unit": "block",
+      "value": 3.0
+    },
+    "launch__registers_per_thread": {
+      "unit": "register/thread",
+      "value": 255.0
+    },
+    "launch__registers_per_thread_allocated": {
+      "unit": "register/thread",
+      "value": 256.0
+    },
+    "launch__shared_mem_per_block_dynamic": {
+      "unit": "byte/block",
+      "value": 36992.0
+    },
+    "profiler__replayer_passes": {
+      "unit": "pass",
+      "value": 9.0
+    },
+    "sm__cycles_elapsed.avg": {
+      "unit": "cycle",
+      "value": 110033765.53
+    },
+    "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+      "unit": "%",
+      "value": 38.95
+    },
+    "sm__warps_active.avg.pct_of_peak_sustained_active": {
+      "unit": "%",
+      "value": 12.37
+    }
+  },
+  "profiled": true,
+  "schema_version": 1,
+  "scope": "Observed B2 shape with fixed-seed synthetic values; same expensive head64/sequence9216 native kernel family seen in corrected B1 Nsight Systems. Different launch geometry; no equality of utilization assumed.",
+  "selected_kernel_count": 1,
+  "shape": [
+    500,
+    9216,
+    64
+  ],
+  "source_stdout_sha256": "094e3f6f5f9494e21c6e589f4d0839972646f230c7a322ad8a75e6e66336e499",
+  "source_workload_sha256": "bac625269845586720cd4f8daf60365a9f326223c1f86c44c459ba98316117f4",
+  "status": "one_target_kernel_counter_capture_completed"
+}

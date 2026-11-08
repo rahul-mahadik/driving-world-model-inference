@@ -1,0 +1,11 @@
+extends: study_probe_eager.yaml
+name: study-probe-denoiser-only-bf16
+output: outputs/study-probes/denoiser-bf16
+probe:
+  kind: precision_denoiser_bf16
+precision_runtime:
+  denoiser_autocast: bf16
+  conditioning_autocast: fp16
+  decoder_autocast: fp16
+  weights: unchanged_fp32
+  dtype_hooks: [input_blocks.0.0, out.2]

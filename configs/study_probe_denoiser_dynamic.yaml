@@ -1,0 +1,7 @@
+extends: study_probe_denoiser_default.yaml
+name: study-probe-denoiser-dynamic-native-attention-boundary
+output: outputs/study-probes/denoiser-dynamic
+optimizations:
+  dynamic_shapes: true
+probe:
+  kind: denoiser_dynamic

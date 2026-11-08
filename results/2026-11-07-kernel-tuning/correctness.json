@@ -1,0 +1,11 @@
+{
+  "completed_sha256": "65c5534a547419bbdd275ff20c771452a06f22efd2c3a58a296983c65cb47c92",
+  "errors": 0,
+  "failures": 0,
+  "gpu_tests_collected": 75,
+  "gpu_tests_passed": 75,
+  "junit_sha256": "efa58cafc56bbaffd426c2d75d87c98ab674c2faaeef57e8829398f61eb71a98",
+  "scope": "Operator and representative adapter tests; no full Vista checkpoint integration",
+  "skipped": 0,
+  "tests": 188
+}

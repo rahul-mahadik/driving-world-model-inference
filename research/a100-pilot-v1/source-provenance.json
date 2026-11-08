@@ -1,0 +1,208 @@
+{
+  "evidence_scope": "Exact historical source copies only. Dated reports preserve separate numerical, generation, comparison and static review scopes. Source inclusion and archival integrity establish no quality or performance acceptance.",
+  "excluded_invocation_wrapper": "CPU-LPIPS invocation wrapper omitted because it contains a private host literal; separate source identity appears in the public evidence report. No runnable relocated reproduction is claimed.",
+  "execution_from_relocated_archive_tested": false,
+  "files": {
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-encoder-ab-v1/config.json": {
+      "bytes": 2558,
+      "original_workspace_relative_path": "outputs/host/a100-encoder-ab-v1/config.json",
+      "sha256": "95b7d1da8f87de256f1402a8d1d5ae936f1fc1423dacfff936d238cf647e7b28",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-encoder-ab-v1/probe.py": {
+      "bytes": 12270,
+      "original_workspace_relative_path": "outputs/host/a100-encoder-ab-v1/probe.py",
+      "sha256": "799eb4b9d92c6445eccc82d412a7c38a82c22eafcaa61edfbc6dbb6364cb4ad4",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-encoder-localization-v1/config.json": {
+      "bytes": 2430,
+      "original_workspace_relative_path": "outputs/host/a100-encoder-localization-v1/config.json",
+      "sha256": "9c02877e620505e9eddce4f5db1774e6810569ffda1fb4103713239a2ed10e4e",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-encoder-localization-v1/probe.py": {
+      "bytes": 13790,
+      "original_workspace_relative_path": "outputs/host/a100-encoder-localization-v1/probe.py",
+      "sha256": "f4a491af06a462e901b30e72c4d7ae3b30adfe6bb10fc07e6aec73fbef37e0d1",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-development-eval-v1/evaluate.py": {
+      "bytes": 18443,
+      "original_workspace_relative_path": "outputs/host/a100-math-development-eval-v1/evaluate.py",
+      "sha256": "9bd233865f8ef9e12800a97a19e8c219f424edaf4edceb52dbb9d618026a5957",
+      "transform": "Exact historical source copy for inspection; missing private proof and data dependencies and allocation-time assumptions remain; not runnable after relocation."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-development-v1/configs/eager50.json": {
+      "bytes": 3930,
+      "original_workspace_relative_path": "outputs/host/a100-math-development-v1/configs/eager50.json",
+      "sha256": "0080a24b0dfa4c015e2639d7276259724c2a5ffdfcb8a2b1f84fe974faf27fee",
+      "transform": "Exact historical source copy for inspection; missing private proof and data dependencies and allocation-time assumptions remain; not runnable after relocation."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-development-v1/development.py": {
+      "bytes": 18834,
+      "original_workspace_relative_path": "outputs/host/a100-math-development-v1/development.py",
+      "sha256": "b87a909c988384f41e33fef555e00d8266241645cd09570a5e8f9369731bd8d1",
+      "transform": "Exact historical source copy for inspection; missing private proof and data dependencies and allocation-time assumptions remain; not runnable after relocation."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-quality-eval-recovery-v1/verify.py": {
+      "bytes": 19869,
+      "original_workspace_relative_path": "outputs/host/a100-math-quality-eval-recovery-v1/verify.py",
+      "sha256": "2dd8d5bcd0ebbe6de0b4628b0151a4d8bc10c84e8f802624fbe5b4100a902b6e",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-quality-eval-v1/evaluate.py": {
+      "bytes": 24439,
+      "original_workspace_relative_path": "outputs/host/a100-math-quality-eval-v1/evaluate.py",
+      "sha256": "fd493adc303cd72f5742dac23f3285930c58563ac70cae2d185a66177e006b07",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-quality-v1/configs/eager40.json": {
+      "bytes": 3059,
+      "original_workspace_relative_path": "outputs/host/a100-math-quality-v1/configs/eager40.json",
+      "sha256": "2c47e3932025219abe69481ff261e9098ed8b14cbbf99d05eb8a7ac0276f8d4f",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-quality-v1/configs/eager50.json": {
+      "bytes": 3059,
+      "original_workspace_relative_path": "outputs/host/a100-math-quality-v1/configs/eager50.json",
+      "sha256": "5fa8cd75fdda97cb5ff4ff712771bdc8d551e98904c57c589a944b56b26940e7",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-quality-v1/configs/feature2.json": {
+      "bytes": 3075,
+      "original_workspace_relative_path": "outputs/host/a100-math-quality-v1/configs/feature2.json",
+      "sha256": "18a9787073b12397de2b45d78fbeb6daaf34c01b39a97650a959f49ed0e284a0",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-quality-v1/quality.py": {
+      "bytes": 33032,
+      "original_workspace_relative_path": "outputs/host/a100-math-quality-v1/quality.py",
+      "sha256": "233b18a2d0e64f937978de9b65db5a03c86f175fa04fa29e0ecc6c0885422724",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-sdpa-v1/baseline.json": {
+      "bytes": 2403,
+      "original_workspace_relative_path": "outputs/host/a100-math-sdpa-v1/baseline.json",
+      "sha256": "ba809f1e2652ead6fb5fe777dbabc02b273835b60ecfdf254e00792f44dcaadb",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-sdpa-v1/runtime.py": {
+      "bytes": 22756,
+      "original_workspace_relative_path": "outputs/host/a100-math-sdpa-v1/runtime.py",
+      "sha256": "b9246c90ec52ba2e8c83ab238b9797fb76365f3c387fd1b8ffe1cd05ada53b94",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-step47-eval-v1/evaluate.py": {
+      "bytes": 17161,
+      "original_workspace_relative_path": "outputs/host/a100-math-step47-eval-v1/evaluate.py",
+      "sha256": "203a0f40db781d2a1979dc6e1c5a8429d2690af30af17801d10696f9c23080ac",
+      "transform": "Exact historical source copy for inspection after actual use was reported and the deployed specification hash was verified. Original paths, deadlines and omitted dependencies remain; not runnable after relocation."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-step47-eval-v1/prepare_spec_v2.py": {
+      "bytes": 14444,
+      "original_workspace_relative_path": "outputs/host/a100-math-step47-eval-v1/prepare_spec_v2.py",
+      "sha256": "6d89fb65bba330453b1bc467b53293db3ef998f894df42d0397a104270034324",
+      "transform": "Exact historical source copy for inspection after actual use was reported and the deployed specification hash was verified. Original paths, deadlines and omitted dependencies remain; not runnable after relocation."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-step47-v1/configs/eager47.json": {
+      "bytes": 4099,
+      "original_workspace_relative_path": "outputs/host/a100-math-step47-v1/configs/eager47.json",
+      "sha256": "1d25f08f352d32123ef56679d2e4cdf8dcdb007278342de8483dd510584a4c9c",
+      "transform": "Exact historical source copy for inspection; original deadlines, path semantics and omitted private operational dependencies remain. Not runnable after relocation."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-step47-v1/prepare_specs.py": {
+      "bytes": 11800,
+      "original_workspace_relative_path": "outputs/host/a100-math-step47-v1/prepare_specs.py",
+      "sha256": "a50fa2949208e3be62d6e1e1ae1d5f9fa3e5d5e8efe039dc1277a603fc053bc5",
+      "transform": "Exact historical source copy for inspection; original deadlines, path semantics and omitted private operational dependencies remain. Not runnable after relocation."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-step47-v1/prepare_specs_v2.py": {
+      "bytes": 12282,
+      "original_workspace_relative_path": "outputs/host/a100-math-step47-v1/prepare_specs_v2.py",
+      "sha256": "5abd5177e6e48974db055d65df23b711a994d939e6d305aeb928ab0ce035ad1c",
+      "transform": "Exact historical source copy for inspection; original deadlines, path semantics and omitted private operational dependencies remain. Not runnable after relocation."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-math-step47-v1/step47.py": {
+      "bytes": 14365,
+      "original_workspace_relative_path": "outputs/host/a100-math-step47-v1/step47.py",
+      "sha256": "a42fde8397fce3d98387f36a959e78d9e8ba0e61c9974be4c10439f505575d75",
+      "transform": "Exact historical source copy for inspection; original deadlines, path semantics and omitted private operational dependencies remain. Not runnable after relocation."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-pilot-01/configs/baseline.yaml": {
+      "bytes": 1867,
+      "original_workspace_relative_path": "outputs/host/a100-pilot-01/configs/baseline.yaml",
+      "sha256": "1942e4782b6018eca25d93e928dcad0501e639dab64c64acaf91129a427981ad",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-repeatability-v1/config.json": {
+      "bytes": 2428,
+      "original_workspace_relative_path": "outputs/host/a100-repeatability-v1/config.json",
+      "sha256": "b68bf2003c76424f97920431458ecdfd7ef55273681eba00dacf5482e10a8977",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/a100-repeatability-v1/probe.py": {
+      "bytes": 18467,
+      "original_workspace_relative_path": "outputs/host/a100-repeatability-v1/probe.py",
+      "sha256": "505b688898f5ad6ddffc3714a478c7a5d7507efb062107de4cd2b6aeebea51e3",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/compare-a100-first-input-v1.py": {
+      "bytes": 2131,
+      "original_workspace_relative_path": "outputs/host/compare-a100-first-input-v1.py",
+      "sha256": "3dd3cd6f54103490daad1812272c1cf01bd38264b89d9be3f14e1d5384d07251",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/run-bounded-a100-job-v1.py": {
+      "bytes": 21029,
+      "original_workspace_relative_path": "outputs/host/run-bounded-a100-job-v1.py",
+      "sha256": "8acf1240512bc75ef69ab41888794cb3fadd8ce83835b68c67121e98618d99a3",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    },
+    "research/a100-pilot-v1/historical-source/outputs/host/verify-a100-pilot-v1.py": {
+      "bytes": 27841,
+      "original_workspace_relative_path": "outputs/host/verify-a100-pilot-v1.py",
+      "sha256": "157f988562c27b713a33f5987b9c5a7c137ff2771453569744f286ee9bf6425f",
+      "transform": "Exact bytes relocated for inspection; historical assumptions unchanged; not portable execution."
+    }
+  },
+  "gpu_acceptance_claim": false,
+  "historical_literal_scope": "Generic container paths, fixed deadlines, static rate-budget constant and opaque artifact filenames retain exact historical bytes; no current price, private billing, account or provider-resource identity is published.",
+  "new_copy_validation": {
+    "hash_checked_files": 6,
+    "helpers_imported_or_executed": false,
+    "prior_v5_tests_attributed_to_new_helpers": false,
+    "python_ast_parsed_files": 3
+  },
+  "note": "Dataset scene tokens and generic container paths in exact configuration/source are experiment provenance, not account or network identities.",
+  "private_runtime_evidence_included": false,
+  "provider_launch_specs_included": false,
+  "retained_dependency_sha256": {
+    "configs/tolerances.yaml": "acf035bbbce67528a46d40ae0a16eab7df79f2757c628c3413f96875b8702683",
+    "scripts/prepare_perceptual_evaluation.py": "d0ca8bed525f27c334d0f91e30d0b2f3c8621bfc29b7db385b02ccbed149685c",
+    "scripts/probe_candidate_memory.py": "16407cb62e23a46192cb1132aa973f8629530545766694c0d901f41737ec8d29",
+    "scripts/probe_compiler_operator.py": "69e6312f3dbb895e65d5842c28d4bf7e131fe32d934967587f995e79cd6bf392",
+    "scripts/run_quality_bounded.py": "225edfb799f86ab59b9c2c1424063bda7782c2c0438f4fd3ca31e843e396eca1"
+  },
+  "schema_version": 1,
+  "snapshot_at": "2026-10-28T04:46:09.012565+00:00",
+  "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "v10_builder_history_sha256": "94d5d84912da0c5abf45b6176fbbb02bbc9df4f9daeca3a23510304ee6ab25e0",
+  "v10_new_copy_validation": {
+    "hash_checked_files": 6,
+    "helpers_imported_or_executed": false,
+    "independent_source_review_sha256": "45d52ffc0e90254f83c3eefa6e13e88e3aaf3cd6b274bb0ec71197ecd139b67e",
+    "json_configs_parsed": 1,
+    "prior_v5_tests_attributed_to_new_helpers": false,
+    "python_ast_parsed_files": 5
+  },
+  "v10_step47_report": "results/2026-10-28-a100-step47/manifest.json",
+  "v9_development_report": "results/2026-10-28-a100-development/manifest.json",
+  "v9_new_copy_validation": {
+    "hash_checked_files": 3,
+    "helpers_imported_or_executed": false,
+    "independent_source_review_sha256": "9bc6d9ceddaeac92501b9650c43380a9a47108f069c3ce2d786dff9fddfa7279",
+    "prior_v5_tests_attributed_to_new_helpers": false,
+    "python_ast_parsed_files": 2
+  }
+}

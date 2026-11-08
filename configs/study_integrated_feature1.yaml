@@ -1,0 +1,10 @@
+extends: study_integrated_compiler.yaml
+name: study-integrated-output9-interval1
+output: outputs/study-probes/integrated-feature1
+model:
+  compiler_feature_boundary: output_blocks.9
+optimizations:
+  feature_cache_module: output_blocks.9
+  feature_cache_interval: 1
+probe:
+  comparison_probe: outputs/study-probes/integrated-compiler-default

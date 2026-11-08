@@ -1,0 +1,95 @@
+{
+  "headline_claim": false,
+  "held_out_complete": false,
+  "implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "norm_qualification_issued": false,
+  "previous_v4_manifest_sha256": "5186349e49b0d5208d6e5365e9fb50555fe8c7f107b655243e9d0e88d9bdd73d",
+  "schema_version": 1,
+  "scope": "CPU software validation only; no real-model equivalence, quality or performance conclusion.",
+  "staged_cpu_tests": {
+    "errors": 0,
+    "failures": 0,
+    "junit_sha256": "5fe3c211a06223890e6376d8f59d952932b9ca70b68cbf65c147d550b0dc5899",
+    "log_sha256": "cbdb3273892f19e1d4c0c422ef86786bc7d134ff362e32ee9813ae5d998ce076",
+    "seconds": 126.054,
+    "skipped": 0,
+    "tests": 1095
+  },
+  "synthetic_cli_workflow": {
+    "all_exit_zero": true,
+    "commands": [
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.prepare",
+          "--config",
+          "configs/data.yaml",
+          "--synthetic",
+          "--output",
+          "data/synthetic"
+        ],
+        "exit_code": 0,
+        "log_sha256": "55fb5bbf35c4f21822461edd7c486198127ac5c3176bcce654f3e4fdc54350e7",
+        "seconds": 1.6984511249465868
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.benchmark",
+          "--config",
+          "configs/demo.yaml",
+          "--output",
+          "outputs/demo-finalists/baseline"
+        ],
+        "exit_code": 0,
+        "log_sha256": "7c76e6ef976b55448bfac7688ebec74d50e09dfefaf3f6c4f738b181a98f5045",
+        "seconds": 0.351700457977131
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.benchmark",
+          "--config",
+          "configs/demo_cached.yaml",
+          "--output",
+          "outputs/demo-finalists/cached"
+        ],
+        "exit_code": 0,
+        "log_sha256": "c2d53f248d70a337ad7b624d5bd5006cdc99e1a260da620b8baf987e96764912",
+        "seconds": 0.30663387500680983
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.evaluate",
+          "--runs",
+          "outputs/demo-finalists",
+          "--reference",
+          "outputs/demo-finalists/baseline"
+        ],
+        "exit_code": 0,
+        "log_sha256": "a5537661550218f263e81fb337943263d5cae4e6b0b80c031cfc9b8e92451019",
+        "seconds": 2.0432476670248434
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.report",
+          "--runs",
+          "outputs/demo-finalists"
+        ],
+        "exit_code": 0,
+        "log_sha256": "003c1e91ae32b3d58ae020e91115a6659f1aa9d3f09324b7c1327e4c7fefa1b6",
+        "seconds": 0.08538587496150285
+      }
+    ],
+    "created_at": "2026-10-27T04:13:30.241912+00:00",
+    "generated_artifacts_in_publication": false,
+    "scope": "Synthetic CPU software workflow only; no real-model performance or quality inference."
+  }
+}

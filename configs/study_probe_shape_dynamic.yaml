@@ -1,0 +1,5 @@
+extends: study_probe_denoiser_dynamic.yaml
+name: study-probe-dynamic-shape-buckets-native-attention-boundary
+output: outputs/study-probes/shape-dynamic
+probe:
+  kind: shape_dynamic

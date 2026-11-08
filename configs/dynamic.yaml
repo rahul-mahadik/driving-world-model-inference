@@ -1,0 +1,5 @@
+extends: compiled.yaml
+name: compiled-dynamic-shapes-experiment
+output: outputs/dynamic
+optimizations:
+  dynamic_shapes: true

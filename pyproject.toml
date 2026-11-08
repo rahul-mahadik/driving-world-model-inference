@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drivebench"
+version = "0.1.0"
+description = "Reproducible action-conditioned Vista inference and performance-quality experiments"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3", "Pillow>=9.5", "PyYAML>=6", "ijson>=3.3,<4"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9"]
+perceptual = ["lpips==0.1.4"]
+
+[tool.setuptools.packages.find]
+include = ["drivebench*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["gpu: requires pinned Vista checkpoint and NVIDIA GPU"]

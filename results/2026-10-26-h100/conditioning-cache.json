@@ -1,0 +1,169 @@
+{
+  "atol": 0.0,
+  "checks": {
+    "conditioning_cache_agreement": {
+      "atol": 0.0,
+      "candidates": {
+        "nuscenes-fcbccedd61424f1b85dcbf8f897f9754-054c2431ba324912bb4799b9217f5b7b:c00": {
+          "max_abs_error": 0.0,
+          "passed": true,
+          "rmse": 0.0,
+          "values": 44236800,
+          "values_outside_tolerance": 0
+        },
+        "nuscenes-fcbccedd61424f1b85dcbf8f897f9754-054c2431ba324912bb4799b9217f5b7b:c01": {
+          "max_abs_error": 0.0,
+          "passed": true,
+          "rmse": 0.0,
+          "values": 44236800,
+          "values_outside_tolerance": 0
+        }
+      },
+      "passed": true,
+      "rtol": 0.0
+    },
+    "conditioning_cache_exercised": {
+      "cached_both_image_encoders": true,
+      "image_embeddings_reused": true,
+      "passed": true,
+      "posterior_parameters_reused": true
+    },
+    "conditioning_cache_keys": {
+      "changed_input_missed": true,
+      "changed_key_differs": true,
+      "passed": true,
+      "unchanged_input_hit": true,
+      "unchanged_key_equal": true
+    }
+  },
+  "generation": {
+    "cond_aug": 0.0,
+    "conditioning_frames": 1,
+    "decode_chunk_size": 14,
+    "dtype": "fp16",
+    "guidance_scale": 2.5,
+    "height": 576,
+    "steps": 50,
+    "total_frames": 25,
+    "width": 1024
+  },
+  "implementation_sha256": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00",
+  "mode": "cache",
+  "passed": true,
+  "quality_validated": false,
+  "rtol": 0.0,
+  "runs": {
+    "cached": {
+      "actual_batch_sizes": [
+        1,
+        1
+      ],
+      "cache_key_checks": {
+        "changed_input_missed": true,
+        "changed_key_differs": true,
+        "unchanged_input_hit": true,
+        "unchanged_key_equal": true
+      },
+      "cache_stats": {
+        "conditioning_cache_bytes": 22323200,
+        "conditioning_cached_embedders": [
+          "cond_frames",
+          "cond_frames_without_noise"
+        ],
+        "conditioning_embedding_hits": 8,
+        "context": {
+          "bytes": 188108800,
+          "entries": 1,
+          "evictions": 0,
+          "hit_rate": 0.0,
+          "hits": 0,
+          "misses": 1
+        },
+        "context_hit": false,
+        "denoiser_evaluations_complete": true,
+        "feature_hits": 0,
+        "feature_misses": 0,
+        "feature_policy": "disabled",
+        "oom_attempts": [],
+        "posterior_parameter_hits": 2
+      },
+      "candidate_count": 2,
+      "denoiser_evaluations": 100,
+      "fallbacks": [],
+      "model_policy": {
+        "autocast_cache_enabled": true,
+        "candidate_execution": "serial",
+        "execution_grad_mode": "no_grad",
+        "parameter_dtypes": {
+          "torch.float32": {
+            "bytes": 10053103140,
+            "elements": 2513275785,
+            "requires_grad_elements": 1648079082,
+            "requires_grad_tensors": 1496,
+            "tensors": 2514
+          }
+        },
+        "parameter_grad_policy": "preserve_upstream_loader_flags"
+      },
+      "outputs_sha256": {
+        "normal": "789bc58a381e8852beda17eef8369ce57d3c85fda47bf9a0fec605897ba62261"
+      }
+    },
+    "uncached": {
+      "actual_batch_sizes": [
+        1,
+        1
+      ],
+      "cache_stats": {
+        "conditioning_cache_bytes": 0,
+        "conditioning_cached_embedders": [],
+        "conditioning_embedding_hits": 0,
+        "context": {
+          "bytes": 0,
+          "entries": 0,
+          "evictions": 0,
+          "hit_rate": 0.0,
+          "hits": 0,
+          "misses": 0
+        },
+        "context_hit": false,
+        "denoiser_evaluations_complete": true,
+        "feature_hits": 0,
+        "feature_misses": 0,
+        "feature_policy": "disabled",
+        "oom_attempts": [],
+        "posterior_parameter_hits": 0
+      },
+      "candidate_count": 2,
+      "denoiser_evaluations": 100,
+      "fallbacks": [],
+      "model_policy": {
+        "autocast_cache_enabled": true,
+        "candidate_execution": "serial",
+        "execution_grad_mode": "no_grad",
+        "parameter_dtypes": {
+          "torch.float32": {
+            "bytes": 10053103140,
+            "elements": 2513275785,
+            "requires_grad_elements": 1648079082,
+            "requires_grad_tensors": 1496,
+            "tensors": 2514
+          }
+        },
+        "parameter_grad_policy": "preserve_upstream_loader_flags"
+      },
+      "outputs_sha256": {
+        "normal": "789bc58a381e8852beda17eef8369ce57d3c85fda47bf9a0fec605897ba62261"
+      }
+    }
+  },
+  "scope": "selected request numerical checks only",
+  "seeds": [
+    1900558798,
+    193479194
+  ],
+  "source_artifact": "outputs/preflight-scene0103-corrected-conditioning-reuse/cache-agreement.json",
+  "source_sha256": "754168a0487b8fa536787bcc8e4c5b7449571e38eece178be01c994729cbd250",
+  "transform": "Compact selected-field projection; original artifact retained privately. This derived file has its own published checksum.",
+  "validated_request_count": 1
+}

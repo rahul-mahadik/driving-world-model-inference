@@ -1,0 +1,284 @@
+{
+  "combined_headline_claim": false,
+  "comparison": {
+    "block_medians_s": {
+      "compiled-default": [
+        43.65360262250033,
+        43.64800407250004,
+        43.67465395550062,
+        43.66686672399919
+      ],
+      "upstream": [
+        57.33721705550033,
+        57.37082314450072,
+        57.32494341799975,
+        57.340447830500125
+      ]
+    },
+    "combined_headline_claim": false,
+    "independent_scenes": 50,
+    "interpretation": "Fixed prospective 200-request-per-role comparison with repeated paired scenes. Speed ratios measure the explicitly accepted compiler trade-off, not output preservation. No pilot-calibrated regression or stationarity guarantee.",
+    "latency_s": {
+      "compiled-default": {
+        "p50": 43.6633202794992,
+        "p95": 43.68945980059725
+      },
+      "upstream": {
+        "p50": 57.33838814199771,
+        "p95": 57.39193709140045
+      }
+    },
+    "measured_cuda_memory": {
+      "compiled-default": {
+        "peak_allocated_bytes": 60363113984,
+        "peak_reserved_bytes": 73618423808
+      },
+      "upstream": {
+        "peak_allocated_bytes": 56058206720,
+        "peak_reserved_bytes": 73681338368
+      }
+    },
+    "metrics": {
+      "p50": {
+        "ci95": [
+          -0.23858002089797836,
+          -0.23845667652231817
+        ],
+        "relative_latency_change": -0.23849759830416573,
+        "speed_ratio_ci95": [
+          1.3131229296757225,
+          1.3133356458276115
+        ],
+        "speed_ratio_reference_over_compiled": 1.3131934945615948
+      },
+      "p95": {
+        "ci95": [
+          -0.2388869112050568,
+          -0.2385950196894846
+        ],
+        "relative_latency_change": -0.23875265386113564,
+        "speed_ratio_ci95": [
+          1.3133615170105415,
+          1.313865199169393
+        ],
+        "speed_ratio_reference_over_compiled": 1.313633479409967
+      }
+    },
+    "observed_block_median_range_s": {
+      "compiled-default": [
+        43.64800407250004,
+        43.67465395550062
+      ],
+      "upstream": [
+        57.32494341799975,
+        57.37082314450072
+      ]
+    },
+    "paired_requests": 200,
+    "performance_regression_policy_calibrated": false,
+    "qualified": false,
+    "quality_preserving": false,
+    "status": "complete_matched_tradeoff_benchmark",
+    "throughput": {
+      "compiled-default": {
+        "completed_futures": 200,
+        "futures_per_s": 0.022904180300288266,
+        "generated_frames_per_s": 0.5497003272069183,
+        "measurement_wall_s": 8732.030458103007,
+        "warmup_initialization_and_compilation_excluded": true
+      },
+      "upstream": {
+        "completed_futures": 200,
+        "futures_per_s": 0.01743858916084274,
+        "generated_frames_per_s": 0.4185261398602257,
+        "measurement_wall_s": 11468.817698227991,
+        "warmup_initialization_and_compilation_excluded": true
+      }
+    },
+    "uncertainty": "4000 paired scene-cluster percentile bootstrap resamples; all repeated requests remain grouped. Eight interleaved processes; intervals do not guarantee stationarity."
+  },
+  "comparison_scope": "Performance and memory only; no completed joint speed-quality result.",
+  "coverage": {
+    "completed_blocks": 8,
+    "completed_heldout_quality_pairs": 0,
+    "cross_gpu_timing_pooling": false,
+    "independent_scenes": 50,
+    "measured_requests_per_role": 200,
+    "planned_heldout_quality_pairs": 16,
+    "repetitions_per_scene_per_role": 4,
+    "seed_and_action_sweeps": "deferred"
+  },
+  "fresh_semantic_diagnostics": {
+    "compiled-default-all": {
+      "checks": {
+        "candidate_order": true,
+        "conditioning_cache_agreement": true,
+        "conditioning_cache_exercised": true,
+        "conditioning_cache_keys": true,
+        "unrelated_candidate_action_change": true,
+        "upstream_agreement": false
+      },
+      "source_report_sha256": "9df5821cc916dc9098a654a66eb076f11b9b9afdca231f91c24f80729a8d41e7",
+      "strict_passed": false
+    },
+    "eager-strict-all": {
+      "checks": {
+        "candidate_order": true,
+        "conditioning_cache_agreement": true,
+        "conditioning_cache_exercised": true,
+        "conditioning_cache_keys": true,
+        "unrelated_candidate_action_change": true,
+        "upstream_agreement": true
+      },
+      "source_report_sha256": "578d9691905142ecaac99838e784092558c735897f4547174a266faa1df56efb",
+      "strict_passed": true
+    }
+  },
+  "hardware": {
+    "cuda_version": "11.8",
+    "driver_version": "580.178.04",
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "same_physical_gpu_and_full_runtime_verified": true,
+    "torch_version": "2.0.1+cu118",
+    "xformers_version": "0.0.20"
+  },
+  "heldout_quality_completed": false,
+  "limitations": [
+    "Fifty independent scenes, each repeated four times per role; not 200 independent scenes.",
+    "Scene-cluster intervals reflect this cohort and do not guarantee stationarity or cross-hardware generalization.",
+    "Exact compiled-to-upstream pixels differ; no quality preservation or accepted held-out quality is claimed.",
+    "The planned 16-pair held-out video-quality comparison has not run.",
+    "The historical 50-per-role H200 measurements and partial attempts remain separate and are not pooled.",
+    "No pilot-calibrated performance regression classification or combined headline claim is made."
+  ],
+  "model_comparison": {
+    "candidate": "torch.compile with TorchInductor on the denoiser; native attention retained",
+    "checkpoint_sha256": "1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98",
+    "reference": "Pretrained Vista upstream eager inference",
+    "same_pretrained_weights_verified": true,
+    "weights_trained_or_finetuned_for_comparison": false
+  },
+  "performance_regression_policy_calibrated": false,
+  "preservation": {
+    "every_copied_file_independently_rehashed": true,
+    "file_count": 179,
+    "full_raw_evidence_backup_complete": true,
+    "individual_measurement_rows_included": false,
+    "note": "The full new-cohort archive is locally hash verified. Publication contains compact summaries rather than individual timing rows or raw arrays. Copy integrity does not establish output quality.",
+    "proof_npz_bytes": 4600637596,
+    "proof_npz_count": 14,
+    "raw_images_or_arrays_included": false,
+    "remote_before_after_inventory_equal": true,
+    "source_summary_receipts_locally_hash_verified": true,
+    "total_bytes": 4605682030,
+    "verified_at": "2026-10-30T08:08:58.880733+00:00"
+  },
+  "project_complete": false,
+  "provenance_sha256": {
+    "completed_timing_sha256": "ae707ba397c2cfb306659040b7933b09d5623b4175c714077255133a22abc637",
+    "independent_completion_verification_sha256": "2406ce618da31e8b63f1ca9e5f67471ae56ae5098b39e30e34f9f8ed515dd3bd",
+    "prospective_plan_sha256": "feef8afe8d4d7aa51f9cca4bc7a7ea9f68f4dde5e3e14d998a492f71d9132ba1",
+    "prospective_protocol_sha256": "29ec4e85568e814126c4b5888930359529c98db8701b24331ee4020a9610f006",
+    "raw_archive_after_inventory_sha256": "82fa278c391baa3f66188a91ed6f2fa26578e941529eb615a5ac31565ccc6f72",
+    "raw_archive_before_inventory_sha256": "82fa278c391baa3f66188a91ed6f2fa26578e941529eb615a5ac31565ccc6f72",
+    "raw_archive_copy_verification_sha256": "e3a0e81cb060edf22bf6845faeafb78174730ace95d25e0716c3d0ba295ea405",
+    "raw_archive_independent_rehash_sha256": "9bd84dd560bbf2ca0099fd1ba2de1c0125fcc10ff7fa2503cea1ae22f7228e2b",
+    "timing_host_sha256": "2672bfb7e2979f6970638e905121ebefd4f8b80b973f2acf174ca6f1afe65144",
+    "verification_host_sha256": "ce61fa0d85fc80c1bb8bc3292335ac62bc1b2ddfc92c703b76b3cc773ce7286c",
+    "verification_transfer_observation_sha256": "16fd41934bcbf56f09b8a578672bf982ee1e022737dad1c3532f5060dfc38336"
+  },
+  "qualified": false,
+  "quality_context": {
+    "historical_blind_review_geometry_detail_rejections": 1,
+    "historical_blind_review_ties": 6,
+    "historical_norm_qualification_passed": false,
+    "interpretation": "The sealed rejection remains. Preference for compiled after unblinding is not evidence of compiler-induced degradation. These historical development observations are not a completed new held-out quality result.",
+    "rejected_case_post_seal_preference": "compiled"
+  },
+  "quality_preserving": false,
+  "roles": {
+    "compiled-default": {
+      "completed_blocks": 4,
+      "cuda_memory": {
+        "peak_allocated_bytes": 60363113984,
+        "peak_reserved_bytes": 73618423808
+      },
+      "failures": 0,
+      "latency_s": {
+        "p50": 43.6633202794992,
+        "p95": 43.68945980059725
+      },
+      "measured_requests": 200,
+      "oom_attempts": 0,
+      "peak_allocated_gib": 56.217530727386475,
+      "peak_reserved_gib": 68.5625,
+      "successful_requests": 200,
+      "throughput": {
+        "completed_futures": 200,
+        "futures_per_s": 0.022904180300288266,
+        "generated_frames_per_s": 0.5497003272069183,
+        "measurement_wall_s": 8732.030458103007,
+        "warmup_initialization_and_compilation_excluded": true
+      }
+    },
+    "upstream": {
+      "completed_blocks": 4,
+      "cuda_memory": {
+        "peak_allocated_bytes": 56058206720,
+        "peak_reserved_bytes": 73681338368
+      },
+      "failures": 0,
+      "latency_s": {
+        "p50": 57.33838814199771,
+        "p95": 57.39193709140045
+      },
+      "measured_requests": 200,
+      "oom_attempts": 0,
+      "peak_allocated_gib": 52.20827341079712,
+      "peak_reserved_gib": 68.62109375,
+      "successful_requests": 200,
+      "throughput": {
+        "completed_futures": 200,
+        "futures_per_s": 0.01743858916084274,
+        "generated_frames_per_s": 0.4185261398602257,
+        "measurement_wall_s": 11468.817698227991,
+        "warmup_initialization_and_compilation_excluded": true
+      }
+    }
+  },
+  "schema_version": 1,
+  "scope": "Prospective single-GPU H100 video inference performance and memory comparison: 200 measured requests per role. Output quality remains pending.",
+  "snapshot_at": "2026-10-30T08:01:19.448606+00:00",
+  "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "status": "verified_complete_timing_and_local_backup_with_output_quality_pending",
+  "timing_complete": true,
+  "workload": {
+    "blocks_per_role": 4,
+    "candidate_count": 1,
+    "filesystem_cache": "OS-controlled; uncached forbids decoded/conditioning reuse",
+    "generated_frames_per_future": 24,
+    "generation": {
+      "cond_aug": 0.0,
+      "conditioning_frames": 1,
+      "decode_chunk_size": 14,
+      "dtype": "fp16",
+      "guidance_scale": 2.5,
+      "height": 576,
+      "steps": 50,
+      "total_frames": 25,
+      "width": 1024
+    },
+    "input_condition": "uncached",
+    "latency_definition": "Wall time from input loading/preprocessing through host-ready generated frames; excludes model loading, compilation, warmups and output export.",
+    "prefetch_depth": 0,
+    "request_definition": "Generate one 24-future-frame 576x1024 video from a conditioning image and trajectory using pretrained Vista, fixed50 sampling steps and unchanged weights.",
+    "requests_per_block": 50,
+    "same_ordered_scenes_and_seeds_per_role_verified": true,
+    "save_outputs": 0,
+    "throughput_denominator": "Sum of measured request latencies; initialization, compilation, warmups and synchronous exports excluded.",
+    "warmup_requests_per_block_allowed": [
+      3,
+      5
+    ]
+  }
+}

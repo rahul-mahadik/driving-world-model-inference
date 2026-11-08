@@ -1,0 +1,159 @@
+{
+  "diagnostic": {
+    "autocast_policy": "fp16; actual input/output dtypes recorded",
+    "callable_restored_after_capture": true,
+    "candidate_count": 1,
+    "capture_count": 1,
+    "cfg_order": "25 unconditional frames followed by 25 conditional frames",
+    "comparison": {
+      "atol": 0,
+      "compiled_dtype": "float32",
+      "different_values": 1733557,
+      "dtype_equal": true,
+      "max_absolute_error": 0.0517578125,
+      "passed_exact": false,
+      "reference_dtype": "float32",
+      "rmse": 0.0017239371116484147,
+      "rtol": 0,
+      "values": 1843200
+    },
+    "compiled_runtime": {
+      "after": {
+        "generated_kernels": 1461,
+        "unimplemented": {},
+        "unique_graphs": 342
+      },
+      "before": {
+        "generated_kernels": 0,
+        "unimplemented": {},
+        "unique_graphs": 0
+      },
+      "graphs_created_by_runtime": 342,
+      "kernels_created_by_runtime": 1461,
+      "passed": true,
+      "require_graphs": true,
+      "restoration_complete": true,
+      "runtime_implementation_sha256": "1d0e914c6ca3fd92193b6dc591ed5b932a48f63253ce774bf3373928b10bff82"
+    },
+    "denoiser_evaluations": 2,
+    "executions": [
+      {
+        "diagnostic_wall_s": 1.087277089998679,
+        "dtype": "float32",
+        "label": "eager",
+        "output_sha256": "aaf3050fda1f0edc22a397122925e91f4a53665426d91bd2b02ce99eeaad0783",
+        "rng_state_unchanged": true,
+        "shape": [
+          50,
+          4,
+          72,
+          128
+        ]
+      },
+      {
+        "diagnostic_wall_s": 72.45191930600049,
+        "dtype": "float32",
+        "label": "compiled",
+        "output_sha256": "26435f14ed405679ce0a85e6a4235d720c079fbcac69fc45e3ff3c9864f2ba9b",
+        "rng_state_unchanged": true,
+        "shape": [
+          50,
+          4,
+          72,
+          128
+        ]
+      }
+    ],
+    "input_shapes_dtypes_strides": {
+      "condition.concat": {
+        "dtype": "torch.float32",
+        "shape": [
+          50,
+          4,
+          72,
+          128
+        ],
+        "stride": [
+          36864,
+          9216,
+          128,
+          1
+        ]
+      },
+      "condition.crossattn": {
+        "dtype": "torch.float32",
+        "shape": [
+          50,
+          1,
+          3456
+        ],
+        "stride": [
+          3456,
+          3456,
+          1
+        ]
+      },
+      "condition.vector": {
+        "dtype": "torch.float32",
+        "shape": [
+          50,
+          768
+        ],
+        "stride": [
+          768,
+          1
+        ]
+      },
+      "mask": {
+        "dtype": "torch.float32",
+        "shape": [
+          50
+        ],
+        "stride": [
+          1
+        ]
+      },
+      "sigma": {
+        "dtype": "torch.float32",
+        "shape": [
+          50
+        ],
+        "stride": [
+          1
+        ]
+      },
+      "x": {
+        "dtype": "torch.float32",
+        "shape": [
+          50,
+          4,
+          72,
+          128
+        ],
+        "stride": [
+          36864,
+          9216,
+          128,
+          1
+        ]
+      }
+    },
+    "input_tensor_hashes_identical": true,
+    "input_tensors_reused_without_resampling": true,
+    "peak_allocated_bytes": 25695145984,
+    "peak_reserved_bytes": 71865204736,
+    "same_backend_and_ema_scope": true,
+    "sampler_rollouts_completed": 0,
+    "timing_scope": "Instrumented component observation only. Compiled call includes lazy compilation; not steady-state latency.",
+    "video_decoder_calls": 0
+  },
+  "exit_code": 2,
+  "headline_eligible": false,
+  "implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "interpretation": "A single actual first-step denoiser invocation differs between eager and partial compilation with identical inputs and unchanged RNG. This excludes resampling and decode as prerequisites for the difference, but does not identify the numerical operator cause. Compiled wall time includes compilation.",
+  "numerical_acceptance_gate": false,
+  "quality_validated": false,
+  "scope": "One real captured first-step denoiser component input; no rollout, acceptance, timing or quality claim",
+  "source_probe_sha256": "a1fe3a131fb832678769c48e85b03193d305f89df0304be53a81bc0437f850ed",
+  "status": "diagnostic_complete_strict_failed"
+}

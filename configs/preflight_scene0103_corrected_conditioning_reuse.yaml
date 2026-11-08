@@ -1,0 +1,26 @@
+# Cache-only numerical diagnostic on the corrected one-clip development subset.
+# A cache-only report cannot satisfy the full benchmark numerical gate.
+extends: preflight_scene0103_corrected.yaml
+name: preflight-scene0103-corrected-conditioning-reuse
+output: /workspace/outputs/preflight-scene0103-corrected-conditioning-reuse
+numerical_validation: /workspace/outputs/preflight-scene0103-corrected-conditioning-reuse/cache-agreement.json
+optimizations:
+  conditioning_cache_bytes: 2147483648
+benchmark:
+  workload: candidate_set
+  candidate_count: 2
+  requests: 1
+  warmup_requests: 0
+  max_warmup_requests: 0
+  input_condition: reused_conditioning
+  save_outputs: 0
+  headline: false
+preflight:
+  scope: corrected one-clip two-candidate exact cache diagnostic; actual reuse and key checks required
+  headline_eligible: false
+  quality_validated: false
+  validation_mode: cache
+  candidate_count: 2
+  atol: 0.0
+  rtol: 0.0
+  validation_output: /workspace/outputs/preflight-scene0103-corrected-conditioning-reuse/cache-agreement.json

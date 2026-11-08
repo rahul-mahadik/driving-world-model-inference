@@ -1,0 +1,16 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 3913,
+      "sha256": "0a8427475ced084e16e661b230aef54d55197d939673039f0a864bd94f5a1cc9"
+    },
+    "summary.json": {
+      "bytes": 140943,
+      "sha256": "3e5fff4217c11f66dfb65d45cfb5b909290d37f1ca2231f8d551f6d99a98ae76"
+    }
+  },
+  "private_operational_records_included": false,
+  "raw_data_included": false,
+  "schema_version": 1,
+  "status": "generation_diagnostics_and_archives_verified_no_acceptance"
+}

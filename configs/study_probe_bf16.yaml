@@ -1,0 +1,7 @@
+extends: study_probe_eager.yaml
+name: study-probe-bf16
+output: outputs/study-probes/bf16
+generation:
+  dtype: bf16
+probe:
+  kind: bf16

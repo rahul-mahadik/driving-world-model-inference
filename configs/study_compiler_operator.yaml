@@ -1,0 +1,5 @@
+extends: study_integrated_compiler.yaml
+name: study-compiler-component-diagnostic
+output: outputs/study-probes/compiler-operator
+operator_probe:
+  request_index: 28

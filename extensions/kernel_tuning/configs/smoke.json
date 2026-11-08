@@ -1,0 +1,29 @@
+{
+  "vista_commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d",
+  "input_values": "Seeded random tensors, not recorded model activations; numerical/performance conclusions are operator-scoped.",
+  "name": "small_engineering_smoke_shapes",
+  "provenance": "Deliberately small synthetic shapes for CUDA correctness/configuration smoke tests; not observed full model shapes.",
+  "workloads": [
+    {
+      "operator": "geglu",
+      "shape": [
+        4,
+        257,
+        2560
+      ],
+      "dtype": "float16",
+      "seed": 1901
+    },
+    {
+      "operator": "groupnorm_silu",
+      "shape": [
+        2,
+        320,
+        9,
+        16
+      ],
+      "dtype": "float16",
+      "seed": 1902
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "all_representative_trajectories_match": true,
+  "axis_order": [
+    "lateral",
+    "longitudinal"
+  ],
+  "axis_signs": [
+    "positive_right",
+    "positive_forward"
+  ],
+  "camera_span_s_min_max": [
+    2.0,
+    2.1
+  ],
+  "coordinate_frame": "initial_LIDAR_TOP_sensor_frame",
+  "initial_lidar_minus_camera_us_min_max": [
+    33414,
+    41573
+  ],
+  "max_abs_error_m": 4.547473508864641e-13,
+  "method": "inverse(T_global_from_initial_LIDAR_TOP) @ T_global_from_future_LIDAR_TOP; x,y translation",
+  "representative_examples": 32,
+  "representative_scene_count": 31,
+  "sample_data_rows_streamed": 2631083,
+  "scope": "All downloaded annotation records structurally checked; 4 trajectory-distance quantiles per command and split numerically reconstructed",
+  "source_artifact": "reports/trajectory-audit.json",
+  "source_sha256": "f2edcc5713157dbca94f83355972699e3e0988249423d0b5e2608b52641bb7a6",
+  "timestamp_caveat": "Nominal keyframe spacing is not an exact camera-relative timeline; each example records actual sample/LiDAR/camera timestamps",
+  "transform": "Compact selected-field projection; original artifact retained privately. This derived file has its own published checksum.",
+  "units": "meters"
+}

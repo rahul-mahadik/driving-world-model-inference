@@ -1,0 +1,9 @@
+extends: baseline.yaml
+name: deterministic-conditioning-reuse
+output: outputs/conditioning-reuse
+optimizations:
+  conditioning_cache_bytes: 2147483648
+benchmark:
+  workload: candidate_set
+  candidate_count: 8
+  input_condition: reused_conditioning

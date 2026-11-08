@@ -1,0 +1,36 @@
+{
+  "causal_attribution_profiled": false,
+  "changed_test_files": {
+    "extensions/kernel_tuning/tests/test_benchmark.py": {
+      "original_sha256": "154da632f3278d8bc420c100153aa658df1693488cf2be512d411a945b073014",
+      "revised_sha256": "2956524b5d0583964d304edfddcdcbe277e7b1d7ab5cfd69031cc24b2e83859f"
+    },
+    "extensions/kernel_tuning/tests/test_kernels.py": {
+      "original_sha256": "61c8d1e3b7ca0924d6972dcd35063813e08cf6403755186926f57c3b82c7a739",
+      "revised_sha256": "64ace618b72923e87a44702ab08a069a7f12b173d59fdde3734062040add543f"
+    }
+  },
+  "constant_absolute_tolerance": 1.1920928955078125e-07,
+  "constant_eager_equivalence_validated": false,
+  "constant_reference": "Analytic SiLU(bias), evaluated in float64, plus a double-statistics oracle",
+  "constant_relative_tolerance": 0,
+  "diagnostic": {
+    "custom_vs_double_statistics_max_abs_error": 3.725290298461914e-09,
+    "custom_vs_eager_max_abs_error": 4.51505184173584e-05,
+    "eager_vs_double_statistics_max_abs_error": 4.51505184173584e-05
+  },
+  "independent_review_sha256": "7a1c1266f1b6914be89bd1179f990cc2954b44fe54e0b2e2b6151204397fbcc3",
+  "negative_gpu_tests": "Availability is monkeypatched false so failure-path tests run on GPU hosts",
+  "original_suite": {
+    "errors": 0,
+    "failed_contract_retroactively_passed": false,
+    "failures": 1,
+    "gpu_tests_collected": 75,
+    "gpu_tests_passed": 74,
+    "passed": false,
+    "skipped": 2,
+    "tests": 188
+  },
+  "review_sha256": "2b69dde9caba27b1152b2c6565bd53560c7f6bccb6c2a506a1854f739a62fa57",
+  "runtime_and_kernel_implementation_unchanged": true
+}

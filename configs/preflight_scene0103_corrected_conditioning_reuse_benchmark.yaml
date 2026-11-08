@@ -1,0 +1,14 @@
+# Exploratory repeated-conditioning workload after cache-agreement.json passes.
+# The full numerical gate remains ineligible for this development subset and
+# cache-only report. Do not interpret these repetitions as a headline result.
+extends: preflight_scene0103_corrected_conditioning_reuse.yaml
+name: preflight-scene0103-corrected-conditioning-reuse-exploratory
+output: /workspace/outputs/preflight-scene0103-corrected-conditioning-reuse-benchmark
+benchmark:
+  requests: 3
+  warmup_requests: 2
+  max_warmup_requests: 2
+  save_outputs: 0
+  headline: false
+preflight:
+  scope: three repeated-conditioning two-candidate requests after two warmups; diagnostic only

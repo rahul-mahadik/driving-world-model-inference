@@ -1,0 +1,38 @@
+{
+  "README.md": {
+    "bytes": 3009,
+    "sha256": "661bc4bbcd351f97e2a2360041f5c688c4d6fbabbc29f72a1ad4f69239754be9"
+  },
+  "attention-operator.json": {
+    "bytes": 23253,
+    "sha256": "abcf400595444aa93f498446aede75f64fa9c18561fd3a2b5b4faac5146908b8"
+  },
+  "bootstrap.json": {
+    "bytes": 12062,
+    "sha256": "428efeb40e3cb91307877974c68f93bdc637d3d9b0b8fcc87a5f74f470fa1339"
+  },
+  "compiler-operator.json": {
+    "bytes": 4284,
+    "sha256": "f0698257b100a296db87cc918d8ce75b7528ee649d15841637ab6dbc21d92f62"
+  },
+  "development-decision.json": {
+    "bytes": 6352,
+    "sha256": "fa32f02e9137d99c147a2554b860387511750e83f6402331cf6f6406c9d7406e"
+  },
+  "memory-recovery.json": {
+    "bytes": 2344,
+    "sha256": "fd40079c84c86123d388f8719c3b1f4394fe43e071380732e6a7c14901b6eee2"
+  },
+  "ncu-hot-attention.json": {
+    "bytes": 2573,
+    "sha256": "f5edb2d0e3a2c199596bd02733fe1d7a7111c9fc4b0767f5f413618b8f85d435"
+  },
+  "recorded-ground-truth.json": {
+    "bytes": 8032,
+    "sha256": "964d06860837e9efb268a6569ddb0f0c02440c2eb2baf7a78b73117ba8e0e412"
+  },
+  "validation.json": {
+    "bytes": 3069,
+    "sha256": "b9ab1176b6a55277e284b7e27628f507cac9ac1616e7eab59d1e95b5c7552bdc"
+  }
+}

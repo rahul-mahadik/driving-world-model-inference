@@ -1,0 +1,57 @@
+{
+  "vista_commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d",
+  "input_values": "Seeded random tensors, not recorded model activations; numerical/performance conclusions are operator-scoped.",
+  "name": "historical_profile_derived_operator_shapes",
+  "provenance": {
+    "analysis_path": "outputs/preflight-scene0103-corrected-torch-analysis.json",
+    "analysis_sha256": "adde8de0cecf7ef8efdc038042991919ddee651c9672e315c63b98bad1e14636",
+    "trace_sha256": "df875e5f0f0c70bd6e6cce482151d3d923553173aea2eb8ca829bcfaea1e7618",
+    "geglu": "Observed aten::gelu input [50,576,5120] and [288,25,5120]; double last dimension to reconstruct GEGLU projected value+gate. See pinned GEGLU.chunk(2,-1).",
+    "groupnorm": "Observed native_group_norm NCHW shapes after GroupNorm32 FP32 cast; use FP16 pre-cast input and 32 groups per pinned normalization factory. Shape presence alone does not prove adjacency or per-shape cost; capture adapter verifies actual pairs.",
+    "cohort": "Historical instrumented eager diagnostic; not the final compiled H100 timing cohort."
+  },
+  "workloads": [
+    {
+      "operator": "geglu",
+      "shape": [
+        50,
+        576,
+        10240
+      ],
+      "dtype": "float16",
+      "seed": 1901
+    },
+    {
+      "operator": "geglu",
+      "shape": [
+        288,
+        25,
+        10240
+      ],
+      "dtype": "float16",
+      "seed": 1902
+    },
+    {
+      "operator": "groupnorm_silu",
+      "shape": [
+        50,
+        320,
+        72,
+        128
+      ],
+      "dtype": "float16",
+      "seed": 1903
+    },
+    {
+      "operator": "groupnorm_silu",
+      "shape": [
+        50,
+        640,
+        36,
+        64
+      ],
+      "dtype": "float16",
+      "seed": 1904
+    }
+  ]
+}

@@ -1,0 +1,359 @@
+{
+  "between_compiled_variants": {
+    "aggregate": {
+      "all_frames": {
+        "different_values": 907701544,
+        "exact_pairs": 11,
+        "mae": 1.2607297231978817e-06,
+        "max_abs_error": 0.0001766979694366455,
+        "max_pair_mae": 2.6028182239517466e-06,
+        "max_pair_rmse": 3.607550125627628e-06,
+        "rmse": 2.249812367379478e-06,
+        "values": 1415577600
+      },
+      "new_future_only": {
+        "different_values": 871208935,
+        "exact_pairs": 11,
+        "mae": 1.260243824117459e-06,
+        "max_abs_error": 0.0001766979694366455,
+        "max_pair_mae": 2.5989084520006145e-06,
+        "max_pair_rmse": 3.6030580673607017e-06,
+        "rmse": 2.2496243377229326e-06,
+        "values": 1358954496
+      }
+    },
+    "cpu_only": true,
+    "headline_claim": false,
+    "interpretation": "Only11/32 pairs are bitwise identical; do not equate near agreement to exact cache semantics.",
+    "pairs": 32,
+    "quality_gate_changed": false,
+    "shape": [
+      25,
+      576,
+      1024,
+      3
+    ],
+    "source_sha256": "aa10f7b68fb9f51966ff30b3b566a5f8582c6e7aa25ef519c76c73d10b016782"
+  },
+  "headline_eligible": false,
+  "held_out_evidence": false,
+  "implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "limitations": [
+    "One recorded-action candidate per scene; no alternate-action or multi-candidate quality evidence.",
+    "LPIPS and temporal differences compare generated futures against generated upstream; small differences do not establish driving realism.",
+    "Descriptive serial run latencies were not balanced randomized timing blocks; no speedup inference is made.",
+    "Strict zero failures remain failures. Any reviewed development tolerance is a separate, prospective policy before held-out evaluation."
+  ],
+  "reference_implementation_sha256": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00",
+  "review_scope": "Separate agent-assisted blinded development reviews were performed. Raw frames, private mappings, seals and subjective acceptance artifacts are excluded; this numeric projection does not assert final quality acceptance.",
+  "schema_version": 1,
+  "source_collection_sha256": "f67a21adfa1bb730661976aa0e0af0a858a0a4b1a350c03a6e78310845f98c49",
+  "variants": [
+    {
+      "aggregates": {
+        "freeze_fraction_increase": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "ci_unit": "scene",
+          "max": 0.0,
+          "mean": 0.0,
+          "pairs": 32,
+          "units": 32
+        },
+        "lpips": {
+          "ci95": [
+            0.00036784928041502243,
+            0.0006971139300699627
+          ],
+          "ci_unit": "scene",
+          "max": 0.0018777011755446438,
+          "mean": 0.0005222781382035654,
+          "pairs": 32,
+          "units": 32
+        },
+        "mae": {
+          "ci95": [
+            0.000633708308667226,
+            0.0009604891090319112
+          ],
+          "ci_unit": "scene",
+          "max": 0.002036561990063614,
+          "mean": 0.0007947257204120662,
+          "pairs": 32,
+          "units": 32
+        },
+        "max_abs_error": {
+          "ci95": [
+            0.16174814805854112,
+            0.2450580811826512
+          ],
+          "ci_unit": "scene",
+          "max": 0.5870721340179443,
+          "mean": 0.2005779668688774,
+          "pairs": 32,
+          "units": 32
+        },
+        "rmse": {
+          "ci95": [
+            0.001654130436044835,
+            0.0026011233213080187
+          ],
+          "ci_unit": "scene",
+          "max": 0.007359182962884832,
+          "mean": 0.00209101429492239,
+          "pairs": 32,
+          "units": 32
+        },
+        "temporal_change_error": {
+          "ci95": [
+            1.010154199679494e-05,
+            2.2083547170495977e-05
+          ],
+          "ci_unit": "scene",
+          "max": 6.716763094582676e-05,
+          "mean": 1.5655660171892154e-05,
+          "pairs": 32,
+          "units": 32
+        },
+        "temporal_derivative_mae": {
+          "ci95": [
+            0.0006759169350337851,
+            0.0011464879296598203
+          ],
+          "ci_unit": "scene",
+          "max": 0.002356517786487846,
+          "mean": 0.0009060280304419815,
+          "pairs": 32,
+          "units": 32
+        }
+      },
+      "comparison_against": "original-source upstream generated future, same selected requests and seeds",
+      "comparison_source_sha256": "0ec9e5ed974d8f7533008d5f65ae4795300c91e2aab82e4908df07fe4f03d4f3",
+      "compiler_graphs_after": 347,
+      "compiler_graphs_before": 347,
+      "coverage": {
+        "conditioning_frames_excluded": true,
+        "pairs": 32,
+        "partition": "development",
+        "scenes": 32,
+        "synthetic": false
+      },
+      "descriptive_generation": {
+        "completed_futures": 32,
+        "latency_p50_s": 43.64979105100065,
+        "latency_p95_s": 43.6690968702499,
+        "peak_allocated_bytes": 60363113984,
+        "peak_reserved_bytes": 73618423808,
+        "recompiled_during_measurement": false
+      },
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 14,
+        "dtype": "fp16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "model": {
+        "backend": "vista",
+        "checkpoint_sha256": "1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98",
+        "compiler_runtime": "registered_einops_attention_v1",
+        "upstream_commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d"
+      },
+      "optimizations": {
+        "async_transfer": false,
+        "attention_backend": "upstream",
+        "compile_decoder": false,
+        "compile_denoiser": true,
+        "compile_mode": "default",
+        "conditioning_cache_bytes": 0,
+        "dynamic_shapes": false,
+        "feature_cache_interval": 1,
+        "feature_cache_module": null,
+        "fullgraph": false,
+        "keep_model_resident": true,
+        "max_batch_size": 1,
+        "pinned_memory": false,
+        "prefetch_depth": 0
+      },
+      "perceptual": {
+        "name": "LPIPS/alex",
+        "provenance": {
+          "device": "cuda",
+          "network": "alex",
+          "package_version": "0.1.4",
+          "setup_receipt_sha256": "3327e3d117d02a88f83e6665c9a222f9de9acd322e52140fcd7f3d3990755d4f",
+          "state_dict_sha256": "cb2726fb57b9d7f1f7a7eb26f83bf40ef15f421885676460a0b2caa020b74d85"
+        },
+        "status": "available"
+      },
+      "scope": "Development reference qualification observations only; not held-out acceptance, balanced timing, or a safety/adherence measure.",
+      "source_artifact_sha256": {
+        "comparison": "0ec9e5ed974d8f7533008d5f65ae4795300c91e2aab82e4908df07fe4f03d4f3",
+        "generation_host_receipt": "45bb16d45fc8be11dc929cf8f3067f23b122d1eb55cc0bac27dfcc565d2616a9",
+        "summary": "7a7369387d81f52338868f9ec9c110976b570c67d54fe210728d74b15db7a32f"
+      },
+      "strict_zero_equivalence_passed": false,
+      "variant": "compiled-default"
+    },
+    {
+      "aggregates": {
+        "freeze_fraction_increase": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "ci_unit": "scene",
+          "max": 0.0,
+          "mean": 0.0,
+          "pairs": 32,
+          "units": 32
+        },
+        "lpips": {
+          "ci95": [
+            0.0003678528002605338,
+            0.0006971209286223374
+          ],
+          "ci_unit": "scene",
+          "max": 0.0018777344327342387,
+          "mean": 0.0005222816488483772,
+          "pairs": 32,
+          "units": 32
+        },
+        "mae": {
+          "ci95": [
+            0.0006337081580543819,
+            0.0009604890223400536
+          ],
+          "ci_unit": "scene",
+          "max": 0.002036561990063614,
+          "mean": 0.0007947256635786696,
+          "pairs": 32,
+          "units": 32
+        },
+        "max_abs_error": {
+          "ci95": [
+            0.16174807567149402,
+            0.2450557949952781
+          ],
+          "ci_unit": "scene",
+          "max": 0.5870721340179443,
+          "mean": 0.20057771634310484,
+          "pairs": 32,
+          "units": 32
+        },
+        "rmse": {
+          "ci95": [
+            0.0016541302789040593,
+            0.0026011234754331424
+          ],
+          "ci_unit": "scene",
+          "max": 0.007359182962884832,
+          "mean": 0.0020910143187352274,
+          "pairs": 32,
+          "units": 32
+        },
+        "temporal_change_error": {
+          "ci95": [
+            1.0101291989636075e-05,
+            2.2083552277348635e-05
+          ],
+          "ci_unit": "scene",
+          "max": 6.71678717612742e-05,
+          "mean": 1.5655636383470875e-05,
+          "pairs": 32,
+          "units": 32
+        },
+        "temporal_derivative_mae": {
+          "ci95": [
+            0.0006759170111774606,
+            0.001146488316782619
+          ],
+          "ci_unit": "scene",
+          "max": 0.002356517786487846,
+          "mean": 0.0009060280875225913,
+          "pairs": 32,
+          "units": 32
+        }
+      },
+      "comparison_against": "original-source upstream generated future, same selected requests and seeds",
+      "comparison_source_sha256": "2c0cd6ff32c2873bdc3eaa31db642d2c465e8237e60fd3efa267d05f0922cf46",
+      "compiler_graphs_after": 347,
+      "compiler_graphs_before": 347,
+      "coverage": {
+        "conditioning_frames_excluded": true,
+        "pairs": 32,
+        "partition": "development",
+        "scenes": 32,
+        "synthetic": false
+      },
+      "descriptive_generation": {
+        "completed_futures": 32,
+        "latency_p50_s": 42.98498810700039,
+        "latency_p95_s": 43.023796509850946,
+        "peak_allocated_bytes": 62422746624,
+        "peak_reserved_bytes": 73597452288,
+        "recompiled_during_measurement": false
+      },
+      "generation": {
+        "cond_aug": 0.0,
+        "conditioning_frames": 1,
+        "decode_chunk_size": 14,
+        "dtype": "fp16",
+        "guidance_scale": 2.5,
+        "height": 576,
+        "steps": 50,
+        "total_frames": 25,
+        "width": 1024
+      },
+      "headline_eligible": false,
+      "model": {
+        "backend": "vista",
+        "checkpoint_sha256": "1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98",
+        "compiler_runtime": "registered_einops_attention_v1",
+        "upstream_commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d"
+      },
+      "optimizations": {
+        "async_transfer": false,
+        "attention_backend": "upstream",
+        "compile_decoder": false,
+        "compile_denoiser": true,
+        "compile_mode": "default",
+        "conditioning_cache_bytes": 2147483648,
+        "dynamic_shapes": false,
+        "feature_cache_interval": 1,
+        "feature_cache_module": null,
+        "fullgraph": false,
+        "keep_model_resident": true,
+        "max_batch_size": 1,
+        "pinned_memory": false,
+        "prefetch_depth": 0
+      },
+      "perceptual": {
+        "name": "LPIPS/alex",
+        "provenance": {
+          "device": "cuda",
+          "network": "alex",
+          "package_version": "0.1.4",
+          "setup_receipt_sha256": "3327e3d117d02a88f83e6665c9a222f9de9acd322e52140fcd7f3d3990755d4f",
+          "state_dict_sha256": "cb2726fb57b9d7f1f7a7eb26f83bf40ef15f421885676460a0b2caa020b74d85"
+        },
+        "status": "available"
+      },
+      "scope": "Development reference qualification observations only; not held-out acceptance, balanced timing, or a safety/adherence measure.",
+      "source_artifact_sha256": {
+        "comparison": "2c0cd6ff32c2873bdc3eaa31db642d2c465e8237e60fd3efa267d05f0922cf46",
+        "generation_host_receipt": "ad4f5c63f7ae1f82406e2854f2b12d3a8871cb7fa53bad3582ea9c10be89b88b",
+        "summary": "8a363b9b265c7293920bfee7546bc45549321d4113ac546988793954fd220fae"
+      },
+      "strict_zero_equivalence_passed": false,
+      "variant": "compiled-conditioning"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "claims": {
+    "bitwise_upstream_equivalence": false,
+    "headline_speedup_validated": false,
+    "held_out_quality_validated": false,
+    "mathematical_equivalence_proven": false
+  },
+  "created_at": "2026-10-28T21:38:04.940625+00:00",
+  "development_quality": {
+    "basis": "All32 retained outputs recomputed for RGB/temporal metrics; measured LPIPS remains bound to main evaluator artifacts",
+    "clips": 32,
+    "metrics_maximum": {
+      "freeze_fraction_increase": 0.0,
+      "lpips": 0.0018777011755446438,
+      "rmse": 0.007359182962884832,
+      "temporal_derivative_mae": 0.002356517786487846
+    },
+    "passed": true,
+    "raw_arrays_recomputed": true,
+    "variant": "compiled-default"
+  },
+  "exact_semantics": {
+    "atol": 0,
+    "passed": true,
+    "rtol": 0
+  },
+  "exit_code": 2,
+  "exit_code_meaning": "Expected scientific gate rejection, with verified source/input invariants and process cleanup.",
+  "finished_at": "2026-10-28T21:38:31.341592+00:00",
+  "interpretation": "The frozen conservative localized-change gate rejects the sealed difference. After sealing, attribution showed that the reviewer preferred the compiled display; this is not evidence of compiler-induced degradation. No acceptance criterion or review decision was changed.",
+  "legacy_strict_passed": false,
+  "localized_review": {
+    "accept_ties": 6,
+    "cases": 7,
+    "passed": false,
+    "rejected_cases": 1,
+    "rejection_category": "geometry_change",
+    "reviewer_kind": "agent_assisted"
+  },
+  "numerical": {
+    "candidate_count": 2,
+    "contract": {
+      "aggregation": "max_per_candidate_clip",
+      "conditioning_frames": 1,
+      "maximum": 0.01,
+      "metric": "generated_rgb_rmse",
+      "normalization": "RGB_[0,1]",
+      "total_frames": 25
+    },
+    "passed": true
+  },
+  "privacy": "Explicit allowlist projection; no request/scene identifiers, raw arrays, images, review keys, provider identities or private paths.",
+  "qualified": false,
+  "schema_version": 1,
+  "scope": "Development-selected RGB error-norm qualification plus exact selected-request candidate/cache semantics. Separate held-out quality/review and repeated same-GPU timing are mandatory.",
+  "source_completion_receipt_sha256": "4beb368baa9c5426162054d3a14f7beddc216fe4663792dc308ed7bc30cc39f2",
+  "source_qualification_sha256": "a0896ef95ceff10833bf8fc3b9d2a1b10aff0921c21b239f42b7409fe63f6b46",
+  "type": "sanitized_completed_compiler_norm_qualification"
+}

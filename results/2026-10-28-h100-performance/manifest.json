@@ -1,0 +1,26 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 4198,
+      "sha256": "6fb0656a16c13946dd104b385dcfeec2254459ebeb82647a5543ce9bb8d66363"
+    },
+    "development-pairs.json": {
+      "bytes": 33154,
+      "sha256": "920865e68cb5734f3f1579da8b4509d97e95a9e4f530bdfbaea2d3434be8ab02"
+    },
+    "qualification.json": {
+      "bytes": 2456,
+      "sha256": "a17a6fa6c68d88e1ac607e582c54c46860a841be9e6e1278a74f95f32b6862dd"
+    },
+    "summary.json": {
+      "bytes": 13261,
+      "sha256": "681b36bec874cffd579a4287ea3ad8dace73b3741116f8fd76eae11f52927340"
+    }
+  },
+  "final_qualification_claimed": true,
+  "private_operational_records_included": false,
+  "qualification_passed": false,
+  "raw_data_included": false,
+  "schema_version": 1,
+  "status": "completed_qualification_rejected_compute_released"
+}

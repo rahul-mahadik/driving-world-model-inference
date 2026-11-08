@@ -1,0 +1,10 @@
+extends: baseline.yaml
+name: held-out-eager-reference
+output: outputs/finalists/eager
+data:
+  manifest: data/manifests/evaluation.jsonl
+benchmark:
+  workload: candidate_set
+  candidate_count: 8
+  requests: 200
+  save_outputs: 128

@@ -1,0 +1,50 @@
+name: refactored-eager
+output: outputs/baseline
+environment_verification: outputs/environment/verification.json
+# Set to this configuration's successful development validation report.
+# Exploratory runs are allowed without it; headline eligibility is withheld.
+numerical_validation: null
+model:
+  backend: vista
+  upstream_dir: vendor/Vista
+  upstream_commit: cc9821b4253ca7987c32757613d2fc2448fa9f5d
+  checkpoint: checkpoints/vista.safetensors
+  checkpoint_sha256: 1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98
+  inference_config: vendor/Vista/configs/inference/vista.yaml
+data:
+  manifest: data/manifests/development.jsonl
+  root: /mnt/nuscenes
+  verify_checksums: true
+generation:
+  total_frames: 25
+  conditioning_frames: 1
+  height: 576
+  width: 1024
+  steps: 50
+  guidance_scale: 2.5
+  cond_aug: 0.0
+  dtype: fp16
+  decode_chunk_size: 14
+optimizations:
+  compile_denoiser: false
+  compile_decoder: false
+  compile_mode: default
+  dynamic_shapes: false
+  fullgraph: false
+  conditioning_cache_bytes: 0
+  max_batch_size: 1
+  feature_cache_interval: 1
+  keep_model_resident: true
+  pinned_memory: false
+  async_transfer: false
+  prefetch_depth: 0
+  attention_backend: upstream
+benchmark:
+  workload: single_future
+  candidate_count: 1
+  requests: 200
+  warmup_requests: 3
+  max_warmup_requests: 12
+  input_condition: uncached
+  save_outputs: 32
+  headline: true

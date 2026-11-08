@@ -1,0 +1,5 @@
+extends: baseline.yaml
+name: upstream
+output: outputs/upstream
+model:
+  backend: upstream

@@ -1,0 +1,59 @@
+[
+  {
+    "credited_as_completed_experiment": false,
+    "kind": "environment_uuid_representation_mismatch",
+    "preserved": true,
+    "source_sha256": [
+      "95b1e19421848ff03717187856a5525aeafa91d6e6b3d30972b4bf59b36a7e1e"
+    ]
+  },
+  {
+    "credited_as_completed_experiment": false,
+    "kind": "original_test_contract_failure",
+    "preserved": true,
+    "source_sha256": [
+      "de04c52f9b0db0a83f2555b8331011fb5b38bdd65b7b4482cc62c0857db04416",
+      "4b31a6becbe96974aa32f69b91debd15e720f48778198eb7397354bd742b4ed8"
+    ]
+  },
+  {
+    "credited_as_completed_experiment": false,
+    "kind": "local_preflight_failure",
+    "preserved": true,
+    "source_sha256": [
+      "6aa199f537963e0d8869e68399cfe1af469e610755699a96cb90dccf9afd3345"
+    ]
+  },
+  {
+    "credited_as_completed_experiment": false,
+    "kind": "other_reviewed_failure",
+    "preserved": true,
+    "source_sha256": [
+      "583d2c3621c09ada0255a646119815ce6bc06d5d735006b2de0b7e648cdd4743"
+    ]
+  },
+  {
+    "credited_as_completed_experiment": false,
+    "kind": "other_reviewed_failure",
+    "preserved": true,
+    "source_sha256": [
+      "a1eb9313bf1e438337eaef811907dbfb8591db923cd98b72bc66004c8a30a45a"
+    ]
+  },
+  {
+    "credited_as_completed_experiment": false,
+    "kind": "other_reviewed_failure",
+    "preserved": true,
+    "source_sha256": [
+      "80a0ae363db888c51f02881eea09ea591a2ce765168c2bf8a693056ce8a1a1ad"
+    ]
+  },
+  {
+    "credited_as_completed_experiment": false,
+    "kind": "other_reviewed_failure",
+    "preserved": true,
+    "source_sha256": [
+      "e9ca6a667e752b675e685451c6fc9fce3b50da783f4fe406b11c649523ac914f"
+    ]
+  }
+]

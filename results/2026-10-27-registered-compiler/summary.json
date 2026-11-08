@@ -1,0 +1,278 @@
+{
+  "cold_note": "The first request includes lazy compilation; model loading is separate. Cold-minus-warm is not reported as compile-only time.",
+  "compiler_artifact_records": 3832,
+  "compiler_settings": {
+    "cache_size_limit": 512,
+    "dynamic_shapes": false,
+    "fullgraph": false,
+    "mode": "default",
+    "suppress_errors": false
+  },
+  "cuda_binary_files": 650,
+  "einops_source_sha256": {
+    "_torch_specific.py": "3b2e546ea034e446afbe60cb79450d271f6202b2db212c7a40f0753aa2278530",
+    "einops.py": "6d5af8549c684fb0a4b2261e8207a18ffcb638102f7e2f52a4d1e101f0f722a6",
+    "packing.py": "cfd55f3fc49680d4ef8bbe9ab6662c970eb4f004e47fcbca64749351af6caeb2"
+  },
+  "executions": [
+    {
+      "compiler": {
+        "aot_autograd": {
+          "ok": 347,
+          "total": 347
+        },
+        "frames": {
+          "ok": 402,
+          "total": 402
+        },
+        "graph_break_count": 114,
+        "stats": {
+          "calls_captured": 2747,
+          "fusions_possible": 2400,
+          "unique_graphs": 347
+        },
+        "unimplemented_count": 0
+      },
+      "fallback_count": 0,
+      "instrumented": false,
+      "label": "cold",
+      "oom_attempts": 0,
+      "output_sha256": "eae33588c6d20e714f05caa0a5112d2adfe343843b90f1ee003d604a300fdbdb",
+      "stage_timings_s": {
+        "conditioning_gpu": 1.6141181640625,
+        "decode_gpu": 2.678547607421875,
+        "denoising_gpu": 117.4361796875,
+        "device_to_host_gpu": 0.09721993255615234,
+        "encode_gpu": 0.6432089233398437,
+        "generate_wall": 122.53610284399974,
+        "prepare_context": 0.03167947000019922
+      },
+      "status": "ok",
+      "strict_comparison": {
+        "atol": 0,
+        "candidates": [
+          {
+            "max_abs_error": 0.2503611445426941,
+            "passed": false,
+            "rmse": 0.0025115692282660414,
+            "values": 44236800,
+            "values_outside_tolerance": 43335539
+          }
+        ],
+        "passed": false,
+        "rtol": 0
+      },
+      "wall_s_excluding_file_decode_and_export": 122.56830798100009
+    },
+    {
+      "compiler": {
+        "aot_autograd": {
+          "ok": 347,
+          "total": 347
+        },
+        "frames": {
+          "ok": 402,
+          "total": 402
+        },
+        "graph_break_count": 114,
+        "stats": {
+          "calls_captured": 2747,
+          "fusions_possible": 2400,
+          "unique_graphs": 347
+        },
+        "unimplemented_count": 0
+      },
+      "fallback_count": 0,
+      "instrumented": false,
+      "label": "warmup-0",
+      "oom_attempts": 0,
+      "output_sha256": "eae33588c6d20e714f05caa0a5112d2adfe343843b90f1ee003d604a300fdbdb",
+      "stage_timings_s": {
+        "conditioning_gpu": 1.3791424560546874,
+        "decode_gpu": 2.625491943359375,
+        "denoising_gpu": 38.72416796875,
+        "device_to_host_gpu": 0.09954589080810547,
+        "encode_gpu": 0.6413145141601563,
+        "generate_wall": 43.52497063800001,
+        "prepare_context": 0.0313064540000596
+      },
+      "status": "ok",
+      "strict_comparison": {
+        "atol": 0,
+        "candidates": [
+          {
+            "max_abs_error": 0.2503611445426941,
+            "passed": false,
+            "rmse": 0.0025115692282660414,
+            "values": 44236800,
+            "values_outside_tolerance": 43335539
+          }
+        ],
+        "passed": false,
+        "rtol": 0
+      },
+      "wall_s_excluding_file_decode_and_export": 43.55676047099996
+    },
+    {
+      "compiler": {
+        "aot_autograd": {
+          "ok": 347,
+          "total": 347
+        },
+        "frames": {
+          "ok": 402,
+          "total": 402
+        },
+        "graph_break_count": 114,
+        "stats": {
+          "calls_captured": 2747,
+          "fusions_possible": 2400,
+          "unique_graphs": 347
+        },
+        "unimplemented_count": 0
+      },
+      "fallback_count": 0,
+      "instrumented": false,
+      "label": "warmup-1",
+      "oom_attempts": 0,
+      "output_sha256": "eae33588c6d20e714f05caa0a5112d2adfe343843b90f1ee003d604a300fdbdb",
+      "stage_timings_s": {
+        "conditioning_gpu": 1.3804063720703126,
+        "decode_gpu": 2.622371826171875,
+        "denoising_gpu": 38.75919921875,
+        "device_to_host_gpu": 0.09635104370117188,
+        "encode_gpu": 0.6428643798828125,
+        "generate_wall": 43.5567922780001,
+        "prepare_context": 0.03128767499993046
+      },
+      "status": "ok",
+      "strict_comparison": {
+        "atol": 0,
+        "candidates": [
+          {
+            "max_abs_error": 0.2503611445426941,
+            "passed": false,
+            "rmse": 0.0025115692282660414,
+            "values": 44236800,
+            "values_outside_tolerance": 43335539
+          }
+        ],
+        "passed": false,
+        "rtol": 0
+      },
+      "wall_s_excluding_file_decode_and_export": 43.58856780300039
+    },
+    {
+      "compiler": {
+        "aot_autograd": {
+          "ok": 347,
+          "total": 347
+        },
+        "frames": {
+          "ok": 402,
+          "total": 402
+        },
+        "graph_break_count": 114,
+        "stats": {
+          "calls_captured": 2747,
+          "fusions_possible": 2400,
+          "unique_graphs": 347
+        },
+        "unimplemented_count": 0
+      },
+      "fallback_count": 0,
+      "instrumented": false,
+      "label": "measured-0",
+      "oom_attempts": 0,
+      "output_sha256": "eae33588c6d20e714f05caa0a5112d2adfe343843b90f1ee003d604a300fdbdb",
+      "stage_timings_s": {
+        "conditioning_gpu": 1.3793798828125,
+        "decode_gpu": 2.623818603515625,
+        "denoising_gpu": 38.77765625,
+        "device_to_host_gpu": 0.09591526031494141,
+        "encode_gpu": 0.6438552856445312,
+        "generate_wall": 43.57560064800009,
+        "prepare_context": 0.03115397400006259
+      },
+      "status": "ok",
+      "strict_comparison": {
+        "atol": 0,
+        "candidates": [
+          {
+            "max_abs_error": 0.2503611445426941,
+            "passed": false,
+            "rmse": 0.0025115692282660414,
+            "values": 44236800,
+            "values_outside_tolerance": 43335539
+          }
+        ],
+        "passed": false,
+        "rtol": 0
+      },
+      "wall_s_excluding_file_decode_and_export": 43.607200509999984
+    }
+  ],
+  "exit_code": 2,
+  "finished_at": "2026-10-27T00:15:08.709548+00:00",
+  "generated_code_files": 770,
+  "generation": {
+    "cond_aug": 0.0,
+    "conditioning_frames": 1,
+    "decode_chunk_size": 14,
+    "dtype": "fp16",
+    "guidance_scale": 2.5,
+    "height": 576,
+    "steps": 50,
+    "total_frames": 25,
+    "width": 1024
+  },
+  "headline_eligible": false,
+  "helper_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd",
+  "implementation_sha256": "2ead184559615d7c9c68620abca687431231ae9ea999a0189a39a0ab7a55206a",
+  "launcher_and_config_unchanged": true,
+  "model_load_s": 28.037036015000012,
+  "native_attention_boundary": {
+    "kind": "explicit_native_attention_dynamo_boundary",
+    "native_operator_unchanged": true,
+    "source_sha256": "6ee2ed49dfd70c3ccce4e046c3d15c2da35e5963f77eaa591627883a11f08fb9"
+  },
+  "new_compiled_graphs": 347,
+  "positive_cuda_codegen_evidence": true,
+  "quality_validated": false,
+  "registration": {
+    "cache_size_limit": 512,
+    "einops_version": "0.6.1",
+    "kind": "official_einops_registration_with_explicit_dynamo_cache_limit",
+    "native_attention_boundary": true,
+    "registered_functions": [
+      "rearrange",
+      "reduce",
+      "repeat",
+      "einsum",
+      "pack",
+      "unpack"
+    ],
+    "registration_api": "einops._torch_specific.allow_ops_in_compiled_graph",
+    "suppress_errors": false
+  },
+  "runtime_implementation_sha256": "397124fea915c9210cf0c3fd4f99bdfe97fedb7aaa83fbdd398056cf627dd8f8",
+  "schema_version": 1,
+  "scope": "One development request compiler discovery; descriptive request times exclude file decode and export. No headline speedup, held-out or quality-acceptance claim.",
+  "source_environment_sha256": "d658e1e0221f07e65fb68cc202e6221a61196e3a51602531977bfb2c08380d49",
+  "source_probe_sha256": "a02e6287dab4cbdb231be450d89dfb6fd84ede2247804c392479bcc6ca876dc9",
+  "source_unchanged": true,
+  "started_at": "2026-10-27T00:10:24.545829+00:00",
+  "status": "execution_complete_strict_failed",
+  "strict_atol": 0,
+  "strict_passed": false,
+  "strict_rtol": 0,
+  "transfer_receipt_sha256": "d8c6165fecf35792162bd649b3f6dfd70c20925a2098bde78082df01b475d439",
+  "transfer_scope": "Probe metadata and host logs match remote hashes. Generated arrays and compiler binaries are excluded from the transfer receipt and publication.",
+  "wrapper_checks": {
+    "applied": true,
+    "bound_files_unchanged": true,
+    "einops_source_unchanged": true,
+    "restoration_complete": true
+  },
+  "wrapper_sha256": "82ffb8bdfcf1f6926f82365be74d91d4e80a99f53b15384dcb5a1e41b2e92dab"
+}

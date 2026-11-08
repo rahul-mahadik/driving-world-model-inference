@@ -1,0 +1,22 @@
+# CUDA 11.8 / native sm90 compatibility environment; original binaries failed on H100.
+# Operator/timeline/kernel diagnosis only; profiling timings are not speed results.
+extends: preflight_scene0103_corrected.yaml
+name: preflight-scene0103-corrected-eager-profile
+# drivebench.profile requires an explicit --output; use a separate directory per tool.
+output: /workspace/outputs/preflight-scene0103-corrected-profile
+numerical_validation: /workspace/outputs/preflight-scene0103-corrected/strict-agreement.json
+benchmark:
+  workload: single_future
+  candidate_count: 1
+  requests: 1
+  warmup_requests: 1
+  # Eager profiling permits this one-warmup cap; compilation remains disabled.
+  max_warmup_requests: 1
+  input_condition: uncached
+  # The profiling runner retains traces/metadata, not generated frame arrays.
+  save_outputs: 0
+  headline: false
+preflight:
+  scope: one instrumented development-clip request after one warmup; no speed claim
+  headline_eligible: false
+  quality_validated: false

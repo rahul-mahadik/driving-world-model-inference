@@ -1,0 +1,27 @@
+{
+  "combined_headline_claim": false,
+  "files": {
+    "README.md": {
+      "bytes": 5532,
+      "sha256": "b9f15694a79f615203af1ede6d3abc64397c4eba3c1d46df52c57162270fc297"
+    },
+    "backup-verification.json": {
+      "bytes": 1059,
+      "sha256": "0fe528438116f055c29110c01b94f136c4b177f76a68b71e5651a8d88835e5b6"
+    },
+    "blocks.json": {
+      "bytes": 10294,
+      "sha256": "44c9fd4c43a11752e22f95f5a056125d057c88f657cd4eb0ee8f0b9c083bfa19"
+    },
+    "summary.json": {
+      "bytes": 11364,
+      "sha256": "20257029c1843100d73763ed79eb96fbc29125456385f8a311471f6f9bc7ccc8"
+    }
+  },
+  "full_raw_evidence_backup_complete": true,
+  "heldout_quality_completed": false,
+  "qualified": false,
+  "quality_preserving": false,
+  "schema_version": 1,
+  "timing_complete": true
+}

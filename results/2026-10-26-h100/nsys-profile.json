@@ -1,0 +1,244 @@
+{
+  "all_cuda_activity": {
+    "count": 220025,
+    "first_start_ns": 92295865,
+    "last_end_ns": 58228158099,
+    "sum_duration_ns": 57328101821,
+    "union_duration_ns": 57328101821
+  },
+  "captured_duration_ns": 58242002822,
+  "families": {
+    "attention": {
+      "count": 4702,
+      "first_start_ns": 684740399,
+      "last_end_ns": 55463620463,
+      "sum_duration_ns": 10943782709,
+      "union_duration_ns": 10943782709
+    },
+    "convolution": {
+      "count": 5926,
+      "first_start_ns": 109663661,
+      "last_end_ns": 58129918045,
+      "sum_duration_ns": 6558203381,
+      "union_duration_ns": 6558203381
+    },
+    "copy_cast_concat": {
+      "count": 60060,
+      "first_start_ns": 106662687,
+      "last_end_ns": 58130780441,
+      "sum_duration_ns": 11159715481,
+      "union_duration_ns": 11159715481
+    },
+    "layout_conversion": {
+      "count": 14102,
+      "first_start_ns": 109594477,
+      "last_end_ns": 58129030690,
+      "sum_duration_ns": 2015511456,
+      "union_duration_ns": 2015511456
+    },
+    "matrix_multiply": {
+      "count": 27382,
+      "first_start_ns": 110283658,
+      "last_end_ns": 57610545866,
+      "sum_duration_ns": 7283936009,
+      "union_duration_ns": 7283936009
+    },
+    "normalization": {
+      "count": 22164,
+      "first_start_ns": 110065418,
+      "last_end_ns": 58111853055,
+      "sum_duration_ns": 7598315518,
+      "union_duration_ns": 7598315518
+    },
+    "other": {
+      "count": 793,
+      "first_start_ns": 107152828,
+      "last_end_ns": 57475697033,
+      "sum_duration_ns": 191312992,
+      "union_duration_ns": 191312992
+    },
+    "other_elementwise": {
+      "count": 58669,
+      "first_start_ns": 102205948,
+      "last_end_ns": 58130613785,
+      "sum_duration_ns": 11425324173,
+      "union_duration_ns": 11425324173
+    }
+  },
+  "headline_eligible": false,
+  "kernels": {
+    "count": 193798,
+    "first_start_ns": 102205948,
+    "last_end_ns": 58130780441,
+    "sum_duration_ns": 57176101719,
+    "union_duration_ns": 57176101719
+  },
+  "method_notes": [
+    "Family classification uses ordered name heuristics; it cannot establish compute or bandwidth saturation.",
+    "Summed CUDA kernel duration is not wall time. Union durations account for overlap.",
+    "Stage attribution uses correlated CUDA API entry within NVTX host ranges.",
+    "CUDA API waits overlap GPU work; their summed duration is not additive overhead.",
+    "Late API gap prefixes are dispatch-delay candidates, not proof of a CPU bottleneck; no CPU sampling was enabled."
+  ],
+  "profiled": true,
+  "raw_sqlite_sha256": "49cc4bea86816263f815aaa576b368245a00bbd02b121a16254f9d257be19f6d",
+  "scope": "Single instrumented development clip; background data transfer active; sums are not wall times.",
+  "source_artifact": "outputs/preflight-scene0103-corrected-nsys-analysis.json",
+  "source_sha256": "144f608e3f3fecabf6f7c8820ec04e8a404c9b7465d2ae0b767d3c2526947a15",
+  "stages": {
+    "drivebench::conditioning_gpu": {
+      "all_cuda_activity": {
+        "count": 3107,
+        "first_start_ns": 106524705,
+        "last_end_ns": 1498197315,
+        "sum_duration_ns": 1383478841,
+        "union_duration_ns": 1383478841
+      },
+      "host_nvtx": {
+        "end": 1498328659,
+        "name": "drivebench::conditioning_gpu",
+        "start": 102401188,
+        "tid": 281477124194432
+      },
+      "kernels": {
+        "count": 2778,
+        "first_start_ns": 106662687,
+        "last_end_ns": 1498197315,
+        "sum_duration_ns": 1383183739,
+        "union_duration_ns": 1383183739
+      }
+    },
+    "drivebench::decode_gpu": {
+      "all_cuda_activity": {
+        "count": 1796,
+        "first_start_ns": 55480787250,
+        "last_end_ns": 58130613785,
+        "sum_duration_ns": 2646961730,
+        "union_duration_ns": 2646961730
+      },
+      "host_nvtx": {
+        "end": 56531675978,
+        "name": "drivebench::decode_gpu",
+        "start": 55480725927,
+        "tid": 281477124194432
+      },
+      "kernels": {
+        "count": 1666,
+        "first_start_ns": 55480787250,
+        "last_end_ns": 58130613785,
+        "sum_duration_ns": 2646848802,
+        "union_duration_ns": 2646848802
+      }
+    },
+    "drivebench::denoising_gpu": {
+      "all_cuda_activity": {
+        "count": 214447,
+        "first_start_ns": 2145088303,
+        "last_end_ns": 55480507059,
+        "sum_duration_ns": 52547554915,
+        "union_duration_ns": 52547554915
+      },
+      "host_nvtx": {
+        "end": 55480517399,
+        "name": "drivebench::denoising_gpu",
+        "start": 2145050949,
+        "tid": 281477124194432
+      },
+      "kernels": {
+        "count": 188744,
+        "first_start_ns": 2145088303,
+        "last_end_ns": 55480485364,
+        "sum_duration_ns": 52501735617,
+        "union_duration_ns": 52501735617
+      }
+    },
+    "drivebench::device_to_host_gpu": {
+      "all_cuda_activity": {
+        "count": 2,
+        "first_start_ns": 58130618713,
+        "last_end_ns": 58228158099,
+        "sum_duration_ns": 97530842,
+        "union_duration_ns": 97530842
+      },
+      "host_nvtx": {
+        "end": 58229304699,
+        "name": "drivebench::device_to_host_gpu",
+        "start": 56562742135,
+        "tid": 281477124194432
+      },
+      "kernels": {
+        "count": 1,
+        "first_start_ns": 58130618713,
+        "last_end_ns": 58130780441,
+        "sum_duration_ns": 161728,
+        "union_duration_ns": 161728
+      }
+    },
+    "drivebench::encode_gpu": {
+      "all_cuda_activity": {
+        "count": 668,
+        "first_start_ns": 1498647776,
+        "last_end_ns": 2144842705,
+        "sum_duration_ns": 644284889,
+        "union_duration_ns": 644284889
+      },
+      "host_nvtx": {
+        "end": 2144865420,
+        "name": "drivebench::encode_gpu",
+        "start": 1498501347,
+        "tid": 281477124194432
+      },
+      "kernels": {
+        "count": 606,
+        "first_start_ns": 1498647776,
+        "last_end_ns": 2144842705,
+        "sum_duration_ns": 644153978,
+        "union_duration_ns": 644153978
+      }
+    },
+    "unattributed": {
+      "all_cuda_activity": {
+        "count": 5,
+        "first_start_ns": 92295865,
+        "last_end_ns": 102307611,
+        "sum_duration_ns": 8290604,
+        "union_duration_ns": 8290604
+      },
+      "host_nvtx": null,
+      "kernels": {
+        "count": 3,
+        "first_start_ns": 102205948,
+        "last_end_ns": 102239483,
+        "sum_duration_ns": 17855,
+        "union_duration_ns": 17855
+      }
+    }
+  },
+  "transfers": {
+    "Device-to-Device": {
+      "bytes": 38711033856,
+      "count": 602,
+      "first_start_ns": 2501447227,
+      "last_end_ns": 55480507059,
+      "sum_duration_ns": 24318261,
+      "union_duration_ns": 24318261
+    },
+    "Device-to-Host": {
+      "bytes": 176947401,
+      "count": 202,
+      "first_start_ns": 2145462573,
+      "last_end_ns": 58228158099,
+      "sum_duration_ns": 97663511,
+      "union_duration_ns": 97663511
+    },
+    "Host-to-Device": {
+      "bytes": 181917304,
+      "count": 869,
+      "first_start_ns": 92295865,
+      "last_end_ns": 55390574076,
+      "sum_duration_ns": 9086759,
+      "union_duration_ns": 9086759
+    }
+  },
+  "transform": "Compact selected-field projection; original artifact retained privately. This derived file has its own published checksum."
+}

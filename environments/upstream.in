@@ -1,0 +1,9 @@
+# Linux x86_64 / CPython 3.10 only. Exact wheels from official PyTorch index.
+-r common.in
+torch @ https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp310-cp310-linux_x86_64.whl#sha256=bb54b705185bea820e6ec6485a25761bc03f689e1a09a37d814d6ea8e276b5bd
+torchvision @ https://download.pytorch.org/whl/cu117/torchvision-0.15.2%2Bcu117-cp310-cp310-linux_x86_64.whl#sha256=1ee57f2bee878ad8574ea559bb7172c1cfaad168634fa738479e1fe3bdd7eaca
+torchaudio @ https://download.pytorch.org/whl/cu117/torchaudio-2.0.2%2Bcu117-cp310-cp310-linux_x86_64.whl#sha256=2f525f98e7cf75d4359ea05ffd3365fefb9f353463913fc7215751c0edf07298
+triton==2.0.0
+torchdata==0.6.1
+# xformers 0.0.20 is built from source by bootstrap_vista.sh for CUDA11.7.
+# Its PyPI wheel targets CUDA11.8 and must not silently replace this build.

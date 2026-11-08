@@ -1,0 +1,72 @@
+# Materialize this specification only after freezing the generation source.
+# The plan copies manifests and is immutable; partial phases resume in place.
+schema_version: 1
+base_config: configs/study_eager_development.yaml
+reference: upstream
+optimized_reference: conditioning-reuse
+manifests:
+  development: /workspace/data/manifests/development.jsonl
+  evaluation: /workspace/data/manifests/evaluation.jsonl
+  evaluation_second_seed: /workspace/data/manifests/evaluation_second_seed.jsonl
+quality:
+  shard_clips: 32
+  candidate_count: 1
+  action_candidate_count: 2
+  action_subset_clips: 16
+  retain_raw_clips: 1
+  review_pairs_per_shard: 4
+  warmups: 1
+  minimum_free_bytes: 8589934592
+  lpips: true
+  lpips_device: cuda
+  evaluation_threads: 4
+  evaluation_python_path: /workspace/outputs/evaluation-packages/lpips
+  evaluation_torch_home: /workspace/outputs/evaluation-packages/torch-home
+  evaluation_setup_receipt: /workspace/outputs/evaluation-packages/setup-receipt.json
+timing:
+  blocks: 4
+  requests_per_block: 50
+  candidate_count: 1
+  warmups: 3
+variants:
+  upstream:
+    model: {backend: upstream}
+  eager: {}
+  conditioning-reuse:
+    optimizations: {conditioning_cache_bytes: 2147483648}
+    benchmark: {input_condition: reused_conditioning}
+  # Additional reduced-step controls are predeclared from measured block cost.
+  # Actual latency matching is determined on all development clips.
+  steps-47:
+    generation: {steps: 47}
+    optimizations: {conditioning_cache_bytes: 2147483648}
+    benchmark: {input_condition: reused_conditioning}
+  steps-46:
+    generation: {steps: 46}
+    optimizations: {conditioning_cache_bytes: 2147483648}
+    benchmark: {input_condition: reused_conditioning}
+  steps-45:
+    generation: {steps: 45}
+    optimizations: {conditioning_cache_bytes: 2147483648}
+    benchmark: {input_condition: reused_conditioning}
+  steps-40:
+    generation: {steps: 40}
+    optimizations: {conditioning_cache_bytes: 2147483648}
+    benchmark: {input_condition: reused_conditioning}
+  steps-30:
+    generation: {steps: 30}
+    optimizations: {conditioning_cache_bytes: 2147483648}
+    benchmark: {input_condition: reused_conditioning}
+  steps-20:
+    generation: {steps: 20}
+    optimizations: {conditioning_cache_bytes: 2147483648}
+    benchmark: {input_condition: reused_conditioning}
+  feature-2:
+    optimizations: {conditioning_cache_bytes: 2147483648, feature_cache_interval: 2, feature_cache_module: output_blocks.9}
+    benchmark: {input_condition: reused_conditioning}
+  feature-3:
+    optimizations: {conditioning_cache_bytes: 2147483648, feature_cache_interval: 3, feature_cache_module: output_blocks.9}
+    benchmark: {input_condition: reused_conditioning}
+  feature-4:
+    optimizations: {conditioning_cache_bytes: 2147483648, feature_cache_interval: 4, feature_cache_module: output_blocks.9}
+    benchmark: {input_condition: reused_conditioning}

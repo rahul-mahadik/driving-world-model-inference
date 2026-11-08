@@ -1,0 +1,21 @@
+# Set using DEVELOPMENT data, then freeze before evaluating finalists.
+# These intentionally empty tolerances prohibit a quality-preserving claim.
+schema_version: 1
+calibrated: false
+frozen: false
+selected_on: development
+development_manifest_sha256: null
+development_scene_ids: []
+frozen_at: null
+metrics: {}
+# Example AFTER calibration (all limits are maximum acceptable error):
+# metrics:
+#   max_abs_error: {maximum: <measured limit>, aggregation: max}
+#   rmse: {maximum: <measured limit>, aggregation: mean}
+#   lpips: {maximum: <measured limit>, aggregation: mean}
+#   freeze_fraction_increase: {maximum: <measured limit>, aggregation: mean}
+performance:
+  calibrated: false
+  relative_latency_tolerance: null
+  minimum_requests: 200
+  require_confirmatory_rerun: true

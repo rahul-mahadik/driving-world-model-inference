@@ -1,0 +1,125 @@
+{
+  "coverage": {
+    "completed_blocks": 2,
+    "completed_heldout_quality_pairs": 0,
+    "measured_requests_per_role": 50,
+    "partial_block002_credited": false,
+    "partial_block002_successful_rows": 35,
+    "planned_blocks": 8,
+    "planned_heldout_quality_pairs": 16,
+    "planned_requests_per_role": 200
+  },
+  "descriptive_compiler_difference": {
+    "median_latency_reduction_percent": 24.03562017129208,
+    "peak_allocated_memory_increase_percent": 7.679352437194775,
+    "throughput_increase_percent": 31.652076739524016
+  },
+  "hardware": {
+    "cuda_version": "11.8",
+    "driver_version": "580.178.04",
+    "gpu": "NVIDIA H200",
+    "same_physical_gpu_verified": true,
+    "torch_version": "2.0.1+cu118"
+  },
+  "headline_eligible": false,
+  "heldout_quality_completed": false,
+  "limitations": [
+    "Only one completed block per role: between-block variability remains unmeasured.",
+    "Single-block point estimates do not satisfy the prospective 200-request-per-role comparison.",
+    "The compiler fails exact upstream pixel agreement; output preservation and accepted quality are not established.",
+    "The 35-row interrupted block is preserved separately and contributes no completed-block statistics.",
+    "No H100/A100 timings are pooled; no conclusion is made about later allocations or experiments."
+  ],
+  "performance_regression_policy_calibrated": false,
+  "private_operational_records_included": false,
+  "provenance_sha256": {
+    "archive_inventory_sha256": "b02abb4a472aabf5a0e6f8316919eaacf295b05ae4a8d85e4e96a26730b0c140",
+    "canonical_block_validation_sha256": "615f6f3201e5dd1e4e00dbebbc85602ade06eaa6a9f2458b0409d7b95ca9dbfc",
+    "compiled-default-all_proof_sha256": "a0741883a4081d32b3bbb0fdc4221864340af794e396f6c5963a628b536a3d66",
+    "descriptive_result_sha256": "26f6213c4021f584014fd3a97298e616697806c27f92aaa9118b1e37fa3564b8",
+    "eager-strict-all_proof_sha256": "b8449fba5c9feb0a65481ff82c37b7e0728229dfeec1084e1b35b6b24e28ef4c",
+    "independent_archive_verification_sha256": "195997f0833a54626afbafd56dc510d7c4a99dfb7ffa29eb6a3aa67ecab9fbaf"
+  },
+  "qualified": false,
+  "quality_context": {
+    "historical_blind_review_geometry_detail_rejections": 1,
+    "historical_blind_review_ties": 6,
+    "historical_h100_norm_qualification_passed": false,
+    "interpretation": "The sealed geometry/detail rejection is preserved. Post-seal preference for compiled is not evidence of compiler-induced degradation. Historical H100 development/review is not new H200 held-out quality evidence.",
+    "rejected_case_post_seal_preference": "compiled"
+  },
+  "quality_preserving": false,
+  "raw_data_included": false,
+  "roles": {
+    "compiled-default": {
+      "block_index": 1,
+      "completed_blocks": 1,
+      "completed_futures": 50,
+      "distinct_scenes": 50,
+      "failures": 0,
+      "latency_p50_s": 40.842762236499766,
+      "latency_p95_s": 40.939844038499174,
+      "legacy_strict_numerical_passed": false,
+      "measured_requests": 50,
+      "oom_attempts": 0,
+      "peak_allocated_bytes": 60363113984,
+      "peak_allocated_gib": 56.217530727386475,
+      "peak_reserved_bytes": 88717918208,
+      "peak_reserved_gib": 82.625,
+      "recompiled_during_measurement": false,
+      "source_measurements_sha256": "b15a09457bd80c0ef0119cd4b7e9f1161b6b091a8b98438e99dd1c4dd0e643d6",
+      "source_summary_sha256": "980f5c10f64f9d547e4f328e0da902049502646bcc5589ba9dc42b394e6f6f96",
+      "successful_requests": 50,
+      "throughput_futures_s": 0.02448845916340472,
+      "throughput_measurement_wall_s": 2041.7781154119912,
+      "warmup_requests": 3
+    },
+    "upstream": {
+      "block_index": 0,
+      "completed_blocks": 1,
+      "completed_futures": 50,
+      "distinct_scenes": 50,
+      "failures": 0,
+      "latency_p50_s": 53.765675871502026,
+      "latency_p95_s": 53.788939047550045,
+      "legacy_strict_numerical_passed": true,
+      "measured_requests": 50,
+      "oom_attempts": 0,
+      "peak_allocated_bytes": 56058206720,
+      "peak_allocated_gib": 52.20827341079712,
+      "peak_reserved_bytes": 88780832768,
+      "peak_reserved_gib": 82.68359375,
+      "recompiled_during_measurement": false,
+      "source_measurements_sha256": "b2b5d940ab1fa4d0f3916dbfccaf2ee55abfb34a32c0a13352b834b4efa5a43e",
+      "source_summary_sha256": "48169edfea759a444696f4317381a5ae475b3a2060ed0c123534b3f5acd295af",
+      "successful_requests": 50,
+      "throughput_futures_s": 0.018600890901140567,
+      "throughput_measurement_wall_s": 2688.043291353002,
+      "warmup_requests": 3
+    }
+  },
+  "schema_version": 1,
+  "scope": "One completed 50-request block per role on one physical H200; interrupted prospective 200-request-per-role benchmark.",
+  "snapshot_at": "2026-10-29T19:18:17.873866+00:00",
+  "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "status": "preliminary_recovered_single_block_comparison",
+  "timing_complete": false,
+  "workload": {
+    "candidate_count": 1,
+    "compilation_initialization_warmups_and_exports_excluded": true,
+    "filesystem_cache": "OS-controlled; uncached forbids decoded/conditioning reuse",
+    "generation": {
+      "cond_aug": 0.0,
+      "conditioning_frames": 1,
+      "decode_chunk_size": 14,
+      "dtype": "fp16",
+      "guidance_scale": 2.5,
+      "height": 576,
+      "steps": 50,
+      "total_frames": 25,
+      "width": 1024
+    },
+    "input_condition": "uncached",
+    "paired_request_and_seed_order_verified": true
+  }
+}

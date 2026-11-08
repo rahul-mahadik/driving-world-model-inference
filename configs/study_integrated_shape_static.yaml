@@ -1,0 +1,7 @@
+extends: study_integrated_compiler.yaml
+name: study-integrated-shape-static
+output: outputs/study-probes/integrated-shape-static
+optimizations:
+  dynamic_shapes: false
+probe:
+  kind: shape_static

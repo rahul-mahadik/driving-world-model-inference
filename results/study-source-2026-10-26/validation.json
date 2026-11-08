@@ -1,0 +1,107 @@
+{
+  "core_and_production_helpers_changed_by_publication": false,
+  "first_staging_attempt": {
+    "cause": "A unit fixture required excluded real manifest and private environment artifacts.",
+    "passed": 707,
+    "preserved_failure_junit_sha256": "63c85a092a2d28f0324e78dceb8392bd32c8cbd6c96b3c32af31e109f3f86581",
+    "repair": {
+      "change": "Portable unit fixtures replace reads of real manifest and private environment artifacts. All test assertions retained; production helper and core unchanged.",
+      "file": "tests/test_compiled_bootstrap_wrapper.py",
+      "new_sha256": "f3024b879b9aa4233c8fd7d0bde3307558d5f158e33b7617ee467394769cc259",
+      "old_sha256": "dc3631ad5e3be56670bda8de2eae0923a8e343eb16d576c96c51175dd251f623",
+      "root_authorized": true,
+      "workspace_and_publication_equal": true
+    },
+    "setup_errors": 16
+  },
+  "historical_publication_bundles_unchanged": true,
+  "implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "schema_version": 1,
+  "scope": "CPU validation of this publication copy. Synthetic metrics do not establish real-model performance, numerical equivalence, perceptual quality or safety.",
+  "source_identity_unchanged": true,
+  "staged_cpu_tests": {
+    "errors": 0,
+    "failures": 0,
+    "junit_sha256": "eb6dbbfdd56727925abc36e51839b8ca2a918f042fa0d5a073770791bf01d74a",
+    "log_sha256": "4fc181790a52529cce56940450e82882e8e346fd77fad5833329e13c4313468c",
+    "passed": 723,
+    "seconds": 82.404,
+    "skipped": 0
+  },
+  "synthetic_cli_workflow": {
+    "all_exit_zero": true,
+    "commands": [
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.prepare",
+          "--config",
+          "configs/data.yaml",
+          "--synthetic",
+          "--output",
+          "data/synthetic"
+        ],
+        "exit_code": 0,
+        "log_sha256": "a3480cacc6ae9296c9779895b13c279ab40093bdbac442784de88f4038726001",
+        "seconds": 1.6628555409843102
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.benchmark",
+          "--config",
+          "configs/demo.yaml",
+          "--output",
+          "outputs/demo-finalists/baseline"
+        ],
+        "exit_code": 0,
+        "log_sha256": "fa7dcfbf87cb7e7fe2ab067056d2623620f65c5a09d7195fb363775bb28e5b75",
+        "seconds": 0.33221675001550466
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.benchmark",
+          "--config",
+          "configs/demo_cached.yaml",
+          "--output",
+          "outputs/demo-finalists/cached"
+        ],
+        "exit_code": 0,
+        "log_sha256": "338ece4558b1af99f49cf33143cf632f9882d65775dafe7c75c8a30c374de7aa",
+        "seconds": 0.2631925829919055
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.evaluate",
+          "--runs",
+          "outputs/demo-finalists",
+          "--reference",
+          "outputs/demo-finalists/baseline"
+        ],
+        "exit_code": 0,
+        "log_sha256": "a5537661550218f263e81fb337943263d5cae4e6b0b80c031cfc9b8e92451019",
+        "seconds": 1.9498160419752821
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.report",
+          "--runs",
+          "outputs/demo-finalists"
+        ],
+        "exit_code": 0,
+        "log_sha256": "003c1e91ae32b3d58ae020e91115a6659f1aa9d3f09324b7c1327e4c7fefa1b6",
+        "seconds": 0.08692204195540398
+      }
+    ],
+    "generated_artifacts_in_publication": false,
+    "scope": "Synthetic CPU software-contract demonstration only; no real-model performance or quality claim."
+  }
+}

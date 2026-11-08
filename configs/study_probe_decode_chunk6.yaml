@@ -1,0 +1,7 @@
+extends: study_probe_eager.yaml
+name: study-probe-decode-chunk6
+output: outputs/study-probes/decode-chunk6
+generation:
+  decode_chunk_size: 6
+probe:
+  kind: decode_chunk6

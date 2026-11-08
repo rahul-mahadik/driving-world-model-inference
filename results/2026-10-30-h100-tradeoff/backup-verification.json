@@ -1,0 +1,22 @@
+{
+  "copy_integrity_only": true,
+  "every_local_file_size_and_sha256_verified": true,
+  "file_count": 179,
+  "independent_root_rehash_complete": true,
+  "private_operational_records_in_publication": false,
+  "proof_npz_bytes": 4600637596,
+  "proof_npz_count": 14,
+  "raw_arrays_in_publication": false,
+  "remote_before_after_inventory_equal": true,
+  "schema_version": 1,
+  "scientific_qualification_changed": false,
+  "scope": "New H100 cohort timing, semantic proof and host evidence archive.",
+  "source_receipt_sha256": {
+    "raw_archive_after_inventory_sha256": "82fa278c391baa3f66188a91ed6f2fa26578e941529eb615a5ac31565ccc6f72",
+    "raw_archive_before_inventory_sha256": "82fa278c391baa3f66188a91ed6f2fa26578e941529eb615a5ac31565ccc6f72",
+    "raw_archive_copy_verification_sha256": "e3a0e81cb060edf22bf6845faeafb78174730ace95d25e0716c3d0ba295ea405",
+    "raw_archive_independent_rehash_sha256": "9bd84dd560bbf2ca0099fd1ba2de1c0125fcc10ff7fa2503cea1ae22f7228e2b"
+  },
+  "total_bytes": 4605682030,
+  "verified_at": "2026-10-30T08:08:58.880733+00:00"
+}

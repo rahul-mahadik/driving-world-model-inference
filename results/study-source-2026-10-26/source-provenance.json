@@ -1,0 +1,1023 @@
+{
+  "a100_development_cpu_diagnostics_completed": true,
+  "a100_development_full_archive_verified": true,
+  "a100_development_full_study_complete": false,
+  "a100_development_quality_accepted": false,
+  "a100_development_report": "results/2026-10-28-a100-development/manifest.json",
+  "a100_development_report_manifest_sha256": "b44cd574b697c8c2dae37bcb91635f8e1b87f1fb2d4cc3424f60af0d851a076e",
+  "a100_development_snapshot_at": "2026-10-28T04:07:13.732204+00:00",
+  "a100_development_timing_accepted": false,
+  "a100_eager40_original_evaluation_status": "failed_final_idle_gate_existing_artifacts_separately_verified_no_job_promotion",
+  "a100_feature2_evaluation_status": "completed_cpu_lpips_uncalibrated_no_acceptance",
+  "a100_full_local_raw_archive_verification": "strict_and_all_three_generation_archives_verified",
+  "a100_full_study_complete": false,
+  "a100_historical_helper_provenance": "research/a100-pilot-v1/source-provenance.json",
+  "a100_prior_four_scene_snapshot_unchanged": true,
+  "a100_prior_reports_unchanged": true,
+  "a100_public_projection_manifest_sha256": "b101000a8af46d20fde2f0833aedc8c2e1b426bcfb962c865bc3cfb4f44a9d05",
+  "a100_quality_accepted": false,
+  "a100_snapshot_at": "2026-10-28T02:04:51.404891+00:00",
+  "a100_static_review_scope": "Two independent agent-assisted reviewers per comparison; four relative ties each; same two cases unacceptable in both panels; no playback or human review.",
+  "a100_step47_full_study_complete": false,
+  "a100_step47_generation_and_comparison_archives_verified": true,
+  "a100_step47_matched_timing_accepted": false,
+  "a100_step47_quality_accepted": false,
+  "a100_step47_report": "results/2026-10-28-a100-step47/manifest.json",
+  "a100_step47_report_manifest_sha256": "d57713e07825cbab5bc7cd11ad2c5053ce48a7076f6bb1a692fa56c1797c5ad7",
+  "a100_step47_snapshot_at": "2026-10-28T04:46:09.012565+00:00",
+  "a100_step47_static_agent_reviews_completed": 2,
+  "a100_timing_accepted": false,
+  "excluded": [
+    "provider ledgers",
+    "account identifiers",
+    "SSH endpoints",
+    "credentials",
+    "dataset files and annotations",
+    "model weights",
+    "raw images/videos/tensors",
+    "profiler binaries",
+    "local reports with private runtime paths"
+  ],
+  "headline_optimization_claim": false,
+  "historical_evidence": "Unchanged from first publication; results/2026-10-26-h100",
+  "historical_measured_implementation_sha256": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00",
+  "implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "note": "Scripts, configs, tests and environment definitions are versioned separately in this manifest; package fingerprint covers drivebench Python files only.",
+  "previous_publication_manifest_sha256": "04b9d2e029d7c9e3136a107d548354eacbf28d3427a23ac7e61e4236b4d92125",
+  "schema_version": 1,
+  "source_files": {
+    ".github/workflows/cpu.yml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "17cdcbd3c057aac93cf38c94780db398d6a920c6d7bd0d76136352d5ba800b9b"
+    },
+    "configs/baseline.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "9f522ed2afbec88e449bd0bbadb034c2576903bfd4a16e1352ba52cbfcff7bbc"
+    },
+    "configs/cached.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "884b88dfb291f46924b77a1b2ec3b2fd5433f721efe8ca1e2b9a12b29f09e9fc"
+    },
+    "configs/combined_candidate.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "7ed2839fefbb83a1085c4e4f5886f7228623d8355a81864cc9ab8c0b0b391c66"
+    },
+    "configs/compiled.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "2d8b3be90d535cb8c2d02de530fb2f11510862eca3696ae9e1f85696181f81b8"
+    },
+    "configs/compiled_decoder.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "bb3cce1021e5dce02fc6218d681e5a2144ba4834e267b0e7ff741567fa87bf7e"
+    },
+    "configs/conditioning_reuse.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "076412d51c5c88cc88d4408735ee744f9ac685e725ef5451cb93ccc060a61fe1"
+    },
+    "configs/data.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b90f3a93edf008b52b2203278a0b47713f664e6b7515160dfc0b63b584507c97"
+    },
+    "configs/demo.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "0cd77495ffa0344554fa5990dcbee6df4a32f21ae7471a2ae3476ed117912874"
+    },
+    "configs/demo_cached.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "7694d7f62f78461a1ee6bca6a437f28d74674eaa6c61f3ebf53695dd23040a81"
+    },
+    "configs/dynamic.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "46bce6c6223bbe176d467ac6b7fb1a33aacf034e75dadc16515964eaf8e6881c"
+    },
+    "configs/final_evaluation.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "d6d0bba176402960ede25fb9c92b7adf6980a9cbaca4b05e4cc81c575212d50a"
+    },
+    "configs/full_study.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "92360a931b2797c43359c3b55916f2ed37c183d2575db06b27d6776849d7cd3a"
+    },
+    "configs/full_study_registered_draft.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "0875b69cc7a6fee9dfe210a92fb3a9a48fc708365825c07af1e40fe0d038c69f"
+    },
+    "configs/prefetch.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "a8731efbe15f669d2cdc2a9f23b84d9a939a5002eea7c88ef00f7283fa069531"
+    },
+    "configs/preflight_scene0103.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "3cc4d3be59f9f81b24d1805b04747d998b4a9a1378ed3ebddf0cc96a0a88c8b7"
+    },
+    "configs/preflight_scene0103_benchmark.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "d58c6f199722e228e0d1645dd1a2205b313ae596ef5184e0d8fdd5fdc552cfee"
+    },
+    "configs/preflight_scene0103_compiled.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "725fc4ab54581f7c4f87f080edac95d2a07e75e359a117736f43e486c7615905"
+    },
+    "configs/preflight_scene0103_corrected.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "f2b1ffe9afaede699f3b3461b7ec6f844f5f953c7104c3b96b6418a72156a8a2"
+    },
+    "configs/preflight_scene0103_corrected_benchmark.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "bfb624cde3e97e17d32039536da615c28fa32752ed4122a960db126519f28fdc"
+    },
+    "configs/preflight_scene0103_corrected_compiled.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "98e49af51395d0751ea72eaba628d8c83befa1b586ffdfba1369b90f117259c8"
+    },
+    "configs/preflight_scene0103_corrected_compiled_attention_boundary.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "3b35e2c27cac56bf43571f144579b87112058e3c2366b867666b121db99a4f6f"
+    },
+    "configs/preflight_scene0103_corrected_conditioning_reuse.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "bc1baa073dbf93b40d700a62c9f804e6b5793fed4b69e0444ba84d5c250457ef"
+    },
+    "configs/preflight_scene0103_corrected_conditioning_reuse_benchmark.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8576802ebf616056984337f0eaddc41a6b66511e5082b51c23abe6ead065b9de"
+    },
+    "configs/preflight_scene0103_corrected_profile.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "eeac93b5eea6497b9c81f6097442ea7d9fdfc0b9fb5345b6fb2d88cf505a954e"
+    },
+    "configs/preflight_scene0103_profile.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6b628f08b51797f9a8e0af4577bd2887cb825821eefd12e9fb200f702f40186a"
+    },
+    "configs/second_seed.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b851e5557abf324ce6aa23e6316379afa54e4b5ef84a5fa4442400c64ae15ce7"
+    },
+    "configs/study_batch_permutation.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "bde2a53ba2566cd75724e80a4d6a05df77eb16c6435b7bf7214d5760014cc24d"
+    },
+    "configs/study_bootstrap_compiled_conditioning.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "289f1843b6bae3744dd68887f56b0ff56037965582edb87d4c7d47a413ea2173"
+    },
+    "configs/study_bootstrap_compiled_default.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "29b557b240b63a1fa628dc7a2b65715da373a61198d8aafebc6951fbd3c2d119"
+    },
+    "configs/study_bootstrap_compiled_hostspec.json": {
+      "origin": "current_workspace_source",
+      "source_sha256": "d60c904ab65f80120b00ba07e287d2cb8e0b758f829ef378337190bbee9e2d91"
+    },
+    "configs/study_bootstrap_unfrozen_tolerances.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "1fd3a6789b7a49a81723f9a67aa841683c9ac65b30293e6aded3c3575fa8309b"
+    },
+    "configs/study_compiler_operator.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "0152ef20365072b50a413e62d8efb4d15adb1d8bac9b705820283f3fe8ed30be"
+    },
+    "configs/study_denoiser_bf16_probe.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "066f234e9495aeba33a08e2f566f1823789d549fd1d0981f07d2c8512d3f1592"
+    },
+    "configs/study_eager_development.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "0c885add39b6538216607f883cb7b741891f4e0389216b1bbdc615f28b5ff483"
+    },
+    "configs/study_integrated_compiler.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4ec75b9d2a58b1830917ca19dc6d06b024f8482c9341f270ee04f90d98e43f10"
+    },
+    "configs/study_integrated_feature1.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "1b9a9ee6008dadc20d49e1b6165580af4579e3f4751f1eff15ba72e984a0db64"
+    },
+    "configs/study_integrated_feature2.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "f3a374dceccf8a9fa080680037f866a1fcedd1500de522f82554f27244dac642"
+    },
+    "configs/study_integrated_feature3.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "37159d8160111e9b7003e36e57a0f40198f826da7b8cdd11f683299b8ed8d0ca"
+    },
+    "configs/study_integrated_feature4.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "772962a710d8aeca8973ad6cec32d838f7e24fabbb9d8512032f655c105f355a"
+    },
+    "configs/study_integrated_shape_dynamic.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "cf5c8ad214ad25bb4bdf08689c6db8a4581c1e5cc9f49232e8b66e1925ba3022"
+    },
+    "configs/study_integrated_shape_static.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "cfac5717f0f3f7d1e2f6912a5d1280d0030929201c496c232fcec34f751267e7"
+    },
+    "configs/study_memory_base.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "333eaa8e77c106e5b1c9de6ef70e4818b09d0cfe4af7e65aff76b6c1afbf3cc8"
+    },
+    "configs/study_memory_batch1.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "ac0a64bdd9fad43faa9a312b603fcc20be026e0d49edcb3dda61e07885bdcdcf"
+    },
+    "configs/study_memory_batch10.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "53bad3407d666e344cf0013fab0f116f7c90472863e019c6d489a62451939ec4"
+    },
+    "configs/study_memory_batch11.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "5d84219afd2aaf2454dcfa0990f3b62a884dba2cecefce8ad52ed13266070651"
+    },
+    "configs/study_memory_batch12.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "e79a66f21edad44e17ada67cc0e09509184df56f4b7c47ee3f56c2f853953aa3"
+    },
+    "configs/study_memory_batch13.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "7a5a39789564ed488cf8f8f85884ee45661d813c4edcffdccfa9639f9bc92ad3"
+    },
+    "configs/study_memory_batch14.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "cefba6be6d95351e164a5291c6167e8f8b3146d8bef30bfee1dd23e955faa145"
+    },
+    "configs/study_memory_batch15.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "159b2b9e42bfe34b29fc16a67b38fc417d41eb004e7dae19b800ff978b4855fd"
+    },
+    "configs/study_memory_batch16.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4f56104a0e62377fcf1a493b5482bcb9640ef443456e6e984db12cf328c01244"
+    },
+    "configs/study_memory_batch2.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4dc17a444f9feeb395fe0e7fd448d1da2d09675afe0aeb938c130d37ea685f40"
+    },
+    "configs/study_memory_batch3.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "530f34619e53a08fd048eaf6ab20b59b7ec76daab878e6d86cea4ed09ae4da75"
+    },
+    "configs/study_memory_batch4.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "5d8f77621efcc52dc9ada1393987f5bd3c8e48d4c44c061b9e074ddbbb301db3"
+    },
+    "configs/study_memory_batch5.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "68233530a474e5ec06864f8c645028bea35975ed9666cd90f7d322c5cfc1fcab"
+    },
+    "configs/study_memory_batch6.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "bd6919eb71121ddf3005b149bc49c4de122341dda5757161b5369352e7fa177e"
+    },
+    "configs/study_memory_batch7.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "1e1c33199c29fd575e2d47cf2c1c5fd8be7782172d90e7990b2874731ddc914a"
+    },
+    "configs/study_memory_batch8.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "9134e48a966dbe23bd66034366842ab14f179587108c6ebe7619da00a6bd4cdc"
+    },
+    "configs/study_memory_batch9.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6e50a96476f6b3566dfe48837849ac84a4874f94b2537d41eb32fa5356679f97"
+    },
+    "configs/study_probe_bf16.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "996d16478ce323c9bbbf562bac971e164002b96758eca9fe970a6892d2e278f1"
+    },
+    "configs/study_probe_block_timing.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "fc26ccfe8c014e6debf40142a041df9be0188c3d1c12f869645ff896d2100cbb"
+    },
+    "configs/study_probe_decode_chunk6.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "7833269fe2a7fb822424f89649fb5454ab087454eda42f0f5bd532934ad87abc"
+    },
+    "configs/study_probe_decoder_compile.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "61f6b8519939f8a1e0081d12f578e2dfc607f1b3a157ed5a84fc2f820a1bca60"
+    },
+    "configs/study_probe_denoiser_default.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "cf3c08e7334bd0a64b1d5e8b9c7ecf6db0c0ab123c5ff60aff435d7b81852e90"
+    },
+    "configs/study_probe_denoiser_dynamic.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "14d006d10f41accf8da3ae9d7a9c609065bc9f04b4e6fed64bf75992b607e043"
+    },
+    "configs/study_probe_denoiser_reduce_overhead.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "3842805454f2eb6659bc082ccf169b6ab6228481a8a783e76506e98afce10c52"
+    },
+    "configs/study_probe_eager.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b021aa9b5ba10b9bb5e8806384bc3f6ccf4aed97e108f0490e913b7fcbd8e245"
+    },
+    "configs/study_probe_shape_dynamic.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "557a3f59173bda992bd040a55e93f21bde30e1e21f742202460d787dd91a9a1d"
+    },
+    "configs/study_probe_shape_static.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "3ed29d1f65c3c6e1419dde0d53fc9a45dd7100dc81f98946f86779d22969e7d4"
+    },
+    "configs/study_registered_einops_default.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "ab76e244a621de6533b9c0d9e97bc4436fb2abbe41c1d82ac94cf22cf738f2c2"
+    },
+    "configs/study_registered_einops_dynamic.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "130931d97673d0f72b65e33172b211edec0ea6f9e9cc8f1452097ecd2e56d067"
+    },
+    "configs/study_registered_einops_reduce_overhead.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8b8dcbdb09f5b1aa7456344c4f08c56a79c39ff8c14c6b27702a2a8782e1a5c1"
+    },
+    "configs/study_upstream_development.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "711544ffa17a3a0b942dfaff1a857d26bb4cd96af36e8198b552f9c5ba99f59b"
+    },
+    "configs/tolerances.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "acf035bbbce67528a46d40ae0a16eab7df79f2757c628c3413f96875b8702683"
+    },
+    "configs/upstream.yaml": {
+      "origin": "current_workspace_source",
+      "source_sha256": "36e1f7b6d1c377a165b2a250d8b9f131b8cdd5a620d4ee7f500db99f288faf92"
+    },
+    "docs/assemble-bootstrap-decision.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "89c1dd01dbf9e8eb14ac7db3d2d01be88ced1698aa146cf24147a6bac6175efb"
+    },
+    "docs/bootstrap-decision-workflow.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "35042f598ffdadbe338ff1fff593584446c4c54dc716ec63a6c02f4c8fbf646a"
+    },
+    "docs/bounded-quality-review.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "00c6d8bb62fe0ba2bb1e5a3b650d7b37101d931be74f4ba3fae799aaee3d22b0"
+    },
+    "docs/compiled-bootstrap.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "0acdab32d4d132fc810f20e5c630d44e3acc88fee32a6fa285d175b84145c75a"
+    },
+    "docs/compiler-norm-qualification.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b90e1a2af4acf4b8fe0ef8f925c6fe03846f01c6638fd519cdf92c77cb9c8897"
+    },
+    "docs/compiler-runtime.md": {
+      "origin": "current_workspace_text",
+      "published_sha256": "f83a271f53a3978df53f1daea1c5eddd90a6b5f927585ee689935b246404f94e",
+      "source_sha256": "f83a271f53a3978df53f1daea1c5eddd90a6b5f927585ee689935b246404f94e"
+    },
+    "docs/exact-numerical-semantics.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "5eb6b1ca6a8d949e4a7fe9dbc05696f194a42a88e6e53feb50af4b674d393cad"
+    },
+    "docs/experiment-protocol.md": {
+      "origin": "current_workspace_text",
+      "published_sha256": "ca0c2283505a94d66307eaa68e7ddae4a2d33af79f66f09872b8ce86ee9f5ccb",
+      "source_sha256": "ca0c2283505a94d66307eaa68e7ddae4a2d33af79f66f09872b8ce86ee9f5ccb"
+    },
+    "docs/full-study.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "58b2bfe79c1edf63e206bb98fbb49fdff0faddf33c36de81b3067b293465771c"
+    },
+    "docs/norm-qualified-timing.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "ff1375c8ed0b885fa03b36d6107e6db885a1242798f80f06c40ae9ae29fa2a79"
+    },
+    "docs/norm-timing-report.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "38fa0544747f2c64f9e4a6268bd4aa79c17f68762f9478cfee24e07293249289"
+    },
+    "docs/recorded-ground-truth-diagnostics.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8d488a43bae57af53e831b3d9e7ad173c05a50ca92157d064c2a55c8b6ec400c"
+    },
+    "docs/registered-study-draft.md": {
+      "origin": "current_workspace_text",
+      "published_sha256": "d3204c399bec1d5a305ee8841a6cf9ff38f701d13478f241fed3620443d13b7b",
+      "source_sha256": "d3204c399bec1d5a305ee8841a6cf9ff38f701d13478f241fed3620443d13b7b"
+    },
+    "docs/remaining-diagnostics-queue.md": {
+      "origin": "current_workspace_text",
+      "published_sha256": "1992e4c20bbb9acf445ec673b6e9bb938e58d8a28ea94daf6dd2775662f102d9",
+      "source_sha256": "1992e4c20bbb9acf445ec673b6e9bb938e58d8a28ea94daf6dd2775662f102d9"
+    },
+    "docs/vista-integration.md": {
+      "origin": "current_workspace_text",
+      "published_sha256": "b2cea87f4cca19707e6c95068a8e8687fe0dc5cb706ca5a157bace30cd14e521",
+      "source_sha256": "767091de464dcfd3fb325e3d85fc33dcc76b4facd72cc265ec56c83fff5a3fcf"
+    },
+    "drivebench/__init__.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "d2c3c7fac53b77a582cea743de894812ab58979c708dd039c84a911932334871"
+    },
+    "drivebench/benchmark.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "a9a125ceabfba64453ba24b33da3b5b360073a4468b23f2f1f7e198932eba3cb"
+    },
+    "drivebench/benchmarks/__init__.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "ebb6419be3d03e117aef85b3872adc02e8ff0699ee7b1bac18cdbbc7be83d98c"
+    },
+    "drivebench/benchmarks/agreement.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "e6cfc35da041dabc250c80aaf2946653fa9b3320fec8160c9bae4c9d3293b789"
+    },
+    "drivebench/benchmarks/environment.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "f50f291212439591f66f88cb8df6e68a1b3700ba359d6f75dd44c6077d586216"
+    },
+    "drivebench/benchmarks/statistics.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "84776f7d3d7fa32479c75767007b4d62bc0fbad96de1c6be16d1c0c90c3b3b66"
+    },
+    "drivebench/calibrate_performance.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6c4b97d9af1d0d4c6bd67bfc2acc5f178da987acc8a21eecf79dc3b9c6a850aa"
+    },
+    "drivebench/calibrate_pilot.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "f4801ac1b1c00b17e27148e1603ed6e7afe7e0da794940d23388a240a6b5fd8b"
+    },
+    "drivebench/config.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "f2635a2f3ed101b9b1c9bcd74d0cef90c6a38ab688aaf7da98366f9f38909a26"
+    },
+    "drivebench/data/__init__.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "701513a86029e95e0b74c9cce77e0ea324bc985550bafd5236ce6a55fc77d92f"
+    },
+    "drivebench/data/manifest.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "9e42e90472353082c0b4f143305d011c3cecca6a9b42492871069fa511309022"
+    },
+    "drivebench/data/manifests.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "7f17d120cf95dc3b31f05ee93ffe88110268f5a895356d3d4fae0c0e9a6a0b0c"
+    },
+    "drivebench/data/nuscenes.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "21a65b4b7afa03cad9e00dd270b13c650626ad16c95defadda55d68d735eafbd"
+    },
+    "drivebench/data/preprocess.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "a23229bd01d3b43af9bfd109518ea253d29b5899d488bbce9975953eb0de719d"
+    },
+    "drivebench/data/preprocessing.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6b2611ec72eb10d2ba440c33ab585c86ff9a0ae0bb70b854bca783c2e05c8a01"
+    },
+    "drivebench/data/synthetic.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "25eae333fe43e551702a6e9d0470e36e208cebae984ce8a0db51f9c7b3699853"
+    },
+    "drivebench/data/trajectories.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8c81beda6cacc4930d5cd580471ae64ef7e43fc77b86e370648e79ee3fd7b39f"
+    },
+    "drivebench/engine.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "36b627e1fb4f43e119746c67169fd4d78cd3f8a30946d7eb5e8cf474f85e6067"
+    },
+    "drivebench/evaluate.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b57e724bab8f86448272aadb48c129e9e9aa1d9a98c48b4764291c9ac8aa70c5"
+    },
+    "drivebench/evaluation/__init__.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b3aa514a4102ff3f03443045a71d2273b9b822be445682a5e64ef033c611d0a5"
+    },
+    "drivebench/evaluation/io.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "615cd6ffa484eb4227e03772817eeb6a5714cca8b4962538e9a50a964edeb9db"
+    },
+    "drivebench/evaluation/metrics.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "0b8a482c4f1e8984dd59f161591cf5f4f8b40ec3557158c1e66fcdece2e84c33"
+    },
+    "drivebench/evaluation/review.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "2b1883def1c9f48866b4043831c6c3ff32da61039b48aa2df80f702cea440101"
+    },
+    "drivebench/evaluation/study_policy.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "034ee91bf33e9ec9ca00e4c2fa78a0d6ec776f08964f4b852904de85a96d96f9"
+    },
+    "drivebench/experiments.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "c679c0f8523dfe2c0736283f1ac7e20fe0915dd6984755ba0f4629c4531323b9"
+    },
+    "drivebench/freeze.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "761d05dc18adbef12aede90c9d5f89138172c4e04e755cceaba240bc55c4d7ff"
+    },
+    "drivebench/kernels/__init__.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "ac916b0c57f6899561f5e33abb75e60bf6db1430b6bdd0c10d25bc8b1142d939"
+    },
+    "drivebench/models/__init__.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6af30022b773a8040d4cbc16ff3e7a8bb4e5c8258206fa1f259291fc68ced8bb"
+    },
+    "drivebench/models/synthetic.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "9f0d80ffb29e46855b91e3968f6dd16bc68103dc9ccc82690d650d6d9e4e6f58"
+    },
+    "drivebench/models/upstream.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6fdf830b39916c67063d0a1c57a4454022b347e0a3ca3e9271f16414a25b34a6"
+    },
+    "drivebench/models/vista.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8b9f0c5d4bf28450abe5757b7184c3b9f5aaae5393b93412a016eebd8170dd6d"
+    },
+    "drivebench/prepare.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "53b2b79f0e8141f432e03b00adfa990846ffa8eecadcc282028ac7216e49d668"
+    },
+    "drivebench/profile.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "762dc3e15565c8445a42ab787df02fb3a4ab3e3468e6b73b9ce425645f1a7566"
+    },
+    "drivebench/regression.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b34bfd2ae2385223d98c43253fc9be9b871fd867f3ee03e739de14d9f67bcc8e"
+    },
+    "drivebench/report.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "1949b0db2c20ff0ebcc0ac16e8f6611e84016c8f28713c67f835d42d0351eaea"
+    },
+    "drivebench/runtime/__init__.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "e34113ec08c78d0f98d3e23c2e2551bfffa5c55d0b964be478d3a49fdb86799f"
+    },
+    "drivebench/runtime/buffers.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "1fa3d2f8abd668287e010770d33d6c9736ff6f11aad8926b2aa3196e4af8a41d"
+    },
+    "drivebench/runtime/cache.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "f757c39fbb75db414d75947bc56e142412aee0e1bef4d9bbe523edc9acd0f9e4"
+    },
+    "drivebench/runtime/compiler.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "bfbe14d1e9d5dda2d0e966de6e7eb819f1603fe276e62c3db24716fc286ea0d5"
+    },
+    "drivebench/runtime/feature_cache.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "fa1e5d684965338b5e4690dde6387563138ea94308c03757b3fa9b6815c348c3"
+    },
+    "drivebench/runtime/prefetch.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "20bc7ecff74bc100f7a47b1c1d2c44f9be60c3508f25ce30f7a6dd4d3d2d67fa"
+    },
+    "drivebench/study.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "58bdca0a4bd3c6d5538aac83c3efeffc9b410386a7eeffcbce1cdfdcbed41edf"
+    },
+    "drivebench/types.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "2e6a8b5a4ec5d025af7f56a077f74adbcbc60560351b8ebc22f1875797a75f72"
+    },
+    "drivebench/validate.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "a2bdc5b6b5d1817b352f203f1afc24ed7ebd467883a2428a517855e1aa3e1b52"
+    },
+    "drivebench/verify_environment.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "9407a3c53c7d43d3125687fbf41c0459e578536bdbee68fddbb27f12e68341df"
+    },
+    "environments/README.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "3782de5240ba6140ccd5932f3490a74e8d8d35d7016115b7872e730e49636828"
+    },
+    "environments/common.in": {
+      "origin": "current_workspace_source",
+      "source_sha256": "5c9a15aabea82f96e040d2aca4bb2b2c6db9ef57f8a9e7e875f72990e80c8829"
+    },
+    "environments/containers/Dockerfile": {
+      "origin": "current_workspace_source",
+      "source_sha256": "9db4f7c3642178c577080c52b3c3b3353e6f7dbcbf6663de9b9b0461fd23226b"
+    },
+    "environments/containers/README.md": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6ad5cbee60d84904b19495915a22187d30088725e6bb9b2cbe746be83901981e"
+    },
+    "environments/containers/build.sh": {
+      "origin": "current_workspace_source",
+      "source_sha256": "2e2bd2b4e35a3ef74ce321558dd078ae22e548045084198168b4ea91bdcda8e3"
+    },
+    "environments/modern.in": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4f93b679de0e89a879d8c851277e5ffe63ff3d8f2c97440267b7fb926e4500a0"
+    },
+    "environments/provenance.json": {
+      "origin": "current_workspace_source",
+      "source_sha256": "0f08b226fbb172a74556085d131b9f5224eaa50efaec96d484cad4530f537eb5"
+    },
+    "environments/upstream-cu118-sm90.in": {
+      "origin": "current_workspace_source",
+      "source_sha256": "84630bf0f3c3aeec7c76da4f5e93d9db523cdd45e4583b9862fd5ad1da657131"
+    },
+    "environments/upstream-cu118.in": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4194f496e88ee205b533223d5f2ae51f6f1fc430a990cc24e88061ffa71f6e8d"
+    },
+    "environments/upstream-requirements.original.txt": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4d6c50de6de9f83e52261acfe64c1c7aa552bfdf9b9cb43f5813580260dd60ad"
+    },
+    "environments/upstream.in": {
+      "origin": "current_workspace_source",
+      "source_sha256": "9600f6e9b52d4f7f8e046d6d467f23969e66ccc790b7ac9461c6dc0057b6bb1d"
+    },
+    "pyproject.toml": {
+      "origin": "frozen_current_workspace_source",
+      "source_sha256": "12fd29196bc9452876f5b95c08d7198d81678efadfcd622666e18a3a55393491"
+    },
+    "reports/registered-study-budget-draft.json": {
+      "origin": "current_workspace_text",
+      "published_sha256": "1425a159351a1e2d42caff721181f3785575293cd34a471b582206a1b6a94b92",
+      "source_sha256": "1425a159351a1e2d42caff721181f3785575293cd34a471b582206a1b6a94b92"
+    },
+    "scripts/analyze_ncu_csv.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4a6d854185e941bff662dfb107671d6c7edd04daee2067c3c233475f8b8c8aa5"
+    },
+    "scripts/analyze_nsys_timeline.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6032ccd99afe7d34190aedb8886c4ed3921d991a64122c58686cbbf4a53d6e69"
+    },
+    "scripts/analyze_recorded_ground_truth.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "ca0aeaf921b6e252f4018c38bf84eb91f6bf7213b3f42ab86145dfd1af13c50b"
+    },
+    "scripts/analyze_torch_profile.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b7f7790bc0fabd6117f8bfa39100f105b47a3a171bcb299d706a8f5c70e45000"
+    },
+    "scripts/assemble_bootstrap_decision.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4a5f84a295deedda571510efe9074d765ec3e3d127b38b577f2a161299d7fb92"
+    },
+    "scripts/audit_scene_coverage.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "bd0645f1b96e7566eaa78a5512439917247ad4613c84523bca4423163366e6e9"
+    },
+    "scripts/bootstrap_vista.sh": {
+      "origin": "current_workspace_source",
+      "source_sha256": "34b7393c8263dae7425ff0f0b261f3e13ce6495088b653b6d3e32c7b64c1e2aa"
+    },
+    "scripts/cache_openclip_pretrained.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "2bfe59bd18f6aa25dfd4dc2c48c49b951ae1f93caf33871c76de9d4bc4d1ea17"
+    },
+    "scripts/check_screening_outputs.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "ad3ef123382fb91d696665bcbfde8b72e546a804f45d4eae0863e2477aeec485"
+    },
+    "scripts/compare_preflight_recording.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "cff14d716dd3d3891416e79195dd2b965f2ac7cad4075a0eb4ab336260701748"
+    },
+    "scripts/download_checkpoint.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "e25387e7148a951cfb2a832d3b20966ab2a358fb6f1da5e874bf9c01cb715789"
+    },
+    "scripts/download_nuscenes_ranges.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4e7d1a6a1133c29b8bd29f623fdee058316ad313563a02e47334927c1fe31098"
+    },
+    "scripts/download_nuscenes_subset.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "c2296f178c4a5422419eb1ad9ac65736cf823904be9202fceafe662910ff9efa"
+    },
+    "scripts/export_blind_metric_cases.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "61609700bd2f6870ff24b84097014b3d0edef13a3930a1213cb783878e9bf326"
+    },
+    "scripts/export_compiler_proof_review.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "5a7df78c12f6fa4a6683baeb96bc20750081fa29b0945605e04242245943b868"
+    },
+    "scripts/export_preflight_clip.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8407e630a74898d2751afaf02d43634645867aeaaafba828190ae1d223f65388"
+    },
+    "scripts/export_recorded_ground_truth.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b4626c39a94125edf8c40b90414f1f978d56d400b25157564d13e42d4e6b05bd"
+    },
+    "scripts/merge_nuscenes_subsets.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "74214ad44f4d8ecd5d3e5ab5dad2f712add8c8f290dc85b5d030d8393baf6296"
+    },
+    "scripts/preflight_real_clip.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "53f625bcc7ee9f2ae03dda8afb34015619daa0082eb113ca4a673030baf89a1d"
+    },
+    "scripts/prepare_execution_screen.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "cb7512f84008da58e189998d7de36bd42dad2a2e1a743ae01018c9393c927ae3"
+    },
+    "scripts/prepare_perceptual_evaluation.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "d0ca8bed525f27c334d0f91e30d0b2f3c8621bfc29b7db385b02ccbed149685c"
+    },
+    "scripts/probe_attention_operators.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "7b224c718ac7b7bfcb45a2ffd23bc747660cf40884fd7b14c954642402d7602c"
+    },
+    "scripts/probe_batch_permutation.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "61432b9973e8be1288121ffc9bf63021e0553d30f27b4d0a7fbef1e6d8a35ba9"
+    },
+    "scripts/probe_candidate_memory.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "16407cb62e23a46192cb1132aa973f8629530545766694c0d901f41737ec8d29"
+    },
+    "scripts/probe_compiler_operator.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "69e6312f3dbb895e65d5842c28d4bf7e131fe32d934967587f995e79cd6bf392"
+    },
+    "scripts/probe_denoiser_bf16.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "c1225668a8430272d823b1166b63e1c5b9ffc28e188a45c69111cb5749fc2ab4"
+    },
+    "scripts/probe_denoiser_bf16_scoped.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "210917a571ea1847c95102cc25104dac2c35a7a1f740c125a8ca0111dbc0f81c"
+    },
+    "scripts/probe_integrated_compiler.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "77cc224fbec93f683c71b0b7169419322cf305a647dfa8477cc755e110cacc86"
+    },
+    "scripts/probe_registered_einops.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "82ffb8bdfcf1f6926f82365be74d91d4e80a99f53b15384dcb5a1e41b2e92dab"
+    },
+    "scripts/probe_vista_optimization.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "7ba82bf7efe5ca86ad498867a25ba4fef92d4610bdb85fc2df37ac9156d168dd"
+    },
+    "scripts/qualify_compiler_numerics.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "df2a0ddcba456f1ec6fb57c15a335f57b18fa3e92068abf82fa862864b15b6f8"
+    },
+    "scripts/report_full_study.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "242b5b46e096525253f902c38893678e9f63a3d25bd8dc1387c4a45e7794b8d0"
+    },
+    "scripts/report_norm_timing.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8035e60fed04d823613c97a28d1094fa4804e3d71309215bfc728bf9ff40bed1"
+    },
+    "scripts/run_bootstrap_evaluation.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "225e78151b565e40648c5fb93360d57be382984709b9032ee638fe94fb4e4a9e"
+    },
+    "scripts/run_compiled_bootstrap.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "d9c76825c37c01ead930590b844aa23a9916d3039a92fd79c975e733b4820dd9"
+    },
+    "scripts/run_norm_timing_companion.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "17d90f74d0085e95f7bc6af5c2e92322aec4aaf70a441c81b6decccab0818ea5"
+    },
+    "scripts/run_quality_bounded.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "225edfb799f86ab59b9c2c1424063bda7782c2c0438f4fd3ca31e843e396eca1"
+    },
+    "scripts/run_timing_companion.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "52f63804d29efb6e8fd91aae4abaa1a99b9a43367388e019e4cb3075e1499a2d"
+    },
+    "scripts/validate_compiled_attention_boundary.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "f266438c63ca8fa5b7a954906fe4c1ecdf88a7d969cf4d8e2693aa8f2c553854"
+    },
+    "scripts/validate_compiled_preflight.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6c1aa61b6a8c656a4c541d6bf11a2dc62a9c6350769d52af36c1ebabc96a3334"
+    },
+    "scripts/verda_watchdog.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "638735c603f2e168b0fa3b018c6c00e24e77331f8879cec1fc5102de28c8c799"
+    },
+    "scripts/verify_numerical_semantics.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "87b07ef41d9f45978642cd949fff6e6571c80d4d71a577ca6ee6ba61c7e76973"
+    },
+    "scripts/verify_prepared_selection.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "416bd657f5b6cb2e8b752dff7ac20bf822afb96cf2d2c8b2d6bf14c7fd399d43"
+    },
+    "tests/test_attention_operator_probe.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "d71d684277c89b83feb287fd739ba8ab23caaa9e2a9af580be6391a2fb2f7be4"
+    },
+    "tests/test_batch_permutation_probe.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "a2d45f72cb89313e93b1d503f5bb57ae02dd2ce66715a4ced96d8d2bd8e5b1b1"
+    },
+    "tests/test_benchmark.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "e27a6548c4df745b4c53aadb06f4703189d26590249ee9fe9878d64b599bdc51"
+    },
+    "tests/test_blind_metric_cases.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6c150814fe173c1ca49caa10ddb11e2a600b6e8265bfb181d3a18b509e93a22e"
+    },
+    "tests/test_bootstrap_configs.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "9d566f6ab0612bddb5435ea15b6656170540f9c9cf3614a166d24b1ad0c963e1"
+    },
+    "tests/test_bootstrap_decision.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "2eae7f0b6402d499c0d7b0db5bd548c7a897b2c6594243ebe71a749a20464189"
+    },
+    "tests/test_bootstrap_evaluation_wrapper.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "19625a274d0ac87d1966e4ddd91466d0fa6a19d30a855b5a10888881db0dd5dc"
+    },
+    "tests/test_calibrate_pilot.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "bda9c41ddba281df66fdb936fc97ab4a883338b3c6487c15cc9a664a8e7b6b53"
+    },
+    "tests/test_candidate_memory_probe.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "218248fd7c926febae8e2c803a514ba90be7ba0ee74c4de4de9f8a358e3f5b1a"
+    },
+    "tests/test_compiled_attention_boundary.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "18de92428a1f908af72849484281f2cb7256822cb97be77ea213edc808be023f"
+    },
+    "tests/test_compiled_bootstrap_wrapper.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "f3024b879b9aa4233c8fd7d0bde3307558d5f158e33b7617ee467394769cc259"
+    },
+    "tests/test_compiled_preflight.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "ac950277172dc0d1f27d5b551f48d9938969ee69681bc1dff3eaa463cff3023a"
+    },
+    "tests/test_compiler_norm_qualification.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "f7f3d9ca20671c783d48e2158c5cf8aa447959f2d9b2d8e00caa598500586385"
+    },
+    "tests/test_compiler_operator_probe.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6650ef79c0de5353353078d65c89fe40ff30c080671283dcbc1309bff86dd839"
+    },
+    "tests/test_compiler_proof_review_export.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "88f6e5099136f3ea216da43d3709f1cce82460c2f402977bf70057651f45918d"
+    },
+    "tests/test_compiler_runtime.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "102d6097991ebcbd708ad74033da7f2187e9180c03cf4028cf0a39d12ae35528"
+    },
+    "tests/test_data.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "e7aa9afabcf2c63f68472e265951899f5e4466694280ab78bed470ed344e45dd"
+    },
+    "tests/test_denoiser_bf16_probe.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4a984fedb1ab8ea679247655554deea3ed636c027f8b271e6a951056616dabb0"
+    },
+    "tests/test_denoiser_bf16_scoped_probe.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "7e86ed1781a667f6ccef323901a8cdca8cc08f6777046ca7737fd0fc3326b9ac"
+    },
+    "tests/test_engine.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "9ecc177550729b3b69534ae8f2723a0258d595562c7b4aec5eb8c7e8c680e717"
+    },
+    "tests/test_evaluation.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "002f068ac83386ae9662028b882f5e7d7e56c6bce5f0ab6bf5ddc118f03b6ee7"
+    },
+    "tests/test_execution_screen.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "107cd689d355dc1ca38e16b50029cf111af07c6646cd414e4f8ac845f9a421e5"
+    },
+    "tests/test_freeze.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "a503fc89afcdf32bc554d96a4ea62412729f6cc24012bea32fb35f334726e800"
+    },
+    "tests/test_full_study_report.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "22eb652fe4706e795a243ebe7d2c20bb4052fa710883590a592ce6516f400dff"
+    },
+    "tests/test_integrated_compiler_probe.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8d72b4445d67e1825301ba92956f5f3dbae67c0ebf099c481a7b6193bcaff378"
+    },
+    "tests/test_norm_timing_companion.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6d8316db3fe8b2d3504ea4c85876ed82fd9f5008ab5c9064dcac7cf4d7ae80f5"
+    },
+    "tests/test_norm_timing_report.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "fcb50bedf825abd1515d740b64229211bd38ab00d65c13e28c34afb57c9df28d"
+    },
+    "tests/test_numerical_semantics.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b9122a600c16d594cd60c8d22d1cdede0d3a15b7ed8a43f567a5eb45858c1c16"
+    },
+    "tests/test_nuscenes_merge.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "937e264c3f1ea3bf0d59d7a2d91f1377562cff7fb66d32966f89418a571b286f"
+    },
+    "tests/test_nuscenes_ranges.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "deb328572fbc0293955877a1960491bb61499a517f780f5c5347a66c18528b09"
+    },
+    "tests/test_nuscenes_subset_download.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "2f2bd64102e67f3e4dbe5f434fdd82696806ecc678f224d1fa490314a4baae96"
+    },
+    "tests/test_optimization_probe.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b515b0572db1c0b66019d897b3ab963d4a4bfb42c0a53a6bdac9d54260efdeaa"
+    },
+    "tests/test_perceptual_setup.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8f3e8ebec4c9b0db90136b5445aebb6dcac4802a4399768510b695940936a844"
+    },
+    "tests/test_performance_calibration.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "8d9e6f6346fe36dd4c838629a2a3d665a36d6514db48ecd8b5599d2d77852c31"
+    },
+    "tests/test_prepared_selection_verification.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "e97cbfc901f8b50d546768a94d6bf4e965c33767e97de096c8210881eb1f699b"
+    },
+    "tests/test_provision.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "6091c4d0b152ada3ac45bc07093e756d82ce62346b8bde52e8c43e1599a59d11"
+    },
+    "tests/test_quality_bounded.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "7fbfad6f0650d2e32bf70b50f0b4f1455c7d69fd69c68830a8aaf9e6ac2dd220"
+    },
+    "tests/test_recorded_ground_truth_analysis.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "4911f492e1cf729607f4cc612adebd9eb4b41091fba52e90909a43a84882665a"
+    },
+    "tests/test_recorded_ground_truth_export.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "68b551cbd3635381bfb574c914f7a92b576a3359a5b2e5bee46509dd9a5f0e95"
+    },
+    "tests/test_registered_einops_probe.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "2231519b13056fedb1cdac58a39131391d8a379e2783d75443c7cc2b6912e65a"
+    },
+    "tests/test_registered_study_draft.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "1cbb9397a0b3fe7f7c4d1f2316cc129a3a67eed286443e49864dee1641ee949d"
+    },
+    "tests/test_runtime.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "62ba56be17cb71df32296216b7030bedb5c147da738be5e8f87f34b968974d7e"
+    },
+    "tests/test_study.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "a0203d9491a88fa499a885fc3013524fcd61c24ffec6b69c33f41e6363eb3096"
+    },
+    "tests/test_study_reviewed_policy.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b63cf04d2a9e7c2e33aa70cecfd59effe445af1b0e3e6cb763443f65c387f588"
+    },
+    "tests/test_timing_companion.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "91e7c326edb688c5fc45dc30c57286e14b135b9dc363a7c99870ece8ba5ce5ef"
+    },
+    "tests/test_verda_watchdog.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "b3bbef534c21a697b0247715f6c8040ea44f1c28bbceeb7eede1265cb582e09f"
+    },
+    "tests/test_vista_batching.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "a4ff7fa942823a1df6b1c2e5146c4730bb29e09de7a3e228ff0f6bb5c6600906"
+    },
+    "tests/test_vista_contract.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "bba1fdff9458acc82589a97f50ca442f91062284f8d9645dfdc2f21d3b5d3225"
+    },
+    "tests/test_vista_feature_block.py": {
+      "origin": "current_workspace_source",
+      "source_sha256": "e8e1a3790eda6d1d101f77da855fcad7c9b7f4adb500f747c64ef80e90369e9b"
+    }
+  },
+  "source_fingerprint_method": "SHA256 of sorted compact JSON mapping drivebench-relative Python paths to file SHA256",
+  "status": "a100_four_scene47_screen_complete_with_static_reviews_no_acceptance",
+  "tests_before_staging": {
+    "passed": 723,
+    "scope": "Full local CPU suite; no GPU quality or performance inference.",
+    "seconds": 81.42
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "compute_retired_verified": true,
+  "github_published": false,
+  "gpu_kernel_validation_complete": true,
+  "gpu_tests_passed": 75,
+  "historical_quality_scope_unchanged": true,
+  "new_boot_volume_deleted_verified": true,
+  "old_compiler_speedup_attributed_to_kernels": false,
+  "operator_workloads_confirming_lower_allocation_than_eager": 6,
+  "operator_workloads_total": 6,
+  "qualified": false,
+  "quality_preserving": false,
+  "retained_volume_preserved": true,
+  "rl_gpu_training_performed": true,
+  "rl_improvement_validated": false,
+  "runtime": {
+    "compute_capability": [
+      8,
+      0
+    ],
+    "cuda": "12.8",
+    "driver_version": "580.178.04",
+    "gpu_name": "NVIDIA A100-SXM4-80GB",
+    "packages": {
+      "gymnasium": "1.2.3",
+      "numpy": "2.2.0",
+      "torch": "2.10.0+cu128",
+      "triton": "3.6.0"
+    },
+    "python": "3.11.18",
+    "torch": "2.10.0+cu128",
+    "total_memory": 85093777408,
+    "triton": "3.6.0"
+  },
+  "schema_version": 1,
+  "scope": "Fresh A100 isolated operator and RL configuration-search study",
+  "whole_model_kernel_benefit_validated": false
+}

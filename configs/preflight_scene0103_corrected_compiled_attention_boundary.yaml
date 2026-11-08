@@ -1,0 +1,17 @@
+extends: preflight_scene0103_corrected_compiled.yaml
+name: preflight-scene0103-corrected-compiled-attention-boundary
+output: /workspace/outputs/preflight-scene0103-corrected-compiled-attention-boundary
+runtime_patch:
+  schema_version: 1
+  target: xformers.ops.memory_efficient_attention
+  kind: explicit_dynamo_attention_boundary
+  scope: Dynamo disabled only during native memory_efficient_attention calls; upstream
+    and refactored diagnostic paths
+  launcher_sha256: f266438c63ca8fa5b7a954906fe4c1ecdf88a7d969cf4d8e2693aa8f2c553854
+  native_source_sha256: 6ee2ed49dfd70c3ccce4e046c3d15c2da35e5963f77eaa591627883a11f08fb9
+  prior_upstream_values_must_match: true
+  suppress_errors: false
+preflight:
+  scope: one corrected development clip; explicit native-attention Dynamo boundary;
+    strict zero-tolerance diagnostic
+  validation_output: /workspace/outputs/preflight-scene0103-corrected-compiled-attention-boundary/strict-agreement.json

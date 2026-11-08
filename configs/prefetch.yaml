@@ -1,0 +1,10 @@
+extends: baseline.yaml
+name: bounded-input-prefetch
+output: outputs/prefetch
+optimizations:
+  pinned_memory: true
+  async_transfer: true
+  prefetch_depth: 2
+benchmark:
+  workload: independent_scenes
+  save_outputs: 0

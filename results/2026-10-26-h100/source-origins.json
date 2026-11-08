@@ -1,0 +1,481 @@
+{
+  "files": {
+    ".github/workflows/cpu.yml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "17cdcbd3c057aac93cf38c94780db398d6a920c6d7bd0d76136352d5ba800b9b"
+    },
+    ".gitignore": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "274b1ef49f5f158da92b3d521fdea1078d6892ae999956f2e33e169390f87a9f"
+    },
+    "README.md": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "3ee719971e535d08624f59fa174584477958f707c662db5483697a61c059cbf9"
+    },
+    "configs/baseline.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "9f522ed2afbec88e449bd0bbadb034c2576903bfd4a16e1352ba52cbfcff7bbc"
+    },
+    "configs/cached.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "884b88dfb291f46924b77a1b2ec3b2fd5433f721efe8ca1e2b9a12b29f09e9fc"
+    },
+    "configs/combined_candidate.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "7ed2839fefbb83a1085c4e4f5886f7228623d8355a81864cc9ab8c0b0b391c66"
+    },
+    "configs/compiled.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "2d8b3be90d535cb8c2d02de530fb2f11510862eca3696ae9e1f85696181f81b8"
+    },
+    "configs/compiled_decoder.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "bb3cce1021e5dce02fc6218d681e5a2144ba4834e267b0e7ff741567fa87bf7e"
+    },
+    "configs/conditioning_reuse.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "076412d51c5c88cc88d4408735ee744f9ac685e725ef5451cb93ccc060a61fe1"
+    },
+    "configs/data.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "b90f3a93edf008b52b2203278a0b47713f664e6b7515160dfc0b63b584507c97"
+    },
+    "configs/demo.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "0cd77495ffa0344554fa5990dcbee6df4a32f21ae7471a2ae3476ed117912874"
+    },
+    "configs/demo_cached.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "7694d7f62f78461a1ee6bca6a437f28d74674eaa6c61f3ebf53695dd23040a81"
+    },
+    "configs/dynamic.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "46bce6c6223bbe176d467ac6b7fb1a33aacf034e75dadc16515964eaf8e6881c"
+    },
+    "configs/final_evaluation.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "d6d0bba176402960ede25fb9c92b7adf6980a9cbaca4b05e4cc81c575212d50a"
+    },
+    "configs/prefetch.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "a8731efbe15f669d2cdc2a9f23b84d9a939a5002eea7c88ef00f7283fa069531"
+    },
+    "configs/preflight_scene0103.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "3cc4d3be59f9f81b24d1805b04747d998b4a9a1378ed3ebddf0cc96a0a88c8b7"
+    },
+    "configs/preflight_scene0103_benchmark.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "d58c6f199722e228e0d1645dd1a2205b313ae596ef5184e0d8fdd5fdc552cfee"
+    },
+    "configs/preflight_scene0103_compiled.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "725fc4ab54581f7c4f87f080edac95d2a07e75e359a117736f43e486c7615905"
+    },
+    "configs/preflight_scene0103_corrected.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "f2b1ffe9afaede699f3b3461b7ec6f844f5f953c7104c3b96b6418a72156a8a2"
+    },
+    "configs/preflight_scene0103_corrected_benchmark.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "bfb624cde3e97e17d32039536da615c28fa32752ed4122a960db126519f28fdc"
+    },
+    "configs/preflight_scene0103_corrected_compiled.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "98e49af51395d0751ea72eaba628d8c83befa1b586ffdfba1369b90f117259c8"
+    },
+    "configs/preflight_scene0103_corrected_compiled_attention_boundary.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "3b35e2c27cac56bf43571f144579b87112058e3c2366b867666b121db99a4f6f"
+    },
+    "configs/preflight_scene0103_corrected_conditioning_reuse.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "bc1baa073dbf93b40d700a62c9f804e6b5793fed4b69e0444ba84d5c250457ef"
+    },
+    "configs/preflight_scene0103_corrected_conditioning_reuse_benchmark.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "8576802ebf616056984337f0eaddc41a6b66511e5082b51c23abe6ead065b9de"
+    },
+    "configs/preflight_scene0103_corrected_profile.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "eeac93b5eea6497b9c81f6097442ea7d9fdfc0b9fb5345b6fb2d88cf505a954e"
+    },
+    "configs/preflight_scene0103_profile.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "6b628f08b51797f9a8e0af4577bd2887cb825821eefd12e9fb200f702f40186a"
+    },
+    "configs/second_seed.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "b851e5557abf324ce6aa23e6316379afa54e4b5ef84a5fa4442400c64ae15ce7"
+    },
+    "configs/tolerances.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "acf035bbbce67528a46d40ae0a16eab7df79f2757c628c3413f96875b8702683"
+    },
+    "configs/upstream.yaml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "36e1f7b6d1c377a165b2a250d8b9f131b8cdd5a620d4ee7f500db99f288faf92"
+    },
+    "docs/experiment-protocol.md": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "ca0c2283505a94d66307eaa68e7ddae4a2d33af79f66f09872b8ce86ee9f5ccb"
+    },
+    "docs/gpu-runbook.md": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "aa8c00319cc39895bcc5002d898700ac8877aaeb130953c9f249b56add9be264"
+    },
+    "docs/vista-integration.md": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "767091de464dcfd3fb325e3d85fc33dcc76b4facd72cc265ec56c83fff5a3fcf"
+    },
+    "drivebench/__init__.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "d2c3c7fac53b77a582cea743de894812ab58979c708dd039c84a911932334871"
+    },
+    "drivebench/benchmark.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "a9a125ceabfba64453ba24b33da3b5b360073a4468b23f2f1f7e198932eba3cb"
+    },
+    "drivebench/benchmarks/__init__.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "ebb6419be3d03e117aef85b3872adc02e8ff0699ee7b1bac18cdbbc7be83d98c"
+    },
+    "drivebench/benchmarks/agreement.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "24e8682e798927f779c3bcfe938f8ec1541c6b9164e268ad0b8f8e45bc50541f"
+    },
+    "drivebench/benchmarks/environment.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "f50f291212439591f66f88cb8df6e68a1b3700ba359d6f75dd44c6077d586216"
+    },
+    "drivebench/benchmarks/statistics.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "84776f7d3d7fa32479c75767007b4d62bc0fbad96de1c6be16d1c0c90c3b3b66"
+    },
+    "drivebench/calibrate_performance.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "0b89bfbf674f8a922b17de52c38ef4cd95c69a1ed382137488fef4454698c63b"
+    },
+    "drivebench/config.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "3b60cae6c2a32a295445df029f0b1b60a8a154e024f0e1647e454eb80176486e"
+    },
+    "drivebench/data/__init__.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "701513a86029e95e0b74c9cce77e0ea324bc985550bafd5236ce6a55fc77d92f"
+    },
+    "drivebench/data/manifest.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "9e42e90472353082c0b4f143305d011c3cecca6a9b42492871069fa511309022"
+    },
+    "drivebench/data/manifests.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "7f17d120cf95dc3b31f05ee93ffe88110268f5a895356d3d4fae0c0e9a6a0b0c"
+    },
+    "drivebench/data/nuscenes.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "21a65b4b7afa03cad9e00dd270b13c650626ad16c95defadda55d68d735eafbd"
+    },
+    "drivebench/data/preprocess.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "a23229bd01d3b43af9bfd109518ea253d29b5899d488bbce9975953eb0de719d"
+    },
+    "drivebench/data/preprocessing.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "6b2611ec72eb10d2ba440c33ab585c86ff9a0ae0bb70b854bca783c2e05c8a01"
+    },
+    "drivebench/data/synthetic.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "25eae333fe43e551702a6e9d0470e36e208cebae984ce8a0db51f9c7b3699853"
+    },
+    "drivebench/data/trajectories.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "8c81beda6cacc4930d5cd580471ae64ef7e43fc77b86e370648e79ee3fd7b39f"
+    },
+    "drivebench/engine.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "643ff9b4491abbc23a5035dfab060a44d2f9eb55ab8a77eea743a4388a5959e9"
+    },
+    "drivebench/evaluate.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "7126c19f38583802bc62f6462cad9b059c7b7b0689b881ec4037cf1f275d0d7f"
+    },
+    "drivebench/evaluation/__init__.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "b3aa514a4102ff3f03443045a71d2273b9b822be445682a5e64ef033c611d0a5"
+    },
+    "drivebench/evaluation/io.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "615cd6ffa484eb4227e03772817eeb6a5714cca8b4962538e9a50a964edeb9db"
+    },
+    "drivebench/evaluation/metrics.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "7b9343bbb45425fa6432cbc26a99311779219e9459d4d6643ef172969b93022c"
+    },
+    "drivebench/evaluation/review.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "2b1883def1c9f48866b4043831c6c3ff32da61039b48aa2df80f702cea440101"
+    },
+    "drivebench/experiments.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "c679c0f8523dfe2c0736283f1ac7e20fe0915dd6984755ba0f4629c4531323b9"
+    },
+    "drivebench/freeze.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "cede5494f1bb44c08875a678ad7e8dbc17a7ce0a18888dd11aa61ce41508085c"
+    },
+    "drivebench/kernels/__init__.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "ac916b0c57f6899561f5e33abb75e60bf6db1430b6bdd0c10d25bc8b1142d939"
+    },
+    "drivebench/models/__init__.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "6af30022b773a8040d4cbc16ff3e7a8bb4e5c8258206fa1f259291fc68ced8bb"
+    },
+    "drivebench/models/synthetic.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "9f0d80ffb29e46855b91e3968f6dd16bc68103dc9ccc82690d650d6d9e4e6f58"
+    },
+    "drivebench/models/upstream.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "6fdf830b39916c67063d0a1c57a4454022b347e0a3ca3e9271f16414a25b34a6"
+    },
+    "drivebench/models/vista.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "5831de1340ecea1d4b58d0e4b785f71324435fb579459ca6db4a7b6323a89595"
+    },
+    "drivebench/prepare.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "53b2b79f0e8141f432e03b00adfa990846ffa8eecadcc282028ac7216e49d668"
+    },
+    "drivebench/profile.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "762dc3e15565c8445a42ab787df02fb3a4ab3e3468e6b73b9ce425645f1a7566"
+    },
+    "drivebench/regression.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "f5be6b6efbff9bd1935735fc53bf7ab875e3a5e26823c25527446c535ede30f9"
+    },
+    "drivebench/report.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "1949b0db2c20ff0ebcc0ac16e8f6611e84016c8f28713c67f835d42d0351eaea"
+    },
+    "drivebench/runtime/__init__.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "e34113ec08c78d0f98d3e23c2e2551bfffa5c55d0b964be478d3a49fdb86799f"
+    },
+    "drivebench/runtime/buffers.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "1fa3d2f8abd668287e010770d33d6c9736ff6f11aad8926b2aa3196e4af8a41d"
+    },
+    "drivebench/runtime/cache.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "f757c39fbb75db414d75947bc56e142412aee0e1bef4d9bbe523edc9acd0f9e4"
+    },
+    "drivebench/runtime/feature_cache.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "fa1e5d684965338b5e4690dde6387563138ea94308c03757b3fa9b6815c348c3"
+    },
+    "drivebench/runtime/prefetch.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "20bc7ecff74bc100f7a47b1c1d2c44f9be60c3508f25ce30f7a6dd4d3d2d67fa"
+    },
+    "drivebench/types.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "2e6a8b5a4ec5d025af7f56a077f74adbcbc60560351b8ebc22f1875797a75f72"
+    },
+    "drivebench/validate.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "33c1ded5b6dafe86133df14bcc72055e549ef88dc73b49e8b0b4dbb2765cd425"
+    },
+    "drivebench/verify_environment.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "9407a3c53c7d43d3125687fbf41c0459e578536bdbee68fddbb27f12e68341df"
+    },
+    "environments/README.md": {
+      "origin": "current_environment_definition",
+      "original_sha256": "3782de5240ba6140ccd5932f3490a74e8d8d35d7016115b7872e730e49636828"
+    },
+    "environments/common.in": {
+      "origin": "current_environment_definition",
+      "original_sha256": "5c9a15aabea82f96e040d2aca4bb2b2c6db9ef57f8a9e7e875f72990e80c8829"
+    },
+    "environments/containers/Dockerfile": {
+      "matches_preserved_executed_build_copy": true,
+      "origin": "current_environment_definition",
+      "original_sha256": "9db4f7c3642178c577080c52b3c3b3353e6f7dbcbf6663de9b9b0461fd23226b"
+    },
+    "environments/containers/README.md": {
+      "matches_preserved_executed_build_copy": false,
+      "origin": "current_environment_definition",
+      "original_sha256": "6ad5cbee60d84904b19495915a22187d30088725e6bb9b2cbe746be83901981e"
+    },
+    "environments/containers/build.sh": {
+      "matches_preserved_executed_build_copy": true,
+      "origin": "current_environment_definition",
+      "original_sha256": "2e2bd2b4e35a3ef74ce321558dd078ae22e548045084198168b4ea91bdcda8e3"
+    },
+    "environments/modern.in": {
+      "origin": "current_environment_definition",
+      "original_sha256": "4f93b679de0e89a879d8c851277e5ffe63ff3d8f2c97440267b7fb926e4500a0"
+    },
+    "environments/provenance.json": {
+      "origin": "current_environment_definition",
+      "original_sha256": "0f08b226fbb172a74556085d131b9f5224eaa50efaec96d484cad4530f537eb5"
+    },
+    "environments/upstream-cu118-sm90.in": {
+      "origin": "current_environment_definition",
+      "original_sha256": "84630bf0f3c3aeec7c76da4f5e93d9db523cdd45e4583b9862fd5ad1da657131"
+    },
+    "environments/upstream-cu118.in": {
+      "origin": "current_environment_definition",
+      "original_sha256": "4194f496e88ee205b533223d5f2ae51f6f1fc430a990cc24e88061ffa71f6e8d"
+    },
+    "environments/upstream-requirements.original.txt": {
+      "origin": "current_environment_definition",
+      "original_sha256": "4d6c50de6de9f83e52261acfe64c1c7aa552bfdf9b9cb43f5813580260dd60ad"
+    },
+    "environments/upstream.in": {
+      "origin": "current_environment_definition",
+      "original_sha256": "9600f6e9b52d4f7f8e046d6d467f23969e66ccc790b7ac9461c6dc0057b6bb1d"
+    },
+    "pyproject.toml": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "12fd29196bc9452876f5b95c08d7198d81678efadfcd622666e18a3a55393491"
+    },
+    "scripts/analyze_ncu_csv.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "4a6d854185e941bff662dfb107671d6c7edd04daee2067c3c233475f8b8c8aa5"
+    },
+    "scripts/analyze_nsys_timeline.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "6032ccd99afe7d34190aedb8886c4ed3921d991a64122c58686cbbf4a53d6e69"
+    },
+    "scripts/analyze_torch_profile.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "b7f7790bc0fabd6117f8bfa39100f105b47a3a171bcb299d706a8f5c70e45000"
+    },
+    "scripts/bootstrap_vista.sh": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "34b7393c8263dae7425ff0f0b261f3e13ce6495088b653b6d3e32c7b64c1e2aa"
+    },
+    "scripts/cache_openclip_pretrained.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "2bfe59bd18f6aa25dfd4dc2c48c49b951ae1f93caf33871c76de9d4bc4d1ea17"
+    },
+    "scripts/compare_preflight_recording.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "cff14d716dd3d3891416e79195dd2b965f2ac7cad4075a0eb4ab336260701748"
+    },
+    "scripts/download_checkpoint.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "e25387e7148a951cfb2a832d3b20966ab2a358fb6f1da5e874bf9c01cb715789"
+    },
+    "scripts/download_nuscenes_ranges.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "4e7d1a6a1133c29b8bd29f623fdee058316ad313563a02e47334927c1fe31098"
+    },
+    "scripts/download_nuscenes_subset.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "c2296f178c4a5422419eb1ad9ac65736cf823904be9202fceafe662910ff9efa"
+    },
+    "scripts/export_preflight_clip.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "8407e630a74898d2751afaf02d43634645867aeaaafba828190ae1d223f65388"
+    },
+    "scripts/merge_nuscenes_subsets.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "74214ad44f4d8ecd5d3e5ab5dad2f712add8c8f290dc85b5d030d8393baf6296"
+    },
+    "scripts/preflight_real_clip.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "53f625bcc7ee9f2ae03dda8afb34015619daa0082eb113ca4a673030baf89a1d"
+    },
+    "scripts/validate_compiled_attention_boundary.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "f266438c63ca8fa5b7a954906fe4c1ecdf88a7d969cf4d8e2693aa8f2c553854"
+    },
+    "scripts/validate_compiled_preflight.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "6c1aa61b6a8c656a4c541d6bf11a2dc62a9c6350769d52af36c1ebabc96a3334"
+    },
+    "scripts/verda_watchdog.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "aa6f2d481b83e10e551e2d261d74940bf6a715838f83e8aa02808d1892bb9067"
+    },
+    "scripts/verify_prepared_selection.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "416bd657f5b6cb2e8b752dff7ac20bf822afb96cf2d2c8b2d6bf14c7fd399d43"
+    },
+    "tests/test_benchmark.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "aa186a81b87da46b5ce0ca2c6f917b474199798940c7efd74442f9cec84e455d"
+    },
+    "tests/test_compiled_attention_boundary.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "18de92428a1f908af72849484281f2cb7256822cb97be77ea213edc808be023f"
+    },
+    "tests/test_compiled_preflight.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "ac950277172dc0d1f27d5b551f48d9938969ee69681bc1dff3eaa463cff3023a"
+    },
+    "tests/test_data.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "e7aa9afabcf2c63f68472e265951899f5e4466694280ab78bed470ed344e45dd"
+    },
+    "tests/test_engine.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "9ecc177550729b3b69534ae8f2723a0258d595562c7b4aec5eb8c7e8c680e717"
+    },
+    "tests/test_evaluation.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "002f068ac83386ae9662028b882f5e7d7e56c6bce5f0ab6bf5ddc118f03b6ee7"
+    },
+    "tests/test_freeze.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "a503fc89afcdf32bc554d96a4ea62412729f6cc24012bea32fb35f334726e800"
+    },
+    "tests/test_nuscenes_merge.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "937e264c3f1ea3bf0d59d7a2d91f1377562cff7fb66d32966f89418a571b286f"
+    },
+    "tests/test_nuscenes_ranges.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "deb328572fbc0293955877a1960491bb61499a517f780f5c5347a66c18528b09"
+    },
+    "tests/test_nuscenes_subset_download.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "2f2bd64102e67f3e4dbe5f434fdd82696806ecc678f224d1fa490314a4baae96"
+    },
+    "tests/test_performance_calibration.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "8d9e6f6346fe36dd4c838629a2a3d665a36d6514db48ecd8b5599d2d77852c31"
+    },
+    "tests/test_prepared_selection_verification.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "e97cbfc901f8b50d546768a94d6bf4e965c33767e97de096c8210881eb1f699b"
+    },
+    "tests/test_provision.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "6091c4d0b152ada3ac45bc07093e756d82ce62346b8bde52e8c43e1599a59d11"
+    },
+    "tests/test_runtime.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "62ba56be17cb71df32296216b7030bedb5c147da738be5e8f87f34b968974d7e"
+    },
+    "tests/test_verda_watchdog.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "5c40e6ff42080157824d9ea11a53651e57c1bac2856a8387ecf0dd6dee35d9f5"
+    },
+    "tests/test_vista_contract.py": {
+      "origin": "verified_corrected_source_snapshot",
+      "original_sha256": "bba1fdff9458acc82589a97f50ca442f91062284f8d9645dfdc2f21d3b5d3225"
+    }
+  },
+  "notes": [
+    "Core code/config/tests/scripts are from the verified corrected snapshot, not from concurrently changing workspace source.",
+    "Environment definitions were not in that snapshot. Their separate current-file origin is explicit; preserved container build matches are recorded where available.",
+    "README, runbook, and results are publication-specific derived documentation."
+  ],
+  "snapshot_archive_sha256": "1bdb7d4e0951ef42f27d003fae1a55fa5334a8e2ec8095a4bc670f0df705132e"
+}

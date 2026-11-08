@@ -1,0 +1,114 @@
+{
+  "benchmark": {
+    "candidate_count": 1,
+    "headline": false,
+    "input_condition": "uncached",
+    "max_warmup_requests": 2,
+    "requests": 32,
+    "save_outputs": 32,
+    "warmup_requests": 1,
+    "workload": "single_future"
+  },
+  "current_study_package_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "descriptive_median_s": 57.31239081399997,
+  "distinct_scenes": 32,
+  "generation": {
+    "cond_aug": 0.0,
+    "conditioning_frames": 1,
+    "decode_chunk_size": 14,
+    "dtype": "fp16",
+    "guidance_scale": 2.5,
+    "height": 576,
+    "steps": 50,
+    "total_frames": 25,
+    "width": 1024
+  },
+  "hardware": {
+    "driver_version": "580.178.04",
+    "memory_total_mib": "81559",
+    "mig_mode": "Disabled",
+    "name": "NVIDIA H100 80GB HBM3"
+  },
+  "headline_eligible": false,
+  "implementation_sha256": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00",
+  "latency_range_s": [
+    57.28475185100001,
+    57.33097170499991
+  ],
+  "manifest_sha256": "a3c6328d9f0d0b94149820f626db17e024e6fbc0e5523fe5ee19aa3316befbff",
+  "measurement": {
+    "completed_futures": 32,
+    "failures": 0,
+    "measured_requests": 32,
+    "oom_attempts": 0,
+    "peak_allocated_bytes": 56058206720,
+    "peak_reserved_bytes": 73681338368,
+    "profiled": false,
+    "recompiled_during_measurement": false,
+    "successful_requests": 32
+  },
+  "model": {
+    "backend": "upstream",
+    "checkpoint_sha256": "1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98",
+    "upstream_commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d"
+  },
+  "model_load_s": 46.272831354999994,
+  "numerical_validation": {
+    "passed": false,
+    "quality_validated": false,
+    "reasons": [
+      "No numerical_validation report configured"
+    ],
+    "scope": "selected development request numerical checks only"
+  },
+  "omitted": "Raw float video files and host-specific paths are not distributed; statistical headline summaries are withheld for this 32-request development run.",
+  "optimizations": {
+    "async_transfer": false,
+    "attention_backend": "upstream",
+    "compile_decoder": false,
+    "compile_denoiser": false,
+    "compile_mode": "default",
+    "conditioning_cache_bytes": 0,
+    "dynamic_shapes": false,
+    "feature_cache_interval": 1,
+    "feature_cache_module": null,
+    "fullgraph": false,
+    "keep_model_resident": true,
+    "max_batch_size": 1,
+    "pinned_memory": false,
+    "prefetch_depth": 0
+  },
+  "partition_role": "development",
+  "process": {
+    "exit_code": 0,
+    "finished_at": "2026-10-26T23:54:25.449670+00:00",
+    "source_identity": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00",
+    "source_unchanged": true,
+    "started_at": "2026-10-26T23:21:03.120525+00:00"
+  },
+  "quality_preserving": false,
+  "schema_version": 1,
+  "scope": "Upstream exploratory development baseline; 32 distinct development clips. No paired quality, optimization speedup, held-out or headline claim.",
+  "source_benchmark_artifact_sha256": {
+    "cold_start.json": "e70c602b1be8e8c2e476a8016cfa0885d5258830b659c6e3f4ed61f2bc653b9e",
+    "config.json": "b300769922b8ca4fc7577c55266af2d580cfbc41b97960a552e4ee48f292a6e8",
+    "environment.json": "fed8f435ad2715f3db2c563b1f7efa76f02ab700e5d6018396afbfe7321419ae",
+    "environment_gate.json": "681ba822dea942fdc4e7d6291dcb270826e0852d0f7335b35190302873d5b132",
+    "measurement_state.json": "eeeb10346f3863fb3b85d5e3ed64dd4ff839ea1375ebba0d19e2aeb33fd63e31",
+    "measurements.jsonl": "f36db4bd74bd7b7802bf1bc041deca387d027182b3646a6e6c3d0488dcec835b",
+    "model_identity.json": "2bc693d1d9c2a1b3f12cb2c538de3cade31112ebd142e5c4059edb5308954f3d",
+    "numerical_gate.json": "db2aa1b6cf4cb19ae20f5b0aea18d5d3c31ca81cd7065b27abc7e96a5a9de83e",
+    "summary.json": "b16ba585b3bdaa48eddcd71190df0bad15c46c773e38db21ad35c05333ddde0c"
+  },
+  "source_process_receipt_sha256": "018dc42a6b9d42b068f48746415ea239e07d5430bb0e8683fc9aea3e07a5a5cd",
+  "transfer_verification": {
+    "all_match": true,
+    "files_verified": 12,
+    "receipt_sha256": "05ae1e29032044ef422034eb80603cd9de0e031080a8baa637021d2ecdb7f0cf",
+    "scope": "Metadata and host files only; raw output arrays are not covered."
+  },
+  "warmup_latencies_s": [
+    58.40408981400003,
+    57.30502658099999
+  ]
+}

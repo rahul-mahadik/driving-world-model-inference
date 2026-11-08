@@ -1,0 +1,6 @@
+extends: baseline.yaml
+name: approximate-feature-reuse-experiment
+output: outputs/cached
+optimizations:
+  feature_cache_interval: 2
+  feature_cache_module: middle_block

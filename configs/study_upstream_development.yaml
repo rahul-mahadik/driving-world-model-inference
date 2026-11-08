@@ -1,0 +1,24 @@
+extends: baseline.yaml
+name: study-upstream-development
+output: outputs/study-bootstrap/upstream
+environment_verification: /workspace/outputs/environment-study-01/verification.json
+environment_lock: /workspace/outputs/environment-study-01/reference-lock.json
+numerical_validation: null
+model:
+  backend: upstream
+  upstream_dir: /workspace/vendor/Vista
+  checkpoint: /workspace/checkpoints/vista.safetensors
+  inference_config: /workspace/vendor/Vista/configs/inference/vista.yaml
+data:
+  manifest: /workspace/data/manifests/development.jsonl
+  root: /workspace/data/nuscenes
+  verify_checksums: true
+benchmark:
+  workload: single_future
+  candidate_count: 1
+  requests: 32
+  warmup_requests: 1
+  max_warmup_requests: 2
+  input_condition: uncached
+  save_outputs: 32
+  headline: false

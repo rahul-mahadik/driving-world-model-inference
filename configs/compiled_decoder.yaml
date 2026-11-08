@@ -1,0 +1,5 @@
+extends: baseline.yaml
+name: compiled-decoder-experiment
+output: outputs/compiled-decoder
+optimizations:
+  compile_decoder: true

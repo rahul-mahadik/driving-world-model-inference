@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "scope": "Local-only predeclared development bootstrap recipe; execution not performed",
+  "expected_source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "expected_manifest_sha256": "a3c6328d9f0d0b94149820f626db17e024e6fbc0e5523fe5ee19aa3316befbff",
+  "expected_manifest_metadata_sha256": "f07de92cf445a4e69850a36f206f7a1651798b997ff47c8f3794d2afcde9bd32",
+  "expected_environment_artifact_sha256": {
+    "outputs/environment-study-01/verification.json": "909c7d3d57068e540f827a79715d993720298697606e07dce5118ac53d891d42",
+    "outputs/environment-study-01/reference-lock.json": "7521221ad6a15da79c67032d2289a9d5917ab887863d958dd2fbb5414d94d6fe"
+  },
+  "gpu_jobs_serialized": true,
+  "timeout_seconds_per_run": 3600,
+  "termination_grace_seconds": 30,
+  "require_remaining_allocation_seconds_before_launch": 3630,
+  "minimum_free_bytes_before_each_run": 19327352832,
+  "expected_float_array_bytes_per_run": 5662310400,
+  "output_retirement_allowed": false,
+  "review_policy": {
+    "seed": 2026,
+    "limit_per_comparison": 4,
+    "unit": [
+      "scene_id",
+      "candidate_id",
+      "seed"
+    ],
+    "selection": "First4 units ordered by SHA256 of 2026:scene_id:candidate_id:seed; same subset across comparisons",
+    "reviewer_kind": "agent_assisted",
+    "review_before_private_key": true
+  },
+  "runs": [
+    {
+      "adoption_variant": "compiled-default",
+      "config": "configs/study_bootstrap_compiled_default.yaml",
+      "config_sha256": "29b557b240b63a1fa628dc7a2b65715da373a61198d8aafebc6951fbd3c2d119",
+      "inherited_config_sha256": {
+        "configs/baseline.yaml": "9f522ed2afbec88e449bd0bbadb034c2576903bfd4a16e1352ba52cbfcff7bbc",
+        "configs/study_upstream_development.yaml": "711544ffa17a3a0b942dfaff1a857d26bb4cd96af36e8198b552f9c5ba99f59b",
+        "configs/study_eager_development.yaml": "0c885add39b6538216607f883cb7b741891f4e0389216b1bbdc615f28b5ff483",
+        "configs/study_bootstrap_compiled_default.yaml": "29b557b240b63a1fa628dc7a2b65715da373a61198d8aafebc6951fbd3c2d119"
+      },
+      "resolved_config_digest": "5076c6faddc67b11ef4345fbf39a68649f67699744ca6ba3b924eb95a797c68f",
+      "output": "/workspace/outputs/study-bootstrap/compiled-default",
+      "argv_in_container": [
+        "/workspace/outputs/venvs/vista-upstream-cu118-sm90/bin/python",
+        "-m",
+        "drivebench.benchmark",
+        "--config",
+        "/workspace/configs/study_bootstrap_compiled_default.yaml",
+        "--output",
+        "/workspace/outputs/study-bootstrap/compiled-default"
+      ],
+      "host_receipt": "outputs/host/study-bootstrap-compiled-default-attempt-1.json",
+      "host_log": "outputs/host/study-bootstrap-compiled-default-attempt-1.log",
+      "compiler_cache_environment": {
+        "TORCHINDUCTOR_CACHE_DIR": "/workspace/outputs/study-bootstrap/compiler-caches/compiled-default/inductor",
+        "TRITON_CACHE_DIR": "/workspace/outputs/study-bootstrap/compiler-caches/compiled-default/triton"
+      },
+      "expected_requests": 32,
+      "candidate_count": 1,
+      "expected_saved_outputs": 32,
+      "warmup_requests": 3,
+      "max_warmup_requests": 5,
+      "input_condition": "uncached"
+    },
+    {
+      "adoption_variant": "compiled-conditioning",
+      "config": "configs/study_bootstrap_compiled_conditioning.yaml",
+      "config_sha256": "289f1843b6bae3744dd68887f56b0ff56037965582edb87d4c7d47a413ea2173",
+      "inherited_config_sha256": {
+        "configs/baseline.yaml": "9f522ed2afbec88e449bd0bbadb034c2576903bfd4a16e1352ba52cbfcff7bbc",
+        "configs/study_upstream_development.yaml": "711544ffa17a3a0b942dfaff1a857d26bb4cd96af36e8198b552f9c5ba99f59b",
+        "configs/study_eager_development.yaml": "0c885add39b6538216607f883cb7b741891f4e0389216b1bbdc615f28b5ff483",
+        "configs/study_bootstrap_compiled_default.yaml": "29b557b240b63a1fa628dc7a2b65715da373a61198d8aafebc6951fbd3c2d119",
+        "configs/study_bootstrap_compiled_conditioning.yaml": "289f1843b6bae3744dd68887f56b0ff56037965582edb87d4c7d47a413ea2173"
+      },
+      "resolved_config_digest": "9b67e7afeabdac7c10f183a34ae50c99df0e881df5495d8df23fa0e81e12f342",
+      "output": "/workspace/outputs/study-bootstrap/compiled-conditioning",
+      "argv_in_container": [
+        "/workspace/outputs/venvs/vista-upstream-cu118-sm90/bin/python",
+        "-m",
+        "drivebench.benchmark",
+        "--config",
+        "/workspace/configs/study_bootstrap_compiled_conditioning.yaml",
+        "--output",
+        "/workspace/outputs/study-bootstrap/compiled-conditioning"
+      ],
+      "host_receipt": "outputs/host/study-bootstrap-compiled-conditioning-attempt-1.json",
+      "host_log": "outputs/host/study-bootstrap-compiled-conditioning-attempt-1.log",
+      "compiler_cache_environment": {
+        "TORCHINDUCTOR_CACHE_DIR": "/workspace/outputs/study-bootstrap/compiler-caches/compiled-conditioning/inductor",
+        "TRITON_CACHE_DIR": "/workspace/outputs/study-bootstrap/compiler-caches/compiled-conditioning/triton"
+      },
+      "expected_requests": 32,
+      "candidate_count": 1,
+      "expected_saved_outputs": 32,
+      "warmup_requests": 3,
+      "max_warmup_requests": 5,
+      "input_condition": "reused_conditioning"
+    }
+  ]
+}

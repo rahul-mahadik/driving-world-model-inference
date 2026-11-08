@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "staged_cpu_tests": {
+    "tests": 883,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "seconds": 94.668,
+    "junit_sha256": "278cd63bdc831adb22b7a186e1ee94abc6b50ddf4a5e53c1030b1a8b21bcd448",
+    "log_sha256": "0f08213d897e04848486f743768fa45846757532598994de31123c6b6bc55465"
+  },
+  "synthetic_cli_workflow": {
+    "all_exit_zero": true,
+    "commands": [
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.prepare",
+          "--config",
+          "configs/data.yaml",
+          "--synthetic",
+          "--output",
+          "data/synthetic"
+        ],
+        "exit_code": 0,
+        "seconds": 1.6814643749967217,
+        "log_sha256": "4e028c218b158c02c4610fe5cd3d2bb2311011f9357925cbfe8f77b4f64b2487"
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.benchmark",
+          "--config",
+          "configs/demo.yaml",
+          "--output",
+          "outputs/demo-finalists/baseline"
+        ],
+        "exit_code": 0,
+        "seconds": 0.3593544589821249,
+        "log_sha256": "b937cf5115e9e16b480a37e0827728543771b52ea12f03c5ba12d71a406ab77f"
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.benchmark",
+          "--config",
+          "configs/demo_cached.yaml",
+          "--output",
+          "outputs/demo-finalists/cached"
+        ],
+        "exit_code": 0,
+        "seconds": 0.31552062497939914,
+        "log_sha256": "185538c5a8e1c353610fec7ee0a1f21429f1801dee1a906b2b1fdf9c42f06be3"
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.evaluate",
+          "--runs",
+          "outputs/demo-finalists",
+          "--reference",
+          "outputs/demo-finalists/baseline"
+        ],
+        "exit_code": 0,
+        "seconds": 2.0006962079787627,
+        "log_sha256": "a5537661550218f263e81fb337943263d5cae4e6b0b80c031cfc9b8e92451019"
+      },
+      {
+        "argv": [
+          "python",
+          "-m",
+          "drivebench.report",
+          "--runs",
+          "outputs/demo-finalists"
+        ],
+        "exit_code": 0,
+        "seconds": 0.14316983299795538,
+        "log_sha256": "003c1e91ae32b3d58ae020e91115a6659f1aa9d3f09324b7c1327e4c7fefa1b6"
+      }
+    ],
+    "generated_artifacts_in_publication": false,
+    "scope": "Synthetic CPU software-contract demonstration only; no real-model performance or quality claim."
+  },
+  "first_cli_attempt": {
+    "status": "environment_invocation_error_before_generation",
+    "cause": "Resolved virtualenv executable symlink selected the base interpreter, which lacked PyYAML. Retried with unchanged code and exact virtualenv path.",
+    "source_changed": false,
+    "preserved_log_sha256": "9fcc80df2dca9279b71bba898f0d9536b749b2450730d5a9c19c60b70081ab0c"
+  },
+  "scope": "CPU software validation only; no real-model equivalence, quality or performance conclusion.",
+  "original_v3_unchanged": true
+}

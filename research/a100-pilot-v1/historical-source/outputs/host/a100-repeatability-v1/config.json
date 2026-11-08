@@ -1,0 +1,74 @@
+{
+  "name": "a100-first-step-repeatability-v1",
+  "output": "/workspace/outputs/a100-repeatability-v1",
+  "numerical_validation": null,
+  "environment_verification": "/workspace/outputs/environment-a100-pilot-01/verification.json",
+  "environment_lock": "/workspace/outputs/environment-a100-pilot-01/reference-lock.json",
+  "model": {
+    "backend": "vista",
+    "upstream_dir": "/workspace/vendor/Vista",
+    "upstream_commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d",
+    "checkpoint": "/workspace/checkpoints/vista.safetensors",
+    "checkpoint_sha256": "1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98",
+    "inference_config": "/workspace/vendor/Vista/configs/inference/vista.yaml"
+  },
+  "data": {
+    "manifest": "/workspace/data/preflight/scene-0103-corrected.jsonl",
+    "root": "/workspace/data/nuscenes",
+    "verify_checksums": true
+  },
+  "generation": {
+    "total_frames": 25,
+    "conditioning_frames": 1,
+    "height": 576,
+    "width": 1024,
+    "steps": 50,
+    "guidance_scale": 2.5,
+    "cond_aug": 0.0,
+    "dtype": "fp16",
+    "decode_chunk_size": 14
+  },
+  "optimizations": {
+    "compile_denoiser": false,
+    "compile_decoder": false,
+    "compile_mode": "default",
+    "dynamic_shapes": false,
+    "fullgraph": false,
+    "conditioning_cache_bytes": 0,
+    "max_batch_size": 1,
+    "feature_cache_interval": 1,
+    "feature_cache_module": null,
+    "keep_model_resident": true,
+    "pinned_memory": false,
+    "async_transfer": false,
+    "prefetch_depth": 0,
+    "attention_backend": "upstream"
+  },
+  "benchmark": {
+    "workload": "single_future",
+    "candidate_count": 1,
+    "requests": 3,
+    "warmup_requests": 2,
+    "max_warmup_requests": 3,
+    "input_condition": "uncached",
+    "save_outputs": 1,
+    "headline": false
+  },
+  "a100_pilot": {
+    "target": "single_nvidia_a100_sxm4_80gb_pilot_v1",
+    "scope": "One preselected development clip; serial eager; no held-out access, H100 adoption, or headline claim",
+    "parent_config_sha256": "f2b1ffe9afaede699f3b3461b7ec6f844f5f953c7104c3b96b6418a72156a8a2",
+    "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb"
+  },
+  "repeatability_probe": {
+    "request_index": 0,
+    "candidate_count": 1,
+    "captures": 2,
+    "replays": 3,
+    "inner_seconds": 840,
+    "outer_seconds": 900,
+    "change_backend_or_flags": false,
+    "full_rollouts": 0,
+    "acceptance_gate": false
+  }
+}

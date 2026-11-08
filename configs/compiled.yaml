@@ -1,0 +1,6 @@
+extends: baseline.yaml
+name: compiled-denoiser-experiment
+output: outputs/compiled
+optimizations:
+  compile_denoiser: true
+  compile_mode: reduce-overhead

@@ -1,0 +1,13 @@
+{
+  "codegen_collection_limitation": "Torch2.0.1 moves completed debug directories into Inductor code cache; initial helper searched only requested debug root. False is not evidence that no CUDA source was generated.",
+  "diagnosis_scope": "Stack stops in Torch fake tensor conversion, not a Triton compiler diagnostic. Native eager attention was already exercised by corrected strict proof.",
+  "exception": "Torch2.0.1 MetaConverter assertion: Python dispatch key excluded while Dynamo traces xFormers flash_fwd Python CUDA operator wrapper",
+  "exit_code": 1,
+  "native_kernel_failure_observed": false,
+  "new_compiled_graphs": 31,
+  "numerical_comparison_completed": false,
+  "source_artifact": "reports/compile-attempt-1-audit.json",
+  "source_sha256": "a715e385f605903a72ed8a767bfe58da7ddd55f41fbe1e47e02b1f4eec72c57a",
+  "status": "failed_compiler_diagnostic",
+  "transform": "Compact selected-field projection; original artifact retained privately. This derived file has its own published checksum."
+}

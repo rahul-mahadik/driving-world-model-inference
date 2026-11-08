@@ -1,0 +1,27 @@
+extends: study_eager_development.yaml
+name: study-bootstrap-compiled-default
+output: outputs/study-bootstrap/compiled-default
+# Development qualification only. Retain every generated array for later adoption.
+numerical_validation: null
+model:
+  compiler_runtime: registered_einops_attention_v1
+  compiler_feature_boundary: null
+optimizations:
+  compile_denoiser: true
+  compile_decoder: false
+  compile_mode: default
+  dynamic_shapes: false
+  fullgraph: false
+  conditioning_cache_bytes: 0
+  max_batch_size: 1
+  feature_cache_interval: 1
+  feature_cache_module: null
+benchmark:
+  workload: single_future
+  candidate_count: 1
+  requests: 32
+  warmup_requests: 3
+  max_warmup_requests: 5
+  input_condition: uncached
+  save_outputs: 32
+  headline: false

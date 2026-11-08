@@ -1,0 +1,24 @@
+name: CPU contracts
+on: [push, pull_request]
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -e '.[test]'
+      - run: python -m pytest -q -m 'not gpu'
+      - run: python -m drivebench.prepare --config configs/data.yaml --synthetic --output data/synthetic
+      - run: python -m drivebench.benchmark --config configs/demo.yaml --output outputs/demo-finalists/baseline
+      - run: python -m drivebench.benchmark --config configs/demo_cached.yaml --output outputs/demo-finalists/cached
+      - run: python -m drivebench.evaluate --runs outputs/demo-finalists --reference outputs/demo-finalists/baseline
+      - run: python -m drivebench.report --runs outputs/demo-finalists
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cpu-contract-report-${{ matrix.python-version }}
+          path: outputs/demo-finalists

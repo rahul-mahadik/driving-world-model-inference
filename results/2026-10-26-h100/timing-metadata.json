@@ -1,0 +1,43 @@
+{
+  "dataset_download_completed": true,
+  "headline_eligible": false,
+  "input_cache_semantics": "uncached means no decoded/conditioning reuse; filesystem cache is OS-controlled",
+  "measured_requests": 3,
+  "model_load_s": 28.892616429000554,
+  "numerical_gate": {
+    "passed": false,
+    "quality_validated": false,
+    "reasons": [
+      "Numerical validation isolation uses different optimization settings",
+      "Numerical validation isolation uses different generation settings",
+      "Numerical validation isolation uses a different model",
+      "Required numerical check did not pass: candidate_order",
+      "Required numerical check did not pass: unrelated_candidate_action_change",
+      "Numerical validation must use the development manifest",
+      "Numerical isolation evidence requires at least two candidates",
+      "Numerical validation run is missing: isolation"
+    ],
+    "report_path": "outputs/preflight-scene0103-corrected/strict-agreement.json",
+    "report_sha256": "e0363bc4f4bb56ee6393d0754cdc0ebe0a985183d9726e462a61f1a7158c5c5a",
+    "scope": "selected development request numerical checks only",
+    "validated_request_count": 1
+  },
+  "profiled": false,
+  "quality_preserving": false,
+  "request_boundary": "Input loading/preprocessing through synchronized host-ready frames; excludes model load, warmup and serialization.",
+  "scope": "Three repeated-clip exploratory timings after two warmups; no p95, CI, speedup or generalization claim.",
+  "source_artifact": "outputs/preflight-scene0103-corrected-benchmark/measurements.jsonl",
+  "source_sha256": "741038d87224ae2c9d384c9d36b0235be6a71bd6a7c246d94d4b5f001836a58c",
+  "successful_requests": 3,
+  "transform": "Compact selected-field projection; original artifact retained privately. This derived file has its own published checksum.",
+  "warmups": [
+    {
+      "latency_s": 57.7911433700001,
+      "status": "ok"
+    },
+    {
+      "latency_s": 57.4943299939996,
+      "status": "ok"
+    }
+  ]
+}

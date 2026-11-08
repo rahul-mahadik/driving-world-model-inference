@@ -1,0 +1,1139 @@
+{
+  "cases": [
+    {
+      "case_id": "shape-69586200b2d1",
+      "comparison": {
+        "atol": 0,
+        "different_values": 148631918,
+        "max_absolute_error": 0.0001220703125,
+        "passed_exact": false,
+        "rmse": 6.736660498509901e-06,
+        "rtol": 0,
+        "values": 294912000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          64.59295654296875,
+          64.75401306152344,
+          64.86434936523438
+        ],
+        "sdpa": [
+          82.68316650390625,
+          82.38236999511719,
+          82.23619079589844
+        ]
+      },
+      "k_shape": [
+        500,
+        9216,
+        64
+      ],
+      "k_stride": [
+        589824,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 64.75401306152344,
+        "sdpa": 82.38236999511719
+      },
+      "observations": 5,
+      "q_shape": [
+        500,
+        9216,
+        64
+      ],
+      "q_stride": [
+        589824,
+        64,
+        1
+      ],
+      "seed": 110464522,
+      "v_shape": [
+        500,
+        9216,
+        64
+      ],
+      "v_stride": [
+        589824,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-71b4e42497bc",
+      "comparison": {
+        "atol": 0,
+        "different_values": 0,
+        "max_absolute_error": 0.0,
+        "passed_exact": true,
+        "rmse": 0.0,
+        "rtol": 0,
+        "values": 294912000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          1.0900160074234009,
+          1.0421119928359985,
+          1.0333119630813599
+        ],
+        "sdpa": [
+          0.9482560157775879,
+          0.9200320243835449,
+          0.9337599873542786
+        ]
+      },
+      "k_shape": [
+        500,
+        1,
+        64
+      ],
+      "k_stride": [
+        64,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 1.0421119928359985,
+        "sdpa": 0.9337599873542786
+      },
+      "observations": 5,
+      "q_shape": [
+        500,
+        9216,
+        64
+      ],
+      "q_stride": [
+        589824,
+        64,
+        1
+      ],
+      "seed": 119232044,
+      "v_shape": [
+        500,
+        1,
+        64
+      ],
+      "v_stride": [
+        64,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-3e85cf6b1c15",
+      "comparison": {
+        "atol": 0,
+        "different_values": 75631,
+        "max_absolute_error": 0.0009765625,
+        "passed_exact": false,
+        "rmse": 5.221582419242962e-06,
+        "rtol": 0,
+        "values": 52428800
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.4467200040817261,
+          0.42924800515174866,
+          0.4150719940662384
+        ],
+        "sdpa": [
+          0.45020800828933716,
+          0.4291520118713379,
+          0.4577600061893463
+        ]
+      },
+      "k_shape": [
+        32768,
+        25,
+        64
+      ],
+      "k_stride": [
+        1600,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.42924800515174866,
+        "sdpa": 0.45020800828933716
+      },
+      "observations": 40,
+      "q_shape": [
+        32768,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 65561824,
+      "v_shape": [
+        32768,
+        25,
+        64
+      ],
+      "v_stride": [
+        1600,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-6e25dd1a0195",
+      "comparison": {
+        "atol": 0,
+        "different_values": 47266,
+        "max_absolute_error": 0.0009765625,
+        "passed_exact": false,
+        "rmse": 5.158281687642822e-06,
+        "rtol": 0,
+        "values": 32768000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.3136320114135742,
+          0.29475200176239014,
+          0.28384000062942505
+        ],
+        "sdpa": [
+          0.2952960133552551,
+          0.301503986120224,
+          0.3067519962787628
+        ]
+      },
+      "k_shape": [
+        20480,
+        25,
+        64
+      ],
+      "k_stride": [
+        1600,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.29475200176239014,
+        "sdpa": 0.301503986120224
+      },
+      "observations": 5,
+      "q_shape": [
+        20480,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 115500475,
+      "v_shape": [
+        20480,
+        25,
+        64
+      ],
+      "v_stride": [
+        1600,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-780f691091c2",
+      "comparison": {
+        "atol": 0,
+        "different_values": 0,
+        "max_absolute_error": 0.0,
+        "passed_exact": true,
+        "rmse": 0.0,
+        "rtol": 0,
+        "values": 52428800
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.4522559940814972,
+          0.4333760142326355,
+          0.44841599464416504
+        ],
+        "sdpa": [
+          0.4418880045413971,
+          0.4345279932022095,
+          0.43670400977134705
+        ]
+      },
+      "k_shape": [
+        32768,
+        1,
+        64
+      ],
+      "k_stride": [
+        64,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.44841599464416504,
+        "sdpa": 0.43670400977134705
+      },
+      "observations": 40,
+      "q_shape": [
+        32768,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 125894267,
+      "v_shape": [
+        32768,
+        1,
+        64
+      ],
+      "v_stride": [
+        64,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-9cf49bf1a613",
+      "comparison": {
+        "atol": 0,
+        "different_values": 0,
+        "max_absolute_error": 0.0,
+        "passed_exact": true,
+        "rmse": 0.0,
+        "rtol": 0,
+        "values": 32768000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.31676799058914185,
+          0.30079999566078186,
+          0.2979840040206909
+        ],
+        "sdpa": [
+          0.29654398560523987,
+          0.27859199047088623,
+          0.28780800104141235
+        ]
+      },
+      "k_shape": [
+        20480,
+        1,
+        64
+      ],
+      "k_stride": [
+        64,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.30079999566078186,
+        "sdpa": 0.28780800104141235
+      },
+      "observations": 5,
+      "q_shape": [
+        20480,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 164581801,
+      "v_shape": [
+        20480,
+        1,
+        64
+      ],
+      "v_stride": [
+        64,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-284953e98362",
+      "comparison": {
+        "atol": 0,
+        "different_values": 72294611,
+        "max_absolute_error": 0.000244140625,
+        "passed_exact": false,
+        "rmse": 1.300040599083359e-05,
+        "rtol": 0,
+        "values": 147456000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          8.34182357788086,
+          8.32857608795166,
+          8.297727584838867
+        ],
+        "sdpa": [
+          10.491456031799316,
+          10.474847793579102,
+          10.479424476623535
+        ]
+      },
+      "k_shape": [
+        1000,
+        2304,
+        64
+      ],
+      "k_stride": [
+        147456,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 8.32857608795166,
+        "sdpa": 10.479424476623535
+      },
+      "observations": 5,
+      "q_shape": [
+        1000,
+        2304,
+        64
+      ],
+      "q_stride": [
+        147456,
+        64,
+        1
+      ],
+      "seed": 42245416,
+      "v_shape": [
+        1000,
+        2304,
+        64
+      ],
+      "v_stride": [
+        147456,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-5c9e0d79176b",
+      "comparison": {
+        "atol": 0,
+        "different_values": 0,
+        "max_absolute_error": 0.0,
+        "passed_exact": true,
+        "rmse": 0.0,
+        "rtol": 0,
+        "values": 147456000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.6219519972801208,
+          0.5771520137786865,
+          0.5703999996185303
+        ],
+        "sdpa": [
+          0.49641600251197815,
+          0.48284798860549927,
+          0.5004159808158875
+        ]
+      },
+      "k_shape": [
+        1000,
+        1,
+        64
+      ],
+      "k_stride": [
+        64,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.5771520137786865,
+        "sdpa": 0.49641600251197815
+      },
+      "observations": 5,
+      "q_shape": [
+        1000,
+        2304,
+        64
+      ],
+      "q_stride": [
+        147456,
+        64,
+        1
+      ],
+      "seed": 97118401,
+      "v_shape": [
+        1000,
+        1,
+        64
+      ],
+      "v_stride": [
+        64,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-da5c08a124e1",
+      "comparison": {
+        "atol": 0,
+        "different_values": 60970,
+        "max_absolute_error": 0.0009765625,
+        "passed_exact": false,
+        "rmse": 5.169800310472871e-06,
+        "rtol": 0,
+        "values": 42598400
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.381632000207901,
+          0.36403200030326843,
+          0.35465601086616516
+        ],
+        "sdpa": [
+          0.37507200241088867,
+          0.3564159870147705,
+          0.3632639944553375
+        ]
+      },
+      "k_shape": [
+        26624,
+        25,
+        64
+      ],
+      "k_stride": [
+        1600,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.36403200030326843,
+        "sdpa": 0.3632639944553375
+      },
+      "observations": 5,
+      "q_shape": [
+        26624,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 228968564,
+      "v_shape": [
+        26624,
+        25,
+        64
+      ],
+      "v_stride": [
+        1600,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-35593f7eb6d3",
+      "comparison": {
+        "atol": 0,
+        "different_values": 0,
+        "max_absolute_error": 0.0,
+        "passed_exact": true,
+        "rmse": 0.0,
+        "rtol": 0,
+        "values": 42598400
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.389055997133255,
+          0.37193599343299866,
+          0.35529598593711853
+        ],
+        "sdpa": [
+          0.3678719997406006,
+          0.3579840064048767,
+          0.36873599886894226
+        ]
+      },
+      "k_shape": [
+        26624,
+        1,
+        64
+      ],
+      "k_stride": [
+        64,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.37193599343299866,
+        "sdpa": 0.3678719997406006
+      },
+      "observations": 5,
+      "q_shape": [
+        26624,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 55942113,
+      "v_shape": [
+        26624,
+        1,
+        64
+      ],
+      "v_stride": [
+        64,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-ed6719a58f0a",
+      "comparison": {
+        "atol": 0,
+        "different_values": 32911711,
+        "max_absolute_error": 0.00048828125,
+        "passed_exact": false,
+        "rmse": 2.3311559993299217e-05,
+        "rtol": 0,
+        "values": 73728000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          1.4046720266342163,
+          1.3997759819030762,
+          1.3922560214996338
+        ],
+        "sdpa": [
+          1.4511679410934448,
+          1.4247039556503296,
+          1.4351680278778076
+        ]
+      },
+      "k_shape": [
+        2000,
+        576,
+        64
+      ],
+      "k_stride": [
+        36864,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 1.3997759819030762,
+        "sdpa": 1.4351680278778076
+      },
+      "observations": 5,
+      "q_shape": [
+        2000,
+        576,
+        64
+      ],
+      "q_stride": [
+        36864,
+        64,
+        1
+      ],
+      "seed": 248936836,
+      "v_shape": [
+        2000,
+        576,
+        64
+      ],
+      "v_stride": [
+        36864,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-6a9a34862085",
+      "comparison": {
+        "atol": 0,
+        "different_values": 0,
+        "max_absolute_error": 0.0,
+        "passed_exact": true,
+        "rmse": 0.0,
+        "rtol": 0,
+        "values": 73728000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.3708159923553467,
+          0.34889599680900574,
+          0.3474240005016327
+        ],
+        "sdpa": [
+          0.2764799892902374,
+          0.2566719949245453,
+          0.26707199215888977
+        ]
+      },
+      "k_shape": [
+        2000,
+        1,
+        64
+      ],
+      "k_stride": [
+        64,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.34889599680900574,
+        "sdpa": 0.26707199215888977
+      },
+      "observations": 5,
+      "q_shape": [
+        2000,
+        576,
+        64
+      ],
+      "q_stride": [
+        36864,
+        64,
+        1
+      ],
+      "seed": 111782706,
+      "v_shape": [
+        2000,
+        1,
+        64
+      ],
+      "v_stride": [
+        64,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-bebf69b7510d",
+      "comparison": {
+        "atol": 0,
+        "different_values": 31345,
+        "max_absolute_error": 0.0009765625,
+        "passed_exact": false,
+        "rmse": 5.266542260851965e-06,
+        "rtol": 0,
+        "values": 21299200
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.23868800699710846,
+          0.2165759950876236,
+          0.21952000260353088
+        ],
+        "sdpa": [
+          0.20828799903392792,
+          0.1944960057735443,
+          0.2030079960823059
+        ]
+      },
+      "k_shape": [
+        13312,
+        25,
+        64
+      ],
+      "k_stride": [
+        1600,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.21952000260353088,
+        "sdpa": 0.2030079960823059
+      },
+      "observations": 5,
+      "q_shape": [
+        13312,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 200015493,
+      "v_shape": [
+        13312,
+        25,
+        64
+      ],
+      "v_stride": [
+        1600,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-bba33d4f1d75",
+      "comparison": {
+        "atol": 0,
+        "different_values": 0,
+        "max_absolute_error": 0.0,
+        "passed_exact": true,
+        "rmse": 0.0,
+        "rtol": 0,
+        "values": 21299200
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.23871999979019165,
+          0.22377599775791168,
+          0.21161599457263947
+        ],
+        "sdpa": [
+          0.22297599911689758,
+          0.1942719966173172,
+          0.21721599996089935
+        ]
+      },
+      "k_shape": [
+        13312,
+        1,
+        64
+      ],
+      "k_stride": [
+        64,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.22377599775791168,
+        "sdpa": 0.21721599996089935
+      },
+      "observations": 5,
+      "q_shape": [
+        13312,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 196754366,
+      "v_shape": [
+        13312,
+        1,
+        64
+      ],
+      "v_stride": [
+        64,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-d7bf1dc496e6",
+      "comparison": {
+        "atol": 0,
+        "different_values": 3858561,
+        "max_absolute_error": 0.0009765625,
+        "passed_exact": false,
+        "rmse": 2.8461963879870004e-05,
+        "rtol": 0,
+        "values": 18432000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.25833600759506226,
+          0.2547520101070404,
+          0.2317119985818863
+        ],
+        "sdpa": [
+          0.22060799598693848,
+          0.2085759937763214,
+          0.21731199324131012
+        ]
+      },
+      "k_shape": [
+        2000,
+        144,
+        64
+      ],
+      "k_stride": [
+        9216,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.2547520101070404,
+        "sdpa": 0.21731199324131012
+      },
+      "observations": 1,
+      "q_shape": [
+        2000,
+        144,
+        64
+      ],
+      "q_stride": [
+        9216,
+        64,
+        1
+      ],
+      "seed": 226228678,
+      "v_shape": [
+        2000,
+        144,
+        64
+      ],
+      "v_stride": [
+        9216,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-54495b623a17",
+      "comparison": {
+        "atol": 0,
+        "different_values": 0,
+        "max_absolute_error": 0.0,
+        "passed_exact": true,
+        "rmse": 0.0,
+        "rtol": 0,
+        "values": 18432000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.18483200669288635,
+          0.1728000044822693,
+          0.1589760035276413
+        ],
+        "sdpa": [
+          0.11868800222873688,
+          0.11049599945545197,
+          0.11446399986743927
+        ]
+      },
+      "k_shape": [
+        2000,
+        1,
+        64
+      ],
+      "k_stride": [
+        64,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.1728000044822693,
+        "sdpa": 0.11446399986743927
+      },
+      "observations": 1,
+      "q_shape": [
+        2000,
+        144,
+        64
+      ],
+      "q_stride": [
+        9216,
+        64,
+        1
+      ],
+      "seed": 88382880,
+      "v_shape": [
+        2000,
+        1,
+        64
+      ],
+      "v_stride": [
+        64,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-dafe5505cf76",
+      "comparison": {
+        "atol": 0,
+        "different_values": 25321,
+        "max_absolute_error": 0.0009765625,
+        "passed_exact": false,
+        "rmse": 5.023174019501116e-06,
+        "rtol": 0,
+        "values": 18432000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.2173440009355545,
+          0.19952000677585602,
+          0.19126400351524353
+        ],
+        "sdpa": [
+          0.18771199882030487,
+          0.18054400384426117,
+          0.1801919937133789
+        ]
+      },
+      "k_shape": [
+        11520,
+        25,
+        64
+      ],
+      "k_stride": [
+        1600,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.19952000677585602,
+        "sdpa": 0.18054400384426117
+      },
+      "observations": 1,
+      "q_shape": [
+        11520,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 229633338,
+      "v_shape": [
+        11520,
+        25,
+        64
+      ],
+      "v_stride": [
+        1600,
+        64,
+        1
+      ]
+    },
+    {
+      "case_id": "shape-c2a85f837cee",
+      "comparison": {
+        "atol": 0,
+        "different_values": 0,
+        "max_absolute_error": 0.0,
+        "passed_exact": true,
+        "rmse": 0.0,
+        "rtol": 0,
+        "values": 18432000
+      },
+      "cuda_event_ms": {
+        "native_xformers": [
+          0.23391999304294586,
+          0.20374399423599243,
+          0.19430400431156158
+        ],
+        "sdpa": [
+          0.18691200017929077,
+          0.17136000096797943,
+          0.18572799861431122
+        ]
+      },
+      "k_shape": [
+        11520,
+        1,
+        64
+      ],
+      "k_stride": [
+        64,
+        64,
+        1
+      ],
+      "median_cuda_event_ms": {
+        "native_xformers": 0.20374399423599243,
+        "sdpa": 0.18572799861431122
+      },
+      "observations": 1,
+      "q_shape": [
+        11520,
+        25,
+        64
+      ],
+      "q_stride": [
+        1600,
+        64,
+        1
+      ],
+      "seed": 204115426,
+      "v_shape": [
+        11520,
+        1,
+        64
+      ],
+      "v_stride": [
+        64,
+        64,
+        1
+      ]
+    }
+  ],
+  "completed_shape_cases": 18,
+  "exit_code": 2,
+  "expected_shape_cases": 18,
+  "headline_eligible": false,
+  "implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "interpretation": "Forced memory-efficient SDPA executed all 18 synthetic observed-shape cases without backend fallback. All9 self-attention shapes failed exact0, all 9 single-key shapes passed. Large spatial shapes were slower; component-only evidence does not warrant a full-rollout speedup claim.",
+  "native_callable_sha256": "6ee2ed49dfd70c3ccce4e046c3d15c2da35e5963f77eaa591627883a11f08fb9",
+  "native_callable_unchanged": true,
+  "peak_allocated_bytes": 3558869504,
+  "peak_reserved_bytes": 3567255552,
+  "profiler": {
+    "native_xformers": {
+      "attention_kernel_events": 18,
+      "attention_kernel_names": [
+        "void fmha_fwd_loop_kernel<FMHA_kernel_traits<128, 64, 16, 1, 4, 8u, __half>, false, false, false>(FMHA_fprop_params)",
+        "void fmha_fwd_loop_kernel<FMHA_kernel_traits<256, 64, 16, 1, 4, 8u, __half>, false, false, false>(FMHA_fprop_params)"
+      ],
+      "efficient_operator_calls": 0,
+      "forbidden_operator_calls": [],
+      "scope": "Instrumented dispatch proof only; excluded from CUDA-event timing samples",
+      "trace_sha256": "5633d1bfdbbbccf95babab401ab0f505d6a31302c08bb8dae34344183016c4dc"
+    },
+    "sdpa": {
+      "attention_kernel_events": 18,
+      "attention_kernel_names": [
+        "void attention_kernel_batched<AttentionKernel<cutlass::half_t, cutlass::arch::Sm80, true, 64l, 64l, true> >(AttentionKernel<cutlass::half_t, cutlass::arch::Sm80, true, 64l, 64l, true>::Params)"
+      ],
+      "efficient_operator_calls": 18,
+      "forbidden_operator_calls": [],
+      "scope": "Instrumented dispatch proof only; excluded from CUDA-event timing samples",
+      "trace_sha256": "bfea08982df1b63a5f170296d00bc20893e7746af6279138aed3b0828cd559a6"
+    }
+  },
+  "quality_validated": false,
+  "scope": "Synthetic fixed-seed q/k/v values at18 observed B2 first-step denoiser shapes; operator-only discovery",
+  "sdpa_backend_settings_restored": true,
+  "semantics": {
+    "attn_mask": null,
+    "dropout_p": 0.0,
+    "dtype": "fp16",
+    "head_dimension": 64,
+    "is_causal": false,
+    "native_op": "automatic upstream",
+    "scale": "1/sqrt(64)",
+    "sdpa_backends": {
+      "flash": false,
+      "math": false,
+      "memory_efficient": true
+    }
+  },
+  "source_probe_sha256": "54096d9954612be9661c19a6a62fde705a39575dc4cb97bf5f022b8aa1c48ec0",
+  "status": "execution_complete_strict_failed",
+  "strict_passed": false,
+  "stride_provenance": "Q strides observed directly. K/V strides were not logged; declared contiguous from pinned Vista construction, not claimed observed.",
+  "timing_policy": "One numerical warmup/operator,3alternating CUDA-event samples/operator/shape; input allocation and comparisons excluded. Separate profiler passes provide no timing samples."
+}

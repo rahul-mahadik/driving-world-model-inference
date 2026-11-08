@@ -1,0 +1,9 @@
+extends: study_memory_base.yaml
+name: study-candidate-memory-batch11
+output: outputs/study-probes/memory-batch11
+optimizations:
+  max_batch_size: 11
+benchmark:
+  candidate_count: 11
+memory_probe:
+  batch_size: 11

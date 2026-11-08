@@ -1,0 +1,16 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 2153,
+      "sha256": "917680e7615f166a07ab03221e771ecc315f7735ddb59595bc83c3c16c87ff4f"
+    },
+    "summary.json": {
+      "bytes": 104331,
+      "sha256": "9dcbcb318dbbc81d4b149a38c0368dd83c16ea00b3fdbaad724bd327ad7e30d5"
+    }
+  },
+  "privacy_scan": "passed",
+  "projection": "explicit allowlist",
+  "schema_version": 1,
+  "source_inventory_sha256": "fd6b001a87b0a1daa9205146d2f4d85f4de0d61fb11865849d16a8213b62a1b0"
+}

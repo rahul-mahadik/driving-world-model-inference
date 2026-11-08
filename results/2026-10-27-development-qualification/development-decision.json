@@ -1,0 +1,48 @@
+{
+  "approved_spec_sha256": "f142e345cb2ea25f3227e12ae65a6f01eaab1ac4baf6db26c1207678e1fb060a",
+  "created_at": "2026-10-27T02:47:51.296841+00:00",
+  "headline_claim": false,
+  "held_out_consulted": false,
+  "historical_numerical_gate_changed": false,
+  "materialized_plan_sha256": "a15bac95d6cd0d4376aa9bbf07cefb392d3cf91ffce9ee2ee7ef74d8ee121c1e",
+  "planned_variants": 18,
+  "receipt_type": "bootstrap_development_decision_v1",
+  "reference_rationale": "Advance compiled-conditioning as a development-qualified secondary reference for the18-variant experiment. Both32-scene evaluations meet the shared explicit diagnostic limits and all fixed blinded candidate votes are yes. The metric-selected supplement shows no obvious added semantic defect in the inspected views. The extra conditioning cache has very small direct saved-output differences versus compiled-default (11/32 exact), so it is not called bitwise equivalent. This selects the next study design only; separate all32 exact conditioning, current numerical semantic proofs, main quality policies, held-out tests and200-request timing remain mandatory.",
+  "release_policy_frozen": false,
+  "remaining_requirements": [
+    "Main development aggregate and separately frozen reference-specific policies",
+    "All-32 exact conditioning anchor; current scoped numerical proofs for any headline timing",
+    "Held-out metrics and accepted blinded reviews; workload-specific variability and timing evidence",
+    "Branch-specific live budget reconciliation; no allocation or funding created by assembly"
+  ],
+  "reviewer_kind": "agent_assisted",
+  "schema_version": 1,
+  "scope": "Accepted to advance the development study design only. Main development aggregation, exact semantic proof, held-out quality and timing are incomplete.",
+  "selected_optimized_reference": "compiled-conditioning",
+  "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "source_receipt_sha256": "ea665d5050ef4aa35fba25dbe1cbd90792b40e7cef3ea15d3dd966a488396f2a",
+  "status": "approved_proposal_only",
+  "study_materialized_after_decision": true,
+  "variant_development_decisions": {
+    "compiled-conditioning": {
+      "policy_rationales": {
+        "freeze_fraction_increase": "Chosen development maximum increase in the existing global frozen-transition fraction relative to generated upstream is zero. This prevents added global freezing under that metric; it does not rule out localized object freezing or prove the upstream output matches recorded motion.",
+        "lpips": "Chosen development maximum per-clip LPIPS is 0.003 under the pinned AlexNet LPIPS evaluator. This is a study-specific development criterion, not a universal perceptual threshold. Apply it only with sealed fixed-subset and metric-selected worst-case visual/temporal review, and report the observed distribution.",
+        "rmse": "Chosen development maximum per-clip RMS perturbation is 1% of the normalized pixel range, equivalent to 2.55 levels on an 8-bit scale. This is an aggregate energy budget, not a claim that every pixel error is invisible. Sparse maximum pixel differences remain reported and reviewed.",
+        "temporal_derivative_mae": "Chosen development maximum mean perturbation to frame-to-frame differences is one 8-bit level (1/255) per clip. It is a temporal consistency proxy, not optical flow, trajectory adherence or a safety measure. Ordered-frame review remains required."
+      },
+      "rationale": "Accept for development study reference selection only: all32 matched real clips meet the explicitly chosen RMSE, LPIPS, temporal and global-freezing criteria; all4 fixed blinded cases are accepted relatively by an agent reviewer across24 ordered frames. Root additionally inspected the two metric-selected worst-case default comparisons using all ordered atlas frames and the maximum-error native frame in each. The compiled-conditioning comparison shares the32 inputs and is directly very close to compiled-default. Maximum pixel differences and historical strict numerical failures remain visible. No claim of universal perceptual indistinguishability, bitwise equivalence, driving validity, held-out acceptance or headline speedup.",
+      "status": "accepted"
+    },
+    "compiled-default": {
+      "policy_rationales": {
+        "freeze_fraction_increase": "Chosen development maximum increase in the existing global frozen-transition fraction relative to generated upstream is zero. This prevents added global freezing under that metric; it does not rule out localized object freezing or prove the upstream output matches recorded motion.",
+        "lpips": "Chosen development maximum per-clip LPIPS is 0.003 under the pinned AlexNet LPIPS evaluator. This is a study-specific development criterion, not a universal perceptual threshold. Apply it only with sealed fixed-subset and metric-selected worst-case visual/temporal review, and report the observed distribution.",
+        "rmse": "Chosen development maximum per-clip RMS perturbation is 1% of the normalized pixel range, equivalent to 2.55 levels on an 8-bit scale. This is an aggregate energy budget, not a claim that every pixel error is invisible. Sparse maximum pixel differences remain reported and reviewed.",
+        "temporal_derivative_mae": "Chosen development maximum mean perturbation to frame-to-frame differences is one 8-bit level (1/255) per clip. It is a temporal consistency proxy, not optical flow, trajectory adherence or a safety measure. Ordered-frame review remains required."
+      },
+      "rationale": "Accept for development study reference selection only: all32 matched real clips meet the explicitly chosen RMSE, LPIPS, temporal and global-freezing criteria; all4 fixed blinded cases are accepted relatively by an agent reviewer across24 ordered frames. Root additionally inspected the two metric-selected worst-case default comparisons using all ordered atlas frames and the maximum-error native frame in each. The compiled-conditioning comparison shares the32 inputs and is directly very close to compiled-default. Maximum pixel differences and historical strict numerical failures remain visible. No claim of universal perceptual indistinguishability, bitwise equivalence, driving validity, held-out acceptance or headline speedup.",
+      "status": "accepted"
+    }
+  }
+}

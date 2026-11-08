@@ -1,0 +1,11 @@
+{
+  "scope": "CPU software tests on the frozen publication source; not model/GPU correctness or performance evidence",
+  "command": "python -m pytest -q",
+  "passed": true,
+  "tests_passed": 345,
+  "elapsed_s": 12.26,
+  "python": "3.13.1",
+  "recorded_at_utc": "2026-10-26T23:21:08.219569+00:00",
+  "verified_implementation_sha256": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00",
+  "matches_measured_corrected_source": true
+}

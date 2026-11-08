@@ -1,0 +1,16 @@
+extends: preflight_scene0103_corrected.yaml
+name: preflight-scene0103-corrected-compiled-denoiser-exploratory
+output: /workspace/outputs/preflight-scene0103-corrected-compiled
+optimizations:
+  compile_denoiser: true
+  compile_mode: default
+  dynamic_shapes: false
+  fullgraph: false
+benchmark:
+  headline: false
+  requests: 1
+  warmup_requests: 2
+  max_warmup_requests: 3
+preflight:
+  scope: corrected development clip with compiled denoiser; strict numerical diagnostic before exploratory timing
+  validation_output: /workspace/outputs/preflight-scene0103-corrected-compiled/strict-agreement.json

@@ -1,0 +1,34 @@
+{
+  "benchmark_rounds": 3,
+  "claim_limits": [
+    "Operator allocation and timing only; no full-model checkpoint execution",
+    "No old timing/proof rerun",
+    "No heldout16-pair quality study",
+    "No pooling with prior hardware",
+    "All failed and partial attempts preserved",
+    "All sealed publications immutable; future result needs new revision"
+  ],
+  "comparators": [
+    "upstream eager operator",
+    "torch.compile fullgraph operator",
+    "custom Triton operator"
+  ],
+  "confirmation": "Fresh selected-config measurements in both orders, already enforced in study.py",
+  "frozen_at": "2026-11-07T22:34:58.130071+00:00",
+  "gpu_result_observed_at_freeze": false,
+  "rl": {
+    "algorithm": "tabular Q-learning",
+    "comparison": "equal-budget random and grid; no RL superiority or unseen-shape claim",
+    "memory_weight": 0.25,
+    "training_episodes": 12,
+    "trials_per_episode": 8
+  },
+  "scope": "Fresh operator correctness, benchmark and measured RL environment only; no old heldout or timing rerun",
+  "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "timed_repetitions": 30,
+  "warmups": 5,
+  "workloads": [
+    "small engineering smoke shapes",
+    "historical profile-derived operator shapes with seeded random input values"
+  ]
+}

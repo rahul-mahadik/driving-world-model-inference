@@ -1,0 +1,7 @@
+extends: demo.yaml
+name: synthetic-feature-policy-contract
+output: outputs/demo-cached
+optimizations:
+  max_batch_size: 2
+  feature_cache_interval: 2
+  feature_cache_module: synthetic_test_feature

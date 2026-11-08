@@ -1,0 +1,7 @@
+extends: study_integrated_compiler.yaml
+name: study-integrated-shape-dynamic
+output: outputs/study-probes/integrated-shape-dynamic
+optimizations:
+  dynamic_shapes: true
+probe:
+  kind: shape_dynamic

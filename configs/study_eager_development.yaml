@@ -1,0 +1,5 @@
+extends: study_upstream_development.yaml
+name: study-eager-development
+output: outputs/study-bootstrap/eager
+model:
+  backend: vista

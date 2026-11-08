@@ -1,0 +1,61 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6127,
+      "sha256": "34fc101ecb8d71797b3b2695e00767965ae1ae50085f8090adc55a08e01e3e90"
+    },
+    "backup-integrity.json": {
+      "bytes": 358,
+      "sha256": "8550845db9bd60342e878a45e1fb7b9ebfac237b932f5cc1c895bf5c6314f3f6"
+    },
+    "correctness.json": {
+      "bytes": 392,
+      "sha256": "9aa8345418b6f8a617eace812d8618ba8210d37ea8c04ff1dfe7332d58a3ccd5"
+    },
+    "failures.json": {
+      "bytes": 1637,
+      "sha256": "88736b1130bfbebc1fadddf407676e1a7b702a58920bf2067b9650b4dc0deb4b"
+    },
+    "operational-attempts.json": {
+      "bytes": 4123,
+      "sha256": "6e5f1bffa585df01ec1a82d429f80000c93a096158e20aac14323619d22b2708"
+    },
+    "profile.json": {
+      "bytes": 410261,
+      "sha256": "f8459c1f91fdf52f6dbcb170c146d23aa6af05a9f954788b10c86e1bb54209d4"
+    },
+    "protocol.json": {
+      "bytes": 1302,
+      "sha256": "6ef49b3618fac708f08ebe8fc9bd9dd9fea25823243b7e36f2846f3e5cd66e3b"
+    },
+    "provenance.json": {
+      "bytes": 8743,
+      "sha256": "bed5c2486913349893e5328e03f9be3b5a75dd8ce05a1a0e489df760370c2d1c"
+    },
+    "rl.json": {
+      "bytes": 329798,
+      "sha256": "0197e366ce7024f9b2508323223c904d46270273355983bd9ec744bb352c42b4"
+    },
+    "runtime.json": {
+      "bytes": 326,
+      "sha256": "a4b879cc77f32e3d13ed3f63f734ada18a0447d6ef9ca08d0a3f64e48a862617"
+    },
+    "smoke.json": {
+      "bytes": 205462,
+      "sha256": "199903f08cc214f48383848725ae8f0560dad9d0a0fafcf903c7c1e042d85f15"
+    },
+    "summary.json": {
+      "bytes": 1103,
+      "sha256": "0646ea6e6deebbc6e290f85f5e3d2ca8c7d7c352a82f39b9779f3e59c9b98fd9"
+    },
+    "test_revision.json": {
+      "bytes": 1608,
+      "sha256": "776cfc66cb85d836d01618dd7a04ece083acb18f1850e827e0c8ff0cf0423e88"
+    }
+  },
+  "qualified": false,
+  "quality_preserving": false,
+  "rl_improvement_validated": false,
+  "schema_version": 1,
+  "whole_model_kernel_benefit_validated": false
+}

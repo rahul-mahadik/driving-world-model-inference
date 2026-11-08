@@ -1,0 +1,83 @@
+{
+  "a100_pilot": {
+    "parent_config_sha256": "f2b1ffe9afaede699f3b3461b7ec6f844f5f953c7104c3b96b6418a72156a8a2",
+    "scope": "Four fixed development smoke scenes, one recorded candidate and fixed seed each, 47 steps and one warmup under the separate A100 math-SDPA runtime. 47 steps is a screening hypothesis from four-scene IO-confounded timing medians only. No matched-latency, quality-preservation, optimized-baseline, H100 adoption, speedup, threshold-calibration or headline claim. Original H100 plan and all old evidence unchanged.",
+    "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+    "target": "single_nvidia_a100_sxm4_80gb_pilot_v1"
+  },
+  "a100_quality_smoke": {
+    "evaluation_pending": true,
+    "retire_outputs": false,
+    "scope": "Four fixed development smoke scenes, one recorded candidate and fixed seed each, 47 steps and one warmup under the separate A100 math-SDPA runtime. 47 steps is a screening hypothesis from four-scene IO-confounded timing medians only. No matched-latency, quality-preservation, optimized-baseline, H100 adoption, speedup, threshold-calibration or headline claim. Original H100 plan and all old evidence unchanged.",
+    "strict_coverage": "Selected original development request at50 steps, not exact equivalence of approximations or all smoke scenes.",
+    "variant": "eager47"
+  },
+  "a100_step47_screening": {
+    "automatic_followup": false,
+    "matched_latency_claimed": false,
+    "optimized_baseline_claimed": false,
+    "prior_timings_may_include_archive_io": true,
+    "retire_outputs": false,
+    "scope": "Four fixed development smoke scenes, one recorded candidate and fixed seed each, 47 steps and one warmup under the separate A100 math-SDPA runtime. 47 steps is a screening hypothesis from four-scene IO-confounded timing medians only. No matched-latency, quality-preservation, optimized-baseline, H100 adoption, speedup, threshold-calibration or headline claim. Original H100 plan and all old evidence unchanged."
+  },
+  "algorithm_policy": {
+    "lock": "/workspace/outputs/environment-a100-math-sdpa-v1/policy-lock.json",
+    "name": "a100_process_math_sdpa_v1",
+    "verification": "/workspace/outputs/environment-a100-math-sdpa-v1/policy-verification.json"
+  },
+  "benchmark": {
+    "candidate_count": 1,
+    "headline": false,
+    "input_condition": "uncached",
+    "max_warmup_requests": 1,
+    "requests": 4,
+    "save_outputs": 4,
+    "warmup_requests": 1,
+    "workload": "single_future"
+  },
+  "data": {
+    "manifest": "/workspace/data/manifests/smoke.jsonl",
+    "root": "/workspace/data/nuscenes",
+    "verify_checksums": true
+  },
+  "environment_lock": "/workspace/outputs/environment-a100-pilot-01/reference-lock.json",
+  "environment_verification": "/workspace/outputs/environment-a100-pilot-01/verification.json",
+  "generation": {
+    "cond_aug": 0.0,
+    "conditioning_frames": 1,
+    "decode_chunk_size": 14,
+    "dtype": "fp16",
+    "guidance_scale": 2.5,
+    "height": 576,
+    "steps": 47,
+    "total_frames": 25,
+    "width": 1024
+  },
+  "model": {
+    "backend": "vista",
+    "checkpoint": "/workspace/checkpoints/vista.safetensors",
+    "checkpoint_sha256": "1b267bb753aa5c5e4d363f6e4c864dd4e343996dedc18b5ab20af6d20be34b98",
+    "inference_config": "/workspace/vendor/Vista/configs/inference/vista.yaml",
+    "upstream_commit": "cc9821b4253ca7987c32757613d2fc2448fa9f5d",
+    "upstream_dir": "/workspace/vendor/Vista"
+  },
+  "name": "a100-math-step47-v1-eager47",
+  "numerical_validation": "/workspace/outputs/a100-math-sdpa-v1/strict-all.json",
+  "optimizations": {
+    "async_transfer": false,
+    "attention_backend": "upstream",
+    "compile_decoder": false,
+    "compile_denoiser": false,
+    "compile_mode": "default",
+    "conditioning_cache_bytes": 0,
+    "dynamic_shapes": false,
+    "feature_cache_interval": 1,
+    "feature_cache_module": null,
+    "fullgraph": false,
+    "keep_model_resident": true,
+    "max_batch_size": 1,
+    "pinned_memory": false,
+    "prefetch_depth": 0
+  },
+  "output": "/workspace/outputs/a100-math-step47-v1/runs/eager47"
+}

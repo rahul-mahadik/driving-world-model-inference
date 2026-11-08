@@ -1,0 +1,61 @@
+{
+  "cold_validation_note": "Includes model loading, compilation and strict diagnostic generation; not pure compilation time",
+  "cold_validation_wall_s": 246.81035054800032,
+  "compiled_agreement": {
+    "atol": 0.0,
+    "candidates": {
+      "nuscenes-fcbccedd61424f1b85dcbf8f897f9754-054c2431ba324912bb4799b9217f5b7b:c00": {
+        "max_abs_error": 0.17875921726226807,
+        "passed": false,
+        "rmse": 0.0020641363045261854,
+        "values": 44236800,
+        "values_outside_tolerance": 43335775
+      }
+    },
+    "passed": false,
+    "rtol": 0.0
+  },
+  "conclusion": "Do not adopt this compiled path under the unchanged atol=rtol=0 requirement. No speedup or quality claim is established. No tolerance was widened after observing output.",
+  "core_source_identity": "2a8fed43b4f2d13e94f9310e9078cfada379f19d8f2f74107fe1066991b7ff00",
+  "cubin_files": 351,
+  "exit_code": 1,
+  "native_attention_preserved": true,
+  "new_compiled_graphs": 444,
+  "numerical_report_sha256": "ff61455baa9c09651be70f738742e10394672815eae199b1e49f7fe9d1900f2e",
+  "positive_cuda_codegen_evidence": true,
+  "prior_upstream_agreement": {
+    "atol": 0,
+    "candidates": {
+      "nuscenes-fcbccedd61424f1b85dcbf8f897f9754-054c2431ba324912bb4799b9217f5b7b:c00": {
+        "max_abs_error": 0.0,
+        "passed": true,
+        "rmse": 0.0,
+        "values": 44236800,
+        "values_outside_tolerance": 0
+      }
+    },
+    "passed": true,
+    "rtol": 0
+  },
+  "ptx_files": 351,
+  "runtime_implementation_sha256": "852542518634f9638ff00d0ef8701f63e80fd6c9798eec5c5ec17e4e986c0a91",
+  "source_artifact": "outputs/compiler-evidence/attempt-2-attention-boundary/audit.json",
+  "source_sha256": "9788a616f51da8bb10064b3e95b5a5a30eb3394cd84b572def8f5a6b695e96e9",
+  "specialization_limit_details": [
+    {
+      "function": "lambda",
+      "guard": "b == 18432",
+      "source": "vendor/Vista/vwm/modules/attention.py:372"
+    },
+    {
+      "function": "torch.nn.Sequential.forward",
+      "guard": "self object identity",
+      "source": "torch/nn/modules/container.py:215"
+    }
+  ],
+  "specialization_limit_events": 2,
+  "specialization_limit_semantics": "Installed pinned Torch2.0.1 convert_frame.py lines237-254 raises Unsupported at cache_size_limit; lines407-413 leaves such frames unconverted even when suppress_errors=False. This is partial compilation with explicit attention boundaries and additional specialization-limit eager frames.",
+  "status": "compiled_output_failed_strict_numerical_gate",
+  "transform": "Compact selected-field projection; original artifact retained privately. This derived file has its own published checksum.",
+  "whole_denoiser_compiled": false
+}

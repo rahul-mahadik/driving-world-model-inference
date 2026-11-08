@@ -1,0 +1,86 @@
+{
+  "agreement": {
+    "candidates": [
+      {
+        "max_abs_error": 0.2024410367012024,
+        "passed": false,
+        "rmse": 0.00304378002047182,
+        "values": 44236800,
+        "values_outside_tolerance": 43336004
+      },
+      {
+        "max_abs_error": 0.4662928581237793,
+        "passed": false,
+        "rmse": 0.003841399204345214,
+        "values": 44236800,
+        "values_outside_tolerance": 43143358
+      }
+    ],
+    "passed": false
+  },
+  "atol": 0,
+  "candidate_batching_exercised": true,
+  "created_at": "2026-10-27T00:00:18.324643+00:00",
+  "current_published_implementation_sha256": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "generation": {
+    "cond_aug": 0.0,
+    "conditioning_frames": 1,
+    "decode_chunk_size": 14,
+    "dtype": "fp16",
+    "guidance_scale": 2.5,
+    "height": 576,
+    "steps": 50,
+    "total_frames": 25,
+    "width": 1024
+  },
+  "headline_eligible": false,
+  "implementation_sha256": "3fd88646ba207e5e56c67317bd6b51c7f58f7da3c38ac3d9b739f2e90dee597b",
+  "passed": false,
+  "process": {
+    "exit_code": 1,
+    "finished_at": "2026-10-27T00:05:01.763340+00:00",
+    "source_identity": "3fd88646ba207e5e56c67317bd6b51c7f58f7da3c38ac3d9b739f2e90dee597b",
+    "source_unchanged": true,
+    "started_at": "2026-10-27T00:00:16.588104+00:00"
+  },
+  "quality_validated": false,
+  "rtol": 0,
+  "runs": {
+    "refactored": {
+      "actual_batch_sizes": [
+        2
+      ],
+      "candidate_count": 2,
+      "denoiser_evaluations": 50,
+      "fallback_count": 0,
+      "joint_denoising_batches": 1,
+      "oom_attempts": 0,
+      "outputs_sha256": {
+        "normal": "e073f50c4eb444de9334791ae1f79e3e0b736522cf83ceb980ea35da670208b6"
+      },
+      "serial_denoising_batches": 0
+    },
+    "upstream": {
+      "actual_batch_sizes": [
+        1,
+        1
+      ],
+      "candidate_count": 2,
+      "denoiser_evaluations": 100,
+      "fallback_count": 0,
+      "joint_denoising_batches": 0,
+      "oom_attempts": 0,
+      "outputs_sha256": {
+        "normal": "789bc58a381e8852beda17eef8369ce57d3c85fda47bf9a0fec605897ba62261"
+      },
+      "serial_denoising_batches": 2
+    }
+  },
+  "schema_version": 1,
+  "scope": "One development request, two independent candidate seeds, strict numerical agreement screen. No perceptual quality or performance conclusion.",
+  "source_host_receipt_sha256": "54101b90e24ddff5cc19617fce3a324d2c08da726793da033dc798f339443b21",
+  "source_proof_sha256": "a55ac85bcf00ef300683a2fe04a2a0902a31897f01228791c395914d242e07b2",
+  "transfer_receipt_sha256": "01d3afde3e9f51fe4df69c112122e7ed866c6f7d0ec1ef2f84e34be7ad21d9d9",
+  "transfer_scope": "Three metadata/host files match remote hashes. Output array hashes below were recorded by the remote validator; the arrays are not included in the transfer receipt or publication.",
+  "validated_request_count": 1
+}

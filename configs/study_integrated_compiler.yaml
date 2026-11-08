@@ -1,0 +1,8 @@
+extends: study_probe_denoiser_default.yaml
+name: study-integrated-compiler-default
+output: outputs/study-probes/integrated-compiler-default
+model:
+  compiler_runtime: registered_einops_attention_v1
+probe:
+  max_warmups: 3
+  measurements: 1

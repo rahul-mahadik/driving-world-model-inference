@@ -1,0 +1,8 @@
+# Linux x86_64 / CPython 3.10 / glibc >=2.28 only.
+-r common.in
+torch @ https://download.pytorch.org/whl/cu124/torch-2.5.1%2Bcu124-cp310-cp310-linux_x86_64.whl#sha256=9dde30f399ca22137455cca4d47140dfb7f4176e2d16a9729fc044eebfadb13a
+torchvision @ https://download.pytorch.org/whl/cu124/torchvision-0.20.1%2Bcu124-cp310-cp310-linux_x86_64.whl#sha256=3a055e4e9040b129878d57c39db55f117f975899ff30dd70c8f2621d91170dbe
+torchaudio @ https://download.pytorch.org/whl/cu124/torchaudio-2.5.1%2Bcu124-cp310-cp310-linux_x86_64.whl#sha256=097593edf32f0a8450aba7822b8097d2f2476fe96c0ab99331d12c347003180b
+xformers @ https://download.pytorch.org/whl/cu124/xformers-0.0.28.post3-cp310-cp310-manylinux_2_28_x86_64.whl#sha256=0b941eaf2c4eb71459bcb9fbfd45b472304135fc38e54e6c44ded6c24e472e99
+triton==3.1.0
+torchdata==0.9.0

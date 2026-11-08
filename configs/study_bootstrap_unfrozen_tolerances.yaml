@@ -1,0 +1,8 @@
+schema_version: 1
+calibrated: false
+frozen: false
+metrics: {}
+performance:
+  calibrated: false
+  relative_latency_tolerance: null
+# Descriptive development measurements only; no quality acceptance is inferred.

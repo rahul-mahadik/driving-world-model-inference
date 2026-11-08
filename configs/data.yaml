@@ -1,0 +1,42 @@
+# Use an authorized nuScenes copy, including the official public data mirror.
+# Paths resolve relative to the process working directory.
+dataset: nuscenes
+data_root: data/nuscenes
+version: v1.0-trainval
+output_dir: data/manifests
+annotation_sources:
+  - path: data/annotations/nuScenes_val.json
+    split: val
+    sha256: 264e5223ae9fff6163e70e3c917940246df231adaf393cd34bee84636c701407
+  - path: data/annotations/nuScenes.json
+    split: train
+    sha256: 77d0f4abc9873e4f1799cc2b9074d03a867b13567b520de1120fa0d896733453
+# Optional JSON {train: [official scene names], val: [official scene names]}.
+official_splits_json: data/nuscenes/official_splits.json
+num_frames: 25
+conditioning_frames: 1
+seed: 23
+splits:
+  smoke: 4
+  development: 32
+  evaluation: 128
+  evaluation_min_scenes: 64
+  evaluation_second_seed: 16
+  calibration_scenes: 16
+perturbation_bounds:
+  max_lateral_m: 0.5
+  max_longitudinal_m: 1.0
+# Vista passes traj[2:] unchanged. The maintainer's translation script was
+# reconstructed against 32 stratified clips from these exact annotation files;
+# see reports/trajectory-audit.json. Timing is derived per clip from metadata,
+# because camera/LiDAR offsets and keyframe intervals are not constant.
+trajectory_metadata:
+  units: meters
+  coordinate_frame: initial_LIDAR_TOP_sensor_frame
+  axis_order: [lateral, longitudinal]
+  axis_directions: [right, forward]
+  timestamps_seconds: null
+  timestamp_source: nuscenes_lidar_top_keyframes
+  provenance: https://github.com/OpenDriveLab/Vista/issues/30#issuecomment-2395262569
+  verification_report: reports/trajectory-audit.json
+  verified_against_annotation_source: true

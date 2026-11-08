@@ -1,0 +1,8 @@
+extends: study_probe_eager.yaml
+name: study-probe-denoiser-default-native-attention-boundary
+output: outputs/study-probes/denoiser-default
+optimizations:
+  compile_denoiser: true
+probe:
+  kind: denoiser_default
+  max_warmups: 3

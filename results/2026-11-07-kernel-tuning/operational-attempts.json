@@ -1,0 +1,110 @@
+{
+  "backup_verification": {
+    "bytes_changed": false,
+    "cause": "Pathlib path ordering differed from explicit relative-path string ordering",
+    "corrected_backup_independently_verified": true,
+    "initial_assertion_failed": true,
+    "original_attempt_preserved": true,
+    "source_sha256": "583d2c3621c09ada0255a646119815ce6bc06d5d735006b2de0b7e648cdd4743"
+  },
+  "compute_cleanup_response": {
+    "boot_volume_deletion_not_attested_by_this_receipt": true,
+    "deadline_extended_or_rebound": false,
+    "failure": {
+      "at": "2026-11-07T23:18:13.675695+00:00",
+      "attempt": 1,
+      "error": "delete_action_response_not_successful",
+      "failure_preserved": true,
+      "state": "cleanup_retry",
+      "underlying_cause": "unknown"
+    },
+    "guard_restarted": false,
+    "independent_provider_observation": {
+      "at": "2026-11-07T23:18:35.755538+00:00",
+      "instance_count": 0
+    },
+    "normal_stop_requested_monitor_event_is_not_a_new_monitoring_failure": true,
+    "operator_requested_cleanup": true,
+    "original_sources": {
+      "guard_final_status": {
+        "bytes": 371,
+        "sha256": "1beda20bd0216bbba453f7b08f16078cad08c8736563240a6519b6d8094e582d"
+      },
+      "guard_journal": {
+        "bytes": 55026,
+        "sha256": "81ba085708c5b52578f27cf1fa9cd5d5cdc5fb15e04c89c4ec1591fabf0c1d79"
+      },
+      "provider_cleanup_observation": {
+        "bytes": 1789,
+        "sha256": "158157f8e01286c15408eacd4ffb3cadea713c344c52792d4fec165200517ec9"
+      },
+      "supervisor": {
+        "bytes": 722,
+        "sha256": "d5b705d0fea7045b010ca5ea4df6be3e784f21a58c0979b6d917a2783dd1104d"
+      }
+    },
+    "originals_preserved_privately": true,
+    "provider_identifiers_and_credentials_excluded": true,
+    "recovery": {
+      "armed": false,
+      "at": "2026-11-07T23:18:34.030596+00:00",
+      "instance_status": "discontinued",
+      "state": "cleanup_verified"
+    },
+    "schema_version": 1,
+    "scope": "Sanitized compute-retirement response failure and subsequent verified retirement"
+  },
+  "creation_response": {
+    "duplicate_create_sent": false,
+    "resolved_by_exact_hostname_inventory": true,
+    "source_sha256": "a1eb9313bf1e438337eaef811907dbfb8591db923cd98b72bc66004c8a30a45a",
+    "transport_error": true
+  },
+  "initial_ssh_readiness": {
+    "credentials_included": false,
+    "first_two_attempts_failed": true,
+    "historical_failures_reclassified_as_success": false,
+    "observations": [
+      {
+        "at": "2026-11-07T22:37:14.787124+00:00",
+        "attempt": 1,
+        "category": "ssh_connection_timeout",
+        "credited_as_gpu_experiment": false,
+        "original_preserved_privately": true,
+        "original_receipt_bytes": 164,
+        "original_receipt_sha256": "c5437ec60522956694f19a047a9a42efc251f1eefc23ebdd7e1e60549a19816b",
+        "returncode": 255
+      },
+      {
+        "at": "2026-11-07T22:37:45.970579+00:00",
+        "attempt": 2,
+        "category": "ssh_connection_refused",
+        "credited_as_gpu_experiment": false,
+        "original_preserved_privately": true,
+        "original_receipt_bytes": 163,
+        "original_receipt_sha256": "d78cdfd8614b50b3dc17f3f10d7b4808ec0446d21dfc69c41fbb9049b88d8274",
+        "returncode": 255
+      },
+      {
+        "at": "2026-11-07T22:38:10.086930+00:00",
+        "attempt": 3,
+        "category": "ssh_ready",
+        "credited_as_gpu_experiment": false,
+        "original_preserved_privately": true,
+        "original_receipt_bytes": 426,
+        "original_receipt_sha256": "8d1f085788dad66efc8ec0b0299ec5d8ac9fc7258f0bb4b4235c62c43a02ab7e",
+        "returncode": 0
+      }
+    ],
+    "original_stderr_stdout_and_transport_identifiers_excluded": true,
+    "schema_version": 1,
+    "scientific_results_inferred": false,
+    "scope": "Sanitized startup SSH readiness observations from the fresh November7 operator allocation",
+    "third_attempt_succeeded": true
+  },
+  "local_preflight": {
+    "exception": "KeyError before remote or resource action",
+    "source_sha256": "6aa199f537963e0d8869e68399cfe1af469e610755699a96cb90dccf9afd3345"
+  },
+  "schema_version": 1
+}

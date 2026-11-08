@@ -1,0 +1,50 @@
+{
+  "comparison_builder_v2": {
+    "actual_deployed_specification_sha256": "ca6f30c06280c1f0e8f7662aad08755613e814ccd6483257d93b164926f585a1",
+    "actual_host_completed": true,
+    "review_receipt_sha256": "88a1ee82795838526d323578df2fcc8552ae43f29f9a857490a90978538cffba",
+    "scope": "Separately reviewed comparison builder v2 used for the completed comparison. Original comparison builder remains an omitted hash-bound utility dependency of the private archiver.",
+    "sha256": "6d89fb65bba330453b1bc467b53293db3ef998f894df42d0397a104270034324"
+  },
+  "omitted_original_comparison_builder": {
+    "scope": "Hash-only operational reconstruction dependency. The private comparison archiver imports its inventory/add/constants; do not claim it was never used. The v2 comparison builder is standalone relative to this source.",
+    "sha256": "fe1f91fbe929fc3be049d7429b21a3d960e142ab01c36c55a0cba70410b063c7"
+  },
+  "original_failure": {
+    "actual_admission_sha256": "db0a0b4b4ed49bcc25684d9b734dd6f77258cb03593f4d573f776025c4ec9a3e",
+    "actual_input_keys": 267,
+    "consistent_relative_aliases": 4,
+    "error": "ValueError: Admission pins must be actual /workspace paths",
+    "exact_normalized_expected_keys": 263,
+    "gate_relaxed": false,
+    "generation_launched_by_failed_attempt": false,
+    "missing_extra_or_conflicting_normalized_pins": false,
+    "original_builder_sha256": "a50fa2949208e3be62d6e1e1ae1d5f9fa3e5d5e8efe039dc1277a603fc053bc5",
+    "original_file_and_admission_preserved": true,
+    "recorded_at": "2026-10-28T04:17:56.464275+00:00",
+    "repair_builder_sha256": "5abd5177e6e48974db055d65df23b711a994d939e6d305aeb928ab0ce035ad1c",
+    "spec_written_by_failed_attempt": false,
+    "stage": "local_generation_specification_preparation"
+  },
+  "prepared_at": "2026-10-28T04:30:14.579704+00:00",
+  "private_host_specs_or_receipts_copied": false,
+  "schema_version": 1,
+  "scope": "Original failure was local generation-specification validation of absolute/relative aliases, not a generation or model failure. Separate v2 preserves exact normalized provenance and known identical aliases. Recorded-at is a record timestamp, not an inferred failure execution time. Prior fixture tests are not rerun or attributed to publication staging.",
+  "separate_repair_review": {
+    "actual_admission_sha256": "db0a0b4b4ed49bcc25684d9b734dd6f77258cb03593f4d573f776025c4ec9a3e",
+    "actual_input_keys": 267,
+    "builder_sha256": "5abd5177e6e48974db055d65df23b711a994d939e6d305aeb928ab0ce035ad1c",
+    "consistent_known_aliases": 4,
+    "exact_normalized_expected_pins": 263,
+    "freshness_gate_unchanged": true,
+    "original_builder_preserved": true,
+    "reviewed_at": "2026-10-28T04:13:11.404337+00:00",
+    "specification_sha256": "6e68b08525b21e1783f0bdd9c07c71ae17739f33a83f049098db558cf9053d76"
+  },
+  "snapshot_at": "2026-10-28T04:46:09.012565+00:00",
+  "source_receipt_sha256": {
+    "local_builder_failure": "5c2c46f63e984580c543db365fec2a5ccaf2cedec437077b0ff484679882e34f",
+    "separate_v2_review": "942eacbcd1c87574d3ea0024caccea8ba112812d5952a8d09e0d4ae8b4804ad9"
+  },
+  "status": "historical_local_failure_and_separate_reviewed_repair_used_for_completed_generation"
+}

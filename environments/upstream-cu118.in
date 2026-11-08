@@ -1,0 +1,16 @@
+# H100 compatibility baseline: same pinned Vista source and upstream package
+# versions, with CUDA11.8 wheels. This is distinct from original upstream/cu117:
+# the recorded H100 Torch2.0.1+cu117 randn smoke failed with no kernel image.
+# Model parity and profiler proof remain required; CUDA11.8 is not assumed equal.
+# Primary wheel/hash sources (verified2026-10-26):
+# https://download.pytorch.org/whl/cu118/{torch,torchvision,torchaudio}/
+# https://pypi.org/pypi/xformers/0.0.20/json
+# xFormers wheel cpp_lib.json records CUDA1108 and Torch2.0.1+cu118.
+# Linux x86_64 / CPython3.10 only. No xFormers source build in this mode.
+-r common.in
+torch @ https://download-r2.pytorch.org/whl/cu118/torch-2.0.1%2Bcu118-cp310-cp310-linux_x86_64.whl#sha256=a7a49d459bf4862f64f7bc1a68beccf8881c2fa9f3e0569608e16ba6f85ebf7b
+torchvision @ https://download-r2.pytorch.org/whl/cu118/torchvision-0.15.2%2Bcu118-cp310-cp310-linux_x86_64.whl#sha256=19ca4ab5d6179bbe53cff79df1a855ee6533c2861ddc7389f68349d8b9f8302a
+torchaudio @ https://download-r2.pytorch.org/whl/cu118/torchaudio-2.0.2%2Bcu118-cp310-cp310-linux_x86_64.whl#sha256=26692645ea061a005c57ec581a2d0425210ac6ba9f923edf11cc9b0ef3a111e9
+xformers @ https://files.pythonhosted.org/packages/4b/b0/dfbb3b0ceafdb73cd1b2bbe33f65dc1c5c47dcb0d4b03ba6f95da6557306/xformers-0.0.20-cp310-cp310-manylinux2014_x86_64.whl#sha256=905a9bedf18c8feb68c9143df0dadba708ec1efb947bcc97c4f9e5b30fd79c42
+triton==2.0.0
+torchdata==0.6.1

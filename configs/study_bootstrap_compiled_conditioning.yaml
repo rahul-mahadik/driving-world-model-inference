@@ -1,0 +1,7 @@
+extends: study_bootstrap_compiled_default.yaml
+name: study-bootstrap-compiled-conditioning
+output: outputs/study-bootstrap/compiled-conditioning
+optimizations:
+  conditioning_cache_bytes: 2147483648
+benchmark:
+  input_condition: reused_conditioning

@@ -1,0 +1,9 @@
+extends: final_evaluation.yaml
+name: held-out-second-seed
+output: outputs/finalists-second-seed/eager
+data:
+  manifest: data/manifests/evaluation_second_seed.jsonl
+benchmark:
+  requests: 16
+  save_outputs: 16
+  headline: false

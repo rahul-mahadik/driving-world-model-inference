@@ -1,0 +1,23 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 3927,
+      "sha256": "fa650e61e039b5138a46fd1f0e49c84ec40b83b1c9fa05e46857e0943abee5a4"
+    },
+    "measurements.json": {
+      "bytes": 25648,
+      "sha256": "1f3b69ffa1c500d1325dc1b98f69df240ce9e8866c782c0efac27880dea0ac7f"
+    },
+    "summary.json": {
+      "bytes": 5484,
+      "sha256": "d53b2dd7220da21ae95a93bfb24c9912d64b0f5f6fd51490715759b858d629b3"
+    }
+  },
+  "headline_eligible": false,
+  "private_operational_records_included": false,
+  "qualification_passed": false,
+  "quality_preserving": false,
+  "raw_data_included": false,
+  "schema_version": 1,
+  "timing_complete": false
+}
