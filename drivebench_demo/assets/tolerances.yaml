@@ -1,0 +1,14 @@
+# No output-quality acceptance is established by a synthetic demonstration.
+schema_version: 1
+calibrated: false
+frozen: false
+selected_on: development
+development_manifest_sha256: null
+development_scene_ids: []
+frozen_at: null
+metrics: {}
+performance:
+  calibrated: false
+  relative_latency_tolerance: null
+  minimum_requests: 200
+  require_confirmatory_rerun: true

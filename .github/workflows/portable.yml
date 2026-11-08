@@ -1,0 +1,34 @@
+name: Portable benchmark demos
+on: [push, pull_request]
+jobs:
+  installed-demos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build both packages
+        run: python -m pip wheel --no-deps --wheel-dir "$RUNNER_TEMP/drivebench-wheels" . ./extensions/kernel_tuning
+      - name: Install into a fresh environment without Torch
+        run: |
+          python -m venv "$RUNNER_TEMP/drivebench-portable"
+          "$RUNNER_TEMP/drivebench-portable/bin/python" -m pip install "$RUNNER_TEMP"/drivebench-wheels/*.whl
+          "$RUNNER_TEMP/drivebench-portable/bin/python" -c "import importlib.util; assert importlib.util.find_spec('torch') is None"
+      - name: Run installed demos outside the checkout
+        run: |
+          cd "$RUNNER_TEMP"
+          "$RUNNER_TEMP/drivebench-portable/bin/drivebench-demo" --output ./video-demo
+          "$RUNNER_TEMP/drivebench-portable/bin/drivebench-search" describe
+          "$RUNNER_TEMP/drivebench-portable/bin/drivebench-search" run --backend synthetic --split validation --policy random --output ./search-demo
+          "$RUNNER_TEMP/drivebench-portable/bin/python" "$GITHUB_WORKSPACE/extensions/kernel_tuning/examples/env_quickstart.py" > ./policy-example.json
+          "$RUNNER_TEMP/drivebench-portable/bin/python" "$GITHUB_WORKSPACE/extensions/kernel_tuning/examples/inference_env_quickstart.py" > ./inference-example.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: portable-synthetic-demo-results
+          path: |
+            ${{ runner.temp }}/video-demo
+            ${{ runner.temp }}/search-demo
+            ${{ runner.temp }}/policy-example.json
+            ${{ runner.temp }}/inference-example.json
+      # Software usability verification only; invented/CPU metrics are not GPU evidence.

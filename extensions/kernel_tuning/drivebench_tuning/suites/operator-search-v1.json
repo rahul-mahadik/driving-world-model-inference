@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "suite_id": "operator-search-v1",
+  "description": "Public, deterministic operator workload specification for budgeted search. No new GPU results are supplied for this suite.",
+  "input_policy": "Seeded random tensors; not recorded activations or licensed driving data.",
+  "provenance": "Test shapes match selected historical Vista profile shapes. Train/validation shapes are constructed from the same operator families. These are openly specified splits, not secret or historically untouched holdouts.",
+  "timing_boundary": "Single isolated operator invocation, CUDA events; initialization, compilation, input creation, warmups, correctness and export excluded but charged to wall time.",
+  "memory_boundary": "Peak live allocated increase above resident inputs, including output; not full-model memory or allocator reservation.",
+  "quality_policy": "Reference-output shape/dtype/finiteness and dtype-specific allclose; input immutability. Not video perceptual quality.",
+  "default_trial_budget": 4,
+  "default_memory_weight": 0.0,
+  "candidates": [
+    {
+      "id": "torch-compiled",
+      "config": {
+        "implementation": "compiled"
+      }
+    },
+    {
+      "id": "triton-b128-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 128,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b128-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 128,
+        "num_warps": 8
+      }
+    },
+    {
+      "id": "triton-b256-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 256,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b256-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 256,
+        "num_warps": 8
+      }
+    },
+    {
+      "id": "triton-b512-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 512,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b512-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 512,
+        "num_warps": 8
+      }
+    },
+    {
+      "id": "triton-b1024-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 1024,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b1024-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 1024,
+        "num_warps": 8
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "train-geglu-1",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          8,
+          144,
+          2560
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1101
+      }
+    },
+    {
+      "id": "train-geglu-2",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          16,
+          288,
+          5120
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1102
+      }
+    },
+    {
+      "id": "train-geglu-3",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          72,
+          25,
+          10240
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1103
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-1",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          8,
+          320,
+          36,
+          64
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1104
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-2",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          16,
+          640,
+          18,
+          32
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1105
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-3",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          8,
+          1280,
+          9,
+          16
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1106
+      }
+    },
+    {
+      "id": "validation-geglu-1",
+      "split": "validation",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          16,
+          576,
+          5120
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1201
+      }
+    },
+    {
+      "id": "validation-groupnorm_silu-1",
+      "split": "validation",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          16,
+          320,
+          72,
+          128
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1202
+      }
+    },
+    {
+      "id": "test-geglu-1",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          50,
+          576,
+          10240
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1301
+      }
+    },
+    {
+      "id": "test-geglu-2",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          288,
+          25,
+          10240
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1302
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-1",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          50,
+          320,
+          72,
+          128
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1303
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-2",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          50,
+          640,
+          36,
+          64
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 1304
+      }
+    }
+  ]
+}
