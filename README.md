@@ -2,13 +2,15 @@
 
 Measure an implementation, compare it with a reference, and give tuning policies a fixed trial budget. DriveBench provides a Vista video-inference benchmark and a Gymnasium environment for GPU configuration search. Existing Triton kernels are example candidates, not the project's main deliverable.
 
-**V17 release candidate.** The new portable demos and search interface are validated on CPU. Their CUDA adapter reuses the previously executed operator runner, but this revised suite/environment has not been run on a GPU. Historical results stay tied to their original source/runtime. The repository is currently private and a project-wide open-source license has not been selected; public release is pending.
+**V17 open-source tooling release.** The portable demos and search interface are validated on CPU. Their CUDA adapter reuses the previously executed operator runner, but this revised suite/environment has not been run on a GPU. Historical results stay tied to their original source/runtime. First-party project code is available under the [MIT license](LICENSE); [third-party notices](NOTICE.md) describe separately licensed dependencies, models and data.
 
 ## Start without a GPU
 
-From a checkout, install either or both packages in a clean Python 3.10+ environment:
+Clone the repository and install either or both packages in a clean Python 3.10+ environment:
 
 ```sh
+git clone https://github.com/rahul-mahadik/driving-world-model-inference.git
+cd driving-world-model-inference
 python -m venv .venv
 . .venv/bin/activate
 python -m pip install . ./extensions/kernel_tuning

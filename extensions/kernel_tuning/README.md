@@ -71,4 +71,4 @@ For the historical balanced exhaustive operator sweep, `drivebench-tune benchmar
 - [External evaluator contract](docs/extending.md)
 - [Historical measured results](../../results/2026-11-07-kernel-tuning/README.md)
 
-No project-wide license is selected yet; this release candidate is being prepared for public distribution. Third-party notices and prior sealed evidence remain unchanged.
+First-party code is licensed under [MIT](LICENSE). Dependencies retain their respective licenses; see the repository's [third-party notices](../../NOTICE.md). Prior sealed evidence remains unchanged.

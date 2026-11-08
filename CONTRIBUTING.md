@@ -1,6 +1,6 @@
 # Contributing benchmark components
 
-This project prioritizes reusable measurement and search infrastructure. Contributions can add workloads, adapters, policies, examples or checks. You do not need to write a custom GPU kernel to participate. A project license/public release decision is pending; this document does not grant additional licensing rights.
+This project prioritizes reusable measurement and search infrastructure. Contributions can add workloads, adapters, policies, examples or checks. You do not need to write a custom GPU kernel to participate. First-party code is [MIT licensed](LICENSE); preserve [third-party notices](NOTICE.md) and only contribute material you have the right to share.
 
 ## Development
 

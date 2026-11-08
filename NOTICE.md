@@ -1,6 +1,8 @@
 # Third-party notices and publication scope
 
-Vista is developed by OpenDriveLab. The pinned source revision is `cc9821b4253ca7987c32757613d2fc2448fa9f5d`; its repository uses Apache License 2.0. An attribution copy is included at [third_party/Vista-LICENSE](third_party/Vista-LICENSE). The Vista source tree and checkpoint are obtained separately and are not redistributed here. The harness calls the upstream interfaces and pins provenance; this notice does not declare a new project-wide license.
+First-party DriveBench code and documentation are licensed under the [MIT license](LICENSE), copyright 2026 Rahul Mahadik. This grant does not replace the licenses or terms of third-party dependencies, model weights or datasets.
+
+Vista is developed by OpenDriveLab. The pinned source revision is `cc9821b4253ca7987c32757613d2fc2448fa9f5d`; its repository uses Apache License 2.0. An attribution copy is included at [third_party/Vista-LICENSE](third_party/Vista-LICENSE). The Vista source tree and checkpoint are obtained separately and are not redistributed here. The harness calls the upstream interfaces and pins provenance; Vista retains its own license.
 
 nuScenes is provided by Motional. Obtain data and review its current [dataset terms](https://www.nuscenes.org/terms-of-use) and [download instructions](https://www.nuscenes.org/download) separately. This repository includes no dataset images, annotation tables, generated driving videos, or checkpoints. The metric-only chart is generated from measured numeric profiler summaries. No claim is made here about redistribution rights for omitted media.
 
