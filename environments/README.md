@@ -1,3 +1,7 @@
+# Environment recipes and evidence boundaries
+
+These recipes and the dated status below describe the historical Vista studies. The new portable CPU demos need no CUDA; the separate operator adapter uses Torch 2.10.0/Triton 3.6.0. See the [current project guide](../README.md) and [operator search guide](../extensions/kernel_tuning/README.md). Names such as `modern` below identify historical recipes, not a claim to be the newest or fastest stack.
+
 # Isolated Vista inference environments
 
 These are pinned **installation recipes**, not executed or validated Linux

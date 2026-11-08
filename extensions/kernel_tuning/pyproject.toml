@@ -4,17 +4,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "drivebench-kernel-tuning"
-version = "0.1.0"
-description = "Measured Triton operator benchmarks and a Gymnasium kernel tuning environment"
+version = "0.2.0"
+description = "Reproducible GPU benchmarks and a budgeted configuration-search environment"
+readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24,<3", "gymnasium==1.2.3"]
 
 [project.optional-dependencies]
 gpu = ["torch==2.10.0", "triton==3.6.0; sys_platform == 'linux'"]
 test = ["pytest>=8,<9", "torch==2.10.0"]
+interface-test = ["pytest>=8,<9"]
 
 [project.scripts]
 drivebench-tune = "drivebench_tuning.cli:main"
+drivebench-search = "drivebench_tuning.search_cli:main"
 
 [tool.setuptools.packages.find]
 include = ["drivebench_tuning*"]
@@ -22,3 +25,6 @@ include = ["drivebench_tuning*"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = ["gpu: requires an NVIDIA CUDA GPU and Triton"]
+
+[tool.setuptools.package-data]
+drivebench_tuning = ["suites/*.json"]

@@ -1,0 +1,5 @@
+# This deliberate synthetic approximation exercises evaluation/reporting only.
+name: synthetic-cpu-demo-candidate
+optimizations:
+  feature_cache_interval: 2
+  feature_cache_module: synthetic_test_feature

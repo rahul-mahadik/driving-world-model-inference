@@ -1,0 +1,21 @@
+name: synthetic-cpu-demo-baseline
+model:
+  backend: synthetic
+generation:
+  total_frames: 25
+  conditioning_frames: 1
+  height: 32
+  width: 64
+  steps: 4
+  dtype: fp32
+optimizations:
+  conditioning_cache_bytes: 1048576
+  max_batch_size: 2
+benchmark:
+  workload: candidate_set
+  candidate_count: 2
+  requests: 4
+  warmup_requests: 1
+  input_condition: reused_conditioning
+  save_outputs: 4
+  headline: false

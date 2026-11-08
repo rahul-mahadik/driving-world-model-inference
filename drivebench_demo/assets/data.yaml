@@ -1,0 +1,12 @@
+# Artificial CPU fixtures only; no licensed data, checkpoint, or download.
+dataset: synthetic
+num_frames: 25
+conditioning_frames: 1
+seed: 23
+splits:
+  smoke: 2
+  development: 2
+  evaluation: 2
+  evaluation_min_scenes: 2
+  evaluation_second_seed: 2
+  calibration_scenes: 1

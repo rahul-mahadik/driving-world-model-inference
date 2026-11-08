@@ -12,9 +12,16 @@ dependencies = ["numpy>=1.24,<3", "Pillow>=9.5", "PyYAML>=6", "ijson>=3.3,<4"]
 [project.optional-dependencies]
 test = ["pytest>=8,<9"]
 perceptual = ["lpips==0.1.4"]
+plots = ["matplotlib>=3.9,<4"]
+
+[project.scripts]
+drivebench-demo = "drivebench_demo:main"
 
 [tool.setuptools.packages.find]
-include = ["drivebench*"]
+include = ["drivebench", "drivebench.*", "drivebench_demo", "drivebench_demo.*"]
+
+[tool.setuptools.package-data]
+drivebench_demo = ["assets/*.yaml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
