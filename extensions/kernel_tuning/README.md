@@ -1,4 +1,6 @@
-# DriveBench configuration-search environment
+# DriveBench agent and configuration-search environments
+
+V0.3 adds durable agent tools, an optional tool-free LLM selector, array-backed proxy checks and frozen final scoring. The [agent guide](../../docs/agent-environment.md) covers the configuration-only trust boundary and pending full Vista demonstration. Run `drivebench-agent-demo --output ./agent-demo` after installing the core and extension to exercise the complete CPU fixture. The new agent environment has no GPU/LLM result yet.
 
 A reusable Gymnasium task for finding a good execution configuration within a measurement budget. The evaluator and candidate payloads are injectable: users can benchmark their own kernel implementations or inference configurations without changing the environment. The bundled CUDA adapter uses the existing GEGLU/GroupNorm+SiLU examples; it is not a generic model executor.
 

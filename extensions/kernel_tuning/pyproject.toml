@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "drivebench-kernel-tuning"
-version = "0.2.0"
+version = "0.3.0"
 description = "Reproducible GPU benchmarks and a budgeted configuration-search environment"
 readme = "README.md"
 license = "MIT"
@@ -20,6 +20,8 @@ interface-test = ["pytest>=8,<9"]
 [project.scripts]
 drivebench-tune = "drivebench_tuning.cli:main"
 drivebench-search = "drivebench_tuning.search_cli:main"
+drivebench-agent-demo = "drivebench_tuning.agent_demo:main"
+drivebench-vista-batch = "drivebench_tuning.vista_batch:main"
 
 [tool.setuptools.packages.find]
 include = ["drivebench_tuning*"]

@@ -1,8 +1,10 @@
-# DriveBench: Inference Benchmarks & Configuration Search
+# DriveBench: GPU Inference Benchmarks & Agent Optimization Environment
 
-Measure an implementation, compare it with a reference, and give tuning policies a fixed trial budget. DriveBench provides a Vista video-inference benchmark and a Gymnasium environment for GPU configuration search. Existing Triton kernels are example candidates, not the project's main deliverable.
+Measure inference, expose bounded optimization tools, and score a submitted configuration with independent checks. DriveBench combines a Vista video-inference benchmark, an agent tool interface for configuration optimization, and a Gymnasium/operator tier for inexpensive search experiments. Existing Triton kernels are example candidates.
 
-**V17 open-source tooling release.** The portable demos and search interface are validated on CPU. Their CUDA adapter reuses the previously executed operator runner, but this revised suite/environment has not been run on a GPU. Historical results stay tied to their original source/runtime. First-party project code is available under the [MIT license](LICENSE); [third-party notices](NOTICE.md) describe separately licensed dependencies, models and data.
+**V18 preparation: agent-environment contracts are CPU validated; the full Vista LLM demonstration is not yet run.** Start with the [agent-environment guide](docs/agent-environment.md) and `drivebench-agent-demo --output ./agent-demo`. Its scripted synthetic episode is a software check, not GPU or LLM evidence. Arbitrary agent-written code is outside this configuration-only interface.
+
+**V17 public MIT release remains the measured publication baseline.** The portable demos and search interface are validated on CPU. Their CUDA adapter reuses the previously executed operator runner, but this revised suite/environment has not been run on a GPU. Historical results stay tied to their original source/runtime. First-party project code is available under the [MIT license](LICENSE); [third-party notices](NOTICE.md) describe separately licensed dependencies, models and data.
 
 ## Start without a GPU
 
