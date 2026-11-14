@@ -1,0 +1,120 @@
+{
+  "blocks": [
+    {
+      "block_index": 0,
+      "role": "upstream",
+      "role_block_index": 0,
+      "rows": 50,
+      "source_completion_sha256": "f8c80e3ffcec10b60fbf0d392793f0d3bab63955429f5227793bc0e6b7ceb114",
+      "source_measurements_sha256": "d6063fad5d1eb53aca89be7a3316857ca1a1e09dc3564f10a829916d7b20abb1",
+      "source_summary_sha256": "0432fc3e6abff5febef4757d48e569b6340ac2b75cd83aab97c7c547fa343780",
+      "source_throughput_measurement_wall_s": 2866.860235410005
+    },
+    {
+      "block_index": 1,
+      "role": "compiled-default",
+      "role_block_index": 0,
+      "rows": 50,
+      "source_completion_sha256": "1cdf47512b731b3ad9ff1249a91788c34b795c6c00117e4776ed9a7309865794",
+      "source_measurements_sha256": "84d1e5dcff4b36624168f1f81a16e2262ad2a63a0be32b163aeac183299513e3",
+      "source_summary_sha256": "b8a6dfff69487629da9cefe9c6dcb92fad4ab2c0010105f3355adfd943652242",
+      "source_throughput_measurement_wall_s": 2182.629447323009
+    },
+    {
+      "block_index": 2,
+      "role": "compiled-default",
+      "role_block_index": 1,
+      "rows": 50,
+      "source_completion_sha256": "233cc324b38c805b1a95e30dc5fdf9d15400b8190871d9aa839318f81ca82233",
+      "source_measurements_sha256": "e5945bf83ccceea4399a1d82c546959df9c27095229f648cf2f810af8a263cb3",
+      "source_summary_sha256": "6b640fb22f36add8e2c10c97bd36f2aace1c6ed9bb69974a8dcf28554c946c84",
+      "source_throughput_measurement_wall_s": 2182.5231959669964
+    },
+    {
+      "block_index": 3,
+      "role": "upstream",
+      "role_block_index": 1,
+      "rows": 50,
+      "source_completion_sha256": "328caa973fd1954e4bb17e0213ff316696af7e69ea8f0480d3102ee4b9ce8280",
+      "source_measurements_sha256": "4f697cb591f71c005131f4d7f5f85886e192956aa2ab15ab390b99d05fd50c79",
+      "source_summary_sha256": "dac16c24bfdc418c49e04a1aae421448998aca0e16ae368168a8b4c62902075c",
+      "source_throughput_measurement_wall_s": 2868.694281258009
+    },
+    {
+      "block_index": 4,
+      "role": "compiled-default",
+      "role_block_index": 2,
+      "rows": 50,
+      "source_completion_sha256": "7ec74694bc8afa5e9de334c46590f76e4e1cc64f7f7c7e9f6bdc0e7dcaa5ee7c",
+      "source_measurements_sha256": "ca3c18b24e758b47c46ad8be311c6511275ae312bb15bd0c7cb1d6e36ea32042",
+      "source_summary_sha256": "0b818bbafede91a99f7a837f981368ed78ebc5f4dd4ff0ba18cc05c7d5e7a58b",
+      "source_throughput_measurement_wall_s": 2183.501809616004
+    },
+    {
+      "block_index": 5,
+      "role": "upstream",
+      "role_block_index": 2,
+      "rows": 50,
+      "source_completion_sha256": "a87c2d6c90a2954846943ece15589860c169b38e633918118824be5c4c9cbe7e",
+      "source_measurements_sha256": "942cb06d91790b7b56fd751b67680e6550127f84000559c16e4a8680282b596e",
+      "source_summary_sha256": "17acbbdc45c74cddd72acb5c68ad5f7cae3f41872ff8d0eae1f84a7544465975",
+      "source_throughput_measurement_wall_s": 2866.0621849239833
+    },
+    {
+      "block_index": 6,
+      "role": "upstream",
+      "role_block_index": 3,
+      "rows": 50,
+      "source_completion_sha256": "ec046288c93d12c3800bb4f8767d7dd85d1550ff4e3f422464437b61f258ee2b",
+      "source_measurements_sha256": "c3dda61a01884ed9d554fc38db7101ce405a3726698443ccc44c558637932d36",
+      "source_summary_sha256": "5c73d9bbde2153ce1073136c82238b96370de90239faf4aaa54cc688d818fc48",
+      "source_throughput_measurement_wall_s": 2867.2009966359947
+    },
+    {
+      "block_index": 7,
+      "role": "compiled-default",
+      "role_block_index": 3,
+      "rows": 50,
+      "source_completion_sha256": "02f5ee2db708aa203b971b4f0f4a8c609dee8a283393194977a1ae2d7a0b4edf",
+      "source_measurements_sha256": "d6209ce37d05045426a5d3c1f907659b5418998dee2261aac03452847e77bdde",
+      "source_summary_sha256": "c70680e624a409560e758996302dbca2989ea8104c13c565dc0c4e2536c3a22a",
+      "source_throughput_measurement_wall_s": 2183.3760051969984
+    }
+  ],
+  "bootstrap": {
+    "all_four_repeats_kept_together": true,
+    "cluster_order": "sorted original scene IDs, represented by scene_index0..49",
+    "clusters_per_sample": 50,
+    "export_numpy_version": "2.2.0",
+    "generator": "numpy.random.default_rng(0), PCG64; successive rng.integers(0, 50, 50) calls",
+    "historical_numpy_version": "1.24.4",
+    "identical_schedule_for_p50_and_p95": true,
+    "kind": "derived_analysis_schedule_not_measured_data",
+    "note": "Recreated from the originally prescribed seed/algorithm; validated by reproducing both published percentile intervals. Included so analysis runs without NumPy. This is not an independently measured dataset.",
+    "original_algorithm_source_sha256": "b34bfd2ae2385223d98c43253fc9be9b871fd867f3ee03e739de14d9f67bcc8e",
+    "paired": true,
+    "samples": 4000,
+    "seed": 0
+  },
+  "combined_headline_claim": false,
+  "exported_at": "2026-11-14T19:13:46.850066+00:00",
+  "independent_scenes": 50,
+  "kind": "sanitized_projection_of_actual_historical_measurements",
+  "limitations": [
+    "The source-file hashes and line hashes provide a provenance link, not a cryptographic proof of the projection for readers without the retained original files.",
+    "These rows reproduce historical timing/memory statistics only; output quality, future hardware performance and new agent workflows remain unvalidated.",
+    "Fifty scene clusters are independent analysis units; the four repetitions are not 200 independent scenes."
+  ],
+  "mapping": "block_index/role/role_block_index come from the sealed completed block; request_index/repeat/latency/status/memory/denoiser_evaluations are unchanged row fields; seed is candidates[0].seed; failure/fallback/OOM counts are lengths of the respective original arrays.",
+  "measured_rows": 400,
+  "qualified": false,
+  "quality_preserving": false,
+  "redacted": "Request and candidate identifiers, dataset paths/categories, full effective configs, stage diagnostics, original scene IDs and private runtime/provider identities are not included. No numerical values are generated or rounded.",
+  "scene_index_rule": "Zero-based position in lexicographically sorted original scene IDs; same mapping across all roles and blocks. Scene IDs themselves are omitted.",
+  "schema_version": 1,
+  "source_completed_sha256": "ae707ba397c2cfb306659040b7933b09d5623b4175c714077255133a22abc637",
+  "source_identity": "d8a32813492c0939a0a91573a945c914938972419946065e6822f6209fa470cb",
+  "source_line_sha256_rule": "SHA256 of the original measurements.jsonl UTF-8 line bytes excluding its newline, before sanitization.",
+  "source_plan_sha256": "feef8afe8d4d7aa51f9cca4bc7a7ea9f68f4dde5e3e14d998a492f71d9132ba1",
+  "source_protocol_sha256": "29ec4e85568e814126c4b5888930359529c98db8701b24331ee4020a9610f006"
+}

@@ -1,0 +1,77 @@
+{
+  "checker_sha256": "c52f0b077991568c1d6fcbb94e7a0aab2b8b891d05acd516ef8e38b6f0241f6a",
+  "checks": [
+    {
+      "check": "pip-check",
+      "passed": true,
+      "returncode": 0
+    },
+    {
+      "check": "existing-output-refused",
+      "passed": true,
+      "returncode": 1
+    },
+    {
+      "check": "checkout-output-refused",
+      "passed": true,
+      "returncode": 1
+    }
+  ],
+  "completed_commands": [
+    {
+      "entrypoint": "drivebench-demo",
+      "returncode": 0
+    },
+    {
+      "entrypoint": "drivebench-search",
+      "returncode": 0
+    },
+    {
+      "entrypoint": "drivebench-agent-demo",
+      "returncode": 0
+    }
+  ],
+  "executed_at": "2026-11-14T19:14:10.911053+00:00",
+  "executed_package_source_file_count": 81,
+  "executed_package_source_manifest": "executed-package-source-manifest.json",
+  "executed_package_source_manifest_hash_definition": "SHA-256 of UTF-8 json.dumps(path_to_sha256, sort_keys=True, separators=(comma, colon)); all paths are repository-relative.",
+  "executed_package_source_manifest_sha256": "3ecfdcc1005ecca89375c404f79e2274ffc410dc506c044e9d2b9091ac2cd1a6",
+  "full_gpu_reproduction": "not_yet_verified",
+  "gpu_validation": false,
+  "llm_execution": false,
+  "network_scope": "Package installation fetched dependencies. Demo subprocesses received no provider/API credentials and used only synthetic backends; no OS network isolation was asserted.",
+  "next_gpu_validation": [
+    "actual portable launcher/runtime verification",
+    "real metric/control calibration",
+    "locked agent selection and fresh final evaluation",
+    "independent numerical analysis and evidence backup"
+  ],
+  "optional_packages_present": {
+    "lpips": false,
+    "openai": false,
+    "torch": false,
+    "triton": false
+  },
+  "packages": {
+    "drivebench": "0.1.0",
+    "drivebench-kernel-tuning": "0.3.0"
+  },
+  "platform": {
+    "machine": "arm64",
+    "system": "Darwin"
+  },
+  "python_version": "3.13.1",
+  "quality_preserving": false,
+  "real_model_execution": false,
+  "receipt_sha256": "dca8a33edd42672b7bb20ba39928e97e65799e145b2be65e7fba14bf23285854",
+  "recorded_at": "2026-11-14T19:15:51.568437+00:00",
+  "schema_version": 1,
+  "scope": "Fresh wheel build, fresh non-editable venv, and all three installed synthetic demos outside the source checkout on one maintainer host. Not an external laboratory reproduction or a Linux/GPU/Vista/LLM result.",
+  "status": "passed_cpu_installation_only",
+  "synthetic": true,
+  "wheel_scope": "Wheels built from the pre-publication source copy; subsequent documentation changes may change wheel bytes. Executed package source/resource identities are bound below.",
+  "wheel_sha256": {
+    "drivebench-0.1.0-py3-none-any.whl": "f1f211d73a9e9f37848d33ce51904d9d4e13f8aa520fe3df61d82025d4726311",
+    "drivebench_kernel_tuning-0.3.0-py3-none-any.whl": "52b985ec4de33d033b08b5675c14109f2e25fc25ce0b6af62c793076eb7786bc"
+  }
+}

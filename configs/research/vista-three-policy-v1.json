@@ -1,0 +1,234 @@
+{
+  "admitted": false,
+  "artifact_kind": "prospective_research_plan_not_worker_spec",
+  "candidate_domain": {
+    "generation.decode_chunk_size": [
+      1,
+      2,
+      7,
+      14
+    ],
+    "generation.dtype": [
+      "fp16"
+    ],
+    "optimizations.compile_denoiser": [
+      false,
+      true
+    ]
+  },
+  "claim_limits": {
+    "arbitrary_code_or_kernel_generation": false,
+    "perceptual_quality_preservation": false,
+    "policy_superiority": false,
+    "repeated_policy_validation": false,
+    "single_case_demonstration_only": true
+  },
+  "cohort": {
+    "fresh_physical_gpu_count": 1,
+    "full_runtime_same_within_study": true,
+    "pool_devices_or_historical_cohorts": false,
+    "reuse_old_completed_measurements": false
+  },
+  "counts": {
+    "all_old_and_new_arrays": 200,
+    "all_old_and_new_raw_bytes": 35389465600,
+    "artifact_jobs": 4,
+    "bounded_host_jobs": 67,
+    "calibration_arrays_with_warmup": 33,
+    "final_arrays_with_warmups": 80,
+    "fresh_measured_arrays": 148,
+    "fresh_raw_bytes": 33796939648,
+    "fresh_support_arrays": 6,
+    "fresh_total_arrays": 191,
+    "fresh_warmup_arrays": 43,
+    "generation_jobs": 43,
+    "metric_jobs": 16,
+    "metric_pairs": {
+      "calibration": 160,
+      "final": 48,
+      "total": 232,
+      "trials": 24
+    },
+    "old_arrays_to_recover_first": 9,
+    "old_raw_bytes": 1592525952,
+    "raw_bytes_per_array": 176947328,
+    "search_arrays_with_warmups": 72,
+    "setup_jobs": 4
+  },
+  "episodes_per_policy": 1,
+  "execution_performed": false,
+  "existing_single_llm_v21_unchanged": true,
+  "final": {
+    "blind_visual_cases": 12,
+    "block0_repeat0": [
+      "reference",
+      "llm_selected",
+      "random_selected",
+      "grid_selected"
+    ],
+    "block1_repeat0": [
+      "llm_selected",
+      "grid_selected",
+      "reference",
+      "random_selected"
+    ],
+    "cells_per_role": 16,
+    "exports_equal_review": false,
+    "fresh_reference_shared_across_three_assessments": true,
+    "repeat1": "exact reverse of repeat0 for each block",
+    "roles": [
+      "reference",
+      "llm_selected",
+      "random_selected",
+      "grid_selected"
+    ],
+    "scene_count_is_four_not_sixteen": true,
+    "shared_reference_comparisons_independent": false,
+    "total_measured_arrays": 64
+  },
+  "implementation_blockers": [
+    "Separate source/study/input manifests and exact immutable runtime/transport bindings not materialized",
+    "Review fresh 46-hour guard/copy-adapter contract without modifying historical versions",
+    "Review uniform three-policy wrappers, three export jobs and larger terminal inventory cap",
+    "Maintenance completion, all resources/cost/storage checks and larger additional budget needed"
+  ],
+  "plan_id": "vista-three-policy-case-v1",
+  "policies": [
+    "llm",
+    "random",
+    "grid"
+  ],
+  "quality": {
+    "all_negative_controls_must_be_detected": true,
+    "all_same_seed_repeats_must_fit": true,
+    "cross_seed_descriptive_only": true,
+    "failure": "Inconclusive or failed calibration stops before agent selection and final generation; preserve all evidence.",
+    "maxima": {
+      "lpips": 0.02,
+      "mae": 0.01,
+      "temporal_derivative_mae": 0.01
+    },
+    "negative_controls": [
+      "freeze_future",
+      "black_future",
+      "reverse_future"
+    ],
+    "private_preparation_quality_template_sha256": "1997b87a2fdf19766ef8634a7e6541bcf1e6de34e4d9e2a38b511a3a622cbb73",
+    "template_hash_scope": "Historical private V21 preparation template identity only; this hash does not identify a file in this public release and is not a public executable or reproducibility artifact. Public limits, controls and rules are specified here. A new admitted execution must materialize and publish its own sanitized exact plan and source bindings.",
+    "timing_floor": "max(0.01, maximum paired same-scene/seed repeat relative difference)"
+  },
+  "schema_version": 1,
+  "search": {
+    "all_selections_locked_before_any_final_feedback": true,
+    "baseline_seed": 20261114,
+    "candidate_trials_per_policy": 4,
+    "grid_first_four": [
+      {
+        "compiled": false,
+        "decode_chunk_size": 1
+      },
+      {
+        "compiled": true,
+        "decode_chunk_size": 1
+      },
+      {
+        "compiled": false,
+        "decode_chunk_size": 2
+      },
+      {
+        "compiled": true,
+        "decode_chunk_size": 2
+      }
+    ],
+    "max_profiles_each": 0,
+    "max_tool_calls_each": 10,
+    "max_turns_each": 10,
+    "new_api_funding_performed": false,
+    "no_eligible_selection": "report failure to select; no fabricated reference substitution",
+    "policy_wall_seconds_each": 13200,
+    "trial_development_scenes": 2,
+    "trial_orders": [
+      "reference_first",
+      "candidate_first",
+      "reference_first",
+      "candidate_first"
+    ],
+    "trial_seed_schedule": [
+      11,
+      23,
+      23,
+      11
+    ]
+  },
+  "status": "draft_not_admitted",
+  "storage": {
+    "maximum_new_evidence_bytes": 45000000000,
+    "minimum_local_free_after_old_copy_before_fresh_science_bytes": 65000000000,
+    "minimum_remote_free_after_old_pack_before_fresh_science_bytes": 65000000000,
+    "old_and_failed_arrays_preserved": true,
+    "old_pack_archive_cap_bytes": 12000000000,
+    "old_pack_input_cap_bytes": 10000000000,
+    "preserved_free_reserve_bytes": 20000000000
+  },
+  "study_mode": "three_policy_comparison",
+  "time": {
+    "automatic_retry_or_deadline_extension": false,
+    "copy_attempts": 2,
+    "copy_seconds_each": 21600,
+    "full_phase_admission_required_before_every_phase": true,
+    "guard_hours_draft": 46,
+    "independent_local_verification_seconds_each": 1200,
+    "per_generation_metric_artifact_job_host_cleanup_seconds": 240,
+    "phase_seconds": {
+      "blind_exports": 4320,
+      "calibration_generation": 6420,
+      "calibration_metrics": 3840,
+      "final_grid_batches": 6960,
+      "final_grid_metric": 1320,
+      "final_llm_batches": 6960,
+      "final_metric": 1320,
+      "final_random_batches": 6960,
+      "final_random_metric": 1320,
+      "final_reference_batches": 5520,
+      "fresh_clean_lpips_cpu_setup": 1140,
+      "fresh_compiled_support": 3840,
+      "fresh_eager_support": 3840,
+      "fresh_evidence_copy": 21600,
+      "fresh_platform_proof": 2040,
+      "fresh_runtime_metadata": 300,
+      "grid_episode": 13200,
+      "monitoring_grace": 600,
+      "new_copy_independent_local_verification": 1200,
+      "old_copy_independent_local_verification": 1200,
+      "old_evidence_copy": 21600,
+      "old_inert_archive_pack_and_cleanup": 1440,
+      "provider_cleanup": 600,
+      "random_episode": 13200,
+      "single_llm_episode": 13200,
+      "startup_and_preflight": 900,
+      "terminal_inventory": 2640
+    },
+    "preserved_v21_minimum_unassigned_slack_seconds": 14760,
+    "total_reserved_seconds": 147480,
+    "unassigned_slack_seconds": 18120
+  },
+  "workload": {
+    "development_scenes": 8,
+    "final_scenes": 4,
+    "future_frames": 24,
+    "height": 576,
+    "membership": "exact existing prospective eight/four subset; do not resample or replace scenes after feedback",
+    "replicates": [
+      0,
+      1
+    ],
+    "seeds": [
+      11,
+      23
+    ],
+    "single_future": true,
+    "steps": 50,
+    "weights_and_actions_unchanged": true,
+    "width": 1024
+  }
+}
