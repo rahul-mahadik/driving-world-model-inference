@@ -23,6 +23,22 @@ All path/hash pins use an absolute `path` and exact file-byte `sha256`. A source
 
 For a real metric spec, `metric` contains `kind: "lpips"`, the pinned setup receipt, `device: "cpu"` or `"cuda"`, and exact versions for `torch`, `torchvision`, `numpy`, `scipy` and `lpips` (0.1.4). The worker validates assets and disables network use during metric initialization/evaluation. Pre-stage the assets; no fallback metric is accepted. `{"kind": "synthetic_fixture"}` is reserved for explicitly synthetic batches and is not LPIPS.
 
+## Freeze a task domain after capability checks
+
+Before calibration or policy search, test the declared settings on the new runtime. The controller permits a prospectively pinned subset of the existing Vista values: keep all three field names, give each a nonempty list of supported values, and include its reference value. Types are exact: `1` is not a substitute for `true`. Do not change value order, source pins, domain, trial budgets or quality limits after seeing policy feedback. LLM, random and grid sessions must use the same domain. A rejected proposal consumes a tool call; a failed worker still halts the episode, with no automatic retry.
+
+For example, a capability-scoped task may use:
+
+```json
+{
+  "generation.dtype": ["fp16"],
+  "generation.decode_chunk_size": [1, 2, 7, 14],
+  "optimizations.compile_denoiser": [false, true]
+}
+```
+
+This declares eight configurations. The broader implementation allowlist is not a guarantee that every runtime supports every value. An A100 support attempt with Torch 2.0.1/CUDA 11.8 reached an unsupported BF16 bicubic resize during conditioning, before a completed warmup or measured output. Preserve that failed attempt and its cleanup evidence. A subsequent FP16-only task is a new prospective task revision; it does not silently cast BF16, change the quality gate, or establish compiler support or output quality. Any new compiled endpoint needs its own admitted support check. Previously completed evidence retains its original source identity; reconcile unchanged inference/model/input bytes explicitly before treating it as prior capability evidence for a new controller revision.
+
 ## Generate and calibrate
 
 Run each batch in a fresh externally bounded process. The installed entrypoint and equivalent module form are:

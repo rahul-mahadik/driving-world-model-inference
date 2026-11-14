@@ -389,6 +389,29 @@ def _episode_schema(spec):
     _keys(transport,TRANSPORT_KEYS | ({'package_root'} if 'package_root' in transport else set()),'transport spec')
 
 
+
+def _validate_candidate_domain(policy):
+    """Allow a prospectively pinned capability subset, never new tuning fields.
+
+    Keep each fixed field explicit, with its reference value still admitted:
+    the initial reference proposal is always available to the agent. Exact JSON
+    scalar types prevent bool/int/float equality from widening the domain.
+    """
+    document=policy.to_dict(); allowed=document['allowed_config_values']
+    if set(allowed)!=set(ALLOWED_VALUES):
+        raise ValueError('candidate domain must retain exactly the fixed Vista fields')
+    for field,values in allowed.items():
+        if type(values) is not list or not values:
+            raise ValueError('candidate domain needs a nonempty list for each field')
+        if any(not any(type(value) is type(item) and value==item for item in ALLOWED_VALUES[field])
+               for value in values):
+            raise ValueError('candidate domain values must be typed subsets of fixed Vista choices')
+        section,key=field.split('.')
+        reference=document['reference_config'][section][key]
+        if not any(type(reference) is type(value) and reference==value for value in values):
+            raise ValueError('candidate domain must include each reference value')
+
+
 def run_spec(path, *, expected_sha256):
     """Execute ONE policy session. Final submit locks selection; it does not score.
 
@@ -404,7 +427,7 @@ def run_spec(path, *, expected_sha256):
     policy=SessionPolicy(**spec['session_policy'])
     if policy.max_profiles!=0 or policy.final_evaluations!=1:raise ValueError('configuration cohort has no profile jobs and one selection reservation')
     if policy.wall_seconds>=deadline-now:raise ValueError('session wall budget exceeds immutable episode deadline')
-    if policy.to_dict()['allowed_config_values']!=ALLOWED_VALUES:raise ValueError('fixed Vista candidate choices required')
+    _validate_candidate_domain(policy)
     if spec['transport']['max_jobs']!=3*(policy.max_evaluations-1):raise ValueError('exact paired-generation/metric job cap required')
     transport=ExistingBoundedLauncher(**spec['transport'])
     output=Path(spec['output']).absolute()
@@ -475,7 +498,7 @@ def step_spec(path, *, expected_sha256, operation, action_path=None, action_sha2
     if operation=='act' and (action_path is None or action_sha256 is None):raise ValueError('pinned action required')
     policy=SessionPolicy(**spec['session_policy'])
     if policy.max_profiles!=0 or policy.final_evaluations!=1:raise ValueError('selection-only session required')
-    if policy.to_dict()['allowed_config_values']!=ALLOWED_VALUES:raise ValueError('fixed Vista choices required')
+    _validate_candidate_domain(policy)
     if spec['transport']['max_jobs']!=3*(policy.max_evaluations-1):raise ValueError('fixed job cap required')
     if spec['selector']!={'kind':'external-json'}:raise ValueError('step mode explicitly requires external-json selector')
     transport=ExistingBoundedLauncher(**spec['transport']);output=Path(spec['output']).absolute();transport.container_path(output)
