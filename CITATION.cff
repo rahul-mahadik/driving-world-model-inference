@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use DriveBench, cite this software and record the exact Git commit and benchmark protocol used."
+type: software
+title: "DriveBench: GPU Inference Benchmarks and Agent Optimization Environment"
+authors:
+  - family-names: Mahadik
+    given-names: Rahul
+repository-code: "https://github.com/rahul-mahadik/driving-world-model-inference"
+license: MIT
+abstract: >-
+  Measurement and configuration-search software for video-world-model inference
+  and GPU operators. Historical measurements, synthetic software demonstrations,
+  and pending full-model agent validation are documented separately. This
+  software citation does not identify a peer-reviewed paper or a validated
+  general-purpose kernel-writing benchmark.

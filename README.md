@@ -1,10 +1,12 @@
 # DriveBench: GPU Inference Benchmarks & Agent Optimization Environment
 
+[Project website](https://drivebench-research.rahul-a-mahadik.chatgpt.site) · [Reproduce the release](docs/reproduce-release.md) · [Research protocol](docs/research-protocol.md) · [Citation](CITATION.cff)
+
 Measure inference, expose bounded optimization tools, and score a submitted configuration with independent checks. DriveBench combines a Vista video-inference benchmark, an agent tool interface for configuration optimization, and a Gymnasium/operator tier for inexpensive search experiments. Existing Triton kernels are example candidates.
 
 **Current evidence:** the measurement toolkit has [historical GPU results](RESULTS.md). The reusable operator suite and newer agent workflow have CPU integration coverage; a full Vista LLM episode through that workflow has not run. The [readiness and claim boundaries](docs/benchmark-readiness.md) distinguish these facts. Arbitrary agent-written code is outside the configuration-only interface.
 
-**V17 public MIT release remains the measured publication baseline.** The portable demos and search interface are validated on CPU. Their CUDA adapter reuses the previously executed operator runner, but this revised suite/environment has not been run on a GPU. Historical results stay tied to their original source/runtime. First-party project code is available under the [MIT license](LICENSE); [third-party notices](NOTICE.md) describe separately licensed dependencies, models and data.
+**V22 adds auditable data, installation evidence and a prospective research protocol.** A fresh installation outside the checkout passed all three packaged CPU demos. The revised CUDA suite and full Vista agent workflow still need GPU validation; historical results stay tied to their original source/runtime. This is a research toolkit with measured historical cases, not a completed comparative agent study. First-party project code is available under the [MIT license](LICENSE); [third-party notices](NOTICE.md) describe separately licensed dependencies, models and data.
 
 ## Start without a GPU
 
@@ -74,9 +76,12 @@ The default suite gives a policy four trials among nine candidates. Fixed grid p
 ## Results and reproducibility
 
 - [Historical H100 inference comparison](results/2026-10-30-h100-tradeoff/README.md): 200 requests per role; 23.85% lower median latency and 7.68% higher memory on the pinned setup. No quality-preservation claim.
+- [H100 numerical audit](results/2026-10-30-h100-tradeoff/numerical-audit/README.md): all 400 original measured rows, sanitized provenance and standalone analysis that reproduces 48 recorded fields, including the confidence intervals. This audits the historical measurements; it is not a new GPU reproduction.
 - [Historical A100 operator and reference-agent study](results/2026-11-07-kernel-tuning/README.md): measured operator tradeoffs; no demonstrated RL advantage. The reference-agent run used two small smoke shapes, not the newly packaged suite.
 - [Complete historical summary](RESULTS.md) and [previous front page](HISTORICAL_README.md): preserved cohorts, failures and limitations.
 
-Raw per-trial samples from new operator runs are stored locally with the run. Historical public summaries do not include every raw timing row or generated array. Dataset images, generated videos and checkpoints are not redistributed. See [third-party notices](NOTICE.md).
+Raw per-trial samples from new operator runs are stored locally with the run. The H100 numerical companion publishes the complete measured timing rows; other historical cohorts retain their stated evidence limits. Dataset images, generated arrays/videos and checkpoints are not redistributed. See [third-party notices](NOTICE.md).
+
+The [installation record and commands](docs/reproduce-release.md) distinguish clean local CPU reproduction from still-pending independent GPU reproduction. The [prospective research protocol](docs/research-protocol.md) defines equal-budget baselines, fresh winner confirmation, gate validation and repeated evaluation. Its plans are unrun and are not executable worker specifications. No leaderboard or RL-superiority claim is implied by publishing the protocol.
 
 Contributions should add adapters, workloads, policies or measurement checks through the [contribution guide](CONTRIBUTING.md), with independently measured claims and unchanged historical evidence.

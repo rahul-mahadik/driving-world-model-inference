@@ -1,0 +1,121 @@
+{
+  "analysis": {
+    "broad_kernel_generalization_claim": false,
+    "event_samples_independent_tasks": false,
+    "population_significance_claim": false,
+    "report": "all task/episode/trial outcomes, per-task median/range, raw timing samples, failures, confirmation ratios and all cost",
+    "rl_training_claim": false,
+    "unit_policy_variation": "episode",
+    "unit_workload_generalization": "task; four test tasks from two families"
+  },
+  "artifact_kind": "prospective_research_plan_not_worker_spec",
+  "base_seed": 1901,
+  "bounded_time": {
+    "guard_hours_draft": 6,
+    "phase_seconds": {
+      "evidence_copy": 1800,
+      "fresh_winner_confirmation_and_cleanup": 2040,
+      "gpu_correctness_tests_and_cleanup": 1140,
+      "independent_local_verification": 600,
+      "inventory": 600,
+      "monitoring_grace": 600,
+      "postselection_oracle_and_cleanup": 2040,
+      "provider_cleanup": 600,
+      "runtime_build_and_cleanup": 2400,
+      "runtime_proof_and_cleanup": 900,
+      "startup": 600,
+      "test_search_and_cleanup": 2040,
+      "validation_search_and_cleanup": 1140
+    },
+    "timeouts_not_completion_guarantee": true,
+    "total_reserved_seconds": 16500,
+    "unassigned_slack_seconds": 5100
+  },
+  "confirmation": {
+    "failed_confirmation_replaced": false,
+    "fallback": "baseline incumbent is preserved and reported as no improvement, never fabricated candidate winner",
+    "fresh_pairs_per_episode": 2,
+    "implemented": false,
+    "orders": [
+      "reference_candidate",
+      "candidate_reference"
+    ],
+    "required_before_improvement_claim": true,
+    "selection_locked_before_measurement": true
+  },
+  "counts": {
+    "confirmation_reference_calls": 144,
+    "confirmation_selected_calls": 144,
+    "confirmation_total_calls": 288,
+    "oracle_total_calls": 120,
+    "search_candidate_calls": 288,
+    "search_episodes": 72,
+    "search_reference_calls": 72,
+    "search_total_calls": 360,
+    "total_evaluator_calls_excluding_tests_and_platform_proof": 768
+  },
+  "does_not_complete": [
+    "Vista calibration or model quality",
+    "LLM-policy comparison",
+    "arbitrary code or kernel-generation sandbox",
+    "independent reproduction"
+  ],
+  "episodes_per_policy_per_evaluated_task": 6,
+  "evaluated_splits": [
+    "validation",
+    "test"
+  ],
+  "execution_performed": false,
+  "fresh_reference_per_episode": 1,
+  "implementation_blockers": [
+    "No reviewed exact public-suite runtime/command manifest for a new allocation",
+    "Fresh selection-confirmation and post-selection diagnostic driver using the existing evaluator is not implemented",
+    "Current complete phase caps are prospective and must pass offline review; bounded runtime build may fail",
+    "Fresh resources, prices, maintenance, budget, credentials, storage and immutable guard admission required"
+  ],
+  "measurement": {
+    "execution": "serial",
+    "physical_gpu_count": 1,
+    "pool_devices_or_runtimes": false,
+    "quality_gate": "unchanged dtype-specific shape/dtype/finiteness/allclose and input immutability",
+    "runtime": "separate operator runtime; exact Torch2.10.0/Triton3.6.0 build and dependencies pinned before execution",
+    "timed_repetitions": 30,
+    "warmups": 5
+  },
+  "memory_weight": 0.0,
+  "oracle": {
+    "calls_per_task": 10,
+    "exposed_to_search": false,
+    "includes_all_nine_candidates": true,
+    "includes_eager": true,
+    "selection_bias_disclosed": true,
+    "status": "post-selection diagnostic only",
+    "tasks": 12
+  },
+  "plan_id": "operator-repeated-baselines-v1",
+  "policies": [
+    "grid",
+    "random"
+  ],
+  "schedule": "Existing compare_search_policies.py seed construction and alternating grid/random order; six repeats yield three in each order. Freeze policy/source/settings before validation; any revision needs new registration before test.",
+  "schema_version": 1,
+  "status": "draft_not_admitted",
+  "storage": {
+    "all_existing_evidence_preserved": true,
+    "maximum_new_evidence_bytes": 2000000000,
+    "minimum_free_bytes": 22000000000,
+    "new_array_archive_needed": false,
+    "note": "Seeded operator inputs are regenerated; trial journals, raw samples, receipts, source and runtime must be copied. Runtime image storage separately checked.",
+    "preserved_free_reserve_bytes": 20000000000
+  },
+  "suite": {
+    "input_policy": "seeded random tensors; public historically informed test shapes",
+    "path": "extensions/kernel_tuning/drivebench_tuning/suites/operator-search-v1.json",
+    "sha256": "3413eeda654a677ead96547581a01e7fb8f5145f99aa02e5481b84ec0b8a3e76",
+    "tasks": 12,
+    "test_tasks": 4,
+    "train_tasks": 6,
+    "validation_tasks": 2
+  },
+  "trial_budget": 4
+}

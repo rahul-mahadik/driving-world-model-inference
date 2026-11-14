@@ -1,0 +1,19 @@
+{
+  "files": {
+    "bootstrap-scene-indices.csv": {
+      "bytes": 559832,
+      "sha256": "12f9adffde1b813534f879ee5cbd141e5ff50c6603d70c03f671d23ae6fca6e8"
+    },
+    "measurements.jsonl": {
+      "bytes": 164554,
+      "sha256": "143426c18acfec990c5994402a10395e86cfae4f852f6f9049af6ad9d4395631"
+    },
+    "provenance.json": {
+      "bytes": 6685,
+      "sha256": "19dd45113647abf627f223a5c04960e92c834bad3267a5028ea553ef8163459e"
+    }
+  },
+  "historical_summary_sha256": "20257029c1843100d73763ed79eb96fbc29125456385f8a311471f6f9bc7ccc8",
+  "schema_version": 1,
+  "scope": "Exact public numerical reconstruction companion; historical files remain unchanged."
+}

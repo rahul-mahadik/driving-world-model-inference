@@ -1,0 +1,69 @@
+{
+  "artifact_kind": "prospective_research_plan_not_worker_spec",
+  "documentation": "../../docs/research-protocol.md",
+  "historical_protocols_and_results_unchanged": true,
+  "plan_id": "research-validation-v1",
+  "schema_version": 1,
+  "scientific_scope": {
+    "arbitrary_agent_code_execution": false,
+    "benchmark_scientifically_complete": false,
+    "operator_suite": "finite configuration search over fixed implementations",
+    "policy_training_at_scale": false,
+    "vista": "finite configuration search with engineering fidelity proxies"
+  },
+  "stages": [
+    {
+      "complete": false,
+      "id": "operator_validation",
+      "plan": "operator-repeated-baselines-v1.json"
+    },
+    {
+      "complete": false,
+      "id": "vista_single_llm_feasibility",
+      "plan": "preserve frozen V21 single_llm_feasibility; no replacement configuration in this directory"
+    },
+    {
+      "complete": false,
+      "id": "vista_three_policy_case",
+      "plan": "vista-three-policy-v1.json"
+    },
+    {
+      "all_fifteen_selections_locked_before_final_feedback": true,
+      "complete": false,
+      "episode_seeds": [
+        1901,
+        1902,
+        1903,
+        1904,
+        1905
+      ],
+      "episodes_per_policy": 5,
+      "exceeds_current_evidence_cap": true,
+      "fresh_raw_bytes": 141380915072,
+      "fresh_total_arrays_with_one_support_and_calibration": 799,
+      "id": "vista_repeated_comparison",
+      "minimum_local_bytes_before_metadata_old_archive_and_free_reserve": 141380915072,
+      "policies": [
+        "llm",
+        "random",
+        "grid"
+      ],
+      "status": "unbudgeted_future_design"
+    },
+    {
+      "at_least_two_independent_blinded_reviewers": true,
+      "complete": false,
+      "development_and_final_separated": true,
+      "id": "quality_validity",
+      "new_limits_never_retroactive_to_v21": true,
+      "status": "unbudgeted_future_design"
+    },
+    {
+      "complete": false,
+      "hardware_cohorts_separate": true,
+      "id": "independent_reproduction",
+      "status": "external_fresh_execution_required"
+    }
+  ],
+  "status": "draft_not_admitted"
+}
