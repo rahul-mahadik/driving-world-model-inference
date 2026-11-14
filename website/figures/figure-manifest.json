@@ -1,0 +1,79 @@
+{
+  "files": {
+    "captions.json": {
+      "bytes": 4749,
+      "sha256": "aa677bfe43784833df43902bb8e3c2c780535bfb24f8a328c7217c63eb595957"
+    },
+    "h100-block-chronology.pdf": {
+      "bytes": 26039,
+      "sha256": "71732edcf4a5a03ac74809a064d0fd3321b67d3bbd96076c19bb1b407f095022"
+    },
+    "h100-block-chronology.png": {
+      "bytes": 189078,
+      "sha256": "ae45d13a0682a3eed7931bfec93d0b381daaf534d7c5444715b968a9ef29f5b1"
+    },
+    "h100-block-chronology.svg": {
+      "bytes": 90445,
+      "sha256": "944dc2e3ed416b59dbd5f8a4309d93f77b9a51aeb8536bfbf829220cb5f91646"
+    },
+    "h100-latency-ecdf.pdf": {
+      "bytes": 32135,
+      "sha256": "1850274d1fe72304fe8883e9811dea1b1522373b47a4b71f7de176f93f7a2bdf"
+    },
+    "h100-latency-ecdf.png": {
+      "bytes": 205523,
+      "sha256": "621cfea06fab80fba9354aeaf5de0df9b9de1d6d03d0d21276e3539f614d8dd7"
+    },
+    "h100-latency-ecdf.svg": {
+      "bytes": 142556,
+      "sha256": "57266d83cf0dd868e4391512a337cb977d4a3c87457193356a0f40d0ff075213"
+    },
+    "h100-latency-memory.pdf": {
+      "bytes": 26465,
+      "sha256": "19f2333e648c6dc024bba1494c37ad7fd7341f3b2cab843181749dab3d1f28e1"
+    },
+    "h100-latency-memory.png": {
+      "bytes": 149745,
+      "sha256": "255f3d44dc2d041f6c3bdf0f15ff008f49624120ecceca085bafa7c1e559e738"
+    },
+    "h100-latency-memory.svg": {
+      "bytes": 79244,
+      "sha256": "449f0711f3ac33ba65229fc96d0b8a99dc55592bc67a73cb984767e1404c2bd8"
+    },
+    "plot-data.csv": {
+      "bytes": 1048,
+      "sha256": "4f154aa0af9df5ae1ca08869c843b35bd0112d3b3e039339b2283d4059207813"
+    },
+    "plot-data.json": {
+      "bytes": 82229,
+      "sha256": "c93f68f7009c3be8efeda6a3a1d478e461bcf5a672e61a0a400d121182463e83"
+    }
+  },
+  "generator_sha256": "914a17a5c6935894398d74796bff26a6715969fb71f1a16e499715639dcf32b9",
+  "input_sha256": {
+    "results/2026-10-30-h100-tradeoff/numerical-audit/bootstrap-scene-indices.csv": "12f9adffde1b813534f879ee5cbd141e5ff50c6603d70c03f671d23ae6fca6e8",
+    "results/2026-10-30-h100-tradeoff/numerical-audit/manifest.json": "32a1f719be1c08b8db77328eacbcbdf1bff4a45aae9047673e4f7ad1518a8180",
+    "results/2026-10-30-h100-tradeoff/numerical-audit/measurements.jsonl": "143426c18acfec990c5994402a10395e86cfae4f852f6f9049af6ad9d4395631",
+    "results/2026-10-30-h100-tradeoff/numerical-audit/provenance.json": "19dd45113647abf627f223a5c04960e92c834bad3267a5028ea553ef8163459e",
+    "results/2026-10-30-h100-tradeoff/summary.json": "20257029c1843100d73763ed79eb96fbc29125456385f8a311471f6f9bc7ccc8",
+    "tools/analyze_h100_timing.py": "83f0561744010e14ccc6ed28563bf41060071c0280e9cd5c95bed8761e4d8130"
+  },
+  "plotting_rules": {
+    "bar_axes_start_at_zero": true,
+    "ecdf_no_smoothing": true,
+    "new_uncertainty_bands": false,
+    "pooled_hardware": false,
+    "quality_preservation_claim": false
+  },
+  "recorded_fields_reconstructed": 48,
+  "runtime": {
+    "matplotlib": "3.10.0",
+    "numpy": "2.2.0",
+    "pillow": "11.0.0",
+    "python": "3.13.1"
+  },
+  "schema_version": 1,
+  "source_commit": "da39fd8e40a0d337e392fff1006920c7f6608676",
+  "source_rows": 400,
+  "status": "historical_figures_reproduced"
+}

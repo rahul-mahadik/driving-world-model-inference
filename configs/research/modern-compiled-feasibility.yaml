@@ -1,0 +1,4 @@
+extends: modern-eager-feasibility.yaml
+name: modern-compiled-full-workload-feasibility
+optimizations:
+  compile_denoiser: true

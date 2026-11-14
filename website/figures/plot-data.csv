@@ -1,0 +1,11 @@
+record_kind,role,block_index,requests,median_latency_s,p95_latency_s,deviation_from_role_median_ms,peak_allocated_bytes,peak_allocated_gib,sequential_futures_per_s
+role_aggregate,upstream,,200,57.33838814199771,57.39193709140045,,56058206720,52.20827341079712,0.01743858916084274
+role_aggregate,compiled-default,,200,43.6633202794992,43.68945980059725,,60363113984,56.217530727386475,0.022904180300288266
+chronological_block,upstream,0,50,57.33721705550033,,-1.1710864973792923,,,
+chronological_block,compiled-default,1,50,43.65360262250033,,-9.71765699887328,,,
+chronological_block,compiled-default,2,50,43.64800407250004,,-15.316206999159476,,,
+chronological_block,upstream,3,50,57.37082314450072,,32.43500250300713,,,
+chronological_block,compiled-default,4,50,43.67465395550062,,11.33367600141355,,,
+chronological_block,upstream,5,50,57.32494341799975,,-13.444723997963592,,,
+chronological_block,upstream,6,50,57.340447830500125,,2.059688502413337,,,
+chronological_block,compiled-default,7,50,43.66686672399919,,3.5464444999888656,,,

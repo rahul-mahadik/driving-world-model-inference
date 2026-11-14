@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "status": "illustrative_not_a_quote_or_admission",
+  "scenarios": [
+    {
+      "kind": "illustrative_capacity_and_cost_projection",
+      "resource_admitted": false,
+      "configurations": 1000,
+      "scenes": 1,
+      "repeats": 1,
+      "minimum_candidate_measurement_requests": 1000,
+      "seconds_per_request_assumption": [
+        45.0,
+        60.0
+      ],
+      "illustrative_gpu_hours": [
+        12.5,
+        16.666666666666668
+      ],
+      "compute_usd_per_hour_assumption": 4.746,
+      "illustrative_compute_usd": [
+        59.325,
+        79.10000000000001
+      ],
+      "uncompressed_raw_bytes_per_output": 176947328,
+      "raw_bytes_one_copy": 176947328000,
+      "raw_decimal_gb_one_copy": 176.947328,
+      "copies_for_capacity_planning": 2,
+      "raw_bytes_all_copies": 353894656000,
+      "storage_usd_per_decimal_gb_month_assumption": 0.2,
+      "retention_days": 30,
+      "illustrative_storage_usd_one_copy_30day_month": 35.3894656,
+      "excluded": [
+        "reference generations",
+        "calibration and negative controls",
+        "first requests and warmups",
+        "compilation and setup",
+        "profiling",
+        "failed/partial attempts",
+        "quality metrics/human review",
+        "API policy cost",
+        "backups/transfer and verification time",
+        "cleanup and billing grace",
+        "artifact metadata and allocation capacity rounding"
+      ],
+      "assumption_provenance": "Function defaults use historical H100 reference timing/rates; supplied overrides are caller assumptions, not fresh quotes or measurements.",
+      "interpretation": "The request count is a lower bound for the specified Cartesian measurement grid. The default 45\u201360s time range is historical illustrative reference latency, NOT a lower bound or promise for lossy/modern configurations. Storage assumes full float32 arrays; compression savings are not assumed. Extra copies need separately priced locations."
+    },
+    {
+      "kind": "illustrative_capacity_and_cost_projection",
+      "resource_admitted": false,
+      "configurations": 1000,
+      "scenes": 3,
+      "repeats": 2,
+      "minimum_candidate_measurement_requests": 6000,
+      "seconds_per_request_assumption": [
+        45.0,
+        60.0
+      ],
+      "illustrative_gpu_hours": [
+        75.0,
+        100.0
+      ],
+      "compute_usd_per_hour_assumption": 4.746,
+      "illustrative_compute_usd": [
+        355.95000000000005,
+        474.6
+      ],
+      "uncompressed_raw_bytes_per_output": 176947328,
+      "raw_bytes_one_copy": 1061683968000,
+      "raw_decimal_gb_one_copy": 1061.683968,
+      "copies_for_capacity_planning": 2,
+      "raw_bytes_all_copies": 2123367936000,
+      "storage_usd_per_decimal_gb_month_assumption": 0.2,
+      "retention_days": 30,
+      "illustrative_storage_usd_one_copy_30day_month": 212.33679360000002,
+      "excluded": [
+        "reference generations",
+        "calibration and negative controls",
+        "first requests and warmups",
+        "compilation and setup",
+        "profiling",
+        "failed/partial attempts",
+        "quality metrics/human review",
+        "API policy cost",
+        "backups/transfer and verification time",
+        "cleanup and billing grace",
+        "artifact metadata and allocation capacity rounding"
+      ],
+      "assumption_provenance": "Function defaults use historical H100 reference timing/rates; supplied overrides are caller assumptions, not fresh quotes or measurements.",
+      "interpretation": "The request count is a lower bound for the specified Cartesian measurement grid. The default 45\u201360s time range is historical illustrative reference latency, NOT a lower bound or promise for lossy/modern configurations. Storage assumes full float32 arrays; compression savings are not assumed. Extra copies need separately priced locations."
+    },
+    {
+      "kind": "illustrative_capacity_and_cost_projection",
+      "resource_admitted": false,
+      "configurations": 1000,
+      "scenes": 8,
+      "repeats": 2,
+      "minimum_candidate_measurement_requests": 16000,
+      "seconds_per_request_assumption": [
+        45.0,
+        60.0
+      ],
+      "illustrative_gpu_hours": [
+        200.0,
+        266.6666666666667
+      ],
+      "compute_usd_per_hour_assumption": 4.746,
+      "illustrative_compute_usd": [
+        949.2,
+        1265.6000000000001
+      ],
+      "uncompressed_raw_bytes_per_output": 176947328,
+      "raw_bytes_one_copy": 2831157248000,
+      "raw_decimal_gb_one_copy": 2831.157248,
+      "copies_for_capacity_planning": 2,
+      "raw_bytes_all_copies": 5662314496000,
+      "storage_usd_per_decimal_gb_month_assumption": 0.2,
+      "retention_days": 30,
+      "illustrative_storage_usd_one_copy_30day_month": 566.2314496,
+      "excluded": [
+        "reference generations",
+        "calibration and negative controls",
+        "first requests and warmups",
+        "compilation and setup",
+        "profiling",
+        "failed/partial attempts",
+        "quality metrics/human review",
+        "API policy cost",
+        "backups/transfer and verification time",
+        "cleanup and billing grace",
+        "artifact metadata and allocation capacity rounding"
+      ],
+      "assumption_provenance": "Function defaults use historical H100 reference timing/rates; supplied overrides are caller assumptions, not fresh quotes or measurements.",
+      "interpretation": "The request count is a lower bound for the specified Cartesian measurement grid. The default 45\u201360s time range is historical illustrative reference latency, NOT a lower bound or promise for lossy/modern configurations. Storage assumes full float32 arrays; compression savings are not assumed. Extra copies need separately priced locations."
+    },
+    {
+      "kind": "illustrative_capacity_and_cost_projection",
+      "resource_admitted": false,
+      "configurations": 1000,
+      "scenes": 32,
+      "repeats": 2,
+      "minimum_candidate_measurement_requests": 64000,
+      "seconds_per_request_assumption": [
+        45.0,
+        60.0
+      ],
+      "illustrative_gpu_hours": [
+        800.0,
+        1066.6666666666667
+      ],
+      "compute_usd_per_hour_assumption": 4.746,
+      "illustrative_compute_usd": [
+        3796.8,
+        5062.400000000001
+      ],
+      "uncompressed_raw_bytes_per_output": 176947328,
+      "raw_bytes_one_copy": 11324628992000,
+      "raw_decimal_gb_one_copy": 11324.628992,
+      "copies_for_capacity_planning": 2,
+      "raw_bytes_all_copies": 22649257984000,
+      "storage_usd_per_decimal_gb_month_assumption": 0.2,
+      "retention_days": 30,
+      "illustrative_storage_usd_one_copy_30day_month": 2264.9257984,
+      "excluded": [
+        "reference generations",
+        "calibration and negative controls",
+        "first requests and warmups",
+        "compilation and setup",
+        "profiling",
+        "failed/partial attempts",
+        "quality metrics/human review",
+        "API policy cost",
+        "backups/transfer and verification time",
+        "cleanup and billing grace",
+        "artifact metadata and allocation capacity rounding"
+      ],
+      "assumption_provenance": "Function defaults use historical H100 reference timing/rates; supplied overrides are caller assumptions, not fresh quotes or measurements.",
+      "interpretation": "The request count is a lower bound for the specified Cartesian measurement grid. The default 45\u201360s time range is historical illustrative reference latency, NOT a lower bound or promise for lossy/modern configurations. Storage assumes full float32 arrays; compression savings are not assumed. Extra copies need separately priced locations."
+    }
+  ]
+}

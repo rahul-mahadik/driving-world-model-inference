@@ -1,0 +1,5 @@
+extends: modern-eager.yaml
+name: modern-compiled-restarts
+output: outputs/modern-baseline/compiled
+optimizations:
+  compile_denoiser: true
