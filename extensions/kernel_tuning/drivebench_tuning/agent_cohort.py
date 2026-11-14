@@ -19,6 +19,34 @@ from .vista_agent import digest, validate_settings
 
 POLICIES = ('llm', 'random', 'grid')
 ROLES = ('reference', 'llm_selected', 'random_selected', 'grid_selected')
+COMPARISON_MODE = 'three_policy_comparison'
+SINGLE_LLM_MODE = 'single_llm_feasibility'
+
+
+def study_policies(study_mode=COMPARISON_MODE, policy_names=POLICIES):
+    """Validate one of two explicit study contracts; missing sessions never opt in."""
+    if type(study_mode) is not str or type(policy_names) not in (list, tuple):
+        raise ValueError('explicit study mode and ordered policy names required')
+    if any(type(name) is not str for name in policy_names):
+        raise ValueError('policy names must be strings')
+    expected = {COMPARISON_MODE: POLICIES, SINGLE_LLM_MODE: ('llm',)}.get(study_mode)
+    if expected is None or tuple(policy_names) != expected:
+        raise ValueError('study mode and policy names differ')
+    return expected
+
+
+def final_plan_policies(plan):
+    """Legacy plans mean all three policies; explicit contracts are hash-bound."""
+    declared = {'study_mode', 'policy_names'} & set(plan)
+    if declared and declared != {'study_mode', 'policy_names'}:
+        raise ValueError('final plan must declare both study mode and policy names')
+    names = study_policies(plan['study_mode'], plan['policy_names']) if declared else POLICIES
+    if set(plan['selections']) != set(names):
+        raise ValueError('final selections differ from declared study policies')
+    roles = {'reference', *(name + '_selected' for name in names)}
+    if any(entry['role'] not in roles for entry in plan['batches']):
+        raise ValueError('final batch role outside declared study policies')
+    return names
 
 
 def selection_only_executor(trial_executor):
@@ -49,17 +77,22 @@ def _sha(value, label):
 
 def freeze_final_plan(path, *, sessions, quality_policy, block_orders,
                       source_manifest_sha256, inputs_manifest_sha256, deadline_unix, synthetic=False,
-                      clock=time.time):
-    """Validate all three closed selections and write an exclusive final plan.
+                      clock=time.time, study_mode=COMPARISON_MODE, policy_names=POLICIES):
+    """Validate every declared closed selection and write an exclusive final plan.
 
     sessions maps each exact policy name to (directory, externally pinned
     SessionPolicy). Trial receipts must bind candidate/identity/quality hashes,
     status='ok', and screening_status='no_observed_breach'. That is provisional
     subset screening, never a full quality pass. No agent chooses final inputs.
     The caller must protect this plan and enforce its deadline and batch order.
+    The default retains the three-policy contract. Single-LLM feasibility must
+    explicitly declare its mode and names in both this call and the externally
+    pinned session metadata, before that session begins selecting a candidate.
     """
-    if set(sessions) != set(POLICIES) or not isinstance(quality_policy, QualityPolicy):
-        raise ValueError('all three pinned sessions and frozen quality policy required')
+    names = study_policies(study_mode, policy_names)
+    roles = ('reference', *(name + '_selected' for name in names))
+    if set(sessions) != set(names) or not isinstance(quality_policy, QualityPolicy):
+        raise ValueError('all three pinned sessions required by default; explicit study sessions and frozen quality policy must match')
     quality_policy = QualityPolicy.from_dict(quality_policy.to_dict())
     quality = quality_policy.to_dict()
     if quality['calibration']['status'] != 'ready':
@@ -85,7 +118,7 @@ def freeze_final_plan(path, *, sessions, quality_policy, block_orders,
     if set(block_orders) != set(partitions):
         raise ValueError('one declared role order for every timing block required')
     for order in block_orders.values():
-        if type(order) is not list or len(order) != len(ROLES) or set(order) != set(ROLES):
+        if type(order) is not list or len(order) != len(roles) or set(order) != set(roles):
             raise ValueError('each block must order every role exactly once')
     if quality['plan']['replicates'] != [0, 1]:
         raise ValueError('balanced cohort adapter requires repeats 0 and 1')
@@ -96,7 +129,7 @@ def freeze_final_plan(path, *, sessions, quality_policy, block_orders,
     # Hold every session lock through the write, so the snapshots cannot race
     # another compliant controller. Host filesystem access remains trusted.
     with ExitStack() as stack:
-        for name in POLICIES:
+        for name in names:
             directory, expected_policy = sessions[name]
             if not isinstance(expected_policy, SessionPolicy):
                 raise ValueError('externally pinned SessionPolicy required')
@@ -110,6 +143,10 @@ def freeze_final_plan(path, *, sessions, quality_policy, block_orders,
             if not frozen <= manifest['created_at'] <= at:
                 raise ValueError('selection must start after quality freeze and before admission')
             metadata = expected_policy.to_dict()['metadata']
+            if study_mode == SINGLE_LLM_MODE and (
+                metadata.get('study_mode') != study_mode or
+                metadata.get('policy_names') != list(names)):
+                raise ValueError('single-LLM study must be pinned in session metadata before selection')
             if (metadata.get('quality_policy_sha256') != quality_policy.sha256 or
                 metadata.get('identity_sha256') != quality_policy.identity_sha256 or
                 metadata.get('source_manifest_sha256') != source_manifest_sha256 or
@@ -180,6 +217,8 @@ def freeze_final_plan(path, *, sessions, quality_policy, block_orders,
             'all_selections_locked_at':end,'deadline_unix':deadline_unix,'selections':selections,'batches':batches,
             'shared_reference_comparisons_independent':False,'quality_preserving_claim':False,
             'gpu_execution_performed':False,'synthetic':synthetic}
+        if study_mode == SINGLE_LLM_MODE:
+            body.update(study_mode=study_mode, policy_names=list(names))
         receipt = {**body,'sha256':digest(body)}
         _write_new(Path(path),receipt)
     return receipt

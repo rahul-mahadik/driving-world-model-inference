@@ -32,7 +32,9 @@ A reusable result should include:
 4. Per-task measurements and raw samples or a documented route to independently regenerate them. Retain evidence inventories and hashes; do not pool unrelated devices into one speedup.
 5. The locked selections, fresh final comparison, quality outcome and limitations. Report a zero, rejected or inconclusive outcome without requiring a winner.
 
-The current full-Vista proposal is a small feasibility study: eight development scenes, four final scenes, two seeds and two repeats, with four trials each for LLM, random and grid policies. It keeps the model workload fixed but has limited independent scene coverage. A successful run would demonstrate this particular integration, not broad calibration, generalization, robust quality preservation or a statistically established advantage of LLM search.
+The original small full-Vista proposal gave LLM, random and grid policies four trials each. That proposal and its attempts remain preserved. The current prospective study uses the explicit [single-LLM feasibility mode](agent-study-reproduction.md#prospectively-registered-single-agent-feasibility): eight development scenes, four final scenes, two seeds and two repeats, with four LLM trials and fresh reference-versus-selected-candidate confirmation. Random and grid are deferred and are not reported as completed comparisons.
+
+The current task has eight configuration choices: FP16, decode chunks `[1, 2, 7, 14]`, and compilation off/on. Calibration, proxy limits, negative controls, final coverage and evidence-retention requirements remain fixed. Full Vista/LPIPS/LLM validation through this prospective workflow remains unrun. A successful run would demonstrate this particular integration, not broad calibration, generalization, robust quality preservation or superiority over another optimizer.
 
 ## Trust boundary
 

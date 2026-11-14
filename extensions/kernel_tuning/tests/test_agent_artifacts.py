@@ -8,19 +8,22 @@ import pytest
 from PIL import Image
 
 from drivebench_tuning import agent_artifacts as artifacts, agent_metrics_worker, vista_agent
-from drivebench_tuning.agent_cohort import freeze_final_plan, selection_only_executor, POLICIES, ROLES
+from drivebench_tuning.agent_cohort import freeze_final_plan, selection_only_executor, POLICIES, ROLES, COMPARISON_MODE, SINGLE_LLM_MODE
 from drivebench_tuning.agent_session import SessionPolicy, AgentSession
 from test_agent_metrics_worker import fixture, calibrate, write, pin, batch_pin, execute
 from test_agent_evidence import run, now
 
 
-def final_fixture(root):
+def final_fixture(root, *, study_mode=COMPARISON_MODE, policy_names=POLICIES):
     f=fixture(root);review_at=now();quality_pin,quality=calibrate(f);started=now();sessions={}
     metadata={'quality_policy_sha256':quality.sha256,'identity_sha256':quality.identity_sha256,
         'source_manifest_sha256':f['common']['study_bindings']['source_manifest']['sha256'],
         'inputs_manifest_sha256':f['common']['study_bindings']['input_manifest']['sha256']}
+    if study_mode == SINGLE_LLM_MODE:
+        metadata.update(study_mode=study_mode, policy_names=list(policy_names))
+    roles = ('reference', *(name+'_selected' for name in policy_names))
     settings=vista_agent.reference_settings(synthetic=True)
-    for name in POLICIES:
+    for name in policy_names:
         policy=SessionPolicy(session_id=name,cohort_id='evidence-fixture',reference_config=settings,
             allowed_config_values=vista_agent.ALLOWED_VALUES,wall_seconds=120,max_tool_calls=10,
             max_evaluations=2,max_profiles=0,metadata=metadata)
@@ -32,16 +35,16 @@ def final_fixture(root):
             session.call('trial',{'proposal_id':pid});session.call('submit',{'proposal_id':pid})
         sessions[name]=(directory,policy)
     plan_path=root/'final-plan.json';blocks=quality.to_dict()['plan']['timing']['block_scenes']
-    plan=freeze_final_plan(plan_path,sessions=sessions,quality_policy=quality,block_orders={b:list(ROLES) for b in blocks},
+    plan=freeze_final_plan(plan_path,sessions=sessions,quality_policy=quality,block_orders={b:list(roles) for b in blocks},
         source_manifest_sha256=metadata['source_manifest_sha256'],inputs_manifest_sha256=metadata['inputs_manifest_sha256'],
-        deadline_unix=time.time()+120,synthetic=True)
-    batches={role:[] for role in ROLES}
+        deadline_unix=time.time()+120,synthetic=True,study_mode=study_mode,policy_names=policy_names)
+    batches={role:[] for role in roles}
     for entry in plan['batches']:
         subset={**f,'records':[r for r in f['final'] if r['scene_id'] in entry['scenes']]}
         batches[entry['role']].append(batch_pin(run(subset,f'final-{entry["batch_index"]}',entry['role'],
             reps=(entry['replicate'],),settings=entry['config'])))
     comparisons=[]
-    for name in POLICIES:
+    for name in policy_names:
         metric={**f['common'],'kind':'final','output':str(root/f'final-metrics-{name}'),
             'references':batches['reference'],'candidates':batches[name+'_selected'],'quality_policy':quality_pin,
             'selection_started_at':started,'candidate_sha256':plan['selections'][name]['candidate_sha256'],'final_plan':pin(plan_path)}

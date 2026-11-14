@@ -17,11 +17,27 @@ The policy receives none of these private paths or raw records. Keep secrets out
 | Batch specification | Exact-schema `vista_batch.SPEC_KEYS`: model/settings/runtime/source bindings, manifest, explicit scene/seed/repeat requests, new output directory, deadline and free-space reserve |
 | Perceptual setup receipt | Hash-pinned offline LPIPS package and model-weight assets prepared by the existing [perceptual setup script](../scripts/prepare_perceptual_evaluation.py) |
 | Quality plan | Development/final scene lists, seeds, repeats, explicit proxy margins, sample floors, timing partitions and the prospective noise-floor rule |
-| Session policies | Identical candidate/trial budgets for LLM, random and grid; wall limits, final reserve, allowlisted values and quality/source/input identity pins |
+| Session policies | Declared study mode and policy list; identical candidate/trial budgets for compared policies; wall limits, final reserve, allowlisted values and quality/source/input identity pins |
 
 All path/hash pins use an absolute `path` and exact file-byte `sha256`. A source manifest is not a generic promise that the files are unchanged: the batch worker and metrics worker verify their own required source sets. `vista_batch.required_source_paths(model)` and `agent_metrics_worker.required_source_paths()` expose those required paths. Do not derive a final policy's input list from feedback or silently replace a missing artifact.
 
 For a real metric spec, `metric` contains `kind: "lpips"`, the pinned setup receipt, `device: "cpu"` or `"cuda"`, and exact versions for `torch`, `torchvision`, `numpy`, `scipy` and `lpips` (0.1.4). The worker validates assets and disables network use during metric initialization/evaluation. Pre-stage the assets; no fallback metric is accepted. `{"kind": "synthetic_fixture"}` is reserved for explicitly synthetic batches and is not LPIPS.
+
+## Freeze a task domain after capability checks
+
+Before calibration or policy search, test the declared settings on the new runtime. The controller permits a prospectively pinned subset of the existing Vista values: keep all three field names, give each a nonempty list of supported values, and include its reference value. Types are exact: `1` is not a substitute for `true`. Do not change value order, source pins, domain, trial budgets or quality limits after seeing policy feedback. All policies in a comparison must use the same domain. A rejected proposal consumes a tool call; a failed worker still halts the episode, with no automatic retry.
+
+For example, a capability-scoped task may use:
+
+```json
+{
+  "generation.dtype": ["fp16"],
+  "generation.decode_chunk_size": [1, 2, 7, 14],
+  "optimizations.compile_denoiser": [false, true]
+}
+```
+
+This declares eight configurations. The broader implementation allowlist is not a guarantee that every runtime supports every value. An A100 support attempt with Torch 2.0.1/CUDA 11.8 reached an unsupported BF16 bicubic resize during conditioning, before a completed warmup or measured output. Preserve that failed attempt and its cleanup evidence. A subsequent FP16-only task is a new prospective task revision; it does not silently cast BF16, change the quality gate, or establish compiler support or output quality. Any new compiled endpoint needs its own admitted support check. Previously completed evidence retains its original source identity; reconcile unchanged inference/model/input bytes explicitly before treating it as prior capability evidence for a new controller revision.
 
 ## Generate and calibrate
 
@@ -71,6 +87,32 @@ For the two deterministic baseline controllers, use an explicit `{"kind": "grid"
 
 For an LLM/random/grid comparison, `selection_only_executor` records each submitted choice without running final inputs. Close all three sessions, then call `freeze_final_plan` with their externally pinned session policies and the frozen quality/source/input identities. It admits only selections backed by an eligible completed trial. Its immutable plan fixes role order and scene/seed/repeat cells. Execute that exact plan serially; final feedback must not influence another policy's selection.
 
+### Prospectively registered single-agent feasibility
+
+A study can instead evaluate one LLM's selected configuration against the reference, without running random or grid. Register this narrower scope before calibration and candidate selection; keep the previous protocol and attempts intact. This is a feasibility demonstration, not a comparison of search methods. Random and grid remain explicitly deferred. Keep the declared calibration population, quality limits, negative controls, trial budget, final cells, timing noise floor and evidence-retention requirements unchanged.
+
+The prospective project demonstration remains an eight-option, configuration-only task: FP16, decode chunks `[1, 2, 7, 14]`, and compilation off/on. It does not accept arbitrary agent-written code or kernels and cannot establish that an LLM outperforms another optimizer. A future allocation needs fresh environment proofs, support runs, calibration, selection and final evidence on its own GPU/runtime. Preserve the prior BF16 support failure and FP16 capability receipts as historical evidence; they are not quality calibration or a completed agent run.
+
+Set both `study_mode: "single_llm_feasibility"` and `policy_names: ["llm"]` in the externally pinned `SessionPolicy.metadata` before creating the session. After its measured provisional trials and selection-only submission, call:
+
+```python
+freeze_final_plan(
+    final_plan_path,
+    sessions={"llm": (session_directory, pinned_session_policy)},
+    quality_policy=frozen_quality_policy,
+    block_orders={block: ["reference", "llm_selected"] for block in timing_blocks},
+    source_manifest_sha256=source_manifest_sha256,
+    inputs_manifest_sha256=inputs_manifest_sha256,
+    deadline_unix=immutable_final_deadline,
+    study_mode="single_llm_feasibility",
+    policy_names=["llm"],
+)
+```
+
+The final plan binds this mode and exact policy list in its digest. Every final block uses only `reference` and `llm_selected`, reversing their order for the second repeat. The selected candidate still needs an eligible measured trial, a closed selection ledger and a fresh full final matrix after selection. Never alias one session as multiple policies, reuse development outputs as final measurements, or omit the pinned final plan. The default remains `three_policy_comparison` with `("llm", "random", "grid")`; old plans without either mode field still require all three. Partial declarations, unknown modes, mismatched lists, extra roles and missing comparisons are rejected.
+
+An operator's protected final-plan adapter must pass both fields explicitly, validate the same registered policy list when admitting each batch, and bind the resulting plan into final metrics and exports. Existing private adapters that assert three policies need a separately reviewed prospective revision; changing a JSON label alone is insufficient. Preserve the external deadline, prior-batch completion checks, source/runtime identities and full backup/cleanup reserves. This interface has CPU integration coverage; it does not claim a completed real-GPU agent study.
+
 For each selected candidate, use a `kind: "final"` metric spec. It adds `candidates`, `quality_policy`, `selection_started_at`, `candidate_sha256` and pinned `final_plan`. It reconciles the final plan's aggregate source/input pins with batch provenance and requires generation after all selections were locked. The output contains `paired-records.json`, `quality-assessment.json` and `timing-score.json`.
 
 A failed or incomplete quality check receives no accepted timing score. An accepted descriptive score does not establish visual equivalence or policy superiority. Sharing the same fresh reference batches across selected policies makes their comparisons dependent; report that design explicitly.
@@ -86,7 +128,7 @@ drivebench-agent-artifacts --spec /private/study/inventory.json --spec-sha256 "$
 
 Each variable is the reviewed file-byte digest of its separate spec. Both specs use `schema_version`, `kind`, `synthetic`, `created_at`, `deadline_unix`, `minimum_free_bytes`, `maximum_output_bytes`, `output` and `sources`. Run them through an external timeout and verify terminal cleanup. The output byte limit includes the completion receipt on success. It is a checked bound, not an operating-system quota: a failure may retain the last attempted bounded artifact plus failure metadata beyond that limit. The exact field sets are in [agent_artifacts.py](../extensions/kernel_tuning/drivebench_tuning/agent_artifacts.py).
 
-An `export` spec adds pinned `final_plan`, `quality_policy`, `review_plan` and three `comparisons` entries, one per LLM/random/grid policy with its final `metric_completion`. The review plan fixes scene/seed/repeat cells before the selection barrier; it cannot choose attractive cases after seeing results. Select only one replicate for each scene/seed pair because the preserved renderer groups cases by scene, seed and policy. The worker verifies the final metric-to-array provenance and replays the recorded assessment and timing score, without recomputing LPIPS. It uses the existing renderer for blinded contact sheets and motion previews, and adds every future frame as a native-resolution A/B PNG pair. These PNGs preserve rounded 8-bit display pixels, not the original float32 array values; original arrays remain untouched.
+An `export` spec adds pinned `final_plan`, `quality_policy`, `review_plan` and one `comparisons` entry per registered policy with its final `metric_completion`: three entries for the default LLM/random/grid study, or exactly one `llm` entry for single-agent feasibility. The review case cap counts the declared cells times the declared policies. The review plan fixes scene/seed/repeat cells before the selection barrier; it cannot choose attractive cases after seeing results. Select only one replicate for each scene/seed pair because the preserved renderer groups cases by scene, seed and policy. The worker verifies the final metric-to-array provenance and replays the recorded assessment and timing score, without recomputing LPIPS. It uses the existing renderer for blinded contact sheets and motion previews, and adds every future frame as a native-resolution A/B PNG pair. These PNGs preserve rounded 8-bit display pixels, not the original float32 array values; original arrays remain untouched.
 
 Only give reviewers the `public/` packet. Its name denotes the blinded review view, not permission to publish licensed frames. Keep `private/` and the surrounding spec/provenance receipts evaluator-only; seal the reviewer's actual observations before revealing the answer key. A completed export explicitly reports `visual_review_performed: false` and cannot establish quality preservation.
 
@@ -96,4 +138,4 @@ An `inventory` spec adds explicit absolute `roots`, `extra_files`, `required_pin
 
 Verify worker exit, source/input invariants, the final evidence inventory and an independently hashed backup before releasing resources. Publish the exact protocol/configuration and sanitized trajectories, measured outcomes, rejected attempts, costs and limitations. Retain raw arrays according to the declared study contract and external asset terms. A completed process, a passing CPU test suite and a completed real-model evaluation are separate milestones.
 
-The current project proposal is the explicitly small 8-development/4-final-scene feasibility study described in [readiness](benchmark-readiness.md). Its real GPU/LPIPS/LLM execution remains unrun. This recipe does not relabel historical timings or complete the old same-GPU held-out study.
+The current project proposal is the explicitly small 8-development/4-final-scene single-LLM feasibility study described in [readiness](benchmark-readiness.md). It preserves the original three-policy proposal and defers random/grid comparisons. Its real GPU/LPIPS/LLM execution remains unrun. This recipe does not relabel historical timings or complete the old same-GPU held-out study.

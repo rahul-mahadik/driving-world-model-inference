@@ -27,6 +27,7 @@ from PIL import Image, ImageDraw
 from . import agent_evidence as evidence, agent_metrics_worker as metrics_worker
 from . import agent_scoring, vista_agent, vista_batch
 from .agent_session import _bytes, _write_new
+from .agent_cohort import final_plan_policies
 
 COMMON = {'schema_version', 'kind', 'synthetic', 'created_at', 'deadline_unix',
           'minimum_free_bytes', 'maximum_output_bytes', 'output', 'sources'}
@@ -116,6 +117,7 @@ def _metric_bundle(pin, *, policy, final_pin, quality, synthetic, check):
 def _export(spec, output, check):
     from drivebench.evaluation.review import export_review
     final = metrics_worker._pin(spec['final_plan'])
+    policies = final_plan_policies(final)
     quality = agent_scoring.QualityPolicy.from_dict(metrics_worker._pin(spec['quality_policy']))
     review = metrics_worker._pin(spec['review_plan'])
     vista_batch._keys(review, {'schema_version','created_at','cells','review_seed','maximum_cases'}, 'review plan')
@@ -129,15 +131,15 @@ def _export(spec, output, check):
     cells = {evidence._cell(row) for row in review['cells']}
     if len({(scene,seed) for scene,seed,rep in cells}) != len(cells):
         raise ValueError('review plan permits one replicate per scene and seed')
-    if len(cells) != len(review['cells']) or len(cells)*3 > review['maximum_cases']:
+    if len(cells) != len(review['cells']) or len(cells)*len(policies) > review['maximum_cases']:
         raise ValueError('duplicate or excessive review cases')
     plan = quality.to_dict()['plan']
     if any(scene not in plan['final_scenes'] or seed not in plan['seeds'] or rep not in plan['replicates'] for scene,seed,rep in cells):
         raise ValueError('review cell outside frozen final population')
-    if not isinstance(spec['comparisons'], list) or len(spec['comparisons']) != 3:
-        raise ValueError('all three final comparisons required')
+    if not isinstance(spec['comparisons'], list) or len(spec['comparisons']) != len(policies):
+        raise ValueError('all declared final comparisons required')
     for item in spec['comparisons']: vista_batch._keys(item, {'policy','metric_completion'}, 'comparison')
-    if {item['policy'] for item in spec['comparisons']} != set(POLICIES): raise ValueError('duplicate or missing comparison')
+    if {item['policy'] for item in spec['comparisons']} != set(policies): raise ValueError('duplicate or missing comparison')
     pairs = []; batches = {}; pinned_files = {}; common_refs = None
     for item in sorted(spec['comparisons'], key=lambda item:item['policy']):
         check(); policy = item['policy']
