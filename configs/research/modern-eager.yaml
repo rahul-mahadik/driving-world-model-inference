@@ -1,0 +1,29 @@
+# Prospective Phase 1: no GPU result or resource admission is implied.
+extends: ../baseline.yaml
+name: modern-eager-restarts
+output: outputs/modern-baseline/eager
+environment_verification: outputs/modern-environment/verification.json
+environment_lock: outputs/modern-environment/runtime-lock.json
+model:
+  backend: modern_vista
+  modern_runtime:
+    schema_version: 1
+    torch_version: 2.14.1+cu130
+    cuda_version: '13.0'
+    attention: native_sdpa
+    parameter_policy: unet_fp16_norm_fp32_vae_fp32
+    memory_format: channels_last_2d
+data:
+  # Freeze exactly three real distinct scene records before materializing a plan.
+  manifest: data/manifests/phase1-three-scenes.jsonl
+benchmark:
+  requests: 3
+  warmup_requests: 3
+  max_warmup_requests: 12
+  save_outputs: 3
+  candidate_count: 1
+  input_condition: uncached
+  headline: false
+optimizations:
+  compile_denoiser: false
+  compile_mode: default

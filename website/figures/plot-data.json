@@ -1,0 +1,3314 @@
+{
+  "aggregates": [
+    {
+      "median_latency_s": 57.33838814199771,
+      "p95_latency_s": 57.39193709140045,
+      "peak_allocated_bytes": 56058206720,
+      "peak_allocated_gib": 52.20827341079712,
+      "requests": 200,
+      "role": "upstream",
+      "scene_groups": 50,
+      "sequential_futures_per_s": 0.01743858916084274
+    },
+    {
+      "median_latency_s": 43.6633202794992,
+      "p95_latency_s": 43.68945980059725,
+      "peak_allocated_bytes": 60363113984,
+      "peak_allocated_gib": 56.217530727386475,
+      "requests": 200,
+      "role": "compiled-default",
+      "scene_groups": 50,
+      "sequential_futures_per_s": 0.022904180300288266
+    }
+  ],
+  "blocks": [
+    {
+      "block_index": 0,
+      "deviation_from_role_median_ms": -1.1710864973792923,
+      "median_latency_s": 57.33721705550033,
+      "requests": 50,
+      "role": "upstream"
+    },
+    {
+      "block_index": 1,
+      "deviation_from_role_median_ms": -9.71765699887328,
+      "median_latency_s": 43.65360262250033,
+      "requests": 50,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 2,
+      "deviation_from_role_median_ms": -15.316206999159476,
+      "median_latency_s": 43.64800407250004,
+      "requests": 50,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 3,
+      "deviation_from_role_median_ms": 32.43500250300713,
+      "median_latency_s": 57.37082314450072,
+      "requests": 50,
+      "role": "upstream"
+    },
+    {
+      "block_index": 4,
+      "deviation_from_role_median_ms": 11.33367600141355,
+      "median_latency_s": 43.67465395550062,
+      "requests": 50,
+      "role": "compiled-default"
+    },
+    {
+      "block_index": 5,
+      "deviation_from_role_median_ms": -13.444723997963592,
+      "median_latency_s": 57.32494341799975,
+      "requests": 50,
+      "role": "upstream"
+    },
+    {
+      "block_index": 6,
+      "deviation_from_role_median_ms": 2.059688502413337,
+      "median_latency_s": 57.340447830500125,
+      "requests": 50,
+      "role": "upstream"
+    },
+    {
+      "block_index": 7,
+      "deviation_from_role_median_ms": 3.5464444999888656,
+      "median_latency_s": 43.66686672399919,
+      "requests": 50,
+      "role": "compiled-default"
+    }
+  ],
+  "definitions": {
+    "ecdf": "Right-continuous step function, cumulative count / 200 separately for each role.",
+    "memory": "Maximum CUDA allocated-memory peak over the role's observed requests; bytes / 2^30.",
+    "quantile": "Historical NumPy linear interpolation, reconstructed by pinned stdlib analyzer.",
+    "uncertainty": "No new uncertainty estimates or uncertainty bands are plotted."
+  },
+  "ecdf": {
+    "compiled-default": [
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.005,
+        "latency_s": 43.59597630499957,
+        "rank": 1,
+        "request_index": 0,
+        "scene_index": 31
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.01,
+        "latency_s": 43.615115886999774,
+        "rank": 2,
+        "request_index": 30,
+        "scene_index": 1
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.015,
+        "latency_s": 43.61618800799988,
+        "rank": 3,
+        "request_index": 43,
+        "scene_index": 35
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.02,
+        "latency_s": 43.61813753499973,
+        "rank": 4,
+        "request_index": 2,
+        "scene_index": 3
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.025,
+        "latency_s": 43.61960234400067,
+        "rank": 5,
+        "request_index": 32,
+        "scene_index": 23
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.03,
+        "latency_s": 43.61976157499885,
+        "rank": 6,
+        "request_index": 37,
+        "scene_index": 43
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.035,
+        "latency_s": 43.62106814599974,
+        "rank": 7,
+        "request_index": 48,
+        "scene_index": 29
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.04,
+        "latency_s": 43.62291249400005,
+        "rank": 8,
+        "request_index": 33,
+        "scene_index": 16
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.045,
+        "latency_s": 43.62315594500069,
+        "rank": 9,
+        "request_index": 4,
+        "scene_index": 37
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.05,
+        "latency_s": 43.624135206000574,
+        "rank": 10,
+        "request_index": 41,
+        "scene_index": 26
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.055,
+        "latency_s": 43.625025547000405,
+        "rank": 11,
+        "request_index": 45,
+        "scene_index": 39
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.06,
+        "latency_s": 43.625267499000074,
+        "rank": 12,
+        "request_index": 7,
+        "scene_index": 36
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.065,
+        "latency_s": 43.625270729000476,
+        "rank": 13,
+        "request_index": 1,
+        "scene_index": 28
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.07,
+        "latency_s": 43.62551432500004,
+        "rank": 14,
+        "request_index": 3,
+        "scene_index": 4
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.075,
+        "latency_s": 43.625660109999444,
+        "rank": 15,
+        "request_index": 49,
+        "scene_index": 38
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.08,
+        "latency_s": 43.62673586799974,
+        "rank": 16,
+        "request_index": 29,
+        "scene_index": 47
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.085,
+        "latency_s": 43.62721198899999,
+        "rank": 17,
+        "request_index": 39,
+        "scene_index": 46
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.09,
+        "latency_s": 43.627732893999564,
+        "rank": 18,
+        "request_index": 27,
+        "scene_index": 13
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.095,
+        "latency_s": 43.62841086800108,
+        "rank": 19,
+        "request_index": 28,
+        "scene_index": 11
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.1,
+        "latency_s": 43.63026259099934,
+        "rank": 20,
+        "request_index": 43,
+        "scene_index": 35
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.105,
+        "latency_s": 43.630601871998806,
+        "rank": 21,
+        "request_index": 35,
+        "scene_index": 33
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.11,
+        "latency_s": 43.632178522000686,
+        "rank": 22,
+        "request_index": 38,
+        "scene_index": 5
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.115,
+        "latency_s": 43.632642177999514,
+        "rank": 23,
+        "request_index": 40,
+        "scene_index": 40
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.12,
+        "latency_s": 43.63367752500017,
+        "rank": 24,
+        "request_index": 9,
+        "scene_index": 21
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.125,
+        "latency_s": 43.633889087999705,
+        "rank": 25,
+        "request_index": 47,
+        "scene_index": 20
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.13,
+        "latency_s": 43.63409315199897,
+        "rank": 26,
+        "request_index": 31,
+        "scene_index": 2
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.135,
+        "latency_s": 43.63443497700064,
+        "rank": 27,
+        "request_index": 44,
+        "scene_index": 7
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.14,
+        "latency_s": 43.63489069700063,
+        "rank": 28,
+        "request_index": 13,
+        "scene_index": 27
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.145,
+        "latency_s": 43.63676074100022,
+        "rank": 29,
+        "request_index": 8,
+        "scene_index": 12
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.15,
+        "latency_s": 43.63692074000028,
+        "rank": 30,
+        "request_index": 42,
+        "scene_index": 6
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.155,
+        "latency_s": 43.63769633499942,
+        "rank": 31,
+        "request_index": 36,
+        "scene_index": 14
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.16,
+        "latency_s": 43.637979544997506,
+        "rank": 32,
+        "request_index": 18,
+        "scene_index": 18
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.165,
+        "latency_s": 43.63804175899895,
+        "rank": 33,
+        "request_index": 13,
+        "scene_index": 27
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.17,
+        "latency_s": 43.63807881899993,
+        "rank": 34,
+        "request_index": 21,
+        "scene_index": 17
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.175,
+        "latency_s": 43.63961998299965,
+        "rank": 35,
+        "request_index": 16,
+        "scene_index": 24
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.18,
+        "latency_s": 43.64025558300091,
+        "rank": 36,
+        "request_index": 28,
+        "scene_index": 11
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.185,
+        "latency_s": 43.64062421499875,
+        "rank": 37,
+        "request_index": 22,
+        "scene_index": 42
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.19,
+        "latency_s": 43.641529087999515,
+        "rank": 38,
+        "request_index": 42,
+        "scene_index": 6
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.195,
+        "latency_s": 43.642207818000315,
+        "rank": 39,
+        "request_index": 7,
+        "scene_index": 36
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.2,
+        "latency_s": 43.64230362499984,
+        "rank": 40,
+        "request_index": 5,
+        "scene_index": 0
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.205,
+        "latency_s": 43.64308498799983,
+        "rank": 41,
+        "request_index": 34,
+        "scene_index": 8
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.21,
+        "latency_s": 43.64326551299746,
+        "rank": 42,
+        "request_index": 0,
+        "scene_index": 31
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.215,
+        "latency_s": 43.64348532999975,
+        "rank": 43,
+        "request_index": 37,
+        "scene_index": 43
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.22,
+        "latency_s": 43.644138770998325,
+        "rank": 44,
+        "request_index": 14,
+        "scene_index": 10
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.225,
+        "latency_s": 43.64426351799921,
+        "rank": 45,
+        "request_index": 46,
+        "scene_index": 44
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.23,
+        "latency_s": 43.64521483400131,
+        "rank": 46,
+        "request_index": 1,
+        "scene_index": 28
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.235,
+        "latency_s": 43.64531558300041,
+        "rank": 47,
+        "request_index": 27,
+        "scene_index": 13
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.24,
+        "latency_s": 43.64547370800028,
+        "rank": 48,
+        "request_index": 44,
+        "scene_index": 7
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.245,
+        "latency_s": 43.64630878499884,
+        "rank": 49,
+        "request_index": 15,
+        "scene_index": 9
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.25,
+        "latency_s": 43.646746935999545,
+        "rank": 50,
+        "request_index": 25,
+        "scene_index": 41
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.255,
+        "latency_s": 43.64691875000062,
+        "rank": 51,
+        "request_index": 8,
+        "scene_index": 12
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.26,
+        "latency_s": 43.647330632000376,
+        "rank": 52,
+        "request_index": 12,
+        "scene_index": 49
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.265,
+        "latency_s": 43.64926120900054,
+        "rank": 53,
+        "request_index": 23,
+        "scene_index": 34
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.27,
+        "latency_s": 43.649307601001055,
+        "rank": 54,
+        "request_index": 27,
+        "scene_index": 13
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.275,
+        "latency_s": 43.650103378000495,
+        "rank": 55,
+        "request_index": 38,
+        "scene_index": 5
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.28,
+        "latency_s": 43.65015454500099,
+        "rank": 56,
+        "request_index": 4,
+        "scene_index": 37
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.285,
+        "latency_s": 43.6509554459999,
+        "rank": 57,
+        "request_index": 10,
+        "scene_index": 19
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.29,
+        "latency_s": 43.65099374200145,
+        "rank": 58,
+        "request_index": 26,
+        "scene_index": 15
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.295,
+        "latency_s": 43.651188748001005,
+        "rank": 59,
+        "request_index": 10,
+        "scene_index": 19
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.3,
+        "latency_s": 43.65146214400011,
+        "rank": 60,
+        "request_index": 11,
+        "scene_index": 25
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.305,
+        "latency_s": 43.651787205999426,
+        "rank": 61,
+        "request_index": 35,
+        "scene_index": 33
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.31,
+        "latency_s": 43.65208037499906,
+        "rank": 62,
+        "request_index": 14,
+        "scene_index": 10
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.315,
+        "latency_s": 43.65216841499932,
+        "rank": 63,
+        "request_index": 4,
+        "scene_index": 37
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.32,
+        "latency_s": 43.65239545199984,
+        "rank": 64,
+        "request_index": 26,
+        "scene_index": 15
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.325,
+        "latency_s": 43.65242929899978,
+        "rank": 65,
+        "request_index": 6,
+        "scene_index": 45
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.33,
+        "latency_s": 43.652449777000584,
+        "rank": 66,
+        "request_index": 30,
+        "scene_index": 1
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.335,
+        "latency_s": 43.652836847999424,
+        "rank": 67,
+        "request_index": 17,
+        "scene_index": 48
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.34,
+        "latency_s": 43.65318847100025,
+        "rank": 68,
+        "request_index": 45,
+        "scene_index": 39
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.345,
+        "latency_s": 43.65401677400041,
+        "rank": 69,
+        "request_index": 32,
+        "scene_index": 23
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.35,
+        "latency_s": 43.65470849200028,
+        "rank": 70,
+        "request_index": 6,
+        "scene_index": 45
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.355,
+        "latency_s": 43.65480565800135,
+        "rank": 71,
+        "request_index": 14,
+        "scene_index": 10
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.36,
+        "latency_s": 43.6548221310004,
+        "rank": 72,
+        "request_index": 33,
+        "scene_index": 16
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.365,
+        "latency_s": 43.65484782400017,
+        "rank": 73,
+        "request_index": 34,
+        "scene_index": 8
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.37,
+        "latency_s": 43.655481107000014,
+        "rank": 74,
+        "request_index": 6,
+        "scene_index": 45
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.375,
+        "latency_s": 43.65562185299859,
+        "rank": 75,
+        "request_index": 19,
+        "scene_index": 32
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.38,
+        "latency_s": 43.65681277800104,
+        "rank": 76,
+        "request_index": 9,
+        "scene_index": 21
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.385,
+        "latency_s": 43.65707550500156,
+        "rank": 77,
+        "request_index": 23,
+        "scene_index": 34
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.39,
+        "latency_s": 43.65719560100115,
+        "rank": 78,
+        "request_index": 11,
+        "scene_index": 25
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.395,
+        "latency_s": 43.65723974499997,
+        "rank": 79,
+        "request_index": 12,
+        "scene_index": 49
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.4,
+        "latency_s": 43.65737797499969,
+        "rank": 80,
+        "request_index": 47,
+        "scene_index": 20
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.405,
+        "latency_s": 43.65749239099932,
+        "rank": 81,
+        "request_index": 2,
+        "scene_index": 3
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.41,
+        "latency_s": 43.657534590998694,
+        "rank": 82,
+        "request_index": 15,
+        "scene_index": 9
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.415,
+        "latency_s": 43.65856977600015,
+        "rank": 83,
+        "request_index": 0,
+        "scene_index": 31
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.42,
+        "latency_s": 43.659339606001595,
+        "rank": 84,
+        "request_index": 34,
+        "scene_index": 8
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.425,
+        "latency_s": 43.659653400000025,
+        "rank": 85,
+        "request_index": 21,
+        "scene_index": 17
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.43,
+        "latency_s": 43.66010017699955,
+        "rank": 86,
+        "request_index": 10,
+        "scene_index": 19
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.435,
+        "latency_s": 43.66076646399961,
+        "rank": 87,
+        "request_index": 36,
+        "scene_index": 14
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.44,
+        "latency_s": 43.66118926100171,
+        "rank": 88,
+        "request_index": 26,
+        "scene_index": 15
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.445,
+        "latency_s": 43.66124116799983,
+        "rank": 89,
+        "request_index": 20,
+        "scene_index": 30
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.45,
+        "latency_s": 43.661403911999514,
+        "rank": 90,
+        "request_index": 16,
+        "scene_index": 24
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.455,
+        "latency_s": 43.661603626002034,
+        "rank": 91,
+        "request_index": 25,
+        "scene_index": 41
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.46,
+        "latency_s": 43.661623218002205,
+        "rank": 92,
+        "request_index": 7,
+        "scene_index": 36
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.465,
+        "latency_s": 43.66171592200044,
+        "rank": 93,
+        "request_index": 16,
+        "scene_index": 24
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.47,
+        "latency_s": 43.66186143900086,
+        "rank": 94,
+        "request_index": 19,
+        "scene_index": 32
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.475,
+        "latency_s": 43.662176140001975,
+        "rank": 95,
+        "request_index": 30,
+        "scene_index": 1
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.48,
+        "latency_s": 43.66227241100023,
+        "rank": 96,
+        "request_index": 21,
+        "scene_index": 17
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.485,
+        "latency_s": 43.6622749979997,
+        "rank": 97,
+        "request_index": 14,
+        "scene_index": 10
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.49,
+        "latency_s": 43.66247173100055,
+        "rank": 98,
+        "request_index": 18,
+        "scene_index": 18
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.495,
+        "latency_s": 43.66255691100014,
+        "rank": 99,
+        "request_index": 24,
+        "scene_index": 22
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.5,
+        "latency_s": 43.663241743999606,
+        "rank": 100,
+        "request_index": 13,
+        "scene_index": 27
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.505,
+        "latency_s": 43.6633988149988,
+        "rank": 101,
+        "request_index": 1,
+        "scene_index": 28
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.51,
+        "latency_s": 43.66344577899872,
+        "rank": 102,
+        "request_index": 8,
+        "scene_index": 12
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.515,
+        "latency_s": 43.66365713600135,
+        "rank": 103,
+        "request_index": 41,
+        "scene_index": 26
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.52,
+        "latency_s": 43.663749088998884,
+        "rank": 104,
+        "request_index": 13,
+        "scene_index": 27
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.525,
+        "latency_s": 43.66400523700031,
+        "rank": 105,
+        "request_index": 46,
+        "scene_index": 44
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.53,
+        "latency_s": 43.66425942500064,
+        "rank": 106,
+        "request_index": 5,
+        "scene_index": 0
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.535,
+        "latency_s": 43.664400788999046,
+        "rank": 107,
+        "request_index": 6,
+        "scene_index": 45
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.54,
+        "latency_s": 43.664488750999226,
+        "rank": 108,
+        "request_index": 12,
+        "scene_index": 49
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.545,
+        "latency_s": 43.66476956800034,
+        "rank": 109,
+        "request_index": 3,
+        "scene_index": 4
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.55,
+        "latency_s": 43.66491233000124,
+        "rank": 110,
+        "request_index": 15,
+        "scene_index": 9
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.555,
+        "latency_s": 43.66501615699963,
+        "rank": 111,
+        "request_index": 39,
+        "scene_index": 46
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.56,
+        "latency_s": 43.665041897000265,
+        "rank": 112,
+        "request_index": 22,
+        "scene_index": 42
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.565,
+        "latency_s": 43.66534458099704,
+        "rank": 113,
+        "request_index": 35,
+        "scene_index": 33
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.57,
+        "latency_s": 43.66572143299709,
+        "rank": 114,
+        "request_index": 33,
+        "scene_index": 16
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.575,
+        "latency_s": 43.665801662999,
+        "rank": 115,
+        "request_index": 17,
+        "scene_index": 48
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.58,
+        "latency_s": 43.66596981799921,
+        "rank": 116,
+        "request_index": 19,
+        "scene_index": 32
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.585,
+        "latency_s": 43.665973486999064,
+        "rank": 117,
+        "request_index": 34,
+        "scene_index": 8
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.59,
+        "latency_s": 43.66621357199983,
+        "rank": 118,
+        "request_index": 29,
+        "scene_index": 47
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.595,
+        "latency_s": 43.66632930199921,
+        "rank": 119,
+        "request_index": 3,
+        "scene_index": 4
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.6,
+        "latency_s": 43.66639845999816,
+        "rank": 120,
+        "request_index": 20,
+        "scene_index": 30
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.605,
+        "latency_s": 43.66733498800022,
+        "rank": 121,
+        "request_index": 35,
+        "scene_index": 33
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.61,
+        "latency_s": 43.66747847299848,
+        "rank": 122,
+        "request_index": 5,
+        "scene_index": 0
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.615,
+        "latency_s": 43.667602195000654,
+        "rank": 123,
+        "request_index": 0,
+        "scene_index": 31
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.62,
+        "latency_s": 43.6680393630013,
+        "rank": 124,
+        "request_index": 20,
+        "scene_index": 30
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.625,
+        "latency_s": 43.668044886000644,
+        "rank": 125,
+        "request_index": 9,
+        "scene_index": 21
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.63,
+        "latency_s": 43.668213236000156,
+        "rank": 126,
+        "request_index": 40,
+        "scene_index": 40
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.635,
+        "latency_s": 43.66868449699905,
+        "rank": 127,
+        "request_index": 5,
+        "scene_index": 0
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.64,
+        "latency_s": 43.66913227000077,
+        "rank": 128,
+        "request_index": 39,
+        "scene_index": 46
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.645,
+        "latency_s": 43.66953069200099,
+        "rank": 129,
+        "request_index": 28,
+        "scene_index": 11
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.65,
+        "latency_s": 43.6701029399992,
+        "rank": 130,
+        "request_index": 7,
+        "scene_index": 36
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.655,
+        "latency_s": 43.67063313899962,
+        "rank": 131,
+        "request_index": 29,
+        "scene_index": 47
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.66,
+        "latency_s": 43.67065845599973,
+        "rank": 132,
+        "request_index": 48,
+        "scene_index": 29
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.665,
+        "latency_s": 43.67069409800024,
+        "rank": 133,
+        "request_index": 45,
+        "scene_index": 39
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.67,
+        "latency_s": 43.67109712100137,
+        "rank": 134,
+        "request_index": 8,
+        "scene_index": 12
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.675,
+        "latency_s": 43.67158776500037,
+        "rank": 135,
+        "request_index": 31,
+        "scene_index": 2
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.68,
+        "latency_s": 43.67220208700019,
+        "rank": 136,
+        "request_index": 25,
+        "scene_index": 41
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.685,
+        "latency_s": 43.672609702000045,
+        "rank": 137,
+        "request_index": 24,
+        "scene_index": 22
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.69,
+        "latency_s": 43.67302656800166,
+        "rank": 138,
+        "request_index": 37,
+        "scene_index": 43
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.695,
+        "latency_s": 43.673308370001905,
+        "rank": 139,
+        "request_index": 41,
+        "scene_index": 26
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.7,
+        "latency_s": 43.67336418400009,
+        "rank": 140,
+        "request_index": 2,
+        "scene_index": 3
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.705,
+        "latency_s": 43.67342922100033,
+        "rank": 141,
+        "request_index": 49,
+        "scene_index": 38
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.71,
+        "latency_s": 43.67380880999917,
+        "rank": 142,
+        "request_index": 11,
+        "scene_index": 25
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.715,
+        "latency_s": 43.67400732799979,
+        "rank": 143,
+        "request_index": 15,
+        "scene_index": 9
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.72,
+        "latency_s": 43.67449302800014,
+        "rank": 144,
+        "request_index": 43,
+        "scene_index": 35
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.725,
+        "latency_s": 43.67452470900025,
+        "rank": 145,
+        "request_index": 42,
+        "scene_index": 6
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.73,
+        "latency_s": 43.674641608002275,
+        "rank": 146,
+        "request_index": 38,
+        "scene_index": 5
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.735,
+        "latency_s": 43.67464783600008,
+        "rank": 147,
+        "request_index": 36,
+        "scene_index": 14
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.74,
+        "latency_s": 43.67466007500116,
+        "rank": 148,
+        "request_index": 27,
+        "scene_index": 13
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.745,
+        "latency_s": 43.6749691699988,
+        "rank": 149,
+        "request_index": 20,
+        "scene_index": 30
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.75,
+        "latency_s": 43.67507489899981,
+        "rank": 150,
+        "request_index": 16,
+        "scene_index": 24
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.755,
+        "latency_s": 43.67527527999846,
+        "rank": 151,
+        "request_index": 33,
+        "scene_index": 16
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.76,
+        "latency_s": 43.67556770699957,
+        "rank": 152,
+        "request_index": 39,
+        "scene_index": 46
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.765,
+        "latency_s": 43.675717681000606,
+        "rank": 153,
+        "request_index": 1,
+        "scene_index": 28
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.77,
+        "latency_s": 43.67576104100226,
+        "rank": 154,
+        "request_index": 24,
+        "scene_index": 22
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.775,
+        "latency_s": 43.675962667999556,
+        "rank": 155,
+        "request_index": 32,
+        "scene_index": 23
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.78,
+        "latency_s": 43.67604918500001,
+        "rank": 156,
+        "request_index": 42,
+        "scene_index": 6
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.785,
+        "latency_s": 43.67625264399976,
+        "rank": 157,
+        "request_index": 32,
+        "scene_index": 23
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.79,
+        "latency_s": 43.67728883299969,
+        "rank": 158,
+        "request_index": 18,
+        "scene_index": 18
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.795,
+        "latency_s": 43.677448774997174,
+        "rank": 159,
+        "request_index": 37,
+        "scene_index": 43
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.8,
+        "latency_s": 43.677942547001294,
+        "rank": 160,
+        "request_index": 25,
+        "scene_index": 41
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.805,
+        "latency_s": 43.67796608400022,
+        "rank": 161,
+        "request_index": 22,
+        "scene_index": 42
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.81,
+        "latency_s": 43.677971438002714,
+        "rank": 162,
+        "request_index": 31,
+        "scene_index": 2
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.815,
+        "latency_s": 43.67798111400043,
+        "rank": 163,
+        "request_index": 17,
+        "scene_index": 48
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.82,
+        "latency_s": 43.67799095800001,
+        "rank": 164,
+        "request_index": 24,
+        "scene_index": 22
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.825,
+        "latency_s": 43.67828637300045,
+        "rank": 165,
+        "request_index": 40,
+        "scene_index": 40
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.83,
+        "latency_s": 43.67831522199958,
+        "rank": 166,
+        "request_index": 11,
+        "scene_index": 25
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.835,
+        "latency_s": 43.678437373000634,
+        "rank": 167,
+        "request_index": 18,
+        "scene_index": 18
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.84,
+        "latency_s": 43.678683144997194,
+        "rank": 168,
+        "request_index": 22,
+        "scene_index": 42
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.845,
+        "latency_s": 43.67870634800056,
+        "rank": 169,
+        "request_index": 23,
+        "scene_index": 34
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.85,
+        "latency_s": 43.67931363000025,
+        "rank": 170,
+        "request_index": 36,
+        "scene_index": 14
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.855,
+        "latency_s": 43.67999704199974,
+        "rank": 171,
+        "request_index": 17,
+        "scene_index": 48
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.86,
+        "latency_s": 43.680194256001414,
+        "rank": 172,
+        "request_index": 41,
+        "scene_index": 26
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.865,
+        "latency_s": 43.680203651998454,
+        "rank": 173,
+        "request_index": 47,
+        "scene_index": 20
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.87,
+        "latency_s": 43.68037385400021,
+        "rank": 174,
+        "request_index": 12,
+        "scene_index": 49
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.875,
+        "latency_s": 43.680608123999264,
+        "rank": 175,
+        "request_index": 47,
+        "scene_index": 20
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.88,
+        "latency_s": 43.68066919699959,
+        "rank": 176,
+        "request_index": 19,
+        "scene_index": 32
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.885,
+        "latency_s": 43.680808504002925,
+        "rank": 177,
+        "request_index": 40,
+        "scene_index": 40
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.89,
+        "latency_s": 43.681318764000025,
+        "rank": 178,
+        "request_index": 31,
+        "scene_index": 2
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.895,
+        "latency_s": 43.68132228199829,
+        "rank": 179,
+        "request_index": 45,
+        "scene_index": 39
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.9,
+        "latency_s": 43.68155083199963,
+        "rank": 180,
+        "request_index": 9,
+        "scene_index": 21
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.905,
+        "latency_s": 43.68210756500048,
+        "rank": 181,
+        "request_index": 44,
+        "scene_index": 7
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.91,
+        "latency_s": 43.682141093999235,
+        "rank": 182,
+        "request_index": 29,
+        "scene_index": 47
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.915,
+        "latency_s": 43.68333293099931,
+        "rank": 183,
+        "request_index": 28,
+        "scene_index": 11
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.92,
+        "latency_s": 43.684590598000796,
+        "rank": 184,
+        "request_index": 43,
+        "scene_index": 35
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.925,
+        "latency_s": 43.685494689001644,
+        "rank": 185,
+        "request_index": 49,
+        "scene_index": 38
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.93,
+        "latency_s": 43.68564503200105,
+        "rank": 186,
+        "request_index": 21,
+        "scene_index": 17
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.935,
+        "latency_s": 43.68743808400177,
+        "rank": 187,
+        "request_index": 46,
+        "scene_index": 44
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.94,
+        "latency_s": 43.6876021930002,
+        "rank": 188,
+        "request_index": 44,
+        "scene_index": 7
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.945,
+        "latency_s": 43.68895746800263,
+        "rank": 189,
+        "request_index": 26,
+        "scene_index": 15
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.95,
+        "latency_s": 43.689428210996994,
+        "rank": 190,
+        "request_index": 46,
+        "scene_index": 44
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.955,
+        "latency_s": 43.690060003002145,
+        "rank": 191,
+        "request_index": 30,
+        "scene_index": 1
+      },
+      {
+        "block_index": 1,
+        "cumulative_fraction": 0.96,
+        "latency_s": 43.690643729998556,
+        "rank": 192,
+        "request_index": 23,
+        "scene_index": 34
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.965,
+        "latency_s": 43.6924293910015,
+        "rank": 193,
+        "request_index": 49,
+        "scene_index": 38
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.97,
+        "latency_s": 43.693275290999736,
+        "rank": 194,
+        "request_index": 2,
+        "scene_index": 3
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.975,
+        "latency_s": 43.693540977999874,
+        "rank": 195,
+        "request_index": 4,
+        "scene_index": 37
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 0.98,
+        "latency_s": 43.69401692400061,
+        "rank": 196,
+        "request_index": 38,
+        "scene_index": 5
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.985,
+        "latency_s": 43.69442265499856,
+        "rank": 197,
+        "request_index": 10,
+        "scene_index": 19
+      },
+      {
+        "block_index": 7,
+        "cumulative_fraction": 0.99,
+        "latency_s": 43.695822590001626,
+        "rank": 198,
+        "request_index": 48,
+        "scene_index": 29
+      },
+      {
+        "block_index": 2,
+        "cumulative_fraction": 0.995,
+        "latency_s": 43.69642142500015,
+        "rank": 199,
+        "request_index": 3,
+        "scene_index": 4
+      },
+      {
+        "block_index": 4,
+        "cumulative_fraction": 1.0,
+        "latency_s": 43.69764723499975,
+        "rank": 200,
+        "request_index": 48,
+        "scene_index": 29
+      }
+    ],
+    "upstream": [
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.005,
+        "latency_s": 57.301074262999464,
+        "rank": 1,
+        "request_index": 3,
+        "scene_index": 4
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.01,
+        "latency_s": 57.302104495000094,
+        "rank": 2,
+        "request_index": 4,
+        "scene_index": 37
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.015,
+        "latency_s": 57.302494471998216,
+        "rank": 3,
+        "request_index": 37,
+        "scene_index": 43
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.02,
+        "latency_s": 57.30471093799861,
+        "rank": 4,
+        "request_index": 31,
+        "scene_index": 2
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.025,
+        "latency_s": 57.30564156000037,
+        "rank": 5,
+        "request_index": 26,
+        "scene_index": 15
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.03,
+        "latency_s": 57.307976641001005,
+        "rank": 6,
+        "request_index": 5,
+        "scene_index": 0
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.035,
+        "latency_s": 57.30915023399939,
+        "rank": 7,
+        "request_index": 34,
+        "scene_index": 8
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.04,
+        "latency_s": 57.30922924200058,
+        "rank": 8,
+        "request_index": 47,
+        "scene_index": 20
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.045,
+        "latency_s": 57.30953535899971,
+        "rank": 9,
+        "request_index": 15,
+        "scene_index": 9
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.05,
+        "latency_s": 57.309560434998275,
+        "rank": 10,
+        "request_index": 20,
+        "scene_index": 30
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.055,
+        "latency_s": 57.30992603299819,
+        "rank": 11,
+        "request_index": 7,
+        "scene_index": 36
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.06,
+        "latency_s": 57.310003543003404,
+        "rank": 12,
+        "request_index": 17,
+        "scene_index": 48
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.065,
+        "latency_s": 57.310803150998254,
+        "rank": 13,
+        "request_index": 16,
+        "scene_index": 24
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.07,
+        "latency_s": 57.311191423999844,
+        "rank": 14,
+        "request_index": 14,
+        "scene_index": 10
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.075,
+        "latency_s": 57.3114453249982,
+        "rank": 15,
+        "request_index": 19,
+        "scene_index": 32
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.08,
+        "latency_s": 57.31336586299949,
+        "rank": 16,
+        "request_index": 32,
+        "scene_index": 23
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.085,
+        "latency_s": 57.314973621996614,
+        "rank": 17,
+        "request_index": 33,
+        "scene_index": 16
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.09,
+        "latency_s": 57.31547798400061,
+        "rank": 18,
+        "request_index": 8,
+        "scene_index": 12
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.095,
+        "latency_s": 57.31700150599863,
+        "rank": 19,
+        "request_index": 11,
+        "scene_index": 25
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.1,
+        "latency_s": 57.31825168399973,
+        "rank": 20,
+        "request_index": 4,
+        "scene_index": 37
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.105,
+        "latency_s": 57.319564410001476,
+        "rank": 21,
+        "request_index": 36,
+        "scene_index": 14
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.11,
+        "latency_s": 57.32244904400068,
+        "rank": 22,
+        "request_index": 21,
+        "scene_index": 17
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.115,
+        "latency_s": 57.322943785999996,
+        "rank": 23,
+        "request_index": 6,
+        "scene_index": 45
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.12,
+        "latency_s": 57.323209625000345,
+        "rank": 24,
+        "request_index": 35,
+        "scene_index": 33
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.125,
+        "latency_s": 57.323243345000265,
+        "rank": 25,
+        "request_index": 28,
+        "scene_index": 11
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.13,
+        "latency_s": 57.32337877200189,
+        "rank": 26,
+        "request_index": 27,
+        "scene_index": 13
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.135,
+        "latency_s": 57.32358492399999,
+        "rank": 27,
+        "request_index": 20,
+        "scene_index": 30
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.14,
+        "latency_s": 57.323750444000325,
+        "rank": 28,
+        "request_index": 18,
+        "scene_index": 18
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.145,
+        "latency_s": 57.323753429000135,
+        "rank": 29,
+        "request_index": 26,
+        "scene_index": 15
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.15,
+        "latency_s": 57.32389435699952,
+        "rank": 30,
+        "request_index": 49,
+        "scene_index": 38
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.155,
+        "latency_s": 57.32429175600009,
+        "rank": 31,
+        "request_index": 30,
+        "scene_index": 1
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.16,
+        "latency_s": 57.32434895500046,
+        "rank": 32,
+        "request_index": 0,
+        "scene_index": 31
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.165,
+        "latency_s": 57.32439387799968,
+        "rank": 33,
+        "request_index": 38,
+        "scene_index": 5
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.17,
+        "latency_s": 57.32463809899855,
+        "rank": 34,
+        "request_index": 41,
+        "scene_index": 26
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.175,
+        "latency_s": 57.32470009099961,
+        "rank": 35,
+        "request_index": 7,
+        "scene_index": 36
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.18,
+        "latency_s": 57.32484027400005,
+        "rank": 36,
+        "request_index": 15,
+        "scene_index": 9
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.185,
+        "latency_s": 57.3251362029996,
+        "rank": 37,
+        "request_index": 46,
+        "scene_index": 44
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.19,
+        "latency_s": 57.32524873700095,
+        "rank": 38,
+        "request_index": 6,
+        "scene_index": 45
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.195,
+        "latency_s": 57.325423838999995,
+        "rank": 39,
+        "request_index": 39,
+        "scene_index": 46
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.2,
+        "latency_s": 57.325525217001996,
+        "rank": 40,
+        "request_index": 48,
+        "scene_index": 29
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.205,
+        "latency_s": 57.32593090099908,
+        "rank": 41,
+        "request_index": 44,
+        "scene_index": 7
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.21,
+        "latency_s": 57.326831140999275,
+        "rank": 42,
+        "request_index": 13,
+        "scene_index": 27
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.215,
+        "latency_s": 57.326845368999784,
+        "rank": 43,
+        "request_index": 49,
+        "scene_index": 38
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.22,
+        "latency_s": 57.326884211001016,
+        "rank": 44,
+        "request_index": 47,
+        "scene_index": 20
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.225,
+        "latency_s": 57.32702367299862,
+        "rank": 45,
+        "request_index": 12,
+        "scene_index": 49
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.23,
+        "latency_s": 57.32731681200039,
+        "rank": 46,
+        "request_index": 5,
+        "scene_index": 0
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.235,
+        "latency_s": 57.32763937100026,
+        "rank": 47,
+        "request_index": 2,
+        "scene_index": 3
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.24,
+        "latency_s": 57.32814159699774,
+        "rank": 48,
+        "request_index": 35,
+        "scene_index": 33
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.245,
+        "latency_s": 57.32831708499998,
+        "rank": 49,
+        "request_index": 24,
+        "scene_index": 22
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.25,
+        "latency_s": 57.32850212700214,
+        "rank": 50,
+        "request_index": 40,
+        "scene_index": 40
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.255,
+        "latency_s": 57.3285765469991,
+        "rank": 51,
+        "request_index": 28,
+        "scene_index": 11
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.26,
+        "latency_s": 57.32864197500021,
+        "rank": 52,
+        "request_index": 27,
+        "scene_index": 13
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.265,
+        "latency_s": 57.32872573900022,
+        "rank": 53,
+        "request_index": 42,
+        "scene_index": 6
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.27,
+        "latency_s": 57.328860805999284,
+        "rank": 54,
+        "request_index": 0,
+        "scene_index": 31
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.275,
+        "latency_s": 57.329033537000214,
+        "rank": 55,
+        "request_index": 45,
+        "scene_index": 39
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.28,
+        "latency_s": 57.32912581099936,
+        "rank": 56,
+        "request_index": 17,
+        "scene_index": 48
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.285,
+        "latency_s": 57.32922514100028,
+        "rank": 57,
+        "request_index": 8,
+        "scene_index": 12
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.29,
+        "latency_s": 57.32927605800069,
+        "rank": 58,
+        "request_index": 19,
+        "scene_index": 32
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.295,
+        "latency_s": 57.32939785800045,
+        "rank": 59,
+        "request_index": 29,
+        "scene_index": 47
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.3,
+        "latency_s": 57.32948794799813,
+        "rank": 60,
+        "request_index": 19,
+        "scene_index": 32
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.305,
+        "latency_s": 57.329842125999676,
+        "rank": 61,
+        "request_index": 37,
+        "scene_index": 43
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.31,
+        "latency_s": 57.33006269700127,
+        "rank": 62,
+        "request_index": 15,
+        "scene_index": 9
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.315,
+        "latency_s": 57.330173267000646,
+        "rank": 63,
+        "request_index": 26,
+        "scene_index": 15
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.32,
+        "latency_s": 57.33026887400047,
+        "rank": 64,
+        "request_index": 25,
+        "scene_index": 41
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.325,
+        "latency_s": 57.33046945800015,
+        "rank": 65,
+        "request_index": 27,
+        "scene_index": 13
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.33,
+        "latency_s": 57.33047211400117,
+        "rank": 66,
+        "request_index": 44,
+        "scene_index": 7
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.335,
+        "latency_s": 57.33050576799724,
+        "rank": 67,
+        "request_index": 43,
+        "scene_index": 35
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.34,
+        "latency_s": 57.330530645002,
+        "rank": 68,
+        "request_index": 18,
+        "scene_index": 18
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.345,
+        "latency_s": 57.331118235997565,
+        "rank": 69,
+        "request_index": 46,
+        "scene_index": 44
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.35,
+        "latency_s": 57.33142930100075,
+        "rank": 70,
+        "request_index": 29,
+        "scene_index": 47
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.355,
+        "latency_s": 57.33156772399889,
+        "rank": 71,
+        "request_index": 12,
+        "scene_index": 49
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.36,
+        "latency_s": 57.33184301399888,
+        "rank": 72,
+        "request_index": 24,
+        "scene_index": 22
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.365,
+        "latency_s": 57.33222297300017,
+        "rank": 73,
+        "request_index": 1,
+        "scene_index": 28
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.37,
+        "latency_s": 57.33236335099991,
+        "rank": 74,
+        "request_index": 32,
+        "scene_index": 23
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.375,
+        "latency_s": 57.33255658600319,
+        "rank": 75,
+        "request_index": 30,
+        "scene_index": 1
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.38,
+        "latency_s": 57.33258204199956,
+        "rank": 76,
+        "request_index": 41,
+        "scene_index": 26
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.385,
+        "latency_s": 57.33262300699971,
+        "rank": 77,
+        "request_index": 39,
+        "scene_index": 46
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.39,
+        "latency_s": 57.332680675997835,
+        "rank": 78,
+        "request_index": 10,
+        "scene_index": 19
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.395,
+        "latency_s": 57.33298830399872,
+        "rank": 79,
+        "request_index": 22,
+        "scene_index": 42
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.4,
+        "latency_s": 57.33322774200133,
+        "rank": 80,
+        "request_index": 9,
+        "scene_index": 21
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.405,
+        "latency_s": 57.3332769669978,
+        "rank": 81,
+        "request_index": 14,
+        "scene_index": 10
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.41,
+        "latency_s": 57.33363038099924,
+        "rank": 82,
+        "request_index": 16,
+        "scene_index": 24
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.415,
+        "latency_s": 57.333838686998206,
+        "rank": 83,
+        "request_index": 45,
+        "scene_index": 39
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.42,
+        "latency_s": 57.334010025999305,
+        "rank": 84,
+        "request_index": 23,
+        "scene_index": 34
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.425,
+        "latency_s": 57.33447749499828,
+        "rank": 85,
+        "request_index": 36,
+        "scene_index": 14
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.43,
+        "latency_s": 57.33463996399951,
+        "rank": 86,
+        "request_index": 46,
+        "scene_index": 44
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.435,
+        "latency_s": 57.33483239799898,
+        "rank": 87,
+        "request_index": 18,
+        "scene_index": 18
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.44,
+        "latency_s": 57.335594524000044,
+        "rank": 88,
+        "request_index": 10,
+        "scene_index": 19
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.445,
+        "latency_s": 57.335689081000055,
+        "rank": 89,
+        "request_index": 25,
+        "scene_index": 41
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.45,
+        "latency_s": 57.33646197000053,
+        "rank": 90,
+        "request_index": 5,
+        "scene_index": 0
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.455,
+        "latency_s": 57.33676722000018,
+        "rank": 91,
+        "request_index": 4,
+        "scene_index": 37
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.46,
+        "latency_s": 57.33678624300046,
+        "rank": 92,
+        "request_index": 38,
+        "scene_index": 5
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.465,
+        "latency_s": 57.33717708699987,
+        "rank": 93,
+        "request_index": 39,
+        "scene_index": 46
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.47,
+        "latency_s": 57.337182829000085,
+        "rank": 94,
+        "request_index": 3,
+        "scene_index": 4
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.475,
+        "latency_s": 57.33720704499865,
+        "rank": 95,
+        "request_index": 40,
+        "scene_index": 40
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.48,
+        "latency_s": 57.33725026700267,
+        "rank": 96,
+        "request_index": 38,
+        "scene_index": 5
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.485,
+        "latency_s": 57.337647868000204,
+        "rank": 97,
+        "request_index": 40,
+        "scene_index": 40
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.49,
+        "latency_s": 57.33774980599992,
+        "rank": 98,
+        "request_index": 22,
+        "scene_index": 42
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.495,
+        "latency_s": 57.338180968000415,
+        "rank": 99,
+        "request_index": 31,
+        "scene_index": 2
+      },
+      {
+        "block_index": 5,
+        "cumulative_fraction": 0.5,
+        "latency_s": 57.338333558996965,
+        "rank": 100,
+        "request_index": 1,
+        "scene_index": 28
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.505,
+        "latency_s": 57.33844272499846,
+        "rank": 101,
+        "request_index": 35,
+        "scene_index": 33
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.51,
+        "latency_s": 57.339088464999804,
+        "rank": 102,
+        "request_index": 30,
+        "scene_index": 1
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.515,
+        "latency_s": 57.339343409999856,
+        "rank": 103,
+        "request_index": 34,
+        "scene_index": 8
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.52,
+        "latency_s": 57.34047810999982,
+        "rank": 104,
+        "request_index": 13,
+        "scene_index": 27
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.525,
+        "latency_s": 57.341552251000394,
+        "rank": 105,
+        "request_index": 32,
+        "scene_index": 23
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.53,
+        "latency_s": 57.34166829199967,
+        "rank": 106,
+        "request_index": 17,
+        "scene_index": 48
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.535,
+        "latency_s": 57.342321030000676,
+        "rank": 107,
+        "request_index": 3,
+        "scene_index": 4
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.54,
+        "latency_s": 57.34251754900106,
+        "rank": 108,
+        "request_index": 2,
+        "scene_index": 3
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.545,
+        "latency_s": 57.34329889700166,
+        "rank": 109,
+        "request_index": 33,
+        "scene_index": 16
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.55,
+        "latency_s": 57.343344324999634,
+        "rank": 110,
+        "request_index": 13,
+        "scene_index": 27
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.555,
+        "latency_s": 57.344139412000004,
+        "rank": 111,
+        "request_index": 48,
+        "scene_index": 29
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.56,
+        "latency_s": 57.344755054000416,
+        "rank": 112,
+        "request_index": 14,
+        "scene_index": 10
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.565,
+        "latency_s": 57.34517188100017,
+        "rank": 113,
+        "request_index": 21,
+        "scene_index": 17
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.57,
+        "latency_s": 57.3458312519997,
+        "rank": 114,
+        "request_index": 42,
+        "scene_index": 6
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.575,
+        "latency_s": 57.34611969599973,
+        "rank": 115,
+        "request_index": 43,
+        "scene_index": 35
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.58,
+        "latency_s": 57.34618637299991,
+        "rank": 116,
+        "request_index": 9,
+        "scene_index": 21
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.585,
+        "latency_s": 57.3462403930007,
+        "rank": 117,
+        "request_index": 23,
+        "scene_index": 34
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.59,
+        "latency_s": 57.3465536190015,
+        "rank": 118,
+        "request_index": 31,
+        "scene_index": 2
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.595,
+        "latency_s": 57.34670010300033,
+        "rank": 119,
+        "request_index": 11,
+        "scene_index": 25
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.6,
+        "latency_s": 57.347028697000496,
+        "rank": 120,
+        "request_index": 36,
+        "scene_index": 14
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.605,
+        "latency_s": 57.347265618000165,
+        "rank": 121,
+        "request_index": 7,
+        "scene_index": 36
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.61,
+        "latency_s": 57.34735207599988,
+        "rank": 122,
+        "request_index": 12,
+        "scene_index": 49
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.615,
+        "latency_s": 57.347893123000176,
+        "rank": 123,
+        "request_index": 1,
+        "scene_index": 28
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.62,
+        "latency_s": 57.348040394001146,
+        "rank": 124,
+        "request_index": 20,
+        "scene_index": 30
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.625,
+        "latency_s": 57.348710696000126,
+        "rank": 125,
+        "request_index": 2,
+        "scene_index": 3
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.63,
+        "latency_s": 57.34899086800033,
+        "rank": 126,
+        "request_index": 5,
+        "scene_index": 0
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.635,
+        "latency_s": 57.34905054999945,
+        "rank": 127,
+        "request_index": 18,
+        "scene_index": 18
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.64,
+        "latency_s": 57.3497355569998,
+        "rank": 128,
+        "request_index": 16,
+        "scene_index": 24
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.645,
+        "latency_s": 57.35003574300026,
+        "rank": 129,
+        "request_index": 10,
+        "scene_index": 19
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.65,
+        "latency_s": 57.35004069200113,
+        "rank": 130,
+        "request_index": 6,
+        "scene_index": 45
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.655,
+        "latency_s": 57.35016131700104,
+        "rank": 131,
+        "request_index": 20,
+        "scene_index": 30
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.66,
+        "latency_s": 57.35082239099938,
+        "rank": 132,
+        "request_index": 22,
+        "scene_index": 42
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.665,
+        "latency_s": 57.350862514000255,
+        "rank": 133,
+        "request_index": 47,
+        "scene_index": 20
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.67,
+        "latency_s": 57.351143518000754,
+        "rank": 134,
+        "request_index": 44,
+        "scene_index": 7
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.675,
+        "latency_s": 57.35120635800013,
+        "rank": 135,
+        "request_index": 41,
+        "scene_index": 26
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.68,
+        "latency_s": 57.35201006100033,
+        "rank": 136,
+        "request_index": 9,
+        "scene_index": 21
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.685,
+        "latency_s": 57.352049249999254,
+        "rank": 137,
+        "request_index": 24,
+        "scene_index": 22
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.69,
+        "latency_s": 57.35296165699765,
+        "rank": 138,
+        "request_index": 49,
+        "scene_index": 38
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.695,
+        "latency_s": 57.35345626800063,
+        "rank": 139,
+        "request_index": 0,
+        "scene_index": 31
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.7,
+        "latency_s": 57.353695488000085,
+        "rank": 140,
+        "request_index": 33,
+        "scene_index": 16
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.705,
+        "latency_s": 57.3541980120026,
+        "rank": 141,
+        "request_index": 23,
+        "scene_index": 34
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.71,
+        "latency_s": 57.35451791499872,
+        "rank": 142,
+        "request_index": 25,
+        "scene_index": 41
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.715,
+        "latency_s": 57.35458607599958,
+        "rank": 143,
+        "request_index": 11,
+        "scene_index": 25
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.72,
+        "latency_s": 57.35539242200048,
+        "rank": 144,
+        "request_index": 34,
+        "scene_index": 8
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.725,
+        "latency_s": 57.35591597200073,
+        "rank": 145,
+        "request_index": 45,
+        "scene_index": 39
+      },
+      {
+        "block_index": 0,
+        "cumulative_fraction": 0.73,
+        "latency_s": 57.35593954199976,
+        "rank": 146,
+        "request_index": 47,
+        "scene_index": 20
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.735,
+        "latency_s": 57.355992118998984,
+        "rank": 147,
+        "request_index": 8,
+        "scene_index": 12
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.74,
+        "latency_s": 57.3560951340005,
+        "rank": 148,
+        "request_index": 29,
+        "scene_index": 47
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.745,
+        "latency_s": 57.356356182001036,
+        "rank": 149,
+        "request_index": 17,
+        "scene_index": 48
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.75,
+        "latency_s": 57.358232348000456,
+        "rank": 150,
+        "request_index": 7,
+        "scene_index": 36
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.755,
+        "latency_s": 57.35864435300027,
+        "rank": 151,
+        "request_index": 11,
+        "scene_index": 25
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.76,
+        "latency_s": 57.35877987799904,
+        "rank": 152,
+        "request_index": 21,
+        "scene_index": 17
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.765,
+        "latency_s": 57.35890870499861,
+        "rank": 153,
+        "request_index": 43,
+        "scene_index": 35
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.77,
+        "latency_s": 57.35967735400118,
+        "rank": 154,
+        "request_index": 48,
+        "scene_index": 29
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.775,
+        "latency_s": 57.360604482999406,
+        "rank": 155,
+        "request_index": 34,
+        "scene_index": 8
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.78,
+        "latency_s": 57.36097732100097,
+        "rank": 156,
+        "request_index": 33,
+        "scene_index": 16
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.785,
+        "latency_s": 57.36126264700033,
+        "rank": 157,
+        "request_index": 2,
+        "scene_index": 3
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.79,
+        "latency_s": 57.361343029002455,
+        "rank": 158,
+        "request_index": 45,
+        "scene_index": 39
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.795,
+        "latency_s": 57.361581250999734,
+        "rank": 159,
+        "request_index": 37,
+        "scene_index": 43
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.8,
+        "latency_s": 57.363006732999565,
+        "rank": 160,
+        "request_index": 19,
+        "scene_index": 32
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.805,
+        "latency_s": 57.36330264999924,
+        "rank": 161,
+        "request_index": 41,
+        "scene_index": 26
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.81,
+        "latency_s": 57.36355319900031,
+        "rank": 162,
+        "request_index": 46,
+        "scene_index": 44
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.815,
+        "latency_s": 57.3635743800005,
+        "rank": 163,
+        "request_index": 4,
+        "scene_index": 37
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.82,
+        "latency_s": 57.363728410000476,
+        "rank": 164,
+        "request_index": 48,
+        "scene_index": 29
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.825,
+        "latency_s": 57.36391864899997,
+        "rank": 165,
+        "request_index": 42,
+        "scene_index": 6
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.83,
+        "latency_s": 57.36460209899815,
+        "rank": 166,
+        "request_index": 28,
+        "scene_index": 11
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.835,
+        "latency_s": 57.36470149900015,
+        "rank": 167,
+        "request_index": 25,
+        "scene_index": 41
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.84,
+        "latency_s": 57.36563701799969,
+        "rank": 168,
+        "request_index": 40,
+        "scene_index": 40
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.845,
+        "latency_s": 57.366693416999624,
+        "rank": 169,
+        "request_index": 10,
+        "scene_index": 19
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.85,
+        "latency_s": 57.36807884100017,
+        "rank": 170,
+        "request_index": 21,
+        "scene_index": 17
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.855,
+        "latency_s": 57.36823626399928,
+        "rank": 171,
+        "request_index": 8,
+        "scene_index": 12
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.86,
+        "latency_s": 57.36936428700028,
+        "rank": 172,
+        "request_index": 1,
+        "scene_index": 28
+      },
+      {
+        "block_index": 6,
+        "cumulative_fraction": 0.865,
+        "latency_s": 57.36941019399819,
+        "rank": 173,
+        "request_index": 6,
+        "scene_index": 45
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.87,
+        "latency_s": 57.36951498799863,
+        "rank": 174,
+        "request_index": 9,
+        "scene_index": 21
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.875,
+        "latency_s": 57.36964470300154,
+        "rank": 175,
+        "request_index": 35,
+        "scene_index": 33
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.88,
+        "latency_s": 57.3720015859999,
+        "rank": 176,
+        "request_index": 39,
+        "scene_index": 46
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.885,
+        "latency_s": 57.374437819999,
+        "rank": 177,
+        "request_index": 44,
+        "scene_index": 7
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.89,
+        "latency_s": 57.3761313670002,
+        "rank": 178,
+        "request_index": 0,
+        "scene_index": 31
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.895,
+        "latency_s": 57.377557036001235,
+        "rank": 179,
+        "request_index": 22,
+        "scene_index": 42
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.9,
+        "latency_s": 57.3786264499995,
+        "rank": 180,
+        "request_index": 15,
+        "scene_index": 9
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.905,
+        "latency_s": 57.37921286799974,
+        "rank": 181,
+        "request_index": 12,
+        "scene_index": 49
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.91,
+        "latency_s": 57.38045068300016,
+        "rank": 182,
+        "request_index": 16,
+        "scene_index": 24
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.915,
+        "latency_s": 57.38232155500009,
+        "rank": 183,
+        "request_index": 36,
+        "scene_index": 14
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.92,
+        "latency_s": 57.382959987000504,
+        "rank": 184,
+        "request_index": 24,
+        "scene_index": 22
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.925,
+        "latency_s": 57.38452025299921,
+        "rank": 185,
+        "request_index": 49,
+        "scene_index": 38
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.93,
+        "latency_s": 57.38501039900075,
+        "rank": 186,
+        "request_index": 43,
+        "scene_index": 35
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.935,
+        "latency_s": 57.38603778400102,
+        "rank": 187,
+        "request_index": 13,
+        "scene_index": 27
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.94,
+        "latency_s": 57.38647774899982,
+        "rank": 188,
+        "request_index": 23,
+        "scene_index": 34
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.945,
+        "latency_s": 57.38776716400025,
+        "rank": 189,
+        "request_index": 14,
+        "scene_index": 10
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.95,
+        "latency_s": 57.39179766400048,
+        "rank": 190,
+        "request_index": 42,
+        "scene_index": 6
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.955,
+        "latency_s": 57.39458621199992,
+        "rank": 191,
+        "request_index": 3,
+        "scene_index": 4
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.96,
+        "latency_s": 57.39562081400072,
+        "rank": 192,
+        "request_index": 37,
+        "scene_index": 43
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.965,
+        "latency_s": 57.396466989001055,
+        "rank": 193,
+        "request_index": 32,
+        "scene_index": 23
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.97,
+        "latency_s": 57.39663012900019,
+        "rank": 194,
+        "request_index": 29,
+        "scene_index": 47
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.975,
+        "latency_s": 57.39754052200078,
+        "rank": 195,
+        "request_index": 27,
+        "scene_index": 13
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.98,
+        "latency_s": 57.397709413000484,
+        "rank": 196,
+        "request_index": 26,
+        "scene_index": 15
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.985,
+        "latency_s": 57.39806293000038,
+        "rank": 197,
+        "request_index": 31,
+        "scene_index": 2
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.99,
+        "latency_s": 57.3984852880003,
+        "rank": 198,
+        "request_index": 30,
+        "scene_index": 1
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 0.995,
+        "latency_s": 57.39892439599862,
+        "rank": 199,
+        "request_index": 38,
+        "scene_index": 5
+      },
+      {
+        "block_index": 3,
+        "cumulative_fraction": 1.0,
+        "latency_s": 57.399840467000104,
+        "rank": 200,
+        "request_index": 28,
+        "scene_index": 11
+      }
+    ]
+  },
+  "input_sha256": {
+    "results/2026-10-30-h100-tradeoff/numerical-audit/bootstrap-scene-indices.csv": "12f9adffde1b813534f879ee5cbd141e5ff50c6603d70c03f671d23ae6fca6e8",
+    "results/2026-10-30-h100-tradeoff/numerical-audit/manifest.json": "32a1f719be1c08b8db77328eacbcbdf1bff4a45aae9047673e4f7ad1518a8180",
+    "results/2026-10-30-h100-tradeoff/numerical-audit/measurements.jsonl": "143426c18acfec990c5994402a10395e86cfae4f852f6f9049af6ad9d4395631",
+    "results/2026-10-30-h100-tradeoff/numerical-audit/provenance.json": "19dd45113647abf627f223a5c04960e92c834bad3267a5028ea553ef8163459e",
+    "results/2026-10-30-h100-tradeoff/summary.json": "20257029c1843100d73763ed79eb96fbc29125456385f8a311471f6f9bc7ccc8",
+    "tools/analyze_h100_timing.py": "83f0561744010e14ccc6ed28563bf41060071c0280e9cd5c95bed8761e4d8130"
+  },
+  "kind": "derived_plot_coordinates_from_actual_public_observations",
+  "physical_gpus": 1,
+  "quality_preserving": false,
+  "relative_changes": {
+    "allocated_memory": 0.07679352437194775,
+    "median_latency": -0.23849759830416573,
+    "sequential_throughput": 0.3134193419567548
+  },
+  "repetitions_per_scene_per_role": 4,
+  "scene_groups": 50,
+  "schema_version": 1,
+  "source_observations": 400
+}

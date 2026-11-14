@@ -1,3 +1,5 @@
+> **Research direction updated November 14, 2026.** The one-episode/eight-configuration Vista comparison is canceled. This document preserves existing software interfaces and historical recipes, not an active experiment. See the [current protocol](research-protocol.md) and [cancellation record](canceled-plans.md).
+
 # Reproduce a configuration-agent study
 
 This recipe describes the trusted operator's boundary for a new Vista study. It does not download restricted data, obtain credentials, provision a GPU or run merely by installing the package. The [small CPU demo](agent-environment.md#try-the-controller-without-a-gpu) is the installation check; it is not a substitute for the steps below.

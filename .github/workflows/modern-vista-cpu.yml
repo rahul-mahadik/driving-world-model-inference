@@ -1,0 +1,29 @@
+name: Modern Vista CPU contracts
+on: [push, pull_request]
+jobs:
+  modern-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/checkout@v4
+        with:
+          repository: OpenDriveLab/Vista
+          ref: cc9821b4253ca7987c32757613d2fc2448fa9f5d
+          path: vendor/Vista
+      - run: python -m pip install torch==2.14.1 torchvision==0.29.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -r environments/modern-vista-cu130.in
+      - run: python -m pip install -e '.[test]' -e 'extensions/kernel_tuning[interface-test]'
+      - run: python -m pip check
+      - name: Validate modern tensor and measurement contracts
+        env:
+          VISTA_SOURCE: ${{ github.workspace }}/vendor/Vista
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
+          HF_HUB_DISABLE_IMPLICIT_TOKEN: '1'
+        run: python -m pytest -q extensions/kernel_tuning/tests/test_modern_vista.py extensions/kernel_tuning/tests/test_modern_verification.py extensions/kernel_tuning/tests/test_restart_measurement.py
+      # CPU contracts and a reduced randomly initialized Vista network only.
+      # No checkpoint, CUDA, memory-fit, speed, or perceptual-quality evidence.

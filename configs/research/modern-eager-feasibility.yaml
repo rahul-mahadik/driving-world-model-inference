@@ -1,0 +1,8 @@
+# Separate smoke plan: same full workload, one fixed scene, one warm request.
+extends: modern-eager.yaml
+name: modern-eager-full-workload-feasibility
+data:
+  manifest: data/manifests/phase1-feasibility-one-scene.jsonl
+benchmark:
+  requests: 1
+  save_outputs: 1

@@ -1,3 +1,5 @@
+> **Research direction updated November 14, 2026.** The one-episode/eight-configuration Vista comparison is canceled. This document preserves existing software interfaces and historical recipes, not an active experiment. See the [current protocol](research-protocol.md) and [cancellation record](canceled-plans.md).
+
 # Benchmark and environment readiness
 
 DriveBench is public measurement and policy-evaluation software. A useful benchmark does not require its example optimization to win, and an RL environment does not require a trained policy. The relevant questions are whether another user can execute the task, whether the measurements and reward match its declared contract, and what evidence supports the resulting claims.

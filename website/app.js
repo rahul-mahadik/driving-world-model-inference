@@ -1,28 +1,29 @@
 'use strict';
-document.querySelectorAll('[data-filter]').forEach(button => {
-  button.addEventListener('click', () => {
-    const filter = button.dataset.filter;
-    document.querySelectorAll('[data-filter]').forEach(item => {
-      const active = item === button;
-      item.classList.toggle('active', active);
-      item.setAttribute('aria-pressed', String(active));
-    });
-    let count = 0;
-    document.querySelectorAll('tr[data-kind]').forEach(row => {
-      row.hidden = filter !== 'all' && row.dataset.kind !== filter;
-      if (!row.hidden) count++;
-    });
-    document.getElementById('result-count').textContent = count + ' evidence record' + (count === 1 ? '' : 's');
-  });
-});
+
+const copyFeedback = document.getElementById('copy-feedback');
 document.querySelectorAll('[data-copy]').forEach(button => {
+  const originalLabel = button.textContent;
   button.addEventListener('click', async () => {
-    const feedback = document.getElementById('copy-feedback');
+    const target = document.getElementById(button.dataset.copy);
+    if (!target) return;
+    button.disabled = true;
     try {
-      await navigator.clipboard.writeText(document.getElementById(button.dataset.copy).textContent);
-      feedback.textContent = 'Commands copied.';
+      await navigator.clipboard.writeText(target.textContent);
+      button.textContent = 'Copied';
+      if (copyFeedback) copyFeedback.textContent = button.dataset.copy === 'citation-text' ? 'Software citation copied.' : 'Commands copied.';
+      window.setTimeout(() => { button.textContent = originalLabel; }, 2000);
     } catch (_) {
-      feedback.textContent = 'Copy unavailable here. Select the commands above and copy them manually.';
+      button.textContent = originalLabel;
+      if (copyFeedback) copyFeedback.textContent = 'Copy is unavailable in this browser. Select the text in the code block to copy it manually.';
+      const selection = window.getSelection();
+      if (selection) {
+        const range = document.createRange();
+        range.selectNodeContents(target);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+    } finally {
+      button.disabled = false;
     }
   });
 });

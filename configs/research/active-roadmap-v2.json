@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "plan_id": "verifiable-lossy-world-model-inference-v2",
+  "artifact_kind": "prospective_research_program_not_worker_spec",
+  "thesis": "verifiable rewards for lossy inference optimization of video world models",
+  "status": "phase0_reposition_phase1_implementation_GPU_unvalidated",
+  "execution_performed": false,
+  "live_admitted": false,
+  "canceled_previous_plans": [
+    {
+      "path": "configs/research/vista-three-policy-v1.json",
+      "canceled_on": "2026-11-14",
+      "executed": false,
+      "preserve_original_bytes": true
+    }
+  ],
+  "phases": [
+    {
+      "id": "1",
+      "complete": false,
+      "name": "modern_baseline"
+    },
+    {
+      "id": "2",
+      "complete": false,
+      "name": "quality_verifier"
+    },
+    {
+      "id": "3",
+      "complete": false,
+      "name": "tabulated_search_space"
+    },
+    {
+      "id": "4",
+      "complete": false,
+      "name": "policy_comparison_and_hardware_transfer"
+    },
+    {
+      "id": "5",
+      "complete": false,
+      "name": "protected_code_action_tier"
+    },
+    {
+      "id": "6",
+      "complete": false,
+      "name": "finding_led_writeup"
+    }
+  ],
+  "excluded": [
+    "more_legacy_eager_vs_compiled_repeats",
+    "CPU_synthetic_demos_as_empirical_evidence"
+  ],
+  "budget_increase_authorized_by_this_file": false,
+  "new_measurements": false,
+  "source_of_truth": "docs/research-protocol.md",
+  "hardware_revision": {
+    "user_requested_cheaper_gpu": true,
+    "budget_cap_increased": false,
+    "first_live_step": "bounded modern full-workload memory-fit and execution-cost feasibility",
+    "candidate": "48 GB Ampere, unproven fit",
+    "fallback": "80 GB device with fresh admission",
+    "prohibit_silent_workload_change": true,
+    "requires_fixed_declared_device_for_paired_study": true
+  }
+}
