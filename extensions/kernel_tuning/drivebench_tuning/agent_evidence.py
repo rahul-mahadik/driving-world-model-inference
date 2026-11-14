@@ -20,6 +20,7 @@ import math
 from pathlib import Path
 
 from . import vista_agent, vista_batch
+from .agent_cohort import final_plan_policies
 
 
 def _time(value):
@@ -311,7 +312,7 @@ def calibration_rows(reference_batches, *, identity, measure_pair, metric_names)
 
 def pair_rows(reference_batches, candidate_batches, *, identity, candidate_sha256, measure_pair, metric_names,
               final_plan_path=None, expected_final_plan_sha256=None):
-    """Join matching cells; final mode requires a pinned three-selection receipt.
+    """Join matching cells; final mode requires a pinned study-selection receipt.
 
     Returns quality_rows and timing_rows. Development calls omit final_plan_path
     and produce no timing rows. Incomplete but matching subsets are permitted;
@@ -330,7 +331,7 @@ def pair_rows(reference_batches, candidate_batches, *, identity, candidate_sha25
     if final_plan_path is not None:
         plan, plan_sha = _read(final_plan_path, expected_final_plan_sha256)
         _same(plan.get('sha256'), vista_agent.digest({k: v for k, v in plan.items() if k != 'sha256'}), 'final plan digest')
-        if set(plan['selections']) != {'llm', 'random', 'grid'}: raise ValueError('all three selections required')
+        final_plan_policies(plan)
         _same(plan['cohort_id'], ref_spec['cohort_id'], 'final cohort')
         _same(plan['identity_sha256'], vista_agent.digest(identity), 'final policy identity')
         _same(plan['synthetic'], ref_spec['synthetic'], 'final evidence kind')
