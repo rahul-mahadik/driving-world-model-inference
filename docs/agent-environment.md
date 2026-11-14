@@ -1,8 +1,10 @@
 # Agent environment for inference optimization
 
-V18 adds a tool interface for sequential configuration optimization. An LLM or another policy inspects development feedback, proposes a configuration, requests a profile or trial, and submits one immutable candidate. A trusted evaluator owns measurement, inputs, correctness, quality policy, final scoring and budgets. The existing Gymnasium/operator search remains available as a cheaper configuration-search tier.
+The agent interface supports sequential configuration optimization. An LLM or another policy inspects development feedback, proposes a configuration, requests a profile or trial, and submits one immutable candidate. A trusted evaluator owns measurement, inputs, correctness, quality policy, final scoring and budgets. The existing Gymnasium/operator search remains available as a cheaper configuration-search tier.
 
-**Current evidence: CPU contracts only.** The included episode uses the actual `InferenceEngine` with its explicitly synthetic backend, a numeric metric test double and scripted actions. No V18 full-Vista run, real quality calibration, LLM optimization episode, adversarial sandbox validation or learned-policy advantage has been demonstrated. The original H100 speed result, failed quality qualification and all historical cohorts retain their original scope.
+**Current evidence for this interface: CPU contracts only.** The included episode uses the actual `InferenceEngine` with its explicitly synthetic backend, a numeric metric test double and scripted actions. No full-Vista run, real quality calibration, LLM optimization episode, adversarial sandbox validation or learned-policy advantage through this interface has been demonstrated. The original H100 speed result, failed quality qualification and all historical cohorts retain their original scope. See [readiness and claim boundaries](benchmark-readiness.md).
+
+The [study reproduction recipe](agent-study-reproduction.md) lists the evaluator-owned inputs, generation and metric commands, selection barrier, and artifacts required for a real run.
 
 ## Try the controller without a GPU
 

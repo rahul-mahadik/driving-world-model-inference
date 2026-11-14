@@ -24,6 +24,10 @@ CUDA tests skip explicitly without NVIDIA hardware. CPU success does not validat
 
 Policies consume observations and choose candidate indices. Compare them with equal candidate budgets and matched task/runtime/objective identities. Include search without replacement and a fixed-order baseline; stronger baselines may be needed for scientific claims. Report training cost and use validation for choices before test. No particular RL algorithm is required to use the environment.
 
+The [agent interface](docs/agent-environment.md) additionally accepts structured `inspect`, `propose`, `profile`, `trial` and `submit` actions. Keep policy-visible observations explicit and small; do not forward evaluator paths, raw exceptions, credentials or final inputs. An LLM selector is a policy, not evidence of RL training. New executor contributions must include an actual synthetic integration through their evidence reader and scoring functions, plus a separately labeled real-runtime validation before claiming that integration was exercised on a GPU.
+
+Use the [readiness table](docs/benchmark-readiness.md) when changing the front page or adding a result. Releasing code, passing CPU tests, executing a real benchmark and establishing an improvement are different milestones. Publish unsuccessful candidates and inconclusive scores with the same provenance as successes.
+
 ## Packaging and review
 
 Build both wheels and run their console demos from outside the checkout in an environment without Torch. Keep resource files in package data. Check licenses/notices and omit datasets, model weights, generated media, secrets, provider identities and private run logs from releases. Include public contract tests and exact reproduction instructions for any result claimed.

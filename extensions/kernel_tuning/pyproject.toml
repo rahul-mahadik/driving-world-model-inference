@@ -22,6 +22,9 @@ drivebench-tune = "drivebench_tuning.cli:main"
 drivebench-search = "drivebench_tuning.search_cli:main"
 drivebench-agent-demo = "drivebench_tuning.agent_demo:main"
 drivebench-vista-batch = "drivebench_tuning.vista_batch:main"
+drivebench-vista-metrics = "drivebench_tuning.agent_metrics_worker:main"
+drivebench-agent-trials = "drivebench_tuning.agent_trials:main"
+drivebench-agent-artifacts = "drivebench_tuning.agent_artifacts:main"
 
 [tool.setuptools.packages.find]
 include = ["drivebench_tuning*"]

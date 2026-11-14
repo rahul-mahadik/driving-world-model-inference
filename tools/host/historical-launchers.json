@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "files": {
+    "run-bounded-job-v2.py": {
+      "sha256": "2ea0ba70344a7b089ea28518459bcf8659f0eccdf352a069b6dced32fa029497",
+      "bytes": 15226,
+      "execution_relative_path": "outputs/host/run-bounded-job-v2.py",
+      "unchanged_historical_source": true
+    },
+    "run-bounded-a100-job-v1.py": {
+      "sha256": "8acf1240512bc75ef69ab41888794cb3fadd8ce83835b68c67121e98618d99a3",
+      "bytes": 21029,
+      "execution_relative_path": "outputs/host/run-bounded-a100-job-v1.py",
+      "unchanged_historical_source": true
+    }
+  },
+  "scope": "Reviewed launcher source only; no instance, private credential, transport, Docker image, runtime environment or historical deadline is distributed."
+}

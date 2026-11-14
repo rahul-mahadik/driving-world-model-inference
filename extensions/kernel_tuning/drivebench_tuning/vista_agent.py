@@ -107,8 +107,28 @@ def probe_runtime(*, synthetic=False):
         raise ValueError('one physical GPU identity required; pooled hosts unsupported')
     packages = {name: importlib.metadata.version(name) for name in
                 ('torch', 'numpy', 'triton', 'xformers', 'einops', 'safetensors')}
+    # Observe backend permissions without selecting or forcing an SDPA kernel.
+    # These are runtime settings, not evidence of which kernel actually ran.
+    sdp = {}
+    for name in ('flash_sdp_enabled', 'mem_efficient_sdp_enabled', 'math_sdp_enabled'):
+        query = getattr(torch.backends.cuda, name, None)
+        if not callable(query):
+            raise ValueError('required SDPA runtime flag unavailable: ' + name)
+        value = query()
+        if type(value) is not bool:
+            raise ValueError('SDPA runtime flag must return a boolean: ' + name)
+        sdp[name] = value
+    cudnn_available = hasattr(torch.backends.cuda, 'cudnn_sdp_enabled')
+    cudnn_query = getattr(torch.backends.cuda, 'cudnn_sdp_enabled', None)
+    if cudnn_available and not callable(cudnn_query):
+        raise ValueError('invalid optional cuDNN SDPA runtime query')
+    cudnn_enabled = cudnn_query() if cudnn_available else None
+    if cudnn_available and type(cudnn_enabled) is not bool:
+        raise ValueError('cuDNN SDPA runtime flag must return a boolean')
+    sdp.update(cudnn_sdp_enabled_available=cudnn_available, cudnn_sdp_enabled=cudnn_enabled)
     return {'kind': 'cuda', 'gpu_uuid': rows[0][0], 'driver': rows[0][1],
             'device': torch.cuda.get_device_name(0), 'cuda': torch.version.cuda, 'packages': packages,
+            'sdp': sdp,
             'cudnn_version': torch.backends.cudnn.version(),
             'deterministic_algorithms': torch.are_deterministic_algorithms_enabled(),
             'deterministic_warn_only': torch.is_deterministic_algorithms_warn_only_enabled(),
