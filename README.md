@@ -1,8 +1,10 @@
-# DriveBench: Inference Benchmarks & Configuration Search
+# DriveBench: GPU Inference Benchmarks & Agent Optimization Environment
 
-Measure an implementation, compare it with a reference, and give tuning policies a fixed trial budget. DriveBench provides a Vista video-inference benchmark and a Gymnasium environment for GPU configuration search. Existing Triton kernels are example candidates, not the project's main deliverable.
+Measure inference, expose bounded optimization tools, and score a submitted configuration with independent checks. DriveBench combines a Vista video-inference benchmark, an agent tool interface for configuration optimization, and a Gymnasium/operator tier for inexpensive search experiments. Existing Triton kernels are example candidates.
 
-**V17 open-source tooling release.** The portable demos and search interface are validated on CPU. Their CUDA adapter reuses the previously executed operator runner, but this revised suite/environment has not been run on a GPU. Historical results stay tied to their original source/runtime. First-party project code is available under the [MIT license](LICENSE); [third-party notices](NOTICE.md) describe separately licensed dependencies, models and data.
+**Current evidence:** the measurement toolkit has [historical GPU results](RESULTS.md). The reusable operator suite and newer agent workflow have CPU integration coverage; a full Vista LLM episode through that workflow has not run. The [readiness and claim boundaries](docs/benchmark-readiness.md) distinguish these facts. Arbitrary agent-written code is outside the configuration-only interface.
+
+**V17 public MIT release remains the measured publication baseline.** The portable demos and search interface are validated on CPU. Their CUDA adapter reuses the previously executed operator runner, but this revised suite/environment has not been run on a GPU. Historical results stay tied to their original source/runtime. First-party project code is available under the [MIT license](LICENSE); [third-party notices](NOTICE.md) describe separately licensed dependencies, models and data.
 
 ## Start without a GPU
 
@@ -16,14 +18,25 @@ python -m venv .venv
 python -m pip install . ./extensions/kernel_tuning
 ```
 
-You can then leave the checkout. Both commands use installed resources and create a **new** output directory:
+You can then leave the checkout. These commands use installed resources and create a **new** output directory:
 
 ```sh
 drivebench-demo --output ./video-demo
 drivebench-search run --backend synthetic --split validation --policy random --output ./search-demo
+drivebench-agent-demo --output ./agent-demo
 ```
 
-The video demo exercises data preparation, generation, comparison and an HTML report. The search demo exercises the Gymnasium environment, policy evaluation and JSON evidence. Both are explicitly synthetic: their numbers are software demonstrations, not GPU performance or model-quality measurements. PyTorch, datasets and model weights are unnecessary for these demos.
+The video demo exercises data preparation, generation, comparison and an HTML report. The search demo exercises the Gymnasium environment and policy evaluation. The agent demo exercises proposals, tools, budgets and final scoring with scripted actions. All are explicitly synthetic: their numbers are software demonstrations, not GPU performance or model-quality measurements. PyTorch, datasets and model weights are unnecessary for these demos.
+
+## Choose an interface
+
+| Goal | Interface | Starting point |
+| --- | --- | --- |
+| Measure an implementation or compare fixed settings | Benchmark runner with a declared workload and reference | [Measurement protocol](docs/public-benchmark-protocol.md) |
+| Train or evaluate a policy over a finite configuration set | Gymnasium `BudgetedTuningEnv`; fresh measurements through an injected evaluator | [Environment example](extensions/kernel_tuning/examples/env_quickstart.py) |
+| Let a policy propose settings, inspect feedback, run trials and submit once | `AgentSession` tools and `run_agent`; evaluator-owned final scoring | [Agent guide](docs/agent-environment.md) |
+
+An environment supplies the task, feedback and reward; it does not imply a trained RL policy or an advantage over search. Grid, random, learned and LLM policies can all be evaluated under declared budgets. The included Vista task changes inference settings, not model weights or arbitrary source code.
 
 ## What can be benchmarked
 
@@ -49,6 +62,8 @@ drivebench-search run --backend cuda --split validation --policy random \
 Use an outer process timeout and your own resource controls: an inner budget cannot interrupt a stuck compiler or CUDA call. Start with the CPU demo, inspect the suite, then run GPU correctness tests before making performance claims. See the [search guide](extensions/kernel_tuning/README.md) and [benchmark protocol](docs/public-benchmark-protocol.md). Changing runtime, objective, suite or timing settings creates a different comparison.
 
 For actual Vista generation, follow [Vista integration](docs/vista-integration.md), [full-study data workflow](docs/full-study.md) and the [historical GPU runbook](docs/gpu-runbook.md). Historical environment recipes reproduce historical cohorts; they are not claims about the fastest current software stack.
+
+For a new configuration-agent study, follow the [generation, calibration and final-scoring recipe](docs/agent-study-reproduction.md). It uses pinned batch specs and evaluator-owned metric assets, with a frozen selection barrier before final measurements. These new workers have CPU integration coverage; a real model run remains to be validated.
 
 ## Use your own policy
 

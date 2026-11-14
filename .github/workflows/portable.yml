@@ -19,16 +19,25 @@ jobs:
         run: |
           cd "$RUNNER_TEMP"
           "$RUNNER_TEMP/drivebench-portable/bin/drivebench-demo" --output ./video-demo
+          "$RUNNER_TEMP/drivebench-portable/bin/drivebench-agent-demo" --output ./agent-demo
+          "$RUNNER_TEMP/drivebench-portable/bin/drivebench-vista-batch" --help
+          "$RUNNER_TEMP/drivebench-portable/bin/drivebench-vista-metrics" --help
+          "$RUNNER_TEMP/drivebench-portable/bin/drivebench-agent-trials" --help
+          "$RUNNER_TEMP/drivebench-portable/bin/drivebench-agent-artifacts" --help
+          "$RUNNER_TEMP/drivebench-portable/bin/python" -c "from drivebench_tuning import agent_budget, agent_cohort, agent_evidence, agent_policy; import importlib.util; assert importlib.util.find_spec('openai') is None"
           "$RUNNER_TEMP/drivebench-portable/bin/drivebench-search" describe
           "$RUNNER_TEMP/drivebench-portable/bin/drivebench-search" run --backend synthetic --split validation --policy random --output ./search-demo
           "$RUNNER_TEMP/drivebench-portable/bin/python" "$GITHUB_WORKSPACE/extensions/kernel_tuning/examples/env_quickstart.py" > ./policy-example.json
           "$RUNNER_TEMP/drivebench-portable/bin/python" "$GITHUB_WORKSPACE/extensions/kernel_tuning/examples/inference_env_quickstart.py" > ./inference-example.json
+          "$RUNNER_TEMP/drivebench-portable/bin/python" "$GITHUB_WORKSPACE/extensions/kernel_tuning/examples/compare_search_policies.py" --output ./policy-comparison
       - uses: actions/upload-artifact@v4
         with:
           name: portable-synthetic-demo-results
           path: |
             ${{ runner.temp }}/video-demo
             ${{ runner.temp }}/search-demo
+            ${{ runner.temp }}/agent-demo
             ${{ runner.temp }}/policy-example.json
             ${{ runner.temp }}/inference-example.json
+            ${{ runner.temp }}/policy-comparison
       # Software usability verification only; invented/CPU metrics are not GPU evidence.

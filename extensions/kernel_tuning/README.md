@@ -1,4 +1,6 @@
-# DriveBench configuration-search environment
+# DriveBench agent and configuration-search environments
+
+V0.3 adds durable agent tools, an optional tool-free LLM selector, array-backed proxy checks and frozen final scoring. The [agent guide](../../docs/agent-environment.md) covers the configuration-only trust boundary and pending full Vista demonstration. Run `drivebench-agent-demo --output ./agent-demo` after installing the core and extension to exercise the complete CPU fixture. The new agent environment has no GPU/LLM result yet.
 
 A reusable Gymnasium task for finding a good execution configuration within a measurement budget. The evaluator and candidate payloads are injectable: users can benchmark their own kernel implementations or inference configurations without changing the environment. The bundled CUDA adapter uses the existing GEGLU/GroupNorm+SiLU examples; it is not a generic model executor.
 
@@ -49,6 +51,15 @@ The nine candidates are compiled PyTorch and eight example Triton launch configu
 
 The [protocol](../../docs/public-benchmark-protocol.md) defines scope, budgets, failure handling, reporting and comparison rules. There is no hardware-independent leaderboard or claim of RL superiority.
 
+The [serial comparison example](examples/compare_search_policies.py) alternates grid/random order across repeats, uses matching episode seeds and equal candidate budgets, and saves every episode before producing a comparison. It runs the existing evaluator serially in one runtime cohort:
+
+```sh
+python extensions/kernel_tuning/examples/compare_search_policies.py \
+  --backend synthetic --split validation --repeats 2 --trials 4 --output ./policy-comparison
+```
+
+On a prepared NVIDIA host, change `--backend synthetic` to `--backend cuda` and apply an external process timeout. This example has CPU coverage; its CUDA comparison has not been executed as a new result. Inspect `plan.json`, `episode-*.json`, `trials.jsonl` and `comparison.json`. The comparison reports best observed search results, not a fresh confirmation or a policy-superiority claim. Replacing the policy callback is sufficient to evaluate another search method; record its training and inference costs separately.
+
 ## Existing GPU runner
 
 ```sh
@@ -60,6 +71,8 @@ drivebench-search run --backend cuda --split validation --policy random \
 
 The CUDA extra is Linux/NVIDIA-specific. Historical successful execution used Torch2.10/Triton3.6 on an A100; this does not certify every GPU or this new suite. Run on an otherwise idle dedicated device. The runner validates numerical outputs and input immutability, records physical GPU/driver/runtime identities, performs five warmups and thirty samples by default, and retains failed trials. It excludes compilation, warmups, validation, input preparation and export from operator latency, while charging them to the wall-time budget. Use an external timeout for stuck CUDA/compiler calls.
 
+The historical Vista environment uses a different pinned Torch/CUDA/xFormers stack. Keep it separate from this operator environment; installing the operator `gpu` extra into a Vista container can replace the runtime being evaluated. Follow the [Vista integration recipe](../../docs/vista-integration.md) and bind the actual runtime for a new model cohort.
+
 Output files: `plan.json` (suite/protocol/source identities), `trials.jsonl` (raw CUDA events or explicitly synthetic records), `result.json` (policy trajectories, per-task summaries and costs), `environment-journals.json`, and `completed.json` or `failed.json`. Partial evaluation reports are retained when available. Completion means the software run ended successfully, not that a policy improved performance. Baseline and candidate calls are counted separately; the bundled policies have no training cost. Report training metadata when evaluating learned policies.
 
 For the historical balanced exhaustive operator sweep, `drivebench-tune benchmark` is still available. Its existing [workload configs](configs) and [historical documentation](HISTORICAL_README.md) describe that separate experiment. The old `tune` command exercises the old Q-learning study and is not the recommended public search protocol.
@@ -68,6 +81,7 @@ For the historical balanced exhaustive operator sweep, `drivebench-tune benchmar
 
 - [CPU environment and external policy](examples/env_quickstart.py)
 - [CPU inference settings and quality-gate example](examples/inference_env_quickstart.py)
+- [Serial equal-budget grid/random comparison](examples/compare_search_policies.py)
 - [External evaluator contract](docs/extending.md)
 - [Historical measured results](../../results/2026-11-07-kernel-tuning/README.md)
 

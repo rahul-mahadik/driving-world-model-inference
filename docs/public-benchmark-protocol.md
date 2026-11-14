@@ -9,6 +9,8 @@ Two distinct tracks are provided:
 - **Video inference:** the existing Vista/nuScenes harness and historical cohort protocols. A request generates one declared future from image/trajectory inputs. End-to-end latency, sequential throughput, full-model allocator memory, and output-quality comparisons have their own boundaries. Licensed assets must be obtained separately. Historical held-out quality validation remains incomplete.
 - **Operator configuration search:** `operator-search-v1`, packaged with the tuning extension. This uses standalone seeded tensor inputs and correctness checks against reference operators. An operator score does not establish end-to-end video performance, visual quality or driving safety.
 
+The [configuration-agent interface](agent-environment.md) is an additional policy interface to an evaluator, not a third unit of performance. Its Vista worker uses predecoded conditioning through warm host-ready frames, excluding compilation and output persistence from latency while charging them to wall time. Its model-level proxy gates and final scoring differ from the operator task below. Always name the interface and measurement contract used.
+
 ## Task identity
 
 Every comparison must bind the exact suite bytes (SHA-256), source hashes, candidate list/order, objective and weight, timing repetition/warmup settings, physical GPU, driver and software runtime. Separate devices/runtimes form separate cohorts; never pool their samples into a common speed ratio. A protocol hash is a configuration identifier, not proof a comparison was fair or source code trustworthy.
@@ -47,6 +49,8 @@ Use validation for selecting search algorithms, hyperparameters, objectives and 
 
 Evaluate fresh repeated episodes; interleave policy order in a prespecified schedule to reduce drift confounding. The single-policy CLI records one policy per invocation and does not automatically balance separate invocations. Advanced comparisons can call `evaluate_policy` in a scheduled order while sharing a serial evaluator/cohort. Never run independent GPU environments concurrently on one device when interpreting isolated latency.
 
+The [serial comparison example](../extensions/kernel_tuning/examples/compare_search_policies.py) shows this scheduling for grid and random policies: each task receives both orders over an even number of repeats, matching episode seeds, fresh references and identical candidate budgets. It verifies cross-policy cohort/input bindings and saves partial reports on failure. Its included validation is synthetic; a CUDA invocation needs its own evidence and external resource/time controls.
+
 Report every episode and its individual trials, per-task results, failed-call counts, reference and candidate calls, actual wall time, and all training cost. The harness reports per-task descriptive medians, not significance or generalization. Do not average unrelated latencies into one speedup. A learned policy's training calls/time are additional costs; amortization assumptions must be explicit.
 
 An episode incumbent is a **best observed** result, subject to selection bias and noise. The evaluator does not automatically confirm it. A claimed improvement needs independent fresh measurements of the frozen selected configuration and reference, appropriate control comparisons, and enough independent repetitions to establish a signal. A separate exhaustive sweep can provide an oracle for small finite spaces; its cost must not disappear from the report.
@@ -55,4 +59,4 @@ An episode incumbent is a **best observed** result, subject to selection bias an
 
 New runs retain plan, suite/source/protocol hashes, raw trial records, environment journals and completed/failed receipts. Existing paths are refused. Synthetic demos label every result as synthetic and cannot establish GPU performance or correctness. Interrupted or partial output is not completion.
 
-Historical V10–V16 evidence stays immutable. The new V17 interface is CPU-tested and its current suite is not GPU-validated. Public availability and project licensing are separate release decisions. No leaderboard, RL superiority or quality-preserving end-to-end gain is implied by a successful run.
+Historical evidence stays immutable. V17 is publicly available under MIT; the newer operator suite and agent integration have CPU coverage, with real-runtime validation explicitly tracked in [the readiness table](benchmark-readiness.md). New GPU work must produce a new cohort and result report before that status changes. No hardware-independent leaderboard, RL superiority or quality-preserving end-to-end gain is implied by software completion.
