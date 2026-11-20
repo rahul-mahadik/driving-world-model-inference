@@ -1,6 +1,8 @@
 # Modern baseline measurement: startup, warm execution and attribution
 
-**Status: implemented and CPU contract-tested; modern Vista GPU measurements are unrun.** This protocol supersedes the canceled three-policy study for future work. It does not reuse that study's allocation, deadlines, quality claims or source bindings. The existing historical evidence stays unchanged.
+**Measured scope as of November 18, 2026:** one modern eager process completed three warmups and one full-workload request on A100-SXM4-80GB. The [sanitized numerical evidence](../results/2026-11-18-a100-modern-eager-feasibility/README.md) and [modern reproduction recipe](reproduce-release.md#modern-vista-eager-execution) are available. The paired compiled comparison, repeated-process study, compile break-even and full-model attribution remain unrun. The protocol below remains prospective; its complete-case analysis cannot be applied to that single eager result.
+
+**Status: implemented and CPU contract-tested; one eager GPU feasibility run is complete, while this paired measurement study is unrun.** This protocol supersedes the canceled three-policy study for future work. It does not reuse that study's allocation, deadlines, quality claims or source bindings. The existing historical evidence stays unchanged.
 
 The initial measurement table has three rows:
 
@@ -16,13 +18,13 @@ The historical row gives context. It is not a matched control for the modern pai
 
 The prospective default is **three fixed scenes, twelve paired process blocks, two modern roles per block**: 24 fresh processes. Each process generates three measured requests, one per scene, after at least three and at most twelve recorded cold-prefix requests. This gives 72 warm measurements and 144–360 total requests before separate profiles. Pair orders are seeded and reversed in adjacent blocks (AB/BA). Scene membership, seeds, action inputs, model weights, generation parameters and source/runtime identities are frozen before evidence.
 
-All modern blocks require one explicitly declared dedicated GPU and an identical full modern runtime. The new first feasibility candidate is an RTX A6000 48 GB; an A100 80 GB is a separate higher-memory fallback only if a new plan declares it. No fit or capacity is assumed. The frozen hardware policy declares the exact reported GPU name, minimum GPU memory, minimum host RAM and whether MIG is supported. The collector binds that complete policy to a fresh modern preflight proof and verifies the shared physical UUID; it never pools devices or silently changes resolution/step count. The same weights, native attention, parameter dtypes, memory layout, sampler, conditioning and request settings apply to both roles. The compile flag is the sole permitted role difference. Modernization itself requires a separate correctness/quality audit; a CPU import or unit test is not that audit.
+All modern blocks require one explicitly declared dedicated GPU and an identical full modern runtime. The initial A40 feasibility attempt failed during warmup; one separate A100 80 GB eager attempt succeeded. A paired study must declare its hardware prospectively and still establish compiled fit. No result transfers automatically to an RTX A6000 or another device. The frozen hardware policy declares the exact reported GPU name, minimum GPU memory, minimum host RAM and whether MIG is supported. The collector binds that complete policy to a fresh modern preflight proof and verifies the shared physical UUID; it never pools devices or silently changes resolution/step count. The same weights, native attention, parameter dtypes, memory layout, sampler, conditioning and request settings apply to both roles. The compile flag is the sole permitted role difference. Modernization itself requires a separate correctness/quality audit; a CPU import or unit test is not that audit.
 
 The statistical unit is the **four-process AB/BA reversal group**. Twelve paired blocks contain six such randomized groups; keep both orders and every request/scene inside each resampled group. The group bootstrap estimates runtime variability conditional on these three fixed scenes. It does not turn 72 requests into 72 independent scenes, establish broad scene generalization, or certify tail latency. Three within-process requests are insufficient for a useful p95; it remains unavailable.
 
 ## Measured boundaries
 
-The new `drivebench_tuning.restart_measurement` single-worker entry point lives in the existing extension and wraps `drivebench.benchmark.run_benchmark` and `InferenceEngine`; it does not create a resource or job orchestration framework. A scoped factory instantiates `ModernVistaBackend` explicitly. The unchanged legacy validator sees its existing `vista` marker internally; `restart.json` binds the original modern configuration and the actual backend identity in `model_identity.json`. It is not relabeled as legacy execution. The frozen `drivebench` package and its source fingerprint remain unchanged. Receipts separately pin the four new measurement/profile/analysis helpers and both modern model-port files before and after execution; paired comparisons require the same combined implementation identity.
+The new `drivebench_tuning.restart_measurement` single-worker entry point lives in the existing extension and wraps `drivebench.benchmark.run_benchmark` and `InferenceEngine`; it does not create a resource or job orchestration framework. A scoped factory instantiates `ModernVistaBackend` explicitly. The unchanged legacy validator sees its existing `vista` marker internally; `restart.json` binds the original modern configuration and the actual backend identity in `model_identity.json`. It is not relabeled as legacy execution. The frozen `drivebench` package and its source fingerprint remain unchanged. Receipts separately pin the five measurement/profile/analysis/verifier helpers and both modern model-port files before and after execution; paired comparisons require the same combined implementation identity.
 
 Report these separately:
 
@@ -75,19 +77,19 @@ For price context, a provider catalog checked on November 14 quoted RTX A6000 $0
 
 ## Reproduction interface
 
-First install the base package and the existing kernel-tuning extension in the separately pinned modern environment. Precache the complete CLIP assets and set `HF_HUB_OFFLINE=1` and `TRANSFORMERS_OFFLINE=1` before starting the process; the modern backend rejects network-dependent initialization. Prepare the required checkpoint/data and run the new declared-device verifier through the existing protected runner. The historical H100-only verifier is unchanged and is not used for a cheaper-device admission. The examples below are commands for a future admitted run, not evidence that one occurred.
+First install the base package and the existing kernel-tuning extension in the separately pinned modern environment. Precache the complete CLIP assets and set `HF_HUB_OFFLINE=1` and `TRANSFORMERS_OFFLINE=1` before starting the process; the modern backend rejects network-dependent initialization. Prepare the required checkpoint/data and run the new declared-device verifier through the existing protected runner. The historical H100-only verifier is unchanged and is not used for a cheaper-device admission. The paired examples below describe a future independently bounded run. They are not the execution record for the completed single-eager attempt.
 
-For the proposed RTX A6000 policy, the prospective command is:
+For the A100 hardware policy exercised by the single-eager attempt, a new proof command is:
 
 ```bash
 python -m drivebench_tuning.modern_verify_environment \
-  --gpu-name "NVIDIA RTX A6000" --minimum-memory-mib 45000 \
-  --minimum-host-ram-gib 32 --mig-unsupported --dedicated \
+  --gpu-name "NVIDIA A100-SXM4-80GB" --minimum-memory-mib 79000 \
+  --minimum-host-ram-gib 64 --dedicated \
   --output outputs/modern-environment \
   --write-lock outputs/modern-environment/runtime-lock.json
 ```
 
-This collects actual CUDA tensor, native runtime, Nsight trace and SM-counter evidence, plus idle/single-device/runtime continuity checks. It does not load Vista or establish model memory fit or quality. The worker archives the full proof and lock and rejects an old H100-only proof. Use the same policy when materializing the plan; `--minimum-host-ram-gib 32` and MIG unsupported are the plan defaults. A MIG-capable device needs a new plan with `--mig-supported` and a verifier invocation without `--mig-unsupported`; observed MIG must still be disabled.
+This counter-free verifier requires actual CUDA tensor execution, native runtime compatibility and a positive Nsight Systems smoke-kernel trace, plus idle/single-device/runtime continuity checks. Hardware counters are explicitly not requested or collected. No counter-dependent occupancy, utilization or bandwidth claim follows. It does not load Vista or establish model memory fit or quality. The worker archives the full proof and lock and rejects an old H100-only proof. Use the same explicit policy when materializing the plan. For this A100 example, pass `--minimum-host-ram-gib 64 --mig-supported`; observed MIG must be disabled. The public verifier reads physical host RAM; separately verify effective cgroup/container memory as described in the reproduction guide. Host-memory minima are declared prerequisites, not measured peak usage or general fit guarantees. Other hardware requires its own declared policy and actual verification.
 
 Create two fully resolved configurations that differ only in `optimizations.compile_denoiser`; use `model.backend: modern_vista` and the exact `modern_runtime` contract described in [the modern runtime documentation](modern-vista.md). Select exactly three scene records in the same manifest. Set `benchmark.requests: 3`, `warmup_requests: 3`, `max_warmup_requests: 12`, `headline: false`, `candidate_count: 1`, and `input_condition: uncached`.
 
@@ -95,7 +97,8 @@ Create two fully resolved configurations that differ only in `optimizations.comp
 python -m drivebench_tuning.restart_measurement plan \
   --eager-config configs/research/modern-eager.yaml \
   --compiled-config configs/research/modern-compiled.yaml \
-  --blocks 12 --gpu-name "NVIDIA RTX A6000" --minimum-memory-mib 45000 \
+  --blocks 12 --gpu-name "NVIDIA A100-SXM4-80GB" --minimum-memory-mib 79000 \
+  --minimum-host-ram-gib 64 --mig-supported \
   --output outputs/restart-plan.json
 ```
 

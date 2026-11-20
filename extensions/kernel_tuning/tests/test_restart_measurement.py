@@ -15,11 +15,11 @@ def configs(tmp_path):
     manifest=tmp_path/'scenes.jsonl'
     metadata={'units':'meters','coordinate_frame':'fixture_ego','axis_order':['lateral','longitudinal'],'timestamps_seconds':[.5,1,1.5,2],'provenance':'unit test fixture only','verified_against_annotation_source':True}
     manifest.write_text(''.join(json.dumps({'scene_id':f'scene-{i}','request_id':f'request-{i}','dataset':'nuscenes','observed_frames':[f'fixture-{i}.jpg'],'trajectory':[0]*8,'trajectory_metadata':metadata,'seeds':[11]})+'\n' for i in range(3)))
-    environment={'gpu':{'uuid':'fixture-only','name':'NVIDIA RTX A6000','memory_total_mib':'49140'},'packages':{}}
-    proof={'proof_kind':'modern_declared_gpu_v1','passed':True,'legacy_h100_proof':False,
-           'hardware_policy':{'schema_version':1,'gpu_name':'NVIDIA RTX A6000','minimum_memory_mib':45000,'minimum_host_ram_bytes':32*2**30,'mig_supported':False},
-           'environment':environment,'profiling_proof':{'modern_runtime_passed':True,'torch_cuda_execution_passed':True,
-               'hardware_counters_collected':True,'nsys_trace_collected':True,
+    environment={'gpu':{'uuid':'fixture-only','name':'NVIDIA A40','memory_total_mib':'49140'},'packages':{}}
+    proof={'proof_kind':'modern_declared_gpu_counter_free_v2','passed':True,'legacy_h100_proof':False,
+           'hardware_policy':{'schema_version':1,'gpu_name':'NVIDIA A40','minimum_memory_mib':45000,'minimum_host_ram_bytes':32*2**30,'mig_supported':False},
+           'environment':environment,'environment_after':environment,'dedicated_attestation':True,'failures':[],'verifier_source_sha256':file_sha256(__import__('drivebench_tuning.modern_verify_environment',fromlist=['x']).__file__),'profiling_proof':{'modern_runtime_passed':True,'torch_cuda_execution_passed':True,
+               'hardware_counters_collected':False,'hardware_counters_required':False,'hardware_counter_status':'not_requested_counter_free_protocol','nsys':{'returncode':0},'nsys_trace_collected':True,
                'ncu':{'returncode':0,'stdout':'"Metric Name","Metric Value"\n"sm__cycles_elapsed.avg","1"'},
                'nsys_stats':{'returncode':0,'stdout':'"Total Time (ns)","Instances","Name"\n1,1,drivebench_smoke'}}}
     from drivebench.benchmarks.environment import reference_identity
@@ -148,17 +148,22 @@ def test_cost_rejects_invalid_grid(arguments):
     with pytest.raises(ValueError):estimate(*arguments)
 
 
-def restart_fixture(tmp_path):
+def restart_fixture(tmp_path, *, eager_only=False):
     from drivebench_tuning import restart_measurement as module
-    plan=make_plan(*configs(tmp_path),blocks=8);plan_sha=digest(plan)
+    inputs=configs(tmp_path)
+    if eager_only:
+        manifest=Path(inputs[0]['data']['manifest'])
+        manifest.write_text(manifest.read_text().splitlines()[0]+'\n')
+        for config in inputs:config['benchmark'].update(requests=1,save_outputs=1)
+    plan=make_plan(*inputs,blocks=1 if eager_only else 8,mode='feasibility' if eager_only else 'paired',gpu_name='NVIDIA A40');plan_sha=digest(plan)
     folder=tmp_path/'restart';root=folder/'benchmark';root.mkdir(parents=True)
-    job=next(row for row in plan['schedule'] if row['role']=='modern_compiled')
+    job=next(row for row in plan['schedule'] if row['role']==('modern_eager' if eager_only else 'modern_compiled'))
     expected=deepcopy(plan['configs'][job['role']]);expected['model']['backend']='vista';expected['profiled']=False;expected['data']['manifest_sha256']=plan['input_manifest_sha256']
     identity={'backend':'modern_vista','modern_runtime':plan['configs'][job['role']]['model']['modern_runtime'],
-              'compilation':{'enabled':True,'target':'denoiser','backend':'inductor','mode':'default','fullgraph':False,'dynamic':False,'compile_cost':'lazy_first_use_must_be_measured','fallback_free_proven':False},'implementation_sha256':{'modern_vista.py':'a'*64,'modern_attention.py':'b'*64}}
+              'compilation':{'enabled':not eager_only,'target':'denoiser','backend':'inductor','mode':'default','fullgraph':False,'dynamic':False,'compile_cost':'lazy_first_use_must_be_measured','fallback_free_proven':False},'implementation_sha256':{'modern_vista.py':'a'*64,'modern_attention.py':'b'*64}}
     def row(index,*,measured=False):
-        binding=plan['request_bindings'][index%3]
-        value={'request_id':binding['request_id'],'scene_id':binding['scene_id'],'request_index':index,'repeat':index//3,
+        binding=plan['request_bindings'][index%len(plan['scene_ids'])]
+        value={'request_id':binding['request_id'],'scene_id':binding['scene_id'],'request_index':index,'repeat':index//len(plan['scene_ids']),
                'latency_s':50.,'status':'ok','failures':[],'fallbacks':[],
                'cache_stats':{'context_hit':False,'denoiser_evaluations_complete':True},
                'peak_allocated_bytes':10,'peak_reserved_bytes':20,'candidate_count':1,'batch_size':1,
@@ -173,16 +178,16 @@ def restart_fixture(tmp_path):
         return value
     payloads={'config.json':expected,'model_identity.json':identity,
               'environment.json':{'gpu':{'uuid':'fixture-only','name':plan['hardware']['gpu_name'],'memory_total_mib':'49140'},'packages':{}},
-              'environment_gate.json':{'passed':True,'verification_sha256':file_sha256(tmp_path/'verification.json')},
+              'environment_gate.json':{'passed':True,'verification_sha256':file_sha256(tmp_path/'verification.json'),'proof_kind':'modern_declared_gpu_counter_free_v2','hardware_counters_required':False},
               'modern_environment_verification.json':json.loads((tmp_path/'verification.json').read_text()),
               'modern_runtime_lock.json':json.loads((tmp_path/'runtime-lock.json').read_text()),
               'cold_start.json':{'status':'ready','model_load_s':5.,'warmups':[row(i) for i in range(3)]},
               'summary.json':{'recompiled_during_measurement':False,'failures':0,'compiler_before':{'stats':{'unique_graphs':1}},'compiler_after':{'stats':{'unique_graphs':1}}}}
     for name,value in payloads.items():(root/name).write_text(json.dumps(value))
-    (root/'measurements.jsonl').write_text(''.join(json.dumps(row(i,measured=True))+'\n' for i in range(3)))
+    (root/'measurements.jsonl').write_text(''.join(json.dumps(row(i,measured=True))+'\n' for i in range(plan['warm_requests_per_process'])))
     record={'status':'completed','synthetic':False,'plan_sha256':plan_sha,**job,
             'compiler_cache_initially_empty':True,'source_unchanged':True,'worker_id':'fixture-only','legacy_source_identity':'fixture-only',
-            'measurement_implementation_sha256':{name:'c'*64 for name in ('restart_measurement.py','modern_profile.py','attribution.py','study_cost.py')},
+            'measurement_implementation_sha256':{name:'c'*64 for name in ('restart_measurement.py','modern_profile.py','attribution.py','study_cost.py','modern_verify_environment.py')},
             'original_modern_config_sha256':digest(plan['configs'][job['role']]),'modern_backend_source_sha256':'a'*64,'modern_implementation_sha256':{'modern_vista.py':'a'*64,'modern_attention.py':'b'*64},'worker_wall_s':300.,
             'raw_output_pins':{str(path.relative_to(root)):module._pin(path) for path in (root/'outputs').iterdir()},
             'artifact_pins':{path.name:module._pin(path) for path in root.iterdir() if path.is_file()}}
@@ -237,7 +242,7 @@ def test_collect_uses_explicit_factory_fresh_caches_and_preserves_failure(tmp_pa
     import sys,types,os,time
     from drivebench_tuning import restart_measurement as module
     from drivebench import benchmark
-    plan=make_plan(*configs(tmp_path),blocks=8);path=tmp_path/'plan.json';path.write_text(json.dumps(plan))
+    plan=make_plan(*configs(tmp_path),blocks=8,gpu_name='NVIDIA A40');path=tmp_path/'plan.json';path.write_text(json.dumps(plan))
     monkeypatch.setattr(module,'_USED_PROCESS',False);monkeypatch.delitem(sys.modules,'torch',raising=False)
     fake=types.ModuleType('drivebench_tuning.modern_vista');calls=[]
     class Modern:
@@ -304,7 +309,7 @@ def test_feasibility_is_two_full_workload_workers_without_quality_claim(tmp_path
     from drivebench_tuning.restart_measurement import feasibility_summary
     a,b=configs(tmp_path);manifest=Path(a['data']['manifest']);manifest.write_text(manifest.read_text().splitlines()[0]+'\n')
     for config in (a,b):config['benchmark'].update(requests=1,save_outputs=1)
-    plan=make_plan(a,b,blocks=1,mode='feasibility',gpu_name='NVIDIA RTX A6000',minimum_memory_mib=45000,compute_usd_per_hour=.888)
+    plan=make_plan(a,b,blocks=1,mode='feasibility',gpu_name='NVIDIA A40',minimum_memory_mib=45000,compute_usd_per_hour=.888)
     assert len(plan['schedule'])==2 and plan['warm_requests_per_process']==1
     data=rows()[:2]
     for row in data:row['worker_wall_s']=200
@@ -364,7 +369,7 @@ def test_modern_profile_scopes_actual_backend_and_records_bound_trace(tmp_path,m
     from drivebench_tuning import modern_profile as module
     from drivebench import profile as legacy
     from drivebench.types import GenerationConfig,OptimizationConfig
-    plan=make_plan(*configs(tmp_path),blocks=8);path=tmp_path/'plan.json';path.write_text(json.dumps(plan))
+    plan=make_plan(*configs(tmp_path),blocks=8,gpu_name='NVIDIA A40');path=tmp_path/'plan.json';path.write_text(json.dumps(plan))
     pins={'modern_vista.py':'a'*64,'modern_attention.py':'b'*64}
     fake=types.ModuleType('drivebench_tuning.modern_vista');calls=[]
     class Modern:
@@ -415,7 +420,7 @@ def test_profile_window_requires_one_real_recorded_range(tmp_path,mode):
 def test_relocated_measurement_modules_have_independent_complete_source_pins():
     from drivebench_tuning.restart_measurement import _measurement_sources
     pins=_measurement_sources()
-    assert set(pins)=={'restart_measurement.py','modern_profile.py','attribution.py','study_cost.py'}
+    assert set(pins)=={'restart_measurement.py','modern_profile.py','attribution.py','study_cost.py','modern_verify_environment.py'}
     assert all(len(value)==64 for value in pins.values())
     assert not Path('drivebench/restart_measurement.py').exists()
     assert not Path('drivebench/modern_profile.py').exists()

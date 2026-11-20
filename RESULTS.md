@@ -1,5 +1,11 @@
 # Measured evidence and study status
 
+## Modern Vista eager execution feasibility — 2026-11-18
+
+The [A100 modern-runtime evidence](results/2026-11-18-a100-modern-eager-feasibility/README.md) records one successful full-workload eager request after three warmups: 24 future frames at 576×1024, 50 steps, one uncached future. Request latency was 97.994715 s; peak allocated memory was 46.01 GiB and peak reserved memory 53.35 GiB. The first warmup reserved 71.61 GiB. The run used PyTorch 2.14.1+cu130, native SDPA and the explicit FP16/channels-last UNet policy. CUDA execution and a smoke-kernel activity trace passed; hardware performance counters were not requested.
+
+The complete evidence archive and saved float32 array were independently checked locally. Published numerical rows, warmups, source/runtime metadata and an arithmetic checker support inspection; raw arrays and licensed media are not redistributed. The preceding A40 first-warmup OOM and setup/provider failures remain documented. One request establishes execution feasibility only: no repeated-process uncertainty, compiled comparison, quality validation, agent evaluation or cross-hardware speed claim. Historical cohorts below are unchanged.
+
 ## A100 custom kernels and measured RL search — 2026-11-07
 
 The [separate operator study](results/2026-11-07-kernel-tuning/README.md) passed 75 GPU tests with no skipped tests. Two-order confirmation found lower incremental peak allocation than eager for 6 of 6 tested operator workloads; per-workload eager and compiled comparisons retain measured regressions; the original failed numerical test contract is documented separately. A tabular Q learner completed GPU-backed configuration search and equal-budget learned/random/grid evaluation. RL superiority, unseen-shape generalization and whole-video benefits remain unvalidated. Historical compiler timing and quality claims are unchanged. GitHub publication remains unverified.

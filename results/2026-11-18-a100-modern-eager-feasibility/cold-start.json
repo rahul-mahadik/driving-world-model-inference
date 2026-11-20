@@ -1,0 +1,268 @@
+{
+  "model_load_s": 217.08759589300098,
+  "warmups": [
+    {
+      "request_id": "nuscenes-5af9c7f124d84e7e9ac729fafa40ea01-035bbdcd8abc416f9424fefea35452ce",
+      "scene_id": "5af9c7f124d84e7e9ac729fafa40ea01",
+      "repeat": 0,
+      "request_index": 0,
+      "latency_s": 99.1293636699993,
+      "status": "ok",
+      "candidate_count": 1,
+      "batch_size": 1,
+      "input_condition": "uncached",
+      "stage_timings_s": {
+        "input_load_preprocess": 0.04675026299992169,
+        "conditioning_gpu": 2.94900634765625,
+        "encode_gpu": 1.218690185546875,
+        "denoising_gpu": 89.017203125,
+        "decode_gpu": 5.68509814453125,
+        "device_to_host_gpu": 0.07597881317138672,
+        "generate_wall": 99.03839302199958,
+        "prepare_context": 0.0435043149991543,
+        "queue_wait": 6.291998943197541e-06
+      },
+      "gpu_inference_s": 98.8894375,
+      "peak_allocated_bytes": 49404824064,
+      "peak_reserved_bytes": 76885786624,
+      "denoiser_evaluations": 50,
+      "cache_stats": {
+        "conditioning_embedding_hits": 0,
+        "posterior_parameter_hits": 0,
+        "conditioning_cache_bytes": 0,
+        "conditioning_cached_embedders": [],
+        "feature_hits": 0,
+        "feature_misses": 0,
+        "feature_policy": "disabled",
+        "feature_cache_module": null,
+        "feature_cache_configuration": null,
+        "joint_denoising_batches": 0,
+        "serial_denoising_batches": 1,
+        "context": {
+          "hits": 0,
+          "misses": 0,
+          "evictions": 0,
+          "bytes": 0,
+          "entries": 0,
+          "hit_rate": 0.0
+        },
+        "context_hit": false,
+        "oom_attempts": [],
+        "denoiser_evaluations_complete": true
+      },
+      "effective_config": {
+        "total_frames": 25,
+        "conditioning_frames": 1,
+        "height": 576,
+        "width": 1024,
+        "steps": 50,
+        "guidance_scale": 2.5,
+        "cond_aug": 0.0,
+        "dtype": "fp16",
+        "decode_chunk_size": 14,
+        "candidate_count": 1,
+        "requested_batch_size": 1,
+        "actual_batch_sizes": [
+          1
+        ],
+        "optimizations": {
+          "compile_denoiser": false,
+          "compile_decoder": false,
+          "compile_mode": "default",
+          "dynamic_shapes": false,
+          "fullgraph": false,
+          "conditioning_cache_bytes": 0,
+          "max_batch_size": 1,
+          "feature_cache_interval": 1,
+          "feature_cache_module": null,
+          "keep_model_resident": true,
+          "pinned_memory": false,
+          "async_transfer": false,
+          "prefetch_depth": 0,
+          "attention_backend": "upstream"
+        }
+      },
+      "fallbacks": [],
+      "failures": [],
+      "categories": [
+        "lighting:unknown"
+      ]
+    },
+    {
+      "request_id": "nuscenes-5af9c7f124d84e7e9ac729fafa40ea01-035bbdcd8abc416f9424fefea35452ce",
+      "scene_id": "5af9c7f124d84e7e9ac729fafa40ea01",
+      "repeat": 1,
+      "request_index": 1,
+      "latency_s": 98.18324421899888,
+      "status": "ok",
+      "candidate_count": 1,
+      "batch_size": 1,
+      "input_condition": "uncached",
+      "stage_timings_s": {
+        "input_load_preprocess": 0.04251423699861334,
+        "conditioning_gpu": 2.585273681640625,
+        "encode_gpu": 1.226491943359375,
+        "denoising_gpu": 89.25715625,
+        "decode_gpu": 4.87471728515625,
+        "device_to_host_gpu": 0.07800495910644531,
+        "generate_wall": 98.09555627899863,
+        "prepare_context": 0.04439289099900634,
+        "queue_wait": 6.2920007621869445e-06
+      },
+      "gpu_inference_s": 97.9442734375,
+      "peak_allocated_bytes": 49404824064,
+      "peak_reserved_bytes": 57283706880,
+      "denoiser_evaluations": 50,
+      "cache_stats": {
+        "conditioning_embedding_hits": 0,
+        "posterior_parameter_hits": 0,
+        "conditioning_cache_bytes": 0,
+        "conditioning_cached_embedders": [],
+        "feature_hits": 0,
+        "feature_misses": 0,
+        "feature_policy": "disabled",
+        "feature_cache_module": null,
+        "feature_cache_configuration": null,
+        "joint_denoising_batches": 0,
+        "serial_denoising_batches": 1,
+        "context": {
+          "hits": 0,
+          "misses": 0,
+          "evictions": 0,
+          "bytes": 0,
+          "entries": 0,
+          "hit_rate": 0.0
+        },
+        "context_hit": false,
+        "oom_attempts": [],
+        "denoiser_evaluations_complete": true
+      },
+      "effective_config": {
+        "total_frames": 25,
+        "conditioning_frames": 1,
+        "height": 576,
+        "width": 1024,
+        "steps": 50,
+        "guidance_scale": 2.5,
+        "cond_aug": 0.0,
+        "dtype": "fp16",
+        "decode_chunk_size": 14,
+        "candidate_count": 1,
+        "requested_batch_size": 1,
+        "actual_batch_sizes": [
+          1
+        ],
+        "optimizations": {
+          "compile_denoiser": false,
+          "compile_decoder": false,
+          "compile_mode": "default",
+          "dynamic_shapes": false,
+          "fullgraph": false,
+          "conditioning_cache_bytes": 0,
+          "max_batch_size": 1,
+          "feature_cache_interval": 1,
+          "feature_cache_module": null,
+          "keep_model_resident": true,
+          "pinned_memory": false,
+          "async_transfer": false,
+          "prefetch_depth": 0,
+          "attention_backend": "upstream"
+        }
+      },
+      "fallbacks": [],
+      "failures": [],
+      "categories": [
+        "lighting:unknown"
+      ]
+    },
+    {
+      "request_id": "nuscenes-5af9c7f124d84e7e9ac729fafa40ea01-035bbdcd8abc416f9424fefea35452ce",
+      "scene_id": "5af9c7f124d84e7e9ac729fafa40ea01",
+      "repeat": 2,
+      "request_index": 2,
+      "latency_s": 98.18743207399893,
+      "status": "ok",
+      "candidate_count": 1,
+      "batch_size": 1,
+      "input_condition": "uncached",
+      "stage_timings_s": {
+        "input_load_preprocess": 0.04223156099942571,
+        "conditioning_gpu": 2.591726806640625,
+        "encode_gpu": 1.2287274169921876,
+        "denoising_gpu": 89.2740078125,
+        "decode_gpu": 4.8681533203125,
+        "device_to_host_gpu": 0.06969631958007813,
+        "generate_wall": 98.10070762199939,
+        "prepare_context": 0.0438200250009686,
+        "queue_wait": 4.327999704401009e-06
+      },
+      "gpu_inference_s": 97.9631875,
+      "peak_allocated_bytes": 49404824064,
+      "peak_reserved_bytes": 57283706880,
+      "denoiser_evaluations": 50,
+      "cache_stats": {
+        "conditioning_embedding_hits": 0,
+        "posterior_parameter_hits": 0,
+        "conditioning_cache_bytes": 0,
+        "conditioning_cached_embedders": [],
+        "feature_hits": 0,
+        "feature_misses": 0,
+        "feature_policy": "disabled",
+        "feature_cache_module": null,
+        "feature_cache_configuration": null,
+        "joint_denoising_batches": 0,
+        "serial_denoising_batches": 1,
+        "context": {
+          "hits": 0,
+          "misses": 0,
+          "evictions": 0,
+          "bytes": 0,
+          "entries": 0,
+          "hit_rate": 0.0
+        },
+        "context_hit": false,
+        "oom_attempts": [],
+        "denoiser_evaluations_complete": true
+      },
+      "effective_config": {
+        "total_frames": 25,
+        "conditioning_frames": 1,
+        "height": 576,
+        "width": 1024,
+        "steps": 50,
+        "guidance_scale": 2.5,
+        "cond_aug": 0.0,
+        "dtype": "fp16",
+        "decode_chunk_size": 14,
+        "candidate_count": 1,
+        "requested_batch_size": 1,
+        "actual_batch_sizes": [
+          1
+        ],
+        "optimizations": {
+          "compile_denoiser": false,
+          "compile_decoder": false,
+          "compile_mode": "default",
+          "dynamic_shapes": false,
+          "fullgraph": false,
+          "conditioning_cache_bytes": 0,
+          "max_batch_size": 1,
+          "feature_cache_interval": 1,
+          "feature_cache_module": null,
+          "keep_model_resident": true,
+          "pinned_memory": false,
+          "async_transfer": false,
+          "prefetch_depth": 0,
+          "attention_backend": "upstream"
+        }
+      },
+      "fallbacks": [],
+      "failures": [],
+      "categories": [
+        "lighting:unknown"
+      ]
+    }
+  ],
+  "warmups_are_measured_samples": false,
+  "cold_prefix_definition": "Engine construction and synchronization, timed after environment collection, plus the three warmup request latencies. Package/asset acquisition is excluded; interpreter/import/CUDA-context startup is not separately instrumented."
+}

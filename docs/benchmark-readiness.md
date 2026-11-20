@@ -1,4 +1,4 @@
-> **Research direction updated November 14, 2026.** The one-episode/eight-configuration Vista comparison is canceled. This document preserves existing software interfaces and historical recipes, not an active experiment. See the [current protocol](research-protocol.md) and [cancellation record](canceled-plans.md).
+> **Release scope updated November 19, 2026.** The one-episode/eight-configuration Vista comparison is canceled. This document preserves existing software interfaces and historical recipes, not an active experiment. See the [current protocol](research-protocol.md) and [cancellation record](canceled-plans.md).
 
 # Benchmark and environment readiness
 
@@ -34,9 +34,11 @@ A reusable result should include:
 4. Per-task measurements and raw samples or a documented route to independently regenerate them. Retain evidence inventories and hashes; do not pool unrelated devices into one speedup.
 5. The locked selections, fresh final comparison, quality outcome and limitations. Report a zero, rejected or inconclusive outcome without requiring a winner.
 
-The original small full-Vista proposal gave LLM, random and grid policies four trials each. That proposal and its attempts remain preserved. The current prospective study uses the explicit [single-LLM feasibility mode](agent-study-reproduction.md#prospectively-registered-single-agent-feasibility): eight development scenes, four final scenes, two seeds and two repeats, with four LLM trials and fresh reference-versus-selected-candidate confirmation. Random and grid are deferred and are not reported as completed comparisons.
+The former eight-configuration study and single-LLM feasibility plan were canceled before execution. Their files remain historical recipes, not the current experiment or an authorization to run them. The generic configuration interface still supports its declared 16-value domain; that domain is software capability, not measured coverage.
 
-The current task has eight configuration choices: FP16, decode chunks `[1, 2, 7, 14]`, and compilation off/on. Calibration, proxy limits, negative controls, final coverage and evidence-retention requirements remain fixed. Full Vista/LPIPS/LLM validation through this prospective workflow remains unrun. A successful run would demonstrate this particular integration, not broad calibration, generalization, robust quality preservation or superiority over another optimizer.
+The November 18 modern Vista eager feasibility run completed one measured request after three warmups on an A100 80 GB. It validates that runtime and fixed workload execution, not the `AgentSession`/quality-calibration/LLM pipeline. The preserved A40 attempt failed with GPU OOM during its first warmup. See the [modern execution evidence](../results/2026-11-18-a100-modern-eager-feasibility/README.md) and [current research protocol](research-protocol.md). No paired modern performance, quality preservation, policy comparison, or new kernel optimization is inferred.
+
+The released toolkit can be used with a trusted custom evaluator or the documented synthetic examples. A completed toolkit release is separate from completion of the research program: empirical verifier calibration, a measured configuration table, optimizer comparisons, hardware transfer and arbitrary-code isolation remain uncompleted research work.
 
 ## Trust boundary
 

@@ -6,6 +6,8 @@ Vista is developed by OpenDriveLab. The pinned source revision is `cc9821b4253ca
 
 nuScenes is provided by Motional. Obtain data and review its current [dataset terms](https://www.nuscenes.org/terms-of-use) and [download instructions](https://www.nuscenes.org/download) separately. This repository includes no dataset images, annotation tables, generated driving videos, or checkpoints. The metric-only chart is generated from measured numeric profiler summaries. No claim is made here about redistribution rights for omitted media.
 
-PyTorch, xFormers, and other dependencies retain their respective licenses. Dependency definitions and versions are recorded; third-party installed packages or binaries are not bundled.
+PyTorch, xFormers, and other dependencies retain their respective licenses. Dependency definitions and versions are recorded. The sole bundled dependency is the unmodified pure-Python ANTLR4 runtime wheel described below; GPU libraries, model weights and datasets are obtained separately.
 
 Portable publication files omit credentials, cloud project/instance IDs, SSH endpoints, machine-specific home paths, and account billing records. Generic provider API code and clearly marked test credentials remain as source code. This revision contains current study tooling. Initial evidence retains its original corrected-source identity and does not validate newer changes.
+
+The small `third_party/wheels/antlr4_python3_runtime-4.9.3-py3-none-any.whl` preserves the exact dependency artifact used by the modern feasibility run. ANTLR4 is copyright The ANTLR Project and distributed under BSD-3-Clause; see [its complete upstream license](third_party/ANTLR4-LICENSE) and [source/build provenance](third_party/antlr4-wheel-provenance.json). The wheel contains no native libraries. Its license is separate from this repository's MIT license.

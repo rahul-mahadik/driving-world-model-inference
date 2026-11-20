@@ -150,7 +150,7 @@ def _validate_plan(plan):
 def _measurement_sources():
     root = Path(__file__).parent
     return {name:file_sha256(root/name) for name in
-            ('restart_measurement.py','modern_profile.py','attribution.py','study_cost.py')}
+            ('restart_measurement.py','modern_profile.py','attribution.py','study_cost.py','modern_verify_environment.py')}
 
 
 def _modern_sources():
@@ -164,11 +164,15 @@ def _check_modern_proof(proof, hardware):
     from drivebench_tuning.modern_verify_environment import validate_policy
     policy = proof.get('hardware_policy')
     validate_policy(policy)
-    if (proof.get('proof_kind') != 'modern_declared_gpu_v1' or proof.get('passed') is not True
+    if (proof.get('proof_kind') != 'modern_declared_gpu_counter_free_v2' or proof.get('passed') is not True
             or proof.get('legacy_h100_proof') is not False
             or any(policy.get(key) != value for key,value in hardware.items())
             or proof.get('profiling_proof',{}).get('modern_runtime_passed') is not True
-            or proof.get('profiling_proof',{}).get('torch_cuda_execution_passed') is not True):
+            or proof.get('profiling_proof',{}).get('torch_cuda_execution_passed') is not True
+            or proof.get('profiling_proof',{}).get('nsys_trace_collected') is not True
+            or proof.get('profiling_proof',{}).get('hardware_counters_collected') is not False
+            or proof.get('profiling_proof',{}).get('hardware_counters_required') is not False
+            or proof.get('profiling_proof',{}).get('hardware_counter_status') != 'not_requested_counter_free_protocol'):
         raise ValueError('a passed modern proof for the exact declared GPU policy is required')
 
 
@@ -186,11 +190,11 @@ def _archive_modern_environment(config, hardware, destination):
 
 
 def _verify_archived_environment(root, hardware, environment):
-    from drivebench.benchmark import _validate_reference_environment
+    from .modern_verify_environment import validate_reference_environment
     root = Path(root)
     proof = _read(root/'modern_environment_verification.json')
     _check_modern_proof(proof,hardware)
-    return _validate_reference_environment({'environment_verification':str(root/'modern_environment_verification.json'),
+    return validate_reference_environment({'model':{'backend':'modern_vista'},'environment_verification':str(root/'modern_environment_verification.json'),
              'environment_lock':str(root/'modern_runtime_lock.json')}, environment)
 
 
@@ -246,6 +250,8 @@ def collect_restart(plan_path, expected_plan_sha256, run_id, directory, *, deadl
         source_before = digest({'legacy':legacy_source_before,'measurement':measurement_before})
         backend_source_before = _modern_sources()
         original = benchmark.InferenceEngine
+        original_gate = benchmark._validate_reference_environment
+        from .modern_verify_environment import validate_reference_environment
         config = deepcopy(plan['configs'][job['role']])
         actual_model = deepcopy(config['model'])
         # Only the legacy config validator sees its existing backend vocabulary.
@@ -258,9 +264,11 @@ def collect_restart(plan_path, expected_plan_sha256, run_id, directory, *, deadl
             return InferenceEngine(actual_model, generation, optimizations, backend=backend)
         try:
             benchmark.InferenceEngine = modern_engine
+            benchmark._validate_reference_environment = validate_reference_environment
             _, summary = benchmark.run_benchmark(execution_config, directory / 'benchmark')
         finally:
             benchmark.InferenceEngine = original
+            benchmark._validate_reference_environment = original_gate
         if time.time() >= deadline_unix:
             raise TimeoutError('worker deadline reached; retain evidence but do not accept result')
         if (source_identity() != legacy_source_before or _measurement_sources() != measurement_before
@@ -319,7 +327,7 @@ def read_restart(directory, plan, plan_sha):
     if evidence.get('source_unchanged') is not True:
         raise ValueError('source stability was not verified')
     measurement = evidence.get('measurement_implementation_sha256',{})
-    if (set(measurement) != {'restart_measurement.py','modern_profile.py','attribution.py','study_cost.py'}
+    if (set(measurement) != {'restart_measurement.py','modern_profile.py','attribution.py','study_cost.py','modern_verify_environment.py'}
             or any(not isinstance(value,str) or len(value) != 64 or any(c not in '0123456789abcdef' for c in value) for value in measurement.values())
             or evidence.get('source_identity') != digest({'legacy':evidence.get('legacy_source_identity'),'measurement':measurement})):
         raise ValueError('complete measurement implementation identity required')
