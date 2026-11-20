@@ -1,0 +1,1581 @@
+{
+  "comparison_repeats": 3,
+  "confirmation_points": [
+    {
+      "candidate_id": "triton-b1024-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9124534708471025,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9955691037518096,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b256-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0635212348008118,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b1024-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9894593915819253,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9562401381855912,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "triton-b1024-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9775413123190704,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9481709961783872,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9915654952319304,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9975667068197616,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b256-w8",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9907503555622079,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.99147711600209,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0234947009455435,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b512-w8",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0930735213284413,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0145230843153004,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b256-w8",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.8937992335652192,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0160845756905996,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9965343089688563,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w8",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0400666524482223,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b256-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0560234588650663,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0056797399410462,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0298641614053845,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b128-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9607252246044528,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b128-w4",
+      "compiled_correct": true,
+      "process_repeat": 0,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0075249197344043,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b128-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9991765460766806,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b256-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.010672536263423,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9549660517575956,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b256-w8",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0020779919972171,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9175455994112383,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.000372672503336,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b256-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0362497080650928,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b256-w8",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.8919488184959775,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9964551705621874,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w8",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.158974634975651,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.8809738700939508,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b128-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9621056747767993,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.006738801743079,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.867403674484797,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0096262016647481,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9997923216811446,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9906355316207598,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.1084061415976179,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9910824485581081,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9790385280550615,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w8",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9866391643986334,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9589816702010302,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 1,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9210642058676833,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b512-w8",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0998615149558104,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9926496972030892,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9851144235474847,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9672366349329965,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.919106553327411,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "triton-b256-w8",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0974289229403709,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b512-w8",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9761940625739567,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9361614007612986,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0105430365522012,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b256-w8",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9927934369667402,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0477207998885596,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.8779445807686325,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b256-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0247361147617873,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b512-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0393214566729718,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.987968807914704,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9929367703355076,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w8",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.033197782705117,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b128-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.9992962843668073,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "triton-b1024-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.999819113644222,
+      "task_id": "test-groupnorm_silu-2"
+    },
+    {
+      "candidate_id": "triton-b256-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.047921531517727,
+      "task_id": "test-geglu-2"
+    },
+    {
+      "candidate_id": "torch-compiled",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0023271750405274,
+      "task_id": "test-geglu-1"
+    },
+    {
+      "candidate_id": "triton-b1024-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 0.965569655132683,
+      "task_id": "test-groupnorm_silu-1"
+    },
+    {
+      "candidate_id": "triton-b128-w4",
+      "compiled_correct": true,
+      "process_repeat": 2,
+      "selected_correct": true,
+      "speedup_vs_compiled": 1.0138823918494726,
+      "task_id": "test-geglu-1"
+    }
+  ],
+  "figure_sha256": {
+    "confirmation-vs-compiled.pdf": "831a1966d32f26294e25ef2f9123c02122024138a8396ed473faa49894dcbb39",
+    "confirmation-vs-compiled.svg": "7865c03badfbdabf761116f86b5f9ea7482b9a6b092909fc2e1c3d5901244f4e",
+    "operator-latency-correctness.pdf": "1c4bf9b8ce503d19610c0205ff0814b6cea30e5c90f2e32061fc4d7d269e3a46",
+    "operator-latency-correctness.svg": "d57d739541161a43fb6f47b3dfcb3d15f88ef8831ce641c6983575f0dd72f8f7",
+    "policy-regret-vs-budget.pdf": "052cb7d14a54f5068ceac9d29e8a21461a790616a8773ad71896e6d9be6337a4",
+    "policy-regret-vs-budget.svg": "10aafdd9ba492574881bd0d0db6b2f1c1c9682149495a2324190357ed4aa79a4"
+  },
+  "independent_samples_added_by_plotting": 0,
+  "inputs": [
+    {
+      "kind": "policy_report",
+      "sha256": "5cdaecb444ff2571730d2d5d9a0d339a66d69f8c171010f6f585f94735317023"
+    },
+    {
+      "kind": "policy_report",
+      "sha256": "ce2a937541fbdfdaf40a1a080ca8041822be7a8bf1b66da2a167e5effc9b538f"
+    },
+    {
+      "kind": "policy_report",
+      "sha256": "f503087fc7696dd991d695072fa92ddf4e9874f38518652a01602d050e245e3c"
+    },
+    {
+      "kind": "policy_report",
+      "sha256": "c70e73a4d0aa680500dc07b5e4e5c5ff946cbb5bf9899626985fcdc6e4f31c34"
+    },
+    {
+      "kind": "policy_report",
+      "sha256": "d70cb2334337011f24971aff643a792f0e50ca73f83f9d855fb496e7e6e0b764"
+    },
+    {
+      "artifact_sha256": {
+        "completed.json": "5994def69cae69aecf63b8713249794be935544b8a4939eab423b094d737da3b",
+        "plan.json": "14be5440983f1178f0b23d673868578416d288c94f124b5add513ba43b93905f",
+        "result.json": "25dcbc9119dc3cbd3ecbdd1396689d75d37ed2171b77866105729e38c19b14eb",
+        "runtime.json": "ff2e9a2d7cf58006ffc2288f083098e2e0fa0b451f565e1fd98ce6c48b56aca2"
+      },
+      "kind": "confirmation_repeat",
+      "repeat_index": 0
+    },
+    {
+      "artifact_sha256": {
+        "completed.json": "08bc4ca0accc0bc117d064491295c58d131705877294c370e378f0d1c4980e86",
+        "plan.json": "9d50db4d726663aa1bc59e3f32082b5b6653e5d090d1acbcb25216ed98dcdc75",
+        "result.json": "ba6552da8d55aab756330b2f5f860ac2b9947ae5e32593432544f9fd2f100f1a",
+        "runtime.json": "ff2e9a2d7cf58006ffc2288f083098e2e0fa0b451f565e1fd98ce6c48b56aca2"
+      },
+      "kind": "confirmation_repeat",
+      "repeat_index": 1
+    },
+    {
+      "artifact_sha256": {
+        "completed.json": "1d9c25b9961e301c3fdc9a02546b6c182a01e9538d88407e436973dd8da7a5b8",
+        "plan.json": "2f425fb5a8233f9d6d18b2e50a8b9f9260177f4362f61706218eb4e41bf34c78",
+        "result.json": "e9ab77e29b59743ad75902151bedb7b460cbcdb5f2199f4ad62ea63d5bd2354a",
+        "runtime.json": "ff2e9a2d7cf58006ffc2288f083098e2e0fa0b451f565e1fd98ce6c48b56aca2"
+      },
+      "kind": "confirmation_repeat",
+      "repeat_index": 2
+    }
+  ],
+  "matrix": [
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.0201240956483746,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.059366074353527,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.0841858287626867,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.05958549359531,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.117055127721059,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.057185986117624,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.7699144387407075,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.7226228373945613,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.9630829220155321,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8735239079657015,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8976300992166848,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0080625502295275,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6844164969073524,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9221974796123574,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7657484746672297,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8938842331582463,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7504844848268629,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.66838024871593,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9717143071350197,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8692191929976723,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0777866658913646,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0514279302917433,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9866637973090306,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0103950131492374,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7996334031016168,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7217419798263036,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7892083571503066,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.048499445284018,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.5620048827701234,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.5401123636726786,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.3950741982936394,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.2134354690431806,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.6290508524525755,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.4669741357598565,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.6094627631601628,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0930099889563918,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.2604954101704793,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.1398003893914836,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.8962190166270014,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.125162951090388,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.1518902465587555,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.1705046786179842,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.327422855246329,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.1166762096994893,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.3408952191299561,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.8043841738146567,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.4259945956411322,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.1105321908026973,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.9768420782533451,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.9673226402726298,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.1521674718125694,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.102214683995918,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.1505947606536213,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.161539251597978,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.752633028467316,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7532430407584558,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9996311582318589,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7156031099204961,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7372209298864212,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8336214727217829,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7849502099875006,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7415377397911922,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7470882187867334,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2371028141095137,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.4977609310887791,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8444343112633097,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.34682206311976266,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.512950718059931,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2890683243048202,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.32934706953844445,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2571944027456429,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2630849856674359,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6281584201603151,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6143636811848857,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8875729276415235,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6226512652797547,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6140072186132912,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6246381994579775,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6052082744974455,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6314752031885132,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6104984162918619,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6891340666575991,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6959363684004989,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9592384248423124,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7533124449564718,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6745007186502918,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6517612522556969,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6824204570576057,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7247012566478337,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.753353023130947,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.22233479526132902,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.4604546492584823,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8392275856169811,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.29981846444747895,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.4753019550657601,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.23681480131898525,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.31226249558091557,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.23454672435562401,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2505486695292841,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.24223239257989482,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.48023580123448795,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8600859037164146,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.3273168133413296,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.4974500579697221,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2550509172988516,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.332114808954344,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.24073645068098165,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.24931742423342657,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      }
+    ]
+  ],
+  "new_gpu_measurements": 0,
+  "policy_curves": [
+    {
+      "api_cost": null,
+      "api_cost_scope": "complete source report",
+      "available_episodes_per_task": 20,
+      "available_total_policy_episodes": 80,
+      "comparison_repeats": 3,
+      "curve": [
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 1
+        },
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 2
+        },
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 3
+        },
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 4
+        }
+      ],
+      "episodes_per_task": 3,
+      "failed_or_incorrect_trials": 0,
+      "memory_weight": 0.0,
+      "policy": "fixed-compiled",
+      "rejected_policy_turns": 0,
+      "task_count": 4,
+      "total_policy_episodes": 12
+    },
+    {
+      "api_cost": null,
+      "api_cost_scope": "complete source report",
+      "available_episodes_per_task": 20,
+      "available_total_policy_episodes": 80,
+      "comparison_repeats": 3,
+      "curve": [
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 1
+        },
+        {
+          "mean_task_regret": 0.013722460806924654,
+          "trial_budget": 2
+        },
+        {
+          "mean_task_regret": 0.013722460806924654,
+          "trial_budget": 3
+        },
+        {
+          "mean_task_regret": 0.0144130928148304,
+          "trial_budget": 4
+        }
+      ],
+      "episodes_per_task": 3,
+      "failed_or_incorrect_trials": 0,
+      "memory_weight": 0.0,
+      "policy": "grid",
+      "rejected_policy_turns": 0,
+      "task_count": 4,
+      "total_policy_episodes": 12
+    },
+    {
+      "api_cost": null,
+      "api_cost_scope": "complete source report",
+      "available_episodes_per_task": 20,
+      "available_total_policy_episodes": 80,
+      "comparison_repeats": 3,
+      "curve": [
+        {
+          "mean_task_regret": 0.11051028497759274,
+          "trial_budget": 1
+        },
+        {
+          "mean_task_regret": 0.04029796226395641,
+          "trial_budget": 2
+        },
+        {
+          "mean_task_regret": 0.009112899154514697,
+          "trial_budget": 3
+        },
+        {
+          "mean_task_regret": 0.009772877355124186,
+          "trial_budget": 4
+        }
+      ],
+      "episodes_per_task": 3,
+      "failed_or_incorrect_trials": 0,
+      "memory_weight": 0.0,
+      "policy": "random",
+      "rejected_policy_turns": 0,
+      "task_count": 4,
+      "total_policy_episodes": 12
+    },
+    {
+      "api_cost": {
+        "attempts": 48,
+        "cached_input_charged_at_full_price_in_estimate": true,
+        "cap_usd": "0.65",
+        "reported_usage_estimated_usd": "0.03198000",
+        "reserved_usd": "0.40122375",
+        "usage_receipts": 48
+      },
+      "api_cost_scope": "complete source report",
+      "available_episodes_per_task": 3,
+      "available_total_policy_episodes": 12,
+      "comparison_repeats": 3,
+      "curve": [
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 1
+        },
+        {
+          "mean_task_regret": 0.01602158396949622,
+          "trial_budget": 2
+        },
+        {
+          "mean_task_regret": 0.01602158396949622,
+          "trial_budget": 3
+        },
+        {
+          "mean_task_regret": 0.01602158396949622,
+          "trial_budget": 4
+        }
+      ],
+      "episodes_per_task": 3,
+      "failed_or_incorrect_trials": 0,
+      "memory_weight": 0.0,
+      "policy": "gpt-5.4-mini-2026-03-17",
+      "rejected_policy_turns": 0,
+      "task_count": 4,
+      "total_policy_episodes": 12
+    },
+    {
+      "api_cost": {
+        "attempts": 48,
+        "cached_input_charged_at_full_price_in_estimate": true,
+        "cap_usd": "0.25",
+        "reported_usage_estimated_usd": "0.0085024",
+        "reserved_usd": "0.1096836",
+        "usage_receipts": 48
+      },
+      "api_cost_scope": "complete source report",
+      "available_episodes_per_task": 3,
+      "available_total_policy_episodes": 12,
+      "comparison_repeats": 3,
+      "curve": [
+        {
+          "mean_task_regret": 0.0668624580205589,
+          "trial_budget": 1
+        },
+        {
+          "mean_task_regret": 0.01602158396949622,
+          "trial_budget": 2
+        },
+        {
+          "mean_task_regret": 0.01602158396949622,
+          "trial_budget": 3
+        },
+        {
+          "mean_task_regret": 0.01602158396949622,
+          "trial_budget": 4
+        }
+      ],
+      "episodes_per_task": 3,
+      "failed_or_incorrect_trials": 0,
+      "memory_weight": 0.0,
+      "policy": "gpt-5.4-nano-2026-03-17",
+      "rejected_policy_turns": 0,
+      "task_count": 4,
+      "total_policy_episodes": 12
+    }
+  ],
+  "schema_version": 1,
+  "table_process_repeats": 3,
+  "table_sha256": "f11ebb3319dbe55ac806b1848aab807506d74aad09187afc64bb5cc3a600970b",
+  "test_fixture": false
+}

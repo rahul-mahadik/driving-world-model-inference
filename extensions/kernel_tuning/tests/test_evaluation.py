@@ -66,7 +66,7 @@ def test_grid_equal_budgets_each_fresh_episode_and_external_split():
     assert result["status"] == "completed"
     assert actions(result) == [[0, 1]] * 3
     assert result["counts"] == {"baseline_calls": 3, "candidate_calls": 6,
-                                "failed_or_incorrect_trials": 0}
+                                "failed_or_incorrect_trials": 0, "rejected_policy_actions": 0}
     assert [env.evaluator.calls for env in created] == [[("task-2", None), ("task-2", "candidate-0"),
                                                       ("task-2", "candidate-1")]] * 3
     assert len({id(env) for env in created}) == 3
@@ -130,7 +130,7 @@ def test_new_factory_hardware_cohort_cannot_be_pooled():
         evaluate_policy(make, grid_policy, [0], repeats=2)
     result = exc.value.report
     assert result["counts"] == {"baseline_calls": 2, "candidate_calls": 2,
-                                "failed_or_incorrect_trials": 0}
+                                "failed_or_incorrect_trials": 0, "rejected_policy_actions": 0}
     assert len(result["episodes"][1]["journal"]) == 1
     assert result["episodes"][1]["initial_info"]["cohort_id"] == "fixture-hardware-1"
     assert result["per_task"][0]["episodes"] == 1
@@ -148,7 +148,7 @@ def test_failed_results_consume_equal_budget_and_are_never_promoted():
     make, _ = factory(evaluator_options=lambda _: {"status": "incorrect"})
     result = evaluate_policy(make, grid_policy, [0], repeats=2)
     assert result["counts"] == {"baseline_calls": 2, "candidate_calls": 4,
-                                "failed_or_incorrect_trials": 4}
+                                "failed_or_incorrect_trials": 4, "rejected_policy_actions": 0}
     assert all(row["final_info"]["incumbent_candidate_id"] is None for row in result["episodes"])
     assert result["per_task"][0]["median_observed_incumbent_cost"] == 1.0
     assert all(step["reward"] == 0 for row in result["episodes"] for step in row["steps"])
@@ -160,7 +160,7 @@ def test_evaluator_exception_preserves_action_partial_journal_and_call_cost():
         evaluate_policy(make, grid_policy, [0])
     result = exc.value.report
     assert result["counts"] == {"baseline_calls": 1, "candidate_calls": 1,
-                                "failed_or_incorrect_trials": 1}
+                                "failed_or_incorrect_trials": 1, "rejected_policy_actions": 0}
     assert result["episodes"][0]["steps"][0]["action"] == 0
     assert "reward" not in result["episodes"][0]["steps"][0]
     assert result["episodes"][0]["journal"][-1]["error"]["type"] == "RuntimeError"

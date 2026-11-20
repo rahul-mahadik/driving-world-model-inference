@@ -20,6 +20,19 @@ from typing import Any, Callable, Mapping, Sequence
 import numpy as np
 
 
+class PolicyActionRejected(ValueError):
+    """A policy turn was attempted but produced no valid action.
+
+    Its bounded category is public. Evaluation consumes the turn without a
+    candidate call, fallback action, or invented measurement.
+    """
+    def __init__(self, category):
+        if type(category) is not str or not category or len(category) > 128:
+            raise ValueError("bounded rejection category required")
+        super().__init__(category)
+        self.category = category
+
+
 class EvaluationError(ValueError):
     """An aborted evaluation, including every completed and partial episode."""
 
@@ -103,6 +116,7 @@ def _protocol(env: Any) -> dict[str, Any]:
         "trial_budget": int(env.trial_budget),
         "memory_weight": float(env.memory_weight),
         "allow_synthetic": bool(env.allow_synthetic),
+        "allow_replay": bool(getattr(env, "allow_replay", False)),
     }
 
 
@@ -142,7 +156,8 @@ def evaluate_policy(
     """Run equal candidate budgets on an explicitly supplied task split.
 
     A fresh environment is created for each task/repeat. Every episode performs
-    one baseline call plus exactly ``env.trial_budget`` candidate calls. Policies
+    one baseline call plus exactly ``env.trial_budget`` policy turns. A typed
+    PolicyActionRejected consumes a turn without a candidate call. Policies
     receive ``(observation, info)`` and return an action index; ``info`` additionally
     contains ``evaluation_seed`` and ``evaluation_episode_index``. PPO and other
     policies can adapt their prediction API to this callback without changing
@@ -228,6 +243,7 @@ def evaluate_policy(
         # Journal entries are call receipts, including evaluator exceptions.
         episode["baseline_calls"] = sum(entry.get("kind") == "baseline" for entry in journal)
         episode["candidate_calls"] = sum(entry.get("kind") == "candidate" for entry in journal)
+        episode["rejected_policy_actions"] = sum(entry.get("kind") == "policy_rejection" for entry in journal)
         episode["failed_or_incorrect_trials"] = sum(
             entry.get("kind") == "candidate" and (
                 bool(entry.get("error") or entry.get("validation_error"))
@@ -279,21 +295,28 @@ def evaluate_policy(
                         policy_info.update(evaluation_seed=episode_seed, evaluation_episode_index=episode_index)
                         step: dict[str, Any] = {"trial_index": trial_index, "observation": _json(observation)}
                         episode["steps"].append(step)
-                        action = policy(copy.deepcopy(observation), policy_info)
-                        step["action"] = _json(action)
-                        observation, reward, terminated, truncated, info = env.step(action)
+                        try:
+                            action = policy(copy.deepcopy(observation), policy_info)
+                        except PolicyActionRejected as exc:
+                            step["action"] = None
+                            step["policy_rejection"] = exc.category
+                            observation, reward, terminated, truncated, info = env.reject_action(exc.category)
+                        else:
+                            step["action"] = _json(action)
+                            observation, reward, terminated, truncated, info = env.step(action)
                         step.update(reward=float(reward), terminated=bool(terminated), truncated=bool(truncated),
                                     observation_after=_json(observation), info=_json(info))
                         episode["reward_sum"] += float(reward)
                         check_info(info, int(task_index))
-                        check_trial(info["measurement"])
+                        if info["measurement"] is not None:
+                            check_trial(info["measurement"])
                         if info["trials_used"] != trial_index + 1:
                             raise ValueError("environment trial counter disagrees with completed candidate calls")
                         if (bool(terminated) and bool(truncated)) or bool(terminated or truncated) != (trial_index + 1 == env.trial_budget):
                             raise ValueError("environment ended outside the fixed candidate budget")
                     episode["final_info"] = _json(info)
                     finish_episode(episode, env)
-                    if episode["baseline_calls"] != 1 or episode["candidate_calls"] != env.trial_budget:
+                    if episode["baseline_calls"] != 1 or episode["candidate_calls"] + episode["rejected_policy_actions"] != env.trial_budget:
                         raise ValueError("journal call counts differ from the fixed episode budget")
                     episode["status"] = "completed"
                 except Exception as exc:
@@ -315,10 +338,10 @@ def evaluate_policy(
         report["status"] = "aborted"
         report["per_task"] = _aggregate(report["episodes"])
         report["counts"] = {name: sum(episode.get(name, 0) for episode in report["episodes"])
-                            for name in ("baseline_calls", "candidate_calls", "failed_or_incorrect_trials")}
+                            for name in ("baseline_calls", "candidate_calls", "failed_or_incorrect_trials", "rejected_policy_actions")}
         raise EvaluationError(str(exc), _json(report)) from exc
     report["status"] = "completed"
     report["per_task"] = _aggregate(report["episodes"])
     report["counts"] = {name: sum(episode[name] for episode in report["episodes"])
-                        for name in ("baseline_calls", "candidate_calls", "failed_or_incorrect_trials")}
+                        for name in ("baseline_calls", "candidate_calls", "failed_or_incorrect_trials", "rejected_policy_actions")}
     return _json(report)

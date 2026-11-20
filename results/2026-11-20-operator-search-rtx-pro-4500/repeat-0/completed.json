@@ -1,0 +1,24 @@
+{
+  "artifact_sha256": {
+    "plan.json": "bb5cbe59bd401f0d5d5d1cb374f0306c226babf918e679d2a1957cb3a8535d77",
+    "rows.json": "130c049c4ffde3155b7a6c14c9dc98b4727c2771a6afcf4f0621ce1150a38719",
+    "runtime.json": "ff2e9a2d7cf58006ffc2288f083098e2e0fa0b451f565e1fd98ce6c48b56aca2",
+    "trials.jsonl": "9bff7e2c2b4d23314fb1cbf901c04e40e3fde1ed034335e769b350db545d2d19"
+  },
+  "at": "2026-11-20T23:13:32.628870+00:00",
+  "backend": "cuda",
+  "cohort_id": "4c7bbebb3ffcd66c1b64d31723b8c64852900f1647780b2d91a4fea947742ec8",
+  "collection_protocol_sha256": "e56b827dfee071e7799de1f03e2c71d171ad772e3c223941252a79b1adb7f7ea",
+  "completed": true,
+  "measurement_count": 120,
+  "process_instance_id": "cd6e82e9-80dc-43ce-91d2-5a4e252e6a75",
+  "public_export": {
+    "derived_from_completed_sha256": "88b985aa16bc64a6cc8244d1481adda709c6c43c45d0585e99803c07e4eb5317",
+    "execution_error_messages_redacted": true,
+    "hardware_identifiers_pseudonymized": true,
+    "measurements_rerun": false
+  },
+  "repeat_index": 0,
+  "synthetic": false,
+  "wall_seconds": 165.94986896202317
+}

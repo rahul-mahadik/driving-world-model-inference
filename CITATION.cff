@@ -8,9 +8,9 @@ authors:
 repository-code: "https://github.com/rahul-mahadik/driving-world-model-inference"
 license: MIT
 abstract: >-
-  Research software toward verifiable rewards for lossy inference optimization
-  of video world models. Modern baselines, calibrated quality verification,
-  tabulated configuration search, and hardware transfer are staged research
-  goals. Historical measurements remain separate from unrun studies. This
-  software citation does not identify a peer-reviewed paper or completed
-  validation of a general-purpose code-action benchmark.
+  DriveBench measures video-model inference and GPU operators, and exposes
+  budgeted configuration search through agent tools and a Gymnasium environment.
+  Its operator dataset includes CUDA timings, allocated-memory measurements,
+  numerical checks and recorded search trajectories. Measured-table replay
+  supports CPU policy evaluation; a separate runner confirms fixed selections
+  with fresh GPU measurements.

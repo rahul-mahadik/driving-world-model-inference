@@ -1,0 +1,910 @@
+{
+  "comparison_repeats": null,
+  "confirmation_points": [],
+  "figure_sha256": {
+    "operator-latency-correctness.pdf": "fa742d0208482012884c27cf9e84102ce8741f494b74c7ca5d188a9efa5c6ba9",
+    "operator-latency-correctness.svg": "34178ea34a867b12035da34603b30b644284ac69c8510eedf43e372374c82319",
+    "policy-regret-vs-budget.pdf": "45458a7782aed54b8210c623733075dffdd71843c4d1b46871256a1d2235f657",
+    "policy-regret-vs-budget.svg": "c0e57910640e432505f8d4f10bb4881c9baa5b4c1590531e7bdd18f6be8bb1cf"
+  },
+  "independent_samples_added_by_plotting": 0,
+  "inputs": [
+    {
+      "kind": "policy_report",
+      "sha256": "5cdaecb444ff2571730d2d5d9a0d339a66d69f8c171010f6f585f94735317023"
+    },
+    {
+      "kind": "policy_report",
+      "sha256": "ce2a937541fbdfdaf40a1a080ca8041822be7a8bf1b66da2a167e5effc9b538f"
+    },
+    {
+      "kind": "policy_report",
+      "sha256": "f503087fc7696dd991d695072fa92ddf4e9874f38518652a01602d050e245e3c"
+    }
+  ],
+  "matrix": [
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.0201240956483746,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.059366074353527,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.0841858287626867,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.05958549359531,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.117055127721059,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.057185986117624,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.7699144387407075,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.7226228373945613,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.9630829220155321,
+        "process_repeats": 3,
+        "task_id": "train-geglu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8735239079657015,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8976300992166848,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0080625502295275,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6844164969073524,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9221974796123574,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7657484746672297,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8938842331582463,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7504844848268629,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.66838024871593,
+        "process_repeats": 3,
+        "task_id": "train-geglu-2"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9717143071350197,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8692191929976723,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0777866658913646,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0514279302917433,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9866637973090306,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0103950131492374,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7996334031016168,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7217419798263036,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7892083571503066,
+        "process_repeats": 3,
+        "task_id": "train-geglu-3"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.048499445284018,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.5620048827701234,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.5401123636726786,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.3950741982936394,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.2134354690431806,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.6290508524525755,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.4669741357598565,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.6094627631601628,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.0930099889563918,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.2604954101704793,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.1398003893914836,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.8962190166270014,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.125162951090388,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.1518902465587555,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.1705046786179842,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.327422855246329,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.1166762096994893,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.3408952191299561,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-2"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.8043841738146567,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.4259945956411322,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.1105321908026973,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.9768420782533451,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 1.9673226402726298,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.1521674718125694,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.102214683995918,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.1505947606536213,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 2.161539251597978,
+        "process_repeats": 3,
+        "task_id": "train-groupnorm_silu-3"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.752633028467316,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7532430407584558,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9996311582318589,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7156031099204961,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7372209298864212,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8336214727217829,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7849502099875006,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7415377397911922,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7470882187867334,
+        "process_repeats": 3,
+        "task_id": "validation-geglu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2371028141095137,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.4977609310887791,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8444343112633097,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.34682206311976266,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.512950718059931,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2890683243048202,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.32934706953844445,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2571944027456429,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2630849856674359,
+        "process_repeats": 3,
+        "task_id": "validation-groupnorm_silu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6281584201603151,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6143636811848857,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8875729276415235,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6226512652797547,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6140072186132912,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6246381994579775,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6052082744974455,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6314752031885132,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6104984162918619,
+        "process_repeats": 3,
+        "task_id": "test-geglu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6891340666575991,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6959363684004989,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.9592384248423124,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7533124449564718,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6745007186502918,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6517612522556969,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.6824204570576057,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.7247012566478337,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.753353023130947,
+        "process_repeats": 3,
+        "task_id": "test-geglu-2"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.22233479526132902,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.4604546492584823,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8392275856169811,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.29981846444747895,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.4753019550657601,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.23681480131898525,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.31226249558091557,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.23454672435562401,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2505486695292841,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-1"
+      }
+    ],
+    [
+      {
+        "candidate_id": "torch-compiled",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.24223239257989482,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.48023580123448795,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b128-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.8600859037164146,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.3273168133413296,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b256-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.4974500579697221,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.2550509172988516,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b512-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.332114808954344,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w4",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.24073645068098165,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      },
+      {
+        "candidate_id": "triton-b1024-w8",
+        "failed_repeats": 0,
+        "median_paired_latency_ratio": 0.24931742423342657,
+        "process_repeats": 3,
+        "task_id": "test-groupnorm_silu-2"
+      }
+    ]
+  ],
+  "new_gpu_measurements": 0,
+  "policy_curves": [
+    {
+      "api_cost": null,
+      "api_cost_scope": "complete source report",
+      "available_episodes_per_task": 20,
+      "available_total_policy_episodes": 80,
+      "comparison_repeats": null,
+      "curve": [
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 1
+        },
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 2
+        },
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 3
+        },
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 4
+        }
+      ],
+      "episodes_per_task": 20,
+      "failed_or_incorrect_trials": 0,
+      "memory_weight": 0.0,
+      "policy": "fixed-compiled",
+      "rejected_policy_turns": 0,
+      "task_count": 4,
+      "total_policy_episodes": 80
+    },
+    {
+      "api_cost": null,
+      "api_cost_scope": "complete source report",
+      "available_episodes_per_task": 20,
+      "available_total_policy_episodes": 80,
+      "comparison_repeats": null,
+      "curve": [
+        {
+          "mean_task_regret": 0.015454725490921237,
+          "trial_budget": 1
+        },
+        {
+          "mean_task_regret": 0.01380828180991769,
+          "trial_budget": 2
+        },
+        {
+          "mean_task_regret": 0.01380828180991769,
+          "trial_budget": 3
+        },
+        {
+          "mean_task_regret": 0.014533445418218726,
+          "trial_budget": 4
+        }
+      ],
+      "episodes_per_task": 20,
+      "failed_or_incorrect_trials": 0,
+      "memory_weight": 0.0,
+      "policy": "grid",
+      "rejected_policy_turns": 0,
+      "task_count": 4,
+      "total_policy_episodes": 80
+    },
+    {
+      "api_cost": null,
+      "api_cost_scope": "complete source report",
+      "available_episodes_per_task": 20,
+      "available_total_policy_episodes": 80,
+      "comparison_repeats": null,
+      "curve": [
+        {
+          "mean_task_regret": 0.09671838373210938,
+          "trial_budget": 1
+        },
+        {
+          "mean_task_regret": 0.04343097795997523,
+          "trial_budget": 2
+        },
+        {
+          "mean_task_regret": 0.02311170287729622,
+          "trial_budget": 3
+        },
+        {
+          "mean_task_regret": 0.016853349901565458,
+          "trial_budget": 4
+        }
+      ],
+      "episodes_per_task": 20,
+      "failed_or_incorrect_trials": 0,
+      "memory_weight": 0.0,
+      "policy": "random",
+      "rejected_policy_turns": 0,
+      "task_count": 4,
+      "total_policy_episodes": 80
+    }
+  ],
+  "schema_version": 1,
+  "table_process_repeats": 3,
+  "table_sha256": "f11ebb3319dbe55ac806b1848aab807506d74aad09187afc64bb5cc3a600970b",
+  "test_fixture": false
+}

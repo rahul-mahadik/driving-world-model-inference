@@ -21,7 +21,7 @@ Policies receive shape/operator features and the action history. The generic int
 
 ## Budget and objective
 
-The bundled operator suite defaults to four candidate measurements among nine settings, plus one fresh reference measurement per episode. Each attempted configuration, including a repeated, incorrect or error result, costs one trial. Repeats are fresh measurements. Protocol violations and unexpected evaluator exceptions preserve available journals and abort; they cannot become successful scores.
+For live CUDA evaluation, the bundled operator suite defaults to four candidate measurements among nine settings, plus one fresh reference measurement per episode. Each attempted configuration, including a repeated, incorrect or error result, costs one trial. Repeats are fresh measurements. Protocol violations and unexpected evaluator exceptions preserve available journals and abort; they cannot become successful scores.
 
 The reference starts as the incumbent and requires positive latency and allocated bytes, including for the latency-only objective. Zero-allocation references need an explicit alternative normalization contract. For a correctness-passing candidate,
 
@@ -33,7 +33,7 @@ The reward is `previous_best_cost - new_best_cost`; returned incorrect/error res
 
 ## Measurement and acceptance
 
-The provided CUDA evaluator uses an otherwise idle single NVIDIA device and a pinned runtime, with five warmups and thirty timed repetitions per measurement by default. CUDA events bracket one operator invocation and can include stream gaps. Host wall time is recorded separately. Compilation, initialization, input preparation, warmups, correctness and export are excluded from reported operator latency and included in job wall time. Record cold-start/compilation costs separately when they matter to deployment.
+Run the CUDA evaluator on an otherwise idle single NVIDIA device with the pinned runtime. Its defaults are five warmups and thirty timed repetitions per measurement. CUDA events bracket one operator invocation and can include stream gaps. Host wall time is recorded separately. Compilation, initialization, input preparation, warmups, correctness and export are excluded from reported operator latency and included in job wall time. Record cold-start/compilation costs separately when they matter to deployment.
 
 Inputs are seeded random tensors, not real model activations. Acceptance checks output shape, dtype, finiteness, dtype-specific allclose, and input immutability. Float16 uses rtol/atol0.002; bfloat16 uses0.02; float32 uses rtol0.00002/atol0.000003. These are operator tolerances, not calibrated video-quality thresholds. Preserve initial failures rather than tuning acceptance after seeing outcomes.
 
@@ -45,9 +45,9 @@ The provided inference bridge has a separate cold-request contract: it construct
 
 ## Policy comparison and reporting
 
-Use validation for selecting search algorithms, hyperparameters, objectives and budgets. Freeze these choices before test. Compare the same tasks, action order, trial budget, objective, measurement settings and cohort. Supplied baselines are fixed grid prefixes and seeded random search without replacement. The grid starts with the compiled candidate; its ordering is part of the specification. No claim is made that these are the strongest possible baselines.
+Use validation for selecting search algorithms, hyperparameters, objectives and budgets. Freeze these choices before test. Compare the same tasks, candidate-list order, trial budget, objective, measurement settings and cohort. Live CLI baselines are fixed grid prefixes and seeded random search without replacement; measured replay also provides a fixed compiled configuration. The grid starts with the compiled candidate; its ordering is part of the specification. No claim is made that these are the strongest possible baselines.
 
-Evaluate fresh repeated episodes; interleave policy order in a prespecified schedule to reduce drift confounding. The single-policy CLI records one policy per invocation and does not automatically balance separate invocations. Advanced comparisons can call `evaluate_policy` in a scheduled order while sharing a serial evaluator/cohort. Never run independent GPU environments concurrently on one device when interpreting isolated latency.
+For live GPU comparisons, evaluate fresh repeated episodes and interleave policy order in a prespecified schedule to reduce drift confounding. The single-policy CLI records one policy per invocation and does not automatically balance separate invocations. Advanced comparisons can call `evaluate_policy` in a scheduled order while sharing a serial evaluator/cohort. Never run independent GPU environments concurrently on one device when interpreting isolated latency.
 
 The [serial comparison example](../extensions/kernel_tuning/examples/compare_search_policies.py) shows this scheduling for grid and random policies: each task receives both orders over an even number of repeats, matching episode seeds, fresh references and identical candidate budgets. It verifies cross-policy cohort/input bindings and saves partial reports on failure. Its included validation is synthetic; a CUDA invocation needs its own evidence and external resource/time controls.
 
@@ -55,8 +55,28 @@ Report every episode and its individual trials, per-task results, failed-call co
 
 An episode incumbent is a **best observed** result, subject to selection bias and noise. The evaluator does not automatically confirm it. A claimed improvement needs independent fresh measurements of the frozen selected configuration and reference, appropriate control comparisons, and enough independent repetitions to establish a signal. A separate exhaustive sweep can provide an oracle for small finite spaces; its cost must not disappear from the report.
 
+## Recorded-measurement replay
+
+The optional `measured_replay` backend uses a complete measured operator table
+in place of live measurements. It is a separate execution mode: reference and
+candidate observations cite their original trial IDs and process repeat, and
+fresh GPU measurement count is zero. Repeated queries cycle through the finite
+recorded repeats. More replay episodes do not increase the number of GPU
+measurements or establish a new hardware cohort.
+
+Replay policies receive task/configuration descriptions and only their own
+queried observations. The public table remains inspectable by its users; the
+local Python interface does not isolate malicious policy code. A refusal,
+invalid action or failed selector API call consumes a turn with zero reward and
+no candidate query. Publish selector API cost separately. Regret against the
+complete table is computed after the episode and is not exposed to the policy.
+
+See [measured operator search](measured-operator-search.md) for the exact repeat
+selection, oracle and confirmation procedures. Freeze selections before fresh
+GPU confirmation and report those measurements separately from replay rewards.
+
 ## Result and release status
 
 New runs retain plan, suite/source/protocol hashes, raw trial records, environment journals and completed/failed receipts. Existing paths are refused. Synthetic demos label every result as synthetic and cannot establish GPU performance or correctness. Interrupted or partial output is not completion.
 
-Historical evidence stays immutable. V17 is publicly available under MIT; the newer operator suite and agent integration have CPU coverage, with real-runtime validation explicitly tracked in [the readiness table](benchmark-readiness.md). New GPU work must produce a new cohort and result report before that status changes. No hardware-independent leaderboard, RL superiority or quality-preserving end-to-end gain is implied by software completion.
+Published evidence remains tied to its recorded hardware, runtime and protocol. New GPU work produces a separate cohort and result report. Software contract tests and measured replay do not establish new GPU performance, RL superiority or quality-preserving end-to-end inference. See [the readiness table](benchmark-readiness.md) for the validated interfaces.
