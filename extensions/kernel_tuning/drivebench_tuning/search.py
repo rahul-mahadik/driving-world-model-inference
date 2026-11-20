@@ -141,8 +141,8 @@ class TrialResult:
             _identity(getattr(self, name), name)
         if self.candidate_id is not None:
             _identity(self.candidate_id, "candidate_id")
-        if self.backend not in ("cuda", "synthetic"):
-            raise ValueError("backend must be cuda or synthetic")
+        if self.backend not in ("cuda", "synthetic", "measured_replay"):
+            raise ValueError("backend must be cuda, synthetic or measured_replay")
         if self.status not in ("ok", "incorrect", "error"):
             raise ValueError("unknown trial status")
         if type(self.correct) is not bool or self.correct != (self.status == "ok"):
@@ -189,8 +189,9 @@ class BudgetedTuningEnv(gym.Env[dict[str, Any], int]):
 
     Reset accepts ``options={'task_index': i}``; absent that, task selection
     uses Gymnasium's seeded RNG. Every reset calls the reference evaluator,
-    every step calls the candidate evaluator, and repeat actions are fresh
-    calls. A returned incorrect/error result consumes a trial and earns zero.
+    every step calls the candidate evaluator. Calls using the CUDA backend
+    must be fresh measurements. Explicit measured_replay calls reuse recorded
+    data and identify both the replay event and original source measurement. A returned incorrect/error result consumes a trial and earns zero.
     Protocol violations or evaluator exceptions preserve the attempt and
     require reset; they are never fabricated into measured GPU results.
 
@@ -211,6 +212,7 @@ class BudgetedTuningEnv(gym.Env[dict[str, Any], int]):
         trial_budget: int = 4,
         memory_weight: float = 0.0,
         allow_synthetic: bool = False,
+        allow_replay: bool = False,
     ) -> None:
         super().__init__()
         if not tasks or any(not isinstance(task, TaskSpec) for task in tasks):
@@ -235,6 +237,9 @@ class BudgetedTuningEnv(gym.Env[dict[str, Any], int]):
         self.trial_budget = int(trial_budget)
         self.memory_weight = weight
         self.allow_synthetic = allow_synthetic
+        if type(allow_replay) is not bool:
+            raise ValueError("allow_replay must be boolean")
+        self.allow_replay = allow_replay
         count = len(candidates)
         self.action_space = spaces.Discrete(count)
         self.observation_space = spaces.Dict({
@@ -284,6 +289,8 @@ class BudgetedTuningEnv(gym.Env[dict[str, Any], int]):
             raise ValueError("trial task/candidate identity does not match the requested evaluation")
         if result.backend == "synthetic" and not self.allow_synthetic:
             raise ValueError("synthetic results require explicit allow_synthetic=True")
+        if result.backend == "measured_replay" and not self.allow_replay:
+            raise ValueError("measured replay requires explicit allow_replay=True")
         binding = (result.backend, result.cohort_id)
         if self._cohort_binding is not None and binding != self._cohort_binding:
             raise ValueError("backend and physical/runtime cohort must stay fixed")
@@ -369,6 +376,8 @@ class BudgetedTuningEnv(gym.Env[dict[str, Any], int]):
             "backend": self._baseline.backend, "cohort_id": self._baseline.cohort_id,
             "input_digest": self._baseline.input_digest,
             "synthetic": self._baseline.backend == "synthetic",
+            "measured_replay": self._baseline.backend == "measured_replay",
+            "fresh_gpu_measurement": self._baseline.backend == "cuda",
             "objective": {
                 "cost": "(latency/reference_latency + memory_weight*allocation/reference_allocation)/(1+memory_weight)",
                 "memory_weight": self.memory_weight,
@@ -426,6 +435,26 @@ class BudgetedTuningEnv(gym.Env[dict[str, Any], int]):
         terminated = self._trials == self.trial_budget
         self._needs_reset = terminated
         return self._observation(), float(reward), terminated, False, self._info(result)
+
+    def reject_action(self, reason: str):
+        """Consume a malformed/refused policy turn without inventing a trial.
+
+        Used by policy evaluation when a selector fails to produce an allowed
+        action. This is not a candidate execution failure or a GPU measurement.
+        """
+        if self._needs_reset or self._closed:
+            raise RuntimeError("call reset before rejecting an action")
+        if type(reason) is not str or not reason or len(reason) > 128:
+            raise ValueError("bounded rejection category required")
+        self._trials += 1
+        self._journal.append({"kind": "policy_rejection", "task_id": self.current_task.task_id,
+                              "reason": reason, "trials_used": self._trials,
+                              "candidate_evaluation_performed": False})
+        terminated = self._trials == self.trial_budget
+        self._needs_reset = terminated
+        info = self._info()
+        info["policy_rejection"] = reason
+        return self._observation(), 0.0, terminated, False, info
 
     def close(self) -> None:
         if not self._cleanup_complete:

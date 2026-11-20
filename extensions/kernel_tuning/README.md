@@ -6,6 +6,11 @@ A reusable Gymnasium task for finding a good execution configuration within a me
 
 V0.2 adds a new `BudgetedTuningEnv`. The historical `KernelTuningEnv`, its per-trial reward, reference Q learner and published results are preserved. This revision's new suite and adapter wiring have CPU contract coverage; fresh GPU validation is not claimed.
 
+The [measured operator search guide](../../docs/measured-operator-search.md)
+covers exhaustive CUDA collection, CPU replay of recorded observations, bounded
+LLM selectors, and fresh GPU confirmation of selected configurations. Replay
+uses a supplied measured table; it does not invent new timing samples.
+
 ## Install and run anywhere
 
 ```sh

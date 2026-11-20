@@ -1,51 +1,29 @@
-# DriveBench: Verifiable Rewards for Lossy World-Model Inference
+# DriveBench
 
-**Research thesis: verifiable rewards for lossy inference optimization of video world models.**
+DriveBench is a GPU benchmark and an environment for agents that tune video-model inference and GPU operators. It measures execution cost, checks candidate outputs, and gives an agent a fixed budget for trying configurations.
 
-[Project website](https://drivebench-research.rahul-a-mahadik.chatgpt.site) · [Research protocol](docs/research-protocol.md) · [Historical measurements](RESULTS.md) · [Reproduction](docs/reproduce-release.md) · [Citation](CITATION.cff)
+[Website](https://drivebench-research.rahul-a-mahadik.chatgpt.site) · [Installation](docs/reproduce-release.md) · [Agent tools](docs/agent-environment.md) · [Operator search](docs/measured-operator-search.md) · [Citation](CITATION.cff)
 
-DriveBench measures the tradeoff between inference cost and output fidelity, and exposes that feedback to optimization agents. The research question is whether an evaluator can give useful, difficult-to-game rewards when an optimization deliberately changes a model's output. A faster result is useful only if the verifier measures the intended fidelity constraints.
+## Benchmark
 
-**Status: research in progress.** Historical GPU measurements are published. The modern Vista adapter completed one full-workload eager request after three warmups on an A100-SXM4-80GB on November 18, 2026. This establishes execution feasibility, not a comparative baseline or quality result. Empirical verifier error rates, a large measured lookup table, repeated policy comparisons, hardware transfer and adversarial code evaluation remain open. No scientific finding from those phases is claimed.
+The inference runner records request latency, throughput, GPU allocator memory, failures, and the model, input and runtime identities needed to reproduce a measurement. The [modern Vista adapter](docs/modern-vista.md) supports native PyTorch SDPA, explicit precision settings and channels-last execution. The [measurement protocol](docs/modern-baseline-measurement.md) separates cold-start costs from steady-state latency and uses fresh-process repeats.
 
-The former one-episode, eight-configuration LLM/random/grid study was **canceled before execution on November 14, 2026**. Its plans are retained for provenance, not offered as the active research design. See the [plan registry](configs/research/active-roadmap-v2.json) and [cancellation record](docs/canceled-plans.md). More legacy eager-versus-compiled repeats are not planned.
+The operator suite contains 12 workloads across GEGLU and GroupNorm+SiLU, with compiled PyTorch and eight Triton configurations. Inputs are seeded tensors; the four test workloads use selected historical Vista profile shapes. Each candidate is checked numerically against an eager reference. Operator timing excludes compilation and warmup. Successful trials also record preparation time, including compilation, input setup, correctness checks and warmup; all of it consumes the run's wall-time budget.
 
-## Research sequence
+[Collecting a measured table](docs/measured-operator-search.md) runs every operator configuration in three fresh processes on one GPU. The table retains the CUDA-event samples, numerical checks and failed configurations. It can then be used for CPU-only search experiments without paying for another GPU measurement on each action.
 
-| Phase | Question | Required evidence | Current state |
-|---|---|---|---|
-| 1. Modern baseline | Does compilation still help after native SDPA, half precision and channels-last? | Legacy/modern baseline table; fresh-process costs, break-even and runtime attribution | Eager execution feasible on A100; comparative restart study unrun |
-| 2. Quality verifier | Does the gate reject meaningful degradation while accepting valid variation? | Frozen development calibration and independently labeled held-out false-accept/false-reject rates | Design; uncalibrated |
-| 3. Tabulated search | What cost–memory–quality frontier exists in a conditional inference space? | Repeated measured cells, provenance, failures and per-cell uncertainty | Design; no lookup dataset yet |
-| 4. Policies and transfer | Do policies beat TPE, and do configurations transfer across GPUs? | At least 20 search seeds per method, live confirmation, rank correlation and transfer regret | Unrun |
-| 5. Code actions | Can a protected evaluator reject gaming while measuring a real kernel substitution? | Profile-selected operators, adversarial tests and end-to-end Vista delta | Design; no arbitrary-code service |
-| 6. Findings | Which hypothesis survives the measurements? | Finding-led report, including null or negative results | Pending evidence |
+## Agent and RL interfaces
 
-The first bounded full-workload check is complete: an A40 ran out of memory during its first warmup, while a separate A100 80 GB attempt completed three warmups and one measured eager request. That request took 97.994715 seconds; peak allocated memory was 46.01 GiB, and first-warmup reserved memory reached 71.61 GiB. These are separate attempts, not a cross-device speed comparison or minimum-memory bound. The [numerical evidence and failures](results/2026-11-18-a100-modern-eager-feasibility/README.md) include the runtime and reproduction recipe. The full table still depends on measured cost and prospective coverage.
+Two interfaces share the benchmark's evaluator contracts:
 
-The phases are gates, not a checklist of already implemented capabilities. The target of at least 1,000 configurations is a future coverage goal; an enumerable Cartesian product is not a measured benchmark. A second model is deferred until the baseline, verifier and tabulated comparison are sound.
+- **`AgentSession`** exposes configuration trials, profiler feedback and final submission through bounded tools. It supports agents that inspect feedback and choose their next experiment.
+- **`BudgetedTuningEnv`** implements Gymnasium's reset/step interface. An action selects a configuration; observations include the task, remaining budget and previous outcomes. Reward tracks improvement in the best valid configuration found within the episode.
 
-## Modern Vista baseline
+The measured-table backend supplies recorded GPU observations to the same search environment. It is explicitly labeled replay, and records which original measurement supplied each observation. The supplied comparisons include fixed compiled settings, grid, random search and an optional LLM selector. Selected configurations can be [confirmed in fresh GPU processes](docs/measured-operator-search.md#confirm-selections).
 
-The new [modern adapter](docs/modern-vista.md) is separate from the preserved legacy implementation. It must preserve the pretrained action-conditioning projections and checkpoint keys when replacing attention with native PyTorch SDPA. Channels-last and precision are explicit, measured choices, not presumed wins.
+These interfaces support policy evaluation and RL training; they do not require that an agent be trained with RL. The built-in actions are typed configurations. Executing arbitrary submitted code requires an additional isolation layer.
 
-The [measurement protocol](docs/modern-baseline-measurement.md) uses few fixed scenes and repeated fresh processes, discloses compiler-cache state, and separates initialization, the cold prefix and steady-state requests. Compilation-only cost is reported only when directly instrumented; first-request latency is not relabeled as pure compilation. Break-even may be infinite. Profiling and performance measurement are separate runs.
-
-The legacy eager row is a labeled historical cohort when same-device remeasurement is unavailable. A historical GPU/runtime row is not a paired modern comparison. The modern eager and modern compiled comparison must share the same physical device, full runtime, weights, inputs and workload.
-
-## Quality, tables and code actions
-
-- [Verifier design](docs/verifier-research-design.md): seed and precision variation are calibration data, not automatic quality labels; final thresholds are frozen before held-out labels are opened.
-- [Tabulated study design](docs/tabulated-study-design.md): conditional configurations, failed and missing cells, per-cell repeats, policy costs and hardware transfer.
-- [Code-action threat model](docs/code-action-threat-model.md): protected evaluator and explicit adversarial cases. The current configuration interface is not a secure arbitrary-code sandbox.
-
-The proposed final verifier combines a distributional video metric with trajectory-following assessment. Both need validated feature/estimator implementations and adequate data; neither a four-scene distribution score nor a hard-coded tolerance establishes quality preservation. False-accept and false-reject rates must include denominators, uncertainty, label disagreements and invalid-evaluator outcomes.
-
-## Existing software interfaces
-
-The released benchmark records latency, throughput, allocator memory, failures and source/runtime/input identity. `AgentSession` supplies bounded tools and evaluator-owned final scoring for typed configuration actions. The operator tier provides `BudgetedTuningEnv`, a CUDA evaluator, compiled PyTorch references and example Triton configurations. These reusable contracts do not imply a trained RL policy or superiority over autotuning.
-
-Install the first-party packages:
+## Get started
 
 ```sh
 git clone https://github.com/rahul-mahadik/driving-world-model-inference.git
@@ -53,18 +31,32 @@ cd driving-world-model-inference
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install . ./extensions/kernel_tuning
+
+drivebench-search describe
 ```
 
-CPU demos remain available as **software smoke tests only**, in the [installation guide](docs/reproduce-release.md). Their synthetic outputs are not empirical benchmark evidence. Real Vista runs require separately licensed assets, a declared NVIDIA environment, evaluator-owned checks and resource limits. The public package does not purchase or provision compute.
+Run an interface example without a GPU:
 
-## Measured evidence
+```sh
+drivebench-search run --backend synthetic --policy random \
+  --split validation --output ./example-search
+```
 
-- [Modern Vista eager feasibility](results/2026-11-18-a100-modern-eager-feasibility/README.md): one A100 request at full resolution and 50 steps, all three warmups, exact numerical rows and an earlier A40 OOM. No modern speedup or quality claim.
+The synthetic backend tests integration; its generated timings are not benchmark results. On a prepared NVIDIA host, install the pinned operator dependencies and use the CUDA backend:
 
-- [H100 legacy inference comparison](results/2026-10-30-h100-tradeoff/README.md): 200 requests per role on the pinned Torch 2.0.1/xFormers stack; 23.85% lower median latency and 7.68% higher peak allocated memory. Held-out quality validation was not completed.
-- [Numerical audit](results/2026-10-30-h100-tradeoff/numerical-audit/README.md): all 400 original timing rows and a standalone reconstruction of 48 recorded fields. Reanalysis is not a new GPU reproduction.
-- [A100 operator experiments](results/2026-11-07-kernel-tuning/README.md): historical operator correctness and timing; no demonstrated RL advantage or whole-video gain.
+```sh
+python -m pip install './extensions/kernel_tuning[gpu]'
+drivebench-search run --backend cuda --policy random \
+  --split validation --trials 4 --repeats 3 --max-seconds 900 \
+  --output ./gpu-search
+```
 
-All historical result files, failed attempts and original qualification flags remain unchanged. They are not evidence for a modern comparative baseline or the proposed quality verifier. No leaderboard is presented before measured coverage exists.
+Use an external job deadline and keep the operator environment separate from the Vista runtime. The package does not provision compute. See [writing an evaluator](extensions/kernel_tuning/docs/extending.md) to connect another model or kernel implementation, and [measured operator search](docs/measured-operator-search.md) for collection, replay and confirmation commands.
 
-First-party code is [MIT licensed](LICENSE). Model weights, datasets and third-party software retain their [separate licenses](NOTICE.md). Contributions should include reproducible measurement and appropriate claim boundaries; see [CONTRIBUTING.md](CONTRIBUTING.md).
+## Results and scope
+
+Published measurements and their reproduction instructions are indexed in [RESULTS.md](RESULTS.md). A full-model result and an operator result are separate measurements; operator speedups do not establish an end-to-end Vista gain.
+
+The research focus is verifiable rewards for lossy video-model optimization. The full-model [quality verifier](docs/verifier-research-design.md) still requires empirical calibration and held-out validation. Current numerical checks on operators do not establish video quality preservation. The [research protocol](docs/research-protocol.md) describes the remaining evaluation work.
+
+First-party code is [MIT licensed](LICENSE). Model weights, datasets and third-party software retain their [separate licenses](NOTICE.md). See [CONTRIBUTING.md](CONTRIBUTING.md) for reproducible submissions.
