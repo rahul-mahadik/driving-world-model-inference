@@ -1,5 +1,10 @@
 # Measured operator search
 
+The [RTX PRO 4500 dataset](../results/2026-11-20-operator-search-rtx-pro-4500/README.md)
+contains 360 GPU measurements and policy-evaluation records. To use existing
+measurements, start with the replay command below and set `--table` to
+`results/2026-11-20-operator-search-rtx-pro-4500/table.json`.
+
 The operator suite has 12 workloads and nine candidate configurations. A table
 collection measures every candidate and an eager reference in each workload,
 using three separate processes on one physical GPU. Each successful measurement records
@@ -107,6 +112,11 @@ episode-to-selection mapping, the original input hashes and the physical
 GPU/runtime cohort. Fresh confirmation regenerates inputs and reruns numerical
 checks, with eager and compiled references measured alongside the selection.
 Confirmation data never feeds back into the already completed policy episodes.
+Live confirmation requires selections from the original, unsanitized table on
+its original GPU/runtime. The published table uses pseudonymous hardware
+identities and supports CPU replay; its selection manifests cannot be used for
+live confirmation. On another GPU, collect a new table, run the policies on that
+table, and confirm those selections as a separate cohort.
 Run each confirmation repeat in a fresh process on the original GPU/runtime:
 
 ```sh

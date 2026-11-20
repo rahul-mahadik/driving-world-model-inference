@@ -10,7 +10,7 @@ The inference runner records request latency, throughput, GPU allocator memory, 
 
 The operator suite contains 12 workloads across GEGLU and GroupNorm+SiLU, with compiled PyTorch and eight Triton configurations. Inputs are seeded tensors; the four test workloads use selected historical Vista profile shapes. Each candidate is checked numerically against an eager reference. Operator timing excludes compilation and warmup. Successful trials also record preparation time, including compilation, input setup, correctness checks and warmup; all of it consumes the run's wall-time budget.
 
-[Collecting a measured table](docs/measured-operator-search.md) runs every operator configuration in three fresh processes on one GPU. The table retains the CUDA-event samples, numerical checks and failed configurations. It can then be used for CPU-only search experiments without paying for another GPU measurement on each action.
+The [published operator dataset](results/2026-11-20-operator-search-rtx-pro-4500/README.md) contains 360 GPU measurements on an RTX PRO 4500 Blackwell, with three fresh-process repeats per task/configuration. [Collecting a measured table](docs/measured-operator-search.md) reproduces this procedure on another GPU. The table retains the CUDA-event samples, numerical checks and failed configurations. It can then be used for CPU-only search experiments without paying for another GPU measurement on each action.
 
 ## Agent and RL interfaces
 
@@ -35,14 +35,16 @@ python -m pip install . ./extensions/kernel_tuning
 drivebench-search describe
 ```
 
-Run an interface example without a GPU:
+Compare search policies on the measured dataset without a GPU:
 
 ```sh
-drivebench-search run --backend synthetic --policy random \
-  --split validation --output ./example-search
+python -m drivebench_tuning.replay_cli \
+  --table results/2026-11-20-operator-search-rtx-pro-4500/table.json \
+  --split test --trials 4 --repeats 20 --seed 1901 \
+  --output ./policy-comparison
 ```
 
-The synthetic backend tests integration; its generated timings are not benchmark results. On a prepared NVIDIA host, install the pinned operator dependencies and use the CUDA backend:
+Replay returns recorded GPU measurements and preserves their source IDs. On a prepared NVIDIA host, install the pinned operator dependencies and collect fresh CUDA measurements:
 
 ```sh
 python -m pip install './extensions/kernel_tuning[gpu]'

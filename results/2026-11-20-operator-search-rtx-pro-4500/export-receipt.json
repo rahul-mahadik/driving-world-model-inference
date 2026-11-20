@@ -1,0 +1,117 @@
+{
+  "artifacts": [
+    {
+      "artifact": "repeat-0/plan.json",
+      "derived_sha256": "bb5cbe59bd401f0d5d5d1cb374f0306c226babf918e679d2a1957cb3a8535d77",
+      "source_sha256": "bb5cbe59bd401f0d5d5d1cb374f0306c226babf918e679d2a1957cb3a8535d77"
+    },
+    {
+      "artifact": "repeat-0/runtime.json",
+      "derived_sha256": "ff2e9a2d7cf58006ffc2288f083098e2e0fa0b451f565e1fd98ce6c48b56aca2",
+      "source_sha256": "c582a1eaf46ed5e99c0522851200a2812d72413dd5d22d6af24227eb511766ea"
+    },
+    {
+      "artifact": "repeat-0/rows.json",
+      "derived_sha256": "130c049c4ffde3155b7a6c14c9dc98b4727c2771a6afcf4f0621ce1150a38719",
+      "source_sha256": "f6b2100f3e74b2c4f3ed9470ab16dcb21931a7a9641553729ce04eae9e0c9021"
+    },
+    {
+      "artifact": "repeat-0/trials.jsonl",
+      "derived_sha256": "9bff7e2c2b4d23314fb1cbf901c04e40e3fde1ed034335e769b350db545d2d19",
+      "source_sha256": "e003d1eae15d20a4dd7ceb444fc905f2fa2eba8bb80e3b91336728a6e341ad63"
+    },
+    {
+      "artifact": "repeat-0/completed.json",
+      "derived_sha256": "1831501acc7189311910bbcb9b5be746f371f5b2c556189d6faf03cd24ca6b27",
+      "source_sha256": "88b985aa16bc64a6cc8244d1481adda709c6c43c45d0585e99803c07e4eb5317"
+    },
+    {
+      "artifact": "repeat-1/plan.json",
+      "derived_sha256": "3342d006917a69b89d71ecec153e2267679f4bfeba9d8dcd2fb03a500d42489b",
+      "source_sha256": "3342d006917a69b89d71ecec153e2267679f4bfeba9d8dcd2fb03a500d42489b"
+    },
+    {
+      "artifact": "repeat-1/runtime.json",
+      "derived_sha256": "ff2e9a2d7cf58006ffc2288f083098e2e0fa0b451f565e1fd98ce6c48b56aca2",
+      "source_sha256": "c582a1eaf46ed5e99c0522851200a2812d72413dd5d22d6af24227eb511766ea"
+    },
+    {
+      "artifact": "repeat-1/rows.json",
+      "derived_sha256": "708aa1de086b19b98d3c818df00dce098524140c93dc58d44150c54d8d9cfb35",
+      "source_sha256": "0b8fff78ea3fde80617539d074b3485e87b9c5b0212f3ae25f5fbadf6158e7d9"
+    },
+    {
+      "artifact": "repeat-1/trials.jsonl",
+      "derived_sha256": "8dcb12eabd840c9ea00719faccdfae202ecb42fc29c353627a65218b56c6a8bf",
+      "source_sha256": "686a5e59f87a70b91e77fd625d2e03c7fa5ae68b787309b2f404f3b29e02b511"
+    },
+    {
+      "artifact": "repeat-1/completed.json",
+      "derived_sha256": "0ee30681ee3ed56b5ec2781ba8e241efbf31f543f23e67497ecd7c4c8ad2137c",
+      "source_sha256": "bab30378db6bc991c8fe8aa497fd1c92b0ef8227a5c0e2145fbc3a796e2f5935"
+    },
+    {
+      "artifact": "repeat-2/plan.json",
+      "derived_sha256": "8f9f2292affd64a605f1cdc52e53a833428d30c923605e6a2387b1a2281c255b",
+      "source_sha256": "8f9f2292affd64a605f1cdc52e53a833428d30c923605e6a2387b1a2281c255b"
+    },
+    {
+      "artifact": "repeat-2/runtime.json",
+      "derived_sha256": "ff2e9a2d7cf58006ffc2288f083098e2e0fa0b451f565e1fd98ce6c48b56aca2",
+      "source_sha256": "c582a1eaf46ed5e99c0522851200a2812d72413dd5d22d6af24227eb511766ea"
+    },
+    {
+      "artifact": "repeat-2/rows.json",
+      "derived_sha256": "808ac6a2bb00fbca12bb084da9c45ce938d33c0e88fa0a59696fd3d82c830208",
+      "source_sha256": "b72cf85d344d9047b83c81b718eabd363d674120d57089a7c702ea130e363d2d"
+    },
+    {
+      "artifact": "repeat-2/trials.jsonl",
+      "derived_sha256": "ec314ac7cfa853321cb17bf060dbc1d8c9951415cd820ee64cc91d73ea259741",
+      "source_sha256": "18d0f9d331449e54c40b06ee7a0c852cce8ebde2dd21913c3e357f05dbf60ff5"
+    },
+    {
+      "artifact": "repeat-2/completed.json",
+      "derived_sha256": "ff94ce95143bfa1c27dfedcac0283d91f15042652675ccaabfcb23abac943183",
+      "source_sha256": "76a18862533cffab60bc234314bf20776b39c5b79396fef732294d6bbb605d67"
+    },
+    {
+      "artifact": "table.json",
+      "derived_sha256": "f11ebb3319dbe55ac806b1848aab807506d74aad09187afc64bb5cc3a600970b",
+      "source_sha256": "b068a8bc32321a298224cde3f726a9545230d1a6647d5990d8941e46ca44999b"
+    }
+  ],
+  "completed": true,
+  "derived_cohort_id": "4c7bbebb3ffcd66c1b64d31723b8c64852900f1647780b2d91a4fea947742ec8",
+  "derived_table_validated": true,
+  "error_policy": "Error class retained; all execution error messages replaced and marked message_redacted",
+  "error_redactions_by_artifact": {
+    "repeat-0/completed.json": 0,
+    "repeat-0/plan.json": 0,
+    "repeat-0/rows.json": 0,
+    "repeat-0/runtime.json": 0,
+    "repeat-0/trials.jsonl": 0,
+    "repeat-1/completed.json": 0,
+    "repeat-1/plan.json": 0,
+    "repeat-1/rows.json": 0,
+    "repeat-1/runtime.json": 0,
+    "repeat-1/trials.jsonl": 0,
+    "repeat-2/completed.json": 0,
+    "repeat-2/plan.json": 0,
+    "repeat-2/rows.json": 0,
+    "repeat-2/runtime.json": 0,
+    "repeat-2/trials.jsonl": 0
+  },
+  "exported_at": "2026-11-20T23:22:30.642368+00:00",
+  "exporter_sha256": "7cf61a66ce2f93cbf10c64bc64b9aaff82c5fbabeeb8acae56c712abdeab74a1",
+  "gpu_identifier_policy": "SHA256 of normalized physical UUID with drivebench-public-gpu-v1 prefix; same GPU maps consistently",
+  "kind": "public_operator_data_export",
+  "measurement_values_unchanged": true,
+  "measurements_rerun": false,
+  "pseudonymized_gpu_count": 1,
+  "raw_artifact_hashes_unchanged": true,
+  "raw_gpu_identifiers_in_receipt": false,
+  "schema_version": 1,
+  "source_cohort_id": "d6489005a519a1c92969c4354bac997f7b75d51e5b874ef850b9366a35edb1fc",
+  "source_table_validated": true
+}

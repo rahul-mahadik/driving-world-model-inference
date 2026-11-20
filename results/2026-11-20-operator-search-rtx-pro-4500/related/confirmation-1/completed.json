@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-20T23:30:54.665500+00:00",
+  "completed": true,
+  "cuda_trials": 69,
+  "public_export": {
+    "kind": "sanitized_copy_of_recorded_results",
+    "measurements_rerun": false,
+    "numeric_fields_and_trial_ids_unchanged": true,
+    "policy_calls_rerun": false,
+    "provenance_receipt": "export-receipt.json",
+    "publication_bindings_updated": true,
+    "source_artifact_sha256": "5bedc6e0cc1b5c05b2573661a6f5ed9bee0bb89e685669aa164d93cdaf04500c"
+  },
+  "selected_pairs": 23,
+  "selection_updated": false
+}
