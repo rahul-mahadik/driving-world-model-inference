@@ -1,16 +1,19 @@
 # Reproduce a release
 
-There are three different reproduction targets. Choose one before interpreting a
+There are four different reproduction targets. Choose one before interpreting a
 successful command:
 
 | Target | Required resources | A successful result establishes |
 | --- | --- | --- |
 | Installed software demos | Python 3.10+, ordinary CPU, package downloads | The released packages and synthetic workflows execute outside their checkout |
 | GPU operator evaluation | Dedicated NVIDIA GPU and the operator runtime | Correctness and measurements for the declared operator tasks on that runtime |
+| Modern Vista eager execution | Linux CPython 3.12, dedicated compatible NVIDIA GPU, licensed assets and fresh activity/runtime proof | Full-workload execution feasibility for that one workload, without requiring hardware performance counters |
 | Vista configuration-agent study | Dedicated compatible GPU, licensed assets, metric assets, protected evaluator and optional model API access | Only the outcomes actually recorded by a complete new study |
 
-The first target is verified below. Historical GPU cohorts remain separately
-documented. A clean-host run of the current portable Vista agent workflow is
+The CPU installation target is verified below. The November 18 [A100 modern
+eager run](../results/2026-11-18-a100-modern-eager-feasibility/README.md) also
+provides a real full-workload execution record. Historical GPU cohorts remain
+separate. A clean-host run of the current portable Vista agent workflow is
 **not yet verified**. There is no downloadable prebuilt DriveBench Vista image;
 historical image IDs identify locally built images, not public registry assets.
 
@@ -93,7 +96,158 @@ needed for an improvement claim. The published test shapes were historically
 visible; do not describe them as secret or unseen. See the
 [measurement protocol](public-benchmark-protocol.md) for comparison rules.
 
-## 3. Assemble a new Vista runtime from public recipes
+## Modern Vista eager execution
+
+The [tested Linux runtime recipe](#install-the-modern-linux-runtime) below supports
+the single-eager execution target. It does not require the authors' provider
+accounts, transport bindings or private controller. It does require assets obtained
+under their own licenses and an operator-controlled process/resource timeout.
+The library does not terminate a stuck CUDA process or release cloud resources.
+Use a fresh output directory and preserve every failed attempt.
+
+### Install the modern Linux runtime
+
+Use Linux x86-64 with CPython 3.12, Git, a CUDA 13.0 compiler/toolkit, and Nsight
+Systems. The observed run used Ubuntu 24.04, Python 3.12.3,
+Git `1:2.43.0-1ubuntu7.4`, `nvcc` 13.0.88, Nsight Systems 2025.3.2 and NVIDIA
+driver 595.112.07. Those are recorded versions, not promises that mutable system
+repositories still serve them. Check the actual driver/runtime on the new host.
+
+The [hash-locked wheel list](../environments/modern-vista-cu130-linux.lock.txt)
+and [artifact provenance](../environments/modern-vista-cu130-linux.wheels.json)
+record the exact third-party Python environment. The small ANTLR wheel is included
+with its upstream license; weights, datasets and large CUDA wheels are not bundled.
+Download dependencies before GPU measurement, then install offline:
+
+```sh
+python3.12 -m venv .venv-modern
+. .venv-modern/bin/activate
+python -m pip download --only-binary=:all: --require-hashes \
+  --find-links third_party/wheels \
+  --extra-index-url https://download.pytorch.org/whl/cu130 \
+  -r environments/modern-vista-cu130-linux.lock.txt -d /fresh/wheelhouse
+python -m pip install --no-index --find-links /fresh/wheelhouse --require-hashes \
+  -r environments/modern-vista-cu130-linux.lock.txt
+python -m pip wheel --no-deps --no-build-isolation \
+  --wheel-dir /fresh/project-wheels . ./extensions/kernel_tuning
+python -m pip install --no-index --no-deps /fresh/project-wheels/*.whl
+python -m pip check
+python -m pip freeze --all > /fresh/resolved-environment.txt
+```
+
+Here and below, replace `/fresh/...` with new caller-owned locations. Check out
+Vista revision `cc9821b4253ca7987c32757613d2fc2448fa9f5d` under `vendor/Vista`
+and leave it pristine. Do not install its legacy requirements into this modern
+environment. Export the cache location before any runtime proof or model import:
+
+```sh
+export HF_HOME=/fresh/model-assets/hf
+```
+
+Keep this variable in the environment passed to your external bounded caller.
+Prefix verification, plan, worker and terminal-check commands with
+`bash scripts/with_modern_vista_env.sh`; it supplies import-time offline settings,
+`PYTHONDONTWRITEBYTECODE=1` and `GIT_OPTIONAL_LOCKS=0`. The last setting prevents
+read-only Git status probes from refreshing a hash-pinned checkout index. This
+wrapper is not a network sandbox or a timeout.
+
+### Verify hardware and acquire licensed assets
+
+The successful device was an A100-SXM4-80GB with 81,920 MiB GPU memory and
+232.83 GiB effective host RAM. The declared host minimum was 64 GiB; it was not
+measured as the minimum necessary. **The public verifier checks physical host RAM,
+not the effective container limit.** Before running, the operator must separately
+check the minimum of physical RAM and every applicable cgroup memory limit, and
+require at least 68,719,476,736 bytes. On cgroup v2, inspect `memory.max` for the
+process cgroup and its constrained ancestors; on v1 inspect the applicable
+`memory.limit_in_bytes` values. Treat `max` as unbounded at that level, not proof
+that all ancestors are unbounded. A control-panel advertised value or a physical
+RAM check alone is insufficient. If the effective limit cannot be established,
+do not accept the host. The original bounded run separately checked its effective
+limit; that private controller is not provided by the public verifier. The preceding A40 attempt ran out of GPU
+memory during its first warmup. Do not infer 48 GB fit from the A100 warm-request
+allocated peak: warmup reserved memory reached 71.61 GiB.
+
+For a new dedicated A100, execute under your external deadline:
+
+```sh
+bash scripts/with_modern_vista_env.sh python -m drivebench_tuning.modern_verify_environment \
+  --gpu-name NVIDIA\ A100-SXM4-80GB --minimum-memory-mib 79000 \
+  --minimum-host-ram-gib 64 --dedicated \
+  --output /fresh/environment --write-lock /fresh/environment/runtime-lock.json
+```
+
+MIG must be disabled. The counter-free proof requires actual CUDA execution and
+a positive expected-kernel Nsight Systems trace. Nsight Compute SM counters are
+not requested, so no SM/occupancy/bandwidth interpretation is available.
+A hardware-only tool probe or proof copied from another machine is insufficient.
+
+Acquire nuScenes through its access process, then prepare one real scene using
+the [data workflow](full-study.md). Keep image and metadata checksums, coordinate
+semantics, recorded trajectory and seed in the manifest. The released result
+identifies its scene, sample, seed and trajectory hash for comparison; media are
+not bundled. The manifest must contain one scene for this single-eager target.
+
+After a passing fresh proof, the hash-checked fetch helper can obtain the declared
+Vista and OpenCLIP assets. Set `PROOF_SHA256` to the SHA-256 of that new
+`verification.json`, and `ASSET_DEADLINE` to your fresh absolute Unix deadline:
+
+```sh
+python scripts/fetch_modern_assets.py --asset vista --root /fresh/model-assets \
+  --verification /fresh/environment/verification.json --proof-sha256 "$PROOF_SHA256" \
+  --deadline-unix "$ASSET_DEADLINE" --failure-receipt /fresh/vista-fetch-failure.json
+python scripts/fetch_modern_assets.py --asset openclip --root /fresh/model-assets \
+  --verification /fresh/environment/verification.json --proof-sha256 "$PROOF_SHA256" \
+  --deadline-unix "$ASSET_DEADLINE" --failure-receipt /fresh/openclip-fetch-failure.json
+```
+
+Fetching is a separate network-enabled preparation step. Worker initialization
+uses only the prefetched cache. Preserve successful asset receipts and any partial
+or failed downloads. The checkpoint and inputs retain their own licenses.
+
+### Run and verify one eager request
+
+Start from `configs/research/modern-eager-feasibility.yaml` and its compiled
+counterpart. Create two fully resolved copies in your new workspace; set
+`model.upstream_dir`, `model.checkpoint`, `data.root`, `data.manifest`,
+`environment_verification` and `environment_lock` to the new verified locations.
+Keep the pinned checkpoint hash and the full workload: 25 total frames, one
+conditioning frame, 576×1024, 50 steps, guidance 2.5, FP16, decode chunk 14, one
+uncached future, one measured request, three-to-twelve warmups, and output saving.
+Only `optimizations.compile_denoiser` may differ between the role definitions.
+The compiled definition is required by the existing plan format but is not executed
+in this eager-only target.
+
+```sh
+bash scripts/with_modern_vista_env.sh python -m drivebench_tuning.restart_measurement plan \
+  --eager-config /fresh/eager.yaml --compiled-config /fresh/compiled.yaml \
+  --mode feasibility --blocks 1 --gpu-name NVIDIA\ A100-SXM4-80GB \
+  --minimum-memory-mib 79000 --minimum-host-ram-gib 64 --mig-supported \
+  --output /fresh/measurement-plan.json
+```
+
+Record the new plan SHA-256 as `PLAN_SHA256` and a fresh externally enforced
+absolute deadline as `WORKER_DEADLINE`. Neither historical clocks nor this
+document authorize a cloud allocation. Run only the eager schedule entry:
+
+```sh
+bash scripts/with_modern_vista_env.sh python -m drivebench_tuning.restart_measurement run \
+  --plan /fresh/measurement-plan.json --plan-sha256 "$PLAN_SHA256" \
+  --run-id 000-modern_eager --deadline-unix "$WORKER_DEADLINE" \
+  --output /fresh/eager-run
+bash scripts/with_modern_vista_env.sh python -m drivebench_tuning.eager_completion \
+  --plan /fresh/measurement-plan.json --plan-sha256 "$PLAN_SHA256" \
+  --run /fresh/eager-run --output /fresh/eager-summary.json
+```
+
+The terminal command validates existing evidence and performs no inference.
+It reports single-eager feasibility and leaves quality, speedup and comparison
+flags false. Do not run the paired analyzer on this incomplete two-role schedule.
+Confirm parent exit and cleanup externally, hash all evidence and raw outputs,
+and verify the complete backup before releasing resources. A complete paired
+modern-baseline study is a separate [measurement protocol](modern-baseline-measurement.md).
+
+## 3. Assemble a legacy Vista runtime from public recipes
 
 The historical CUDA 11.8 H100 recipe is available as source. On a Linux x86-64
 host with working NVIDIA driver and Docker GPU integration, start with:

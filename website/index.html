@@ -14,7 +14,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <div class="page">
   <header class="masthead">
-    <div class="masthead-top"><span>Research software</span><a href="https://github.com/rahul-mahadik/driving-world-model-inference">Source repository <span aria-hidden="true">↗</span></a></div>
+    <div class="masthead-top"><span>Research software</span><a href="https://github.com/rahul-mahadik/driving-world-model-inference">Source repository</a></div>
     <h1>DriveBench</h1>
     <p class="subtitle">Verifiable rewards for lossy inference optimization of video world models</p>
     <p class="byline"><a href="https://github.com/rahul-mahadik">Rahul Mahadik</a><span aria-hidden="true"> · </span>MIT first-party code<span aria-hidden="true"> · </span><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/NOTICE.md">Model and data licenses</a></p>
@@ -27,14 +27,31 @@
     </div>
   </header>
 
-  <nav class="contents" aria-label="On this page"><a href="#overview">Overview</a><a href="#results">Legacy results</a><a href="#environment">Research program</a><a href="#evidence">Evidence & limitations</a><a href="#reproduction">Reproduce</a></nav>
+  <nav class="contents" aria-label="On this page"><a href="#overview">Overview</a><a href="#modern">Modern execution</a><a href="#results">Legacy results</a><a href="#environment">Research program</a><a href="#evidence">Evidence & limitations</a><a href="#reproduction">Reproduce</a></nav>
 
   <main id="main">
     <section id="overview" class="section overview">
       <h2><span class="section-number">1</span> Overview</h2>
       <p>Can an automatic evaluator reward faster video-world-model inference while rejecting meaningful output degradation? DriveBench studies this question through modern execution baselines, empirically calibrated quality checks, and reproducible configuration search.</p>
       <p>The task is to reduce inference cost on a declared device and workload under a fixed quality constraint. A useful reward must distinguish real gains from timing noise, preserve failed attempts, and withstand submissions that exploit the evaluator.</p>
-      <p class="scope-note"><strong>Research in progress · 14 November 2026.</strong> The small one-episode, eight-configuration, three-policy study has been canceled. Work now starts with a modern Vista baseline and fresh-process measurement. Modern GPU results, calibrated verifier error rates, the large lookup table, and policy-transfer findings are not yet available. Historical results below remain a separate legacy cohort.</p>
+      <p class="scope-note"><strong>Research in progress · 19 November 2026.</strong> The small one-episode, eight-configuration, three-policy study has been canceled. Modern Vista now completes the full declared workload on an A100 80 GB. A matched eager/compiled comparison, calibrated verifier error rates, a measured lookup table, and policy-transfer findings remain open. Historical results below remain a separate legacy cohort.</p>
+    </section>
+
+    <section id="modern" class="section">
+      <div class="section-title"><h2>Modern Vista execution</h2><span class="section-meta">18 November 2026</span></div>
+      <p>A full-workload execution check on one Runpod A100-SXM4-80GB completed three warmups and one measured request. The modern adapter uses PyTorch 2.14.1+cu130, native SDPA, FP16 denoiser parameters, FP32 normalization and channels-last layout. Hardware performance counters were not required; CUDA execution and activity tracing were verified.</p>
+      <div class="table-wrap" role="region" aria-label="Modern Vista execution check" tabindex="0">
+        <table class="results-table"><caption>One development scene, 50 steps, one conditioning frame and 24 future frames at 576 × 1024. Execution feasibility only.</caption><thead><tr><th scope="col">Measurement</th><th scope="col">Observed value</th></tr></thead><tbody>
+          <tr><th scope="row">Model initialization</th><td>217.088 s</td></tr>
+          <tr><th scope="row">Three warmup requests</th><td>99.129 / 98.183 / 98.187 s</td></tr>
+          <tr><th scope="row">Measured request</th><td>97.995 s</td></tr>
+          <tr><th scope="row">Measured peak allocated / reserved memory</th><td>46.01 / 53.35 GiB</td></tr>
+          <tr><th scope="row">First-warmup peak reserved memory</th><td>71.61 GiB</td></tr>
+        </tbody></table>
+      </div>
+      <p class="measurement-boundary">Request timing covers input processing through host-ready frames, excluding model initialization, warmups and output export. The raw output and source/runtime bindings were independently rechecked locally. One observation supplies no noise estimate, tail latency, comparative speedup or quality-validation result.</p>
+      <p>The preceding A40 attempt failed during its first warmup with GPU out-of-memory and completed no measured requests. The A100 result does not establish a 48 GB fit or a minimum memory requirement. Historical H100 numbers below belong to a different device and runtime and are not paired with this result.</p>
+      <p><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-18-a100-modern-eager-feasibility">Measurements, failed-attempt record and provenance</a> · <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/modern-vista.md">Modern runtime reproduction</a></p>
     </section>
 
     <section id="results" class="section">
@@ -95,7 +112,7 @@
       </div>
       <div class="table-wrap" role="region" aria-label="Research phases and required evidence" tabindex="0">
         <table class="task-table"><caption>Each phase has an empirical exit criterion. No downstream claim is implied by implementation alone.</caption><thead><tr><th scope="col">Phase</th><th scope="col">Required evidence</th><th scope="col">Current status</th></tr></thead><tbody>
-          <tr><th scope="row">1 · Modern baseline</th><td>Legacy eager, modern eager, modern compiled; repeated process restarts, cold cost, break-even, and stage/operator attribution.</td><td>Implementation; GPU validation pending.</td></tr>
+          <tr><th scope="row">1 · Modern baseline</th><td>Legacy eager, modern eager, modern compiled; repeated process restarts, cold cost, break-even, and stage/operator attribution.</td><td>Eager execution verified; paired measurements and profiling pending.</td></tr>
           <tr><th scope="row">2 · Quality verifier</th><td>Seed/precision variability; distributional and trajectory checks; false accepts and false rejects on independently labeled configurations.</td><td>Prospective design. No calibrated thresholds.</td></tr>
           <tr><th scope="row">3 · Tabulated search</th><td>A conditional space of 1,000+ configurations; measured repeated cells, per-cell noise, and latency/memory/quality Pareto front.</td><td>Prospective design. No released lookup table.</td></tr>
           <tr><th scope="row">4 · Policy and transfer</th><td>Random, Sobol, TPE, successive halving, LLM ± trial history; 20+ seeds each, live confirmations, and a second-GPU table.</td><td>Depends on measured tables. No rankings.</td></tr>
@@ -103,10 +120,10 @@
           <tr><th scope="row">6 · Write-up</th><td>A finding supported by the preceding experiments, including a null result if warranted.</td><td>Pending evidence. No paper claim.</td></tr>
         </tbody></table>
       </div>
-      <p><strong>Next experiment:</strong> a bounded memory-fit and request-cost check on cheaper hardware, starting with a 48 GB Ampere candidate if available. The workload stays fixed; fitting the full model and preserving its outputs are unproven. Device choice will use measured request cost, not hourly price alone. The large table remains a later coverage and budget gate.</p>
+      <p><strong>Next experiment:</strong> a matched modern eager/compiled execution check and separate runtime profile on one A100 80 GB. Fresh-process repetitions follow only after compilation, memory headroom and whole-run cost are established. The large table remains a later coverage and budget decision.</p>
       <p class="small-note">The released configuration interface supports tools, budgets, and evaluator-owned final scoring. Its old fixed proxy limits and finite action examples are historical software artifacts, not the calibrated verifier or broad search space above. Synthetic examples are software smoke tests only.</p>
       <details class="methods-details"><summary>Baseline and quality-gate design</summary><div class="details-body">
-        <p>The modern Vista port preserves trained action-control projections while replacing attention with native scaled dot-product attention. FP16 and channels-last are explicit treatments. Compatibility, output correctness, memory, and end-to-end speed still require validation on real hardware.</p>
+        <p>The modern Vista port preserves trained action-control projections while replacing attention with native scaled dot-product attention. FP16 and channels-last are explicit treatments. The full eager workload has executed on an A100 80 GB. Output quality, comparative speed and broader memory-fit claims still require separate evidence.</p>
         <p>Modern eager and compiled roles are paired on the same device and runtime across fresh processes. The legacy row reuses existing observations and is labeled as a different cohort; no more legacy eager-versus-compiled runs are planned. Cold-prefix cost is reported separately from steady latency. If modern eager removes the compile advantage, that is a result to report.</p>
         <p>Seed and precision variation provide calibration candidates, not automatic ground truth for visual validity. Independent labels and a disjoint audit set are needed to estimate gate errors. Cheap seed-matched proxies guide development; final scoring additionally needs distributional and trajectory-following checks owned by the evaluator.</p>
         <p><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/research-protocol.md">Read the active protocol and execution gates</a>.</p>
@@ -119,14 +136,15 @@
         <table class="evidence-table"><caption>Empirical records and missing research evidence.</caption><thead><tr><th scope="col">Record</th><th scope="col">Status</th><th scope="col">Supported conclusion and boundary</th></tr></thead><tbody>
           <tr><th scope="row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-10-30-h100-tradeoff/numerical-audit">H100 inference comparison</a><span class="row-detail">30 October 2026</span></th><td><span class="status measured">GPU measured</span></td><td>200 requests per role, 50 scenes, one device/runtime. Performance and memory only; held-out quality evaluation incomplete.</td></tr>
           <tr><th scope="row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-07-kernel-tuning">A100 operator experiments</a><span class="row-detail">7 November 2026</span></th><td><span class="status measured">GPU measured</span></td><td>Historical correctness, timing, memory, and small search experiments. No demonstrated RL advantage or whole-video improvement.</td></tr>
-          <tr><th scope="row">Modern baseline and calibrated verifier</th><td><span class="status planned">Not measured</span></td><td>No modern speedup, compile break-even, distributional quality result, trajectory result, or gate error rate is claimed.</td></tr>
+          <tr><th scope="row"><a href="#modern">Modern Vista eager execution</a></th><td><span class="status measured">GPU measured</span></td><td>One measured request after three warmups on A100 80 GB. No modern speedup, compile break-even or quality result.</td></tr>
+          <tr><th scope="row">Calibrated verifier</th><td><span class="status planned">Not measured</span></td><td>No distributional quality result, trajectory result or gate error rate is claimed.</td></tr>
           <tr><th scope="row">Configuration tables, policy comparison, and transfer</th><td><span class="status planned">Not measured</span></td><td>No policy superiority, complete 1,000-config table, or cross-device transfer finding exists.</td></tr>
         </tbody></table>
       </div>
       <div class="limitations">
         <h3>What remains to be established</h3>
         <ul>
-          <li>A current execution baseline and trustworthy compile break-even measurement.</li>
+          <li>A repeated modern eager/compiled comparison and trustworthy compile break-even measurement.</li>
           <li>Verifier false-accept and false-reject rates on independently labeled, held-out cases.</li>
           <li>Repeated tables, equal-budget policy comparisons, and live confirmation of selected configurations.</li>
           <li>Second-device transfer, adversarial code execution, and an independently reproducible end-to-end result.</li>

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "publication_transform": "Explicit field allowlist; numerical values copied without rounding. Machine/account identifiers, absolute paths, raw arrays and licensed media omitted. This is a new sanitized derivative, not a byte-for-byte copy of private evidence.",
+  "review_scope": "Local independently reconstructed completion, source/runtime/work counters, output shape/finite/range checks and complete archive hashes; not independent external-laboratory reproduction.",
+  "original_artifact_commitments": [
+    {
+      "source_label": "measured_request",
+      "sha256": "82e34ebdf477b9b77a4a26d02147b12cc0bf2863fecd9f1df6586e2d2c9a04a2",
+      "bytes": 6634,
+      "public_derivatives": [
+        "measurements.jsonl",
+        "summary.json"
+      ]
+    },
+    {
+      "source_label": "cold_start",
+      "sha256": "65a1febdb31300086270b27d1f0dbf96eb5517651d53c4429db1511473630917",
+      "bytes": 8556,
+      "public_derivatives": [
+        "cold-start.json",
+        "summary.json"
+      ]
+    },
+    {
+      "source_label": "model_identity",
+      "sha256": "c17884c506f4ca442533d3dde56fabd4492aef1c49478b04bcc0e7399ee556a7",
+      "bytes": 10876,
+      "public_derivatives": [
+        "runtime.json"
+      ]
+    },
+    {
+      "source_label": "runtime_lock",
+      "sha256": "8235fb1c5a97a4eb5c31166ebf223c4831d223213d0d1bbc4d70e09a944a81c1",
+      "bytes": 3882,
+      "public_derivatives": [
+        "runtime.json"
+      ]
+    },
+    {
+      "source_label": "restart_record",
+      "sha256": "8c4ead4df6af68afdb4112b80aa2f1e63925d0e71f5db37f262fe750d291f3e2",
+      "bytes": 4115,
+      "public_derivatives": [
+        "runtime.json",
+        "summary.json"
+      ]
+    },
+    {
+      "source_label": "terminal_eager_summary",
+      "sha256": "44514c532ab9219e9db1f80d56e87b61776456479a7c5f74bcbbc5676bead7ba",
+      "bytes": 18215,
+      "public_derivatives": [
+        "summary.json"
+      ]
+    },
+    {
+      "source_label": "independent_execution_review",
+      "sha256": "eac591a1c5a6cd6febe580e9712d28cac531c7149e7609977cf6848de143ff3d",
+      "bytes": 4328,
+      "public_derivatives": [
+        "summary.json"
+      ]
+    },
+    {
+      "source_label": "a40_failed_warmup",
+      "sha256": "a47cc9f44b2c1888b78555734a2c1148d193fa15dc03954bc5865c5ee3471318",
+      "bytes": 4092,
+      "public_derivatives": [
+        "failed-attempts.json"
+      ]
+    },
+    {
+      "source_label": "a40_failed_summary",
+      "sha256": "d0832c9ff6bc3ddf14c19064cf297a5e10547253fbab1729ea3d552bd9aebd18",
+      "bytes": 951,
+      "public_derivatives": [
+        "failed-attempts.json"
+      ]
+    }
+  ],
+  "private_archive": {
+    "sha256": "7124ce69ed7f7e052561767448ddd79debbe76e0297958359d9347feb59e7609",
+    "bytes": 182988800,
+    "regular_files": 245,
+    "regular_file_bytes": 182517149,
+    "identical_inventory_sha256": "538b69db071196b454564fb6161193e3ede7357466b8689b23e7e2f0db04119d",
+    "all_member_and_local_hashes_verified": true,
+    "public_download_available": false
+  },
+  "raw_output_commitment": {
+    "sha256": "59ed9a9b1b45356f0e63091c2f157c2dc76f2c058f50537681bea7a34c7ab649",
+    "bytes": 176947328,
+    "shape": [
+      25,
+      576,
+      1024,
+      3
+    ],
+    "dtype": "float32",
+    "finite": true,
+    "minimum": 0.07360514998435974,
+    "maximum": 1.0,
+    "conditioning_frames": 1,
+    "future_frames": 24
+  },
+  "raw_output_public_download_available": false,
+  "audit_limitation": "A hash commits to withheld bytes but cannot let a reader inspect them. Numerical consistency can be checked from the released rows; new execution requires separately acquired licensed assets and fresh runtime evidence.",
+  "provider_account_identity_disclosed": false,
+  "historical_results_modified": false
+}

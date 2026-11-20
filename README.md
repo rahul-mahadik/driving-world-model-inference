@@ -6,7 +6,7 @@
 
 DriveBench measures the tradeoff between inference cost and output fidelity, and exposes that feedback to optimization agents. The research question is whether an evaluator can give useful, difficult-to-game rewards when an optimization deliberately changes a model's output. A faster result is useful only if the verifier measures the intended fidelity constraints.
 
-**Status: research in progress.** Historical GPU measurements are published. The modern Vista baseline is being implemented and has not yet been measured on a GPU. Empirical verifier error rates, a large measured lookup table, repeated policy comparisons, hardware transfer and adversarial code evaluation remain open. No scientific finding from those phases is claimed.
+**Status: research in progress.** Historical GPU measurements are published. The modern Vista adapter completed one full-workload eager request after three warmups on an A100-SXM4-80GB on November 18, 2026. This establishes execution feasibility, not a comparative baseline or quality result. Empirical verifier error rates, a large measured lookup table, repeated policy comparisons, hardware transfer and adversarial code evaluation remain open. No scientific finding from those phases is claimed.
 
 The former one-episode, eight-configuration LLM/random/grid study was **canceled before execution on November 14, 2026**. Its plans are retained for provenance, not offered as the active research design. See the [plan registry](configs/research/active-roadmap-v2.json) and [cancellation record](docs/canceled-plans.md). More legacy eager-versus-compiled repeats are not planned.
 
@@ -14,14 +14,14 @@ The former one-episode, eight-configuration LLM/random/grid study was **canceled
 
 | Phase | Question | Required evidence | Current state |
 |---|---|---|---|
-| 1. Modern baseline | Does compilation still help after native SDPA, half precision and channels-last? | Legacy/modern baseline table; fresh-process costs, break-even and runtime attribution | Implementation; GPU measurements absent |
+| 1. Modern baseline | Does compilation still help after native SDPA, half precision and channels-last? | Legacy/modern baseline table; fresh-process costs, break-even and runtime attribution | Eager execution feasible on A100; comparative restart study unrun |
 | 2. Quality verifier | Does the gate reject meaningful degradation while accepting valid variation? | Frozen development calibration and independently labeled held-out false-accept/false-reject rates | Design; uncalibrated |
 | 3. Tabulated search | What cost–memory–quality frontier exists in a conditional inference space? | Repeated measured cells, provenance, failures and per-cell uncertainty | Design; no lookup dataset yet |
 | 4. Policies and transfer | Do policies beat TPE, and do configurations transfer across GPUs? | At least 20 search seeds per method, live confirmation, rank correlation and transfer regret | Unrun |
 | 5. Code actions | Can a protected evaluator reject gaming while measuring a real kernel substitution? | Profile-selected operators, adversarial tests and end-to-end Vista delta | Design; no arbitrary-code service |
 | 6. Findings | Which hypothesis survives the measurements? | Finding-led report, including null or negative results | Pending evidence |
 
-The first live step is a bounded memory-fit and execution-cost check on cheaper hardware, without changing the declared workload. A 48 GB Ampere device is a candidate, not a proven fit; an 80 GB device is the fallback. The full table follows measured cost, not a fixed promise to spend on 1,000 configurations.
+The first bounded full-workload check is complete: an A40 ran out of memory during its first warmup, while a separate A100 80 GB attempt completed three warmups and one measured eager request. That request took 97.994715 seconds; peak allocated memory was 46.01 GiB, and first-warmup reserved memory reached 71.61 GiB. These are separate attempts, not a cross-device speed comparison or minimum-memory bound. The [numerical evidence and failures](results/2026-11-18-a100-modern-eager-feasibility/README.md) include the runtime and reproduction recipe. The full table still depends on measured cost and prospective coverage.
 
 The phases are gates, not a checklist of already implemented capabilities. The target of at least 1,000 configurations is a future coverage goal; an enumerable Cartesian product is not a measured benchmark. A second model is deferred until the baseline, verifier and tabulated comparison are sound.
 
@@ -57,12 +57,14 @@ python -m pip install . ./extensions/kernel_tuning
 
 CPU demos remain available as **software smoke tests only**, in the [installation guide](docs/reproduce-release.md). Their synthetic outputs are not empirical benchmark evidence. Real Vista runs require separately licensed assets, a declared NVIDIA environment, evaluator-owned checks and resource limits. The public package does not purchase or provision compute.
 
-## Measured historical evidence
+## Measured evidence
+
+- [Modern Vista eager feasibility](results/2026-11-18-a100-modern-eager-feasibility/README.md): one A100 request at full resolution and 50 steps, all three warmups, exact numerical rows and an earlier A40 OOM. No modern speedup or quality claim.
 
 - [H100 legacy inference comparison](results/2026-10-30-h100-tradeoff/README.md): 200 requests per role on the pinned Torch 2.0.1/xFormers stack; 23.85% lower median latency and 7.68% higher peak allocated memory. Held-out quality validation was not completed.
 - [Numerical audit](results/2026-10-30-h100-tradeoff/numerical-audit/README.md): all 400 original timing rows and a standalone reconstruction of 48 recorded fields. Reanalysis is not a new GPU reproduction.
 - [A100 operator experiments](results/2026-11-07-kernel-tuning/README.md): historical operator correctness and timing; no demonstrated RL advantage or whole-video gain.
 
-All historical result files, failed attempts and original qualification flags remain unchanged. They are not evidence for the modern baseline or the proposed verifier. No leaderboard is presented before measured coverage exists.
+All historical result files, failed attempts and original qualification flags remain unchanged. They are not evidence for a modern comparative baseline or the proposed quality verifier. No leaderboard is presented before measured coverage exists.
 
 First-party code is [MIT licensed](LICENSE). Model weights, datasets and third-party software retain their [separate licenses](NOTICE.md). Contributions should include reproducible measurement and appropriate claim boundaries; see [CONTRIBUTING.md](CONTRIBUTING.md).

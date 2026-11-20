@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "preserved_prior_attempts",
+  "attempts": [
+    {
+      "label": "L40S setup A",
+      "gpu": "NVIDIA L40S",
+      "outcome": "Missing Git executable before model startup",
+      "measured_requests": 0,
+      "successful_futures": 0
+    },
+    {
+      "label": "L40S setup B",
+      "gpu": "NVIDIA L40S",
+      "outcome": "Changed Git index detected during verification; exact origin not established; no model execution",
+      "measured_requests": 0,
+      "successful_futures": 0
+    },
+    {
+      "label": "L40S provider rejection",
+      "gpu": "NVIDIA L40S",
+      "outcome": "HTTP 400; no GPU allocation",
+      "cause": "unknown"
+    },
+    {
+      "label": "A40 provider rejection",
+      "gpu": "NVIDIA A40",
+      "outcome": "HTTP 400; no GPU allocation",
+      "cause": "unknown"
+    },
+    {
+      "label": "A40 full-workload attempt",
+      "gpu": "NVIDIA A40",
+      "outcome": "GPU out-of-memory during first warmup",
+      "driver_version": "595.112.07",
+      "effective_host_ram_bytes": 49999998976,
+      "device_reported_memory_mib": 46068,
+      "model_load_s": 51.15779749499052,
+      "failed_warmup_elapsed_s": 2.974221491997014,
+      "measured_requests": 0,
+      "successful_futures": 0,
+      "peak_allocated_bytes_failed_warmup": 45153982464,
+      "peak_reserved_bytes_failed_warmup": 45965377536,
+      "recorded_denoiser_evaluations": 0,
+      "denoiser_counter_complete": false,
+      "failure_stage_attribution": "unknown within generation; the counter is updated only on successful completion",
+      "workload_changed_after_failure": false
+    }
+  ],
+  "scope": "Separate attempts and hardware/runtime cohorts. Failed elapsed time is not completed-request latency. These observations do not establish a universal 48 GB feasibility limit or prove the cause of provider HTTP 400 responses."
+}

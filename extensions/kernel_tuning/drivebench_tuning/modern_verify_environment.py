@@ -15,9 +15,9 @@ import sys
 from pathlib import Path
 
 from drivebench.benchmarks.environment import collect_environment, command, reference_identity
-from drivebench.verify_environment import CUDA_SMOKE, has_hardware_counters, has_cuda_kernel_trace
+from drivebench.verify_environment import CUDA_SMOKE, has_cuda_kernel_trace
 
-POLICY_KIND = "modern_declared_gpu_v1"
+POLICY_KIND = "modern_declared_gpu_counter_free_v2"
 
 
 def validate_policy(policy):
@@ -78,7 +78,7 @@ def hardware_failures(environment, policy, dedicated):
     if "triton" not in {name.lower() for name in environment.get("packages", {})}:
         failures.append("Triton is unavailable")
     tools = environment.get("tools", {})
-    for name in ("nvcc", "nsys", "ncu"):
+    for name in ("nvcc", "nsys"):
         if tools.get(name, {}).get("returncode") != 0:
             failures.append(name + " is unavailable")
     return failures
@@ -90,7 +90,9 @@ def verify(output, policy, dedicated=False, collect=True):
     output.mkdir(parents=True, exist_ok=False)
     environment = collect_environment()
     failures = hardware_failures(environment, policy, dedicated)
-    proof = {"hardware_counters_collected": False, "nsys_trace_collected": False,
+    proof = {"hardware_counters_collected": False, "hardware_counters_required": False,
+             "hardware_counter_status": "not_requested_counter_free_protocol",
+             "nsys_trace_collected": False,
              "torch_cuda_execution_passed": False, "modern_runtime_passed": False}
     runtime = None
     if not failures and collect:
@@ -125,13 +127,8 @@ def verify(output, policy, dedicated=False, collect=True):
                                              str(source.resolve()), "-o", str(binary.resolve())], timeout=120)
                 if proof["compile"]["returncode"] == 0:
                     proof["nsys"] = command(["nsys", "profile", "--trace=cuda,nvtx,osrt", "--sample=none",
-                        "--force-overwrite=true", "-o", str((output / "smoke-systems").resolve()),
+                        "--cpuctxsw=none", "--force-overwrite=true", "-o", str((output / "smoke-systems").resolve()),
                         str(binary.resolve())], timeout=120)
-                    proof["ncu"] = command(["ncu", "--metrics", "sm__cycles_elapsed.avg,gpu__time_duration.sum",
-                        "--csv", "--page", "raw", "--force-overwrite", "-o",
-                        str((output / "smoke-compute").resolve()), str(binary.resolve())], timeout=120)
-                    proof["hardware_counters_collected"] = (proof["ncu"]["returncode"] == 0
-                        and has_hardware_counters(proof["ncu"]["stdout"]))
                     if proof["nsys"]["returncode"] == 0 and (output / "smoke-systems.nsys-rep").is_file():
                         proof["nsys_stats"] = command(["nsys", "stats", "--report", "cuda_gpu_kern_sum",
                             "--format", "csv", str((output / "smoke-systems.nsys-rep").resolve())], timeout=120)
@@ -139,7 +136,6 @@ def verify(output, policy, dedicated=False, collect=True):
                             and has_cuda_kernel_trace(proof["nsys_stats"]["stdout"], kernel="drivebench_smoke"))
     for key, label in (("modern_runtime_passed", "actual modern runtime compatibility"),
                        ("torch_cuda_execution_passed", "actual CUDA tensor execution"),
-                       ("hardware_counters_collected", "actual Nsight Compute SM counter collection"),
                        ("nsys_trace_collected", "actual Nsight Systems CUDA trace")):
         if not proof[key]:
             failures.append(label + " has not passed")
@@ -152,11 +148,49 @@ def verify(output, policy, dedicated=False, collect=True):
               "environment": environment, "environment_after": after, "profiling_proof": proof,
               "actual_modern_runtime": runtime, "legacy_h100_proof": False,
               "model_loaded": False, "model_memory_fit_proven": False, "quality_validated": False,
+              "profiling_scope": "CUDA activity timing only; no SM counters, occupancy, memory-bandwidth or utilization attribution",
               "external_process_exit_and_cleanup_still_required": True,
               "verifier_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     (output / "verification.json").write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
     return result
 
+
+
+def validate_reference_environment(config, environment):
+    """Counter-free counterpart used only by explicit modern wrapper scopes.
+
+    The historical core checker remains byte-for-byte unchanged. A successful
+    tool-only probe, old counter proof, or missing runtime lock cannot pass.
+    """
+    from drivebench.config import file_sha256
+    if config.get('model',{}).get('backend') not in ('vista','modern_vista'):
+        raise ValueError('Explicit Vista model required')
+    proof_path=Path(config['environment_verification'])
+    proof=json.loads(proof_path.read_text()); p=proof.get('profiling_proof',{})
+    validate_policy(proof.get('hardware_policy'))
+    if (proof.get('proof_kind')!=POLICY_KIND or proof.get('passed') is not True
+            or proof.get('dedicated_attestation') is not True or proof.get('failures')
+            or proof.get('legacy_h100_proof') is not False
+            or p.get('modern_runtime_passed') is not True
+            or p.get('torch_cuda_execution_passed') is not True
+            or p.get('nsys_trace_collected') is not True
+            or p.get('hardware_counters_collected') is not False
+            or p.get('hardware_counters_required') is not False
+            or p.get('hardware_counter_status')!='not_requested_counter_free_protocol'
+            or p.get('nsys',{}).get('returncode')!=0
+            or p.get('nsys_stats',{}).get('returncode')!=0
+            or not has_cuda_kernel_trace(p.get('nsys_stats',{}).get('stdout',''),kernel='drivebench_smoke')
+            or proof.get('verifier_source_sha256')!=file_sha256(__file__)):
+        raise ValueError('Current complete counter-free modern verification required')
+    before=reference_identity(proof.get('environment',{}))
+    if (before!=reference_identity(proof.get('environment_after',{}))
+            or before!=reference_identity(environment)):
+        raise ValueError('Current GPU or full runtime differs from verified identity')
+    lock_path=Path(config['environment_lock'])
+    if json.loads(lock_path.read_text())!=before:
+        raise ValueError('Current GPU or runtime differs from frozen modern lock')
+    return {'passed':True,'verification_sha256':file_sha256(proof_path),
+            'proof_kind':POLICY_KIND,'hardware_counters_required':False}
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)

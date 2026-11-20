@@ -89,12 +89,16 @@ def profile_modern(plan_path, plan_sha256, role, output, *, deadline_unix, tool=
                         self.request_range.__exit__(*sys.exc_info());self.request_range=None
 
         old_loader,old_engine = legacy.load_config,legacy.InferenceEngine
+        old_gate = legacy._validate_reference_environment
+        from .modern_verify_environment import validate_reference_environment
         try:
             legacy.load_config = lambda unused: deepcopy(translated)
             legacy.InferenceEngine = ProfileEngine
+            legacy._validate_reference_environment = validate_reference_environment
             legacy.profile(str(plan_path),tool='torch',output=str(output))
         finally:
             legacy.load_config,legacy.InferenceEngine = old_loader,old_engine
+            legacy._validate_reference_environment = old_gate
         if time.time() >= deadline_unix: raise TimeoutError('profile exceeded immutable deadline')
         if (source_identity() != legacy_before or _measurement_sources() != measurement_before
                 or _modern_sources() != port_before):

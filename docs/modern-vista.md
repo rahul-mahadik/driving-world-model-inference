@@ -2,8 +2,10 @@
 
 This is a new runtime candidate for the study of **verifiable rewards for lossy
 inference optimization of video world models**. It does not relabel the historical
-H100 measurements or establish that output quality is preserved. Full checkpoint
-loading, CUDA execution, perceptual quality and performance remain unvalidated.
+H100 measurements or establish that output quality is preserved. A full checkpoint and CUDA execution were validated for one A100 eager request
+after three warmups on November 18, 2026; the [released evidence](../results/2026-11-18-a100-modern-eager-feasibility/README.md)
+records the exact runtime and workload. Perceptual quality, comparative performance,
+compiled execution and general hardware capacity remain unvalidated.
 The previously proposed one-episode, eight-configuration, three-policy study is
 historical; its completion is not a prerequisite or claimed result of this work.
 
@@ -64,8 +66,11 @@ python -m drivebench_tuning.modern_vista
 
 Do not install the legacy `[gpu]` extra, upstream's original requirements file,
 xFormers, old Triton pins or the historical compiler adapter in this environment.
-The recipe pins direct dependencies; a complete Linux wheel/hash lock and CUDA
-smoke test are still required before admission. Auxiliary OpenCLIP/timm versions
+The short recipe pins direct dependencies. For the tested Linux CPython 3.12
+environment, use the [exact wheel/hash lock](../environments/modern-vista-cu130-linux.lock.txt),
+[wheel provenance](../environments/modern-vista-cu130-linux.wheels.json) and
+[modern reproduction instructions](reproduce-release.md#modern-vista-eager-execution).
+Fresh CUDA/runtime evidence is required on every new host. Auxiliary OpenCLIP/timm versions
 retain Vista's model architecture while PyTorch and its attention/compiler path
 are modernized. The runtime rejects mismatched reviewed dependency versions.
 
@@ -73,9 +78,14 @@ Acquire the [Vista assets and dataset under their licenses](vista-integration.md
 before starting a timed worker. The original OpenCLIP constructor additionally
 requires the cached `laion/CLIP-ViT-H-14-laion2B-s32B-b79K` asset. Record its exact
 revision and file hashes; neither it nor Vista weights/data are bundled here.
-Set these variables **before the process imports Hugging Face**:
+Install Git before any checkout verification and prevent Git read-only probes from
+refreshing the pinned checkout index. The released wrapper
+`bash scripts/with_modern_vista_env.sh COMMAND [ARGS...]` sets the following
+variables **before the child imports Hugging Face or inspects the checkout**:
 
 ```bash
+export GIT_OPTIONAL_LOCKS=0
+export PYTHONDONTWRITEBYTECODE=1
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 export HF_HUB_DISABLE_IMPLICIT_TOKEN=1
@@ -94,21 +104,28 @@ with the exact GPU name/capacity fixed in the plan:
 
 ```bash
 python -m drivebench_tuning.modern_verify_environment \
-  --gpu-name 'NVIDIA RTX A6000' --minimum-memory-mib 45000 \
-  --minimum-host-ram-gib 32 --mig-unsupported --dedicated \
+  --gpu-name 'NVIDIA A100-SXM4-80GB' --minimum-memory-mib 79000 \
+  --minimum-host-ram-gib 64 --dedicated \
   --output outputs/modern-environment \
   --write-lock outputs/modern-environment/runtime-lock.json
 ```
 
-It requires one idle device, the declared host/GPU memory, exact modern runtime,
-actual CUDA tensor execution, an actual Nsight Systems CUDA trace and Nsight
-Compute SM counters. It reuses the original smoke kernel and parsers and checks
+It requires one idle device, the declared physical host/GPU memory, exact modern runtime,
+actual CUDA tensor execution and a positive Nsight Systems CUDA trace of the
+expected smoke kernel. The current explicit counter-free protocol does not request
+Nsight Compute SM counters; it records them as not collected, rather than treating
+a permission denial as a passing counter proof. It reuses the original smoke
+kernel and parsers and checks
 runtime/device continuity afterward. MIG-capable devices must report `Disabled`;
 an explicitly declared unsupported device must report `N/A` or `[N/A]`. Unknown
-states fail. The proof is labeled `modern_declared_gpu_v1`; no legacy H100 proof
-is rewritten or reclassified. The memory minima are declared prerequisites,
+states fail. The proof is labeled `modern_declared_gpu_counter_free_v2`; no legacy H100 proof
+is rewritten or reclassified. The public check reads physical host RAM; effective container/cgroup limits need
+the separate operator check in the [reproduction guide](reproduce-release.md#verify-hardware-and-acquire-licensed-assets).
+The memory minima are declared prerequisites,
 not proof that Vista fits. Existing external process-exit/cleanup verification,
-full-model fit and quality checks are still required. The output directory and
+full-model fit and quality checks are still required for a new workload.
+This narrower activity proof supports execution and timing, not SM utilization,
+occupancy or bandwidth claims. The output directory and
 lock must be fresh so failed attempts cannot be overwritten.
 
 ## Interface
@@ -138,6 +155,19 @@ actual runtime, native/action module counts, parameter dtypes and compilation
 request. It always marks GPU/quality validation as pending until external
 evidence establishes it. No runtime metadata flag certifies correctness.
 
+## What has been checked on GPU
+
+The [November 18 cohort](../results/2026-11-18-a100-modern-eager-feasibility/README.md)
+loaded the complete checkpoint and completed three warmups plus one measured
+full-resolution eager request on A100-SXM4-80GB. Request latency was 97.994715 s.
+Measured allocated/reserved memory was 46.01/53.35 GiB; maximum warmup reserved
+memory was 71.61 GiB. All work counters and the finite raw array were independently
+checked locally. No compiled request, model operator profile, quality evaluation
+or external-laboratory replication was performed. The adapter's original
+`modern_gpu_validated: false` and `quality_preserving: false` metadata were not
+rewritten: external evidence establishes this narrow execution scope, not a
+self-certified quality result.
+
 ## What has been checked locally
 
 An isolated macOS CPU environment with Torch 2.14.1/torchvision 0.29.1 installed
@@ -151,7 +181,8 @@ in place of its CUDA-only xFormers call. This is not a GPU comparison.
 
 A reduced instance of the actual upstream `VideoUNet` also ran on CPU using
 16 native attention modules and 25 FP32 norms, producing finite FP16 output.
-These checks do not load the full checkpoint or demonstrate full-model fidelity.
+These CPU checks do not load the full checkpoint or demonstrate full-model fidelity.
+The separate GPU execution described above does not supply fidelity validation.
 
 ```bash
 python -m pip install 'pytest>=8,<9'
@@ -170,11 +201,13 @@ agent-training result is claimed.
 ## Cheaper hardware starts with a measured fit check
 
 This adapter permits Ampere-or-newer GPUs; it does not require an H100. A
-48 GB RTX A6000 is a plausible low-cost feasibility target, followed by a
-same-device modern eager/compiled comparison if both fit. A 48 GB RTX 6000 Ada
+48 GB RTX A6000 remains an untested candidate, not a validated target. The
+November 18 A40 attempt failed during its first full-workload warmup; the separate
+A100 80 GB eager attempt succeeded. This is not a universal memory boundary.
+A same-device modern eager/compiled comparison is still unrun. A 48 GB RTX 6000 Ada
 or L40S is another option; an 80 GB A100 provides more memory headroom. A
-40 GB A100 has less margin. These are possible targets, not validated results
-or interchangeable hardware cohorts. See NVIDIA's
+40 GB A100 has less margin. Only the narrow A100 eager execution above has a successful modern result;
+these devices are not interchangeable hardware cohorts. See NVIDIA's
 [RTX A6000 specifications](https://www.nvidia.com/content/dam/en-zz/Solutions/products/workstations/nvidia-rtx-a6000-datasheet.pdf),
 [A100 specifications](https://images.nvidia.com/data-center/a100/a100-datasheet.pdf)
 and [L40S specifications](https://www.nvidia.com/en-us/data-center/l40s/).
@@ -188,7 +221,7 @@ activations, allocator reservation, native SDPA selection and compiler
 workspaces can all change. It is therefore insufficient to guarantee a 48 GB
 fit, and provides no evidence for a 24 GB fit.
 
-The first admission should cover one fixed scene in two fresh processes, one
+The prospective paired feasibility protocol covers one fixed scene in two fresh processes, one
 eager and one compiled, with externally enforced worker deadlines and complete
 evidence-copy/cleanup reserves. Each process retains three to twelve cold-prefix
 requests plus one measured warm request: eight to twenty-six requests in total.
@@ -199,6 +232,10 @@ device-reported memory, runtime identity and raw output. An OOM or timeout is
 preserved as a feasibility failure; it does not trigger an automatic smaller
 workload, changed decode chunk or longer allocation. A successful fit is not
 a quality result or a complete latency benchmark.
+
+The completed November 18 attempt executed only the eager role and used the
+separate `drivebench_tuning.eager_completion` checker. It did not complete the
+two-role plan or call the paired analyzer.
 
 Only after both roles fit should the restart study be prospectively bound to
 that one physical GPU/runtime. Compare actual cost per completed request,
