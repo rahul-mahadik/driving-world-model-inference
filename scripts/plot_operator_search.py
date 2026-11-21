@@ -40,7 +40,7 @@ def is_fixture(table):
 def latency_matrix(table):
     """Paired process-median ratios; any failure masks a candidate cell."""
     result = []
-    for task in table.suite.tasks:
+    for task in table.measured_tasks:
         row = []
         for candidate in table.suite.candidates:
             trials = [table.row(task.task_id, candidate.candidate_id, r) for r in table.repeat_indices]
@@ -243,10 +243,11 @@ def render(table, matrix, curves, points, output, *, fixture=False):
     high = max(1.2, float(finite.max())) if finite.size else 1.2
     cmap = plt.get_cmap("coolwarm").copy()
     cmap.set_bad("#eeeeee")
-    fig, ax = plt.subplots(figsize=(11, 6.5))
+    fig, ax = plt.subplots(figsize=(max(11, .42 * len(table.suite.candidates) + 3),
+                                    max(6.5, .22 * len(matrix) + 1.8)))
     norm = TwoSlopeNorm(vmin=low, vcenter=1, vmax=high)
     image = ax.imshow(values, aspect="auto", cmap=cmap, norm=norm)
-    ax.set_yticks(range(len(matrix)), [t.task_id for t in table.suite.tasks])
+    ax.set_yticks(range(len(matrix)), [t.task_id for t in table.measured_tasks], fontsize=8)
     ax.set_xticks(range(len(table.suite.candidates)), [c.candidate_id.replace("triton-", "") for c in table.suite.candidates],
                   rotation=35, ha="right")
     ax.set_title("Operator latency and numerical correctness", loc="left", pad=12)
@@ -255,11 +256,15 @@ def render(table, matrix, curves, points, output, *, fixture=False):
         for x, cell in enumerate(row):
             ratio = cell["median_paired_latency_ratio"]
             label = f"{ratio:.2f}×" if ratio is not None else f"{cell['failed_repeats']}/{cell['process_repeats']} fail"
-            ax.text(x, y, label, ha="center", va="center", fontsize=8,
-                    color="white" if ratio is not None and (norm(ratio) < .18 or norm(ratio) > .82) else "#111111")
-    for boundary in (len(table.suite.splits["train"]) - .5,
-                     len(table.suite.splits["train"]) + len(table.suite.splits["validation"]) - .5):
-        ax.axhline(boundary, color="white", linewidth=2)
+            if len(matrix) * len(row) <= 300:
+                ax.text(x, y, label, ha="center", va="center", fontsize=8,
+                        color="white" if ratio is not None and (norm(ratio) < .18 or norm(ratio) > .82) else "#111111")
+    task_splits = {table.suite.tasks[index].task_id: split
+                   for split, indices in table.suite.splits.items() for index in indices}
+    measured_splits = [task_splits[task.task_id] for task in table.measured_tasks]
+    for index in range(1, len(measured_splits)):
+        if measured_splits[index] != measured_splits[index - 1]:
+            ax.axhline(index - .5, color="white", linewidth=2)
     bar = fig.colorbar(image, ax=ax, fraction=.025, pad=.025)
     bar.set_label("Median paired latency / eager latency (lower is faster)")
     repeats, samples = table._document["planned_repeats"], table._document["protocol"]["repetitions"]

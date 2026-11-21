@@ -1,5 +1,8 @@
 # Measured operator search
 
+For a larger shape-separated suite, a trained cost model, TPE and a second-GPU
+transfer procedure, see [operator generalization](operator-generalization.md).
+
 The [RTX PRO 4500 dataset](../results/2026-11-20-operator-search-rtx-pro-4500/README.md)
 contains 360 GPU measurements and policy-evaluation records. To use existing
 measurements, start with the replay command below and set `--table` to

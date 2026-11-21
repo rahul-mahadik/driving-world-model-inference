@@ -172,15 +172,19 @@ def run_replay_policy(table, policy, *, name, split="test", repeats=20, seed=190
         return BudgetedTuningEnv(suite.tasks, suite.candidates, evaluator,
                                 trial_budget=trials, memory_weight=memory_weight, allow_replay=True)
     started = time.monotonic()
+    training = deepcopy(getattr(policy, "training_metadata", {
+        "performed": False, "policy_protocol": "caller supplied",
+        "split_visibility": "public task definitions; table outcomes withheld from selector"}))
     try:
         result = evaluate_policy(factory, policy, suite.splits[split], repeats=repeats, seed=seed, split=split,
-                                 training_metadata={"performed": False, "policy_protocol": "caller supplied",
-                                                    "split_visibility": "public task definitions; table outcomes withheld from selector"})
+                                 training_metadata=training)
     except EvaluationError as exc:
         result = exc.report
     result = add_replay_analysis(result, table, memory_weight=memory_weight)
     result.update(policy_name=name, policy_configuration=deepcopy(getattr(policy, "configuration", {})),
                   wall_seconds=time.monotonic() - started,
                   suite_sha256=suite.sha256, policy_api_receipts=deepcopy(getattr(policy, "receipts", [])),
-                  training_performed=False)
+                  policy_feedback_receipts=deepcopy(getattr(policy, "search_receipts", [])),
+                  training_performed=training.get("performed") is True,
+                  rl_training_performed=training.get("rl_training") is True)
     return result

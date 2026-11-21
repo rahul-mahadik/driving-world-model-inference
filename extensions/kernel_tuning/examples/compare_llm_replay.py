@@ -19,6 +19,7 @@ from drivebench_tuning.replay import MeasuredTable
 from drivebench_tuning.replay_cli import write_json, selection_manifest
 from drivebench_tuning.replay_policy import ResponsesIndexPolicy, run_replay_policy, public_policy_observation
 from drivebench_tuning.evaluation import PolicyActionRejected
+from drivebench_tuning.suite import load_suite
 
 
 class DeadlineTransport:
@@ -144,6 +145,8 @@ class DurableDeadlinePolicy:
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--table', required=True, type=Path)
+    p.add_argument('--suite', help='Optional explicit packaged suite ID or JSON path; otherwise resolve exact table suite')
+    p.add_argument('--study-protocol', type=Path, help='Optional frozen generalization-study protocol to enforce')
     p.add_argument('--output', required=True, type=Path)
     p.add_argument('--key-file', required=True, type=Path)
     p.add_argument('--private-ledger', required=True, type=Path)
@@ -169,10 +172,29 @@ def main():
             or stat.S_IMODE(key_path.stat().st_mode) != 0o600
             or key_path.stat().st_uid != os.getuid()):
         raise ValueError('Use an owned mode-0600 key file and a new private ledger outside the repository')
-    table = MeasuredTable.load(args.table)
+    table = MeasuredTable.load(args.table, suite=load_suite(args.suite) if args.suite else None)
     if not 1 <= args.repeats <= 20 or not 1 <= args.trials < len(table.suite.candidates):
         raise ValueError('Use 1..20 repeats and a trial budget smaller than the candidate set')
     calls = len(table.suite.splits[args.split]) * args.repeats * args.trials
+    study_protocol_sha256 = None
+    if args.study_protocol is not None:
+        from drivebench_tuning.generalization_cli import read_json, validate_protocol
+        from drivebench_tuning.generalization import digest
+        frozen = validate_protocol(read_json(args.study_protocol), table.suite)
+        supplement = frozen.get('llm_supplement')
+        specs = [m for m in (supplement or {}).get('models', []) if m['model'] == args.model]
+        if (len(specs) != 1 or args.split != 'test' or args.seed != frozen['seed']
+                or args.repeats != supplement['repeats'] or args.trials != supplement['trials']
+                or args.max_wall_seconds != supplement['max_wall_seconds']
+                or calls != supplement['max_calls_per_model']
+                or table._document['protocol']['source_hashes'] != frozen['source_hashes']):
+            raise ValueError('API run differs from the frozen study protocol')
+        spec = specs[0]
+        if any(Decimal(actual) != Decimal(spec[field]) for field, actual in (
+            ('input_usd_per_million', args.input_usd_per_million),
+            ('output_usd_per_million', args.output_usd_per_million), ('cap_usd', args.cap_usd))):
+            raise ValueError('API prices or reservation cap differ from frozen study')
+        study_protocol_sha256 = digest(frozen)
     policy = APICostPolicy(budget_id=args.output.name, model=args.model,
         input_usd_per_million_tokens=args.input_usd_per_million,
         output_usd_per_million_tokens=args.output_usd_per_million,
@@ -181,6 +203,7 @@ def main():
         input_bound_id='canonical-utf8-bytes-plus-2048-provider-framing-v1')
     args.output.mkdir(parents=True, exist_ok=False)
     write_json(args.output/'plan.json', {'table_sha256': table.sha256, 'policy': policy.to_dict(),
+        'frozen_study_protocol_sha256': study_protocol_sha256,
         'max_calls': calls, 'max_wall_seconds': args.max_wall_seconds, 'split': args.split, 'repeats': args.repeats, 'seed': args.seed,
         'trial_budget': args.trials, 'backend': 'measured_replay', 'training_performed': False,
         'budget_note': 'Full upper-bound reservations retained; reported usage costs are separate estimates.'})
@@ -210,6 +233,8 @@ def main():
                                + Decimal(usage['output_tokens']) * Decimal(args.output_usd_per_million)) / 1_000_000
                 known_usage += 1
         result['stage_wall_seconds'] = time.monotonic() - stage_started
+        if study_protocol_sha256 is not None:
+            result['frozen_study_protocol_sha256'] = study_protocol_sha256
         result['deadline_rejections'] = durable_selector.deadline_rejections
         result['api_cost'] = {'reserved_usd': ledger.state['charged_usd'],
             'reported_usage_estimated_usd': str(usage_cost), 'usage_receipts': known_usage,

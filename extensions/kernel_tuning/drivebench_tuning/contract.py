@@ -6,6 +6,15 @@ import math
 from typing import Protocol
 
 
+# Fixed numerical contract, shared by the live evaluator and suite metadata.
+# These are operator allclose limits, not perceptual video-quality thresholds.
+DTYPE_TOLERANCES = {
+    "float16": {"rtol": 2e-3, "atol": 2e-3},
+    "bfloat16": {"rtol": 2e-2, "atol": 2e-2},
+    "float32": {"rtol": 2e-5, "atol": 3e-6},
+}
+
+
 @dataclass(frozen=True)
 class KernelConfig:
     block_size: int

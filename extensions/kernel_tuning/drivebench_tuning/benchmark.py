@@ -16,7 +16,7 @@ import statistics
 import time
 import uuid
 
-from .contract import KernelConfig, Measurement, Workload
+from .contract import DTYPE_TOLERANCES, KernelConfig, Measurement, Workload
 
 
 class DeadlineExceeded(RuntimeError):
@@ -213,8 +213,7 @@ class CudaEvaluator:
                 actual = fn(*self._inputs).cpu()
                 self._verify_inputs()
                 reference = self._expected
-                rtol, atol = {'float16': (2e-3, 2e-3), 'bfloat16': (2e-2, 2e-2),
-                              'float32': (2e-5, 3e-6)}[workload.dtype]
+                rtol, atol = (DTYPE_TOLERANCES[workload.dtype][key] for key in ('rtol', 'atol'))
                 finite = bool(torch.isfinite(actual).all().item())
                 shape_ok = actual.shape == reference.shape and actual.dtype == reference.dtype
                 correct = finite and shape_ok and bool(torch.allclose(actual, reference, rtol=rtol, atol=atol))

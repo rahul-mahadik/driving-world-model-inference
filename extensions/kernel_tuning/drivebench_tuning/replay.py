@@ -16,7 +16,7 @@ from statistics import median
 import uuid
 
 from .search import TrialResult
-from .suite import Suite, load_suite, _strict_object, _reject_constant
+from .suite import Suite, load_bound_suite, suite_task_indices, _strict_object, _reject_constant
 
 
 def _canonical(value):
@@ -34,6 +34,8 @@ class MeasuredTable:
             raise ValueError("table and workload suite identities differ")
         self._document = deepcopy(document)
         self.suite = suite
+        self.measured_tasks = tuple(suite.tasks[i] for i in
+                                    suite_task_indices(suite, document['protocol'].get('task_splits')))
         self.sha256 = table_sha256 or hashlib.sha256(_canonical(document)).hexdigest()
         self.cohort_id = document["cohort_id"]
         self.repeat_indices = tuple(document["repeat_indices"])
@@ -44,7 +46,7 @@ class MeasuredTable:
             if key in self._rows:
                 raise ValueError("duplicate table cell/repeat")
             self._rows[key] = deepcopy(m)
-        expected = {(t.task_id, c, r) for t in suite.tasks
+        expected = {(t.task_id, c, r) for t in self.measured_tasks
                     for c in (None, *(c.candidate_id for c in suite.candidates))
                     for r in self.repeat_indices}
         if set(self._rows) != expected:
@@ -56,7 +58,8 @@ class MeasuredTable:
         if len(raw) > 100_000_000:
             raise ValueError("table exceeds 100 MB bound")
         document = json.loads(raw, object_pairs_hook=_strict_object, parse_constant=_reject_constant)
-        return cls(document, suite=suite or load_suite(), table_sha256=hashlib.sha256(raw).hexdigest())
+        return cls(document, suite=suite or load_bound_suite(document.get('suite'), document.get('suite_sha256')),
+                   table_sha256=hashlib.sha256(raw).hexdigest())
 
     def row(self, task_id, candidate_id, repeat_index):
         return deepcopy(self._rows[(task_id, candidate_id, repeat_index)])
@@ -100,7 +103,7 @@ class MeasuredReplayEvaluator:
         self._counts = defaultdict(int)
         self._event = 0
         self._closed = False
-        self._tasks = {t.task_id: t.to_dict() for t in table.suite.tasks}
+        self._tasks = {t.task_id: t.to_dict() for t in table.measured_tasks}
         self._candidates = {c.candidate_id: c.to_dict() for c in table.suite.candidates}
 
     def _run(self, task, candidate):

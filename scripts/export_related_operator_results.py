@@ -19,6 +19,8 @@ SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS.parent / 'extensions/kernel_tuning'))
 from drivebench_tuning.benchmark import utc_now
 from drivebench_tuning.replay import MeasuredTable
+from drivebench_tuning.generalization import MODEL_KIND, digest as canonical_digest, validate_cost_model
+from drivebench_tuning.generalization_analysis import freeze_modal_selections
 
 
 def _load_script(name, filename):
@@ -105,6 +107,10 @@ def _verify_table_derivation(source, derived):
     runtime, identities = public.public_runtime(source._document['runtime'])
     if runtime != derived._document['runtime']:
         raise ValueError('Public runtime is not the pseudonymized source runtime')
+    if (source.suite.sha256 != derived.suite.sha256 or
+            source._document['protocol'] != derived._document['protocol'] or
+            source.repeat_indices != derived.repeat_indices):
+        raise ValueError('Public table changed the suite, selected task coverage or repeat protocol')
     expected = public.transform(source._document['rows'], source.cohort_id, derived.cohort_id,
                                 redactions=[0])
     if expected != derived._document['rows'] or source._document['cells'] != derived._document['cells']:
@@ -112,10 +118,38 @@ def _verify_table_derivation(source, derived):
     return identities
 
 
-def export_related(source_table, public_table, output, *, policy_reports=(), confirmation_dirs=()):
+def validate_modal(document, table, reports):
+    """Reconstruct decisions from unchanged episodes, ignoring only freeze time."""
+    expected = freeze_modal_selections(table, reports)
+    if ({k: v for k, v in document.items() if k != 'frozen_at'} !=
+            {k: v for k, v in expected.items() if k != 'frozen_at'}):
+        raise ValueError('Modal selection differs from its complete source policy reports')
+
+
+def validate_model_reports(model, table, reports):
+    model = validate_cost_model(model, table.suite, expected_table_sha256=table.sha256,
+                                expected_cohort_id=table.cohort_id)
+    found = False
+    for report in reports:
+        config = report.get('policy_configuration', {})
+        if config.get('kind') == MODEL_KIND:
+            found = True
+            metadata = {k: v for k, v in model['training'].items() if k != 'records'}
+            if (config.get('model_sha256') != canonical_digest(model) or config.get('training') != metadata
+                    or report.get('training', {}).get('externally_supplied_metadata') != metadata):
+                raise ValueError('Ridge report does not bind the supplied trained model')
+    if not found:
+        raise ValueError('Supplied trained model has no matching Ridge policy report')
+    return model
+
+
+def export_related(source_table, public_table, output, *, policy_reports=(), confirmation_dirs=(),
+                   trained_model=None, selections=None):
     source_table, public_table = (Path(p).resolve(strict=True) for p in (source_table, public_table))
     policies = [Path(p).resolve(strict=True) for p in policy_reports]
     confirmations = [Path(p).resolve(strict=True) for p in confirmation_dirs]
+    model_path = Path(trained_model).resolve(strict=True) if trained_model is not None else None
+    selection_path = Path(selections).resolve(strict=True) if selections is not None else None
     output = Path(output).resolve()
     if not policies and not confirmations:
         raise ValueError('At least one policy report or confirmation directory required')
@@ -125,6 +159,9 @@ def export_related(source_table, public_table, output, *, policy_reports=(), con
     before = {source_table: public.sha(source_table), public_table: public.sha(public_table)}
     for path in policies:
         before[path] = public.sha(path)
+    for path in (model_path, selection_path):
+        if path is not None:
+            before[path] = public.sha(path)
     for directory in confirmations:
         for name in _CONFIRMATION_FILES:
             path = directory / name
@@ -137,6 +174,12 @@ def export_related(source_table, public_table, output, *, policy_reports=(), con
     # Validate source science before creating any publication output.
     source_curves, _ = plots.policy_curves(policies, source)
     source_points, _ = plots.confirmation_points(confirmations, source)
+    source_reports = [plots.read_json(path)[0] for path in policies]
+    model = (validate_model_reports(plots.read_json(model_path)[0], source, source_reports)
+             if model_path is not None else None)
+    explicit_selection = plots.read_json(selection_path)[0] if selection_path is not None else None
+    if explicit_selection is not None:
+        validate_modal(explicit_selection, source, source_reports)
     mapping = {source.sha256: derived_table.sha256, source.cohort_id: derived_table.cohort_id}
     output.mkdir(parents=True, exist_ok=False)
     artifacts, selection_bindings = [], []
@@ -153,6 +196,23 @@ def export_related(source_table, public_table, output, *, policy_reports=(), con
                 'numeric_fields_and_trial_ids_unchanged': True,
                 'publication_bindings_updated': True, 'provenance_receipt': 'export-receipt.json'}
 
+    model_binding = None
+    if model is not None:
+        transformed_model = rebind(model, mapping, counts)
+        unchanged(model, transformed_model)
+        validate_cost_model(transformed_model, derived_table.suite,
+                            expected_table_sha256=derived_table.sha256,
+                            expected_cohort_id=derived_table.cohort_id)
+        # Keep the model document's canonical identity free of exporter metadata.
+        # Its original and derived identities live in the separate receipt.
+        target = output / 'trained-model.json'
+        public.write_json(target, transformed_model)
+        mapping[canonical_digest(model)] = canonical_digest(transformed_model)
+        record(model_path, target)
+        model_binding = {'artifact': target.name, 'source_canonical_sha256': canonical_digest(model),
+                         'derived_canonical_sha256': canonical_digest(transformed_model),
+                         'training_rerun': False, 'weights_unchanged': True}
+
     for index, path in enumerate(policies):
         document, _ = plots.read_json(path)
         transformed = rebind(document, mapping, counts)
@@ -161,16 +221,17 @@ def export_related(source_table, public_table, output, *, policy_reports=(), con
         target = output / f'policy-{index:03d}.json'
         public.write_json(target, transformed)
         mapping[before[path]] = public.sha(target)
+        # Modal manifests bind compact canonical report JSON, not file bytes.
+        mapping[canonical_digest(document)] = canonical_digest(transformed)
         record(path, target)
+        if model is not None or explicit_selection is not None:
+            artifacts[-1].update(source_canonical_sha256=canonical_digest(document),
+                                  derived_canonical_sha256=canonical_digest(transformed))
         derived_policies.append(target)
 
     known_selections = {}
-    for directory in confirmations:
-        documents = {name: (_read_json_lines(directory / name) if name.endswith('.jsonl')
-                            else plots.read_json(directory / name)[0]) for name in _CONFIRMATION_FILES}
-        plan, report = documents['plan.json'], documents['result.json']
-        original_selection = plan['selection_document']
-        original_selection_sha = plan['selection_sha256']
+
+    def export_selection(original_selection, original_selection_sha):
         if (not isinstance(original_selection_sha, str)
                 or not re.fullmatch(r'[0-9a-f]{64}', original_selection_sha)):
             raise ValueError('Recorded selection digest must be SHA256')
@@ -198,6 +259,22 @@ def export_related(source_table, public_table, output, *, policy_reports=(), con
                 'source_serialization_note': 'Original selection bytes are not embedded; source plan hash binds the exact embedded document and recorded digest.',
                 'derived_selection_sha256': new_selection_sha, 'artifact': selection_info['artifact']})
         mapping[original_selection_sha] = selection_info['derived_sha256']
+        return selection_info
+
+    explicit_binding = None
+    if explicit_selection is not None:
+        explicit_binding = export_selection(explicit_selection, before[selection_path])
+        derived_selection = plots.read_json(output / explicit_binding['artifact'])[0]
+        validate_modal(derived_selection, derived_table, [plots.read_json(p)[0] for p in derived_policies])
+    for directory in confirmations:
+        documents = {name: (_read_json_lines(directory / name) if name.endswith('.jsonl')
+                            else plots.read_json(directory / name)[0]) for name in _CONFIRMATION_FILES}
+        plan, report = documents['plan.json'], documents['result.json']
+        original_selection = plan['selection_document']
+        original_selection_sha = plan['selection_sha256']
+        if explicit_selection is not None and original_selection != explicit_selection:
+            raise ValueError('Confirmation used a different frozen modal selection')
+        selection_info = export_selection(original_selection, original_selection_sha)
         target_dir = output / ('confirmation-' + str(report['repeat_index']))
         target_dir.mkdir(exist_ok=False)
         for name in _CONFIRMATION_FILES:
@@ -235,6 +312,9 @@ def export_related(source_table, public_table, output, *, policy_reports=(), con
     points, _ = plots.confirmation_points(derived_confirmations, derived_table)
     if curves != source_curves or points != source_points:
         raise ValueError('Derived policy or confirmation analysis changed')
+    if model is not None:
+        validate_model_reports(transformed_model, derived_table,
+                               [plots.read_json(p)[0] for p in derived_policies])
     for path in output.rglob('*'):
         if path.is_file():
             text = path.read_text().lower()
@@ -253,6 +333,11 @@ def export_related(source_table, public_table, output, *, policy_reports=(), con
                'redactions': counts, 'selection_bindings': selection_bindings, 'artifacts': artifacts,
                'policy_report_artifacts': [p.relative_to(output).as_posix() for p in derived_policies],
                'confirmation_artifacts': [p.relative_to(output).as_posix() for p in derived_confirmations]}
+    if model_binding is not None:
+        receipt['trained_model_binding'] = model_binding
+    if explicit_binding is not None:
+        receipt['frozen_modal_selection_artifact'] = explicit_binding['artifact']
+        receipt['modal_decisions_reconstructed_from_source_and_derived_reports'] = True
     public.write_json(output / 'export-receipt.json', receipt)
     return receipt
 
@@ -263,10 +348,14 @@ def main(argv=None):
     parser.add_argument('--public-table', required=True, type=Path)
     parser.add_argument('--policy-reports', nargs='*', default=[], type=Path)
     parser.add_argument('--confirmation-dirs', nargs='*', default=[], type=Path)
+    parser.add_argument('--trained-model', type=Path)
+    parser.add_argument('--selections', type=Path,
+                        help='Frozen modal selection document, also usable without confirmation directories')
     parser.add_argument('--output', required=True, type=Path)
     args = parser.parse_args(argv)
     receipt = export_related(args.source_table, args.public_table, args.output,
-                             policy_reports=args.policy_reports, confirmation_dirs=args.confirmation_dirs)
+                             policy_reports=args.policy_reports, confirmation_dirs=args.confirmation_dirs,
+                             trained_model=args.trained_model, selections=args.selections)
     print(json.dumps({'completed': True, 'measurements_rerun': False, 'policy_calls_rerun': False,
                       'policy_reports': receipt['policy_report_count'],
                       'confirmation_repeats': receipt['confirmation_repeat_count'],

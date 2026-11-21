@@ -21,7 +21,7 @@ import uuid
 from .adapters import OperatorEvaluator
 from .benchmark import CudaEvaluator, EvidenceJournal, percentile, source_hashes, utc_now
 from .search import TrialResult
-from .suite import load_suite
+from .suite import BUNDLED_SUITES, load_bound_suite, load_suite, suite_task_indices
 
 _PROCESS_INSTANCE_ID = str(uuid.uuid4())
 _ARTIFACTS = ('plan.json', 'runtime.json', 'rows.json', 'trials.jsonl')
@@ -50,9 +50,9 @@ def _read_json(path):
     return result
 
 
-def collection_order(suite, seed, repeat_index):
+def collection_order(suite, seed, repeat_index, task_splits=None):
     """Shuffle tasks; rotate a fixed per-task candidate permutation each repeat."""
-    tasks = list(range(len(suite.tasks)))
+    tasks = list(suite_task_indices(suite, task_splits))
     random.Random(seed + 100003 * repeat_index).shuffle(tasks)
     order = []
     for task_index in tasks:
@@ -66,7 +66,7 @@ def collection_order(suite, seed, repeat_index):
     return order
 
 
-def _protocol(suite, *, planned_repeats, repetitions, warmups, seed, max_seconds):
+def _protocol(suite, *, planned_repeats, repetitions, warmups, seed, max_seconds, task_splits=None):
     if type(planned_repeats) is not int or not 2 <= planned_repeats <= 30:
         raise ValueError('planned_repeats must be 2..30')
     if type(repetitions) is not int or not 3 <= repetitions <= 1000:
@@ -77,7 +77,8 @@ def _protocol(suite, *, planned_repeats, repetitions, warmups, seed, max_seconds
         raise ValueError('seed must be uint32')
     if type(max_seconds) not in (float, int) or not math.isfinite(max_seconds) or not 0 < max_seconds <= 7200:
         raise ValueError('max_seconds must be finite in (0,7200]')
-    return {'schema_version': 1, 'kind': 'operator_table_protocol', 'backend': 'cuda',
+    suite_task_indices(suite, task_splits)
+    protocol = {'schema_version': 1, 'kind': 'operator_table_protocol', 'backend': 'cuda',
             'suite_sha256': suite.sha256, 'source_hashes': source_hashes(),
             'planned_repeats': planned_repeats, 'repetitions': repetitions,
             'warmups': warmups, 'seed': seed, 'max_seconds': max_seconds,
@@ -85,6 +86,10 @@ def _protocol(suite, *, planned_repeats, repetitions, warmups, seed, max_seconds
             'timing_boundary': suite.document['timing_boundary'],
             'memory_boundary': suite.document['memory_boundary'],
             'quality_policy': suite.document['quality_policy']}
+    if task_splits is not None:
+        protocol['task_splits'] = [s for s in ('train', 'validation', 'test') if s in task_splits]
+        protocol['coverage_scope'] = 'All candidates and eager reference for the selected suite splits only.'
+    return protocol
 
 
 def _check_row(row, suite, protocol, *, cohort_id, expected_repeat, expected_index, expected_pair):
@@ -134,14 +139,16 @@ def _check_row(row, suite, protocol, *, cohort_id, expected_repeat, expected_ind
 
 
 def collect(directory, *, repeat_index, planned_repeats=3, repetitions=30,
-            warmups=5, seed=1901, max_seconds=1200, runner_factory=CudaEvaluator):
+            warmups=5, seed=1901, max_seconds=1200, suite=None, task_splits=None,
+            runner_factory=CudaEvaluator):
     """Collect one repeat. Runner injection supports CPU contract tests only."""
-    suite = load_suite()
+    suite = load_suite(suite)
+    load_bound_suite(suite.document, suite.sha256)
     protocol = _protocol(suite, planned_repeats=planned_repeats, repetitions=repetitions,
-                         warmups=warmups, seed=seed, max_seconds=max_seconds)
+                         warmups=warmups, seed=seed, max_seconds=max_seconds, task_splits=task_splits)
     if type(repeat_index) is not int or not 0 <= repeat_index < planned_repeats:
         raise ValueError('repeat_index outside planned repeats')
-    order = collection_order(suite, seed, repeat_index)
+    order = collection_order(suite, seed, repeat_index, protocol.get('task_splits'))
     journal = EvidenceJournal(directory)
     plan = {'schema_version': 1, 'created_at': utc_now(), 'repeat_index': repeat_index,
             'process_instance_id': _PROCESS_INSTANCE_ID, 'protocol': protocol,
@@ -224,7 +231,7 @@ def validate_table(table):
     This verifies internal consistency, not the authenticity of arbitrary input
     JSON. Published table bytes must also match the publisher's artifact digest.
     """
-    suite = load_suite()
+    suite = load_bound_suite(table.get('suite'), table.get('suite_sha256'))
     if (table.get('schema_version') != 1 or table.get('kind') != 'measured_operator_table'
             or table.get('backend') != 'cuda' or table.get('synthetic') is not False
             or table.get('complete') is not True or table.get('suite_sha256') != suite.sha256
@@ -249,12 +256,13 @@ def validate_table(table):
             or len({r['process_instance_id'] for r in runs}) != planned):
         raise ValueError('Repeats must have distinct fresh-process identities')
     rows = table['rows']
-    width = len(suite.tasks) * (len(suite.candidates) + 1)
+    task_splits = protocol.get('task_splits')
+    width = len(suite_task_indices(suite, task_splits)) * (len(suite.candidates) + 1)
     if len(rows) != width * planned:
         raise ValueError('Table does not cover every planned cell')
     identities, input_ids = set(), {}
     for repeat_index in range(planned):
-        order = collection_order(suite, protocol['seed'], repeat_index)
+        order = collection_order(suite, protocol['seed'], repeat_index, task_splits)
         for index, pair in enumerate(order):
             result = _check_row(rows[repeat_index * width + index], suite, protocol, cohort_id=cohort_id,
                                 expected_repeat=repeat_index, expected_index=index, expected_pair=pair)
@@ -297,8 +305,16 @@ def merge(runs, output):
     records.sort(key=lambda record: record[0]['repeat_index'])
     first_plan, _, runtime, _ = records[0]
     protocol = first_plan['protocol']
+    suite = load_bound_suite(first_plan['suite'], protocol['suite_sha256'])
     if any(p['protocol'] != protocol or p['suite'] != first_plan['suite'] or r != runtime for p, _, r, _ in records):
         raise ValueError('Cannot pool different protocols or physical runtimes')
+    for plan, _, _, _ in records:
+        expected_order = [{'task_id': suite.tasks[t].task_id,
+                           'candidate_id': None if c is None else suite.candidates[c].candidate_id}
+                          for t, c in collection_order(suite, protocol['seed'], plan['repeat_index'],
+                                                       protocol.get('task_splits'))]
+        if plan['order'] != expected_order:
+            raise ValueError('Recorded order differs from selected suite coverage')
     rows = [row for _, repeat_rows, _, _ in records for row in repeat_rows]
     table = {'schema_version': 1, 'kind': 'measured_operator_table', 'backend': 'cuda', 'synthetic': False,
              'complete': True, 'created_at': utc_now(), 'suite_sha256': protocol['suite_sha256'],
@@ -321,6 +337,10 @@ def main(argv=None):
     sub = parser.add_subparsers(dest='command', required=True)
     run = sub.add_parser('collect', help='One fresh-process CUDA repeat of all suite cells')
     run.add_argument('--output', type=Path, required=True)
+    run.add_argument('--suite', choices=BUNDLED_SUITES, default=None,
+                     help='Frozen bundled suite (default: operator-search-v1)')
+    run.add_argument('--split', dest='task_splits', choices=('train', 'validation', 'test'),
+                     action='append', help='Collect only named splits; repeat flag to select several')
     run.add_argument('--repeat-index', type=int, required=True)
     run.add_argument('--planned-repeats', type=int, default=3)
     run.add_argument('--repetitions', type=int, default=30)

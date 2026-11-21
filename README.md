@@ -12,6 +12,8 @@ The operator suite contains 12 workloads across GEGLU and GroupNorm+SiLU, with c
 
 The [published operator dataset](results/2026-11-20-operator-search-rtx-pro-4500/README.md) contains 360 GPU measurements on an RTX PRO 4500 Blackwell, with three fresh-process repeats per task/configuration. [Collecting a measured table](docs/measured-operator-search.md) reproduces this procedure on another GPU. The table retains the CUDA-event samples, numerical checks and failed configurations. It can then be used for CPU-only search experiments without paying for another GPU measurement on each action.
 
+The expanded [operator generalization suite](docs/operator-generalization.md) provides 60 workloads and 25 configurations, with shape-separated training and test splits, a trainable cost model, TPE search, and a procedure for evaluating frozen choices on another GPU. Its [prospective protocol](protocols/operator-generalization-v2.json) defines the comparison before collecting results.
+
 ## Agent and RL interfaces
 
 Two interfaces share the benchmark's evaluator contracts:

@@ -1,0 +1,1227 @@
+{
+  "schema_version": 1,
+  "suite_id": "operator-generalization-v2",
+  "description": "Constructed shape-family generalization benchmark for two fixed operator implementations and their launch configurations. The specification itself contains no measured outcomes.",
+  "provenance": "GEGLU and GroupNorm32-SiLU are related to Vista inference. Shapes here are constructed, not recorded activations, a representative model trace, or held-out operator families.",
+  "split_policy": "Group by (operator, exact input shape), then assign each family to one split before measurements. All dtypes and seeds of a shape stay together; changing GroupNorm group count cannot move a shape across splits. Both operator families occur in all splits.",
+  "input_policy": "Seeded standard-normal tensors and seeded float32 affine weights/bias; the same family seed is used across dtypes. These are open task specifications, not secret test inputs or licensed driving data.",
+  "timing_boundary": "Single isolated operator invocation, CUDA events; initialization, compilation, input creation, warmups, correctness and export excluded but charged to wall time.",
+  "memory_boundary": "Peak live allocated increase above resident inputs, including output; not full-model memory or allocator reservation.",
+  "quality_policy": "Reference-output shape/dtype/finiteness, dtype-specific allclose, and input immutability. Fixed rtol/atol: float16 0.002/0.002; bfloat16 0.02/0.02; float32 0.00002/0.000003. No video perceptual-quality claim.",
+  "quality_tolerances": {
+    "float16": {
+      "rtol": 0.002,
+      "atol": 0.002
+    },
+    "bfloat16": {
+      "rtol": 0.02,
+      "atol": 0.02
+    },
+    "float32": {
+      "rtol": 2e-05,
+      "atol": 3e-06
+    }
+  },
+  "candidate_policy": "One torch.compile/Inductor control plus the Cartesian product of supported Triton block sizes 64..2048 and 1/2/4/8 warps. All configurations are attempted for every task; compilation, resource and numerical failures remain recorded outcomes, not substituted results.",
+  "resource_design": {
+    "maximum_input_tensor_bytes": 251658240,
+    "input_tensor_cap_bytes": 268435456,
+    "intended_minimum_gpu_memory_gib": 24,
+    "maximum_group_chunks_at_block64": 1440,
+    "scope": "Analytical input-size and kernel chunk bounds only. Runtime, compiler and allocator overhead are additional; fitting or completing on any GPU is not asserted."
+  },
+  "default_trial_budget": 8,
+  "default_memory_weight": 0.0,
+  "tasks": [
+    {
+      "id": "train-geglu-f01-float16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          1,
+          257,
+          768
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21101
+      }
+    },
+    {
+      "id": "train-geglu-f01-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          1,
+          257,
+          768
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21101
+      }
+    },
+    {
+      "id": "train-geglu-f01-float32",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          1,
+          257,
+          768
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21101
+      }
+    },
+    {
+      "id": "train-geglu-f02-float16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          4,
+          144,
+          1280
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21102
+      }
+    },
+    {
+      "id": "train-geglu-f02-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          4,
+          144,
+          1280
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21102
+      }
+    },
+    {
+      "id": "train-geglu-f02-float32",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          4,
+          144,
+          1280
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21102
+      }
+    },
+    {
+      "id": "train-geglu-f03-float16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          8,
+          288,
+          2560
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21103
+      }
+    },
+    {
+      "id": "train-geglu-f03-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          8,
+          288,
+          2560
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21103
+      }
+    },
+    {
+      "id": "train-geglu-f03-float32",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          8,
+          288,
+          2560
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21103
+      }
+    },
+    {
+      "id": "train-geglu-f04-float16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          4,
+          576,
+          4096
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21104
+      }
+    },
+    {
+      "id": "train-geglu-f04-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          4,
+          576,
+          4096
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21104
+      }
+    },
+    {
+      "id": "train-geglu-f04-float32",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          4,
+          576,
+          4096
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21104
+      }
+    },
+    {
+      "id": "train-geglu-f05-float16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          12,
+          100,
+          5120
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21105
+      }
+    },
+    {
+      "id": "train-geglu-f05-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          12,
+          100,
+          5120
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21105
+      }
+    },
+    {
+      "id": "train-geglu-f05-float32",
+      "split": "train",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          12,
+          100,
+          5120
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21105
+      }
+    },
+    {
+      "id": "validation-geglu-f06-float16",
+      "split": "validation",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          3,
+          193,
+          1536
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21106
+      }
+    },
+    {
+      "id": "validation-geglu-f06-bfloat16",
+      "split": "validation",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          3,
+          193,
+          1536
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21106
+      }
+    },
+    {
+      "id": "validation-geglu-f06-float32",
+      "split": "validation",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          3,
+          193,
+          1536
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21106
+      }
+    },
+    {
+      "id": "validation-geglu-f07-float16",
+      "split": "validation",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          6,
+          432,
+          6144
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21107
+      }
+    },
+    {
+      "id": "validation-geglu-f07-bfloat16",
+      "split": "validation",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          6,
+          432,
+          6144
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21107
+      }
+    },
+    {
+      "id": "validation-geglu-f07-float32",
+      "split": "validation",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          6,
+          432,
+          6144
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21107
+      }
+    },
+    {
+      "id": "test-geglu-f08-float16",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          2,
+          377,
+          2048
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21108
+      }
+    },
+    {
+      "id": "test-geglu-f08-bfloat16",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          2,
+          377,
+          2048
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21108
+      }
+    },
+    {
+      "id": "test-geglu-f08-float32",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          2,
+          377,
+          2048
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21108
+      }
+    },
+    {
+      "id": "test-geglu-f09-float16",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          8,
+          900,
+          7680
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21109
+      }
+    },
+    {
+      "id": "test-geglu-f09-bfloat16",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          8,
+          900,
+          7680
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21109
+      }
+    },
+    {
+      "id": "test-geglu-f09-float32",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          8,
+          900,
+          7680
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21109
+      }
+    },
+    {
+      "id": "test-geglu-f10-float16",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          16,
+          384,
+          10240
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21110
+      }
+    },
+    {
+      "id": "test-geglu-f10-bfloat16",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          16,
+          384,
+          10240
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21110
+      }
+    },
+    {
+      "id": "test-geglu-f10-float32",
+      "split": "test",
+      "workload": {
+        "operator": "geglu",
+        "shape": [
+          16,
+          384,
+          10240
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21110
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f01-float16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          1,
+          64,
+          17,
+          31
+        ],
+        "dtype": "float16",
+        "num_groups": 8,
+        "eps": 1e-05,
+        "seed": 21201
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f01-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          1,
+          64,
+          17,
+          31
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 8,
+        "eps": 1e-05,
+        "seed": 21201
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f01-float32",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          1,
+          64,
+          17,
+          31
+        ],
+        "dtype": "float32",
+        "num_groups": 8,
+        "eps": 1e-05,
+        "seed": 21201
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f02-float16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          2,
+          160,
+          24,
+          40
+        ],
+        "dtype": "float16",
+        "num_groups": 16,
+        "eps": 1e-05,
+        "seed": 21202
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f02-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          2,
+          160,
+          24,
+          40
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 16,
+        "eps": 1e-05,
+        "seed": 21202
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f02-float32",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          2,
+          160,
+          24,
+          40
+        ],
+        "dtype": "float32",
+        "num_groups": 16,
+        "eps": 1e-05,
+        "seed": 21202
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f03-float16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          4,
+          320,
+          36,
+          64
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21203
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f03-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          4,
+          320,
+          36,
+          64
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21203
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f03-float32",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          4,
+          320,
+          36,
+          64
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21203
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f04-float16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          8,
+          640,
+          18,
+          32
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21204
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f04-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          8,
+          640,
+          18,
+          32
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21204
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f04-float32",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          8,
+          640,
+          18,
+          32
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21204
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f05-float16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          4,
+          1280,
+          9,
+          16
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21205
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f05-bfloat16",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          4,
+          1280,
+          9,
+          16
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21205
+      }
+    },
+    {
+      "id": "train-groupnorm_silu-f05-float32",
+      "split": "train",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          4,
+          1280,
+          9,
+          16
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21205
+      }
+    },
+    {
+      "id": "validation-groupnorm_silu-f06-float16",
+      "split": "validation",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          3,
+          96,
+          29,
+          43
+        ],
+        "dtype": "float16",
+        "num_groups": 16,
+        "eps": 1e-05,
+        "seed": 21206
+      }
+    },
+    {
+      "id": "validation-groupnorm_silu-f06-bfloat16",
+      "split": "validation",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          3,
+          96,
+          29,
+          43
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 16,
+        "eps": 1e-05,
+        "seed": 21206
+      }
+    },
+    {
+      "id": "validation-groupnorm_silu-f06-float32",
+      "split": "validation",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          3,
+          96,
+          29,
+          43
+        ],
+        "dtype": "float32",
+        "num_groups": 16,
+        "eps": 1e-05,
+        "seed": 21206
+      }
+    },
+    {
+      "id": "validation-groupnorm_silu-f07-float16",
+      "split": "validation",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          6,
+          384,
+          27,
+          48
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21207
+      }
+    },
+    {
+      "id": "validation-groupnorm_silu-f07-bfloat16",
+      "split": "validation",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          6,
+          384,
+          27,
+          48
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21207
+      }
+    },
+    {
+      "id": "validation-groupnorm_silu-f07-float32",
+      "split": "validation",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          6,
+          384,
+          27,
+          48
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21207
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-f08-float16",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          2,
+          192,
+          31,
+          47
+        ],
+        "dtype": "float16",
+        "num_groups": 16,
+        "eps": 1e-05,
+        "seed": 21208
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-f08-bfloat16",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          2,
+          192,
+          31,
+          47
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 16,
+        "eps": 1e-05,
+        "seed": 21208
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-f08-float32",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          2,
+          192,
+          31,
+          47
+        ],
+        "dtype": "float32",
+        "num_groups": 16,
+        "eps": 1e-05,
+        "seed": 21208
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-f09-float16",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          8,
+          320,
+          72,
+          128
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21209
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-f09-bfloat16",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          8,
+          320,
+          72,
+          128
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21209
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-f09-float32",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          8,
+          320,
+          72,
+          128
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21209
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-f10-float16",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          12,
+          640,
+          36,
+          64
+        ],
+        "dtype": "float16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21210
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-f10-bfloat16",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          12,
+          640,
+          36,
+          64
+        ],
+        "dtype": "bfloat16",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21210
+      }
+    },
+    {
+      "id": "test-groupnorm_silu-f10-float32",
+      "split": "test",
+      "workload": {
+        "operator": "groupnorm_silu",
+        "shape": [
+          12,
+          640,
+          36,
+          64
+        ],
+        "dtype": "float32",
+        "num_groups": 32,
+        "eps": 1e-05,
+        "seed": 21210
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "torch-compiled",
+      "config": {
+        "implementation": "compiled"
+      }
+    },
+    {
+      "id": "triton-b64-w1",
+      "config": {
+        "implementation": "triton",
+        "block_size": 64,
+        "num_warps": 1
+      }
+    },
+    {
+      "id": "triton-b64-w2",
+      "config": {
+        "implementation": "triton",
+        "block_size": 64,
+        "num_warps": 2
+      }
+    },
+    {
+      "id": "triton-b64-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 64,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b64-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 64,
+        "num_warps": 8
+      }
+    },
+    {
+      "id": "triton-b128-w1",
+      "config": {
+        "implementation": "triton",
+        "block_size": 128,
+        "num_warps": 1
+      }
+    },
+    {
+      "id": "triton-b128-w2",
+      "config": {
+        "implementation": "triton",
+        "block_size": 128,
+        "num_warps": 2
+      }
+    },
+    {
+      "id": "triton-b128-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 128,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b128-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 128,
+        "num_warps": 8
+      }
+    },
+    {
+      "id": "triton-b256-w1",
+      "config": {
+        "implementation": "triton",
+        "block_size": 256,
+        "num_warps": 1
+      }
+    },
+    {
+      "id": "triton-b256-w2",
+      "config": {
+        "implementation": "triton",
+        "block_size": 256,
+        "num_warps": 2
+      }
+    },
+    {
+      "id": "triton-b256-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 256,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b256-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 256,
+        "num_warps": 8
+      }
+    },
+    {
+      "id": "triton-b512-w1",
+      "config": {
+        "implementation": "triton",
+        "block_size": 512,
+        "num_warps": 1
+      }
+    },
+    {
+      "id": "triton-b512-w2",
+      "config": {
+        "implementation": "triton",
+        "block_size": 512,
+        "num_warps": 2
+      }
+    },
+    {
+      "id": "triton-b512-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 512,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b512-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 512,
+        "num_warps": 8
+      }
+    },
+    {
+      "id": "triton-b1024-w1",
+      "config": {
+        "implementation": "triton",
+        "block_size": 1024,
+        "num_warps": 1
+      }
+    },
+    {
+      "id": "triton-b1024-w2",
+      "config": {
+        "implementation": "triton",
+        "block_size": 1024,
+        "num_warps": 2
+      }
+    },
+    {
+      "id": "triton-b1024-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 1024,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b1024-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 1024,
+        "num_warps": 8
+      }
+    },
+    {
+      "id": "triton-b2048-w1",
+      "config": {
+        "implementation": "triton",
+        "block_size": 2048,
+        "num_warps": 1
+      }
+    },
+    {
+      "id": "triton-b2048-w2",
+      "config": {
+        "implementation": "triton",
+        "block_size": 2048,
+        "num_warps": 2
+      }
+    },
+    {
+      "id": "triton-b2048-w4",
+      "config": {
+        "implementation": "triton",
+        "block_size": 2048,
+        "num_warps": 4
+      }
+    },
+    {
+      "id": "triton-b2048-w8",
+      "config": {
+        "implementation": "triton",
+        "block_size": 2048,
+        "num_warps": 8
+      }
+    }
+  ]
+}

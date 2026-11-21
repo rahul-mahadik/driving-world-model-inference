@@ -16,6 +16,7 @@ dependencies = ["numpy>=1.24,<3", "gymnasium==1.2.3"]
 gpu = ["torch==2.10.0", "triton==3.6.0; sys_platform == 'linux'"]
 test = ["pytest>=8,<9", "torch==2.10.0"]
 interface-test = ["pytest>=8,<9"]
+search = ["optuna==5.1.0"]
 
 [project.scripts]
 drivebench-tune = "drivebench_tuning.cli:main"
