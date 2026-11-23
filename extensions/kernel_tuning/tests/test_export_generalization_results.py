@@ -127,6 +127,8 @@ def transfer_study(study, tmp_path, monkeypatch):
             self.journal, self.repetitions, self.warmups = journal, repetitions, warmups
             self.runtime = {'gpu_uuid': '22345678-1234-5678-9abc-123456789abc',
                 'source_hashes': tc.source_hashes(), 'gpu_name': 'Second CPU fixture only',
+                'compiler_state_policy': dict(tc.COMPILER_STATE_POLICY),
+                'inductor_compile_threads': 1,
                 'torch': 'fixture', 'driver_inventory': [
                     'GPU-22345678-1234-5678-9abc-123456789abc, 580.178.04']}
             self.cohort_id = tc._digest(self.runtime)

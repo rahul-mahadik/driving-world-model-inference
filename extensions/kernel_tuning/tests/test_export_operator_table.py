@@ -23,6 +23,8 @@ class FixtureRunner:
     def __init__(self, journal, *, repetitions, warmups, max_seconds):
         self.journal, self.repetitions, self.warmups = journal, repetitions, warmups
         self.runtime = {'gpu_uuid': GPU_ID, 'source_hashes': tc.source_hashes(),
+                        'compiler_state_policy': dict(tc.COMPILER_STATE_POLICY),
+                        'inductor_compile_threads': 1,
                         'gpu_name': 'CPU fixture only', 'torch': 'fixture',
                         'driver_inventory': ['GPU-' + GPU_ID + ', 580.178.04',
                                              'GPU-' + SECOND_GPU_ID + ', 580.178.04']}

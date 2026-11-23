@@ -19,6 +19,31 @@ import uuid
 from .contract import DTYPE_TOLERANCES, KernelConfig, Measurement, Workload
 
 
+COMPILER_STATE_POLICY = {
+    'version': 'workload-isolation-v1',
+    'scope': 'all serial CudaEvaluator workloads, including primary, transfer and fresh confirmation',
+    'reset_api': 'torch.compiler.reset',
+    'reset_before': 'each workload transition, including first',
+    'reset_on_close': True,
+    'same_workload_reuses_compiled_callable': True,
+    'filesystem_caches_deleted': False,
+    'sample_timing_includes_reset': False,
+    'preparation_and_wall_budget_include_reset': True,
+    'concurrent_evaluators_supported': False,
+    'inductor_compile_threads': 1,
+}
+
+
+def checked_compiler_thread_count():
+    """Read the effective compiler setting, not merely its environment request."""
+    from torch._inductor import config
+    count = config.compile_threads
+    if type(count) is not int or count != COMPILER_STATE_POLICY['inductor_compile_threads']:
+        raise RuntimeError('This cohort requires Inductor compile_threads=1; set '
+                           'TORCHINDUCTOR_COMPILE_THREADS=1 before process startup')
+    return count
+
+
 class DeadlineExceeded(RuntimeError):
     pass
 
@@ -73,8 +98,10 @@ class CudaEvaluator:
 
     No warmup, compile, correctness, export, or tensor creation time is charged
     to latency. Those costs are recorded separately and consume wall-time budget.
-    Every evaluate() performs a fresh sample set; only inputs and compilation
-    are reused. Does not allocate cloud resources, add funding, or launch guards.
+    Every evaluate() performs a fresh sample set; inputs and compilation are
+    reused only within the current workload. Compiler state is reset between
+    workloads; this evaluator must own its serial process. The reset does not
+    delete filesystem caches. Does not allocate cloud resources or launch guards.
     """
     def __init__(self, journal: EvidenceJournal, *, repetitions=30, warmups=5,
                  max_seconds=900, device=0):
@@ -92,6 +119,7 @@ class CudaEvaluator:
         self._out_of_resources = OutOfResources
         if torch.__version__.split('+')[0] != '2.10.0' or triton.__version__ != '3.6.0':
             raise RuntimeError('This prospective cohort requires torch 2.10.0 / triton 3.6.0')
+        compile_threads = checked_compiler_thread_count()
         if type(device) is not int or not 0 <= device < torch.cuda.device_count():
             raise ValueError('Invalid CUDA device')
         self.torch, self.device, self.journal = torch, torch.device(f'cuda:{device}'), journal
@@ -116,6 +144,8 @@ class CudaEvaluator:
             'cuda': torch.version.cuda, 'python': platform.python_version(),
             'packages': {p: importlib.metadata.version(p) for p in ('torch', 'triton', 'numpy', 'gymnasium')},
             'source_hashes': source_hashes(), 'device_index': device,
+            'compiler_state_policy': dict(COMPILER_STATE_POLICY),
+            'inductor_compile_threads': compile_threads,
         }
         self.cohort_id = hashlib.sha256(json.dumps(self.runtime, sort_keys=True).encode()).hexdigest()
         journal.write('runtime.json', {**self.runtime, 'cohort_id': self.cohort_id})
@@ -131,9 +161,15 @@ class CudaEvaluator:
         if self._current == workload:
             return
         torch = self.torch
-        self._inputs, self._expected, self._compiled, self._current = None, None, None, None
         torch.cuda.synchronize(self.device)
+        self._inputs, self._expected, self._compiled, self._current = None, None, None, None
+        # Dropping a compiled callable does not clear Dynamo's code-object cache.
+        # Isolate unrelated shape/dtype workloads before compiling either role;
+        # keep this preparation cost outside every CUDA timing sample.
+        torch.compiler.reset()
         torch.cuda.empty_cache()
+        self.journal.append({'event': 'compiler_state_reset', 'reason': 'workload_change',
+                             'workload_key': workload.key(), 'filesystem_caches_deleted': False})
         generator = torch.Generator(device='cpu').manual_seed(workload.seed)
         cpu_x = torch.randn(workload.shape, generator=generator, dtype=torch.float32).to(getattr(torch, workload.dtype))
         cpu_inputs = [cpu_x]
@@ -283,6 +319,7 @@ class CudaEvaluator:
             raise
 
     def close(self):
-        self._inputs, self._expected, self._compiled, self._current = None, None, None, None
         self.torch.cuda.synchronize(self.device)
+        self._inputs, self._expected, self._compiled, self._current = None, None, None, None
+        self.torch.compiler.reset()
         self.torch.cuda.empty_cache()

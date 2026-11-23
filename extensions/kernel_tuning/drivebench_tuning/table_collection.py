@@ -19,7 +19,7 @@ import time
 import uuid
 
 from .adapters import OperatorEvaluator
-from .benchmark import CudaEvaluator, EvidenceJournal, percentile, source_hashes, utc_now
+from .benchmark import COMPILER_STATE_POLICY, CudaEvaluator, EvidenceJournal, percentile, source_hashes, utc_now
 from .search import TrialResult
 from .suite import BUNDLED_SUITES, load_bound_suite, load_suite, suite_task_indices
 
@@ -80,6 +80,7 @@ def _protocol(suite, *, planned_repeats, repetitions, warmups, seed, max_seconds
     suite_task_indices(suite, task_splits)
     protocol = {'schema_version': 1, 'kind': 'operator_table_protocol', 'backend': 'cuda',
             'suite_sha256': suite.sha256, 'source_hashes': source_hashes(),
+            'compiler_state_policy': dict(COMPILER_STATE_POLICY),
             'planned_repeats': planned_repeats, 'repetitions': repetitions,
             'warmups': warmups, 'seed': seed, 'max_seconds': max_seconds,
             'order_policy': 'seeded task shuffle; baseline first; per-task candidate permutation rotated by 3 each repeat',
@@ -162,6 +163,11 @@ def collect(directory, *, repeat_index, planned_repeats=3, repetitions=30,
         evaluator = OperatorEvaluator(runner_factory(journal, repetitions=repetitions, warmups=warmups,
                                                       max_seconds=max_seconds))
         cohort_id = evaluator.runner.cohort_id
+        if _digest(evaluator.runner.runtime.get('compiler_state_policy')) != _digest(protocol['compiler_state_policy']):
+            raise ValueError('Evaluator compiler-state policy differs from collection plan')
+        compile_threads = evaluator.runner.runtime.get('inductor_compile_threads')
+        if type(compile_threads) is not int or compile_threads != protocol['compiler_state_policy']['inductor_compile_threads']:
+            raise ValueError('Evaluator Inductor compile thread count differs from collection plan')
         trial_ids, input_ids = set(), {}
         for index, (task_index, candidate_index) in enumerate(order):
             task = suite.tasks[task_index]
@@ -251,6 +257,21 @@ def validate_table(table):
     if (_digest(runtime) != cohort_id or table.get('cohort_id') != cohort_id
             or runtime.get('source_hashes') != protocol.get('source_hashes') or not runtime.get('gpu_uuid')):
         raise ValueError('Runtime identity differs')
+    collection_policy = protocol.get('compiler_state_policy')
+    runtime_policy = runtime.get('compiler_state_policy')
+    if collection_policy is not None or runtime_policy is not None:
+        if (_digest(collection_policy) != _digest(COMPILER_STATE_POLICY)
+                or _digest(runtime_policy) != _digest(collection_policy)):
+            raise ValueError('Compiler-state policy differs between collection and runtime')
+        compile_threads = runtime.get('inductor_compile_threads')
+        if type(compile_threads) is not int or compile_threads != collection_policy['inductor_compile_threads']:
+            raise ValueError('Runtime Inductor compile thread count differs from collection policy')
+    else:
+        # Historical tables remain replayable. This source revision cannot omit
+        # the policy that its evaluator and generated collection plan declare.
+        current_benchmark_sha = source_hashes().get('benchmark.py')
+        if current_benchmark_sha is not None and protocol['source_hashes'].get('benchmark.py') == current_benchmark_sha:
+            raise ValueError('Compiler-state policy missing from current-source table')
     runs = table['runs']
     if (len(runs) != planned or sorted(r['repeat_index'] for r in runs) != list(range(planned))
             or len({r['process_instance_id'] for r in runs}) != planned):

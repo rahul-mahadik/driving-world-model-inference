@@ -8,7 +8,7 @@ from decimal import Decimal
 import json
 from pathlib import Path
 
-from .benchmark import source_hashes
+from .benchmark import COMPILER_STATE_POLICY, source_hashes
 from .evaluation import random_policy
 from .generalization import (OPTUNA_VERSION, RIDGE_ALPHA, FAILURE_COST, FEATURE_VERSION,
                              RidgeSelector, TPESelector, digest, train_cost_model, structured_tpe_space)
@@ -48,6 +48,7 @@ def make_protocol(suite, *, seed=2101, llm_plan=None):
             raise ValueError('LLM reservations must fit the declared $3.50 total cap')
     return {'schema_version': 1, 'kind': 'operator_generalization_preregistered_protocol',
         'suite_sha256': suite.sha256, 'source_hashes': source_hashes(),
+        'compiler_state_policy': dict(COMPILER_STATE_POLICY),
         'training_tasks': [suite.tasks[i].task_id for i in suite.splits['train']],
         'validation_tasks': [suite.tasks[i].task_id for i in suite.splits['validation']],
         'test_tasks': [suite.tasks[i].task_id for i in suite.splits['test']],
@@ -75,7 +76,8 @@ def validate_protocol(document, suite):
     if set(document) - {'frozen_at'} != set(make_protocol(suite)):
         raise ValueError('unexpected or missing frozen protocol fields')
     expected = make_protocol(suite, seed=document.get('seed'), llm_plan=document.get('llm_supplement'))
-    if {k: v for k, v in document.items() if k != 'frozen_at'} != expected:
+    if ({k: v for k, v in document.items() if k != 'frozen_at'} != expected
+            or digest(document['compiler_state_policy']) != digest(expected['compiler_state_policy'])):
         raise ValueError('frozen protocol differs from installed source/suite or fixed evaluation settings')
     stamp = datetime.fromisoformat(document.get('frozen_at', ''))
     if stamp.tzinfo is None:
@@ -108,6 +110,8 @@ def run_comparison(table, protocol, output):
     protocol = validate_protocol(protocol, table.suite)
     if table._document['protocol']['source_hashes'] != protocol['source_hashes']:
         raise ValueError('table was measured with a different source revision than frozen protocol')
+    if digest(table._document['protocol'].get('compiler_state_policy')) != digest(protocol['compiler_state_policy']):
+        raise ValueError('table compiler-state policy differs from frozen study protocol')
     if any(datetime.fromisoformat(r['at']) <= datetime.fromisoformat(protocol['frozen_at']) for r in table._document['runs']):
         raise ValueError('protocol must be frozen before collection completes')
     # The original freeze receipt/host manifest, not this timestamp comparison,

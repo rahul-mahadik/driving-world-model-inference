@@ -51,6 +51,8 @@ The environment enforces result identities, freshness, matching input/runtime bi
 
 The built-in `OperatorEvaluator` wraps the existing measured `CudaEvaluator` and maps generic candidates to its example controls. Other candidate implementations belong in your own adapter. `SyntheticEvaluator` is an explicit deterministic interface fixture that invents costs; do not use it as a proxy performance model.
 
+Before launching a process that uses `CudaEvaluator`, set `TORCHINDUCTOR_COMPILE_THREADS=1`. It checks the effective PyTorch value and owns process-wide compiler state, so use only one evaluator at a time in that process.
+
 ## Policy protocol
 
 A policy is any callable `policy(observation, info) -> action_index`. Use `evaluate_policy(env_factory, policy, task_indices, repeats=..., seed=..., split=...)` for fixed-budget episodes with full trajectory records. The factory must return a new environment each time. Each environment calls its evaluator's `close()`. A factory may own a fresh evaluator per episode. Sharing one serial evaluator requires an idempotent, reusable cache-release `close()` (as the built-in CUDA runner provides), or a non-owning adapter with run-owned cleanup. Keep the overall wall-time deadline outside episode resets and never run overlapping measurements on one GPU.

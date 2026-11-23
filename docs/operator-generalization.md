@@ -11,6 +11,8 @@ an exact shape stay in one split, including dtype, seed and group-count changes.
 Both operators occur in every split. This tests generalization across selected
 shapes; it does not test an unseen operator family.
 
+The [compiler-isolation protocol](../protocols/operator-generalization-v2-compile-isolation-v1.json) fixes compiler-state handling and compilation concurrency for both GPU cohorts.
+
 ## Measure the workloads
 
 Install the GPU extra and use three fresh processes on one device. Use a new
@@ -19,6 +21,7 @@ compiler cache and output directory for each process. These commands collect
 
 ```sh
 python -m pip install './extensions/kernel_tuning[gpu,search]'
+export TORCHINDUCTOR_COMPILE_THREADS=1
 
 python -m drivebench_tuning.generalization_cli freeze \
   --suite operator-generalization-v2 --output protocol.json
@@ -40,6 +43,13 @@ invocations per successful measurement. Compilation is excluded from steady-stat
 latency and included in preparation time. Numerical failures, allocation failures
 and execution errors remain recorded. The table's cell summaries distinguish
 variation within a process from variation across fresh processes.
+
+Primary collection, second-GPU collection and fresh confirmation use one
+Inductor compilation thread. Set the variable before Python starts; the runner
+checks the effective setting and binds it to the protocol and runtime. Compiler
+state resets at each workload transition, with compilation reused within a
+workload. The reset is included in preparation time, outside timed invocations,
+and leaves filesystem caches intact.
 
 ## Train and evaluate selectors
 
@@ -98,7 +108,7 @@ python -m drivebench_tuning.generalization_cli selections \
     policy-comparison/optuna-tpe.json policy-comparison/ridge-selector.json \
   --output frozen-selections.json
 
-python -m drivebench_tuning.confirmation \
+TORCHINDUCTOR_COMPILE_THREADS=1 python -m drivebench_tuning.confirmation \
   --suite operator-generalization-v2 --selections frozen-selections.json \
   --repeat-index 0 --output confirmation-0
 ```

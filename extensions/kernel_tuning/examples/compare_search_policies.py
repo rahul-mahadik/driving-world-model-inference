@@ -1,4 +1,7 @@
-"""Serial, equal-trial grid/random example. Search outcomes need fresh confirmation."""
+"""Serial, equal-trial grid/random example. Search outcomes need fresh confirmation.
+
+For --backend cuda, set TORCHINDUCTOR_COMPILE_THREADS=1 before starting Python.
+"""
 import argparse
 import hashlib
 import json

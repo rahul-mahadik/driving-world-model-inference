@@ -111,10 +111,30 @@ def test_protocol_fixes_budget_training_splits_and_source(table, monkeypatch):
     p = cli.make_protocol(table.suite)
     p['frozen_at'] = '2000-01-01T00:00:00+00:00'
     assert cli.validate_protocol(p, table.suite) == p
+    assert p['compiler_state_policy'] == cli.COMPILER_STATE_POLICY
     assert p['trials'] == 8 and p['repeats'] == 20 and p['tpe']['startup_trials'] == 3
-    for key, value in [('trials', 7), ('training_tasks', p['test_tasks']), ('source_hashes', {})]:
+    for key, value in [('trials', 7), ('training_tasks', p['test_tasks']), ('source_hashes', {}),
+                       ('compiler_state_policy', {}),
+                       ('compiler_state_policy', {**cli.COMPILER_STATE_POLICY, 'inductor_compile_threads': True})]:
         bad = deepcopy(p); bad[key] = value
         with pytest.raises(ValueError): cli.validate_protocol(bad, table.suite)
+
+
+def test_study_rejects_old_protocol_and_table_policy_before_training(table, tmp_path, monkeypatch):
+    monkeypatch.setattr(cli, 'source_hashes', lambda: {'fixture.py': 'f'*64})
+    protocol = cli.make_protocol(table.suite)
+    protocol['frozen_at'] = '2000-01-01T00:00:00+00:00'
+    old = deepcopy(protocol); del old['compiler_state_policy']
+    with pytest.raises(ValueError, match='protocol fields'):
+        cli.validate_protocol(old, table.suite)
+    def no_training(*args, **kwargs):
+        raise AssertionError('No training before the study/table binding is accepted')
+    monkeypatch.setattr(cli, 'train_cost_model', no_training)
+    del table._document['protocol']['compiler_state_policy']
+    output = tmp_path / 'must-not-exist'
+    with pytest.raises(ValueError, match='compiler-state policy'):
+        cli.run_comparison(table, protocol, output)
+    assert not output.exists()
 
 
 def test_modal_ties_follow_suite_order_and_preserve_votes(table):
