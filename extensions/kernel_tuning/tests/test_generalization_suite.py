@@ -144,7 +144,9 @@ def test_confirmation_cli_binds_the_explicit_new_suite(tmp_path, monkeypatch):
     monkeypatch.setattr(tc, 'source_hashes', lambda: {'fixture.py': 'f' * 64})
     monkeypatch.setattr(confirmation, 'CudaEvaluator', FixtureRunner)
     document = {'suite_sha256': suite.sha256,
-                'cohort_id': tc._digest({'gpu_uuid': 'CPU-CONTRACT-FIXTURE', 'source_hashes': tc.source_hashes()}),
+                'cohort_id': tc._digest({'gpu_uuid': 'CPU-CONTRACT-FIXTURE', 'source_hashes': tc.source_hashes(),
+                                         'compiler_state_policy': dict(tc.COMPILER_STATE_POLICY),
+                                         'inductor_compile_threads': 1}),
                 'expected_input_digests': {task.task_id: tc._digest([hashlib.sha256(workload.key().encode()).hexdigest()])},
                 'selections': [{'task_id': task.task_id, 'candidate_id': 'triton-b2048-w1'}]}
     selections = tmp_path / 'selections.json'
