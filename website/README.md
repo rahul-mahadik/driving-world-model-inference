@@ -1,11 +1,13 @@
-# Research website
+# DriveBench website
 
-Static source for the public DriveBench research site. Serve this directory with a static HTTP server; no build, API keys, account or framework is required.
+Static source for the public DriveBench benchmark and agent tuning environment. No build step, API keys or framework is required. From the repository root:
 
 ```sh
-python -m http.server 8766 --directory website
+python -m http.server 8766 --bind 127.0.0.1 --directory website
 ```
 
-The page states the active thesis and separates the legacy GPU evidence from the unrun modern-baseline, verifier, table, transfer and code-action phases. CPU examples live under software smoke tests, not empirical evidence.
+Open <http://127.0.0.1:8766/>. The page includes measured operator results, policy comparisons, downloadable figures, and CPU replay and GPU collection examples. Dataset downloads and documentation link to their versioned repository paths.
 
-The historical figures are unchanged numerical plots with downloadable data, captions, hashes and a reproducible generator in `figures/`. They are not modern-runtime measurements. The research dependency diagram is conceptual and explicitly labeled. No hosted evaluation service, completed lookup table, paper or leaderboard is implied.
+The current operator figures in `figures/generalization/` are copied byte-for-byte from the published dataset. The page links their SVG and PDF versions for full-size viewing. Numerical data, measurement protocols and reproduction commands live with the dataset rather than in the website source. Historical figure files remain available in `figures/`.
+
+`app.js` handles accessible example tabs and copy buttons. The site does not run GPU jobs or call model APIs; evaluation runs through the Python interfaces described in the documentation.

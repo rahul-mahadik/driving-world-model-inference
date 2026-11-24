@@ -1,0 +1,1166 @@
+{
+  "analysis": {
+    "kind": "frozen_selection_cross_gpu_transfer",
+    "rank_metric": "Spearman average ranks of candidates passing every repeat on both GPUs",
+    "records": [
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": null,
+            "policy": "fixed-compiled",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.3541725249520886
+          },
+          {
+            "candidate_id": null,
+            "policy": "random",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.3541725249520886
+          },
+          {
+            "candidate_id": "triton-b64-w4",
+            "policy": "optuna-tpe",
+            "target_cost": 1.2508816339456132,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.6050541588977019
+          },
+          {
+            "candidate_id": "triton-b2048-w4",
+            "policy": "ridge-selector",
+            "target_cost": 1.1805125316565972,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.5346850566086858
+          },
+          {
+            "candidate_id": "triton-b64-w1",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 1.2037618023901908,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.5579343273422794
+          },
+          {
+            "candidate_id": "triton-b64-w1",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 1.2037618023901908,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.5579343273422794
+          }
+        ],
+        "rank_correlation": -0.03654549019324204,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "triton-b64-w4",
+          "target_cost": 1.2508816339456132,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.6050541588977019
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b64-w8",
+        "target_oracle_cost": 0.6458274750479114,
+        "task_id": "test-geglu-f08-float16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": null,
+            "policy": "fixed-compiled",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "random",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "optuna-tpe",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "ridge-selector",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          }
+        ],
+        "rank_correlation": -0.006923076923076924,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": null,
+          "target_cost": 1.0,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.0
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": null,
+        "target_oracle_cost": 1.0,
+        "task_id": "test-geglu-f08-bfloat16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": null,
+            "policy": "fixed-compiled",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "random",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "optuna-tpe",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "ridge-selector",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "triton-b256-w4",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 1.2266666356225824,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.22666663562258238
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 1.4231975229082043,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.42319752290820434
+          }
+        ],
+        "rank_correlation": 0.11318580795826769,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "triton-b2048-w2",
+          "target_cost": 1.2399999728364262,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.23999997283642616
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": null,
+        "target_oracle_cost": 1.0,
+        "task_id": "test-geglu-f08-float32"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.7384615422188915,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.06853148136909137
+          },
+          {
+            "candidate_id": "triton-b128-w4",
+            "policy": "random",
+            "target_cost": 0.6913876438605294,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.02145758301072931
+          },
+          {
+            "candidate_id": "triton-b64-w1",
+            "policy": "optuna-tpe",
+            "target_cost": 0.8110576889612998,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.1411276281114997
+          },
+          {
+            "candidate_id": "triton-b512-w2",
+            "policy": "ridge-selector",
+            "target_cost": 0.6776696103385068,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0077395494887066985
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.7384615422188915,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.06853148136909137
+          },
+          {
+            "candidate_id": "triton-b64-w1",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.8110576889612998,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.1411276281114997
+          }
+        ],
+        "rank_correlation": 0.17772648915029288,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "triton-b128-w4",
+          "target_cost": 0.6913876438605294,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.02145758301072931
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b128-w2",
+        "target_oracle_cost": 0.6699300608498001,
+        "task_id": "test-geglu-f09-float16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.7457072710298822,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.016869367337420393
+          },
+          {
+            "candidate_id": "triton-b128-w1",
+            "policy": "random",
+            "target_cost": 0.767511573736704,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.03867367004424216
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.7457072710298822,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.016869367337420393
+          },
+          {
+            "candidate_id": "triton-b1024-w2",
+            "policy": "ridge-selector",
+            "target_cost": 0.7500680808041408,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.02123017711167896
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.7457072710298822,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.016869367337420393
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.7457072710298822,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.016869367337420393
+          }
+        ],
+        "rank_correlation": 0.3474413493040996,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "triton-b2048-w4",
+          "target_cost": 0.8503679324838107,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.12153002879134889
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b256-w4",
+        "target_oracle_cost": 0.7288379036924618,
+        "task_id": "test-geglu-f09-bfloat16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.691549052954904,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.027263364407270063
+          },
+          {
+            "candidate_id": "triton-b1024-w4",
+            "policy": "random",
+            "target_cost": 0.6841269470230847,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.019841258475450818
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.691549052954904,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.027263364407270063
+          },
+          {
+            "candidate_id": "triton-b512-w1",
+            "policy": "ridge-selector",
+            "target_cost": 0.6753471994447544,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.011061510897120486
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.691549052954904,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.027263364407270063
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.691549052954904,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.027263364407270063
+          }
+        ],
+        "rank_correlation": -0.036559559679881934,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "triton-b1024-w4",
+          "target_cost": 0.6841269470230847,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.019841258475450818
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b64-w1",
+        "target_oracle_cost": 0.6642856885476339,
+        "task_id": "test-geglu-f09-float32"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.7298841185904835,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0285854565615814
+          },
+          {
+            "candidate_id": "triton-b128-w4",
+            "policy": "random",
+            "target_cost": 0.7694090344090914,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.06811037238018924
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.7298841185904835,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0285854565615814
+          },
+          {
+            "candidate_id": "triton-b64-w1",
+            "policy": "ridge-selector",
+            "target_cost": 0.8331565348097387,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.1318578727808366
+          },
+          {
+            "candidate_id": "triton-b64-w1",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.8331565348097387,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.1318578727808366
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.7298841185904835,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0285854565615814
+          }
+        ],
+        "rank_correlation": 0.06769230769230769,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "triton-b64-w1",
+          "target_cost": 0.8331565348097387,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.1318578727808366
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b512-w8",
+        "target_oracle_cost": 0.7012986620289021,
+        "task_id": "test-geglu-f10-float16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.8435706346741438,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.10336179379686472
+          },
+          {
+            "candidate_id": "triton-b128-w2",
+            "policy": "random",
+            "target_cost": 0.7571801352302242,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.016971294352945088
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.8435706346741438,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.10336179379686472
+          },
+          {
+            "candidate_id": "triton-b64-w2",
+            "policy": "ridge-selector",
+            "target_cost": 0.8577023324098123,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.11749349153253319
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.8435706346741438,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.10336179379686472
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.8435706346741438,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.10336179379686472
+          }
+        ],
+        "rank_correlation": 0.18503558718894125,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "triton-b64-w1",
+          "target_cost": 0.9620496999847555,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.22184085910747642
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b256-w2",
+        "target_oracle_cost": 0.7402088408772791,
+        "task_id": "test-geglu-f10-bfloat16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.757724716517658,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09905050644448143
+          },
+          {
+            "candidate_id": "triton-b128-w8",
+            "policy": "random",
+            "target_cost": 0.6586742100731766,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.757724716517658,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09905050644448143
+          },
+          {
+            "candidate_id": "triton-b64-w1",
+            "policy": "ridge-selector",
+            "target_cost": 0.660928710658341,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0022545005851644095
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.757724716517658,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09905050644448143
+          },
+          {
+            "candidate_id": "triton-b64-w1",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.660928710658341,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0022545005851644095
+          }
+        ],
+        "rank_correlation": 0.5235622331894991,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "triton-b64-w4",
+          "target_cost": 0.744382041072862,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.08570783099968537
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b128-w8",
+        "target_oracle_cost": 0.6586742100731766,
+        "task_id": "test-geglu-f10-float32"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": null,
+            "policy": "fixed-compiled",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.18218317626865665
+          },
+          {
+            "candidate_id": null,
+            "policy": "random",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.18218317626865665
+          },
+          {
+            "candidate_id": null,
+            "policy": "optuna-tpe",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.18218317626865665
+          },
+          {
+            "candidate_id": null,
+            "policy": "ridge-selector",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.18218317626865665
+          },
+          {
+            "candidate_id": null,
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.18218317626865665
+          },
+          {
+            "candidate_id": null,
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.18218317626865665
+          }
+        ],
+        "rank_correlation": -0.015778336282896415,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": null,
+          "target_cost": 1.0,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.18218317626865665
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b1024-w8",
+        "target_oracle_cost": 0.8178168237313433,
+        "task_id": "test-groupnorm_silu-f08-float16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": null,
+            "policy": "fixed-compiled",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "random",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "optuna-tpe",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "ridge-selector",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "triton-b64-w2",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 1.340045746692939,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.34004574669293897
+          }
+        ],
+        "rank_correlation": 0.21615384615384614,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": null,
+          "target_cost": 1.0,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.0
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": null,
+        "target_oracle_cost": 1.0,
+        "task_id": "test-groupnorm_silu-f08-bfloat16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": null,
+            "policy": "fixed-compiled",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "random",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "optuna-tpe",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "ridge-selector",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": null,
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 1.0,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          }
+        ],
+        "rank_correlation": 0.34429698655738555,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": null,
+          "target_cost": 1.0,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.0
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": null,
+        "target_oracle_cost": 1.0,
+        "task_id": "test-groupnorm_silu-f08-float32"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.4103444133231583,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09381479495653139
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "random",
+            "target_cost": 0.4103444133231583,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09381479495653139
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.4103444133231583,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09381479495653139
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "ridge-selector",
+            "target_cost": 0.4103444133231583,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09381479495653139
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.4103444133231583,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09381479495653139
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.4103444133231583,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09381479495653139
+          }
+        ],
+        "rank_correlation": 0.6184615384615385,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "torch-compiled",
+          "target_cost": 0.4103444133231583,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.09381479495653139
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b256-w2",
+        "target_oracle_cost": 0.3165296183666269,
+        "task_id": "test-groupnorm_silu-f09-float16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.2906441677398332,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "random",
+            "target_cost": 0.2906441677398332,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.2906441677398332,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "ridge-selector",
+            "target_cost": 0.2906441677398332,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.2906441677398332,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "triton-b256-w4",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.3813882798272755,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.09074411208744232
+          }
+        ],
+        "rank_correlation": 0.7146153846153845,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "torch-compiled",
+          "target_cost": 0.2906441677398332,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.0
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "torch-compiled",
+        "target_oracle_cost": 0.2906441677398332,
+        "task_id": "test-groupnorm_silu-f09-bfloat16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.6621004748256907,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "random",
+            "target_cost": 0.6621004748256907,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.6621004748256907,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "ridge-selector",
+            "target_cost": 0.6621004748256907,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.6621004748256907,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "triton-b1024-w4",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.7295221652733002,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.06742169044760948
+          }
+        ],
+        "rank_correlation": 0.5146153846153847,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "torch-compiled",
+          "target_cost": 0.6621004748256907,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.0
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "torch-compiled",
+        "target_oracle_cost": 0.6621004748256907,
+        "task_id": "test-groupnorm_silu-f09-float32"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.3166109281279463,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "triton-b2048-w1",
+            "policy": "random",
+            "target_cost": 0.5172798230383321,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.2006688949103858
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.3166109281279463,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "ridge-selector",
+            "target_cost": 0.3166109281279463,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.3166109281279463,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "triton-b64-w1",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.8224195367910536,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.5058086086631073
+          }
+        ],
+        "rank_correlation": 0.6507692307692308,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "triton-b2048-w1",
+          "target_cost": 0.5172798230383321,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.2006688949103858
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "torch-compiled",
+        "target_oracle_cost": 0.3166109281279463,
+        "task_id": "test-groupnorm_silu-f10-float16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.304008896956433,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "random",
+            "target_cost": 0.304008896956433,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.304008896956433,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "ridge-selector",
+            "target_cost": 0.304008896956433,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.304008896956433,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.304008896956433,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.0
+          }
+        ],
+        "rank_correlation": 0.5599999999999999,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "torch-compiled",
+          "target_cost": 0.304008896956433,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.0
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "torch-compiled",
+        "target_oracle_cost": 0.304008896956433,
+        "task_id": "test-groupnorm_silu-f10-bfloat16"
+      },
+      {
+        "frozen_policy_selections": [
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "fixed-compiled",
+            "target_cost": 0.6899347655442707,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.01070877270454973
+          },
+          {
+            "candidate_id": "triton-b256-w4",
+            "policy": "random",
+            "target_cost": 0.7628349125451618,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.08360891970544082
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "optuna-tpe",
+            "target_cost": 0.6899347655442707,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.01070877270454973
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "ridge-selector",
+            "target_cost": 0.6899347655442707,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.01070877270454973
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-mini-2026-03-17",
+            "target_cost": 0.6899347655442707,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.01070877270454973
+          },
+          {
+            "candidate_id": "torch-compiled",
+            "policy": "gpt-5.4-nano-2026-03-17",
+            "target_cost": 0.6899347655442707,
+            "target_failure_rate": 0.0,
+            "target_regret": 0.01070877270454973
+          }
+        ],
+        "rank_correlation": 0.48692307692307696,
+        "ranked_candidates_passing_on_both": 25,
+        "source_failed_candidate_count": 0,
+        "source_optimal_transfer": {
+          "candidate_id": "torch-compiled",
+          "target_cost": 0.6899347655442707,
+          "target_failure_rate": 0.0,
+          "target_regret": 0.01070877270454973
+        },
+        "target_failed_candidate_count": 0,
+        "target_oracle_candidate_id": "triton-b256-w2",
+        "target_oracle_cost": 0.679225992839721,
+        "task_id": "test-groupnorm_silu-f10-float32"
+      }
+    ],
+    "schema_version": 1,
+    "scope": "one source and one target hardware/runtime cohort; no causal hardware-only attribution",
+    "selection_sha256": "a5de225d07c79ef19b7831587d0da4702d2d04bb49ebaf0c18e5da5f0b676af1",
+    "selection_updated_on_target": false,
+    "source_gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "source_table_sha256": "9b2b468a12b7cb2787bb1fccbb89dbf9b57b95806566c2132db2a22c2f4a9f9b",
+    "suite_sha256": "5ef382542f26ca5b351805b88ae794e676c175b438ba14a1d9caf047975fda7f",
+    "summary": {
+      "mean_source_optimal_transfer_regret": 0.1074814002077655,
+      "policies": [
+        {
+          "mean_target_regret": 0.054696735488807546,
+          "policy": "fixed-compiled"
+        },
+        {
+          "mean_target_regret": 0.08434678294614245,
+          "policy": "gpt-5.4-mini-2026-03-17"
+        },
+        {
+          "mean_target_regret": 0.1439622701595067,
+          "policy": "gpt-5.4-nano-2026-03-17"
+        },
+        {
+          "mean_target_regret": 0.07266772330480875,
+          "policy": "optuna-tpe"
+        },
+        {
+          "mean_target_regret": 0.05997236050314777,
+          "policy": "random"
+        },
+        {
+          "mean_target_regret": 0.061834939051914665,
+          "policy": "ridge-selector"
+        }
+      ],
+      "tasks": 18
+    },
+    "target_gpu": "NVIDIA GeForce RTX 4090",
+    "target_table_sha256": "32e2e7fab8ae16cf1026c31ebf2be51c148287aa85b9044c35877c0a0917cb69",
+    "target_table_use": "descriptive ranks, oracle and frozen-selection scoring only",
+    "training_on_target": false
+  },
+  "figure_sha256": {
+    "cross-gpu-rank-correlation.pdf": "8929ccf2460323d3307180df69b607f8a9ea125b5c0588ecf25154319ef99e71",
+    "cross-gpu-rank-correlation.svg": "c2582583c2b10462cf3905fd0b7c99fe9a8b4d1ae98cadc5d185ce9eb0f728a3",
+    "cross-gpu-selection-regret.pdf": "a45def3da3610c49465025bad7c9ad78d960e2a5209bfc90719df09438beac3b",
+    "cross-gpu-selection-regret.svg": "cff1806d047e326fb521da12bbe60b4b0a929a8dc719dfc8c84dbf7e45791d41"
+  },
+  "independent_samples_added_by_plotting": 0,
+  "new_gpu_measurements": 0,
+  "policy_summaries": [
+    {
+      "mean_task_transfer_regret": 0.1074814002077655,
+      "policy": "Source-table optimum",
+      "selected_cells_with_failure": 0,
+      "task_count": 18
+    },
+    {
+      "mean_task_transfer_regret": 0.054696735488807546,
+      "policy": "fixed-compiled",
+      "selected_cells_with_failure": 0,
+      "task_count": 18
+    },
+    {
+      "mean_task_transfer_regret": 0.05997236050314777,
+      "policy": "random",
+      "selected_cells_with_failure": 0,
+      "task_count": 18
+    },
+    {
+      "mean_task_transfer_regret": 0.07266772330480875,
+      "policy": "optuna-tpe",
+      "selected_cells_with_failure": 0,
+      "task_count": 18
+    },
+    {
+      "mean_task_transfer_regret": 0.061834939051914665,
+      "policy": "ridge-selector",
+      "selected_cells_with_failure": 0,
+      "task_count": 18
+    },
+    {
+      "mean_task_transfer_regret": 0.08434678294614245,
+      "policy": "gpt-5.4-mini-2026-03-17",
+      "selected_cells_with_failure": 0,
+      "task_count": 18
+    },
+    {
+      "mean_task_transfer_regret": 0.1439622701595067,
+      "policy": "gpt-5.4-nano-2026-03-17",
+      "selected_cells_with_failure": 0,
+      "task_count": 18
+    }
+  ],
+  "schema_version": 1,
+  "selection_file_sha256": "c17d2557ca562dd08384a5e7dc4cff47839384dcc75bca5375b36e3302bbef83",
+  "test_fixture": false
+}
