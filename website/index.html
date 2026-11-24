@@ -81,7 +81,7 @@ env.close()</code></pre></div>
       <tr><th scope="row">Action space</th><td><code>Discrete(25)</code>: one compiled implementation and 24 Triton configurations.</td></tr>
       <tr><th scope="row">Observation space</th><td><div class="space-list"><span><code>task_features: Box(-inf, inf, (8,))</code></span><span><code>budget: Box(0, 1, (1,))</code></span><span><code>incumbent: Box(0, inf, (2,))</code></span><span><code>incumbent_action: Discrete(26)</code></span><span><code>action_counts: MultiDiscrete([9] * 25)</code></span><span><code>action_status: MultiDiscrete([4] * 25)</code></span><span><code>action_metrics: Box(0, inf, (25, 2))</code></span><span>Dictionary entries describe the workload, remaining budget, best result and query history. Box entries use float64.</span></div></td></tr>
       <tr><th scope="row">Reward</th><td>Decrease in the best valid latency cost found so far, normalized to eager.</td></tr>
-      <tr><th scope="row">Episode</th><td>8 trials. Repeated, rejected and failed actions consume a trial; the eighth action terminates the episode.</td></tr>
+      <tr><th scope="row">Episode</th><td>8 trials. Repeated and failed trials consume the budget; the eighth trial terminates the episode.</td></tr>
       <tr><th scope="row">Default split</th><td>Training. Set <code>split="test"</code> for held-out evaluation.</td></tr>
     </tbody></table>
     <p>Replay mode serves recorded GPU timings, so you can train and evaluate on a laptop. Live mode measures on your GPU.</p>
@@ -93,7 +93,7 @@ env.close()</code></pre></div>
       <h3>Compile with eager fallback is hard to beat</h3>
       <p>Over 20 episodes, querying compile and retaining eager as a fallback gives lower mean regret than PPO, TPE and ridge. Its choices leave about 3 percentage points of eager latency between them and the table optimum.</p>
       <p>Live on an RTX 4090, PPO had 8.14% lower latency than Triton’s built-in autotuner and 3.80% lower latency than compile, but 5.49% higher latency than autotuning with eager and compile available as fallbacks. Native search used 24 configurations; PPO used 8 queries.</p>
-      <figure><img src="./figures/benchmark/search-regret.svg" alt="Mean held-out search regret over eight queries. PPO improves with training; the compile-query baseline has the lowest mean final regret."><figcaption>PPO approaches TPE, while the compile-query baseline retains the lowest mean final regret.</figcaption></figure>
+      <figure><img src="./figures/benchmark/search-regret.svg" alt="Mean held-out search regret over eight queries. Compile with eager fallback has the lowest mean final regret."><figcaption>PPO approaches TPE, while compile with eager fallback retains the lowest mean final regret.</figcaption></figure>
       <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-24-ppo-native-autotune#live-gpu-comparison">Live comparison and dot plot</a></div>
     </article>
     <article class="finding-block" id="llm-finding">
@@ -104,7 +104,7 @@ env.close()</code></pre></div>
     <article class="finding-block" id="transfer-finding">
       <h3>Best configurations changed across GPUs</h3>
       <p>The RTX PRO 4000’s best configuration stayed best on 6 of 18 RTX 4090 workloads. Mean rank correlation was 0.301; carrying the source choice over produced 0.107 regret.</p>
-      <figure><img src="./figures/benchmark/transfer-regret.svg" alt="Regret after transferring source-selected configurations from RTX PRO 4000 to RTX 4090, with per-workload values and policy means."><figcaption>Configurations selected on the source GPU leave more headroom on the target GPU.</figcaption></figure>
+      <figure><img src="./figures/benchmark/transfer-regret.svg" alt="Regret after transferring source-selected configurations from RTX PRO 4000 to RTX 4090, showing mean regret for each policy."><figcaption>Configurations selected on the source GPU leave more headroom on the target GPU.</figcaption></figure>
       <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-23-operator-generalization-pro-4000#transfer-to-rtx-4090">Transfer results</a></div>
     </article>
   </section>

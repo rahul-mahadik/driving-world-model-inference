@@ -35,7 +35,7 @@ The archive includes the measured table, sample values, policy trajectories and 
 
 ## Use the environment
 
-`DriveBench/OperatorTune-v0` is registered with Gymnasium when you import `drivebench_tuning`. The published task gives a policy **eight trials** to choose among 25 configurations; the environment accepts other trial budgets. Observations expose the workload, remaining budget and queried outcomes. Reward measures improvement in the best numerically valid configuration found. Repeated, rejected and failed actions consume trials.
+`DriveBench/OperatorTune-v0` is registered with Gymnasium when you import `drivebench_tuning`. The published task gives a policy **eight trials** to choose among 25 configurations; the environment accepts other trial budgets. Observations expose the workload, remaining budget and queried outcomes. Reward measures improvement in the best numerically valid configuration found. Repeated and failed trials consume the budget.
 
 ```python
 import gymnasium as gym

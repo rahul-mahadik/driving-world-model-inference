@@ -37,6 +37,8 @@ def main():
                 raise FileExistsError(path)
             metadata = {"Date": None} if suffix == "svg" else {}
             fig.savefig(path, dpi=180, bbox_inches="tight", metadata=metadata)
+            if suffix == "svg":
+                path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines()) + "\n")
         plt.close(fig)
 
     rows = {r["policy"]: r for r in next(p for p in data["panels"] if p["id"] == "replays-20")["rows"]}
