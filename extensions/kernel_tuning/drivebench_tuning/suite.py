@@ -6,8 +6,11 @@ import json
 import math
 from pathlib import Path
 
-from .contract import KernelConfig, Workload
+from .contract import DTYPE_TOLERANCES, KernelConfig, Workload
 from .search import CandidateSpec, TaskSpec
+
+
+BUNDLED_SUITES = ('operator-search-v1', 'operator-generalization-v2')
 
 
 @dataclass(frozen=True)
@@ -41,8 +44,9 @@ def _reject_constant(value):
 
 
 def load_suite(path=None):
-    raw = (Path(path).read_bytes() if path is not None else
-           files('drivebench_tuning').joinpath('suites/operator-search-v1.json').read_bytes())
+    identifier = 'operator-search-v1' if path is None else str(path)
+    raw = (files('drivebench_tuning').joinpath(f'suites/{identifier}.json').read_bytes()
+           if identifier in BUNDLED_SUITES else Path(path).read_bytes())
     doc = json.loads(raw, parse_constant=_reject_constant, object_pairs_hook=_strict_object)
     if not isinstance(doc, dict):
         raise ValueError("suite must be a JSON object")
@@ -60,7 +64,8 @@ def load_suite(path=None):
         ids.add(row['id'])
         w = Workload(**row['workload'])
         # A new random seed or dtype does not make a held-out shape.
-        group = (w.operator, w.shape, w.num_groups if w.operator == 'groupnorm_silu' else None)
+        # Group count changes do not create a held-out tensor shape either.
+        group = (w.operator, w.shape)
         if group in groups and groups[group] != row['split']:
             raise ValueError('shape family overlaps train/validation/test splits')
         groups[group] = row['split']
@@ -96,5 +101,29 @@ def load_suite(path=None):
     weight = doc['default_memory_weight']
     if type(weight) not in (int, float) or not math.isfinite(weight) or weight < 0:
         raise ValueError('memory weight must be finite and nonnegative')
+    if 'quality_tolerances' in doc and doc['quality_tolerances'] != DTYPE_TOLERANCES:
+        raise ValueError('suite numerical tolerances differ from the live evaluator')
     return Suite(json.dumps(doc, allow_nan=False), hashlib.sha256(raw).hexdigest(), tuple(tasks), tuple(candidates),
                  tuple((k, tuple(v)) for k, v in splits.items()))
+
+
+def load_bound_suite(document, sha256):
+    """Resolve only an exact packaged suite; embedded JSON cannot redefine it."""
+    identifier = document.get('suite_id') if isinstance(document, dict) else None
+    if identifier not in BUNDLED_SUITES:
+        raise ValueError('Recorded suite is not a supported bundled suite')
+    suite = load_suite(identifier)
+    if suite.sha256 != sha256 or suite.document != document:
+        raise ValueError('Recorded suite document or SHA256 differs from packaged suite')
+    return suite
+
+
+def suite_task_indices(suite, splits=None):
+    """Canonical task subset; selecting a split never changes the suite hash."""
+    if splits is None:
+        return tuple(range(len(suite.tasks)))
+    if (not isinstance(splits, (list, tuple)) or not splits
+            or len(set(splits)) != len(splits) or any(s not in suite.splits for s in splits)):
+        raise ValueError('Task splits must be a nonempty unique train/validation/test list')
+    wanted = {index for split in splits for index in suite.splits[split]}
+    return tuple(index for index in range(len(suite.tasks)) if index in wanted)

@@ -1,0 +1,36 @@
+{
+  "all_members_and_hashes_verified": true,
+  "archive": "data.tar.gz",
+  "archive_bytes": 22761128,
+  "archive_sha256": "de3a2a357c3d425014f0d29db02c318e3ae10ee8fa96d3d801befa8a22a4cc46",
+  "extraction_command": "tar -xzf results/2026-11-23-operator-generalization-pro-4000/data.tar.gz -C results",
+  "files": 77,
+  "gzip": {
+    "compression_level": 9,
+    "filename": "",
+    "mtime": 0
+  },
+  "kind": "verified_deterministic_sanitized_dataset_archive",
+  "manifest": "dataset-manifest.json",
+  "manifest_sha256": "501b2a9a5a415235f1a5fe44a91ba233f57115026e8bcd0b1856622422c12bcf",
+  "measurements_rerun": false,
+  "primary_table_sha256": "9b2b468a12b7cb2787bb1fccbb89dbf9b57b95806566c2132db2a22c2f4a9f9b",
+  "privacy_scan_passed": true,
+  "related_export_receipt_sha256": "4debb419acd2bd3a9063e3c0397f8171f1e3b25919596cb765acdc9ee4823221",
+  "schema_version": 1,
+  "source_files_unchanged": true,
+  "source_tree_preserved": true,
+  "tar": {
+    "format": "PAX",
+    "gid": 0,
+    "gname": "",
+    "mtime": 0,
+    "order": "relative POSIX path",
+    "regular_file_mode": "0644",
+    "uid": 0,
+    "uname": ""
+  },
+  "target_table_sha256": "32e2e7fab8ae16cf1026c31ebf2be51c148287aa85b9044c35877c0a0917cb69",
+  "transfer_export_receipt_sha256": "e45f30111b9c262d6dfbddfd2db697add08eeae228b93f38bdabf5e300887db1",
+  "uncompressed_bytes": 358909694
+}

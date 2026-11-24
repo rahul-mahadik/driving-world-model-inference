@@ -3,199 +3,131 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Research on verifiable rewards for lossy inference optimization of video world models. Modern baselines, calibrated quality gates, tabulated search, and hardware transfer.">
-  <meta name="theme-color" content="#fafaf7">
-  <title>DriveBench — Verifiable rewards for lossy inference optimization of video world models</title>
+  <meta name="description" content="A public GPU benchmark and Gymnasium environment for budgeted configuration search. Measured operator costs, reproducible policy comparisons, and fresh GPU confirmation.">
+  <meta name="theme-color" content="#ffffff">
+  <title>DriveBench — GPU benchmark and agent environment</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./style.css">
   <script src="./app.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="page">
-  <header class="masthead">
-    <div class="masthead-top"><span>Research software</span><a href="https://github.com/rahul-mahadik/driving-world-model-inference">Source repository</a></div>
-    <h1>DriveBench</h1>
-    <p class="subtitle">Verifiable rewards for lossy inference optimization of video world models</p>
-    <p class="byline"><a href="https://github.com/rahul-mahadik">Rahul Mahadik</a><span aria-hidden="true"> · </span>MIT first-party code<span aria-hidden="true"> · </span><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/NOTICE.md">Model and data licenses</a></p>
-    <div class="paper-links" aria-label="Project resources">
-      <a href="https://github.com/rahul-mahadik/driving-world-model-inference">Code</a>
-      <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/research-protocol.md">Protocol</a>
-      <a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-10-30-h100-tradeoff/numerical-audit">Numerical data</a>
-      <a href="#reproduction">Reproduction</a>
-      <a href="#citation">Citation</a>
+<header class="header"><div class="container nav-row">
+  <a class="brand" href="#">DriveBench</a>
+  <nav aria-label="Main navigation"><a href="#benchmark">Benchmark</a><a href="#environment">Environment</a><a href="#results">Results</a><a href="#quickstart">Use it</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference">GitHub</a></nav>
+</div></header>
+<main id="main">
+  <section class="hero container" aria-labelledby="title">
+    <p class="eyebrow">Public benchmark · Python · MIT license</p>
+    <h1 id="title">GPU benchmark and agent tuning environment</h1>
+    <p class="lede">Measure GPU execution costs, give a policy a fixed trial budget, and evaluate the configurations it selects. DriveBench provides measured operator data, a Gymnasium environment, and tools for collecting fresh GPU results.</p>
+    <div class="actions"><a href="#quickstart">Run the benchmark</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-23-operator-generalization-pro-4000">Read the dataset report</a><a href="https://raw.githubusercontent.com/rahul-mahadik/driving-world-model-inference/main/results/2026-11-23-operator-generalization-pro-4000/data.tar.gz">Download data</a></div>
+    <dl class="dataset-stats" aria-label="RTX PRO 4000 dataset coverage">
+      <div><dt>60</dt><dd>operator workloads</dd></div>
+      <div><dt>25</dt><dd>candidate configurations</dd></div>
+      <div><dt>4,680</dt><dd>GPU measurement records</dd></div>
+      <div><dt>18</dt><dd>held-out test workloads</dd></div>
+    </dl>
+  </section>
+
+  <section id="benchmark" class="section container" aria-labelledby="benchmark-title">
+    <div class="section-heading"><h2 id="benchmark-title">The benchmark</h2><p>GEGLU and GroupNorm + SiLU on an NVIDIA RTX PRO 4000 Blackwell.</p></div>
+    <div class="two-column">
+      <div><h3>Tasks and configurations</h3><p>Twenty tensor shapes are evaluated in float16, bfloat16 and float32. Every dtype of a shape stays in the same split: 30 training workloads, 12 validation workloads and 18 test workloads across six held-out shape families.</p><p>The action space contains compiled PyTorch and 24 Triton configurations: six block sizes, from 64 to 2048, with one, two, four or eight warps. Eager PyTorch supplies the reference.</p></div>
+      <div><h3>Measurements and checks</h3><p>Three fresh processes measure every workload and candidate, plus eager. Each of the 4,680 measurement records contains 30 timed invocations after five warmups, allocated-memory deltas, numerical correctness and the input, source and runtime identities.</p><p>Latency excludes compilation and warmup; preparation time is recorded separately. Candidates must match the eager output under dtype-specific tolerances, with finite outputs and unchanged inputs.</p></div>
     </div>
-  </header>
+    <p class="section-note">The dataset measures isolated operators on seeded tensors. The separate <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/modern-vista.md">Vista integration</a> supports full video-inference experiments; operator results do not establish video quality or end-to-end speedups.</p>
+    <div class="text-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/protocols/operator-generalization-v2-compile-isolation-v1.json">Frozen study protocol</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/dataset-manifest.json">Dataset file hashes</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/public-benchmark-protocol.md">Measurement contract</a></div>
+  </section>
 
-  <nav class="contents" aria-label="On this page"><a href="#overview">Overview</a><a href="#modern">Modern execution</a><a href="#results">Legacy results</a><a href="#environment">Research program</a><a href="#evidence">Evidence & limitations</a><a href="#reproduction">Reproduce</a></nav>
+  <section id="environment" class="section container" aria-labelledby="environment-title">
+    <div class="section-heading"><h2 id="environment-title">The environment</h2><p>Connect a search algorithm, a learned policy, or an LLM selector through the same evaluation interface.</p></div>
+    <div class="environment-spec">
+      <dl><div><dt>Observation</dt><dd>Task features, queried outcomes, current incumbent and remaining budget.</dd></div><div><dt>Action</dt><dd>Select one of the 25 candidate configurations.</dd></div><div><dt>Reward</dt><dd>Improvement in the best valid normalized cost found so far.</dd></div><div><dt>Episode</dt><dd>Eight trials in this study. Repeated and rejected actions also spend a trial.</dd></div></dl>
+      <div class="environment-copy"><h3><code>BudgetedTuningEnv</code></h3><p>The Gymnasium <code>reset()</code>/<code>step()</code> API supports training and evaluation. Measured replay runs on CPU and returns recorded GPU observations with their original measurement IDs.</p><p>Live evaluators can collect new observations on a GPU. The <code>AgentSession</code> interface also exposes inspection, profiling, trials and final submission to tool-using agents.</p><div class="text-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md#use-the-gymnasium-interface">Gymnasium example</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/agent-environment.md">Agent tools</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/extensions/kernel_tuning/docs/extending.md">Write an evaluator</a></div></div>
+    </div>
+    <p class="section-note">The current actions are configurations. The published study trains a supervised cost-model selector; the LLM selectors are pretrained. Replay episodes reuse finite measurements and add no independent GPU samples.</p>
+  </section>
 
-  <main id="main">
-    <section id="overview" class="section overview">
-      <h2><span class="section-number">1</span> Overview</h2>
-      <p>Can an automatic evaluator reward faster video-world-model inference while rejecting meaningful output degradation? DriveBench studies this question through modern execution baselines, empirically calibrated quality checks, and reproducible configuration search.</p>
-      <p>The task is to reduce inference cost on a declared device and workload under a fixed quality constraint. A useful reward must distinguish real gains from timing noise, preserve failed attempts, and withstand submissions that exploit the evaluator.</p>
-      <p class="scope-note"><strong>Research in progress · 19 November 2026.</strong> The small one-episode, eight-configuration, three-policy study has been canceled. Modern Vista now completes the full declared workload on an A100 80 GB. A matched eager/compiled comparison, calibrated verifier error rates, a measured lookup table, and policy-transfer findings remain open. Historical results below remain a separate legacy cohort.</p>
-    </section>
+  <section id="results" class="section container" aria-labelledby="results-title">
+    <div class="section-heading"><h2 id="results-title">Results</h2><p>Equal eight-trial budgets on the 18 held-out workloads. Lower table regret is better.</p></div>
+    <p class="finding">The compiled-query baseline had the lowest mean regret in the 20-episode comparison.</p>
+    <p class="result-copy">This baseline begins with eager, queries compiled PyTorch on every turn, and retains the best observed valid configuration. Its final choice can therefore be eager. Random search, Optuna TPE and a ridge cost model fitted only on training workloads used the same budget.</p>
+    <div class="primary-results">
+      <figure class="research-figure"><a href="./figures/generalization/cpu-20-regret.pdf" aria-label="Download the primary policy comparison as PDF"><img src="./figures/generalization/cpu-20-regret.svg" alt="Mean table regret over eight trials for the compiled-query baseline, random search, Optuna TPE and a train-only ridge selector. The compiled-query baseline has the lowest final mean regret."></a><figcaption>20 episodes per workload, 360 per method. Regret compares the selected configuration with the best admissible configuration in the complete measured table. <a href="./figures/generalization/cpu-20-regret.svg">Open figure</a> · <a href="./figures/generalization/cpu-20-regret.pdf">PDF</a>.</figcaption></figure>
+      <div class="table-wrap"><table><caption>Final mean table regret</caption><thead><tr><th scope="col">Policy</th><th scope="col">Regret</th></tr></thead><tbody><tr><th scope="row">Compiled-query baseline</th><td>0.027931</td></tr><tr><th scope="row">Random</th><td>0.055878</td></tr><tr><th scope="row">Optuna TPE</th><td>0.031880</td></tr><tr><th scope="row">Train-only ridge</th><td>0.031822</td></tr></tbody></table><p class="table-note">Regret is a normalized-cost difference, not a latency speedup. These results describe this finite table.</p></div>
+    </div>
+    <div class="secondary-results">
+      <div><h3>LLM selectors</h3><p>GPT-5.4 mini and nano each ran one episode per test workload. Neither improved mean regret over the compiled-query baseline in the matched comparison. Mini repeated previously queried configurations on 116 of 144 turns; nano did so on 100 turns.</p><p>All six methods completed 1,476 episodes in total, with no rejected actions or failed queries. The <a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-23-operator-generalization-pro-4000">dataset</a> includes the trajectories, model snapshots and full comparison.</p></div>
+      <div><h3>Fresh GPU confirmation</h3><p>One modal choice per policy and test workload was frozen before confirmation. The 108 choices reduced to 42 distinct workload/configuration pairs. Three new processes measured each selection alongside eager and compiled references.</p><p>All <strong>378 fresh measurements</strong> passed the numerical checks. <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/figures/cpu-20/confirmation-vs-compiled.svg">Individual process ratios</a> retain both faster and slower selections.</p></div>
+    </div>
+    <details class="supplement"><summary>Matched one-episode comparison across all six policies</summary><figure class="research-figure"><a href="./figures/generalization/llm-matched-1-regret.pdf" aria-label="Download the matched six-policy comparison as PDF"><img src="./figures/generalization/llm-matched-1-regret.svg" alt="One-episode-per-workload comparison of six policies. Neither GPT-5.4 mini nor nano has lower final mean regret than the compiled-query baseline."></a><figcaption>18 episodes and 144 turns per method. The first CPU-policy episode is reused for this descriptive comparison; the full 20-episode CPU comparison remains the primary result. <a href="./figures/generalization/llm-matched-1-regret.svg">Open figure</a> · <a href="./figures/generalization/llm-matched-1-regret.pdf">PDF</a>.</figcaption></figure></details>
+    <div class="text-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/README.md">Full results and methods</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/figures/cpu-20/analysis.json">Figure data</a></div>
+  </section>
 
-    <section id="modern" class="section">
-      <div class="section-title"><h2>Modern Vista execution</h2><span class="section-meta">18 November 2026</span></div>
-      <p>A full-workload execution check on one Runpod A100-SXM4-80GB completed three warmups and one measured request. The modern adapter uses PyTorch 2.14.1+cu130, native SDPA, FP16 denoiser parameters, FP32 normalization and channels-last layout. Hardware performance counters were not required; CUDA execution and activity tracing were verified.</p>
-      <div class="table-wrap" role="region" aria-label="Modern Vista execution check" tabindex="0">
-        <table class="results-table"><caption>One development scene, 50 steps, one conditioning frame and 24 future frames at 576 × 1024. Execution feasibility only.</caption><thead><tr><th scope="col">Measurement</th><th scope="col">Observed value</th></tr></thead><tbody>
-          <tr><th scope="row">Model initialization</th><td>217.088 s</td></tr>
-          <tr><th scope="row">Three warmup requests</th><td>99.129 / 98.183 / 98.187 s</td></tr>
-          <tr><th scope="row">Measured request</th><td>97.995 s</td></tr>
-          <tr><th scope="row">Measured peak allocated / reserved memory</th><td>46.01 / 53.35 GiB</td></tr>
-          <tr><th scope="row">First-warmup peak reserved memory</th><td>71.61 GiB</td></tr>
-        </tbody></table>
-      </div>
-      <p class="measurement-boundary">Request timing covers input processing through host-ready frames, excluding model initialization, warmups and output export. The raw output and source/runtime bindings were independently rechecked locally. One observation supplies no noise estimate, tail latency, comparative speedup or quality-validation result.</p>
-      <p>The preceding A40 attempt failed during its first warmup with GPU out-of-memory and completed no measured requests. The A100 result does not establish a 48 GB fit or a minimum memory requirement. Historical H100 numbers below belong to a different device and runtime and are not paired with this result.</p>
-      <p><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-18-a100-modern-eager-feasibility">Measurements, failed-attempt record and provenance</a> · <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/modern-vista.md">Modern runtime reproduction</a></p>
-    </section>
+  <section id="transfer" class="section container" aria-labelledby="transfer-title">
+    <div class="section-heading"><h2 id="transfer-title">Transfer across GPUs</h2><p>The same 18 test workloads and configurations on an NVIDIA RTX 4090.</p></div>
+    <p class="finding">The source-table optimum remained optimal on 6 of 18 workloads.</p>
+    <p class="result-copy">Rankings of the 25 candidates on the RTX PRO 4000 and RTX 4090 had a mean per-workload Spearman correlation of <strong>0.301</strong>. Transferring the source optimum, including the eager fallback, produced mean regret <strong>0.107481</strong> relative to the RTX 4090 table optimum.</p>
+    <p class="result-copy">The target table adds 1,404 measurement records from three fresh processes, using the same code and inputs. All passed the numerical checks. Policy choices were frozen before target measurement; no policy was retrained on the target GPU.</p>
+    <figure class="research-figure transfer-figure"><a href="./figures/generalization/cross-gpu-selection-regret.svg" aria-label="Open the full-size cross-GPU selection regret figure"><img src="./figures/generalization/cross-gpu-selection-regret.svg" alt="Target regret for the source-table optimum and six frozen policies on RTX 4090. Bars show the mean over 18 workloads; dots show individual workloads."></a><figcaption>Bars are equally weighted means over 18 workloads; dots show individual workloads. Cost is latency normalized to eager, so regret is a cost difference rather than percentage slowdown. This comparison describes one GPU/runtime pair. <a href="./figures/generalization/cross-gpu-selection-regret.svg">Open figure</a> · <a href="./figures/generalization/cross-gpu-selection-regret.pdf">PDF</a>.</figcaption></figure>
+    <div class="text-links"><a href="./figures/generalization/cross-gpu-rank-correlation.svg">Per-workload rank correlations</a><a href="./figures/generalization/cross-gpu-rank-correlation.pdf">Rank figure PDF</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/figures/transfer/analysis.json">Transfer figure data</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/README.md">Dataset and methods</a></div>
+  </section>
 
-    <section id="results" class="section">
-      <div class="section-title"><h2><span class="section-number">2</span> Legacy H100 inference results</h2><span class="section-meta">30 October 2026</span></div>
-      <p>Pretrained Vista with unchanged weights: eager execution versus a <code>torch.compile</code> / Inductor denoiser. Each request generates <strong>24 future frames at 576 × 1024</strong> from a conditioning image and trajectory, using 50 denoising steps and one future.</p>
-      <div class="table-wrap" role="region" aria-label="Historical H100 performance measurements" tabindex="0">
-        <table class="results-table">
-          <caption>Legacy Torch 2.0.1 cohort: one physical H100 80GB; 200 measured requests per role.</caption>
-          <thead><tr><th scope="col">Measurement</th><th scope="col">Upstream eager</th><th scope="col">Compiled denoiser</th><th scope="col">Relative change</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Median request latency <span class="unit">(s)</span></th><td>57.338</td><td>43.663</td><td class="latency-text">−23.85%</td></tr>
-            <tr><th scope="row">95th-percentile latency <span class="unit">(s)</span></th><td>57.392</td><td>43.689</td><td>−23.88%</td></tr>
-            <tr><th scope="row">Sequential throughput <span class="unit">(futures/s)</span></th><td>0.01744</td><td>0.02290</td><td>+31.34%</td></tr>
-            <tr><th scope="row">Peak allocated memory <span class="unit">(GiB)</span></th><td>52.21</td><td>56.22</td><td class="memory-text">+7.68%</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="table-note">50 independent scenes × 4 repeated requests per role; eight blocks in order U,C,C,U,C,U,U,C. All 400 measured requests succeeded, with no recorded failures or OOM attempts. Throughput is completed futures divided by summed measured duration; memory is the CUDA allocator peak, not total device memory.</p>
-      <p class="measurement-boundary"><strong>Measurement boundary:</strong> input loading and preprocessing through host-ready frames. Initialization, compilation, warmups, and output export are excluded. Hardware and runtime were fixed within this cohort: H100 80GB, Torch 2.0.1+cu118, xFormers 0.0.20, driver 580.178.04.</p>
-
-      <figure class="research-figure" id="figure-1">
-        <a class="figure-image" href="./figures/h100-latency-ecdf.svg" aria-label="Open full-size empirical latency distribution"><img src="./figures/h100-latency-ecdf.svg" width="893" height="360" alt="Two empirical latency distributions: upstream median 57.338 seconds and compiled median 43.663 seconds. A common-axis overview is followed by separately labeled zooms. 200 requests per role arise from 50 scenes repeated four times; output quality remains unvalidated." decoding="async"></a>
-        <figcaption><span class="figure-label">Figure 1.</span> Empirical request-latency distributions from all 400 original observations. The overview uses one common axis; the two zoom panels use different, explicitly labeled ranges. Curves are unsmoothed distributions, not confidence intervals. Repeated measurements are nested within 50 scenes. <span class="figure-downloads">Download: <a href="./figures/h100-latency-ecdf.svg" download>SVG</a> · <a href="./figures/h100-latency-ecdf.png" download>PNG</a> · <a href="./figures/h100-latency-ecdf.pdf" download>PDF</a></span></figcaption>
-      </figure>
-
-      <figure class="research-figure" id="figure-2">
-        <a class="figure-image" href="./figures/h100-latency-memory.svg" aria-label="Open full-size latency and memory comparison"><img src="./figures/h100-latency-memory.svg" width="749" height="338" alt="Median latency falls from 57.338 to 43.663 seconds, while peak CUDA allocated memory rises from 52.21 to 56.22 GiB. Both bar axes start at zero. This is a performance–memory tradeoff with output quality unvalidated." loading="lazy" decoding="async"></a>
-        <figcaption><span class="figure-label">Figure 2.</span> Zero-based bars compare median latency and the maximum CUDA allocated-memory peak across 200 requests per role; 1 GiB = 2³⁰ bytes. Memory bars have no inferred error bars. This performance–memory tradeoff has no completed held-out quality assessment. <span class="figure-downloads">Download: <a href="./figures/h100-latency-memory.svg" download>SVG</a> · <a href="./figures/h100-latency-memory.png" download>PNG</a> · <a href="./figures/h100-latency-memory.pdf" download>PDF</a></span></figcaption>
-      </figure>
-
-      <details class="methods-details">
-        <summary>Block chronology, uncertainty, and source data</summary>
-        <div class="details-body">
-          <p>The eight interleaved blocks each contain 50 measured requests. The median latency reduction has a 95% scene-cluster percentile interval of <strong>23.846%–23.858%</strong>, using 4,000 paired resamples of the 50 scenes and retaining all repeats in each draw. This interval describes this cohort; it does not establish stationarity or transfer to another GPU.</p>
-          <figure class="research-figure compact-figure">
-            <a class="figure-image" href="./figures/h100-block-chronology.svg" aria-label="Open full-size block chronology"><img src="./figures/h100-block-chronology.svg" width="749" height="446" alt="Eight chronological 50-request blocks follow U,C,C,U,C,U,U,C. Upstream block medians are about 57.3 seconds and compiled medians about 43.7 seconds. A separate panel displays millisecond deviations from each role&#x27;s overall median; no uncertainty bars are shown." loading="lazy" decoding="async"></a>
-            <figcaption><span class="figure-label">Figure 3.</span> Each marker is the median of 50 requests in a chronological process block. The lower panel subtracts each role’s overall median and uses milliseconds; it is descriptive, not a confidence interval or noise bound. Block order is not elapsed wall time, and these repeats do not establish stationarity. <span class="figure-downloads">Download: <a href="./figures/h100-block-chronology.svg" download>SVG</a> · <a href="./figures/h100-block-chronology.png" download>PNG</a> · <a href="./figures/h100-block-chronology.pdf" download>PDF</a></span></figcaption>
-          </figure>
-          <p>All numerical rows and the bootstrap schedule are published in the <a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-10-30-h100-tradeoff/numerical-audit">numerical audit</a>. The standalone <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/tools/analyze_h100_timing.py">analysis script</a> reconstructs 48 fields from the historical summary. Source hashes connect the public projection to retained records; hashes alone do not independently verify the physical experiment.</p>
-          <p class="data-links">Figure data: <a href="./figures/plot-data.json" download>JSON</a> · <a href="./figures/plot-data.csv" download>CSV</a> · <a href="./figures/captions.json" download>Captions and methods</a> · <a href="./figures/figure-manifest.json" download>SHA-256 manifest</a></p>
-          <p class="data-links">Reproduce the plots: <a href="./figures/generate_figures.py" download>Python generator</a> · <a href="./figures/README.md">Plotting environment and instructions</a>. The generator verifies the pinned public observations before plotting; it performs no new GPU measurements.</p>
-        </div>
-      </details>
-      <p class="result-limitation"><strong>Interpretation:</strong> a measured performance and memory tradeoff, not a joint speed–quality result. Compiled outputs were not strictly pixel-identical to eager outputs, and the planned 16-pair held-out quality evaluation was not completed. The historical result remains <code>qualified: false</code> and <code>quality_preserving: false</code>.</p>
-    </section>
-
-    <section id="environment" class="section">
-      <h2><span class="section-number">3</span> Research program</h2>
-      <p>The environment is intended for agents that inspect measurements, change settings or code, and submit a candidate under a finite compute budget. Its central research object is the verifier: acceptance should depend on measured quality and correctness, and reward should reflect gains larger than measurement noise.</p>
-      <div class="workflow" role="group" aria-labelledby="workflow-caption">
-        <ol>
-          <li><span class="step-number">01</span><h3>Measure</h3><p>Establish a modern baseline, cold cost, and runtime attribution.</p></li>
-          <li><span class="step-number">02</span><h3>Calibrate</h3><p>Freeze quality thresholds on development data; audit on separate labels.</p></li>
-          <li><span class="step-number">03</span><h3>Tabulate</h3><p>Measure repeated configuration cells, including failures and OOMs.</p></li>
-          <li><span class="step-number">04</span><h3>Compare</h3><p>Replay policies, confirm selections live, and test hardware transfer.</p></li>
-        </ol>
-        <p id="workflow-caption"><span class="figure-label">Planned study dependencies.</span> This diagram describes the protocol, not completed experimental results. Code-action evaluation follows the measurement and verifier gates.</p>
-      </div>
-      <div class="table-wrap" role="region" aria-label="Research phases and required evidence" tabindex="0">
-        <table class="task-table"><caption>Each phase has an empirical exit criterion. No downstream claim is implied by implementation alone.</caption><thead><tr><th scope="col">Phase</th><th scope="col">Required evidence</th><th scope="col">Current status</th></tr></thead><tbody>
-          <tr><th scope="row">1 · Modern baseline</th><td>Legacy eager, modern eager, modern compiled; repeated process restarts, cold cost, break-even, and stage/operator attribution.</td><td>Eager execution verified; paired measurements and profiling pending.</td></tr>
-          <tr><th scope="row">2 · Quality verifier</th><td>Seed/precision variability; distributional and trajectory checks; false accepts and false rejects on independently labeled configurations.</td><td>Prospective design. No calibrated thresholds.</td></tr>
-          <tr><th scope="row">3 · Tabulated search</th><td>A conditional space of 1,000+ configurations; measured repeated cells, per-cell noise, and latency/memory/quality Pareto front.</td><td>Prospective design. No released lookup table.</td></tr>
-          <tr><th scope="row">4 · Policy and transfer</th><td>Random, Sobol, TPE, successive halving, LLM ± trial history; 20+ seeds each, live confirmations, and a second-GPU table.</td><td>Depends on measured tables. No rankings.</td></tr>
-          <tr><th scope="row">5 · Code actions</th><td>Isolated submissions, profile-selected ops, hack rejection, KernelBench subset, and an end-to-end Vista swap.</td><td>Threat model only. No validated code-execution sandbox.</td></tr>
-          <tr><th scope="row">6 · Write-up</th><td>A finding supported by the preceding experiments, including a null result if warranted.</td><td>Pending evidence. No paper claim.</td></tr>
-        </tbody></table>
-      </div>
-      <p><strong>Next experiment:</strong> a matched modern eager/compiled execution check and separate runtime profile on one A100 80 GB. Fresh-process repetitions follow only after compilation, memory headroom and whole-run cost are established. The large table remains a later coverage and budget decision.</p>
-      <p class="small-note">The released configuration interface supports tools, budgets, and evaluator-owned final scoring. Its old fixed proxy limits and finite action examples are historical software artifacts, not the calibrated verifier or broad search space above. Synthetic examples are software smoke tests only.</p>
-      <details class="methods-details"><summary>Baseline and quality-gate design</summary><div class="details-body">
-        <p>The modern Vista port preserves trained action-control projections while replacing attention with native scaled dot-product attention. FP16 and channels-last are explicit treatments. The full eager workload has executed on an A100 80 GB. Output quality, comparative speed and broader memory-fit claims still require separate evidence.</p>
-        <p>Modern eager and compiled roles are paired on the same device and runtime across fresh processes. The legacy row reuses existing observations and is labeled as a different cohort; no more legacy eager-versus-compiled runs are planned. Cold-prefix cost is reported separately from steady latency. If modern eager removes the compile advantage, that is a result to report.</p>
-        <p>Seed and precision variation provide calibration candidates, not automatic ground truth for visual validity. Independent labels and a disjoint audit set are needed to estimate gate errors. Cheap seed-matched proxies guide development; final scoring additionally needs distributional and trajectory-following checks owned by the evaluator.</p>
-        <p><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/research-protocol.md">Read the active protocol and execution gates</a>.</p>
-      </div></details>
-    </section>
-
-    <section id="evidence" class="section">
-      <h2><span class="section-number">4</span> Evidence and limitations</h2>
-      <div class="table-wrap" role="region" aria-label="Evidence status" tabindex="0">
-        <table class="evidence-table"><caption>Empirical records and missing research evidence.</caption><thead><tr><th scope="col">Record</th><th scope="col">Status</th><th scope="col">Supported conclusion and boundary</th></tr></thead><tbody>
-          <tr><th scope="row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-10-30-h100-tradeoff/numerical-audit">H100 inference comparison</a><span class="row-detail">30 October 2026</span></th><td><span class="status measured">GPU measured</span></td><td>200 requests per role, 50 scenes, one device/runtime. Performance and memory only; held-out quality evaluation incomplete.</td></tr>
-          <tr><th scope="row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-07-kernel-tuning">A100 operator experiments</a><span class="row-detail">7 November 2026</span></th><td><span class="status measured">GPU measured</span></td><td>Historical correctness, timing, memory, and small search experiments. No demonstrated RL advantage or whole-video improvement.</td></tr>
-          <tr><th scope="row"><a href="#modern">Modern Vista eager execution</a></th><td><span class="status measured">GPU measured</span></td><td>One measured request after three warmups on A100 80 GB. No modern speedup, compile break-even or quality result.</td></tr>
-          <tr><th scope="row">Calibrated verifier</th><td><span class="status planned">Not measured</span></td><td>No distributional quality result, trajectory result or gate error rate is claimed.</td></tr>
-          <tr><th scope="row">Configuration tables, policy comparison, and transfer</th><td><span class="status planned">Not measured</span></td><td>No policy superiority, complete 1,000-config table, or cross-device transfer finding exists.</td></tr>
-        </tbody></table>
-      </div>
-      <div class="limitations">
-        <h3>What remains to be established</h3>
-        <ul>
-          <li>A repeated modern eager/compiled comparison and trustworthy compile break-even measurement.</li>
-          <li>Verifier false-accept and false-reject rates on independently labeled, held-out cases.</li>
-          <li>Repeated tables, equal-budget policy comparisons, and live confirmation of selected configurations.</li>
-          <li>Second-device transfer, adversarial code execution, and an independently reproducible end-to-end result.</li>
-        </ul>
-        <p>No peer-reviewed paper or DOI is claimed. The <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/research-protocol.md">research protocol</a> documents these next steps; the <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/RESULTS.md">results index</a> preserves prior cohorts and failed attempts.</p>
-      </div>
-    </section>
-
-    <section id="reproduction" class="section">
-      <h2><span class="section-number">5</span> Reproduction</h2>
-      <p>The public numerical audit reconstructs the historical H100 results without rerunning inference. For a new experiment, use the active research protocol and record the exact source, workload, device, and runtime; historical measurements cannot certify a new host.</p>
-      <div class="code-block compact-code"><div class="code-heading"><span>Recompute the historical H100 statistics — standard library only</span><button type="button" data-copy="audit-command" aria-describedby="copy-feedback">Copy command</button></div><pre tabindex="0"><code id="audit-command">python tools/analyze_h100_timing.py --output h100-reconstructed.json</code></pre></div>
-      <p>The analysis verifies inputs and reconstructs latency, throughput, allocator peaks, block summaries, and scene-cluster intervals. This reanalysis uses published numerical observations; it does not rerun inference.</p>
-      <details class="methods-details"><summary>Software installation and smoke tests — not research evidence</summary><div class="details-body">
-      <p>Python 3.10+ is sufficient for these synthetic software smoke tests. No GPU, model weights, driving data, or API key is needed. Record the exact commit used; create a new output directory for each run.</p>
-      <div class="code-block"><div class="code-heading"><span>Install and run software smoke tests</span><button type="button" data-copy="quickstart" aria-describedby="copy-feedback">Copy commands</button></div><pre tabindex="0"><code id="quickstart">git clone https://github.com/rahul-mahadik/driving-world-model-inference.git
+  <section id="quickstart" class="section container" aria-labelledby="quickstart-title">
+    <div class="section-heading"><h2 id="quickstart-title">Use the benchmark</h2><p>Replay the dataset without a GPU or model weights. Collect new measurements in a separate NVIDIA CUDA environment.</p></div>
+    <div class="code-block"><div class="code-heading"><span>Install and extract the measured dataset</span><button type="button" data-copy="install-code">Copy</button></div><pre tabindex="0"><code id="install-code">git clone https://github.com/rahul-mahadik/driving-world-model-inference.git
 cd driving-world-model-inference
-git rev-parse HEAD
 python3 -m venv .venv
 . .venv/bin/activate
-python -m pip install . ./extensions/kernel_tuning
+python -m pip install -e . -e './extensions/kernel_tuning[search]'
+tar -xzf results/2026-11-23-operator-generalization-pro-4000/data.tar.gz -C results</code></pre></div>
+    <div class="examples">
+      <div class="tabs" role="tablist" aria-label="Usage examples"><button id="tab-interface" role="tab" aria-selected="true" aria-controls="panel-interface" tabindex="0">Reproduce the comparison</button><button id="tab-policy" role="tab" aria-selected="false" aria-controls="panel-policy" tabindex="-1">Connect a policy</button><button id="tab-gpu" role="tab" aria-selected="false" aria-controls="panel-gpu" tabindex="-1">Collect on GPU</button></div>
+      <div id="panel-interface" role="tabpanel" aria-labelledby="tab-interface" class="example-panel"><p>Fit the ridge selector on training cells and evaluate all four CPU policies on the held-out workloads.</p><div class="code-block"><div class="code-heading"><span>CPU · measured GPU observations</span><button type="button" data-copy="interface-code">Copy</button></div><pre tabindex="0"><code id="interface-code">python -m drivebench_tuning.generalization_cli run \
+  --suite operator-generalization-v2 \
+  --table results/2026-11-23-operator-generalization-pro-4000/table.json \
+  --protocol protocols/operator-generalization-v2-compile-isolation-v1.json \
+  --output ./policy-comparison</code></pre></div><p class="panel-foot">Outputs include the fitted model, every policy trajectory, comparison statistics and frozen selections. Replay is explicitly identified in the records.</p></div>
+      <div id="panel-policy" role="tabpanel" aria-labelledby="tab-policy" class="example-panel" hidden><p>Replace the sampled action with your policy. This example uses actual recorded GPU measurements.</p><div class="code-block"><div class="code-heading"><span>Python · Gymnasium interface</span><button type="button" data-copy="policy-code">Copy</button></div><pre tabindex="0"><code id="policy-code">from drivebench_tuning.replay import MeasuredTable, MeasuredReplayEvaluator
+from drivebench_tuning.search import BudgetedTuningEnv
 
-drivebench-demo --output ./video-demo
-drivebench-search run --backend synthetic --split validation \
-  --policy random --output ./search-demo
-drivebench-agent-demo --output ./agent-demo</code></pre></div>
-      <p class="small-note">These examples exercise software integration. Their synthetic timing and reward values are not research results. The <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/reproduce-release.md">clean-install reproduction guide</a> also builds wheels and runs the demos outside the checkout.</p>
-      </div></details>
-      <details class="methods-details"><summary>Requirements for a real GPU reproduction</summary><div class="details-body"><p>A new operator run needs a dedicated compatible NVIDIA GPU and the pinned operator environment. A full Vista study additionally needs separately acquired licensed weights/data, pre-staged metric assets, a protected evaluator, and complete evidence storage. The project does not provision compute or make payments.</p><p>There is no downloadable prebuilt DriveBench Vista image. Public source recipes describe environment construction, but actual builds, profiler support, memory capacity, and native attention must be verified on the reproducer’s host. Historical image IDs or proof files cannot certify another machine.</p><p><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/reproduce-release.md">Environment and asset acquisition</a> · <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/agent-study-reproduction.md">Historical agent recipe (canceled study)</a> · <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/public-benchmark-protocol.md">Measurement protocol</a></p></div></details>
-      <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p>
-    </section>
+table = MeasuredTable.load(
+    "results/2026-11-23-operator-generalization-pro-4000/table.json"
+)
+env = BudgetedTuningEnv(
+    table.suite.tasks, table.suite.candidates,
+    MeasuredReplayEvaluator(table, seed=2101),
+    trial_budget=8, memory_weight=0.0, allow_replay=True,
+)
+try:
+    env.action_space.seed(2101)
+    observation, info = env.reset(
+        seed=2101, options={"task_index": table.suite.splits["test"][0]}
+    )
+    for _ in range(8):
+        action = env.action_space.sample()  # Your policy goes here.
+        observation, reward, terminated, truncated, info = env.step(action)
+        if terminated or truncated:
+            break
+finally:
+    env.close()</code></pre></div><p class="panel-foot"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md">Environment, training and selection contracts</a></p></div>
+      <div id="panel-gpu" role="tabpanel" aria-labelledby="tab-gpu" class="example-panel" hidden><p>Collect one fresh-process repeat of the 60-workload suite. Use new output and compiler-cache directories and an external job deadline.</p><div class="code-block"><div class="code-heading"><span>Linux · NVIDIA CUDA</span><button type="button" data-copy="gpu-code">Copy</button></div><pre tabindex="0"><code id="gpu-code">python -m pip install './extensions/kernel_tuning[gpu,search]'
+export TORCHINDUCTOR_COMPILE_THREADS=1
+export TORCHINDUCTOR_CACHE_DIR="$PWD/cache-0"
+export TRITON_CACHE_DIR="$PWD/triton-cache-0"
+timeout 1800s python -m drivebench_tuning.table_collection collect \
+  --suite operator-generalization-v2 --repeat-index 0 \
+  --output ./repeat-0</code></pre></div><p class="panel-foot">Follow the <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md#measure-the-workloads">collection recipe</a> for all three repeats, table validation and independent confirmation.</p></div>
+    </div>
+    <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p>
+  </section>
 
-    <section id="citation" class="section citation-section">
-      <h2><span class="section-number">6</span> Citation and references</h2>
-      <p>Cite the software and include the exact Git commit and protocol used. The repository provides <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/CITATION.cff">CITATION.cff</a>; it does not identify a peer-reviewed paper.</p>
-      <div class="code-block"><div class="code-heading"><span>Software citation</span><button type="button" data-copy="citation-text" aria-describedby="copy-feedback">Copy BibTeX</button></div><pre tabindex="0"><code id="citation-text">@software{mahadik_drivebench_2026,
-  author = {Mahadik, Rahul},
-  title = {DriveBench: Verifiable Rewards for Lossy
-           World-Model Inference},
-  year = {2026},
-  url = {https://github.com/rahul-mahadik/driving-world-model-inference}
-}</code></pre></div>
-      <ol class="references">
-        <li><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/public-benchmark-protocol.md">Public benchmark protocol.</a> Workload identities, measurement boundaries, and comparison rules.</li>
-        <li><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-10-30-h100-tradeoff/numerical-audit">Historical H100 numerical audit.</a> All 400 measured rows, provenance, bootstrap schedule, and reconstruction code.</li>
-        <li><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/research-protocol.md">Prospective research validation protocol.</a> Modern baselines, calibrated gates, tabulated search, hardware transfer, and code-action evaluation.</li>
-        <li><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/NOTICE.md">Third-party notices.</a> Separately licensed model, dataset, and dependency assets.</li>
-      </ol>
-    </section>
-  </main>
-  <footer><span>DriveBench · Rahul Mahadik</span><span><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/LICENSE">MIT code</a> · <a href="https://github.com/rahul-mahadik/driving-world-model-inference/issues">Issues</a> · <a href="#main">Back to top ↑</a></span></footer>
-</div>
+  <section id="documentation" class="section container" aria-labelledby="docs-title">
+    <div class="section-heading"><h2 id="docs-title">Documentation</h2></div>
+    <div class="doc-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md"><strong>Dataset and environment</strong><span>Collection, replay, training and confirmation</span></a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/extensions/kernel_tuning/docs/extending.md"><strong>Evaluator API</strong><span>Connect another workload or implementation</span></a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/agent-environment.md"><strong>Agent tools</strong><span>Inspection, profiling, trials and submission</span></a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/CONTRIBUTING.md"><strong>Contributing</strong><span>Reproducible benchmark submissions</span></a></div>
+  </section>
+</main>
+<footer class="container"><div><a class="brand" href="#">DriveBench</a><p>Rahul Mahadik</p></div><div class="footer-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference">Source</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/LICENSE">MIT license</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/NOTICE.md">Third-party licenses</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/CITATION.cff">Citation</a></div></footer>
 </body>
 </html>

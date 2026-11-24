@@ -1,5 +1,8 @@
 # Measured operator search
 
+For a larger shape-separated suite, a trained cost model, TPE and a second-GPU
+transfer procedure, see [operator generalization](operator-generalization.md).
+
 The [RTX PRO 4500 dataset](../results/2026-11-20-operator-search-rtx-pro-4500/README.md)
 contains 360 GPU measurements and policy-evaluation records. To use existing
 measurements, start with the replay command below and set `--table` to
@@ -23,6 +26,7 @@ Run them on the same device and software environment, with an external job
 deadline. Give each process a new output directory:
 
 ```sh
+export TORCHINDUCTOR_COMPILE_THREADS=1
 python -m drivebench_tuning.table_collection collect --repeat-index 0 --output repeat-0
 python -m drivebench_tuning.table_collection collect --repeat-index 1 --output repeat-1
 python -m drivebench_tuning.table_collection collect --repeat-index 2 --output repeat-2
@@ -34,6 +38,11 @@ hashes, numerical checks and the underlying samples. Each cell summarizes the
 three process repeats. Variability across event samples within one process and
 variability across process medians are reported separately. A complete table
 does not imply every candidate succeeded.
+
+Set the compiler-thread variable before Python starts on every GPU host. The
+evaluator verifies the effective value is one and resets compiler state between
+workloads. It reuses compilation within a workload and does not delete disk
+caches. These preparation costs stay outside the timed invocation samples.
 
 ## Run policies on recorded measurements
 
@@ -120,6 +129,7 @@ table, and confirm those selections as a separate cohort.
 Run each confirmation repeat in a fresh process on the original GPU/runtime:
 
 ```sh
+export TORCHINDUCTOR_COMPILE_THREADS=1
 python -m drivebench_tuning.confirmation --selections policy-comparison/confirmation-request.json --repeat-index 0 --output confirmation-0
 python -m drivebench_tuning.confirmation --selections policy-comparison/confirmation-request.json --repeat-index 1 --output confirmation-1
 python -m drivebench_tuning.confirmation --selections policy-comparison/confirmation-request.json --repeat-index 2 --output confirmation-2

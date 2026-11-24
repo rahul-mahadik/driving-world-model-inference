@@ -15,7 +15,9 @@ class FixtureRunner:
     """Invented CUDA-shaped evidence strictly for protocol validation tests."""
     def __init__(self, journal, *, repetitions, warmups, max_seconds):
         self.journal, self.repetitions, self.warmups = journal, repetitions, warmups
-        self.runtime = {'gpu_uuid': 'CPU-CONTRACT-FIXTURE', 'source_hashes': tc.source_hashes()}
+        self.runtime = {'gpu_uuid': 'CPU-CONTRACT-FIXTURE', 'source_hashes': tc.source_hashes(),
+                        'compiler_state_policy': dict(tc.COMPILER_STATE_POLICY),
+                        'inductor_compile_threads': 1}
         self.cohort_id = tc._digest(self.runtime)
         journal.write('runtime.json', {**self.runtime, 'cohort_id': self.cohort_id})
         self.closed = False
@@ -159,3 +161,104 @@ def test_arguments_validated_before_creating_evidence(tmp_path):
         with pytest.raises(ValueError):
             tc.collect(tmp_path / 'invalid', runner_factory=FixtureRunner, **kwargs)
     assert not (tmp_path / 'invalid').exists()
+
+
+def _rebind_fixture_table(table):
+    """Update invented identities so policy checks, not stale hashes, are tested."""
+    runtime = {k: v for k, v in table['runtime'].items() if k != 'cohort_id'}
+    cohort = tc._digest(runtime)
+    table['runtime']['cohort_id'] = table['cohort_id'] = cohort
+    table['collection_protocol_sha256'] = tc._digest(table['protocol'])
+    for run in table['runs']:
+        run['cohort_id'] = cohort
+        run['collection_protocol_sha256'] = table['collection_protocol_sha256']
+    for row in table['rows']:
+        row['measurement']['cohort_id'] = cohort
+        row['measurement']['evidence']['cohort_id'] = cohort
+
+
+def test_compiler_policy_is_bound_and_mismatch_rejected(repeat_directories, tmp_path):
+    table = tc.merge(repeat_directories, tmp_path / 'original.json')
+    assert table['protocol']['compiler_state_policy'] == tc.COMPILER_STATE_POLICY
+    assert table['runtime']['compiler_state_policy'] == tc.COMPILER_STATE_POLICY
+    for location in ('runtime', 'protocol'):
+        invalid = deepcopy(table)
+        del invalid[location]['compiler_state_policy']
+        _rebind_fixture_table(invalid)
+        with pytest.raises(ValueError, match='Compiler-state policy'):
+            tc.validate_table(invalid)
+    invalid = deepcopy(table)
+    for location in ('runtime', 'protocol'):
+        invalid[location]['compiler_state_policy']['sample_timing_includes_reset'] = True
+    _rebind_fixture_table(invalid)
+    with pytest.raises(ValueError, match='Compiler-state policy'):
+        tc.validate_table(invalid)
+
+
+@pytest.mark.parametrize('actual', [None, 2, True, 1.0])
+def test_runtime_compile_threads_are_checked_independently(repeat_directories, tmp_path, actual):
+    table = tc.merge(repeat_directories, tmp_path / 'original.json')
+    assert table['protocol']['compiler_state_policy']['inductor_compile_threads'] == 1
+    if actual is None:
+        table['runtime'].pop('inductor_compile_threads')
+    else:
+        table['runtime']['inductor_compile_threads'] = actual
+    _rebind_fixture_table(table)
+    with pytest.raises(ValueError, match='Inductor compile thread count'):
+        tc.validate_table(table)
+
+
+def test_policy_count_bool_cannot_alias_integer_one(repeat_directories, tmp_path):
+    table = tc.merge(repeat_directories, tmp_path / 'original.json')
+    for location in ('runtime', 'protocol'):
+        table[location]['compiler_state_policy']['inductor_compile_threads'] = True
+    _rebind_fixture_table(table)
+    with pytest.raises(ValueError, match='Compiler-state policy'):
+        tc.validate_table(table)
+
+
+def test_historical_policy_absence_does_not_admit_current_source(repeat_directories, tmp_path, monkeypatch):
+    table = tc.merge(repeat_directories, tmp_path / 'original.json')
+    for location in ('runtime', 'protocol'):
+        del table[location]['compiler_state_policy']
+    _rebind_fixture_table(table)
+    assert tc.validate_table(table) == table  # Legacy source fixture remains replayable.
+    current = {'benchmark.py': 'b' * 64}
+    monkeypatch.setattr(tc, 'source_hashes', lambda: current)
+    for location in ('runtime', 'protocol'):
+        table[location]['source_hashes'] = dict(current)
+    _rebind_fixture_table(table)
+    with pytest.raises(ValueError, match='Compiler-state policy missing'):
+        tc.validate_table(table)
+
+
+def test_collection_checks_compiler_policy_before_any_measurement(tmp_path):
+    class WrongPolicy(FixtureRunner):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.runtime.pop('compiler_state_policy')
+
+        def measure(self, *args, **kwargs):
+            raise AssertionError('No measurement may run after a policy mismatch')
+    directory = tmp_path / 'bad-compiler-policy'
+    assert tc.collect(directory, repeat_index=0, repetitions=3, runner_factory=WrongPolicy) == 1
+    failure = json.loads((directory / 'failed.json').read_text())
+    assert failure['error_type'] == 'ValueError' and failure['measurement_count'] == 0
+    assert 'compiler-state policy' in failure['error']
+    assert not (directory / 'completed.json').exists()
+
+
+def test_collection_checks_effective_thread_count_before_measurement(tmp_path):
+    class WrongThreads(FixtureRunner):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.runtime['inductor_compile_threads'] = 2
+
+        def measure(self, *args, **kwargs):
+            raise AssertionError('No measurement may run with the wrong compiler thread count')
+    directory = tmp_path / 'bad-compiler-threads'
+    assert tc.collect(directory, repeat_index=0, repetitions=3, runner_factory=WrongThreads) == 1
+    failure = json.loads((directory / 'failed.json').read_text())
+    assert failure['error_type'] == 'ValueError' and failure['measurement_count'] == 0
+    assert 'Inductor compile thread count' in failure['error']
+    assert not (directory / 'completed.json').exists()

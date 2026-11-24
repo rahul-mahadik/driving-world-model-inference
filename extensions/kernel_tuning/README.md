@@ -63,18 +63,21 @@ python extensions/kernel_tuning/examples/compare_search_policies.py \
   --backend synthetic --split validation --repeats 2 --trials 4 --output ./policy-comparison
 ```
 
-On a prepared NVIDIA host, change `--backend synthetic` to `--backend cuda` and apply an external process timeout. This example has CPU coverage; its CUDA comparison has not been executed as a new result. Inspect `plan.json`, `episode-*.json`, `trials.jsonl` and `comparison.json`. The comparison reports best observed search results, not a fresh confirmation or a policy-superiority claim. Replacing the policy callback is sufficient to evaluate another search method; record its training and inference costs separately.
+On a prepared NVIDIA host, run `export TORCHINDUCTOR_COMPILE_THREADS=1` before Python starts, change `--backend synthetic` to `--backend cuda`, and apply an external process timeout. This example has CPU coverage; its CUDA comparison has not been executed as a new result. Inspect `plan.json`, `episode-*.json`, `trials.jsonl` and `comparison.json`. The comparison reports best observed search results, not a fresh confirmation or a policy-superiority claim. Replacing the policy callback is sufficient to evaluate another search method; record its training and inference costs separately.
 
 ## Existing GPU runner
 
 ```sh
 python -m pip install './extensions/kernel_tuning[gpu,test]'
+export TORCHINDUCTOR_COMPILE_THREADS=1
 python -m pytest -q extensions/kernel_tuning/tests -m gpu
 drivebench-search run --backend cuda --split validation --policy random \
   --trials 4 --repeats 3 --max-seconds 900 --output ./search-random
 ```
 
 The CUDA extra is Linux/NVIDIA-specific. Historical successful execution used Torch2.10/Triton3.6 on an A100; this does not certify every GPU or this new suite. Run on an otherwise idle dedicated device. The runner validates numerical outputs and input immutability, records physical GPU/driver/runtime identities, performs five warmups and thirty samples by default, and retains failed trials. It excludes compilation, warmups, validation, input preparation and export from operator latency, while charging them to the wall-time budget. Use an external timeout for stuck CUDA/compiler calls.
+
+Each GPU process requires one Inductor compilation thread, checked from the effective PyTorch configuration. The evaluator resets compiler state when the workload changes and on cleanup, while reusing compilation within a workload. Resets occur outside timed samples and leave filesystem caches intact. Use one evaluator at a time in each process.
 
 The historical Vista environment uses a different pinned Torch/CUDA/xFormers stack. Keep it separate from this operator environment; installing the operator `gpu` extra into a Vista container can replace the runtime being evaluated. Follow the [Vista integration recipe](../../docs/vista-integration.md) and bind the actual runtime for a new model cohort.
 

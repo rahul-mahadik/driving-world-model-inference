@@ -161,7 +161,9 @@ def evaluate_policy(
     receive ``(observation, info)`` and return an action index; ``info`` additionally
     contains ``evaluation_seed`` and ``evaluation_episode_index``. PPO and other
     policies can adapt their prediction API to this callback without changing
-    the benchmark. Policy training and split selection occur outside this API.
+    the benchmark. An optional ``observe(observation, info)`` callback receives
+    each completed turn's own feedback, including the last turn. Policy training
+    and split selection occur outside this API.
 
     Factory protocol changes, mixed hardware/runtime cohorts, repeated trial IDs,
     and changing inputs for the same task abort with ``EvaluationError.report``.
@@ -310,6 +312,9 @@ def evaluate_policy(
                         check_info(info, int(task_index))
                         if info["measurement"] is not None:
                             check_trial(info["measurement"])
+                        observe = getattr(policy, "observe", None)
+                        if callable(observe):
+                            observe(copy.deepcopy(observation), copy.deepcopy(info))
                         if info["trials_used"] != trial_index + 1:
                             raise ValueError("environment trial counter disagrees with completed candidate calls")
                         if (bool(terminated) and bool(truncated)) or bool(terminated or truncated) != (trial_index + 1 == env.trial_budget):

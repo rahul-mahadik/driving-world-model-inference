@@ -13,7 +13,7 @@ import random
 
 from .adapters import OperatorEvaluator
 from .benchmark import CudaEvaluator, EvidenceJournal, source_hashes, utc_now
-from .suite import load_suite
+from .suite import BUNDLED_SUITES, load_suite
 
 
 def selection_pairs(document, suite):
@@ -111,6 +111,8 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--selections', required=True, type=Path)
     p.add_argument('--output', required=True, type=Path)
+    p.add_argument('--suite', choices=BUNDLED_SUITES, default=None,
+                   help='Frozen bundled suite (default: operator-search-v1)')
     p.add_argument('--repeat-index', required=True, type=int)
     p.add_argument('--max-seconds', default=600, type=int)
     p.add_argument('--seed', default=2901, type=int)
@@ -121,7 +123,7 @@ def main(argv=None):
         p.error('Nonnegative repeat/seed and max-seconds 1..7200 required')
     raw = args.selections.read_bytes()
     selections = json.loads(raw)
-    suite = load_suite()
+    suite = load_suite(args.suite)
     pairs = selection_pairs(selections, suite)
     input_digests = selection_input_digests(selections, pairs)
     cohort = selections.get('cohort_id')
@@ -129,7 +131,8 @@ def main(argv=None):
         raise ValueError('Expected measured CUDA cohort_id required')
     journal = EvidenceJournal(args.output)
     journal.write('plan.json', {'schema_version': 1, 'created_at': utc_now(),
-        'suite_sha256': suite.sha256, 'selection_sha256': hashlib.sha256(raw).hexdigest(),
+        'suite_sha256': suite.sha256, 'suite_id': suite.document['suite_id'],
+        'selection_sha256': hashlib.sha256(raw).hexdigest(),
         'selection_document': selections, 'source_hashes': source_hashes(),
         'repeat_index': args.repeat_index, 'seed': args.seed, 'max_seconds': args.max_seconds,
         'warmups': args.warmups, 'repetitions': args.repetitions,
