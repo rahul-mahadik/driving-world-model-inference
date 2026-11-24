@@ -1,4 +1,4 @@
-"""Freeze and execute an equal-budget, TRAIN-only operator search protocol."""
+"""Run TRAIN-only operator comparisons on new collections or recorded tables."""
 from __future__ import annotations
 
 import argparse
@@ -85,6 +85,38 @@ def validate_protocol(document, suite):
     return deepcopy(document)
 
 
+def make_replay_protocol(table, *, seed=2101):
+    """Bind a new CPU replay to existing measurements and current policy code.
+
+    Collection hashes describe the recorded GPU execution; source_hashes bind
+    this new replay. A later replay cannot preregister an earlier collection.
+    """
+    document = make_protocol(table.suite, seed=seed)
+    collection = table._document['protocol']
+    if digest(collection.get('compiler_state_policy')) != digest(document['compiler_state_policy']):
+        raise ValueError('table compiler-state policy differs from replay protocol')
+    document['kind'] = 'operator_generalization_replay_protocol'
+    document['learned']['hyperparameter_selection'] = 'none; fixed before this replay executes'
+    document['replay_binding'] = {
+        'table_sha256': table.sha256, 'cohort_id': table.cohort_id,
+        'collection_protocol_sha256': digest(collection),
+        'collection_source_hashes': deepcopy(collection['source_hashes']),
+        'measurement_origin': 'existing recorded GPU measurements',
+        'fresh_gpu_measurements': 0,
+    }
+    return document
+
+
+def validate_replay_protocol(document, table):
+    expected = make_replay_protocol(table, seed=document.get('seed'))
+    if {k: v for k, v in document.items() if k != 'frozen_at'} != expected:
+        raise ValueError('replay protocol differs from the recorded table, installed source or evaluation settings')
+    stamp = datetime.fromisoformat(document.get('frozen_at', ''))
+    if stamp.tzinfo is None:
+        raise ValueError('timezone-aware replay freeze time required')
+    return deepcopy(document)
+
+
 def add_budget_metrics(report):
     result = deepcopy(report)
     for episode in result['episodes']:
@@ -116,6 +148,18 @@ def run_comparison(table, protocol, output):
         raise ValueError('protocol must be frozen before collection completes')
     # The original freeze receipt/host manifest, not this timestamp comparison,
     # establishes prospective ordering. Source hashes bind the implementation.
+    return _execute_comparison(table, protocol, output, binding_key='frozen_study_protocol_sha256')
+
+
+def run_replay_comparison(table, output, *, seed=2101):
+    """Freeze a new replay binding before training/evaluation; leave data intact."""
+    protocol = make_replay_protocol(table, seed=seed)
+    protocol['frozen_at'] = datetime.now(timezone.utc).isoformat()
+    protocol = validate_replay_protocol(protocol, table)
+    return _execute_comparison(table, protocol, output, binding_key='replay_protocol_sha256')
+
+
+def _execute_comparison(table, protocol, output, *, binding_key):
     output = Path(output); output.mkdir(parents=True, exist_ok=False)
     write_json(output/'protocol.json', protocol)
     model = train_cost_model(table)
@@ -131,7 +175,7 @@ def run_comparison(table, protocol, output):
         report = run_replay_policy(table, policy, name=name, split='test', repeats=20,
                                   seed=protocol['seed'], trials=8, memory_weight=0.)
         report = add_budget_metrics(report)
-        report['frozen_study_protocol_sha256'] = digest(protocol)
+        report[binding_key] = digest(protocol)
         write_json(output/f'{name}.json', report); reports.append(report)
         if report['status'] != 'completed':
             write_json(output/'failed.json', {'completed': False, 'policy': name})
@@ -139,7 +183,7 @@ def run_comparison(table, protocol, output):
     summary = comparison_summary(reports)
     summary.update(policy_training_performed=True, training_kind='supervised cost model', rl_training_performed=False)
     summary['trained_model_sha256'] = digest(model)
-    summary['frozen_study_protocol_sha256'] = digest(protocol)
+    summary[binding_key] = digest(protocol)
     for policy, report in zip(summary['policies'], reports):
         policy['report_file'] = report['policy_name'] + '.json'
         policy['report_sha256'] = digest(report)
@@ -151,7 +195,8 @@ def run_comparison(table, protocol, output):
     write_json(output/'comparison.json', summary)
     write_json(output/'confirmation-request-cpu.json', freeze_modal_selections(table, reports))
     write_json(output/'completed.json', {'completed': True, 'backend': 'measured_replay',
-                                         'fresh_gpu_measurements': 0, 'rl_training_performed': False})
+                                         'fresh_gpu_measurements': 0, 'rl_training_performed': False,
+                                         binding_key: digest(protocol)})
     return True
 
 
@@ -164,6 +209,11 @@ def main(argv=None):
     run = sub.add_parser('run'); run.add_argument('--suite', required=True)
     run.add_argument('--table', type=Path, required=True); run.add_argument('--protocol', type=Path, required=True)
     run.add_argument('--output', type=Path, required=True)
+    replay = sub.add_parser('replay', help='compare CPU policies on an existing table with a new source binding')
+    replay.add_argument('--suite', required=True)
+    replay.add_argument('--table', type=Path, required=True)
+    replay.add_argument('--output', type=Path, required=True)
+    replay.add_argument('--seed', type=int, default=2101)
     select = sub.add_parser('selections'); select.add_argument('--suite', required=True)
     select.add_argument('--table', type=Path, required=True); select.add_argument('--reports', type=Path, nargs='+', required=True)
     select.add_argument('--output', type=Path, required=True)
@@ -178,6 +228,11 @@ def main(argv=None):
         import optuna
         optuna.logging.set_verbosity(optuna.logging.WARNING)
         return 0 if run_comparison(MeasuredTable.load(args.table, suite=suite), read_json(args.protocol), args.output) else 1
+    elif args.command == 'replay':
+        import optuna
+        optuna.logging.set_verbosity(optuna.logging.WARNING)
+        return 0 if run_replay_comparison(MeasuredTable.load(args.table, suite=suite),
+                                         args.output, seed=args.seed) else 1
     elif args.command == 'selections':
         write_json(args.output, freeze_modal_selections(MeasuredTable.load(args.table, suite=suite),
                                                        [read_json(path) for path in args.reports]))

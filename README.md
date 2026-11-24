@@ -25,10 +25,9 @@ python -m pip install -e . -e './extensions/kernel_tuning[search]'
 
 tar -xzf results/2026-11-23-operator-generalization-pro-4000/data.tar.gz -C results
 
-python -m drivebench_tuning.generalization_cli run \
+python -m drivebench_tuning.generalization_cli replay \
   --suite operator-generalization-v2 \
   --table results/2026-11-23-operator-generalization-pro-4000/table.json \
-  --protocol protocols/operator-generalization-v2-compile-isolation-v1.json \
   --output ./policy-comparison
 ```
 
@@ -36,9 +35,22 @@ The archive includes the measured table, sample values, policy trajectories and 
 
 ## Use the environment
 
-`BudgetedTuningEnv` implements Gymnasium's `reset`/`step` interface. The published task gives a policy **eight trials** to choose among 25 configurations; the environment accepts other trial budgets. Observations expose the workload, remaining budget and queried outcomes. Reward measures improvement in the best numerically valid configuration found. Repeated, rejected and failed actions consume trials.
+`DriveBench/OperatorTune-v0` is registered with Gymnasium when you import `drivebench_tuning`. The published task gives a policy **eight trials** to choose among 25 configurations; the environment accepts other trial budgets. Observations expose the workload, remaining budget and queried outcomes. Reward measures improvement in the best numerically valid configuration found. Repeated, rejected and failed actions consume trials.
 
-The [Python example](docs/operator-generalization.md#use-the-gymnasium-interface) connects a policy to measured replay or live CUDA evaluation. The [PPO example](docs/ppo-training.md#reproduce-training-and-evaluation) trains with Stable Baselines3; the ridge selector uses supervised regression. A [live RTX 4090 comparison](results/2026-11-24-ppo-native-autotune/README.md#live-gpu-comparison) evaluates PPO seed 3101, chosen before training, against native Triton autotuning with eager and compiled references. Actions select existing implementations; code editing requires a separate execution sandbox.
+```python
+import gymnasium as gym
+import drivebench_tuning
+
+env = gym.make(
+    "DriveBench/OperatorTune-v0",
+    table_path="results/2026-11-23-operator-generalization-pro-4000/table.json",
+    split="test",
+)
+observation, info = env.reset(seed=2101)
+env.close()
+```
+
+The [environment specification](docs/gymnasium-environment.md) lists the spaces, reward and episode behavior. The [Python example](docs/operator-generalization.md#use-the-gymnasium-interface) connects a policy to measured replay or live CUDA evaluation. The [PPO example](docs/ppo-training.md#reproduce-training-and-evaluation) trains with Stable Baselines3; the ridge selector uses supervised regression. A [live RTX 4090 comparison](results/2026-11-24-ppo-native-autotune/README.md#live-gpu-comparison) evaluates PPO seed 3101, chosen before training, against native Triton autotuning with eager and compiled references. Actions select existing implementations; code editing requires a separate execution sandbox.
 
 For new measurements, follow the [GPU collection instructions](docs/operator-generalization.md#measure-the-workloads). Set `TORCHINDUCTOR_COMPILE_THREADS=1` before launching each GPU process. The runner checks that setting, records the runtime and separates preparation from steady-state timing. The caller provisions the GPU and enforces the job deadline.
 

@@ -6,6 +6,29 @@ The [measured operator search guide](../../docs/measured-operator-search.md) cov
 
 The separate [agent controller](../../docs/agent-environment.md) exposes configuration proposals, profiles, trials and final submission. It includes an optional LLM selector and array-backed quality checks. Its published validation uses a CPU fixture; `drivebench-agent-demo --output ./agent-demo` runs that fixture after installing the core and extension.
 
+## Gymnasium quickstart
+
+Install the extension and extract the [recorded operator dataset](../../results/2026-11-23-operator-generalization-pro-4000/README.md), then run:
+
+```python
+import gymnasium as gym
+import drivebench_tuning  # Registers DriveBench/OperatorTune-v0.
+
+env = gym.make(
+    "DriveBench/OperatorTune-v0",
+    table_path="results/2026-11-23-operator-generalization-pro-4000/table.json",
+    split="test",
+)
+observation, info = env.reset(seed=42)
+for _ in range(8):
+    observation, reward, terminated, truncated, info = env.step(0)
+    if terminated or truncated:
+        break
+env.close()
+```
+
+Action 0 queries compiled PyTorch; actions 1–24 query Triton configurations. The registered environment uses the `operator-generalization-v2` suite and recorded timings supplied by the caller. Its defaults are the training split, eight queries and a latency-only objective. It makes no GPU or network calls. See the [environment specification](../../docs/gymnasium-environment.md) for spaces, rewards and reset options.
+
 ## Install and run anywhere
 
 ```sh
