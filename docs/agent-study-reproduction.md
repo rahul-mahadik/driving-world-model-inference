@@ -89,11 +89,11 @@ For the two deterministic baseline controllers, use an explicit `{"kind": "grid"
 
 For an LLM/random/grid comparison, `selection_only_executor` records each submitted choice without running final inputs. Close all three sessions, then call `freeze_final_plan` with their externally pinned session policies and the frozen quality/source/input identities. It admits only selections backed by an eligible completed trial. Its immutable plan fixes role order and scene/seed/repeat cells. Execute that exact plan serially; final feedback must not influence another policy's selection.
 
-### Prospectively registered single-agent feasibility
+### Single-agent feasibility interface
 
 A study can instead evaluate one LLM's selected configuration against the reference, without running random or grid. Register this narrower scope before calibration and candidate selection; keep the previous protocol and attempts intact. This is a feasibility demonstration, not a comparison of search methods. Random and grid remain explicitly deferred. Keep the declared calibration population, quality limits, negative controls, trial budget, final cells, timing noise floor and evidence-retention requirements unchanged.
 
-The prospective project demonstration remains an eight-option, configuration-only task: FP16, decode chunks `[1, 2, 7, 14]`, and compilation off/on. It does not accept arbitrary agent-written code or kernels and cannot establish that an LLM outperforms another optimizer. A future allocation needs fresh environment proofs, support runs, calibration, selection and final evidence on its own GPU/runtime. Preserve the prior BF16 support failure and FP16 capability receipts as historical evidence; they are not quality calibration or a completed agent run.
+The canceled project demonstration specified an eight-option, configuration-only task: FP16, decode chunks `[1, 2, 7, 14]`, and compilation off/on. Its interface remains available for separately registered studies. It does not accept arbitrary agent-written code or kernels and cannot establish that an LLM outperforms another optimizer. A future allocation needs fresh environment proofs, support runs, calibration, selection and final evidence on its own GPU/runtime. Preserve the prior BF16 support failure and FP16 capability receipts as historical evidence; they are not quality calibration or a completed agent run.
 
 Set both `study_mode: "single_llm_feasibility"` and `policy_names: ["llm"]` in the externally pinned `SessionPolicy.metadata` before creating the session. After its measured provisional trials and selection-only submission, call:
 
@@ -140,4 +140,4 @@ An `inventory` spec adds explicit absolute `roots`, `extra_files`, `required_pin
 
 Verify worker exit, source/input invariants, the final evidence inventory and an independently hashed backup before releasing resources. Publish the exact protocol/configuration and sanitized trajectories, measured outcomes, rejected attempts, costs and limitations. Retain raw arrays according to the declared study contract and external asset terms. A completed process, a passing CPU test suite and a completed real-model evaluation are separate milestones.
 
-The current project proposal is the explicitly small 8-development/4-final-scene single-LLM feasibility study described in [readiness](benchmark-readiness.md). It preserves the original three-policy proposal and defers random/grid comparisons. Its real GPU/LPIPS/LLM execution remains unrun. This recipe does not relabel historical timings or complete the old same-GPU held-out study.
+The canceled single-LLM proposal used eight development scenes and four final scenes, with random/grid comparisons deferred. Its real GPU/LPIPS/LLM execution was not completed. This recipe preserves that procedure; current measured operator studies and the remaining model-level validation are listed in [benchmark coverage](benchmark-readiness.md).

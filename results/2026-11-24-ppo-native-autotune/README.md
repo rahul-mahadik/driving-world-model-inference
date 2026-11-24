@@ -1,12 +1,12 @@
 # PPO and native-autotuning supplement
 
-Five PPO policies were trained on the measured operator benchmark. This release records every checkpoint, training episode and held-out decision, together with a separate live comparison against native Triton autotuning.
+This supplement contains PPO training and evaluation on the measured operator table, plus a live comparison with native Triton autotuning on an RTX 4090. Checkpoints, trajectories and measurement records accompany both studies.
 
 ## PPO on the measured table
 
-The training split contains 30 workloads and 2,340 recorded GPU measurements. Each of five fixed seeds completed 102,400 environment steps (512,000 total). All checkpoints were frozen before TEST evaluation. There was no hyperparameter search, held-out training or best-seed selection.
+The training split contains 30 workloads and 2,340 recorded GPU measurements. Five prespecified seeds completed 102,400 environment steps each (512,000 total) with fixed hyperparameters. Checkpoints were saved before TEST evaluation, and the results include all five seeds.
 
-Each trained checkpoint and one untrained initialization received twenty eight-query episodes on each of eighteen held-out workloads. These **2,160 evaluation episodes** reuse measured timings from the RTX PRO 4000 table; they add no independent GPU samples. The test split contains six shape families, each in three dtypes.
+Each trained checkpoint and one untrained initialization received twenty eight-query episodes on each of eighteen held-out workloads: **2,160 evaluation episodes** in total. The episodes reuse three recorded GPU-process repeats from the RTX PRO 4000 table. The test split contains six shape families, each in three dtypes.
 
 | Method | Mean final table regret |
 | --- | ---: |
@@ -17,7 +17,7 @@ Each trained checkpoint and one untrained initialization received twenty eight-q
 | PPO, mean of all five training seeds | 0.035556 |
 | Untrained initialization, seed 3101 | 0.218278 |
 
-PPO improved over initialization but did not beat TPE or the compiled-query baseline in mean regret. The five trained-seed means are 0.033024, 0.025118, 0.027289, 0.035376 and 0.056971 (sample standard deviation 0.012672). The paired mean PPO-minus-TPE difference is 0.003676; its descriptive six-family bootstrap interval is [−0.034030, 0.042650]. These data do not establish policy superiority.
+The five trained-seed means are 0.033024, 0.025118, 0.027289, 0.035376 and 0.056971 (sample standard deviation 0.012672). Their mean is below the untrained initialization and above TPE and the compiled-query baseline. The paired mean PPO-minus-TPE difference is 0.003676, with a descriptive six-family bootstrap interval of [−0.034030, 0.042650]. The interval conditions on fixed checkpoints and recorded measurements; replay adds no independent GPU samples.
 
 ![Held-out search curves](../../reports/figures/ppo-regret.svg)
 
@@ -25,9 +25,9 @@ PPO improved over initialization but did not beat TPE or the compiled-query base
 
 ## Live GPU comparison
 
-The fixed PPO checkpoint for seed 3101 was evaluated on an NVIDIA GeForce RTX 4090 with PyTorch 2.10.0 and Triton 3.6.0. It received fresh GPU feedback for eight queries per workload, without policy updates. Each of three fresh processes evaluated the same eighteen held-out workloads, using inputs bound to the original benchmark. The GPU cohort is separate from the RTX PRO 4000 training table.
+PPO seed 3101 was chosen before training. Its checkpoint was evaluated on an NVIDIA GeForce RTX 4090 with PyTorch 2.10.0 and Triton 3.6.0. Three fresh processes each ran eight queries per workload on the eighteen held-out workloads using the original benchmark inputs. Policy parameters remained fixed while the environment supplied live GPU feedback. Training used the separate RTX PRO 4000 table.
 
-Native `triton.autotune` evaluated all 24 Triton configurations through the same whole-operator wrappers. A second comparator could also retain eager or compiled code: three selection probes chose among those references and the native-selected kernel before final confirmation. PPO can also retain eager or compiled code, so this fallback comparator better matches its available choices.
+Native `triton.autotune` evaluated all 24 Triton configurations through the same whole-operator wrappers. For the fallback comparator, three additional probes selected among eager, compiled and the native-selected kernel before final confirmation. This gives native search access to the eager and compiled choices also available to PPO.
 
 | Comparator | Comparator latency / PPO latency | Descriptive 95% interval |
 | --- | ---: | ---: |
@@ -35,13 +35,13 @@ Native `triton.autotune` evaluated all 24 Triton configurations through the same
 | Native autotuning with eager/compiled fallback | 0.948 | [0.882, 1.009] |
 | Compiled reference | 1.039 | [0.981, 1.141] |
 
-Ratios above one favor PPO. PPO's mean advantage over native-only selection did not extend to native selection with reference fallback. The comparison does not establish an equal-budget win: native selection uses 24 configuration trials and three fallback probes, while PPO uses eight queries plus an eager reset.
+Ratios above one favor PPO. The ratio changes from 1.089 for native kernel selection to 0.948 when eager and compiled fallbacks are available. Search budgets differ: native selection uses 24 configuration trials and three fallback probes; PPO uses eight queries plus an eager reset.
 
-Every choice was followed by independent eager, compiled, native-selected and PPO-selected confirmations. All **216 confirmations passed numerical correctness checks**; all 1,296 native configuration trials and 432 PPO queries completed without rejection. Each measurement uses five warmups and thirty synchronized CUDA-event samples. Initialization, compilation, correctness checks and warmups are outside the timed invocation. Selection costs are recorded separately. Independent CPU inference with the frozen checkpoint reproduced all 432 recorded actions; the [verification receipt](frozen-policy-verification.json) binds the checkpoint, manifest and verifier.
+Each workload received fresh eager, compiled, native-selected and PPO-selected confirmations. All **216 confirmations passed numerical checks**; all 1,296 native configuration trials and 432 PPO queries succeeded. Measurements contain thirty synchronized CUDA-event samples after five warmups. Timed invocations exclude initialization, compilation, correctness checks and warmups. CPU inference with the saved checkpoint reproduced all 432 recorded actions; the [verification receipt](frozen-policy-verification.json) records the checkpoint, manifest and verifier hashes.
 
-The summary takes the median of three within-process latency ratios per workload, then their geometric mean. Intervals resample six shape families with their three dtypes together. They describe this allocation and fixed checkpoint; repeated processes do not establish population-level variation across GPUs. No fresh full-grid oracle was measured, so these results report latency differences rather than live regret. The gates check isolated-operator numerical agreement, not perceptual quality or end-to-end Vista performance.
+The summary takes the median of three within-process latency ratios per workload, then their geometric mean. Intervals resample six shape families with their three dtypes together and condition on this GPU allocation and checkpoint. Live regret requires an independently measured full-grid oracle, which was outside this experiment. The numerical gate evaluates isolated-operator agreement with eager; perceptual quality and end-to-end Vista performance were not measured.
 
-Median instrumented selection time per workload/process was 10.27 seconds for native tuning and 4.38 seconds for PPO; the reference fallback probes added a median 1.70 seconds. The methods share compilation caches within a process and alternate selection order. PPO's evaluator journals every CUDA sample, while native tuning journals each configuration. These wall times include that unequal logging overhead and do not isolate intrinsic search efficiency or cold compilation. Offline PPO training and final confirmation costs are excluded.
+Median instrumented selection time per workload/process was 10.27 seconds for native tuning and 4.38 seconds for PPO; reference fallback probes added a median 1.70 seconds. Selection order alternates, and methods share compilation caches within a process. These wall times include compilation and unequal logging costs: PPO's evaluator journals every CUDA sample, whereas native tuning journals each configuration. They exclude offline PPO training and final confirmation, and cannot isolate intrinsic search efficiency or cold compilation.
 
 ![Fresh confirmed operator latencies](../../reports/figures/ppo-native-speedup.svg)
 
@@ -60,7 +60,7 @@ python scripts/plot_ppo_supplement.py --kind live \
   --analysis live-summary.json --live-gpu-label 'RTX 4090' --output live-figures
 ```
 
-The offline audit reconstructs native choices, fallback choices, PPO incumbents, observations and rewards from the recorded measurements. Public files replace physical GPU identifiers and the corresponding cohort hash consistently. All measurement values, trial IDs, inputs and decisions are retained, with original-to-public file hashes in the export receipt. Private provider and host-operation files are excluded. The public analysis reproduces the raw analysis after this declared cohort mapping.
+The offline audit reconstructs native and fallback choices, PPO incumbents, observations and rewards from the measurements. Public files replace physical GPU identifiers and the cohort hash while retaining measurement values, trial IDs, inputs and decisions. The export receipt records the file-hash mapping; provider and host-operation files are excluded.
 
 ## Download and reproduce PPO replay
 
@@ -80,6 +80,6 @@ python scripts/plot_ppo_supplement.py --kind replay \
   --analysis replay-summary.json --output replay-figures
 ```
 
-The archived reports use one original measured-table hash. The archive's `source-bindings.json` maps each row to the public table, where physical GPU identifiers were pseudonymized. Numerical measurements, inputs and choices are unchanged. Training again on the public table creates a new protocol with its own public-table/source hashes; see the [training commands](../../docs/ppo-training.md#reproduce-training-and-evaluation).
+The archived reports retain the original measured-table hash. `source-bindings.json` maps their rows to the public table, which pseudonymizes physical GPU identifiers and preserves numerical measurements, inputs and choices. Training on the public table records a new protocol with its own table and source hashes; see the [training commands](../../docs/ppo-training.md#reproduce-training-and-evaluation).
 
-The archive retains the original summary and a metadata correction: summarization itself performs no training, while its five trained input reports do. The corrected summary describes that distinction. An offline verification recomputed every one of the 512,000 recorded training transitions and every evaluation trajectory.
+The archive includes the original summary and a metadata correction distinguishing trained input reports from the summarization step. An offline verification recomputed all 512,000 recorded training transitions and every evaluation trajectory.

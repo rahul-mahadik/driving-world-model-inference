@@ -1,6 +1,6 @@
 # DriveBench
 
-DriveBench is a public GPU benchmark and Gymnasium environment for choosing operator configurations under a trial budget. Download measured GPU results, compare search policies on CPU, or collect the same workloads on another NVIDIA GPU.
+DriveBench measures GPU operator latency and memory use and provides a Gymnasium environment for configuration search. Policies can query the published measurements on CPU or evaluate configurations on an NVIDIA GPU.
 
 [Dataset and results](results/2026-11-23-operator-generalization-pro-4000/README.md) · [Environment and collection](docs/operator-generalization.md) · [Website](https://drivebench-research.rahul-a-mahadik.chatgpt.site) · [Citation](CITATION.cff)
 
@@ -8,11 +8,11 @@ DriveBench is a public GPU benchmark and Gymnasium environment for choosing oper
 
 The current dataset contains **60 operator workloads**, **24 Triton launch configurations**, compiled PyTorch and an eager reference. GEGLU and GroupNorm+SiLU each contribute ten shapes in float16, bfloat16 and float32. Training, validation and test sets contain 30, 12 and 18 workloads; all dtypes of a shape stay in the same split.
 
-Three fresh processes on an **NVIDIA RTX PRO 4000 Blackwell** produced **4,680 measurements** across 1,560 workload/configuration cells. Each successful measurement retains 30 CUDA-event samples, allocator memory, preparation time and numerical checks against eager. All collected configurations passed those checks.
+Three fresh processes on an **NVIDIA RTX PRO 4000 Blackwell** produced **4,680 measurements** across 1,560 workload/configuration cells. Each record contains 30 CUDA-event samples, allocator memory, preparation time and numerical checks against eager. All collected configurations passed those checks.
 
-Evaluated selectors include a compiled-query baseline, random search, Optuna TPE, a ridge cost model, PPO and two pretrained LLM selectors. Five PPO policies completed 512,000 training steps on the training split. Their mean held-out regret was 0.035556, compared with TPE's 0.031880 and the compiled-query baseline's 0.027931. The baseline starts with eager, queries compiled and retains its observed incumbent. The LLM comparison uses a separate, matched one-episode-per-task panel. See the [results](RESULTS.md) and [PPO methodology](docs/ppo-training.md) for measurements and definitions.
+The policy comparison includes a compiled-query baseline, random search, Optuna TPE, a ridge cost model, PPO and two pretrained LLM selectors. Five PPO policies completed 512,000 training steps on the training split. Their mean held-out regret was 0.035556, compared with 0.031880 for TPE and 0.027931 for the compiled-query baseline. That baseline starts with eager and queries compiled, keeping the best configuration observed. The LLM comparison uses one episode per task, matched to the other methods. See the [results](RESULTS.md) and [PPO methods](docs/ppo-training.md) for definitions and analysis.
 
-Configuration rankings changed on a second GPU: across the 18 test workloads, mean rank correlation between RTX PRO 4000 and RTX 4090 was 0.301, and only 6 source-optimal choices remained target-optimal. The [transfer dataset and plots](results/2026-11-23-operator-generalization-pro-4000/README.md#transfer-to-rtx-4090) retain all 1,404 target measurements.
+Across the 18 test workloads, mean rank correlation between RTX PRO 4000 and RTX 4090 was 0.301. The configuration with the lowest source-table cost remained optimal on 6 workloads. The [transfer dataset and plots](results/2026-11-23-operator-generalization-pro-4000/README.md#transfer-to-rtx-4090) contain all 1,404 target measurements.
 
 ## Run a comparison without a GPU
 
@@ -32,18 +32,18 @@ python -m drivebench_tuning.generalization_cli run \
   --output ./policy-comparison
 ```
 
-The archive includes the measured table, original sample values, policy trajectories and trained selector. Its manifest records every extracted file's size and SHA-256. Replay uses recorded GPU measurements and identifies the source of each observation; running more policy episodes adds no independent GPU samples.
+The archive includes the measured table, sample values, policy trajectories and trained selector. Its manifest records each file's size and SHA-256. Replay identifies the recorded GPU measurement used for each observation; repeated episodes reuse this finite dataset.
 
 ## Use the environment
 
 `BudgetedTuningEnv` implements Gymnasium's `reset`/`step` interface. The published task gives a policy **eight trials** to choose among 25 configurations; the environment accepts other trial budgets. Observations expose the workload, remaining budget and queried outcomes. Reward measures improvement in the best numerically valid configuration found. Repeated, rejected and failed actions consume trials.
 
-Use the [Python example](docs/operator-generalization.md#use-the-gymnasium-interface) to connect a policy. The same interface supports measured-table replay and live CUDA evaluation. The [PPO training example](docs/ppo-training.md#reproduce-training-and-evaluation) uses actual recorded GPU feedback with Stable Baselines3; the ridge selector uses supervised regression. A [separate live RTX 4090 comparison](results/2026-11-24-ppo-native-autotune/README.md#live-gpu-comparison) evaluates the frozen PPO checkpoint against native Triton autotuning and reference fallbacks. The supplied configuration actions do not execute arbitrary agent-written code.
+The [Python example](docs/operator-generalization.md#use-the-gymnasium-interface) connects a policy to measured replay or live CUDA evaluation. The [PPO example](docs/ppo-training.md#reproduce-training-and-evaluation) trains with Stable Baselines3; the ridge selector uses supervised regression. A [live RTX 4090 comparison](results/2026-11-24-ppo-native-autotune/README.md#live-gpu-comparison) evaluates PPO seed 3101, chosen before training, against native Triton autotuning with eager and compiled references. Actions select existing implementations; code editing requires a separate execution sandbox.
 
-To collect fresh measurements, follow the [GPU collection instructions](docs/operator-generalization.md#measure-the-workloads). Set `TORCHINDUCTOR_COMPILE_THREADS=1` before launching each GPU process. The runner checks that setting, records runtime provenance and separates preparation from steady-state timing. Compute provisioning and job deadlines remain the caller's responsibility.
+For new measurements, follow the [GPU collection instructions](docs/operator-generalization.md#measure-the-workloads). Set `TORCHINDUCTOR_COMPILE_THREADS=1` before launching each GPU process. The runner checks that setting, records the runtime and separates preparation from steady-state timing. The caller provisions the GPU and enforces the job deadline.
 
 ## Video-model coverage
 
-The repository also provides a [Vista inference adapter](docs/modern-vista.md), a [full-model measurement protocol](docs/modern-baseline-measurement.md), and [agent tools](docs/agent-environment.md). These are separate from the operator dataset. Operator numerical correctness does not establish video quality preservation or an end-to-end model speedup. Earlier Vista measurements remain in the [evidence archive](research/archive/README.md).
+The repository also provides a [Vista inference adapter](docs/modern-vista.md), a [full-model measurement protocol](docs/modern-baseline-measurement.md), and [agent tools](docs/agent-environment.md). Full-model speed and video quality require separate measurements; the operator dataset evaluates isolated numerical operations. Earlier Vista measurements are available in the [evidence archive](research/archive/README.md).
 
 First-party code is [MIT licensed](LICENSE). Model weights, datasets and third-party software retain their [separate licenses](NOTICE.md). See [CONTRIBUTING.md](CONTRIBUTING.md) for reproducible submissions.

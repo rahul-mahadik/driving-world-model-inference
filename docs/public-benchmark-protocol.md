@@ -1,82 +1,74 @@
-# Public benchmark protocol — version 1
+# Public benchmark measurement contract
 
-## Purpose and tracks
+This guide describes the shared measurement and evaluation rules. Each released study also has a frozen protocol that fixes its workload, settings and analysis. Use the [operator-generalization guide](operator-generalization.md) and [dataset report](../results/2026-11-23-operator-generalization-pro-4000/README.md) for the current benchmark.
 
-The deliverable is reusable measurement and search infrastructure. Implementations and policies are submissions, not presumed improvements. Report failed and slower candidates. Do not attribute historical compiler speedups to example kernels, new policies or new hardware.
+## Suites and interfaces
 
-Two distinct tracks are provided:
+| Suite | Workloads and actions | Episode budget |
+| --- | --- | --- |
+| `operator-generalization-v2` | 60 workloads: 30 training, 12 validation, 18 test; compiled PyTorch and 24 Triton configurations, with eager as the initial reference | Eight candidate trials in the released study |
+| `operator-search-v1` | Earlier 12-workload suite: six training, two validation, four test; nine candidate settings | Four candidate trials by default |
 
-- **Video inference:** the existing Vista/nuScenes harness and historical cohort protocols. A request generates one declared future from image/trajectory inputs. End-to-end latency, sequential throughput, full-model allocator memory, and output-quality comparisons have their own boundaries. Licensed assets must be obtained separately. Historical held-out quality validation remains incomplete.
-- **Operator configuration search:** `operator-search-v1`, packaged with the tuning extension. This uses standalone seeded tensor inputs and correctness checks against reference operators. An operator score does not establish end-to-end video performance, visual quality or driving safety.
+The current suite contains GEGLU and GroupNorm+SiLU, each with ten shapes in float16, bfloat16 and float32. All dtypes of an exact shape stay in one split. Both operators occur in every split. These public, constructed splits support shape-family evaluation; policy training and selection must respect the declared split even though users can inspect the full table.
 
-The [configuration-agent interface](agent-environment.md) is an additional policy interface to an evaluator, not a third unit of performance. Its Vista worker uses predecoded conditioning through warm host-ready frames, excluding compilation and output persistence from latency while charging them to wall time. Its model-level proxy gates and final scoring differ from the operator task below. Always name the interface and measurement contract used.
+`BudgetedTuningEnv` supports measured-table replay and live evaluation through the same Gymnasium interface. Its generic task and candidate descriptors also accept external evaluators. The [configuration-agent tools](agent-environment.md) provide inspection, proposals, profiling, trials and final submission for a separate model-level workflow. Vista latency and quality follow that workflow's own contract, described below.
 
-## Task identity
+## Comparison identity
 
-Every comparison must bind the exact suite bytes (SHA-256), source hashes, candidate list/order, objective and weight, timing repetition/warmup settings, physical GPU, driver and software runtime. Separate devices/runtimes form separate cohorts; never pool their samples into a common speed ratio. A protocol hash is a configuration identifier, not proof a comparison was fair or source code trustworthy.
+Record the suite bytes and SHA-256, source revision and hashes, candidate list and order, objective and weight, warmup/repetition settings, inputs, physical GPU, driver and software runtime. Keep different devices or runtimes in separate cohorts. A source or protocol hash identifies the recorded bytes; implementation review and measurements establish their behavior.
 
-The released operator suite has six training, two validation and four test tasks. Splits are disjoint by operator/shape/grouping, even when only the dtype or seed changes. Test shapes match selected historical profile shapes, so they are not historically untouched workloads. Test access is open; prevention of policy selection on test results is a research procedure, not access control. Custom protocols must declare task groups before measurements.
+Define workload semantics and acceptance criteria before measurement. Changes to model weights, precision, sampling steps or resolution need explicit task definitions and quality criteria. A speed ratio only compares measurements with compatible boundaries and inputs.
 
-Policies receive shape/operator features and the action history. The generic interface supports arbitrary candidate JSON; the supplied operator adapter supports compiled PyTorch and example Triton launch choices. Other executors must supply an evaluator. Do not silently change semantics, model weights, precision or quality thresholds to win a speed comparison.
+## Budget and reward
 
-## Budget and objective
+A live episode begins with a fresh reference measurement. Replay obtains its reference from the measured table. The reference starts as the incumbent. Each candidate attempt, including repeated, rejected, incorrect or error results, consumes one trial. Live repeated queries produce fresh measurements; replay uses the available recorded repeats. Unexpected evaluator exceptions preserve the journal and abort the episode.
 
-For live CUDA evaluation, the bundled operator suite defaults to four candidate measurements among nine settings, plus one fresh reference measurement per episode. Each attempted configuration, including a repeated, incorrect or error result, costs one trial. Repeats are fresh measurements. Protocol violations and unexpected evaluator exceptions preserve available journals and abort; they cannot become successful scores.
-
-The reference starts as the incumbent and requires positive latency and allocated bytes, including for the latency-only objective. Zero-allocation references need an explicit alternative normalization contract. For a correctness-passing candidate,
+For a numerically accepted candidate, the normalized cost is
 
 `cost = (L/L_ref + w * M/M_ref) / (1+w)`.
 
-For the operator suite, `L` is median measured operator latency and `M` is incremental peak allocated memory including the output. External inference tasks declare their own request-latency and memory boundaries; their scores cannot be pooled with operator scores. The default `w=0` is latency-only. Choosing a nonzero weight changes the task and may legitimately prefer slower, smaller-memory results; always publish both raw metrics. This declared scalar objective is not a universal utility function or Pareto claim.
+For operator tasks, `L` is median invocation latency and `M` is incremental peak allocated memory, including the output. The reference requires positive latency and allocated bytes, including when `w=0`. A zero-allocation reference needs a different normalization contract. The current study uses `w=0`, so cost depends only on latency. A nonzero weight changes the objective; report both latency and memory alongside it.
 
-The reward is `previous_best_cost - new_best_cost`; returned incorrect/error results earn zero and consume budget. The undiscounted return equals final improvement over the reference. A finite trial budget is part of the task, so an agent must not bootstrap beyond the final decision. Exposed history distinguishes untried, incorrect/error and measured outcomes. The environment is a finite-budget best-configuration search problem; bandit methods, conventional autotuning and RL agents can all participate.
+Reward is `previous_best_cost - new_best_cost`. Incorrect, error and rejected outcomes receive zero reward and still consume budget. Undiscounted return equals the final improvement over the reference. Exhausting the budget terminates the task, so RL training must not bootstrap beyond that decision. Observations distinguish untried actions, failed actions and measured outcomes, and include workload features, query history, incumbent and remaining budget.
 
-## Measurement and acceptance
+## Timing, memory and numerical checks
 
-Run the CUDA evaluator on an otherwise idle single NVIDIA device with the pinned runtime. Its defaults are five warmups and thirty timed repetitions per measurement. CUDA events bracket one operator invocation and can include stream gaps. Host wall time is recorded separately. Compilation, initialization, input preparation, warmups, correctness and export are excluded from reported operator latency and included in job wall time. Record cold-start/compilation costs separately when they matter to deployment.
+Run live measurements serially on an otherwise idle NVIDIA GPU with the declared runtime. The operator evaluator uses five warmups and 30 timed invocations per measurement. CUDA events bracket one operator call and can include stream gaps. Initialization, input preparation, compilation, correctness checks and warmups are excluded from invocation latency and recorded in preparation or job wall time. Report cold-start and compilation costs separately when they affect the deployment being studied.
 
-Inputs are seeded random tensors, not real model activations. Acceptance checks output shape, dtype, finiteness, dtype-specific allclose, and input immutability. Float16 uses rtol/atol0.002; bfloat16 uses0.02; float32 uses rtol0.00002/atol0.000003. These are operator tolerances, not calibrated video-quality thresholds. Preserve initial failures rather than tuning acceptance after seeing outcomes.
+The CUDA evaluator requires `TORCHINDUCTOR_COMPILE_THREADS=1`, resets compiler state at workload transitions and permits one evaluator at a time per process. Fresh-process repeats provide separate process observations; the 30 invocations within a measurement are subsamples of that process.
 
-Memory measures the allocator's peak live allocation increase above resident inputs, including output and temporaries. It is not whole-model memory or GPU-reserved memory. Record reserved memory separately. Throughput from a serial invocation's latency describes that invocation; do not label it concurrent or saturated serving throughput.
+Inputs are seeded tensors. Acceptance checks output shape and dtype, finiteness, numerical agreement with eager, and input immutability. Relative/absolute tolerances are 0.002/0.002 for float16, 0.02/0.02 for bfloat16 and 0.00002/0.000003 for float32. These are operator tolerances. Model-level perceptual quality needs separately calibrated criteria.
 
-External evaluators must document their measurement and quality gates, bind input/reference identities and retain evidence. Matching fields and `correct=True` establish a contract assertion, not a third-party audit. There is no automatic validation of arbitrary participant code.
+Memory is the allocator's peak live-allocation increase above resident inputs, including outputs and temporaries. Report reserved memory separately. Whole-model memory and saturated serving throughput need their own measurement procedures; the reciprocal of serial invocation latency describes serial operator throughput.
 
-The provided inference bridge has a separate cold-request contract: it constructs an engine per trial, records construction time separately, and measures context preparation through synchronized host-ready outputs, including first-use compilation. It requires a caller-supplied quality gate. Its CPU example uses synthetic frames and output-array bytes; it is not GPU performance evidence. See the [inference integration guide](../extensions/kernel_tuning/docs/extending.md) before defining a real model task.
+## Measured-table replay
 
-## Policy comparison and reporting
+The `measured_replay` backend returns recorded measurements with their original trial IDs and process-repeat identities. Repeated queries cycle through the finite repeats. Replay adds no independent GPU samples, regardless of the number of policy episodes.
 
-Use validation for selecting search algorithms, hyperparameters, objectives and budgets. Freeze these choices before test. Compare the same tasks, candidate-list order, trial budget, objective, measurement settings and cohort. Live CLI baselines are fixed grid prefixes and seeded random search without replacement; measured replay also provides a fixed compiled configuration. The grid starts with the compiled candidate; its ordering is part of the specification. No claim is made that these are the strongest possible baselines.
+Policies receive task/configuration descriptions and their own queried observations. Table regret is computed afterward from the complete measured table and is not exposed to the policy. The public table remains inspectable, and the local Python interface assumes trusted policy code. A refusal, invalid action or failed selector API call consumes a turn with zero reward and no candidate query. Report selector API cost separately.
 
-For live GPU comparisons, evaluate fresh repeated episodes and interleave policy order in a prespecified schedule to reduce drift confounding. The single-policy CLI records one policy per invocation and does not automatically balance separate invocations. Advanced comparisons can call `evaluate_policy` in a scheduled order while sharing a serial evaluator/cohort. Never run independent GPU environments concurrently on one device when interpreting isolated latency.
+The [current methodology](operator-generalization.md) defines process sampling, table cost, oracle regret and confirmation. Earlier replay uses the procedures in [measured operator search](measured-operator-search.md).
 
-The [serial comparison example](../extensions/kernel_tuning/examples/compare_search_policies.py) shows this scheduling for grid and random policies: each task receives both orders over an even number of repeats, matching episode seeds, fresh references and identical candidate budgets. It verifies cross-policy cohort/input bindings and saves partial reports on failure. Its included validation is synthetic; a CUDA invocation needs its own evidence and external resource/time controls.
+## Policy comparisons
 
-Report every episode and its individual trials, per-task results, failed-call counts, reference and candidate calls, actual wall time, and all training cost. The harness reports per-task descriptive medians, not significance or generalization. Do not average unrelated latencies into one speedup. A learned policy's training calls/time are additional costs; amortization assumptions must be explicit.
+Fix policies, training data, hyperparameters, budgets and objectives before test evaluation. Use validation for any tuning and disclose its use. Compare matched tasks, candidate order, objective, measurement settings and runtime. Record the initial reference as well as candidate queries when accounting for cost.
 
-An episode incumbent is a **best observed** result, subject to selection bias and noise. The evaluator does not automatically confirm it. A claimed improvement needs independent fresh measurements of the frozen selected configuration and reference, appropriate control comparisons, and enough independent repetitions to establish a signal. A separate exhaustive sweep can provide an oracle for small finite spaces; its cost must not disappear from the report.
+For live comparisons, prespecify policy order and interleave repeated episodes to reduce time-drift confounding. The single-policy CLI does not balance separate invocations automatically. The [serial comparison example](../extensions/kernel_tuning/examples/compare_search_policies.py) demonstrates matching task seeds, budgets and both grid/random execution orders; its included integration tests use synthetic measurements.
 
-## Recorded-measurement replay
+Publish individual trials, per-task outcomes, failures, repeated actions, training cost and actual wall time. A best-observed incumbent is affected by selection noise. Freeze choices before fresh confirmation against the reference and relevant baselines. Report the cost of any exhaustive sweep used to construct an oracle, and distinguish measured-table regret from freshly confirmed latency ratios.
 
-The optional `measured_replay` backend uses a complete measured operator table
-in place of live measurements. It is a separate execution mode: reference and
-candidate observations cite their original trial IDs and process repeat, and
-fresh GPU measurement count is zero. Repeated queries cycle through the finite
-recorded repeats. More replay episodes do not increase the number of GPU
-measurements or establish a new hardware cohort.
+The current release includes compiled-query, random, TPE, ridge, PPO and pretrained LLM selectors. Their [result reports](../RESULTS.md) specify the episode counts and comparison panels. The [live PPO/native-autotuning supplement](../results/2026-11-24-ppo-native-autotune/README.md#live-gpu-comparison) uses different search budgets for PPO and native tuning and reports those costs explicitly.
 
-Replay policies receive task/configuration descriptions and only their own
-queried observations. The public table remains inspectable by its users; the
-local Python interface does not isolate malicious policy code. A refusal,
-invalid action or failed selector API call consumes a turn with zero reward and
-no candidate query. Publish selector API cost separately. Regret against the
-complete table is computed after the episode and is not exposed to the policy.
+## Model-level adapters
 
-See [measured operator search](measured-operator-search.md) for the exact repeat
-selection, oracle and confirmation procedures. Freeze selections before fresh
-GPU confirmation and report those measurements separately from replay rewards.
+The `InferenceEvaluator` bridge constructs a fresh engine for each trial and measures one cold first request. Engine construction is separate; context preparation through synchronized host-ready outputs includes first-use compilation. It adds no warmups or repetitions and requires a caller-supplied quality gate. See the [integration contract](../extensions/kernel_tuning/docs/extending.md).
 
-## Result and release status
+The configuration-agent Vista worker has a warm-request boundary: predecoded conditioning through host-ready frames. Compilation and output persistence are excluded from latency and included in wall time. Its development proxies and final scoring require evaluator-owned inputs and a quality policy. The [agent guide](agent-environment.md) describes that interface's current validation coverage.
 
-New runs retain plan, suite/source/protocol hashes, raw trial records, environment journals and completed/failed receipts. Existing paths are refused. Synthetic demos label every result as synthetic and cannot establish GPU performance or correctness. Interrupted or partial output is not completion.
+Neither operator agreement nor synthetic integration tests establish video quality or end-to-end model speedups. Historical Vista results retain their recorded hardware, request and quality boundaries in the [archive](../research/archive/README.md).
 
-Published evidence remains tied to its recorded hardware, runtime and protocol. New GPU work produces a separate cohort and result report. Software contract tests and measured replay do not establish new GPU performance, RL superiority or quality-preserving end-to-end inference. See [the readiness table](benchmark-readiness.md) for the validated interfaces.
+## Evidence and execution responsibilities
+
+Each run retains its plan, identity hashes, raw trials, environment journals and completion or failure receipts. Use new output paths and preserve partial attempts. Synthetic examples identify their generated measurements as test fixtures.
+
+An external evaluator implements its own measurement, input/reference binding and quality checks. The environment validates the returned contract but does not audit arbitrary participant code. Protect evaluator storage and final inputs from policy writes, and provide external process limits and cleanup. The library does not provision cloud resources or provide isolation for arbitrary agent-written code. The [coverage table](benchmark-readiness.md) distinguishes completed operator studies from model-level and code-action capabilities.

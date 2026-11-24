@@ -1,47 +1,35 @@
-> **Release scope updated November 19, 2026.** The one-episode/eight-configuration Vista comparison is canceled. This document preserves existing software interfaces and historical recipes, not an active experiment. See the [current protocol](research-protocol.md) and [cancellation record](canceled-plans.md).
+# Benchmark coverage
 
-# Benchmark and environment readiness
+The current release measures operator configuration search and provides a Gymnasium interface for evaluating policies against those measurements or a live GPU. Model-level inference uses separate adapters and quality criteria.
 
-DriveBench is public measurement and policy-evaluation software. A useful benchmark does not require its example optimization to win, and an RL environment does not require a trained policy. The relevant questions are whether another user can execute the task, whether the measurements and reward match its declared contract, and what evidence supports the resulting claims.
+## Released evidence
 
-## Three interfaces, separate evidence
+| Component | Measured coverage | Interpretation |
+| --- | --- | --- |
+| [Operator dataset](../results/2026-11-23-operator-generalization-pro-4000/README.md) | 60 GEGLU and GroupNorm+SiLU workloads, 24 Triton configurations, compiled PyTorch and eager; 4,680 measurements from three fresh processes on RTX PRO 4000 | Numerical agreement and isolated-operator costs on seeded tensors |
+| [Policy comparison](../results/2026-11-23-operator-generalization-pro-4000/README.md#twenty-episode-policy-comparison) | Compiled-query, random, TPE and ridge selectors over 20 replay episodes per test workload; two pretrained LLM selectors in a matched one-episode panel | Fixed-budget selection on a finite measured table |
+| [PPO training](ppo-training.md) | Five seeds, 512,000 training steps on training workloads, followed by held-out evaluation of every checkpoint and an untrained initialization | PPO training with recorded GPU feedback; evaluation episodes reuse the table's measurements |
+| [Live PPO/native-autotuning comparison](../results/2026-11-24-ppo-native-autotune/README.md#live-gpu-comparison) | 18 test workloads in three fresh RTX 4090 processes; 1,296 native configuration trials, 432 PPO queries and 216 independent confirmations | One frozen PPO checkpoint with fresh feedback; native search and PPO have different trial budgets |
+| [Hardware transfer](../results/2026-11-23-operator-generalization-pro-4000/README.md#transfer-to-rtx-4090) | 1,404 RTX 4090 measurements of the same 18 test workloads and configurations | Ranking and frozen-choice transfer across one pair of GPU/runtime cohorts |
+| [Vista inference](modern-vista.md) | Historical full-model timing cohorts and one modern A100 eager request after three warmups | Full-model execution is established for the recorded workloads; a joint performance/held-out-quality result remains incomplete |
+| [Configuration-agent tools](agent-environment.md) | CPU integration through the synthetic inference backend, tool calls, evidence reader and scoring | The `AgentSession` model-level workflow still needs real Vista quality calibration and end-to-end evaluation |
 
-| Component | What is provided | What has been exercised | Remaining limit |
-| --- | --- | --- | --- |
-| Historical Vista benchmark | Pinned inference, input preparation, timing/memory records, output comparisons and reports | Real H100/A100/H200 cohorts described in [the results index](../RESULTS.md) | The reported H100 compiler timing improvement has no completed joint held-out quality validation |
-| Public operator benchmark and Gymnasium task | Versioned tensor workloads, finite candidate configurations, correctness checks, fresh trial measurements and policy evaluation | CPU integration of the public suite; earlier GPU operator and Q-learning experiments on their own workloads | Those earlier experiments do not validate the newer suite or establish policy superiority |
-| Configuration-agent environment | Proposal snapshots, tool feedback, budgets, protected evaluator callbacks, final-selection barrier and scoring | Synthetic engine → tools → batch receipts → evidence reader → scoring | Real Vista/LPIPS/LLM validation through the new workflow remains unrun; arbitrary-code execution is not supported |
+The operator benchmark's training, validation and test splits contain 30, 12 and 18 workloads. Each exact shape and its three dtypes stay in one split; both operators occur in every split. This evaluates transfer to held-out shapes within the supplied operators.
 
-The operator task is finite-budget configuration search. It supports classic RL algorithms through Gymnasium, but bandit methods and ordinary autotuning are appropriate alternatives. The tool interface supports an LLM choosing configuration edits sequentially. It does not claim that a sixteen-setting task needs an LLM, that the LLM was trained with RL, or that its reward is safe against an attacker controlling the evaluator host.
+Operator checks cover numerical agreement, finite outputs and unchanged inputs. Video quality, trajectory fidelity and end-to-end Vista speedups require model-level evaluation. The [results index](../RESULTS.md) links the measured findings and their uncertainty estimates; older experiments remain in the [archive](../research/archive/README.md).
 
-## What makes a result comparable
+## Using and extending the benchmark
 
-Before measuring, record the workload, reference, candidate set, objective, source/runtime identities, inputs and budgets. Keep physical GPUs and runtimes in separate cohorts. Report latency boundaries and memory definitions next to the numbers: operator CUDA-event latency, cold inference requests and warm full-model requests are different measurements.
+Use the [collection and replay guide](operator-generalization.md) to reproduce the current dataset or connect a policy. `BudgetedTuningEnv` exposes task features, query history, an incumbent and a remaining trial budget through Gymnasium's `reset`/`step` interface. The published comparison uses eight trials. Other budgets and objectives define new comparisons and belong in their protocols.
 
-Preserve all attempts, including unsupported settings, incorrect outputs, OOMs, timeouts and partial runs. A missing or failed check cannot be converted into a passing score. The best observed trial is subject to selection bias; an improvement claim needs fresh confirmation after the candidate is fixed. Selection and confirmation costs belong in the report.
+Each result identifies the workload, inputs, reference, candidate set, objective, code and runtime. Keep measurements from different physical GPUs or runtimes in separate cohorts. Report the appropriate latency and memory boundaries: operator CUDA-event timing, cold inference requests and warm full-model requests measure different work.
 
-For model-level quality, freeze the proxy definitions and justified margins using development data before candidate selection. Seed variability describes the reference; it is not permission to relax a margin until a candidate passes. Final inputs remain outside the policy observation. Proxy acceptance is narrower than visual equivalence, trajectory fidelity or driving safety.
+Selection uses noisy observations. Fix the selected configuration before collecting independent confirmation, and report selection, training and confirmation costs separately. Retain unsupported settings, incorrect outputs, OOMs, timeouts and partial runs alongside successful measurements. The [measurement contract](public-benchmark-protocol.md) describes these requirements.
 
-The complete measurement and comparison rules are in [the benchmark protocol](public-benchmark-protocol.md) and [agent guide](agent-environment.md). A custom evaluator is responsible for its own measurement and quality implementation. A `correct=True` field or a SHA-256 identity alone is not an independent audit of it.
+For a custom model evaluator, specify the quality metrics and margins using development data before selection, and keep final evaluation inputs outside policy observations. Reference seed variability, numerical tolerances and perceptual quality measure different properties. The supplied interfaces require the evaluator to implement these checks; the library cannot verify an arbitrary external implementation from its returned metadata.
 
-## Reproducing and reporting a study
+## Execution boundary
 
-A reusable result should include:
+The supplied policies choose configurations. The configuration-agent interface exposes allowlisted tools and a public observation, while the operator owns source code, metric assets, final inputs and process termination. The local Python API assumes a trusted evaluator and does not isolate malicious policy code.
 
-1. The exact code revision, installation/runtime recipe, licensed-asset acquisition instructions and content identities. Do not redistribute data or weights without permission.
-2. The frozen workload/split, candidate choices, reference settings, measurement settings and planned policy order. Declare whether evaluation inputs were previously public or used during development.
-3. Candidate and reference calls, failures, initialization/compilation time, actual wall time and training/model-API cost. Equal candidate budgets are not automatically equal total cost.
-4. Per-task measurements and raw samples or a documented route to independently regenerate them. Retain evidence inventories and hashes; do not pool unrelated devices into one speedup.
-5. The locked selections, fresh final comparison, quality outcome and limitations. Report a zero, rejected or inconclusive outcome without requiring a winner.
-
-The former eight-configuration study and single-LLM feasibility plan were canceled before execution. Their files remain historical recipes, not the current experiment or an authorization to run them. The generic configuration interface still supports its declared 16-value domain; that domain is software capability, not measured coverage.
-
-The November 18 modern Vista eager feasibility run completed one measured request after three warmups on an A100 80 GB. It validates that runtime and fixed workload execution, not the `AgentSession`/quality-calibration/LLM pipeline. The preserved A40 attempt failed with GPU OOM during its first warmup. See the [modern execution evidence](../results/2026-11-18-a100-modern-eager-feasibility/README.md) and [current research protocol](research-protocol.md). No paired modern performance, quality preservation, policy comparison, or new kernel optimization is inferred.
-
-The released toolkit can be used with a trusted custom evaluator or the documented synthetic examples. A completed toolkit release is separate from completion of the research program: empirical verifier calibration, a measured configuration table, optimizer comparisons, hardware transfer and arbitrary-code isolation remain uncompleted research work.
-
-## Trust boundary
-
-The configuration agent receives a public JSON observation and returns an allowlisted action. It has no shell, provider tools or direct filesystem access through the supplied selector. The operator owns source code, metric assets, private inputs, process termination and output verification. Run the worker under an external timeout, verify cleanup and keep evaluator storage outside policy write access.
-
-The library does not provision cloud resources, accept legal agreements, add funds or implement an operating-system sandbox. Supporting agent-written Python or custom GPU kernels in a scoring process would require an additional isolation boundary and adversarial validation. Those capabilities should not be inferred from the current configuration environment.
+Running agent-written Python or kernels would require an operating-system isolation boundary and adversarial testing. Cloud provisioning, funding and job deadlines also remain outside the library.

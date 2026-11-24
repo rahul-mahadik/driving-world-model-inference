@@ -1,14 +1,12 @@
 # PPO training on measured operator workloads
 
-Five PPO policies were trained on DriveBench's operator table and evaluated on held-out shapes. PPO improved substantially over its untrained initialization, but its mean final regret remained above Optuna TPE and the compiled-query baseline.
-
-The experiment uses the [RTX PRO 4000 operator dataset](../results/2026-11-23-operator-generalization-pro-4000/README.md). Its 60 workloads cover GEGLU and GroupNorm+SiLU at three precisions. Thirty workloads belong to training, twelve to validation and eighteen to test. All dtypes of an exact shape stay in one split. The test set contains six shape families; it is not an unseen-operator test.
+Five PPO policies were trained on the [RTX PRO 4000 operator dataset](../results/2026-11-23-operator-generalization-pro-4000/README.md). Its 60 workloads cover GEGLU and GroupNorm+SiLU at three precisions. Thirty workloads belong to training, twelve to validation and eighteen to test. All dtypes of an exact shape stay in one split. The test set contains six held-out shape families from the same two operators.
 
 ## Environment and training
 
 An episode gives the policy eight configuration queries. The action space contains 24 Triton launch configurations and compiled PyTorch. The environment begins with an eager reference and retains the best observed numerically correct result. Reward is the decrease in incumbent latency cost; repeated actions consume a trial. Memory weight is zero for this experiment.
 
-Observations contain public workload features, remaining budget, the incumbent, and results of previously queried actions. Task IDs, raw evidence and unqueried measurements are not neural-network inputs. Before training, only the 2,340 recorded rows belonging to the 30 TRAIN workloads are copied into a dedicated evaluator. The training environments do not retain the full measured table. Validation and test outcomes are not used for optimization, hyperparameter selection or checkpoint selection.
+Each training evaluator contains the 2,340 recorded rows for the 30 TRAIN workloads. The network receives workload features, remaining budget, the incumbent and previously queried outcomes; task IDs, raw evidence and unqueried measurements are excluded. Hyperparameters and seeds were fixed before training, without using validation or test outcomes.
 
 Training uses [Stable Baselines3 PPO](https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html), version 2.9.2, with PyTorch 2.10.0 and NumPy 2.2.0 on CPU. Each episode samples a training task and a starting recorded process repeat. Repeated queries cycle through the three recorded repeats, using the same sampling rule as the existing replay benchmark.
 
@@ -27,11 +25,11 @@ Training uses [Stable Baselines3 PPO](https://stable-baselines3.readthedocs.io/e
 | Value coefficient / gradient-norm limit | 0.5 / 0.5 |
 | Torch CPU threads | 2 |
 
-All five checkpoints completed before held-out evaluation. Every checkpoint's parameter hash changed from initialization. Saved training journals were independently checked against the source rows: all 512,000 transitions, recorded-repeat choices, rewards and incumbent updates matched. The five training runs used about 139.5 seconds of CPU training time in total; this timing excludes table loading, evaluation and artifact verification.
+Training completed before held-out evaluation. The saved parameter hashes differ from initialization, and an offline audit reproduced all 512,000 transitions, recorded-repeat choices, rewards and incumbent updates from the source rows. Total CPU training time was about 139.5 seconds, excluding table loading, evaluation and artifact verification.
 
 ## Held-out replay results
 
-Every trained checkpoint received twenty replay episodes on each of eighteen test workloads, for 1,800 episodes. The seed-3101 untrained initialization received the same 360-episode evaluation after all training finished. Inference is deterministic; the twenty episodes vary recorded measurements, not policy parameters. Evaluation seed 2101 matches the existing TPE, random and compiled-query comparisons.
+Every trained checkpoint received twenty replay episodes on each of eighteen test workloads, for 1,800 episodes. The seed-3101 untrained initialization received the same 360-episode evaluation. Inference is deterministic, with fixed parameters across episodes and varying recorded measurements. Evaluation seed 2101 matches the TPE, random and compiled-query comparisons.
 
 Regret is the selected configuration's median paired candidate/eager latency cost minus the best valid median cost in the table, including eager. Lower is better. The three recorded GPU process repeats define the table; additional replay episodes do not add independent GPU measurements.
 
@@ -48,9 +46,9 @@ Regret is the selected configuration's median paired candidate/eager latency cos
 | **PPO, mean over all five training seeds** | **0.035556** |
 | Untrained initialization, seed 3101 | 0.218278 |
 
-The sample standard deviation of the five trained-seed means is 0.012672. This reports variation across training seeds, not a confidence interval for GPU latency. The best individual PPO seed is not selected as the headline result. Seed 3101 was fixed prospectively for a separate live comparison, before training or test results were observed.
+The sample standard deviation of the five trained-seed means is 0.012672. Averaging all five gives higher regret than TPE and the compiled-query baseline. Seed 3101 was chosen before training for the [live comparison with native Triton autotuning on an RTX 4090](../results/2026-11-24-ppo-native-autotune/README.md#live-gpu-comparison).
 
-The result supports successful RL training on this measured search environment. It does not establish PPO superiority over TPE or the compiled-query baseline. The [separate live GPU comparison](../results/2026-11-24-ppo-native-autotune/README.md#live-gpu-comparison) evaluates the prospectively fixed seed 3101 against native Triton autotuning on an RTX 4090. Numerical checks apply to operator outputs, not perceptual video quality.
+The numerical gate checks operator outputs under dtype-specific tolerances. Perceptual video quality was outside the study's scope.
 
 ## Reproduce training and evaluation
 
@@ -73,7 +71,7 @@ python -m drivebench_tuning.ppo_cli evaluate \
   --output ppo-run/evaluation
 ```
 
-The protocol records source and data hashes before training. Outputs use new directories and fail rather than overwrite earlier attempts. Checkpoints include hash-bound manifests, training provenance, initialization/final parameter hashes and settings. The published dataset is sanitized, so its file hash differs from the private collection file; numerical rows and sampling remain the same. A new run freezes its own source and public-table bindings.
+Each run requires new output directories. Its protocol records source and data hashes before training; checkpoint manifests contain training provenance, initialization and final parameter hashes, and settings. The published table replaces private hardware identifiers, changing its file hash while preserving numerical rows and sampling. Reproduction therefore records new source and public-table bindings.
 
 Load a trusted locally produced checkpoint for another policy experiment:
 
@@ -90,4 +88,4 @@ policy = PPOSelector.load(
 action = policy(observation, info)
 ```
 
-The loader verifies the checkpoint, parameters, suite, candidate ordering and TRAIN-only provenance. The loaded model has no training environment and performs no fine-tuning. It can consume either recorded feedback or fresh feedback from the same public observation contract.
+The loader verifies the checkpoint, parameters, suite, candidate ordering and TRAIN-only provenance. It loads a policy with fixed parameters and no attached training environment, accepting recorded or live feedback through the same observation contract.

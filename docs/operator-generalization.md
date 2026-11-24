@@ -8,8 +8,8 @@ sizes 64–2048 and one, two, four or eight warps.
 
 The split contains 30 training, 12 validation and 18 test tasks. All versions of
 an exact shape stay in one split, including dtype, seed and group-count changes.
-Both operators occur in every split. This tests generalization across selected
-shapes; it does not test an unseen operator family.
+Both operators occur in every split, so the held-out unit is the shape within
+an operator family.
 
 The [compiler-isolation protocol](../protocols/operator-generalization-v2-compile-isolation-v1.json) fixes compiler-state handling and compilation concurrency for both GPU cohorts.
 
@@ -63,9 +63,8 @@ finally:
 ```
 
 The observation contains the task, remaining budget and queried outcomes. The
-reward tracks improvement in the best valid normalized cost. Replay supplies
-recorded observations; it does not simulate an unmeasured configuration or add
-new GPU samples.
+reward tracks improvement in the best valid normalized cost. The replay
+evaluator draws observations from the supplied measurement table.
 
 ## Measure the workloads
 
@@ -107,7 +106,7 @@ and leaves filesystem caches intact.
 
 ## Train and evaluate selectors
 
-The protocol frozen **before** collection binds the suite, source revision,
+The protocol frozen before collection binds the suite, source revision,
 eight-turn trial budget, policy settings and training/test boundary. Keep this
 file with the measurement evidence.
 
@@ -131,17 +130,17 @@ The ridge model predicts log latency relative to eager. Its normalization and
 weights use only training cells; regularization is fixed prospectively. Failed
 cells receive a training cost of two. Ridge and TPE clip successful normalized
 latency at two for fitting; reported regret uses the uncapped measurements.
-Model files retain the feature schema,
-weights, training trial IDs and table/runtime bindings. This is supervised
-cost-model training. The Gymnasium environment also supports RL policies, but
-running this comparison does not train a policy with RL. The separate [PPO supplement](ppo-training.md) trains five policies with Stable Baselines3 on the same TRAIN-only measured feedback.
+Model files retain the feature schema, weights, training trial IDs and
+table/runtime bindings. Ridge uses supervised cost-model training. The separate
+[PPO supplement](ppo-training.md) trains five RL policies with Stable Baselines3
+on the same training-task feedback.
 
 Every selector receives eight turns on each test task, with 20 episode repeats.
 TPE's repeated suggestions spend turns; rejected and failed actions do too.
-Replay cycles through the three recorded process repeats. Additional episodes
-measure policy randomness and response to those observations; they do not add
-independent GPU samples. The unused validation outcomes remain available for a
-separately declared future study.
+Replay cycles through the three recorded process repeats. The twenty episodes
+measure policy variability conditional on those timings; the number of
+independent GPU measurements remains fixed. Validation outcomes are excluded
+from this comparison.
 
 An optional pretrained LLM selector uses the same task descriptions, candidate
 settings, queried feedback and action budget. Declare model snapshots, episode
@@ -190,11 +189,11 @@ python scripts/plot_operator_transfer.py \
 
 The transfer analysis reports per-task rank correlation, regret from transferring
 the source-table optimum, and regret for every frozen policy choice. Target
-measurements supply a descriptive optimum; they are not used to retrain the
-model or revise selections. One pair of GPU/runtime cohorts cannot isolate a
-causal hardware effect.
+measurements supply a descriptive optimum while the model and selections stay
+fixed. The comparison describes this pair of GPU/runtime cohorts.
 
 As with the original [measured operator search](measured-operator-search.md),
-public tables can be inspected in full. The interface withholds unqueried values
-from a compliant policy; it is not a security boundary for untrusted code.
-These operator measurements do not establish full-model Vista quality or speed.
+public tables can be inspected in full. Policies receive only queried values
+through the interface; running untrusted policy code requires separate process
+isolation. The measurements cover isolated-operator latency and numerical
+agreement.
