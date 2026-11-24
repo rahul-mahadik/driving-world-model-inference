@@ -1,0 +1,42 @@
+{
+  "kind": "ppo_replay_figure_export",
+  "source_analysis_sha256": "1ab426a816638e63e492ef6dd3b7aabf881ab714664aaa68815c85b7dc2d6349",
+  "plotter_sha256": "b29679b81e1b60b4f3a327f55ceee22ecd2879834dc5ce9920430654e6898688",
+  "new_gpu_measurements_by_plotter": 0,
+  "policy_execution_performed": false,
+  "matplotlib_version": "3.10.0",
+  "outputs": [
+    {
+      "file": "ppo-regret.png",
+      "bytes": 218357,
+      "sha256": "858df589d920a121930cfb42ac31f5d4122894dd7a83b550a88f5016391b82e5"
+    },
+    {
+      "file": "ppo-regret.svg",
+      "bytes": 103334,
+      "sha256": "ad5e3eaf594ace384bcaacfd0ee74f00889d0e9693721e06e424d27513e7b711"
+    },
+    {
+      "file": "ppo-regret.pdf",
+      "bytes": 18091,
+      "sha256": "e44d28d0ef82e559e68c6825618aec9ea3f2afd8c65d0ba65caa4d6893930933"
+    },
+    {
+      "file": "ppo-seed-spread.png",
+      "bytes": 152039,
+      "sha256": "57ff88ba78388f397365d906622d2a431d247fb2baf13f20869c6ca2943bb4b5"
+    },
+    {
+      "file": "ppo-seed-spread.svg",
+      "bytes": 96381,
+      "sha256": "3a9a11b125c93704fb85547b1488caa355e59fa36fc09b7a5f22c73f5209599c"
+    },
+    {
+      "file": "ppo-seed-spread.pdf",
+      "bytes": 18408,
+      "sha256": "f766a69f1cd5774daae6181978a41c9b8865510afd9d7d0a7a56ecbb8cef7bf9"
+    }
+  ],
+  "curves": "all five PPO seeds, arithmetic mean at each query; existing baseline curves unchanged",
+  "intervals": "copied from six-shape-family conditional exploratory bootstrap in source analysis"
+}

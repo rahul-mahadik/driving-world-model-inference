@@ -134,7 +134,7 @@ latency at two for fitting; reported regret uses the uncapped measurements.
 Model files retain the feature schema,
 weights, training trial IDs and table/runtime bindings. This is supervised
 cost-model training. The Gymnasium environment also supports RL policies, but
-running this comparison does not train a policy with RL.
+running this comparison does not train a policy with RL. The separate [PPO supplement](ppo-training.md) trains five policies with Stable Baselines3 on the same TRAIN-only measured feedback.
 
 Every selector receives eight turns on each test task, with 20 episode repeats.
 TPE's repeated suggestions spend turns; rejected and failed actions do too.

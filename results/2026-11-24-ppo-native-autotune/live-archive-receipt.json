@@ -1,0 +1,10 @@
+{
+  "all_archive_members_rehashed": true,
+  "archive": "live-data.tar.gz",
+  "bytes": 4666784,
+  "expanded_bytes": 61759884,
+  "members": 24,
+  "schema_version": 1,
+  "sha256": "739b8775ed7e456c33bc01050e6645400e0fa3c0c2e7ac35e2549cc4d9a951d7",
+  "source_artifacts_unchanged": true
+}
