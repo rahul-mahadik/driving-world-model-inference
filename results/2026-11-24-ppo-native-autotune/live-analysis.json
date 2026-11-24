@@ -1,0 +1,2242 @@
+{
+  "aggregation": "median of three within-process paired ratios per task, then geometric mean over tasks",
+  "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+  "counts": {
+    "confirmation_passed": 216,
+    "native_config_trials": 1296,
+    "native_failed_configs": 0,
+    "ppo_candidate_queries": 432,
+    "ppo_failed_queries": 0
+  },
+  "equal_search_budget": false,
+  "independent_selection_audits": [
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "e6df23155a34473deb8c6468467dd7efe11a847dd5105995a3052da53c70ed2c",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.2254969335381193,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7745030664618807,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f10-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "fd1a1ca54c5bb6369d0cbe23f11fa83ce623c075c4d93981fc13396f69d653fa",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.2555748034668094,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7444251965331906,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f10-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "81a52d839161ce8b42ab9fede7251efc25bbe3f0a71517ce38e529b52ecae790",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.7507211593354118,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.24927884066458816,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f08-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "e0c219d6a970fc4978a666c8b996b0360ec66d655975ee2859d367d18f3927b5",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 1.0,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.0,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f08-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "973b990b663411bf3c6f1513d3977e1b9962ba30fbca5ddc6938928609aed769",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.2705474422657236,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7294525577342764,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f09-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "native",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "8c20c908aad12b68c7bc7b1be9a33642e36816816b6b953089d6ec29393310c3",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6782891479013398,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.32171085209866024,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f09-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "7d12f8b7af52766bf3f30e381cca71b38231cb673993056110b061b7c061061c",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6477596094804134,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.35224039051958655,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f10-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "7711b31b5e64ae9146dd84c54f83dfe2be7017f362775d0987aa89b98cf07a10",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6129338932947673,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.38706610670523267,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f09-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "22fa907524868787bdc299061461c86a164edf74a5dbbcf396bb7d6c4f9867a1",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6477202327109168,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.35227976728908317,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f10-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "e9bbf230e78b6975e2206f4408d5dfe28ba6922bd8316af89e867efd8110e04f",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 1.0,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.0,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f08-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "native",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "01064880d5fe1560649a991f4a8c56005d772dc415a7c33a56ca813b6965f902",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6481910187169537,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3518089812830463,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f09-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "b4ef4074ef47cc232df025f1e9a5c5bb9d3095511bcd8817e3e0349336e72967",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6557863250343373,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3442136749656627,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f09-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "9fd6bbdb3123aff1851fdcde2d6826509f57c7f526a411e6ce096b7b3aa67726",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6420529850084047,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3579470149915953,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f10-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "1962939ba2aa98cb5542a81f5aa64da3802310c9d6a0401bb38c910722cca4b0",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.27789120794293576,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7221087920570642,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f09-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "d7266c194217fb465f02fb2587d11d5d51e2cd662013c35c796649247cb572f4",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 1.0,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.0,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f08-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "cf92b2d8cc63c5257ebd64daaaeb48a7ccc21fb6208badd625c8b9a0b16bf9fe",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.8719235799762329,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.12807642002376707,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f08-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "7859a925064fd5c854c9544452f07ad817cd8b231f47221f4c9ee6cf66978c0e",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 1.0,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.0,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f08-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "67d9a37c0b950e2d06046b955bba9fd684c21de25450a13ddfba68d8e43053d8",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6229297818909112,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3770702181090888,
+      "repeat_index": 0,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f10-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "native",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "8c20c908aad12b68c7bc7b1be9a33642e36816816b6b953089d6ec29393310c3",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6465697273317326,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.35343027266826743,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f09-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "1962939ba2aa98cb5542a81f5aa64da3802310c9d6a0401bb38c910722cca4b0",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.2708171204991889,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7291828795008111,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f09-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "cf92b2d8cc63c5257ebd64daaaeb48a7ccc21fb6208badd625c8b9a0b16bf9fe",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 1.0,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.0,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f08-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "973b990b663411bf3c6f1513d3977e1b9962ba30fbca5ddc6938928609aed769",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.2747621242860859,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7252378757139142,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f09-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "fd1a1ca54c5bb6369d0cbe23f11fa83ce623c075c4d93981fc13396f69d653fa",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.2567810704372371,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7432189295627629,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f10-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "e0c219d6a970fc4978a666c8b996b0360ec66d655975ee2859d367d18f3927b5",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.7103524021862104,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.28964759781378957,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f08-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "22fa907524868787bdc299061461c86a164edf74a5dbbcf396bb7d6c4f9867a1",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.7014784914516872,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.29852150854831283,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f10-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "7711b31b5e64ae9146dd84c54f83dfe2be7017f362775d0987aa89b98cf07a10",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6497779943894174,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3502220056105826,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f09-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "81a52d839161ce8b42ab9fede7251efc25bbe3f0a71517ce38e529b52ecae790",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 1.0,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.0,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f08-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "native",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "e6df23155a34473deb8c6468467dd7efe11a847dd5105995a3052da53c70ed2c",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.20664750310677898,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7933524968932211,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f10-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "7859a925064fd5c854c9544452f07ad817cd8b231f47221f4c9ee6cf66978c0e",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.8613068189658003,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.1386931810341997,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f08-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "native",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "01064880d5fe1560649a991f4a8c56005d772dc415a7c33a56ca813b6965f902",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.66283083862091,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.33716916137909003,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f09-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "9fd6bbdb3123aff1851fdcde2d6826509f57c7f526a411e6ce096b7b3aa67726",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6522476317442462,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.34775236825575384,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f10-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "b4ef4074ef47cc232df025f1e9a5c5bb9d3095511bcd8817e3e0349336e72967",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6713619472357094,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3286380527642906,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f09-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "e9bbf230e78b6975e2206f4408d5dfe28ba6922bd8316af89e867efd8110e04f",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.973516933280149,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.02648306671985101,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f08-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "7d12f8b7af52766bf3f30e381cca71b38231cb673993056110b061b7c061061c",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6482846036499584,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.35171539635004156,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f10-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "67d9a37c0b950e2d06046b955bba9fd684c21de25450a13ddfba68d8e43053d8",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.66347607411456,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.33652392588544,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f10-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "d7266c194217fb465f02fb2587d11d5d51e2cd662013c35c796649247cb572f4",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 1.0,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.0,
+      "repeat_index": 1,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f08-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "67d9a37c0b950e2d06046b955bba9fd684c21de25450a13ddfba68d8e43053d8",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6624456449800463,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3375543550199537,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f10-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "e0c219d6a970fc4978a666c8b996b0360ec66d655975ee2859d367d18f3927b5",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.8004586990614548,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.19954130093854516,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f08-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "7711b31b5e64ae9146dd84c54f83dfe2be7017f362775d0987aa89b98cf07a10",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6243029416506091,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.37569705834939093,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f09-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "9fd6bbdb3123aff1851fdcde2d6826509f57c7f526a411e6ce096b7b3aa67726",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6695955131001594,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3304044868998406,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f10-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "81a52d839161ce8b42ab9fede7251efc25bbe3f0a71517ce38e529b52ecae790",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.9281249965893947,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.07187500341060526,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f08-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "native",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "8c20c908aad12b68c7bc7b1be9a33642e36816816b6b953089d6ec29393310c3",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6592261915073636,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3407738084926364,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f09-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "b4ef4074ef47cc232df025f1e9a5c5bb9d3095511bcd8817e3e0349336e72967",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.7151957492266117,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.28480425077338833,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f09-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "e9bbf230e78b6975e2206f4408d5dfe28ba6922bd8316af89e867efd8110e04f",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 1.0,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.0,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f08-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "d7266c194217fb465f02fb2587d11d5d51e2cd662013c35c796649247cb572f4",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.8212809852440274,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.17871901475597263,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f08-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "fd1a1ca54c5bb6369d0cbe23f11fa83ce623c075c4d93981fc13396f69d653fa",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.21054298625331594,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7894570137466841,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f10-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "e6df23155a34473deb8c6468467dd7efe11a847dd5105995a3052da53c70ed2c",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.20917898885936398,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7908210111406361,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f10-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "7859a925064fd5c854c9544452f07ad817cd8b231f47221f4c9ee6cf66978c0e",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.7951807319304195,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.2048192680695805,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f08-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "native",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "01064880d5fe1560649a991f4a8c56005d772dc415a7c33a56ca813b6965f902",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6501203748650367,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3498796251349633,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f09-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "eager",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "cf92b2d8cc63c5257ebd64daaaeb48a7ccc21fb6208badd625c8b9a0b16bf9fe",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.9150592422028128,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.08494075779718724,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f08-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "native",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "7d12f8b7af52766bf3f30e381cca71b38231cb673993056110b061b7c061061c",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6418236026688708,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.35817639733112916,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f10-float32",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "1962939ba2aa98cb5542a81f5aa64da3802310c9d6a0401bb38c910722cca4b0",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.26554030556602914,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.734459694433971,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f09-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "native",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "22fa907524868787bdc299061461c86a164edf74a5dbbcf396bb7d6c4f9867a1",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.6661872227459711,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.3338127772540289,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-geglu-f10-float16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    },
+    {
+      "cohort_id": "4029deb431646b27bf614ebe8cb195416907927c54347444da7809a33cb61e7a",
+      "confirmation_failed": 0,
+      "confirmation_passed": 4,
+      "external_input_manifest_checked": false,
+      "fallback_selected_role": "compiled",
+      "fresh_gpu_measurements": 0,
+      "input_digest": "973b990b663411bf3c6f1513d3977e1b9962ba30fbca5ddc6938928609aed769",
+      "kind": "independent_native_ppo_task_consistency_audit",
+      "native_configs_checked": 24,
+      "policy_execution_performed": false,
+      "ppo_final_incumbent_cost": 0.2683596083840687,
+      "ppo_queries_reconstructed": 8,
+      "ppo_reward_sum": 0.7316403916159313,
+      "repeat_index": 2,
+      "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+      "task_id": "test-groupnorm_silu-f09-bfloat16",
+      "tensor_correctness_recomputed": false,
+      "unique_trial_ids_checked": 16
+    }
+  ],
+  "interval_limit": "six shape families on one allocation; descriptive bootstrap, not cross-GPU population inference",
+  "kind": "fresh_ppo_native_autotune_confirmation",
+  "live_regret_reported": false,
+  "native_adapter": "whole-operator run adapter around unchanged fused operator wrappers",
+  "offline_ppo_training_cost_excluded_from_search_time": true,
+  "ppo_speedup_ratios": {
+    "compiled": {
+      "bootstrap_draws": 10000,
+      "estimate": 1.039475352189506,
+      "lower_95": 0.981099505754068,
+      "method": "shape-family cluster percentile bootstrap",
+      "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats",
+      "seed": 2311,
+      "shape_families": 6,
+      "tasks": 18,
+      "upper_95": 1.1410544074380928
+    },
+    "native": {
+      "bootstrap_draws": 10000,
+      "estimate": 1.0886244981785749,
+      "lower_95": 1.0186072344672503,
+      "method": "shape-family cluster percentile bootstrap",
+      "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats",
+      "seed": 2311,
+      "shape_families": 6,
+      "tasks": 18,
+      "upper_95": 1.1631541950402813
+    },
+    "native_with_fallback": {
+      "bootstrap_draws": 10000,
+      "estimate": 0.9479573419185089,
+      "lower_95": 0.8820979152216889,
+      "method": "shape-family cluster percentile bootstrap",
+      "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats",
+      "seed": 2311,
+      "shape_families": 6,
+      "tasks": 18,
+      "upper_95": 1.0085069983295696
+    }
+  },
+  "ratio_definition": "comparator_latency / PPO_latency; greater than one favors PPO",
+  "search_budgets": {
+    "native_configs": 24,
+    "native_fallback_probes": 3,
+    "ppo_queries": 8
+  },
+  "selection_cost_note": "Instrumented harness wall time, with unequal search budgets: native uses 24 configurations plus 3 reference probes; PPO uses 8 queries plus an eager reset. PPO and reference probes journal/fsync every CUDA timing sample; native tuning journals one completed row per configuration. Selectors share compilation caches within each process and alternate order. Offline PPO training and independent final confirmations are excluded. These costs are not an isolated comparison of algorithmic search overhead.",
+  "suite_sha256": "5ef382542f26ca5b351805b88ae794e676c175b438ba14a1d9caf047975fda7f",
+  "tasks": [
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.3934054954009647,
+        "native": 1.3367929083193397,
+        "native_with_fallback": 0.8833524855032847
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.08956800028681755,
+            "eager": 0.044544000178575516,
+            "native": 0.08243199810385704,
+            "ppo": 0.061664000153541565
+          },
+          "native_fallback_seconds": 0.5014553640503436,
+          "native_tuning_seconds": 1.8153051540721208,
+          "ppo_search_seconds": 1.9564174469560385,
+          "ratios": {
+            "compiled": 1.4525168666287598,
+            "native": 1.3367929083193397,
+            "native_with_fallback": 0.7223663736971694
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.08447999879717827,
+            "eager": 0.06155199930071831,
+            "native": 0.07971199974417686,
+            "ppo": 0.06967999786138535
+          },
+          "native_fallback_seconds": 0.787049557082355,
+          "native_tuning_seconds": 1.7938269240548834,
+          "ppo_search_seconds": 1.705304572940804,
+          "ratios": {
+            "compiled": 1.2123995607065692,
+            "native": 1.1439724769043222,
+            "native_with_fallback": 0.8833524855032847
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.08857600018382072,
+            "eager": 0.062463998794555664,
+            "native": 0.08806400001049042,
+            "ppo": 0.06356799975037575
+          },
+          "native_fallback_seconds": 0.5776009480468929,
+          "native_tuning_seconds": 1.7830027400050312,
+          "ppo_search_seconds": 2.0725068849278614,
+          "ratios": {
+            "compiled": 1.3934054954009647,
+            "native": 1.3853511256655495,
+            "native_with_fallback": 1.3934054954009647
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-geglu-f08-bfloat16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.1204745934273688,
+        "native": 1.0212959996798312,
+        "native_with_fallback": 0.9178582059963276
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.08499199897050858,
+            "eager": 0.06249599903821945,
+            "native": 0.07435199990868568,
+            "ppo": 0.07868799939751625
+          },
+          "native_fallback_seconds": 0.7201347580412403,
+          "native_tuning_seconds": 2.016904243035242,
+          "ppo_search_seconds": 1.4757425240240991,
+          "ratios": {
+            "compiled": 1.080113862612592,
+            "native": 0.9448963053829091,
+            "native_with_fallback": 0.7942252886936672
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.08558399975299835,
+            "eager": 0.06161599978804588,
+            "native": 0.07913600280880928,
+            "ppo": 0.06272000074386597
+          },
+          "native_fallback_seconds": 0.4812881120014936,
+          "native_tuning_seconds": 1.756260129972361,
+          "ppo_search_seconds": 2.1565753440372646,
+          "ratios": {
+            "compiled": 1.3645407962047655,
+            "native": 1.2617347236965524,
+            "native_with_fallback": 0.9823979441529573
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.058927999809384346,
+            "eager": 0.04827199876308441,
+            "native": 0.05371199920773506,
+            "ppo": 0.05259199999272823
+          },
+          "native_fallback_seconds": 0.7505926800658926,
+          "native_tuning_seconds": 1.9452539650956169,
+          "ppo_search_seconds": 1.6601077920058742,
+          "ratios": {
+            "compiled": 1.1204745934273688,
+            "native": 1.0212959996798312,
+            "native_with_fallback": 0.9178582059963276
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.4010736397143373,
+        "native": 1.1491388167152776,
+        "native_with_fallback": 0.6694785391091205
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.08769600093364716,
+            "eager": 0.04190400056540966,
+            "native": 0.07446400076150894,
+            "ppo": 0.06259199976921082
+          },
+          "native_fallback_seconds": 0.8012278599198908,
+          "native_tuning_seconds": 2.0832484130514786,
+          "ppo_search_seconds": 1.6409173619467765,
+          "ratios": {
+            "compiled": 1.4010736397143373,
+            "native": 1.189672818188787,
+            "native_with_fallback": 0.6694785391091205
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.0886400006711483,
+            "eager": 0.0562559999525547,
+            "native": 0.050175998359918594,
+            "ppo": 0.04366400092840195
+          },
+          "native_fallback_seconds": 0.777563325013034,
+          "native_tuning_seconds": 2.0566881659906358,
+          "ppo_search_seconds": 1.6370599719230086,
+          "ratios": {
+            "compiled": 2.0300476087039243,
+            "native": 1.1491388167152776,
+            "native_with_fallback": 1.288383994971063
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.07161600142717361,
+            "eager": 0.04387200064957142,
+            "native": 0.05567999929189682,
+            "ppo": 0.07353600114583969
+          },
+          "native_fallback_seconds": 0.7694803610211238,
+          "native_tuning_seconds": 2.002759498078376,
+          "ppo_search_seconds": 1.634336716029793,
+          "ratios": {
+            "compiled": 0.9738903436582274,
+            "native": 0.7571801352302242,
+            "native_with_fallback": 0.5966057436623814
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-geglu-f08-float32"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 0.9930654494327005,
+        "native": 0.9208684247940279,
+        "native_with_fallback": 0.9930654494327005
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.24516800045967102,
+            "eager": 0.3317759931087494,
+            "native": 0.22734399884939194,
+            "ppo": 0.24688000231981277
+          },
+          "native_fallback_seconds": 2.222891330020502,
+          "native_tuning_seconds": 12.99480298499111,
+          "ppo_search_seconds": 6.223042954923585,
+          "ratios": {
+            "compiled": 0.9930654494327005,
+            "native": 0.9208684247940279,
+            "native_with_fallback": 0.9930654494327005
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.24022399634122849,
+            "eager": 0.3449600040912628,
+            "native": 0.22123199701309204,
+            "ppo": 0.24622399359941483
+          },
+          "native_fallback_seconds": 2.157105408026837,
+          "native_tuning_seconds": 13.567571463994682,
+          "ppo_search_seconds": 5.751875899033621,
+          "ratios": {
+            "compiled": 0.9756319553977025,
+            "native": 0.898498939031171,
+            "native_with_fallback": 0.9756319553977025
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.23296000063419342,
+            "eager": 0.33217599987983704,
+            "native": 0.2452479973435402,
+            "ppo": 0.22630400210618973
+          },
+          "native_fallback_seconds": 2.1793462700443342,
+          "native_tuning_seconds": 13.635657925042324,
+          "ppo_search_seconds": 5.657028510002419,
+          "ratios": {
+            "compiled": 1.0294117579276414,
+            "native": 1.0837103854153727,
+            "native_with_fallback": 1.0294117579276414
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-geglu-f09-bfloat16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 0.9514994558943196,
+        "native": 0.9929804073080626,
+        "native_with_fallback": 0.9929804073080626
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.22945600003004074,
+            "eager": 0.34379199147224426,
+            "native": 0.23956800252199173,
+            "ppo": 0.24115200340747833
+          },
+          "native_fallback_seconds": 2.1824664779705927,
+          "native_tuning_seconds": 12.911532240104862,
+          "ppo_search_seconds": 6.073998561012559,
+          "ratios": {
+            "compiled": 0.9514994558943196,
+            "native": 0.9934315250833305,
+            "native_with_fallback": 0.9934315250833305
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.24473600089550018,
+            "eager": 0.34515200555324554,
+            "native": 0.24217600375413895,
+            "ppo": 0.2438879981637001
+          },
+          "native_fallback_seconds": 3.078986461972818,
+          "native_tuning_seconds": 12.90210281999316,
+          "ppo_search_seconds": 6.731315932003781,
+          "ratios": {
+            "compiled": 1.0034770170659686,
+            "native": 0.9929804073080626,
+            "native_with_fallback": 0.9929804073080626
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.2242560014128685,
+            "eager": 0.3439199924468994,
+            "native": 0.22278399765491486,
+            "ppo": 0.2385919988155365
+          },
+          "native_fallback_seconds": 2.1907027009874582,
+          "native_tuning_seconds": 13.049990914063528,
+          "ppo_search_seconds": 6.3389847070211545,
+          "ratios": {
+            "compiled": 0.9399141736779211,
+            "native": 0.9337446299997539,
+            "native_with_fallback": 0.9337446299997539
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.0117897994790648,
+        "native": 0.985043298734618,
+        "native_with_fallback": 0.985043298734618
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.42428798973560333,
+            "eager": 0.6287519931793213,
+            "native": 0.41307200491428375,
+            "ppo": 0.4193440079689026
+          },
+          "native_fallback_seconds": 3.120397093007341,
+          "native_tuning_seconds": 21.38647392205894,
+          "ppo_search_seconds": 8.532932850066572,
+          "ratios": {
+            "compiled": 1.0117897994790648,
+            "native": 0.985043298734618,
+            "native_with_fallback": 0.985043298734618
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.42587199807167053,
+            "eager": 0.637472003698349,
+            "native": 0.39665600657463074,
+            "ppo": 0.41657601296901703
+          },
+          "native_fallback_seconds": 3.12460390094202,
+          "native_tuning_seconds": 21.225525017012842,
+          "ppo_search_seconds": 8.505883325007744,
+          "ratios": {
+            "compiled": 1.022315219343522,
+            "native": 0.9521815808538456,
+            "native_with_fallback": 0.9521815808538456
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.420975998044014,
+            "eager": 0.6333439946174622,
+            "native": 0.4126880019903183,
+            "ppo": 0.41753600537776947
+          },
+          "native_fallback_seconds": 3.1152027590433136,
+          "native_tuning_seconds": 21.531311522005126,
+          "ppo_search_seconds": 8.563482819008641,
+          "ratios": {
+            "compiled": 1.0082387928751968,
+            "native": 0.9883890171745431,
+            "native_with_fallback": 0.9883890171745431
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-geglu-f09-float32"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 0.9886637388765072,
+        "native": 0.9999412487239102,
+        "native_with_fallback": 0.9886637388765072
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.2672799974679947,
+            "eager": 0.38553600013256073,
+            "native": 0.2701440006494522,
+            "ppo": 0.275983989238739
+          },
+          "native_fallback_seconds": 2.370997707010247,
+          "native_tuning_seconds": 15.139328637043945,
+          "ppo_search_seconds": 6.163781285053119,
+          "ratios": {
+            "compiled": 0.9684619684107292,
+            "native": 0.9788393935264305,
+            "native_with_fallback": 0.9684619684107292
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.2693119943141937,
+            "eager": 0.3773280084133148,
+            "native": 0.27238398790359497,
+            "ppo": 0.27239999175071716
+          },
+          "native_fallback_seconds": 2.3733659079298377,
+          "native_tuning_seconds": 14.711043982068077,
+          "ppo_search_seconds": 6.85806062608026,
+          "ratios": {
+            "compiled": 0.9886637388765072,
+            "native": 0.9999412487239102,
+            "native_with_fallback": 0.9886637388765072
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.26926399767398834,
+            "eager": 0.3880639970302582,
+            "native": 0.2693919986486435,
+            "ppo": 0.26316799223423004
+          },
+          "native_fallback_seconds": 2.537924144999124,
+          "native_tuning_seconds": 14.547430610051379,
+          "ppo_search_seconds": 6.955639245104976,
+          "ratios": {
+            "compiled": 1.0231639318596641,
+            "native": 1.0236503169005213,
+            "native_with_fallback": 1.0231639318596641
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-geglu-f10-bfloat16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.0057914938603276,
+        "native": 0.9914334165021195,
+        "native_with_fallback": 1.0057914938603276
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.2667519897222519,
+            "eager": 0.3867200016975403,
+            "native": 0.2629439979791641,
+            "ppo": 0.26521599292755127
+          },
+          "native_fallback_seconds": 2.4214633249212056,
+          "native_tuning_seconds": 15.24207377503626,
+          "ppo_search_seconds": 6.206575861084275,
+          "ratios": {
+            "compiled": 1.0057914938603276,
+            "native": 0.9914334165021195,
+            "native_with_fallback": 1.0057914938603276
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.26574400067329407,
+            "eager": 0.38707199692726135,
+            "native": 0.262255996465683,
+            "ppo": 0.26846399903297424
+          },
+          "native_fallback_seconds": 2.4157178440364078,
+          "native_tuning_seconds": 14.475929474108852,
+          "ppo_search_seconds": 6.891997835016809,
+          "ratios": {
+            "compiled": 0.9898682938141509,
+            "native": 0.9768758470794858,
+            "native_with_fallback": 0.9898682938141509
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.26476798951625824,
+            "eager": 0.3867519944906235,
+            "native": 0.2590720057487488,
+            "ppo": 0.24739199876785278
+          },
+          "native_fallback_seconds": 2.40076617593877,
+          "native_tuning_seconds": 15.462929531931877,
+          "ppo_search_seconds": 6.299833775032312,
+          "ratios": {
+            "compiled": 1.070236672305278,
+            "native": 1.047212549472371,
+            "native_with_fallback": 1.047212549472371
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.0164473337796347,
+        "native": 0.9868420691521039,
+        "native_with_fallback": 1.0164473337796347
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.47462399303913116,
+            "eager": 0.719871997833252,
+            "native": 0.4607999920845032,
+            "ppo": 0.46694400906562805
+          },
+          "native_fallback_seconds": 3.3905316109303385,
+          "native_tuning_seconds": 23.84086834208574,
+          "ppo_search_seconds": 9.454525824054144,
+          "ratios": {
+            "compiled": 1.0164473337796347,
+            "native": 0.9868420691521039,
+            "native_with_fallback": 1.0164473337796347
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.45364800095558167,
+            "eager": 0.7202880084514618,
+            "native": 0.4423680007457733,
+            "ppo": 0.46427199244499207
+          },
+          "native_fallback_seconds": 3.474771282984875,
+          "native_tuning_seconds": 24.001802137005143,
+          "ppo_search_seconds": 9.588960777036846,
+          "ratios": {
+            "compiled": 0.977116880487532,
+            "native": 0.9528207773553905,
+            "native_with_fallback": 0.977116880487532
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.47206398844718933,
+            "eager": 0.7121919989585876,
+            "native": 0.4650239944458008,
+            "ppo": 0.4567840099334717
+          },
+          "native_fallback_seconds": 3.484673577011563,
+          "native_tuning_seconds": 24.29909473704174,
+          "ppo_search_seconds": 9.44981539901346,
+          "ratios": {
+            "compiled": 1.0334512114728864,
+            "native": 1.018039126442997,
+            "native_with_fallback": 1.018039126442997
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-geglu-f10-float32"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 0.646334191213532,
+        "native": 1.0177012560769607,
+        "native_with_fallback": 0.8290874575538663
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.08825600147247314,
+            "eager": 0.10991999879479408,
+            "native": 0.13926400244235992,
+            "ppo": 0.0836159996688366
+          },
+          "native_fallback_seconds": 1.0812282060505822,
+          "native_tuning_seconds": 3.2358456490328535,
+          "ppo_search_seconds": 1.5707717259647325,
+          "ratios": {
+            "compiled": 1.0554917936999306,
+            "native": 1.6655185968465214,
+            "native_with_fallback": 1.0554917936999306
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.0904800035059452,
+            "eager": 0.11548800021409988,
+            "native": 0.13793599605560303,
+            "ppo": 0.14336000382900238
+          },
+          "native_fallback_seconds": 0.48575058893766254,
+          "native_tuning_seconds": 3.0294938979204744,
+          "ppo_search_seconds": 2.3339223839575425,
+          "ratios": {
+            "compiled": 0.6311384004555997,
+            "native": 0.9621651253590295,
+            "native_with_fallback": 0.6311384004555997
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.08646399900317192,
+            "eager": 0.11091199889779091,
+            "native": 0.1361439973115921,
+            "ppo": 0.133775994181633
+          },
+          "native_fallback_seconds": 0.55000576202292,
+          "native_tuning_seconds": 3.061042807996273,
+          "ppo_search_seconds": 2.471330343047157,
+          "ratios": {
+            "compiled": 0.646334191213532,
+            "native": 1.0177012560769607,
+            "native_with_fallback": 0.8290874575538663
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-groupnorm_silu-f08-bfloat16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.3890165192997614,
+        "native": 1.1389207698167014,
+        "native_with_fallback": 1.0996596172727404
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.12032000347971916,
+            "eager": 0.10358399897813797,
+            "native": 0.12697599828243256,
+            "ppo": 0.11148799955844879
+          },
+          "native_fallback_seconds": 0.4784174900269136,
+          "native_tuning_seconds": 3.961761496029794,
+          "ppo_search_seconds": 2.6812531179748476,
+          "ratios": {
+            "compiled": 1.0792193236603917,
+            "native": 1.1389207698167014,
+            "native_with_fallback": 0.9291044721260151
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.12612800300121307,
+            "eager": 0.09304000064730644,
+            "native": 0.08859200030565262,
+            "ppo": 0.08460799977183342
+          },
+          "native_fallback_seconds": 1.190600658999756,
+          "native_tuning_seconds": 3.254416148061864,
+          "ppo_search_seconds": 1.5643871850334108,
+          "ratios": {
+            "compiled": 1.4907337762545942,
+            "native": 1.0470877522759439,
+            "native_with_fallback": 1.0996596172727404
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.12585600465536118,
+            "eager": 0.1101280003786087,
+            "native": 0.130560003221035,
+            "ppo": 0.09060799703001976
+          },
+          "native_fallback_seconds": 0.5740216879639775,
+          "native_tuning_seconds": 4.101592549937777,
+          "ppo_search_seconds": 2.6713483040221035,
+          "ratios": {
+            "compiled": 1.3890165192997614,
+            "native": 1.4409324507833294,
+            "native_with_fallback": 1.215433559822779
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 0.9845010365305886,
+        "native": 1.0718970940221142,
+        "native_with_fallback": 0.7319171404146168
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.10604799911379814,
+            "eager": 0.0942080020904541,
+            "native": 0.13596799969673157,
+            "ppo": 0.1268479973077774
+          },
+          "native_fallback_seconds": 0.5790811149636284,
+          "native_tuning_seconds": 2.921294224099256,
+          "ppo_search_seconds": 2.49593209894374,
+          "ratios": {
+            "compiled": 0.8360242287191084,
+            "native": 1.0718970940221142,
+            "native_with_fallback": 0.7426841896594764
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.12646400183439255,
+            "eager": 0.06670400127768517,
+            "native": 0.1265600025653839,
+            "ppo": 0.09113600105047226
+          },
+          "native_fallback_seconds": 0.4949979670345783,
+          "native_tuning_seconds": 4.0617129559395835,
+          "ppo_search_seconds": 2.5692998849553987,
+          "ratios": {
+            "compiled": 1.387640453571747,
+            "native": 1.388693832367007,
+            "native_with_fallback": 0.7319171404146168
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.1250080019235611,
+            "eager": 0.09198400005698204,
+            "native": 0.13199999928474426,
+            "ppo": 0.12697599828243256
+          },
+          "native_fallback_seconds": 0.5271277989959344,
+          "native_tuning_seconds": 2.924546941067092,
+          "ppo_search_seconds": 2.473176585044712,
+          "ratios": {
+            "compiled": 0.9845010365305886,
+            "native": 1.0395665406869794,
+            "native_with_fallback": 0.7244203731510119
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-groupnorm_silu-f08-float32"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 0.9702439476826558,
+        "native": 1.1433942098360987,
+        "native_with_fallback": 0.9702439476826558
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.1680160015821457,
+            "eager": 0.6604320108890533,
+            "native": 0.1812799945473671,
+            "ppo": 0.15878399461507797
+          },
+          "native_fallback_seconds": 1.8227619050303474,
+          "native_tuning_seconds": 10.423085907008499,
+          "ppo_search_seconds": 3.999697932973504,
+          "ratios": {
+            "compiled": 1.0581419241243288,
+            "native": 1.1416767476270113,
+            "native_with_fallback": 1.0581419241243288
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.17243199795484543,
+            "eager": 0.6496320068836212,
+            "native": 0.2043839991092682,
+            "ppo": 0.17875199764966965
+          },
+          "native_fallback_seconds": 1.8515227179741487,
+          "native_tuning_seconds": 10.288967907894403,
+          "ppo_search_seconds": 4.214951745001599,
+          "ratios": {
+            "compiled": 0.9646437534801117,
+            "native": 1.1433942098360987,
+            "native_with_fallback": 0.9646437534801117
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.17372799664735794,
+            "eager": 0.6548479795455933,
+            "native": 0.21819200366735458,
+            "ppo": 0.17905599623918533
+          },
+          "native_fallback_seconds": 1.447728697094135,
+          "native_tuning_seconds": 9.755329914973117,
+          "ppo_search_seconds": 4.984531278954819,
+          "ratios": {
+            "compiled": 0.9702439476826558,
+            "native": 1.2185685386145397,
+            "native_with_fallback": 0.9702439476826558
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-groupnorm_silu-f09-bfloat16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.006520955048636,
+        "native": 1.153606470075746,
+        "native_with_fallback": 1.006520955048636
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.156031996011734,
+            "eager": 0.6615039706230164,
+            "native": 0.20636799931526184,
+            "ppo": 0.18063999712467194
+          },
+          "native_fallback_seconds": 1.4044013860402629,
+          "native_tuning_seconds": 9.811345940921456,
+          "ppo_search_seconds": 5.1064486330142245,
+          "ratios": {
+            "compiled": 0.8637732423348398,
+            "native": 1.1424269408775138,
+            "native_with_fallback": 0.8637732423348398
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.1767840012907982,
+            "eager": 0.6616959869861603,
+            "native": 0.20139200240373611,
+            "ppo": 0.17457599937915802
+          },
+          "native_fallback_seconds": 1.8097473930101842,
+          "native_tuning_seconds": 11.859896347043104,
+          "ppo_search_seconds": 4.1370619889348745,
+          "ratios": {
+            "compiled": 1.0126477976325066,
+            "native": 1.153606470075746,
+            "native_with_fallback": 1.0126477976325066
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.16793600469827652,
+            "eager": 0.6527999937534332,
+            "native": 0.2072800025343895,
+            "ppo": 0.16684799641370773
+          },
+          "native_fallback_seconds": 1.4341808460885659,
+          "native_tuning_seconds": 9.838548059924506,
+          "ppo_search_seconds": 5.031520904973149,
+          "ratios": {
+            "compiled": 1.006520955048636,
+            "native": 1.2423283886516001,
+            "native_with_fallback": 1.006520955048636
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.0073138715000454,
+        "native": 1.1001739048456989,
+        "native_with_fallback": 1.0073138715000454
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.3558399975299835,
+            "eager": 0.5517280101776123,
+            "native": 0.38465599715709686,
+            "ppo": 0.34963199496269226
+          },
+          "native_fallback_seconds": 1.8955509669613093,
+          "native_tuning_seconds": 13.605229861102998,
+          "ppo_search_seconds": 6.518576362985186,
+          "ratios": {
+            "compiled": 1.0177558194236591,
+            "native": 1.1001739048456989,
+            "native_with_fallback": 1.0177558194236591
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.34596799314022064,
+            "eager": 0.5391359925270081,
+            "native": 0.38758400082588196,
+            "ppo": 0.3434560000896454
+          },
+          "native_fallback_seconds": 2.4306038939394057,
+          "native_tuning_seconds": 14.10601157299243,
+          "ppo_search_seconds": 5.585843613022007,
+          "ratios": {
+            "compiled": 1.0073138715000454,
+            "native": 1.1284822531116612,
+            "native_with_fallback": 1.0073138715000454
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.35072000324726105,
+            "eager": 0.5518560111522675,
+            "native": 0.37646400928497314,
+            "ppo": 0.35334399342536926
+          },
+          "native_fallback_seconds": 2.4855554830282927,
+          "native_tuning_seconds": 14.62314585398417,
+          "ppo_search_seconds": 5.677883260068484,
+          "ratios": {
+            "compiled": 0.9925738367513457,
+            "native": 1.0654320330606868,
+            "native_with_fallback": 0.9925738367513457
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-groupnorm_silu-f09-float32"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.1421020256519865,
+        "native": 1.4266959008995894,
+        "native_with_fallback": 1.1421020256519865
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.11753600090742111,
+            "eager": 0.4546560049057007,
+            "native": 0.14532800018787384,
+            "ppo": 0.10291199758648872
+          },
+          "native_fallback_seconds": 1.1910505020059645,
+          "native_tuning_seconds": 7.7543292180635035,
+          "ppo_search_seconds": 4.150836916058324,
+          "ratios": {
+            "compiled": 1.1421020256519865,
+            "native": 1.4121579951427734,
+            "native_with_fallback": 1.1421020256519865
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.09380800276994705,
+            "eager": 0.4551040083169937,
+            "native": 0.14604800194501877,
+            "ppo": 0.10236799716949463
+          },
+          "native_fallback_seconds": 1.1649053330766037,
+          "native_tuning_seconds": 7.348280164063908,
+          "ppo_search_seconds": 4.108541855006479,
+          "ratios": {
+            "compiled": 0.9163801711840228,
+            "native": 1.4266959008995894,
+            "native_with_fallback": 0.9163801711840228
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.11873600259423256,
+            "eager": 0.44649599492549896,
+            "native": 0.14796800166368484,
+            "ppo": 0.10291199758648872
+          },
+          "native_fallback_seconds": 1.0493627949617803,
+          "native_tuning_seconds": 6.887356415973045,
+          "ppo_search_seconds": 4.029142034938559,
+          "ratios": {
+            "compiled": 1.153762490077458,
+            "native": 1.4378109951595333,
+            "native_with_fallback": 1.153762490077458
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-groupnorm_silu-f10-bfloat16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 0.9496238505902885,
+        "native": 1.1532573339374759,
+        "native_with_fallback": 0.9496238505902885
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.0931520015001297,
+            "eager": 0.44915200769901276,
+            "native": 0.135855995118618,
+            "ppo": 0.11718400195240974
+          },
+          "native_fallback_seconds": 2.523600875050761,
+          "native_tuning_seconds": 10.252068254048936,
+          "ppo_search_seconds": 3.440091180964373,
+          "ratios": {
+            "compiled": 0.7949208078587399,
+            "native": 1.1593390979580238,
+            "native_with_fallback": 0.7949208078587399
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.09771200269460678,
+            "eager": 0.44595199823379517,
+            "native": 0.10847999900579453,
+            "ppo": 0.09406400099396706
+          },
+          "native_fallback_seconds": 1.4415421519661322,
+          "native_tuning_seconds": 7.551500914967619,
+          "ppo_search_seconds": 3.1683178909588605,
+          "ratios": {
+            "compiled": 1.038782123470101,
+            "native": 1.1532573339374759,
+            "native_with_fallback": 1.1532573339374759
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.11310400068759918,
+            "eager": 0.4530239999294281,
+            "native": 0.13502400368452072,
+            "ppo": 0.11910400167107582
+          },
+          "native_fallback_seconds": 1.7434746320359409,
+          "native_tuning_seconds": 8.012475469964556,
+          "ppo_search_seconds": 3.4184978080447763,
+          "ratios": {
+            "compiled": 0.9496238505902885,
+            "native": 1.1336647114293477,
+            "native_with_fallback": 0.9496238505902885
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "median_speedup_ratios": {
+        "compiled": 1.0071428183694278,
+        "native": 1.124342845489541,
+        "native_with_fallback": 1.0071428183694278
+      },
+      "repeats": [
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.2815520018339157,
+            "eager": 0.42239999771118164,
+            "native": 0.3112959861755371,
+            "ppo": 0.27988798916339874
+          },
+          "native_fallback_seconds": 1.6546606589108706,
+          "native_tuning_seconds": 10.897217329940759,
+          "ppo_search_seconds": 5.406971814925782,
+          "ratios": {
+            "compiled": 1.0059452807370934,
+            "native": 1.1122163087670132,
+            "native_with_fallback": 1.0059452807370934
+          },
+          "repeat_index": 0
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.2815680056810379,
+            "eager": 0.42375999689102173,
+            "native": 0.3112799972295761,
+            "ppo": 0.26015999913215637
+          },
+          "native_fallback_seconds": 1.5119504309259355,
+          "native_tuning_seconds": 10.90767595008947,
+          "ppo_search_seconds": 5.434076622012071,
+          "ratios": {
+            "compiled": 1.0822878483252403,
+            "native": 1.1964944582870012,
+            "native_with_fallback": 1.0822878483252403
+          },
+          "repeat_index": 1
+        },
+        {
+          "confirmation_latency_ms": {
+            "compiled": 0.28199999034404755,
+            "eager": 0.4227840006351471,
+            "native": 0.3148159980773926,
+            "ppo": 0.2800000011920929
+          },
+          "native_fallback_seconds": 2.871273632044904,
+          "native_tuning_seconds": 13.581006592023186,
+          "ppo_search_seconds": 4.538042842992581,
+          "ratios": {
+            "compiled": 1.0071428183694278,
+            "native": 1.124342845489541,
+            "native_with_fallback": 1.0071428183694278
+          },
+          "repeat_index": 2
+        }
+      ],
+      "task_id": "test-groupnorm_silu-f10-float32"
+    }
+  ]
+}

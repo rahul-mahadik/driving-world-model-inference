@@ -1,0 +1,824 @@
+{
+  "kind": "ppo_measured_replay_supplement",
+  "suite_sha256": "5ef382542f26ca5b351805b88ae794e676c175b438ba14a1d9caf047975fda7f",
+  "table_sha256": "d375d2db36717ab75c89693baa7de56bae89d368154efcd46db382d3d6bf736e",
+  "policies": [
+    {
+      "policy": "ppo-seed-3101",
+      "rl_training_performed": true,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.09327097221638259
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.06589519663113144
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.04180626690967433
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.038582842632350844
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.03866011757796662
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.03302406001314037
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.03302406001314037
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.03302406001314037
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.20230581938884462,
+        "test-geglu-f08-bfloat16": 0.0,
+        "test-geglu-f08-float32": 0.0,
+        "test-geglu-f09-float16": 0.003702874633704223,
+        "test-geglu-f09-bfloat16": 0.0114128813247808,
+        "test-geglu-f09-float32": 0.01565973656340347,
+        "test-geglu-f10-float16": 0.0,
+        "test-geglu-f10-bfloat16": 0.024767928586828525,
+        "test-geglu-f10-float32": 0.004312022339598598,
+        "test-groupnorm_silu-f08-float16": 0.0,
+        "test-groupnorm_silu-f08-bfloat16": 0.14609545580284622,
+        "test-groupnorm_silu-f08-float32": 0.16362227091717588,
+        "test-groupnorm_silu-f09-float16": 0.0,
+        "test-groupnorm_silu-f09-bfloat16": 0.0,
+        "test-groupnorm_silu-f09-float32": 0.015266277446278042,
+        "test-groupnorm_silu-f10-float16": 0.00728781323306632,
+        "test-groupnorm_silu-f10-bfloat16": 0.0,
+        "test-groupnorm_silu-f10-float32": 0.0
+      },
+      "mean_final_regret": 0.03302406001314037,
+      "family_bootstrap": {
+        "estimate": 0.03302406001314037,
+        "lower_95": 0.005925509244581429,
+        "upper_95": 0.06541670941761542,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.6756944444444445,
+      "failed_or_rejected_fraction": 0.0
+    },
+    {
+      "policy": "ppo-seed-3102",
+      "rl_training_performed": true,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.06242131931616407
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.06574578987627108
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.05073345408051634
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.038191076190729124
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.02992567543410288
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.029589249936777817
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.02489992159639424
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.02511825181690595
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.0,
+        "test-geglu-f08-bfloat16": 0.0,
+        "test-geglu-f08-float32": 0.0,
+        "test-geglu-f09-float16": 0.003702874633704223,
+        "test-geglu-f09-bfloat16": 0.015248090393339042,
+        "test-geglu-f09-float32": 0.01565973656340347,
+        "test-geglu-f10-float16": 0.0,
+        "test-geglu-f10-bfloat16": 0.024767928586828525,
+        "test-geglu-f10-float32": 0.01313202437272365,
+        "test-groupnorm_silu-f08-float16": 0.0,
+        "test-groupnorm_silu-f08-bfloat16": 0.20870779400406603,
+        "test-groupnorm_silu-f08-float32": 0.16362227091717588,
+        "test-groupnorm_silu-f09-float16": 0.0,
+        "test-groupnorm_silu-f09-bfloat16": 0.0,
+        "test-groupnorm_silu-f09-float32": 0.0,
+        "test-groupnorm_silu-f10-float16": 0.00728781323306632,
+        "test-groupnorm_silu-f10-bfloat16": 0.0,
+        "test-groupnorm_silu-f10-float32": 0.0
+      },
+      "mean_final_regret": 0.02511825181690595,
+      "family_bootstrap": {
+        "estimate": 0.02511825181690595,
+        "lower_95": 0.0023276952679729475,
+        "upper_95": 0.06590064433025662,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.634375,
+      "failed_or_rejected_fraction": 0.0
+    },
+    {
+      "policy": "ppo-seed-3103",
+      "rl_training_performed": true,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.09327097221638259
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.05313505333589365
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.0447760177607849
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.04437865744533271
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.04361780370388414
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.02851210990172881
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.028165051978527852
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.02728935962352139
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.0,
+        "test-geglu-f08-bfloat16": 0.0,
+        "test-geglu-f08-float32": 0.18511529107039787,
+        "test-geglu-f09-float16": 0.003702874633704223,
+        "test-geglu-f09-bfloat16": 0.0114128813247808,
+        "test-geglu-f09-float32": 0.008018894534709164,
+        "test-geglu-f10-float16": 0.0,
+        "test-geglu-f10-bfloat16": 0.0017131001100053555,
+        "test-geglu-f10-float32": 0.0,
+        "test-groupnorm_silu-f08-float16": 0.0,
+        "test-groupnorm_silu-f08-bfloat16": 0.20870779400406603,
+        "test-groupnorm_silu-f08-float32": 0.0,
+        "test-groupnorm_silu-f09-float16": 0.0,
+        "test-groupnorm_silu-f09-bfloat16": 0.06524982431265525,
+        "test-groupnorm_silu-f09-float32": 0.0,
+        "test-groupnorm_silu-f10-float16": 0.00728781323306632,
+        "test-groupnorm_silu-f10-bfloat16": 0.0,
+        "test-groupnorm_silu-f10-float32": 0.0
+      },
+      "mean_final_regret": 0.02728935962352139,
+      "family_bootstrap": {
+        "estimate": 0.02728935962352139,
+        "lower_95": 0.005910350082888488,
+        "upper_95": 0.0499790637715803,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.6159722222222223,
+      "failed_or_rejected_fraction": 0.0
+    },
+    {
+      "policy": "ppo-seed-3104",
+      "rl_training_performed": true,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.02793147998175559
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.03390707782802978
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.03064098760607787
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.03681964642780307
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.03972042337579191
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.043176869410070186
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.04329979361180899
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.03537574369357649
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.20230581938884462,
+        "test-geglu-f08-bfloat16": 0.0,
+        "test-geglu-f08-float32": 0.0,
+        "test-geglu-f09-float16": 0.003702874633704223,
+        "test-geglu-f09-bfloat16": 0.00930979175468461,
+        "test-geglu-f09-float32": 0.01565973656340347,
+        "test-geglu-f10-float16": 0.0,
+        "test-geglu-f10-bfloat16": 0.017911897151228852,
+        "test-geglu-f10-float32": 0.00825538883820276,
+        "test-groupnorm_silu-f08-float16": 0.0,
+        "test-groupnorm_silu-f08-bfloat16": 0.20870779400406603,
+        "test-groupnorm_silu-f08-float32": 0.16362227091717588,
+        "test-groupnorm_silu-f09-float16": 0.0,
+        "test-groupnorm_silu-f09-bfloat16": 0.0,
+        "test-groupnorm_silu-f09-float32": 0.0,
+        "test-groupnorm_silu-f10-float16": 0.00728781323306632,
+        "test-groupnorm_silu-f10-bfloat16": 0.0,
+        "test-groupnorm_silu-f10-float32": 0.0
+      },
+      "mean_final_regret": 0.03537574369357649,
+      "family_bootstrap": {
+        "estimate": 0.03537574369357649,
+        "lower_95": 0.003995579576095402,
+        "upper_95": 0.07515283963194824,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.625,
+      "failed_or_rejected_fraction": 0.0
+    },
+    {
+      "policy": "ppo-seed-3105",
+      "rl_training_performed": true,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.06242131931616407
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.05999092761697489
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.0396856880420836
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.04374389514771822
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.047222358381119316
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.04636633241133711
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.05697147960041333
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.05697147960041333
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.3043408255824927,
+        "test-geglu-f08-bfloat16": 0.0,
+        "test-geglu-f08-float32": 0.0,
+        "test-geglu-f09-float16": 0.034044411745267955,
+        "test-geglu-f09-bfloat16": 0.031151841322689777,
+        "test-geglu-f09-float32": 0.01565973656340347,
+        "test-geglu-f10-float16": 0.016613059630075755,
+        "test-geglu-f10-bfloat16": 0.024767928586828525,
+        "test-geglu-f10-float32": 0.01313202437272365,
+        "test-groupnorm_silu-f08-float16": 0.0,
+        "test-groupnorm_silu-f08-bfloat16": 0.20870779400406603,
+        "test-groupnorm_silu-f08-float32": 0.3545149203205477,
+        "test-groupnorm_silu-f09-float16": 0.0,
+        "test-groupnorm_silu-f09-bfloat16": 0.0,
+        "test-groupnorm_silu-f09-float32": 0.015266277446278042,
+        "test-groupnorm_silu-f10-float16": 0.00728781323306632,
+        "test-groupnorm_silu-f10-bfloat16": 0.0,
+        "test-groupnorm_silu-f10-float32": 0.0
+      },
+      "mean_final_regret": 0.05697147960041333,
+      "family_bootstrap": {
+        "estimate": 0.05697147960041333,
+        "lower_95": 0.010469758210716088,
+        "upper_95": 0.11567515396782008,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.7270833333333333,
+      "failed_or_rejected_fraction": 0.0
+    },
+    {
+      "policy": "ppo-untrained-seed-3101",
+      "rl_training_performed": false,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.2182781043290046
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.2182781043290046
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.2182781043290046
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.2182781043290046
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.2182781043290046
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.2182781043290046
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.2182781043290046
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.2182781043290046
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.0,
+        "test-geglu-f08-bfloat16": 0.0,
+        "test-geglu-f08-float32": 0.18511529107039787,
+        "test-geglu-f09-float16": 0.19666739481469386,
+        "test-geglu-f09-bfloat16": 0.1950003663916392,
+        "test-geglu-f09-float32": 0.008018894534709164,
+        "test-geglu-f10-float16": 0.1873587063618225,
+        "test-geglu-f10-bfloat16": 0.19308828941692202,
+        "test-geglu-f10-float32": 0.0,
+        "test-groupnorm_silu-f08-float16": 0.0,
+        "test-groupnorm_silu-f08-bfloat16": 0.0,
+        "test-groupnorm_silu-f08-float32": 0.0,
+        "test-groupnorm_silu-f09-float16": 0.5613587935928394,
+        "test-groupnorm_silu-f09-bfloat16": 0.6009700854145682,
+        "test-groupnorm_silu-f09-float32": 0.32788384476975085,
+        "test-groupnorm_silu-f10-float16": 0.58194064438497,
+        "test-groupnorm_silu-f10-bfloat16": 0.5922396893710089,
+        "test-groupnorm_silu-f10-float32": 0.29936387779876117
+      },
+      "mean_final_regret": 0.2182781043290046,
+      "family_bootstrap": {
+        "estimate": 0.2182781043290046,
+        "lower_95": 0.07312443693159348,
+        "upper_95": 0.3735731130225557,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.875,
+      "failed_or_rejected_fraction": 0.0
+    },
+    {
+      "policy": "fixed-compiled",
+      "rl_training_performed": false,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.02793147998175559
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.02793147998175559
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.02793147998175559
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.02793147998175559
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.02793147998175559
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.02793147998175559
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.02793147998175559
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.02793147998175559
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.24633001212050065,
+        "test-geglu-f08-bfloat16": 0.0,
+        "test-geglu-f08-float32": 0.16921671121201448,
+        "test-geglu-f09-float16": 0.03807891628514393,
+        "test-geglu-f09-bfloat16": 0.0081773589092482,
+        "test-geglu-f09-float32": 0.008284284459075253,
+        "test-geglu-f10-float16": 0.015221664146186087,
+        "test-geglu-f10-bfloat16": 0.0019144904681629438,
+        "test-geglu-f10-float32": 0.00825538883820276,
+        "test-groupnorm_silu-f08-float16": 0.0,
+        "test-groupnorm_silu-f08-bfloat16": 0.0,
+        "test-groupnorm_silu-f08-float32": 0.0,
+        "test-groupnorm_silu-f09-float16": 0.0,
+        "test-groupnorm_silu-f09-bfloat16": 0.0,
+        "test-groupnorm_silu-f09-float32": 0.0,
+        "test-groupnorm_silu-f10-float16": 0.00728781323306632,
+        "test-groupnorm_silu-f10-bfloat16": 0.0,
+        "test-groupnorm_silu-f10-float32": 0.0
+      },
+      "mean_final_regret": 0.02793147998175559,
+      "family_bootstrap": {
+        "estimate": 0.02793147998175559,
+        "lower_95": 0.0018155198158676727,
+        "upper_95": 0.07369845961686469,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.875,
+      "failed_or_rejected_fraction": 0.0
+    },
+    {
+      "policy": "random",
+      "rl_training_performed": false,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.08170369158793507
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.06167077331320272
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.05660801951155074
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.05572811515010289
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.056303476170291744
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.056444611931606985
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.0567661810803602
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.05587842451660588
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.2277849868523635,
+        "test-geglu-f08-bfloat16": 0.07552523793330773,
+        "test-geglu-f08-float32": 0.16833085288148375,
+        "test-geglu-f09-float16": 0.0076799084838429675,
+        "test-geglu-f09-bfloat16": 0.01646641595462787,
+        "test-geglu-f09-float32": 0.009490213622886323,
+        "test-geglu-f10-float16": 0.0070875410772016645,
+        "test-geglu-f10-bfloat16": 0.008379648378906562,
+        "test-geglu-f10-float32": 0.006019983411138042,
+        "test-groupnorm_silu-f08-float16": 0.007644438042760082,
+        "test-groupnorm_silu-f08-bfloat16": 0.07225292775686139,
+        "test-groupnorm_silu-f08-float32": 0.1363638551972004,
+        "test-groupnorm_silu-f09-float16": 0.03181142465979655,
+        "test-groupnorm_silu-f09-bfloat16": 0.0404570765929485,
+        "test-groupnorm_silu-f09-float32": 0.02107283243840491,
+        "test-groupnorm_silu-f10-float16": 0.04824703946279114,
+        "test-groupnorm_silu-f10-bfloat16": 0.07959329049026312,
+        "test-groupnorm_silu-f10-float32": 0.04160396806212135
+      },
+      "mean_final_regret": 0.05587842451660588,
+      "family_bootstrap": {
+        "estimate": 0.05587842451660588,
+        "lower_95": 0.020488013892411693,
+        "upper_95": 0.1012286624933727,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.0,
+      "failed_or_rejected_fraction": 0.0
+    },
+    {
+      "policy": "optuna-tpe",
+      "rl_training_performed": false,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.053700733301143805
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.03819870070721942
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.03412055629038709
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.03125202289859927
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.03148805777985727
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.032415628490158103
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.032415627436623615
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.03187996237027687
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.1735626971924164,
+        "test-geglu-f08-bfloat16": 0.03021009517332309,
+        "test-geglu-f08-float32": 0.18804032172423865,
+        "test-geglu-f09-float16": 0.01387737377404406,
+        "test-geglu-f09-bfloat16": 0.011643219590744458,
+        "test-geglu-f09-float32": 0.008663940589802844,
+        "test-geglu-f10-float16": 0.011261796615313091,
+        "test-geglu-f10-bfloat16": 0.002865652874158753,
+        "test-geglu-f10-float32": 0.007505484862822859,
+        "test-groupnorm_silu-f08-float16": 0.03096028625240187,
+        "test-groupnorm_silu-f08-bfloat16": 0.06525996146461113,
+        "test-groupnorm_silu-f08-float32": 0.019508418062151554,
+        "test-groupnorm_silu-f09-float16": 0.0,
+        "test-groupnorm_silu-f09-bfloat16": 0.0,
+        "test-groupnorm_silu-f09-float32": 0.003556651917541931,
+        "test-groupnorm_silu-f10-float16": 0.006923422571413004,
+        "test-groupnorm_silu-f10-bfloat16": 0.0,
+        "test-groupnorm_silu-f10-float32": 0.0
+      },
+      "mean_final_regret": 0.03187996237027687,
+      "family_bootstrap": {
+        "estimate": 0.03187996237027687,
+        "lower_95": 0.004385307192410055,
+        "upper_95": 0.07382828855117957,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.4979166666666667,
+      "failed_or_rejected_fraction": 0.0
+    },
+    {
+      "policy": "ridge-selector",
+      "rl_training_performed": false,
+      "episodes": 360,
+      "curve": [
+        {
+          "trials": 1,
+          "mean_table_regret": 0.02994318973305116
+        },
+        {
+          "trials": 2,
+          "mean_table_regret": 0.030516402924207355
+        },
+        {
+          "trials": 3,
+          "mean_table_regret": 0.036705537816172695
+        },
+        {
+          "trials": 4,
+          "mean_table_regret": 0.03071132656651743
+        },
+        {
+          "trials": 5,
+          "mean_table_regret": 0.030825371412902928
+        },
+        {
+          "trials": 6,
+          "mean_table_regret": 0.033938010658632695
+        },
+        {
+          "trials": 7,
+          "mean_table_regret": 0.03150279787136146
+        },
+        {
+          "trials": 8,
+          "mean_table_regret": 0.031822169620507594
+        }
+      ],
+      "per_task_final_regret": {
+        "test-geglu-f08-float16": 0.2145907632406034,
+        "test-geglu-f08-bfloat16": 0.0,
+        "test-geglu-f08-float32": 0.1547572964173273,
+        "test-geglu-f09-float16": 0.02717474724569428,
+        "test-geglu-f09-bfloat16": 0.0192637299511767,
+        "test-geglu-f09-float32": 0.021004669786855352,
+        "test-geglu-f10-float16": 0.0032471483757013143,
+        "test-geglu-f10-bfloat16": 0.005419060658055858,
+        "test-geglu-f10-float32": 0.006892203813362463,
+        "test-groupnorm_silu-f08-float16": 0.0,
+        "test-groupnorm_silu-f08-bfloat16": 0.0853940821621614,
+        "test-groupnorm_silu-f08-float32": 0.0,
+        "test-groupnorm_silu-f09-float16": 0.0,
+        "test-groupnorm_silu-f09-bfloat16": 0.0,
+        "test-groupnorm_silu-f09-float32": 0.027767538285132266,
+        "test-groupnorm_silu-f10-float16": 0.00728781323306632,
+        "test-groupnorm_silu-f10-bfloat16": 0.0,
+        "test-groupnorm_silu-f10-float32": 0.0
+      },
+      "mean_final_regret": 0.031822169620507594,
+      "family_bootstrap": {
+        "estimate": 0.031822169620507594,
+        "lower_95": 0.007609145089181733,
+        "upper_95": 0.07045384563070811,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      },
+      "repeated_action_fraction": 0.0,
+      "failed_or_rejected_fraction": 0.0
+    }
+  ],
+  "ppo_training_seeds": 5,
+  "ppo_mean_across_seeds": {
+    "estimate": 0.03555577894951151,
+    "lower_95": 0.006853115769566746,
+    "upper_95": 0.07341645726064612,
+    "bootstrap_draws": 10000,
+    "seed": 2311,
+    "shape_families": 6,
+    "tasks": 18,
+    "method": "shape-family cluster percentile bootstrap",
+    "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+  },
+  "paired_comparisons": [
+    {
+      "baseline": "ppo-untrained-seed-3101",
+      "ppo_minus_baseline_regret": {
+        "estimate": -0.18272232537949312,
+        "lower_95": -0.3661152380942813,
+        "upper_95": -0.00090618311152497,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      }
+    },
+    {
+      "baseline": "fixed-compiled",
+      "ppo_minus_baseline_regret": {
+        "estimate": 0.007624298967755916,
+        "lower_95": -0.038714569082132645,
+        "upper_95": 0.061111710142223497,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      }
+    },
+    {
+      "baseline": "random",
+      "ppo_minus_baseline_regret": {
+        "estimate": -0.020322645567094375,
+        "lower_95": -0.05879654102369511,
+        "upper_95": 0.016756658136536758,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      }
+    },
+    {
+      "baseline": "optuna-tpe",
+      "ppo_minus_baseline_regret": {
+        "estimate": 0.0036758165792346318,
+        "lower_95": -0.0340304576734331,
+        "upper_95": 0.04264952081812346,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      }
+    },
+    {
+      "baseline": "ridge-selector",
+      "ppo_minus_baseline_regret": {
+        "estimate": 0.003733609329003914,
+        "lower_95": -0.03223414378664079,
+        "upper_95": 0.04541525878477982,
+        "bootstrap_draws": 10000,
+        "seed": 2311,
+        "shape_families": 6,
+        "tasks": 18,
+        "method": "shape-family cluster percentile bootstrap",
+        "scope": "conditional on measured cohorts, fixed policy checkpoints and aggregated repeats"
+      }
+    }
+  ],
+  "fresh_gpu_measurements": 0,
+  "selection_rule": "all five seeds; no best-seed selection",
+  "interval_limit": "six shape families; training-seed spread reported separately; exploratory descriptive intervals"
+}

@@ -33,6 +33,34 @@ These comparisons query the same three recorded GPU-process repeats. Policy epis
 
 ![Eight-trial configuration-search regret](results/2026-11-23-operator-generalization-pro-4000/figures/cpu-20/policy-regret-vs-budget.svg)
 
+## PPO training and held-out evaluation
+
+Five PPO policies each completed 102,400 steps on the 30 TRAIN workloads, using recorded GPU observations. All checkpoints were frozen before TEST evaluation. Each trained policy and one untrained initialization received twenty episodes on each of the eighteen held-out workloads: **2,160 evaluation episodes** in total.
+
+Mean final regret across the five trained policies was **0.035556** (training-seed standard deviation 0.012672). Individual seed means were 0.033024, 0.025118, 0.027289, 0.035376 and 0.056971. The frozen untrained initialization measured 0.218278. TPE's 0.031880 and the compiled-query baseline's 0.027931 remain lower than the PPO mean; no best-seed selection is used.
+
+The paired mean PPO-minus-TPE regret difference is 0.003676, with a descriptive shape-family bootstrap interval of [−0.034030, 0.042650]. The six held-out shape families give limited precision. These intervals condition on the recorded GPU measurements and fixed checkpoints; repeated replay episodes are not new hardware samples.
+
+[Training settings and reproduction](docs/ppo-training.md) · [Checkpoints, journals and analysis](results/2026-11-24-ppo-native-autotune/README.md)
+
+## Live PPO and native Triton autotuning
+
+The prospectively fixed PPO checkpoint (seed 3101) ran on an RTX 4090 over all 18 TEST workloads in three fresh processes. Native Triton 3.6 autotuning searched all 24 kernel configurations. PPO used eight live queries plus an eager reset; native search also received three probes to select an eager, compiled or native-kernel fallback before independent confirmation.
+
+| Comparator | Comparator / PPO latency | Descriptive 95% interval |
+| --- | ---: | ---: |
+| Native kernel-only selection | 1.089× | [1.019, 1.163] |
+| Compiled PyTorch | 1.039× | [0.981, 1.141] |
+| Native selection with eager/compiled fallback | 0.948× | [0.882, 1.009] |
+
+Ratios above one favor PPO. Each estimate is the geometric mean of 18 per-workload median paired ratios across the three processes. The intervals resample six shape families and condition on this allocation and checkpoint. PPO's advantage over the kernel-only comparator disappears when native search can retain an eager or compiled reference. These are unequal-budget comparisons; no live oracle or regret is reported.
+
+All 1,296 native configuration trials and 432 PPO queries succeeded, and all 216 fresh confirmations passed numerical checks. Independent CPU replay reproduced all 432 actions from the frozen checkpoint. The whole-operator adapter includes the complete GroupNorm + SiLU pipeline, rather than tuning only one of its kernels.
+
+![Live PPO versus native autotuning with fallback](reports/figures/ppo-native-speedup.svg)
+
+[Live measurements and reproduction](results/2026-11-24-ppo-native-autotune/README.md#live-gpu-comparison) · [Instrumented tuning-time plot](reports/figures/ppo-tuning-cost.svg)
+
 ## Fresh frozen-selection performance
 
 All 42 distinct selected workload/configuration pairs were remeasured in three fresh processes with eager and compiled references, producing 378 correct measurements. The descriptive geometric mean of per-workload median compiled/selected latency ratios was 1.074× for the compiled-query baseline, 1.053× for random, 1.064× for TPE and 1.058× for ridge. The mini and nano selections measured 1.051× and 0.988×. These are the frozen choices, including eager fallbacks, rather than a new search run.

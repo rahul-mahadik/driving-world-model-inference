@@ -1,0 +1,42 @@
+{
+  "kind": "ppo_live_figure_export",
+  "source_analysis_sha256": "bc99db174b766e7ae55bcd35541554728f480eca82b35b002533900439443704",
+  "plotter_sha256": "b29679b81e1b60b4f3a327f55ceee22ecd2879834dc5ce9920430654e6898688",
+  "new_gpu_measurements_by_plotter": 0,
+  "policy_execution_performed": false,
+  "matplotlib_version": "3.10.0",
+  "outputs": [
+    {
+      "file": "ppo-native-speedup.png",
+      "bytes": 212511,
+      "sha256": "99988fd48f1b305010b22cfe457227f56b534dff7959ac5e22808e486cf17970"
+    },
+    {
+      "file": "ppo-native-speedup.svg",
+      "bytes": 122890,
+      "sha256": "d4fb6a1d75b0f2a17476bab9b67046439b9d08c93633dd8a1ea1eb1ebd02d1e8"
+    },
+    {
+      "file": "ppo-native-speedup.pdf",
+      "bytes": 28368,
+      "sha256": "9c2a5769472fdafeec1e5b17bf780a818e71f6800cf8a30dc1bb4f6a1db658fe"
+    },
+    {
+      "file": "ppo-tuning-cost.png",
+      "bytes": 220750,
+      "sha256": "b4e5459e219cecb577d63d99a2b385a1e307dc205cf0ebc4cddc30ece8d564ea"
+    },
+    {
+      "file": "ppo-tuning-cost.svg",
+      "bytes": 146089,
+      "sha256": "58cc18741ae73a83913145f0d0ce94d2f451fbdf92ff08bc1d92a4f50db40be6"
+    },
+    {
+      "file": "ppo-tuning-cost.pdf",
+      "bytes": 32723,
+      "sha256": "ffe18848ea4d9939c33134a531658676e79a7b526e12da64a15fd1509c55d04e"
+    }
+  ],
+  "curves": "within-process paired confirmation ratios and their task medians; separate search wall-time comparison",
+  "intervals": "no intervals; all three process values and medians are shown"
+}

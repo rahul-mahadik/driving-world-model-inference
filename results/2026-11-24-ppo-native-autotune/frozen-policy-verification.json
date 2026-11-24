@@ -1,0 +1,27 @@
+{
+  "kind": "frozen_ppo_live_action_verification",
+  "status": "complete",
+  "all_three_processes_verified": true,
+  "repeat_indices": [
+    0,
+    1,
+    2
+  ],
+  "checkpoint_sha256": "a9b8990a47b3170d1ec29085b79699df5cb29967192e7984800606f13d8665dd",
+  "manifest_sha256": "3088ceba256d78597602937bff607943f2d3e414ae14edc765ce5fc85fac08f1",
+  "verifier_sha256": "0ab4631c3438aee2f3f02c368156a57564478bfb5f91aba0cc022254ef146ada",
+  "suite_sha256": "5ef382542f26ca5b351805b88ae794e676c175b438ba14a1d9caf047975fda7f",
+  "policy_parameter_sha256_before": "50358e20681b5f353c3940b0246afd3660a61ff2f267d025da25ab1165930e9f",
+  "policy_parameter_sha256_after": "50358e20681b5f353c3940b0246afd3660a61ff2f267d025da25ab1165930e9f",
+  "training_seed": 3101,
+  "device": "cpu",
+  "deterministic": true,
+  "actions_checked": 432,
+  "training_performed": false,
+  "tuning_environment_constructed": false,
+  "fresh_gpu_measurements": 0,
+  "saved_observation_reward_reconstruction_performed": false,
+  "scope": "Frozen checkpoint inference on recorded preaction observations; separate native_audit reconstructs state/reward.",
+  "source_receipt_sha256": "50aa86eff1090f9b1299970a22a9557094da99e1032a3399187717b6e0786582",
+  "receipt_scope": "Summary of original raw-cohort CPU action verification; public export changes physical device/cohort identifiers only."
+}
