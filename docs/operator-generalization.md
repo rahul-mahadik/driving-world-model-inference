@@ -20,12 +20,16 @@ Download the [RTX PRO 4000 dataset](../results/2026-11-23-operator-generalizatio
 ```sh
 python -m pip install -e . -e './extensions/kernel_tuning[search]'
 tar -xzf results/2026-11-23-operator-generalization-pro-4000/data.tar.gz -C results
-python -m drivebench_tuning.generalization_cli run \
+python -m drivebench_tuning.generalization_cli replay \
   --suite operator-generalization-v2 \
   --table results/2026-11-23-operator-generalization-pro-4000/table.json \
-  --protocol protocols/operator-generalization-v2-compile-isolation-v1.json \
   --output ./policy-comparison
 ```
+
+`replay` records a new local protocol before training and evaluation. It binds
+the published table and its original collection hashes separately from the
+installed replay code. The published protocol and measurements stay unchanged.
+Use a new output directory for each run.
 
 ## Use the Gymnasium interface
 
@@ -108,7 +112,9 @@ and leaves filesystem caches intact.
 
 The protocol frozen before collection binds the suite, source revision,
 eight-turn trial budget, policy settings and training/test boundary. Keep this
-file with the measurement evidence.
+file with the measurement evidence. `run` requires that original source version
+and a protocol recorded before collection. Use `replay` above when evaluating an
+existing dataset with a newer package.
 
 ```sh
 # Run after the measured table is complete.

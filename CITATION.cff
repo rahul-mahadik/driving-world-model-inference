@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use DriveBench, cite this software and record the exact Git commit and benchmark protocol used."
 type: software
-title: "DriveBench: Verifiable Rewards for Lossy World-Model Inference"
+title: "DriveBench: Kernel-Tuning Benchmark and RL Environment"
 authors:
   - family-names: Mahadik
     given-names: Rahul

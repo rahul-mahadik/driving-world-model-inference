@@ -3,143 +3,168 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="GPU operator measurements and a Gymnasium environment for configuration search, with PPO, TPE and LLM evaluations.">
+  <meta name="description" content="DriveBench is a kernel-tuning benchmark and Gymnasium environment with recorded GPU timings, an eight-query task and open policy evaluations.">
   <meta name="theme-color" content="#ffffff">
-  <title>DriveBench — GPU benchmark and agent environment</title>
+  <title>DriveBench: kernel-tuning benchmark and RL environment</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./style.css">
   <script src="./app.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="header"><div class="container nav-row">
-  <a class="brand" href="#">DriveBench</a>
-  <nav aria-label="Main navigation"><a href="#benchmark">Benchmark</a><a href="#environment">Environment</a><a href="#results">Results</a><a href="#quickstart">Use it</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference">GitHub</a></nav>
-</div></header>
-<main id="main">
-  <section class="hero container" aria-labelledby="title">
-    <p class="eyebrow">Public benchmark · Python · MIT license</p>
-    <h1 id="title">GPU benchmark and agent tuning environment</h1>
-    <p class="lede">DriveBench measures GPU operator latency and memory use and provides a Gymnasium environment for configuration search. Policies query recorded measurements or a live GPU under a fixed trial budget.</p>
-    <div class="actions"><a href="#quickstart">Run the benchmark</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-23-operator-generalization-pro-4000">Read the dataset report</a><a href="https://raw.githubusercontent.com/rahul-mahadik/driving-world-model-inference/main/results/2026-11-23-operator-generalization-pro-4000/data.tar.gz">Download data</a></div>
-    <dl class="dataset-stats" aria-label="RTX PRO 4000 dataset coverage">
-      <div><dt>60</dt><dd>operator workloads</dd></div>
-      <div><dt>25</dt><dd>candidate configurations</dd></div>
-      <div><dt>4,680</dt><dd>GPU measurement records</dd></div>
-      <div><dt>18</dt><dd>held-out test workloads</dd></div>
-    </dl>
+<main id="main" class="container">
+  <section class="hero" aria-labelledby="title">
+    <h1 id="title">DriveBench</h1>
+    <p class="lede">A kernel-tuning benchmark and Gymnasium environment built from operators in the Vista driving world model. Agents get 8 trials to find the fastest correct configuration for an unseen workload.</p>
+    <div class="link-row hero-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference">Code</a><a href="https://raw.githubusercontent.com/rahul-mahadik/driving-world-model-inference/main/results/2026-11-23-operator-generalization-pro-4000/data.tar.gz">Dataset</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md">Docs</a><a href="#citation">Cite</a></div>
+    <ul class="hero-findings">
+      <li>Compile with eager fallback has the lowest mean regret over 20 episodes, ahead of PPO and TPE.</li>
+      <li>LLM agents re-query configurations they already tried on most turns.</li>
+      <li>The best configuration stayed best on 6 of 18 workloads after switching GPUs.</li>
+    </ul>
   </section>
 
-  <section id="benchmark" class="section container" aria-labelledby="benchmark-title">
-    <div class="section-heading"><h2 id="benchmark-title">The benchmark</h2><p>GEGLU and GroupNorm + SiLU on an NVIDIA RTX PRO 4000 Blackwell.</p></div>
-    <div class="two-column">
-      <div><h3>Tasks and configurations</h3><p>Twenty tensor shapes are evaluated in float16, bfloat16 and float32. Every dtype of a shape stays in the same split: 30 training workloads, 12 validation workloads and 18 test workloads across six held-out shape families.</p><p>The action space contains compiled PyTorch and 24 Triton configurations: six block sizes, from 64 to 2048, with one, two, four or eight warps. Eager PyTorch supplies the reference.</p></div>
-      <div><h3>Measurements and checks</h3><p>Three fresh processes measure every workload and candidate, plus eager. Each of the 4,680 measurement records contains 30 timed invocations after five warmups, allocated-memory deltas, numerical correctness and the input, source and runtime identities.</p><p>Latency excludes compilation and warmup; preparation time is recorded separately. Candidates must match the eager output under dtype-specific tolerances, with finite outputs and unchanged inputs.</p></div>
-    </div>
-    <p class="section-note">The dataset measures isolated operators on seeded tensors. The <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/modern-vista.md">Vista integration</a> supports full video-inference experiments, where model latency and video quality are evaluated separately.</p>
-    <div class="text-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/protocols/operator-generalization-v2-compile-isolation-v1.json">Frozen study protocol</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/dataset-manifest.json">Dataset file hashes</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/public-benchmark-protocol.md">Measurement contract</a></div>
+  <section id="leaderboard" class="section" aria-labelledby="leaderboard-title">
+    <h2 id="leaderboard-title">Leaderboard</h2>
+    <p class="section-intro">Eight queries on 18 held-out workloads. Lower regret is better.</p>
+<div class="tabs leaderboard-tabs" role="tablist" aria-label="Leaderboard comparison"><button id="tab-board-20" role="tab" aria-selected="true" aria-controls="panel-board-20" tabindex="0">20 episodes per workload</button><button id="tab-board-1" role="tab" aria-selected="false" aria-controls="panel-board-1" tabindex="-1">1 episode, including LLMs</button></div>
+<div id="panel-board-20" role="tabpanel" aria-labelledby="tab-board-20" class="leaderboard-panel"><div class="table-wrap"><table class="leaderboard"><thead><tr><th scope="col">Policy</th><th scope="col">Type</th><th scope="col">Trained on</th><th scope="col" class="numeric">Final regret</th><th scope="col" class="numeric">95% interval</th><th scope="col" class="numeric">At 4 queries</th></tr></thead><tbody>
+<tr class="best"><th scope="row">Compile + eager fallback <span class="best-label">Lowest mean</span></th><td>Baseline</td><td>None</td><td class="numeric">0.028</td><td class="numeric">[0.002, 0.073]</td><td class="numeric">0.028</td></tr>
+<tr><th scope="row">Ridge selector</th><td>Learned</td><td>30 train workloads</td><td class="numeric">0.032</td><td class="numeric">[0.008, 0.070]</td><td class="numeric">0.031</td></tr>
+<tr><th scope="row">TPE</th><td>Search</td><td>None</td><td class="numeric">0.032</td><td class="numeric">[0.004, 0.073]</td><td class="numeric">0.031</td></tr>
+<tr><th scope="row">PPO</th><td>Learned</td><td>30 train workloads</td><td class="numeric">0.036</td><td class="numeric">[0.007, 0.073]</td><td class="numeric">0.040</td></tr>
+<tr><th scope="row">Random search</th><td>Search</td><td>None</td><td class="numeric">0.056</td><td class="numeric">[0.021, 0.101]</td><td class="numeric">0.056</td></tr>
+</tbody></table></div></div>
+<div id="panel-board-1" role="tabpanel" aria-labelledby="tab-board-1" class="leaderboard-panel" hidden><div class="table-wrap"><table class="leaderboard"><thead><tr><th scope="col">Policy</th><th scope="col">Type</th><th scope="col">Trained on</th><th scope="col" class="numeric">Final regret</th><th scope="col" class="numeric">95% interval</th><th scope="col" class="numeric">At 4 queries</th></tr></thead><tbody>
+<tr class="best"><th scope="row">PPO <span class="best-label">Lowest mean</span></th><td>Learned</td><td>30 train workloads</td><td class="numeric">0.028</td><td class="numeric">[0.008, 0.049]</td><td class="numeric">0.042</td></tr>
+<tr><th scope="row">TPE</th><td>Search</td><td>None</td><td class="numeric">0.031</td><td class="numeric">[0.004, 0.067]</td><td class="numeric">0.036</td></tr>
+<tr><th scope="row">Compile + eager fallback</th><td>Baseline</td><td>None</td><td class="numeric">0.032</td><td class="numeric">[0.002, 0.086]</td><td class="numeric">0.032</td></tr>
+<tr><th scope="row">GPT-5.4 mini</th><td>LLM</td><td>Pretrained</td><td class="numeric">0.034</td><td class="numeric">[0.001, 0.094]</td><td class="numeric">0.035</td></tr>
+<tr><th scope="row">Ridge selector</th><td>Learned</td><td>30 train workloads</td><td class="numeric">0.040</td><td class="numeric">[0.004, 0.100]</td><td class="numeric">0.037</td></tr>
+<tr><th scope="row">GPT-5.4 nano</th><td>LLM</td><td>Pretrained</td><td class="numeric">0.063</td><td class="numeric">[0.025, 0.105]</td><td class="numeric">0.066</td></tr>
+<tr><th scope="row">Random search</th><td>Search</td><td>None</td><td class="numeric">0.091</td><td class="numeric">[0.023, 0.179]</td><td class="numeric">0.058</td></tr>
+</tbody></table></div></div>
+    <p class="table-note">Regret is how much slower the chosen configuration is than the best one in the table, as a fraction of eager latency. A regret of 0.030 leaves 3 percentage points of eager latency available to recover.</p>
+    <p class="table-note">The baseline queries torch.compile every turn and can keep eager. PPO averages five training seeds; intervals resample six shape families from the recorded results.</p>
+    <p class="section-end">Have a policy? <a href="#submit">Submit it</a>.</p>
   </section>
 
-  <section id="environment" class="section container" aria-labelledby="environment-title">
-    <div class="section-heading"><h2 id="environment-title">The environment</h2><p>Evaluate search algorithms and learned policies using the same observations, actions and trial budget.</p></div>
-    <div class="environment-spec">
-      <dl><div><dt>Observation</dt><dd>Task features, queried outcomes, current incumbent and remaining budget.</dd></div><div><dt>Action</dt><dd>Select one of the 25 candidate configurations.</dd></div><div><dt>Reward</dt><dd>Improvement in the best valid normalized cost found so far.</dd></div><div><dt>Episode</dt><dd>Eight trials in this study. Repeated and rejected actions also spend a trial.</dd></div></dl>
-      <div class="environment-copy"><h3><code>BudgetedTuningEnv</code></h3><p>The Gymnasium <code>reset()</code>/<code>step()</code> API supports training and evaluation. Measured replay runs on CPU and returns recorded GPU observations with their original measurement IDs.</p><p>Live evaluators can collect new observations on a GPU. The <code>AgentSession</code> interface also exposes inspection, profiling, trials and final submission to tool-using agents.</p><div class="text-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md#use-the-gymnasium-interface">Gymnasium example</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/agent-environment.md">Agent tools</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/extensions/kernel_tuning/docs/extending.md">Write an evaluator</a></div></div>
-    </div>
-    <p class="section-note">Actions select existing configurations. Replay episodes reuse the finite GPU dataset; live evaluation collects new measurements.</p>
+  <section id="benchmark" class="section" aria-labelledby="benchmark-title">
+    <h2 id="benchmark-title">Benchmark</h2>
+    <table class="spec"><tbody>
+      <tr><th scope="row">Operators</th><td>GEGLU and GroupNorm + SiLU, taken from Vista.</td></tr>
+      <tr><th scope="row">Workloads</th><td>20 shapes × 3 dtypes = 60 workloads. Float16, bfloat16 and float32.</td></tr>
+      <tr><th scope="row">Splits</th><td>30 train / 12 validation / 18 test, held out by shape family.</td></tr>
+      <tr><th scope="row">Candidates</th><td>Compiled PyTorch plus 24 Triton configurations: 6 block sizes × 4 warp counts. Eager is the reference.</td></tr>
+      <tr><th scope="row">Hardware</th><td>RTX PRO 4000 Blackwell for the main table; RTX 4090 for the transfer table.</td></tr>
+      <tr><th scope="row">Measurement</th><td>3 fresh processes × 30 timed calls after 5 warmups. Compile time is excluded.</td></tr>
+      <tr><th scope="row">Correctness</th><td>Outputs must match eager within dtype tolerance, remain finite and leave inputs unchanged. Incorrect results receive no reward.</td></tr>
+      <tr><th scope="row">Data</th><td>4,680 records in the main table.</td></tr>
+    </tbody></table>
+    <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/public-benchmark-protocol.md">Measurement protocol</a><a href="https://raw.githubusercontent.com/rahul-mahadik/driving-world-model-inference/main/results/2026-11-23-operator-generalization-pro-4000/data.tar.gz">Dataset</a></div>
   </section>
 
-  <section id="results" class="section container" aria-labelledby="results-title">
-    <div class="section-heading"><h2 id="results-title">Results</h2><p>Equal eight-trial budgets on the 18 held-out workloads. Lower table regret is better.</p></div>
-    <p class="result-copy">The compiled-query baseline starts with eager and queries compiled PyTorch on every turn, keeping the best valid configuration observed. Random search, Optuna TPE, a ridge cost model and five PPO policies used the same trial budget. Ridge and PPO were fitted on the training split.</p>
-    <div class="primary-results">
-      <figure class="research-figure"><a href="./figures/ppo/ppo-regret.pdf" aria-label="Download the policy comparison as PDF"><img src="./figures/ppo/ppo-regret.svg" alt="Held-out regret over eight queries for five trained PPO seeds and existing search baselines. PPO mean regret is higher than TPE and the compiled-query baseline."></a><figcaption>20 replay episodes per workload and checkpoint. Thin PPO curves show five training seeds; regret uses the complete measured table. Eighteen workloads span six held-out shape families. <a href="./figures/ppo/ppo-regret.svg">Open figure</a> · <a href="./figures/ppo/ppo-regret.pdf">PDF</a>.</figcaption></figure>
-      <div class="table-wrap"><table><caption>Final mean table regret</caption><thead><tr><th scope="col">Policy</th><th scope="col">Regret</th></tr></thead><tbody><tr><th scope="row">Compiled-query baseline</th><td>0.027931</td></tr><tr><th scope="row">Random</th><td>0.055878</td></tr><tr><th scope="row">Optuna TPE</th><td>0.031880</td></tr><tr><th scope="row">Train-only ridge</th><td>0.031822</td></tr><tr><th scope="row">PPO · five-seed mean</th><td>0.035556</td></tr></tbody></table><p class="table-note">For each workload, regret is the selected configuration’s median normalized cost minus the table minimum. Cost is latency normalized to eager.</p></div>
-    </div>
-    <div class="ppo-results">
-      <h3>PPO training</h3>
-      <p class="result-copy">Five policies completed 102,400 training steps each on the 30 training workloads. Each checkpoint was evaluated over 20 replay draws on every held-out workload. Mean final regret was <strong>0.035556</strong>, compared with <strong>0.031880</strong> for TPE. The untrained initialization had mean regret 0.218278.</p>
-      <div class="text-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/ppo-training.md">PPO settings and reproduction</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-24-ppo-native-autotune">Checkpoints and trajectories</a></div>
-    </div>
-    <div class="secondary-results">
-      <div><h3>LLM selectors</h3><p>GPT-5.4 mini and nano each ran one episode per test workload. Both had higher mean regret than the compiled-query baseline in the matched comparison. Mini repeated previously queried configurations on 116 of 144 turns; nano did so on 100 turns.</p><p>The original six-method comparison contains 1,476 episodes, with no rejected actions or failed queries. The <a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-23-operator-generalization-pro-4000">dataset</a> includes the trajectories, model snapshots and full comparison.</p></div>
-      <div><h3>GPU confirmation of replay selections</h3><p>The most frequently selected configuration for each policy and test workload was fixed before confirmation. The 108 choices contained 42 distinct workload/configuration pairs, measured in three new processes alongside eager and compiled references.</p><p>All <strong>378 fresh measurements</strong> passed the numerical checks. <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/figures/cpu-20/confirmation-vs-compiled.svg">Individual process ratios</a> show the variation across workloads.</p></div>
-    </div>
-    <details class="supplement"><summary>Matched one-episode comparison across all six policies</summary><figure class="research-figure"><a href="./figures/generalization/llm-matched-1-regret.pdf" aria-label="Download the matched six-policy comparison as PDF"><img src="./figures/generalization/llm-matched-1-regret.svg" alt="One-episode-per-workload comparison of six policies. Neither GPT-5.4 mini nor nano has lower final mean regret than the compiled-query baseline."></a><figcaption>18 episodes and 144 turns per method. The first CPU-policy episode is reused for this descriptive comparison; the full 20-episode CPU comparison remains the primary result. <a href="./figures/generalization/llm-matched-1-regret.svg">Open figure</a> · <a href="./figures/generalization/llm-matched-1-regret.pdf">PDF</a>.</figcaption></figure></details>
-    <div class="text-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/README.md">Full results and methods</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/figures/cpu-20/analysis.json">Figure data</a></div>
+  <section id="environment" class="section" aria-labelledby="environment-title">
+    <h2 id="environment-title">Environment</h2>
+    <div class="code-block"><div class="code-heading"><span>Gymnasium</span><button type="button" data-copy="env-code">Copy</button></div><pre tabindex="0"><code id="env-code">import gymnasium as gym
+import drivebench_tuning
+
+env = gym.make(
+    "DriveBench/OperatorTune-v0",
+    table_path="results/2026-11-23-operator-generalization-pro-4000/table.json",
+    split="test",
+)
+observation, info = env.reset(seed=2101)
+env.close()</code></pre></div>
+    <table class="spec env-spec"><tbody>
+      <tr><th scope="row">Environment ID</th><td><code>DriveBench/OperatorTune-v0</code></td></tr>
+      <tr><th scope="row">Action space</th><td><code>Discrete(25)</code>: one compiled implementation and 24 Triton configurations.</td></tr>
+      <tr><th scope="row">Observation space</th><td><div class="space-list"><span><code>task_features: Box(-inf, inf, (8,))</code></span><span><code>budget: Box(0, 1, (1,))</code></span><span><code>incumbent: Box(0, inf, (2,))</code></span><span><code>incumbent_action: Discrete(26)</code></span><span><code>action_counts: MultiDiscrete([9] * 25)</code></span><span><code>action_status: MultiDiscrete([4] * 25)</code></span><span><code>action_metrics: Box(0, inf, (25, 2))</code></span><span>Dictionary entries describe the workload, remaining budget, best result and query history. Box entries use float64.</span></div></td></tr>
+      <tr><th scope="row">Reward</th><td>Decrease in the best valid latency cost found so far, normalized to eager.</td></tr>
+      <tr><th scope="row">Episode</th><td>8 trials. Repeated and failed trials consume the budget; the eighth trial terminates the episode.</td></tr>
+      <tr><th scope="row">Default split</th><td>Training. Set <code>split="test"</code> for held-out evaluation.</td></tr>
+    </tbody></table>
+    <p>Replay mode serves recorded GPU timings, so you can train and evaluate on a laptop. Live mode measures on your GPU.</p>
   </section>
 
-  <section id="live-search" class="section container" aria-labelledby="live-title">
-    <div class="section-heading"><h2 id="live-title">Live PPO and Triton autotuning</h2><p>PPO trained on RTX PRO 4000 measurements and evaluated with live RTX 4090 feedback.</p></div>
-    <p class="result-copy">Across 18 held-out workloads and three fresh processes, the native-kernel/PPO latency ratio was <strong>1.089×</strong>. With eager and compiled PyTorch available as fallbacks, it was <strong>0.948×</strong>. The compiled/PPO ratio was <strong>1.039×</strong>; values above one favor PPO.</p>
-    <p class="result-copy">PPO received eight queries and an eager reset. Native Triton autotuning searched 24 kernel configurations, followed by three reference probes. Selections were fixed before fresh confirmation; all 216 confirmation measurements passed the numerical checks.</p>
-    <figure class="research-figure transfer-figure"><a href="./figures/ppo/ppo-native-speedup.pdf" aria-label="Download the live PPO and native autotuning comparison as PDF"><img src="./figures/ppo/ppo-native-speedup.svg" alt="Individual process ratios and workload medians for native autotuning with reference fallback versus PPO. Ratios above one favor PPO; results vary across workloads."></a><figcaption>Dots show paired process measurements; diamonds show each workload's median. Summary ratios are geometric means across workloads. The methods use different search budgets. Regret requires a separate full-grid oracle measurement. <a href="./figures/ppo/ppo-native-speedup.svg">Open figure</a> · <a href="./figures/ppo/ppo-native-speedup.pdf">PDF</a>.</figcaption></figure>
-    <div class="text-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-24-ppo-native-autotune#live-gpu-comparison">Live data, intervals and methods</a><a href="./figures/ppo/ppo-tuning-cost.svg">Instrumented tuning times</a></div>
+  <section id="findings" class="section" aria-labelledby="findings-title">
+    <h2 id="findings-title">Findings</h2>
+    <article class="finding-block" id="compile-finding">
+      <h3>Compile with eager fallback is hard to beat</h3>
+      <p>Over 20 episodes, querying compile and retaining eager as a fallback gives lower mean regret than PPO, TPE and ridge. Its choices leave about 3 percentage points of eager latency between them and the table optimum.</p>
+      <p>Live on an RTX 4090, PPO had 8.14% lower latency than Triton’s built-in autotuner and 3.80% lower latency than compile, but 5.49% higher latency than autotuning with eager and compile available as fallbacks. Native search used 24 configurations; PPO used 8 queries.</p>
+      <figure><img src="./figures/benchmark/search-regret.svg" alt="Mean held-out search regret over eight queries. Compile with eager fallback has the lowest mean final regret."><figcaption>PPO approaches TPE, while compile with eager fallback retains the lowest mean final regret.</figcaption></figure>
+      <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-24-ppo-native-autotune#live-gpu-comparison">Live comparison and dot plot</a></div>
+    </article>
+    <article class="finding-block" id="llm-finding">
+      <h3>LLM agents mostly repeat previous queries</h3>
+      <p>GPT-5.4 mini re-queried a configuration on 116 of 144 turns; nano did so on 100 turns. Both finished with higher mean regret than compile with eager fallback in the one-episode comparison.</p>
+      <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-23-operator-generalization-pro-4000#matched-llm-comparison">LLM trajectories</a></div>
+    </article>
+    <article class="finding-block" id="transfer-finding">
+      <h3>Best configurations changed across GPUs</h3>
+      <p>The RTX PRO 4000’s best configuration stayed best on 6 of 18 RTX 4090 workloads. Mean rank correlation was 0.301; carrying the source choice over produced 0.107 regret.</p>
+      <figure><img src="./figures/benchmark/transfer-regret.svg" alt="Regret after transferring source-selected configurations from RTX PRO 4000 to RTX 4090, showing mean regret for each policy."><figcaption>Configurations selected on the source GPU leave more headroom on the target GPU.</figcaption></figure>
+      <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-23-operator-generalization-pro-4000#transfer-to-rtx-4090">Transfer results</a></div>
+    </article>
   </section>
 
-  <section id="transfer" class="section container" aria-labelledby="transfer-title">
-    <div class="section-heading"><h2 id="transfer-title">Transfer across GPUs</h2><p>The same 18 test workloads and configurations on an NVIDIA RTX 4090.</p></div>
-    <p class="finding">The source-table optimum remained optimal on 6 of 18 workloads.</p>
-    <p class="result-copy">Rankings of the 25 candidates on the RTX PRO 4000 and RTX 4090 had a mean per-workload Spearman correlation of <strong>0.301</strong>. Transferring the source optimum, including the eager fallback, produced mean regret <strong>0.107481</strong> relative to the RTX 4090 table optimum.</p>
-    <p class="result-copy">The target table adds 1,404 measurement records from three fresh processes, using the same code and inputs. All passed the numerical checks. Policy choices and trained parameters were fixed before target measurement.</p>
-    <figure class="research-figure transfer-figure"><a href="./figures/generalization/cross-gpu-selection-regret.svg" aria-label="Open the full-size cross-GPU selection regret figure"><img src="./figures/generalization/cross-gpu-selection-regret.svg" alt="Target regret for the source-table optimum and six frozen policies on RTX 4090. Bars show the mean over 18 workloads; dots show individual workloads."></a><figcaption>Bars are equally weighted means over 18 workloads; dots show individual workloads. Regret is a difference in latency normalized to eager. The comparison covers one GPU/runtime pair. <a href="./figures/generalization/cross-gpu-selection-regret.svg">Open figure</a> · <a href="./figures/generalization/cross-gpu-selection-regret.pdf">PDF</a>.</figcaption></figure>
-    <div class="text-links"><a href="./figures/generalization/cross-gpu-rank-correlation.svg">Per-workload rank correlations</a><a href="./figures/generalization/cross-gpu-rank-correlation.pdf">Rank figure PDF</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/figures/transfer/analysis.json">Transfer figure data</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/results/2026-11-23-operator-generalization-pro-4000/README.md">Dataset and methods</a></div>
-  </section>
-
-  <section id="quickstart" class="section container" aria-labelledby="quickstart-title">
-    <div class="section-heading"><h2 id="quickstart-title">Use the benchmark</h2><p>Replay the dataset without a GPU or model weights. Collect new measurements in a separate NVIDIA CUDA environment.</p></div>
-    <div class="code-block"><div class="code-heading"><span>Install and extract the measured dataset</span><button type="button" data-copy="install-code">Copy</button></div><pre tabindex="0"><code id="install-code">git clone https://github.com/rahul-mahadik/driving-world-model-inference.git
+  <section id="quickstart" class="section" aria-labelledby="quickstart-title">
+    <h2 id="quickstart-title">Quickstart</h2>
+    <div class="code-block"><div class="code-heading"><span>Install and download the data</span><button type="button" data-copy="install-code">Copy</button></div><pre tabindex="0"><code id="install-code">git clone https://github.com/rahul-mahadik/driving-world-model-inference.git
 cd driving-world-model-inference
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -e . -e './extensions/kernel_tuning[search]'
 tar -xzf results/2026-11-23-operator-generalization-pro-4000/data.tar.gz -C results</code></pre></div>
     <div class="examples">
-      <div class="tabs" role="tablist" aria-label="Usage examples"><button id="tab-interface" role="tab" aria-selected="true" aria-controls="panel-interface" tabindex="0">Reproduce the comparison</button><button id="tab-policy" role="tab" aria-selected="false" aria-controls="panel-policy" tabindex="-1">Connect a policy</button><button id="tab-gpu" role="tab" aria-selected="false" aria-controls="panel-gpu" tabindex="-1">Collect on GPU</button></div>
-      <div id="panel-interface" role="tabpanel" aria-labelledby="tab-interface" class="example-panel"><p>Fit the ridge selector on training cells and evaluate all four CPU policies on the held-out workloads.</p><div class="code-block"><div class="code-heading"><span>CPU · measured GPU observations</span><button type="button" data-copy="interface-code">Copy</button></div><pre tabindex="0"><code id="interface-code">python -m drivebench_tuning.generalization_cli run \
+      <div class="tabs" role="tablist" aria-label="Quickstart examples"><button id="tab-replay" role="tab" aria-selected="true" aria-controls="panel-replay" tabindex="0">Replay</button><button id="tab-policy" role="tab" aria-selected="false" aria-controls="panel-policy" tabindex="-1">Plug in a policy</button><button id="tab-gpu" role="tab" aria-selected="false" aria-controls="panel-gpu" tabindex="-1">Collect on GPU</button></div>
+      <div id="panel-replay" role="tabpanel" aria-labelledby="tab-replay" class="example-panel"><p>Evaluate the compile, random, TPE and ridge policies using recorded timings.</p><div class="code-block"><div class="code-heading"><span>Replay</span><button type="button" data-copy="replay-code">Copy</button></div><pre tabindex="0"><code id="replay-code">python -m drivebench_tuning.generalization_cli replay \
   --suite operator-generalization-v2 \
   --table results/2026-11-23-operator-generalization-pro-4000/table.json \
-  --protocol protocols/operator-generalization-v2-compile-isolation-v1.json \
-  --output ./policy-comparison</code></pre></div><p class="panel-foot">Outputs include the fitted model, every policy trajectory, comparison statistics and frozen selections. Replay is explicitly identified in the records.</p></div>
-      <div id="panel-policy" role="tabpanel" aria-labelledby="tab-policy" class="example-panel" hidden><p>Replace the sampled action with your policy. This example uses actual recorded GPU measurements.</p><div class="code-block"><div class="code-heading"><span>Python · Gymnasium interface</span><button type="button" data-copy="policy-code">Copy</button></div><pre tabindex="0"><code id="policy-code">from drivebench_tuning.replay import MeasuredTable, MeasuredReplayEvaluator
-from drivebench_tuning.search import BudgetedTuningEnv
+  --output ./policy-comparison</code></pre></div></div>
+      <div id="panel-policy" role="tabpanel" aria-labelledby="tab-policy" class="example-panel" hidden><p>Replace the sampled action with your policy’s choice.</p><div class="code-block"><div class="code-heading"><span>Python</span><button type="button" data-copy="policy-code">Copy</button></div><pre tabindex="0"><code id="policy-code">import gymnasium as gym
+import drivebench_tuning
 
-table = MeasuredTable.load(
-    "results/2026-11-23-operator-generalization-pro-4000/table.json"
-)
-env = BudgetedTuningEnv(
-    table.suite.tasks, table.suite.candidates,
-    MeasuredReplayEvaluator(table, seed=2101),
-    trial_budget=8, memory_weight=0.0, allow_replay=True,
-)
-try:
+with gym.make(
+    "DriveBench/OperatorTune-v0",
+    table_path="results/2026-11-23-operator-generalization-pro-4000/table.json",
+    split="test",
+) as env:
     env.action_space.seed(2101)
-    observation, info = env.reset(
-        seed=2101, options={"task_index": table.suite.splits["test"][0]}
-    )
-    for _ in range(8):
-        action = env.action_space.sample()  # Your policy goes here.
+    observation, info = env.reset(seed=2101)
+    done = False
+    while not done:
+        action = env.action_space.sample()  # Your policy here.
         observation, reward, terminated, truncated, info = env.step(action)
-        if terminated or truncated:
-            break
-finally:
-    env.close()</code></pre></div><p class="panel-foot"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md">Environment, training and selection contracts</a></p></div>
-      <div id="panel-gpu" role="tabpanel" aria-labelledby="tab-gpu" class="example-panel" hidden><p>Collect one fresh-process repeat of the 60-workload suite. Use new output and compiler-cache directories and an external job deadline.</p><div class="code-block"><div class="code-heading"><span>Linux · NVIDIA CUDA</span><button type="button" data-copy="gpu-code">Copy</button></div><pre tabindex="0"><code id="gpu-code">python -m pip install './extensions/kernel_tuning[gpu,search]'
+        done = terminated or truncated</code></pre></div></div>
+      <div id="panel-gpu" role="tabpanel" aria-labelledby="tab-gpu" class="example-panel" hidden><p>Collect one repeat on a Linux machine with an NVIDIA GPU.</p><div class="code-block"><div class="code-heading"><span>CUDA</span><button type="button" data-copy="gpu-code">Copy</button></div><pre tabindex="0"><code id="gpu-code">python -m pip install './extensions/kernel_tuning[gpu,search]'
 export TORCHINDUCTOR_COMPILE_THREADS=1
 export TORCHINDUCTOR_CACHE_DIR="$PWD/cache-0"
 export TRITON_CACHE_DIR="$PWD/triton-cache-0"
 timeout 1800s python -m drivebench_tuning.table_collection collect \
   --suite operator-generalization-v2 --repeat-index 0 \
-  --output ./repeat-0</code></pre></div><p class="panel-foot">Follow the <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md#measure-the-workloads">collection recipe</a> for all three repeats, table validation and independent confirmation.</p></div>
+  --output ./repeat-0</code></pre></div><p class="panel-foot">Run three repeats with fresh cache directories; see the <a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md#measure-the-workloads">collection guide</a>.</p></div>
     </div>
-    <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p>
   </section>
 
-  <section id="documentation" class="section container" aria-labelledby="docs-title">
-    <div class="section-heading"><h2 id="docs-title">Documentation</h2></div>
-    <div class="doc-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md"><strong>Dataset and environment</strong><span>Collection, replay, training and confirmation</span></a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/extensions/kernel_tuning/docs/extending.md"><strong>Evaluator API</strong><span>Connect another workload or implementation</span></a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/agent-environment.md"><strong>Agent tools</strong><span>Inspection, profiling, trials and submission</span></a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/CONTRIBUTING.md"><strong>Contributing</strong><span>Reproducible benchmark submissions</span></a></div>
+  <section id="submit" class="section" aria-labelledby="submit-title">
+    <h2 id="submit-title">Submit a result</h2>
+    <p>Run your policy on the test split with 8 trials and 20 episodes per workload, then open a PR with the trajectory file. We recompute regret from the table and add verified submissions to the leaderboard.</p>
+    <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/CONTRIBUTING.md#submit-a-policy-result">Submission instructions</a></div>
+  </section>
+
+  <section id="citation" class="section" aria-labelledby="citation-title">
+    <h2 id="citation-title">Citation</h2>
+    <div class="code-block"><div class="code-heading"><span>BibTeX</span><button type="button" data-copy="citation-code">Copy</button></div><pre tabindex="0"><code id="citation-code">@software{mahadik2026drivebench,
+  author = {Mahadik, Rahul},
+  title = {DriveBench: Kernel-Tuning Benchmark and RL Environment},
+  year = {2026},
+  url = {https://github.com/rahul-mahadik/driving-world-model-inference}
+}</code></pre></div>
   </section>
 </main>
-<footer class="container"><div><a class="brand" href="#">DriveBench</a><p>Rahul Mahadik</p></div><div class="footer-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference">Source</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/LICENSE">MIT license</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/NOTICE.md">Third-party licenses</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/CITATION.cff">Citation</a></div></footer>
+<footer class="container"><p>Rahul Mahadik. Code released under the MIT license.</p><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md">Documentation</a></footer>
+<p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p>
 </body>
 </html>

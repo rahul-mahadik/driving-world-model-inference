@@ -1,0 +1,12 @@
+{
+  "kind": "derived_site_figures",
+  "new_gpu_measurements": 0,
+  "data_sha256": "71a167139562b4f6eb6037819687649a32cc71ab70fe5a34eda5c0f236b7ddc5",
+  "script_sha256": "ea508e2f501bd8fbc10d89c69b6ba00c2b44b6975273e9750e76de33f942ecdd",
+  "files": {
+    "search-regret.png": "2a11ea39b370c17995b2eb7c92d34595c4204826622560e224139cf9d6641d70",
+    "search-regret.svg": "d81f4f43cd833eab685aaf8387c1d13feb853c4e5c4efa0bdaadc51991c322aa",
+    "transfer-regret.png": "a87a65f8fc23551253e1e0340426eb0a451a0ecfd02ed9cdbe517b872e01068e",
+    "transfer-regret.svg": "93452a8a7be73b8506d30478cb2feb18b7fba43366d9d6c8e92b246c630b46ba"
+  }
+}

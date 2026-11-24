@@ -2,6 +2,30 @@
 
 Contributions can add workloads, evaluators, search policies, examples or checks. First-party code is [MIT licensed](LICENSE); preserve [third-party notices](NOTICE.md) and contribute material you have the right to share.
 
+## Submit a policy result
+
+Evaluate the `operator-generalization-v2` test split with eight candidate trials
+and twenty episodes per workload. Use the published RTX PRO 4000 table,
+latency-only cost, and evaluation seed 2101. Choose policy settings on the
+training/validation splits before running this evaluation.
+
+Open a pull request with the complete trajectory JSON, policy source or pinned
+model version, training data and cost, and a short reproduction command. Put
+new results under `results/submissions/<policy-name>/`; keep the published
+reference files unchanged. Include every episode, repeated action and failed
+query. API-driven policies should also include their prompt and usage totals,
+with credentials removed.
+
+We recompute regret from the table, check the episode budget and selected
+configurations, and add verified results to the appropriate leaderboard panel.
+The main panel uses twenty episodes per workload; smaller evaluations belong in
+a separate comparison. Recorded timings are public, so submitted policies must
+disclose access to test cells beyond their queried observations.
+
+The [policy guide](docs/operator-generalization.md) describes callbacks and
+recorded-table evaluation. A submission uses `run_replay_policy` to keep the
+same recorded-repeat schedule as the published baselines.
+
 ## Development
 
 ```sh
