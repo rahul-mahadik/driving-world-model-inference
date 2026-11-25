@@ -177,6 +177,36 @@ def test_cpu_reference_contract_casts_groupnorm_before_silu():
     torch.testing.assert_close(actual, expected, rtol=0, atol=0)
 
 
+def _require_cuda(dtype="float32"):
+    torch = pytest.importorskip("torch")
+    if not torch.cuda.is_available() or torch.version.hip is not None or importlib.util.find_spec("triton") is None:
+        pytest.skip("Requires NVIDIA CUDA and Triton; CPU checks are not GPU evidence")
+    if dtype == "bfloat16" and not torch.cuda.is_bf16_supported():
+        pytest.skip("bfloat16 not supported by this device")
+    return torch
+
+
+def _cuda_args_and_reference(torch, workload):
+    args = (torch.randn(workload.shape, device="cuda", dtype=getattr(torch, workload.dtype)),)
+    if workload.operator == "groupnorm_silu":
+        args += (torch.randn(workload.shape[1], device="cuda"),
+                 torch.randn(workload.shape[1], device="cuda"))
+        expected = sk.kernels.groupnorm_silu_reference(*args, num_groups=workload.num_groups,
+                                                     eps=workload.eps)
+    else:
+        expected = sk.kernels.geglu_reference(*args)
+    return args, expected
+
+
+def _assert_cuda_result(torch, workload, args, before, actual, expected):
+    assert actual.shape == expected.shape and actual.dtype == expected.dtype
+    assert actual.device == args[0].device and actual.data_ptr() != args[0].data_ptr()
+    assert bool(torch.isfinite(actual).all())
+    torch.testing.assert_close(actual, expected, **DTYPE_TOLERANCES[workload.dtype])
+    for original, snapshot in zip(args, before):
+        torch.testing.assert_close(original, snapshot, rtol=0, atol=0)
+
+
 @pytest.mark.gpu
 @pytest.mark.parametrize("dtype", ["float16", "bfloat16", "float32"])
 @pytest.mark.parametrize("fused", [True, False])
@@ -184,24 +214,74 @@ def test_cpu_reference_contract_casts_groupnorm_before_silu():
                                               ("groupnorm_silu", "chunked"),
                                               ("groupnorm_silu", "single")])
 def test_cuda_schedule_numerical_contract(dtype, fused, operator, reduction):
-    torch = pytest.importorskip("torch")
-    if not torch.cuda.is_available() or torch.version.hip is not None or importlib.util.find_spec("triton") is None:
-        pytest.skip("Requires NVIDIA CUDA and Triton; CPU checks are not GPU evidence")
-    if dtype == "bfloat16" and not torch.cuda.is_bf16_supported():
-        pytest.skip("bfloat16 not supported by this device")
+    torch = _require_cuda(dtype)
     torch.manual_seed(51)
     workload = (replace(GEGLU, dtype=dtype) if operator == "geglu" else
                 replace(NORM, dtype=dtype, shape=(2, 6, 7, 19)))
-    args = (torch.randn(workload.shape, device="cuda", dtype=getattr(torch, dtype)),)
-    if operator == "groupnorm_silu":
-        args += (torch.randn(6, device="cuda"), torch.randn(6, device="cuda"))
-        expected = sk.kernels.groupnorm_silu_reference(*args, num_groups=3)
-    else:
-        expected = sk.kernels.geglu_reference(*args)
+    args, expected = _cuda_args_and_reference(torch, workload)
+    before = tuple(x.clone() for x in args)
     s = schedule(fused=fused, block_size=64, num_warps=1, reduction=reduction,
                  activation_block_size=256 if fused else 128,
                  activation_num_warps=4 if fused else 2)
     actual = sk.execute_schedule(workload, s, args)
     torch.cuda.synchronize()
-    assert actual.shape == expected.shape and actual.dtype == expected.dtype
-    torch.testing.assert_close(actual, expected, **DTYPE_TOLERANCES[dtype])
+    _assert_cuda_result(torch, workload, args, before, actual, expected)
+
+
+@pytest.mark.gpu
+@pytest.mark.parametrize("operator,options", [
+    ("geglu", dict(block_size=4096, num_warps=8)),
+    ("geglu", dict(fused=False, block_size=4096, num_warps=8,
+                   activation_block_size=64, activation_num_warps=1)),
+    ("groupnorm_silu", dict(fused=False, block_size=1024, num_warps=8,
+                            activation_block_size=128, activation_num_warps=2,
+                            reduction_block_size=64, reduction_num_warps=1)),
+    ("groupnorm_silu", dict(block_size=128, num_warps=2, reduction="single",
+                            reduction_num_warps=8)),
+], ids=["geglu-fused-upper-launch", "geglu-split-independent-launches",
+        "groupnorm-split-three-launch-settings", "groupnorm-single-eight-warps"])
+def test_cuda_nondefault_stage_launches_and_tails(operator, options):
+    torch = _require_cuda()
+    torch.manual_seed(83)
+    workload = (Workload("geglu", (3, 7, 254), dtype="float32") if operator == "geglu" else
+                Workload("groupnorm_silu", (2, 6, 7, 19), dtype="float32", num_groups=3))
+    args, expected = _cuda_args_and_reference(torch, workload)
+    before = tuple(x.clone() for x in args)
+    actual = sk.execute_schedule(workload, schedule(**options), args)
+    torch.cuda.synchronize()
+    _assert_cuda_result(torch, workload, args, before, actual, expected)
+
+
+@pytest.mark.gpu
+@pytest.mark.parametrize("operator", ["geglu", "groupnorm_silu"])
+def test_cuda_unfused_stages_use_the_current_stream(operator):
+    torch = _require_cuda()
+    workload = replace(GEGLU if operator == "geglu" else NORM, dtype="float32")
+    stream = torch.cuda.Stream()
+    with torch.cuda.stream(stream):
+        torch.manual_seed(91)
+        args, expected = _cuda_args_and_reference(torch, workload)
+        before = tuple(x.clone() for x in args)
+        actual = sk.execute_schedule(workload, schedule(fused=False, block_size=64, num_warps=1,
+                                                       activation_block_size=128,
+                                                       activation_num_warps=2), args)
+        assert torch.cuda.current_stream() == stream
+    stream.synchronize()
+    _assert_cuda_result(torch, workload, args, before, actual, expected)
+
+
+@pytest.mark.gpu
+@pytest.mark.parametrize("operator", ["geglu", "groupnorm_silu"])
+def test_cuda_rejects_invalid_or_mismatched_requests_without_mutating_inputs(operator):
+    torch = _require_cuda()
+    workload = replace(GEGLU if operator == "geglu" else NORM, dtype="float32")
+    args, _ = _cuda_args_and_reference(torch, workload)
+    before = tuple(x.clone() for x in args)
+    with pytest.raises(ValueError, match="block_size"):
+        sk.execute_schedule(workload, schedule(block_size=192), args)
+    with pytest.raises(ValueError, match="inactive activation"):
+        sk.execute_schedule(workload, schedule(activation_num_warps=8), args)
+    with pytest.raises(ValueError, match="shape and dtype"):
+        sk.execute_schedule(replace(workload, dtype="float16"), schedule(), args)
+    for original, snapshot in zip(args, before):
+        torch.testing.assert_close(original, snapshot, rtol=0, atol=0)
