@@ -1,4 +1,6 @@
-# Gymnasium environment
+# Configuration-bandit environment
+
+This track is contextual-bandit search over finished implementations. Each query changes the policy's information and remaining budget, but does not transform the implementation evaluated next. For stateful kernel edits, use the separate [sequential schedule environment](../extensions/kernel_tuning/docs/sequential-schedules.md).
 
 Importing `drivebench_tuning` registers `DriveBench/OperatorTune-v0` with
 Gymnasium. Supply the extracted [operator table](../results/2026-11-23-operator-generalization-pro-4000/README.md):

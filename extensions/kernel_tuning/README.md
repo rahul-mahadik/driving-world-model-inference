@@ -1,12 +1,14 @@
-# DriveBench agent and configuration-search environments
+# DriveBench tuning environments
 
-`BudgetedTuningEnv` is a Gymnasium environment for choosing execution configurations within a measurement budget. Supply an evaluator and candidate configurations to benchmark kernel implementations or inference settings. The bundled CUDA adapter measures GEGLU and GroupNorm+SiLU operators.
+DriveBench has two tuning tracks. The configuration bandit queries finished implementations; the [sequential schedule track](docs/sequential-schedules.md) edits the current kernel schedule. Both cover GEGLU and GroupNorm+SiLU, with fixed numerical checks against eager PyTorch.
+
+`BudgetedTuningEnv` implements the configuration bandit. Supply an evaluator and candidates to compare kernel implementations or inference settings within a query budget. Queries update the search history and incumbent without changing the next candidate's implementation. The published table and policy comparisons use this track.
 
 The [measured operator search guide](../../docs/measured-operator-search.md) covers CUDA collection, CPU replay, LLM selectors and fresh confirmation of selected configurations. The [generalization suite](../../docs/operator-generalization.md) provides measured training and held-out workloads; the [PPO study](../../docs/ppo-training.md) trains policies on that feedback and evaluates a fixed checkpoint on GPU.
 
 The separate [agent controller](../../docs/agent-environment.md) exposes configuration proposals, profiles, trials and final submission. It includes an optional LLM selector and array-backed quality checks. Its published validation uses a CPU fixture; `drivebench-agent-demo --output ./agent-demo` runs that fixture after installing the core and extension.
 
-## Gymnasium quickstart
+## Configuration-bandit quickstart
 
 Install the extension and extract the [recorded operator dataset](../../results/2026-11-23-operator-generalization-pro-4000/README.md), then run:
 
@@ -41,7 +43,7 @@ These commands work outside the source checkout, including after installing a bu
 
 `drivebench-search export-suite --output suite.json` exports a new copy of the packaged task specification. A custom suite changes its SHA-256 identity. Existing files and run directories are never overwritten.
 
-## A search episode
+## A configuration-bandit episode
 
 1. `reset(seed=..., options={"task_index": i})` requests a reference result from the evaluator.
 2. A discrete action indexes a named candidate with an arbitrary JSON configuration.
