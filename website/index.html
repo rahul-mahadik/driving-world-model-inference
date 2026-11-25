@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="DriveBench is a kernel-tuning benchmark and Gymnasium environment with recorded GPU timings, an eight-query task and open policy evaluations.">
+  <meta name="description" content="DriveBench benchmarks GPU kernel tuning with a replayable configuration-bandit task and a separate sequential schedule-editing environment.">
   <meta name="theme-color" content="#ffffff">
-  <title>DriveBench: kernel-tuning benchmark and RL environment</title>
+  <title>DriveBench: kernel-tuning benchmark and environments</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./style.css">
   <script src="./app.js" defer></script>
@@ -15,7 +15,7 @@
 <main id="main" class="container">
   <section class="hero" aria-labelledby="title">
     <h1 id="title">DriveBench</h1>
-    <p class="lede">A kernel-tuning benchmark and Gymnasium environment built from operators in the Vista driving world model. Agents get 8 trials to find the fastest correct configuration for an unseen workload.</p>
+    <p class="lede">A GPU kernel-tuning benchmark with two Gymnasium tracks: search over recorded configurations, and sequential kernel-schedule editing. The published benchmark gives agents 8 trials on an unseen workload.</p>
     <div class="link-row hero-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference">Code</a><a href="https://raw.githubusercontent.com/rahul-mahadik/driving-world-model-inference/main/results/2026-11-23-operator-generalization-pro-4000/data.tar.gz">Dataset</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md">Docs</a><a href="#citation">Cite</a></div>
     <ul class="hero-findings">
       <li>Compile with eager fallback has the lowest mean regret over 20 episodes, ahead of PPO and TPE.</li>
@@ -26,7 +26,7 @@
 
   <section id="leaderboard" class="section" aria-labelledby="leaderboard-title">
     <h2 id="leaderboard-title">Leaderboard</h2>
-    <p class="section-intro">Eight queries on 18 held-out workloads. Lower regret is better.</p>
+    <p class="section-intro">Configuration-bandit track: eight queries on 18 held-out workloads. Lower regret is better.</p>
 <div class="tabs leaderboard-tabs" role="tablist" aria-label="Leaderboard comparison"><button id="tab-board-20" role="tab" aria-selected="true" aria-controls="panel-board-20" tabindex="0">20 episodes per workload</button><button id="tab-board-1" role="tab" aria-selected="false" aria-controls="panel-board-1" tabindex="-1">1 episode, including LLMs</button></div>
 <div id="panel-board-20" role="tabpanel" aria-labelledby="tab-board-20" class="leaderboard-panel"><div class="table-wrap"><table class="leaderboard"><thead><tr><th scope="col">Policy</th><th scope="col">Type</th><th scope="col">Trained on</th><th scope="col" class="numeric">Final regret</th><th scope="col" class="numeric">95% interval</th><th scope="col" class="numeric">At 4 queries</th></tr></thead><tbody>
 <tr class="best"><th scope="row">Compile + eager fallback <span class="best-label">Lowest mean</span></th><td>Baseline</td><td>None</td><td class="numeric">0.028</td><td class="numeric">[0.002, 0.073]</td><td class="numeric">0.028</td></tr>
@@ -65,7 +65,8 @@
   </section>
 
   <section id="environment" class="section" aria-labelledby="environment-title">
-    <h2 id="environment-title">Environment</h2>
+    <h2 id="environment-title">Environments</h2>
+    <p>The published task is a contextual bandit: each action queries a finished configuration. A separate schedule-editing track makes actions transform the current kernel and change which edits are legal next.</p>
     <div class="code-block"><div class="code-heading"><span>Gymnasium</span><button type="button" data-copy="env-code">Copy</button></div><pre tabindex="0"><code id="env-code">import gymnasium as gym
 import drivebench_tuning
 
@@ -84,7 +85,10 @@ env.close()</code></pre></div>
       <tr><th scope="row">Episode</th><td>8 trials. Repeated and failed trials consume the budget; the eighth trial terminates the episode.</td></tr>
       <tr><th scope="row">Default split</th><td>Training. Set <code>split="test"</code> for held-out evaluation.</td></tr>
     </tbody></table>
-    <p>Replay mode serves recorded GPU timings, so you can train and evaluate on a laptop. Live mode measures on your GPU.</p>
+    <p>The configuration bandit replays recorded GPU timings on a laptop. Its live evaluator measures finished configurations on your GPU.</p>
+    <h3>Sequential schedules</h3>
+    <p>Edit fusion and per-stage launch settings, measure the resulting kernel, or submit it. The current schedule, legal-action mask, latest measurement and remaining time guide the next decision. This track uses fresh CUDA measurements rather than the published lookup table; it has no published GPU performance result yet.</p>
+    <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/extensions/kernel_tuning/docs/sequential-schedules.md">Schedule environment specification</a></div>
   </section>
 
   <section id="findings" class="section" aria-labelledby="findings-title">
