@@ -47,3 +47,16 @@ python -m drivebench_tuning.schedule_study \
 ```
 
 Use new output and cache directories and an external process deadline. The runner checks the protocol against the installed scientific source. `episodes.jsonl` and the per-episode journals retain the trajectories; `summary.json` and `completed.json` or `partial.json` record accounting and completion. A completed campaign can include failed episodes.
+
+Analyze a complete recovered study against its original source snapshot:
+
+```sh
+python scripts/analyze_schedule_study.py \
+  --study ./recovered/schedule-study \
+  --source-manifest ./frozen/source-manifest.json \
+  --frozen-source ./frozen/source-payload \
+  --analysis-plan reports/sequential-schedule-study-v1/analysis-plan.json \
+  --output ./schedule-analysis
+```
+
+The frozen source directory contains the original `extensions/` and `runtime-inputs/` trees. The analyzer verifies source hashes, episode identities and evaluator journals before writing sanitized JSON, CSV and a summary to a new directory. It retains failed episodes and uses the registered bootstrap settings. The separate 28-case CUDA validation receipt must also be checked before claiming GPU validation. Measurements remain pending.
