@@ -7,3 +7,4 @@
 @media print{.container{width:100%}.hero,.section{padding-block:22px}.skip,.code-heading button,.tabs,.copy-feedback{display:none}.example-panel[hidden]{display:block}figure,.code-block,table{break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:inherit}}
 
 .leaderboard-tabs{margin:16px 0 22px}.leaderboard-panel[hidden]{display:none}.best-label{font-size:12px}.leaderboard td:nth-child(3){font-size:14px}
+.schedule-results{min-width:690px}

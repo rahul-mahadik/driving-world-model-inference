@@ -6,6 +6,22 @@ The [RTX PRO 4000 dataset](results/2026-11-23-operator-generalization-pro-4000/R
 
 [Download and reproduce](results/2026-11-23-operator-generalization-pro-4000/README.md#download-and-run) · [Gymnasium interface](docs/operator-generalization.md#use-the-gymnasium-interface) · [Frozen protocol](protocols/operator-generalization-v2-compile-isolation-v1.json)
 
+## Live sequential schedule search
+
+On one RTX 4090, a fixed eager/compiled reference, random walks and greedy local search completed 54 episodes across six float16 TEST shape families from GEGLU and GroupNorm+SiLU. Each method received three search/timing seeds per task and a 90-second ceiling including setup, compilation, search, confirmation and cleanup. Workload input seeds were fixed.
+
+| Method | Mean failure-adjusted speed score | Descriptive 95% interval | Confirmed submissions |
+| --- | ---: | ---: | ---: |
+| Fixed eager/compiled reference | −0.0306 | [−0.1453, 0.0629] | 18/18 |
+| Greedy local search | −0.1640 | [−0.3700, 0.0055] | 18/18 |
+| Random walk | −0.4346 | [−0.7758, −0.1075] | 12/18 |
+
+Higher scores are better. A confirmed episode scores `clip(1 − selected latency / paired final reference latency, −1, 1)`, using fresh sample medians; failed or unconfirmed episodes score −1. The fixed reference had the highest observed mean. Its paired score difference from greedy search was 0.1333, with interval [−0.0660, 0.3512], which does not establish superiority over greedy search. Intervals use 10,000 paired hierarchical bootstrap draws over six task families and three nested search/timing seeds.
+
+All six failures were random-walk queries on GroupNorm+SiLU families f08 and f10 that reached the full 15-second query timeout; the underlying cause is unknown. No episode exceeded its 90-second ceiling. The methods used 135.7, 827.2 and 823.3 seconds in total for reference, greedy and random episodes, respectively. Greedy and random reached the 128-query safety cap in six and three episodes. The ceiling was shared; actual tuning time differed.
+
+The live kernel and environment validation passed 28 representative CUDA tests. The study measures these two operators on one GPU/runtime cohort; it includes no trained sequential RL policy, exhaustive oracle or end-to-end model comparison. [Data, source, trajectories, figures and CPU reproduction](results/2026-11-26-sequential-schedules/README.md) are separate from the configuration-bandit results below.
+
 ## Transfer to RTX 4090
 
 Across 18 test workloads, the mean Spearman rank correlation between RTX PRO 4000 and RTX 4090 configurations was **0.301** (median 0.280). The source-table optimum remained optimal on **6 of 18** workloads. Transferring it produced mean target regret of **0.107481**. Regret is the difference between the selected configuration's median normalized cost and the table minimum; costs normalize latency to the eager reference.

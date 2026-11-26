@@ -1,0 +1,21 @@
+{
+  "figures": {
+    "sequential-schedule-study.pdf": "b036d3ad38f70c593240c2626be61d902df669dd1d76ab51526c66393772f013",
+    "sequential-schedule-study.svg": "be1d1f5d2068a1980509dc91352ca64d3bd9492167d4c0f1aaee2ad2c15678ea"
+  },
+  "new_measurements": 0,
+  "omitted_attempts": 0,
+  "plot_script_sha256": "79a040550ee98e033888da048e9a32d133727fdcf07e99258f6a66d50062445c",
+  "plotted_attempts": 54,
+  "point_estimate": "arithmetic mean of all three seeds per task and method",
+  "schema_version": 1,
+  "scientific_results": true,
+  "significance_test_performed": false,
+  "source_sha256": {
+    "episodes.json": "e5bfdf889400cf5319136f1369ac23cea51e47835a9a2e8068fe12acf9e4fa88",
+    "export-manifest.json": "60f2b0437e071350b736132a28d6893f37706df684a6b22a2531a911aeae3bee",
+    "summary.json": "9a83dcdbc64bb0a4d9145067c5239fdd2c0b0a63dbc23990adaa67bdf12b01c6"
+  },
+  "study_id": "sequential-schedules-live-v2",
+  "test_fixture": false
+}

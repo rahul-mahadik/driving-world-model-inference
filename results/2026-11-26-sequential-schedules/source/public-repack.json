@@ -1,0 +1,10 @@
+{
+  "file_content_unchanged": true,
+  "files": 65,
+  "normalization": "Files only, with original relative paths and permission modes; owner/group names removed, uid/gid/mtime zero, gzip filename empty and timestamp zero.",
+  "original_frozen_archive_modified": false,
+  "original_frozen_archive_sha256": "8457cf56b40e42da3d56e18c3b19bf4cd41810b90fb3ccb21b0cbb903b800372",
+  "public_archive_sha256": "6520896156f9af44307793b25fa63bc2ac069c2138579dc20ad7add5a4a81efc",
+  "schema_version": 1,
+  "source_manifest_sha256": "1f5de1f69872276c6720c6934432518b37c6beb6c36e26408f723e9e9bd76826"
+}

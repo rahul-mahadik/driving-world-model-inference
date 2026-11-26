@@ -1,0 +1,36 @@
+{
+  "evidence_kind": "measured-cuda-study",
+  "files": [
+    {
+      "bytes": 1461,
+      "file": "SUMMARY.md",
+      "sha256": "ccc1682b580bbed28d96dca622f293d3ae1bfda1de1fc330ed741ddafa288e19"
+    },
+    {
+      "bytes": 15308,
+      "file": "episodes.csv",
+      "sha256": "d6e243806e6ea47734a7086731bf9591c74c78b11252bbd2be376b1086c1c2ae"
+    },
+    {
+      "bytes": 134844,
+      "file": "episodes.json",
+      "sha256": "e5bfdf889400cf5319136f1369ac23cea51e47835a9a2e8068fe12acf9e4fa88"
+    },
+    {
+      "bytes": 22372,
+      "file": "provenance.json",
+      "sha256": "fef17c5861116008c187390ddba0fcd6711b4a1879b6b726192e826d4d0526cb"
+    },
+    {
+      "bytes": 10784,
+      "file": "summary.json",
+      "sha256": "9a83dcdbc64bb0a4d9145067c5239fdd2c0b0a63dbc23990adaa67bdf12b01c6"
+    },
+    {
+      "bytes": 1994,
+      "file": "task-policy-means.csv",
+      "sha256": "b627bbd54f6d69a0e8f4c0743f12b369969c811f178a85cef17750dd26e5f3b8"
+    }
+  ],
+  "schema_version": 1
+}

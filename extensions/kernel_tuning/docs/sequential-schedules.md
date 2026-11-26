@@ -8,7 +8,9 @@ The [configuration-bandit track](../../../docs/gymnasium-environment.md) remains
 
 ## Scope and validation
 
-This release supplies the schedule transitions, Gymnasium interface, CUDA lowering and measurement backend, with CPU contract tests and GPU test cases. The new kernel paths have not yet been validated on a GPU. No speedup, policy ranking, model-level coverage or cross-GPU generalization result is claimed for this track. The published leaderboard and existing datasets continue to describe configuration-bandit search.
+This release supplies the schedule transitions, Gymnasium interface, CUDA lowering and measurement backend. [CUDA validation](../../../results/2026-11-26-sequential-schedules/cuda-validation.json) passed 28 representative kernel and environment tests on an RTX 4090, with zero skips or failures; the full schedule space was not enumerated on the GPU.
+
+The [live study](../../../results/2026-11-26-sequential-schedules/README.md) compares a fixed eager/compiled reference, random walks and greedy local search over six float16 TEST shape families from these two known operators. Three search/timing seeds per method produced 54 episodes under 90-second ceilings, with fixed input seeds for each workload. Forty-eight submissions were confirmed; six random-walk queries timed out. The fixed reference had the highest observed mean failure-adjusted score, while its descriptive paired interval against greedy search included zero. Trained sequential RL, unseen-operator transfer and end-to-end model effects remain unmeasured. The older configuration-bandit datasets and comparisons retain their separate scope.
 
 The interface accepts predefined schedule transformations, not arbitrary Python, CUDA or Triton source. A bounded measurement subprocess limits an individual trial's runtime; it is not a security boundary for hostile native code. Operator correctness checks are numerical comparisons to eager PyTorch, not perceptual video-quality checks.
 
@@ -87,6 +89,8 @@ Use a new evidence directory for each run. Closing the environment releases its 
 ## Comparisons to report
 
 Keep the compiled reference and simple search baselines. Compare final confirmed latency against elapsed tuning time, alongside compilation time, failure rate, invalid-action cost and remeasurement frequency. Report raw trajectories and failures with each result. Since the compositional space is not fully measured, do not report exact oracle regret unless an independently measured oracle exists for the declared subspace.
+
+The released study includes [sample arrays, trajectories and CPU reproduction](../../../results/2026-11-26-sequential-schedules/README.md). Its primary score is `clip(1 - median(selected samples) / median(paired reference samples), -1, 1)` for fresh confirmed measurements; failures and unconfirmed episodes receive −1. This reporting score is separate from the environment return, which uses a sampled timing against the initial reference and includes action/time penalties.
 
 The initial two-operator scope supports comparisons within those operators. Held-out shapes do not establish transfer to unseen operators. Profile-based operator coverage, whole-operator holdouts, adaptation to unseen hardware and end-to-end model latency each require their own measurements. Existing RTX PRO 4000/RTX 4090 transfer results refer to the older fixed configuration space.
 

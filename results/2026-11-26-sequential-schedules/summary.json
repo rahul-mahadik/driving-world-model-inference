@@ -1,0 +1,378 @@
+{
+  "cuda_validation_gate_verified_by_this_export": false,
+  "evidence_kind": "measured-cuda-study",
+  "exploratory": true,
+  "oracle_measured": false,
+  "paired_comparisons": [
+    {
+      "first": "compiled_eager_no_edit",
+      "mean_score_difference": 0.4039421700543276,
+      "paired_difference_ci95": [
+        0.07400502208551617,
+        0.7674223113210432
+      ],
+      "second": "random_walk"
+    },
+    {
+      "first": "compiled_eager_no_edit",
+      "mean_score_difference": 0.13333195820783375,
+      "paired_difference_ci95": [
+        -0.06603585999242875,
+        0.3511796572121149
+      ],
+      "second": "greedy_local"
+    },
+    {
+      "first": "random_walk",
+      "mean_score_difference": -0.27061021184649386,
+      "paired_difference_ci95": [
+        -0.5227977721266582,
+        -0.05175688823560862
+      ],
+      "second": "greedy_local"
+    }
+  ],
+  "policies": {
+    "compiled_eager_no_edit": {
+      "attempts": 18,
+      "confirmed": 18,
+      "exploration_queries": 0,
+      "failed_or_unconfirmed": 0,
+      "failed_queries": 0,
+      "invalid_actions": 0,
+      "max_episode_seconds": 9.218647873029113,
+      "mean_primary_score": -0.030633617390524986,
+      "median_confirmed_latency_ratio_successes_only": 1.007921270863472,
+      "median_episode_seconds": 7.60854180745082,
+      "min_episode_seconds": 5.3588355029933155,
+      "primary_score_ci95": [
+        -0.14531585298162022,
+        0.06289349818911441
+      ],
+      "query_safety_cap_hits": 0,
+      "success_ratio": 1.0,
+      "total_episode_seconds": 135.65137368475553,
+      "wall_time_ceiling_overruns": 0
+    },
+    "greedy_local": {
+      "attempts": 18,
+      "confirmed": 18,
+      "exploration_queries": 1679,
+      "failed_or_unconfirmed": 0,
+      "failed_queries": 0,
+      "invalid_actions": 0,
+      "max_episode_seconds": 60.269551623030566,
+      "mean_primary_score": -0.16396557559835873,
+      "median_confirmed_latency_ratio_successes_only": 1.0666295712819203,
+      "median_episode_seconds": 56.218078120960854,
+      "min_episode_seconds": 18.995707471040078,
+      "primary_score_ci95": [
+        -0.3700394255530831,
+        0.005530453063251901
+      ],
+      "query_safety_cap_hits": 6,
+      "success_ratio": 1.0,
+      "total_episode_seconds": 827.2296352380654,
+      "wall_time_ceiling_overruns": 0
+    },
+    "random_walk": {
+      "attempts": 18,
+      "confirmed": 12,
+      "exploration_queries": 1163,
+      "failed_or_unconfirmed": 6,
+      "failed_queries": 6,
+      "invalid_actions": 0,
+      "max_episode_seconds": 57.575053391978145,
+      "mean_primary_score": -0.4345757874448526,
+      "median_confirmed_latency_ratio_successes_only": 1.219243859785174,
+      "median_episode_seconds": 55.972132626979146,
+      "min_episode_seconds": 21.391725852969103,
+      "primary_score_ci95": [
+        -0.7757516604731517,
+        -0.10745852297758456
+      ],
+      "query_safety_cap_hits": 3,
+      "success_ratio": 0.6666666666666666,
+      "total_episode_seconds": 823.3286924039712,
+      "wall_time_ceiling_overruns": 0
+    }
+  },
+  "primary_score_definition": "Confirmed episodes: clip(1 - median(selected confirmation samples) / median(paired final reference samples), -1, 1). Failed or unconfirmed episodes: -1. The reference role is selected during reset and fixed before final measurement. This score differs from the environment return, which uses its initial reference.",
+  "runtime": {
+    "compute_capability": [
+      8,
+      9
+    ],
+    "cuda": "12.8",
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "measured_gpu": true,
+    "python": "3.12.3",
+    "torch": "2.10.0+cu128",
+    "total_memory_bytes": 25252724736,
+    "triton": "3.6.0"
+  },
+  "schema_version": 1,
+  "scientific_results": true,
+  "scope": {
+    "attempts": 54,
+    "episode_ceiling_seconds": 90,
+    "operators": 2,
+    "policies": [
+      "compiled_eager_no_edit",
+      "random_walk",
+      "greedy_local"
+    ],
+    "seeds": [
+      7101,
+      7102,
+      7103
+    ],
+    "task_families": 6,
+    "verified_hardware_runtime_cohorts": 1
+  },
+  "study_id": "sequential-schedules-live-v2",
+  "task_policy_means": [
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.25248782226310734,
+      "policy": "compiled_eager_no_edit",
+      "task_id": "test-geglu-f08-float16",
+      "total_episode_seconds": 16.74110037786886
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": 0.05723617552852204,
+      "policy": "compiled_eager_no_edit",
+      "task_id": "test-geglu-f09-float16",
+      "total_episode_seconds": 26.317379693035036
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": 0.04302552304122228,
+      "policy": "compiled_eager_no_edit",
+      "task_id": "test-geglu-f10-float16",
+      "total_episode_seconds": 27.491076171048917
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.0355886820608422,
+      "policy": "compiled_eager_no_edit",
+      "task_id": "test-groupnorm_silu-f08-float16",
+      "total_episode_seconds": 19.400998867000453
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.04095972669884899,
+      "policy": "compiled_eager_no_edit",
+      "task_id": "test-groupnorm_silu-f09-float16",
+      "total_episode_seconds": 23.625601039850153
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": 0.04497282810990429,
+      "policy": "compiled_eager_no_edit",
+      "task_id": "test-groupnorm_silu-f10-float16",
+      "total_episode_seconds": 22.075217535952106
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.3318338480736475,
+      "policy": "random_walk",
+      "task_id": "test-geglu-f08-float16",
+      "total_episode_seconds": 73.75530216598418
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.06334580707891062,
+      "policy": "random_walk",
+      "task_id": "test-geglu-f09-float16",
+      "total_episode_seconds": 171.81624811689835
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": 0.09600179062908647,
+      "policy": "random_walk",
+      "task_id": "test-geglu-f10-float16",
+      "total_episode_seconds": 171.5106946080923
+    },
+    {
+      "attempts": 3,
+      "confirmed": 0,
+      "mean_primary_score": -1.0,
+      "policy": "random_walk",
+      "task_id": "test-groupnorm_silu-f08-float16",
+      "total_episode_seconds": 96.70152521401178
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.308276860145644,
+      "policy": "random_walk",
+      "task_id": "test-groupnorm_silu-f09-float16",
+      "total_episode_seconds": 169.14474843803328
+    },
+    {
+      "attempts": 3,
+      "confirmed": 0,
+      "mean_primary_score": -1.0,
+      "policy": "random_walk",
+      "task_id": "test-groupnorm_silu-f10-float16",
+      "total_episode_seconds": 140.40017386095133
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.15533972373776814,
+      "policy": "greedy_local",
+      "task_id": "test-geglu-f08-float16",
+      "total_episode_seconds": 59.920000344049186
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": 0.05998358766523426,
+      "policy": "greedy_local",
+      "task_id": "test-geglu-f09-float16",
+      "total_episode_seconds": 170.5965174479643
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": 0.06554372982629952,
+      "policy": "greedy_local",
+      "task_id": "test-geglu-f10-float16",
+      "total_episode_seconds": 174.65588198404294
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.5272876190390005,
+      "policy": "greedy_local",
+      "task_id": "test-groupnorm_silu-f08-float16",
+      "total_episode_seconds": 84.23707349505275
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.18765618826529393,
+      "policy": "greedy_local",
+      "task_id": "test-groupnorm_silu-f09-float16",
+      "total_episode_seconds": 169.47872229584027
+    },
+    {
+      "attempts": 3,
+      "confirmed": 3,
+      "mean_primary_score": -0.23903724003962354,
+      "policy": "greedy_local",
+      "task_id": "test-groupnorm_silu-f10-float16",
+      "total_episode_seconds": 168.34143967111595
+    }
+  ],
+  "tasks": [
+    {
+      "dtype": "float16",
+      "eps": 1e-05,
+      "input_seed": 21108,
+      "num_groups": 32,
+      "operator": "geglu",
+      "shape": [
+        2,
+        377,
+        2048
+      ],
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "dtype": "float16",
+      "eps": 1e-05,
+      "input_seed": 21109,
+      "num_groups": 32,
+      "operator": "geglu",
+      "shape": [
+        8,
+        900,
+        7680
+      ],
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "dtype": "float16",
+      "eps": 1e-05,
+      "input_seed": 21110,
+      "num_groups": 32,
+      "operator": "geglu",
+      "shape": [
+        16,
+        384,
+        10240
+      ],
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "dtype": "float16",
+      "eps": 1e-05,
+      "input_seed": 21208,
+      "num_groups": 16,
+      "operator": "groupnorm_silu",
+      "shape": [
+        2,
+        192,
+        31,
+        47
+      ],
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "dtype": "float16",
+      "eps": 1e-05,
+      "input_seed": 21209,
+      "num_groups": 32,
+      "operator": "groupnorm_silu",
+      "shape": [
+        8,
+        320,
+        72,
+        128
+      ],
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "dtype": "float16",
+      "eps": 1e-05,
+      "input_seed": 21210,
+      "num_groups": 32,
+      "operator": "groupnorm_silu",
+      "shape": [
+        12,
+        640,
+        36,
+        64
+      ],
+      "task_id": "test-groupnorm_silu-f10-float16"
+    }
+  ],
+  "total_episode_seconds": 1786.2097013267921,
+  "trained_rl_policy": false,
+  "uncertainty": {
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261125,
+    "confidence_level": 0.95,
+    "interpretation": "Exploratory intervals from six observed task families and three nested seeds; not 54 independent observations or evidence of unseen-operator generalization.",
+    "method": "paired hierarchical percentile bootstrap",
+    "paired_policy_resampling": true,
+    "seeds_per_family": 3,
+    "task_family_clusters": 6
+  },
+  "wall_time_definition": "Actual elapsed time per episode includes reference setup, compilation, policy work, failures, confirmation and teardown; sums exclude gaps between episodes and outer host setup/validation.",
+  "whole_model_speedup_claim": false,
+  "whole_operator_generalization_claim": false
+}
