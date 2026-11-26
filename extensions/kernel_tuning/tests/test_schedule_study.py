@@ -1,5 +1,5 @@
 """Prospective study bookkeeping tests. All evaluators here are CPU fixtures."""
-from dataclasses import asdict
+from dataclasses import asdict, replace
 import json
 from pathlib import Path
 import random
@@ -192,3 +192,121 @@ def test_protocol_can_be_written_without_gpu_execution(tmp_path):
     path = tmp_path / 'prospective.json'
     assert study.main(['--write-protocol', str(path)]) == 0
     assert json.loads(path.read_text()) == study.protocol()
+
+
+class FixtureClock:
+    """Deterministic elapsed time; never sleeps or measures GPU performance."""
+    def __init__(self):
+        self.now = 0.
+
+    def monotonic(self):
+        return self.now
+
+    def advance(self, seconds):
+        self.now += seconds
+
+
+def timed_fixture_evaluator(clock, *, setup_seconds, exploration_seconds):
+    class Timed(FixtureEvaluator):
+        instances = []
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.calls = []
+            self.confirming = False
+            self.instances.append(self)
+
+        def _timed(self, kind, workload, schedule, duration, timeout_seconds):
+            assert not self.closed
+            self.calls.append((kind, timeout_seconds))
+            if duration >= timeout_seconds:
+                clock.advance(timeout_seconds)
+                self.sequence += 1
+                self.closed = True
+                return ScheduleMeasurement(workload.key(), asdict(schedule) if schedule else None,
+                    'timeout', False, None, [], None, timeout_seconds,
+                    {'trial_id': str(self.sequence), 'worker_reaped': True}, backend='test')
+            clock.advance(duration)
+            row = self._row(workload, schedule, 1. if schedule else 2.,
+                            fixed_reference_confirmation='compiled' if kind == 'reference' else None)
+            return replace(row, elapsed_seconds=duration)
+
+        def baseline(self, workload, *, timeout_seconds):
+            return self._timed('setup', workload, None, setup_seconds, timeout_seconds)
+
+        def evaluate(self, workload, schedule, *, timeout_seconds):
+            return self._timed('submit' if self.confirming else 'explore', workload, schedule,
+                               1. if self.confirming else exploration_seconds, timeout_seconds)
+
+        def measure_reference(self, workload, implementation, *, timeout_seconds):
+            assert implementation == 'compiled'
+            self.confirming = True
+            return self._timed('reference', workload, None, 1., timeout_seconds)
+
+    return Timed
+
+
+@pytest.mark.parametrize('policy', study.POLICIES[1:])
+def test_exploration_stops_before_a_short_timeout_can_destroy_confirmation(tmp_path, monkeypatch, policy):
+    clock = FixtureClock()
+    monkeypatch.setattr(study.time, 'monotonic', clock.monotonic)
+    evaluator = timed_fixture_evaluator(clock, setup_seconds=39.99, exploration_seconds=14.99)
+    doc = study.protocol()
+    spec = next(e for e in doc['episodes'] if e['policy'] == policy)
+    task = next(t for t in doc['tasks'] if t['task_id'] == spec['task_id'])
+    row = study._run_episode(spec, task, tmp_path/'evidence', tmp_path/'cache',
+                            env_factory=fixture_env, evaluator_factory=evaluator)
+    assert row['successful']
+    assert row['exploration_queries'] == 2
+    assert row['failed_queries'] == 0
+    assert row['stop_reason'] == 'confirmation_reserve'
+    calls = evaluator.instances[0].calls
+    assert [timeout for kind, timeout in calls if kind == 'explore'] == [15., 15.]
+    assert [kind for kind, _ in calls[-2:]] == ['reference', 'submit']
+    assert row['elapsed_seconds'] < study.EPISODE_SECONDS
+
+
+@pytest.mark.parametrize('policy', study.POLICIES[1:])
+def test_exploration_window_is_rechecked_after_navigation(tmp_path, monkeypatch, policy):
+    clock = FixtureClock()
+    monkeypatch.setattr(study.time, 'monotonic', clock.monotonic)
+    evaluator = timed_fixture_evaluator(clock, setup_seconds=30., exploration_seconds=14.)
+
+    class SlowFirstEdit(ScheduleTuningEnv):
+        delayed = False
+
+        def step(self, action):
+            if ACTIONS[action] not in ('measure', 'submit') and not self.delayed:
+                self.delayed = True
+                clock.advance(12.)
+            return super().step(action)
+
+    doc = study.protocol()
+    spec = next(e for e in doc['episodes'] if e['policy'] == policy)
+    task = next(t for t in doc['tasks'] if t['task_id'] == spec['task_id'])
+    row = study._run_episode(spec, task, tmp_path/'evidence', tmp_path/'cache',
+        env_factory=lambda **kwargs: SlowFirstEdit(**kwargs, allow_test_evaluator=True),
+        evaluator_factory=evaluator)
+    assert row['successful']
+    assert row['exploration_queries'] == 1
+    assert row['confirmation']['schedule'] == row['selected_schedule']
+    assert row['restore_actions'] > 0
+    assert [timeout for kind, timeout in evaluator.instances[0].calls if kind == 'explore'] == [15.]
+
+
+@pytest.mark.parametrize('policy', study.POLICIES[1:])
+def test_full_window_timeout_remains_a_failed_episode(tmp_path, monkeypatch, policy):
+    clock = FixtureClock()
+    monkeypatch.setattr(study.time, 'monotonic', clock.monotonic)
+    evaluator = timed_fixture_evaluator(clock, setup_seconds=30., exploration_seconds=16.)
+    doc = study.protocol()
+    spec = next(e for e in doc['episodes'] if e['policy'] == policy)
+    task = next(t for t in doc['tasks'] if t['task_id'] == spec['task_id'])
+    row = study._run_episode(spec, task, tmp_path/'evidence', tmp_path/'cache',
+                            env_factory=fixture_env, evaluator_factory=evaluator)
+    assert not row['successful']
+    assert row['failure_adjusted_speed_score'] == -1.
+    assert row['exploration_queries'] == row['failed_queries'] == 1
+    assert row['stop_reason'] == 'worker_failure_or_budget'
+    assert row['confirmation'] is None and row['paired_final_reference'] is None
+    assert evaluator.instances[0].closed

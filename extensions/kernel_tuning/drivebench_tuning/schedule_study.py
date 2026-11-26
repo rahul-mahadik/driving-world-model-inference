@@ -67,12 +67,14 @@ def protocol():
             for position, policy in enumerate(order):
                 episodes.append({'episode_id': f'{len(episodes):03d}', 'task_id': task['task_id'],
                                  'seed': seed, 'policy': policy, 'order_position': position})
-    return {'schema_version': 1, 'study_id': 'sequential-schedules-live-v1',
+    return {'schema_version': 1, 'study_id': 'sequential-schedules-live-v2',
+        'parent_protocol_sha256': '428153e29b8644c12d26c578bd8b8f06dda6e1280a476fb09411168a4929e803',
         'scope': 'small live baseline comparison; no trained RL or generalization claim',
         'suite_id': 'operator-generalization-v2', 'suite_sha256': suite.sha256,
         'tasks': tasks, 'seeds': list(SEEDS), 'policies': list(POLICIES), 'episodes': episodes,
         'episode_seconds': EPISODE_SECONDS, 'setup_timeout_seconds': SETUP_TIMEOUT,
         'exploratory_query_timeout_seconds': QUERY_TIMEOUT, 'final_reserve_seconds': FINAL_RESERVE,
+        'exploration_admission': 'require more than the full 15-second query window plus 20-second confirmation reserve before and after navigation; each admitted query receives 15 seconds',
         'max_exploration_queries': MAX_QUERIES, 'repetitions': 7, 'warmups': 2,
         'budget_definition': 'equal 90-second ceilings including reference setup, compilation, edits, failures, fresh confirmation and worker teardown; actual time reported; reference may finish early',
         'cache_policy': 'fresh private TorchInductor and Triton filesystem caches per episode, retained within episode; bulk caches are scratch, not scientific evidence',
@@ -194,10 +196,11 @@ def _run_episode(spec, task, directory, cache_directory, *, env_factory=None, ev
             ended = False
             while row['exploration_queries'] < MAX_QUERIES:
                 remaining = remaining_seconds(info)
-                if remaining <= FINAL_RESERVE:
+                # A shrinking timeout can kill the evaluator while leaving the
+                # final reserve unusable. Admit only a complete query window.
+                if remaining <= FINAL_RESERVE + QUERY_TIMEOUT:
                     row['stop_reason'] = 'confirmation_reserve'
                     break
-                env.trial_timeout_seconds = min(QUERY_TIMEOUT, remaining - FINAL_RESERVE)
                 if row['exploration_queries']:
                     if spec['policy'] == 'random_walk':
                         edits = [rng.choice(legal_edits(workload, env.schedule))]
@@ -222,10 +225,10 @@ def _run_episode(spec, task, directory, cache_directory, *, env_factory=None, ev
                         break
                 # Recompute time after navigation; edits and policy work cost time.
                 remaining = remaining_seconds(info)
-                if remaining <= FINAL_RESERVE:
+                if remaining <= FINAL_RESERVE + QUERY_TIMEOUT:
                     row['stop_reason'] = 'confirmation_reserve'
                     break
-                env.trial_timeout_seconds = min(QUERY_TIMEOUT, remaining - FINAL_RESERVE)
+                env.trial_timeout_seconds = QUERY_TIMEOUT
                 _, reward, terminated, truncated, info = env.step(ACTIONS.index('measure'))
                 total_reward += reward
                 row['exploration_queries'] += 1
