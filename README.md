@@ -2,7 +2,7 @@
 
 DriveBench measures GPU operator latency and memory use. It provides two Gymnasium tracks: contextual-bandit search over recorded configurations, and sequential editing of a kernel schedule with live measurements.
 
-[Dataset and results](results/2026-11-23-operator-generalization-pro-4000/README.md) · [Environment and collection](docs/operator-generalization.md) · [Website](https://rahul-mahadik.github.io/driving-world-model-inference/) · [Citation](CITATION.cff)
+[Datasets and results](RESULTS.md) · [Environment and collection](docs/operator-generalization.md) · [Website](https://rahul-mahadik.github.io/driving-world-model-inference/) · [Citation](CITATION.cff)
 
 ## Measured benchmark
 
@@ -38,9 +38,15 @@ The archive includes the measured table, sample values, policy trajectories and 
 | Track | Action | Evaluation |
 | --- | --- | --- |
 | [Configuration bandit](docs/gymnasium-environment.md) | Query a finished implementation | Published GPU table, replayable on CPU; existing policy results below |
-| [Sequential schedules](extensions/kernel_tuning/docs/sequential-schedules.md) | Transform the current schedule, then measure or submit it | Live CUDA measurements; new kernel paths require GPU validation before performance claims |
+| [Sequential schedules](extensions/kernel_tuning/docs/sequential-schedules.md) | Transform the current schedule, then measure or submit it | Live CUDA measurements; [54-episode RTX 4090 study](results/2026-11-26-sequential-schedules/README.md) |
 
 The bandit track changes the policy's information and remaining budget, but a query does not change the implementation queried next. Its PPO results evaluate a learned search policy on that task; they do not demonstrate a benefit from sequential program transformations. The schedule track changes the program state and available edits. It can still be solved by search or a cost model; an RL advantage is an empirical question.
+
+## Sequential schedule study
+
+A live RTX 4090 comparison evaluated a fixed eager/compiled reference, random walks and greedy local search on six float16 TEST shape families across GEGLU and GroupNorm+SiLU. Each method received three search/timing seeds per task and a 90-second episode ceiling; each workload retained a fixed input seed. Of 54 episodes, 48 reached confirmed submissions. The six failures were random-walk query timeouts.
+
+The fixed reference had the highest observed mean failure-adjusted speed score, but its descriptive paired interval against greedy search included zero. This comparison evaluates two search methods and a reference; trained sequential RL policies remain unevaluated. [Results, trajectories and CPU reproduction](results/2026-11-26-sequential-schedules/README.md) accompany the [live environment specification](extensions/kernel_tuning/docs/sequential-schedules.md).
 
 ## Use the configuration bandit
 

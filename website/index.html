@@ -15,8 +15,8 @@
 <main id="main" class="container">
   <section class="hero" aria-labelledby="title">
     <h1 id="title">DriveBench</h1>
-    <p class="lede">A GPU kernel-tuning benchmark with two Gymnasium tracks: search over recorded configurations, and sequential kernel-schedule editing. The published benchmark gives agents 8 trials on an unseen workload.</p>
-    <div class="link-row hero-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference">Code</a><a href="https://raw.githubusercontent.com/rahul-mahadik/driving-world-model-inference/main/results/2026-11-23-operator-generalization-pro-4000/data.tar.gz">Dataset</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/docs/operator-generalization.md">Docs</a><a href="#citation">Cite</a></div>
+    <p class="lede">A GPU kernel-tuning benchmark with two Gymnasium tracks: search over recorded configurations, and sequential kernel-schedule editing. The configuration bandit uses eight queries; the live schedule study uses elapsed-time budgets.</p>
+    <div class="link-row hero-links"><a href="https://github.com/rahul-mahadik/driving-world-model-inference">Code</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/RESULTS.md">Data</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference#choose-a-track">Docs</a><a href="#citation">Cite</a></div>
     <ul class="hero-findings">
       <li>Compile with eager fallback has the lowest mean regret over 20 episodes, ahead of PPO and TPE.</li>
       <li>LLM agents re-query configurations they already tried on most turns.</li>
@@ -66,7 +66,7 @@
 
   <section id="environment" class="section" aria-labelledby="environment-title">
     <h2 id="environment-title">Environments</h2>
-    <p>The published task is a contextual bandit: each action queries a finished configuration. A separate schedule-editing track makes actions transform the current kernel and change which edits are legal next.</p>
+    <p>The configuration track is a contextual bandit: each action queries a finished configuration. A separate schedule-editing track makes actions transform the current kernel and change which edits are legal next.</p>
     <div class="code-block"><div class="code-heading"><span>Gymnasium</span><button type="button" data-copy="env-code">Copy</button></div><pre tabindex="0"><code id="env-code">import gymnasium as gym
 import drivebench_tuning
 
@@ -87,8 +87,23 @@ env.close()</code></pre></div>
     </tbody></table>
     <p>The configuration bandit replays recorded GPU timings on a laptop. Its live evaluator measures finished configurations on your GPU.</p>
     <h3>Sequential schedules</h3>
-    <p>Edit fusion and per-stage launch settings, measure the resulting kernel, or submit it. The current schedule, legal-action mask, latest measurement and remaining time guide the next decision. This track uses fresh CUDA measurements rather than the published lookup table; it has no published GPU performance result yet.</p>
-    <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/extensions/kernel_tuning/docs/sequential-schedules.md">Schedule environment specification</a></div>
+    <p><code>DriveBench/KernelSchedule-v0</code> edits fusion, per-stage launch settings and reduction strategy. Edit actions change the current schedule; measure and submit evaluate it. Unfusing, for example, enables activation-stage edits. Observations include the current schedule, legal-action mask, latest measurement and remaining time. Measurements are fresh, and compilation, failed queries and policy execution consume the budget.</p>
+    <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/extensions/kernel_tuning/docs/sequential-schedules.md">Schedule environment specification</a><a href="#sequential-results">Live comparison</a></div>
+  </section>
+
+  <section id="sequential-results" class="section" aria-labelledby="sequential-title">
+    <h2 id="sequential-title">Live schedule search</h2>
+    <p class="section-intro">Six float16 test shape families across GEGLU and GroupNorm+SiLU, three search seeds per method, one RTX 4090. Each episode has a 90-second ceiling.</p>
+    <p>The fixed eager/compiled reference had the highest observed mean score. Its paired difference from greedy local search has an interval that includes zero. Random walks timed out in six of 18 episodes.</p>
+    <div class="table-wrap"><table class="schedule-results"><thead><tr><th scope="col">Method</th><th scope="col" class="numeric">Mean score ↑</th><th scope="col" class="numeric">95% interval</th><th scope="col" class="numeric">Confirmed</th><th scope="col" class="numeric">Median time</th></tr></thead><tbody>
+      <tr><th scope="row">Fixed eager/compiled reference</th><td class="numeric">−0.031</td><td class="numeric">[−0.145, 0.063]</td><td class="numeric">18/18</td><td class="numeric">7.6 s</td></tr>
+      <tr><th scope="row">Greedy local search</th><td class="numeric">−0.164</td><td class="numeric">[−0.370, 0.006]</td><td class="numeric">18/18</td><td class="numeric">56.2 s</td></tr>
+      <tr><th scope="row">Random walk</th><td class="numeric">−0.435</td><td class="numeric">[−0.776, −0.107]</td><td class="numeric">12/18</td><td class="numeric">56.0 s</td></tr>
+    </tbody></table></div>
+    <p class="table-note">Score: clipped <code>1 − candidate latency / fresh reference latency</code>; failed or unconfirmed episodes receive −1. The reference role is selected at reset and then fixed. Scores use fresh final timing batches. Intervals resample shape families and nested seeds; they describe this small study.</p>
+    <figure><img src="./figures/benchmark/sequential-schedule-study.svg" alt="Final scores and episode wall times for all 54 attempts. Random walks fail on two GroupNorm shape families; the fixed reference finishes sooner and has the highest overall mean score."><figcaption>Every seed and failed episode is shown. A 128-query cap and the final-measurement reserve can end exploration before the 90-second ceiling.</figcaption></figure>
+    <p class="section-end">This comparison exercises sequential transformations and fresh GPU feedback. It does not train a sequential RL policy or measure end-to-end video-model performance.</p>
+    <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/tree/main/results/2026-11-26-sequential-schedules">Methods, data and CPU reproduction</a><a href="https://raw.githubusercontent.com/rahul-mahadik/driving-world-model-inference/main/results/2026-11-26-sequential-schedules/trajectories/trajectories.jsonl.gz">Download trajectories</a><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/CONTRIBUTING.md#submit-a-sequential-schedule-policy">Submit a schedule policy</a></div>
   </section>
 
   <section id="findings" class="section" aria-labelledby="findings-title">
@@ -154,7 +169,7 @@ timeout 1800s python -m drivebench_tuning.table_collection collect \
 
   <section id="submit" class="section" aria-labelledby="submit-title">
     <h2 id="submit-title">Submit a result</h2>
-    <p>Run your policy on the test split with 8 trials and 20 episodes per workload, then open a PR with the trajectory file. We recompute regret from the table and add verified submissions to the leaderboard.</p>
+    <p>For the configuration-bandit leaderboard, run your policy on the test split with 8 trials and 20 episodes per workload, then open a PR with the trajectory file. We recompute regret from the table and add verified submissions. Sequential policies use the live study's workload and time budgets, with complete action and measurement histories.</p>
     <div class="link-row"><a href="https://github.com/rahul-mahadik/driving-world-model-inference/blob/main/CONTRIBUTING.md#submit-a-policy-result">Submission instructions</a></div>
   </section>
 

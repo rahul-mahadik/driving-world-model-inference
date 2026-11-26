@@ -1,0 +1,142 @@
+{
+  "all_schedules_validated": false,
+  "cases": [
+    {
+      "name": "test_cuda_schedule_numerical_contract[geglu-chunked-True-float16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[geglu-chunked-True-bfloat16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[geglu-chunked-True-float32]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[geglu-chunked-False-float16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[geglu-chunked-False-bfloat16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[geglu-chunked-False-float32]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-chunked-True-float16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-chunked-True-bfloat16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-chunked-True-float32]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-chunked-False-float16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-chunked-False-bfloat16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-chunked-False-float32]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-single-True-float16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-single-True-bfloat16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-single-True-float32]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-single-False-float16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-single-False-bfloat16]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_schedule_numerical_contract[groupnorm_silu-single-False-float32]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_nondefault_stage_launches_and_tails[geglu-fused-upper-launch]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_nondefault_stage_launches_and_tails[geglu-split-independent-launches]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_nondefault_stage_launches_and_tails[groupnorm-split-three-launch-settings]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_nondefault_stage_launches_and_tails[groupnorm-single-eight-warps]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_unfused_stages_use_the_current_stream[geglu]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_unfused_stages_use_the_current_stream[groupnorm_silu]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_rejects_invalid_or_mismatched_requests_without_mutating_inputs[geglu]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_rejects_invalid_or_mismatched_requests_without_mutating_inputs[groupnorm_silu]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_environment_baseline_repeated_measurements_and_submission[workload0]",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_cuda_environment_baseline_repeated_measurements_and_submission[workload1]",
+      "outcome": "passed"
+    }
+  ],
+  "errors": 0,
+  "evidence_kind": "measured-cuda-validation",
+  "failed": 0,
+  "gpu_model": "NVIDIA GeForce RTX 4090",
+  "model_quality_validated": false,
+  "original_gate_receipt_sha256": "e2a1e83e117b0eebfaabc929989ecf2d0ec9eadd28f3677eb9b30f1dc38295e2",
+  "passed": 28,
+  "raw_junit_sha256": "4990ef892fdd81f85acbd06b9895af3d8c80ec7a8a9b238c9ce0ab0a0d86b97f",
+  "schema_version": 1,
+  "scope": "Representative fused/unfused and reduction paths, stage launches, tails, dtypes, streams, input checks and live environment lifecycle; not exhaustive schedule coverage.",
+  "skipped": 0,
+  "tests": 28,
+  "unchanged_validated_module_sha256": {
+    "_schedule_triton.py": "5a31b2fc13b7db2fb32c83a5d3e51a2f2d5590a17f7f41ff567c3e06368043a1",
+    "_triton_kernels.py": "3a81a48d6e157f1d1c55387cb7ac4651c0b01995a65ec057a6a16574e6adcc4c",
+    "benchmark.py": "54d11da83f6f4655abeee9368d0dfbcd85539e2b202a3cd3a0c90d7c5ba03750",
+    "contract.py": "134e029e73ac87c8149212cb76ee12002f27ba3c80e817a603279a93dc03ff1d",
+    "kernels.py": "4c934f15bb0d42d071fdf539ec51ff5a27086063b4ea30900ddf7b3edccfba94",
+    "schedule.py": "c44d6a5cf6fd8dd54dcfa6f87dacbb11f329055e4d0e52147a6147dde6eece3b",
+    "schedule_env.py": "73a5e5f7dc7766dbc990e875922f232a61ada569b49a7ea2e42ec4a68cea1073",
+    "schedule_kernels.py": "21e51c6c541af190ff34aa31f2516150d454d62448781d07d75ccae53e747de5",
+    "schedule_measurement.py": "f54d3defa843a2eeefbaa038e8e393fe9913db48eea85a1b42ecd01ada4a1eab"
+  },
+  "v2_change": "Study query admission only; validated modules unchanged.",
+  "v2_gate_reused": true
+}

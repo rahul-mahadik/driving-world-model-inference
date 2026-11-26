@@ -1,0 +1,23 @@
+{
+  "analysis_plan_sha256": "f52e0d8c76396ebcd92c6661d534f547d9594b3d92d7bad0fd18c459c34fd9f5",
+  "backup_root_receipt_sha256": "f3dc2576cd44edf4ec53581aa01013d8a86674df331ff09df349c4dbd6b5f748",
+  "created_utc": "2026-11-26T01:42:25.767992+00:00",
+  "full_backup_independently_rehashed": true,
+  "original_evidence_unchanged": true,
+  "physical_runtime_cohorts": 1,
+  "protocol_sha256": "cee48654a1055da038e1101c49d6678c4e7bf057d14e1ff1adfd5edb52aa30cc",
+  "public_episodes_sha256": "e5bfdf889400cf5319136f1369ac23cea51e47835a9a2e8068fe12acf9e4fa88",
+  "public_summary_sha256": "9a83dcdbc64bb0a4d9145067c5239fdd2c0b0a63dbc23990adaa67bdf12b01c6",
+  "query_counts": {
+    "correct": 2986,
+    "finished": 2992,
+    "started": 2992,
+    "timeouts": 6
+  },
+  "review_method": "Separate local reconstruction; not external scholarly peer review.",
+  "review_receipt_sha256": "beb747af87e915c18f19d36681efd14756e64f0236a329771b46c23699e461f5",
+  "schema_version": 1,
+  "scope": "Independent reconstruction from raw parent evaluator journals, per-episode results, frozen source and seven-sample final measurements; paired hierarchical bootstrap independently implemented without importing the statistical analyzer.",
+  "status": "passed",
+  "verified_episodes": 54
+}

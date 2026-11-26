@@ -52,7 +52,8 @@ class CudaScheduleEvaluator:
     partial attempts. ``seed`` controls the draw from fresh timing samples only.
     The worker uses the existing pinned Torch 2.10 / Triton 3.6 evaluator runtime.
     """
-    def __init__(self, evidence_directory, *, repetitions=7, warmups=2, device=0, seed=0):
+    def __init__(self, evidence_directory, *, repetitions=7, warmups=2, device=0, seed=0,
+                 cache_directory=None):
         if type(repetitions) is not int or not 3 <= repetitions <= 1000:
             raise ValueError('repetitions must be 3..1000')
         if type(warmups) is not int or not 1 <= warmups <= 100:
@@ -65,6 +66,9 @@ class CudaScheduleEvaluator:
             raise RuntimeError('Bounded CUDA subprocess execution requires POSIX process groups')
         self.directory = Path(evidence_directory).resolve()
         self.directory.mkdir(parents=True, exist_ok=False)
+        self.cache_directory = Path(cache_directory).resolve() if cache_directory is not None else None
+        if self.cache_directory is not None:
+            self.cache_directory.mkdir(parents=True, exist_ok=False)
         self.repetitions, self.warmups, self.device = repetitions, warmups, device
         self._random = random.Random(seed)
         self._process = None
@@ -89,6 +93,9 @@ class CudaScheduleEvaluator:
     def _start(self):
         env = dict(os.environ)
         env['TORCHINDUCTOR_COMPILE_THREADS'] = '1'
+        if self.cache_directory is not None:
+            env['TORCHINDUCTOR_CACHE_DIR'] = str(self.cache_directory / 'inductor')
+            env['TRITON_CACHE_DIR'] = str(self.cache_directory / 'triton')
         self._stderr = (self.directory / 'worker-stderr.log').open('ab', buffering=0)
         self._process = subprocess.Popen(
             [sys.executable, '-u', '-m', 'drivebench_tuning.schedule_measurement', '--worker'],
@@ -146,7 +153,16 @@ class CudaScheduleEvaluator:
         validate_schedule(workload, schedule)
         return self._query(workload, asdict(schedule), timeout_seconds=timeout_seconds)
 
-    def _query(self, workload, schedule, *, timeout_seconds):
+    def measure_reference(self, workload: Workload, implementation: str, *, timeout_seconds: float):
+        """Fresh confirmation of one fixed reference role; never reselect a role."""
+        if not self._baseline_done:
+            raise RuntimeError('A successful baseline is required before reference confirmation')
+        if implementation not in ('eager', 'compiled'):
+            raise ValueError('reference implementation must be eager or compiled')
+        return self._query(workload, None, timeout_seconds=timeout_seconds,
+                           reference_role=implementation)
+
+    def _query(self, workload, schedule, *, timeout_seconds, reference_role=None):
         if self._closed:
             raise RuntimeError('Evaluator is closed')
         if not isinstance(workload, Workload):
@@ -162,6 +178,8 @@ class CudaScheduleEvaluator:
         request = {'trial_id': trial_id, 'workload': asdict(workload), 'schedule': schedule,
                    'timeout_seconds': timeout_seconds, 'repetitions': self.repetitions,
                    'warmups': self.warmups, 'device': self.device,
+                   'reference_role': reference_role,
+                   'cache_directory': str(self.cache_directory) if self.cache_directory else None,
                    'worker_directory': str(self.directory / 'worker')}
         evidence = {'trial_id': trial_id, 'evidence_directory': str(self.directory),
                     'latency_boundary': 'one CUDA-event invocation drawn from a fresh query sample set',
@@ -193,6 +211,8 @@ class CudaScheduleEvaluator:
             runtime = evidence.get('runtime')
             hashes = evidence.get('input_sha256')
             if status == 'ok':
+                if reference_role is not None and evidence.get('fixed_reference_confirmation') != reference_role:
+                    raise ValueError('Reference confirmation role differs from the requested fixed role')
                 if len(samples) != self.repetitions or type(peak) is not int or peak <= 0:
                     raise ValueError('Successful trial needs complete timings and positive allocation')
                 if not isinstance(runtime, dict) or not runtime.get('gpu_uuid') or not evidence.get('cohort_id'):
@@ -316,7 +336,7 @@ def _measure_candidate(runner, workload, schedule, trial_id):
                 'peak_allocated_bytes': None, 'evidence': evidence, 'fatal': not recoverable}
 
 
-def _bind_schedule_runtime(runner):
+def _bind_schedule_runtime(runner, cache_policy='shared filesystem caches retained'):
     # Keep the original evaluator/runtime.json untouched as provenance.
     # This track adds measured hardware context and gives the augmented
     # document its own cohort identity, used by every subsequent trial.
@@ -324,7 +344,7 @@ def _bind_schedule_runtime(runner):
     count = properties.multi_processor_count
     if type(count) is not int or count <= 0:
         raise RuntimeError('CUDA runtime must expose a positive multiprocessor count')
-    runtime = {**runner.runtime, 'schedule_runtime_schema': 1,
+    runtime = {**runner.runtime, 'schedule_runtime_schema': 1, 'schedule_cache_policy': cache_policy,
                'parent_runtime_cohort_id': runner.cohort_id, 'multiprocessor_count': count}
     runner.runtime = runtime
     runner.cohort_id = hashlib.sha256(json.dumps(runtime, sort_keys=True).encode()).hexdigest()
@@ -339,10 +359,25 @@ def _worker_request(request, runner):
         runner = CudaEvaluator(EvidenceJournal(request['worker_directory']),
             repetitions=request['repetitions'], warmups=request['warmups'],
             max_seconds=request['timeout_seconds'], device=request['device'])
-        _bind_schedule_runtime(runner)
+        cache = request.get('cache_directory')
+        if cache is not None:
+            if (os.environ.get('TORCHINDUCTOR_CACHE_DIR') != str(Path(cache) / 'inductor') or
+                    os.environ.get('TRITON_CACHE_DIR') != str(Path(cache) / 'triton')):
+                raise RuntimeError('Worker compiler cache directories do not match the episode')
+        _bind_schedule_runtime(runner, 'fresh private episode caches' if cache else 'shared filesystem caches retained')
     # Parent deadline is authoritative and includes worker setup and IPC.
     runner.deadline = time.monotonic() + request['timeout_seconds']
-    if request['schedule'] is None:
+    if request.get('reference_role') is not None:
+        role = request['reference_role']
+        if role not in ('eager', 'compiled') or request['schedule'] is not None:
+            raise ValueError('Invalid fixed reference confirmation')
+        measured = runner.measure(workload, None, implementation=role)
+        result = {'status': measured.status, 'correct': measured.correct,
+                  'raw_samples_ms': measured.evidence.get('cuda_event_ms', []),
+                  'peak_allocated_bytes': measured.peak_allocated_bytes,
+                  'evidence': {**measured.evidence, 'runtime': runner.runtime,
+                               'fixed_reference_confirmation': role}}
+    elif request['schedule'] is None:
         eager = runner.baseline(workload)
         if eager.status != 'ok':
             raise RuntimeError('Correct eager baseline is required')

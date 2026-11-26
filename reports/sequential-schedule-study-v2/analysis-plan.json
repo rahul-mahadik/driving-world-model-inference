@@ -1,0 +1,28 @@
+{
+  "bootstrap": {
+    "confidence_level": 0.95,
+    "estimates": "per-policy primary score and all pairwise mean score differences",
+    "inner": "for each sampled family occurrence, sample three seed IDs with replacement",
+    "method": "paired hierarchical percentile bootstrap",
+    "outer": "sample six task/family clusters with replacement",
+    "pairing": "use the same sampled family/seed indices for every policy",
+    "resamples": 10000,
+    "seed": 20261125
+  },
+  "inference_scope": "descriptive small-sample comparison on these two operators and one GPU/runtime cohort; no oracle regret, unseen-operator transfer, trained-RL or policy-superiority claim",
+  "partial_campaign": "preserve all attempts; do not publish a complete-study aggregate when identities, source, hardware, or completion checks fail",
+  "point_estimate": "arithmetic mean across seeds within each family, then equal-weight mean across six families",
+  "primary_score": "clip(1-confirmed_median_ms/paired_final_reference_median_ms,-1,1); failed or unconfirmed episode scores -1",
+  "protocol_sha256": "cee48654a1055da038e1101c49d6678c4e7bf057d14e1ff1adfd5edb52aa30cc",
+  "registered_before_gpu_measurement": true,
+  "revision_reason": "v1 exploration admission could shrink a query timeout below normal measurement cost and kill the worker before final confirmation; v1 was interrupted and preserved separately. Only query admission and its source/protocol binding change; tasks, seeds, policies, scoring and analysis are unchanged.",
+  "schema_version": 1,
+  "secondary_reporting": [
+    "successful and failed episode counts by task and policy",
+    "conditional confirmed latency ratios, with denominators and no substitution for failed episodes",
+    "elapsed wall time including setup and teardown",
+    "exploration queries, failed queries, invalid edits and query safety-cap hits"
+  ],
+  "study_id": "sequential-schedules-live-v2",
+  "unit": "six public TEST task/shape families, each with three paired seeds and three policies"
+}

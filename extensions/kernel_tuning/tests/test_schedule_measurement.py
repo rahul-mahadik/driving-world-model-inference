@@ -46,6 +46,8 @@ for line in sys.stdin:
         'evidence':{'runtime':{'gpu_uuid':'test-only-fixture','gpu_name':'no GPU measured'},
                     'cohort_id':'test-only-fixture','input_sha256':['0'*64],
                     'fixture_not_hardware':True}}
+    if req.get('reference_role'):
+        result['evidence']['fixed_reference_confirmation']=req['reference_role']
     print(json.dumps(result),flush=True)
 '''
 
@@ -191,6 +193,45 @@ def test_import_does_not_import_optional_gpu_libraries():
     assert result.returncode == 0, result.stderr
 
 
+def test_fixed_reference_confirmation_is_fresh_and_role_bound(tmp_path, monkeypatch):
+    fake_start(monkeypatch, WORKER)
+    evaluator = CudaScheduleEvaluator(tmp_path / 'run', repetitions=3)
+    baseline = evaluator.baseline(WORKLOAD, timeout_seconds=5)
+    confirmed = evaluator.measure_reference(WORKLOAD, 'compiled', timeout_seconds=5)
+    assert confirmed.correct and confirmed.evidence['fixed_reference_confirmation'] == 'compiled'
+    assert confirmed.evidence['trial_id'] != baseline.evidence['trial_id']
+    assert confirmed.raw_samples_ms != baseline.raw_samples_ms
+    with pytest.raises(ValueError):
+        evaluator.measure_reference(WORKLOAD, 'triton', timeout_seconds=5)
+    evaluator.close()
+
+
+def test_rejects_changed_reference_role(tmp_path, monkeypatch):
+    code = WORKER.replace("result['evidence']['fixed_reference_confirmation']=req['reference_role']",
+                          "result['evidence']['fixed_reference_confirmation']='eager'")
+    fake_start(monkeypatch, code)
+    evaluator = CudaScheduleEvaluator(tmp_path / 'run', repetitions=3)
+    assert evaluator.baseline(WORKLOAD, timeout_seconds=5).correct
+    confirmed = evaluator.measure_reference(WORKLOAD, 'compiled', timeout_seconds=5)
+    assert confirmed.status == 'error' and confirmed.evidence['worker_reaped']
+
+
+def test_private_cache_paths_are_set_before_worker_start(tmp_path, monkeypatch):
+    original = subprocess.Popen
+    observed = []
+    def spawn(args, **kwargs):
+        observed.append(kwargs['env'])
+        return original([sys.executable, '-u', '-c', WORKER], **kwargs)
+    monkeypatch.setattr(subprocess, 'Popen', spawn)
+    evaluator = CudaScheduleEvaluator(tmp_path / 'run', cache_directory=tmp_path / 'cache', repetitions=3)
+    assert evaluator.baseline(WORKLOAD, timeout_seconds=5).correct
+    evaluator.close()
+    assert observed[0]['TORCHINDUCTOR_CACHE_DIR'] == str(tmp_path / 'cache/inductor')
+    assert observed[0]['TRITON_CACHE_DIR'] == str(tmp_path / 'cache/triton')
+    with pytest.raises(FileExistsError):
+        CudaScheduleEvaluator(tmp_path / 'second-run', cache_directory=tmp_path / 'cache')
+
+
 def test_real_worker_rejects_missing_cuda_without_fallback(tmp_path, monkeypatch):
     # Exercise the actual subprocess entry point while explicitly hiding GPUs.
     # This tests failure handling only; it does not execute a GPU workload.
@@ -234,8 +275,9 @@ def test_cuda_environment_baseline_repeated_measurements_and_submission(tmp_path
         pytest.skip('Requires the declared Torch 2.10 / Triton 3.6 live runtime')
     from drivebench_tuning.schedule import ACTIONS
     from drivebench_tuning.schedule_env import ScheduleTuningEnv
+    evaluator = CudaScheduleEvaluator(tmp_path / 'backend', cache_directory=tmp_path / 'scratch')
     env = ScheduleTuningEnv(workloads=[workload], budget_seconds=600,
-                           trial_timeout_seconds=300, evidence_dir=tmp_path / 'episode')
+                           trial_timeout_seconds=300, evidence_dir=tmp_path / 'episode', evaluator=evaluator)
     try:
         observation, initial = env.reset(seed=47)
         assert env.observation_space.contains(observation)
@@ -245,8 +287,14 @@ def test_cuda_environment_baseline_repeated_measurements_and_submission(tmp_path
         assert set(baseline['evidence']['baseline_roles']) == {'eager', 'compiled'}
         runtime = baseline['evidence']['runtime']
         assert runtime['multiprocessor_count'] > 0
+        assert runtime['schedule_cache_policy'] == 'fresh private episode caches'
         assert runtime['parent_runtime_cohort_id'] != baseline['evidence']['cohort_id']
         records = [baseline]
+        reference = evaluator.measure_reference(workload, baseline['evidence']['selected_reference'], timeout_seconds=60)
+        assert reference.correct
+        assert reference.evidence['fixed_reference_confirmation'] == baseline['evidence']['selected_reference']
+        assert reference.evidence['cohort_id'] == baseline['evidence']['cohort_id']
+        records.append(asdict(reference))
         # Make a real edit, then issue repeated measurements of the resulting
         # schedule. The final submit is another fresh invocation sample set.
         _, _, terminated, truncated, _ = env.step(ACTIONS.index('unfuse'))
@@ -264,9 +312,9 @@ def test_cuda_environment_baseline_repeated_measurements_and_submission(tmp_path
             for key in ('runtime', 'cohort_id', 'input_sha256'):
                 assert result['evidence'][key] == baseline['evidence'][key]
             records.append(result)
-        assert len({row['evidence']['trial_id'] for row in records}) == 4
+        assert len({row['evidence']['trial_id'] for row in records}) == 5
         assert env.evaluator._process is None
-        worker = Path(info['evidence_directory']) / 'evaluator/worker'
+        worker = evaluator.directory / 'worker'
         original = json.loads((worker / 'runtime.json').read_text())
         augmented = json.loads((worker / 'schedule-runtime.json').read_text())
         assert original['cohort_id'] == augmented['parent_runtime_cohort_id']

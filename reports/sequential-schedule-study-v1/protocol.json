@@ -1,0 +1,596 @@
+{
+  "budget_definition": "equal 90-second ceilings including reference setup, compilation, edits, failures, fresh confirmation and worker teardown; actual time reported; reference may finish early",
+  "cache_policy": "fresh private TorchInductor and Triton filesystem caches per episode, retained within episode; bulk caches are scratch, not scientific evidence",
+  "episode_seconds": 90.0,
+  "episodes": [
+    {
+      "episode_id": "000",
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7101,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "episode_id": "001",
+      "order_position": 1,
+      "policy": "random_walk",
+      "seed": 7101,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "episode_id": "002",
+      "order_position": 2,
+      "policy": "greedy_local",
+      "seed": 7101,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "episode_id": "003",
+      "order_position": 0,
+      "policy": "random_walk",
+      "seed": 7101,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "episode_id": "004",
+      "order_position": 1,
+      "policy": "greedy_local",
+      "seed": 7101,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "episode_id": "005",
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7101,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "episode_id": "006",
+      "order_position": 0,
+      "policy": "greedy_local",
+      "seed": 7101,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "episode_id": "007",
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7101,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "episode_id": "008",
+      "order_position": 2,
+      "policy": "random_walk",
+      "seed": 7101,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "episode_id": "009",
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "episode_id": "010",
+      "order_position": 1,
+      "policy": "random_walk",
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "episode_id": "011",
+      "order_position": 2,
+      "policy": "greedy_local",
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "episode_id": "012",
+      "order_position": 0,
+      "policy": "random_walk",
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "episode_id": "013",
+      "order_position": 1,
+      "policy": "greedy_local",
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "episode_id": "014",
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "episode_id": "015",
+      "order_position": 0,
+      "policy": "greedy_local",
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "episode_id": "016",
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "episode_id": "017",
+      "order_position": 2,
+      "policy": "random_walk",
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "episode_id": "018",
+      "order_position": 0,
+      "policy": "random_walk",
+      "seed": 7102,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "episode_id": "019",
+      "order_position": 1,
+      "policy": "greedy_local",
+      "seed": 7102,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "episode_id": "020",
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7102,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "episode_id": "021",
+      "order_position": 0,
+      "policy": "greedy_local",
+      "seed": 7102,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "episode_id": "022",
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7102,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "episode_id": "023",
+      "order_position": 2,
+      "policy": "random_walk",
+      "seed": 7102,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "episode_id": "024",
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7102,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "episode_id": "025",
+      "order_position": 1,
+      "policy": "random_walk",
+      "seed": 7102,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "episode_id": "026",
+      "order_position": 2,
+      "policy": "greedy_local",
+      "seed": 7102,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "episode_id": "027",
+      "order_position": 0,
+      "policy": "random_walk",
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "episode_id": "028",
+      "order_position": 1,
+      "policy": "greedy_local",
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "episode_id": "029",
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "episode_id": "030",
+      "order_position": 0,
+      "policy": "greedy_local",
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "episode_id": "031",
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "episode_id": "032",
+      "order_position": 2,
+      "policy": "random_walk",
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "episode_id": "033",
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "episode_id": "034",
+      "order_position": 1,
+      "policy": "random_walk",
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "episode_id": "035",
+      "order_position": 2,
+      "policy": "greedy_local",
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "episode_id": "036",
+      "order_position": 0,
+      "policy": "greedy_local",
+      "seed": 7103,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "episode_id": "037",
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7103,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "episode_id": "038",
+      "order_position": 2,
+      "policy": "random_walk",
+      "seed": 7103,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "episode_id": "039",
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7103,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "episode_id": "040",
+      "order_position": 1,
+      "policy": "random_walk",
+      "seed": 7103,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "episode_id": "041",
+      "order_position": 2,
+      "policy": "greedy_local",
+      "seed": 7103,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "episode_id": "042",
+      "order_position": 0,
+      "policy": "random_walk",
+      "seed": 7103,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "episode_id": "043",
+      "order_position": 1,
+      "policy": "greedy_local",
+      "seed": 7103,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "episode_id": "044",
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7103,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "episode_id": "045",
+      "order_position": 0,
+      "policy": "greedy_local",
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "episode_id": "046",
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "episode_id": "047",
+      "order_position": 2,
+      "policy": "random_walk",
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "episode_id": "048",
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "episode_id": "049",
+      "order_position": 1,
+      "policy": "random_walk",
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "episode_id": "050",
+      "order_position": 2,
+      "policy": "greedy_local",
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "episode_id": "051",
+      "order_position": 0,
+      "policy": "random_walk",
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "episode_id": "052",
+      "order_position": 1,
+      "policy": "greedy_local",
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "episode_id": "053",
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    }
+  ],
+  "exploratory_query_timeout_seconds": 15.0,
+  "final_reserve_seconds": 20.0,
+  "greedy": "seed-shuffled legal one-edit neighbors of current best; failed/nonimproving candidates return by legal edits; repeat incumbent if all neighbors visited",
+  "max_exploration_queries": 128,
+  "policies": [
+    "compiled_eager_no_edit",
+    "random_walk",
+    "greedy_local"
+  ],
+  "random": "one uniformly sampled legal edit from current schedule between each new measurement; best observed schedule restored before final submit",
+  "reference": "lower-median correct eager/compiled role chosen during reset; freshly remeasure that fixed role; no environment-return claim for comparator",
+  "repetitions": 7,
+  "reporting": "all attempts and failures included; failure-adjusted speed score assigns -1 to unconfirmed episodes, otherwise clip(1-confirmed_median/paired_final_reference_median,-1,1); environment return uses its original initial-reference normalization and is separate; no oracle/regret",
+  "schema_version": 1,
+  "scope": "small live baseline comparison; no trained RL or generalization claim",
+  "seeds": [
+    7101,
+    7102,
+    7103
+  ],
+  "selection": "minimum observed sampled latency among correct explored schedules; restore by charged legal transformations; fresh fixed-reference then selected-schedule confirmation within final reserve; final observations never change selection",
+  "setup_timeout_seconds": 45.0,
+  "source_sha256": {
+    "_schedule_triton.py": "5a31b2fc13b7db2fb32c83a5d3e51a2f2d5590a17f7f41ff567c3e06368043a1",
+    "_triton_kernels.py": "3a81a48d6e157f1d1c55387cb7ac4651c0b01995a65ec057a6a16574e6adcc4c",
+    "benchmark.py": "54d11da83f6f4655abeee9368d0dfbcd85539e2b202a3cd3a0c90d7c5ba03750",
+    "contract.py": "134e029e73ac87c8149212cb76ee12002f27ba3c80e817a603279a93dc03ff1d",
+    "kernels.py": "4c934f15bb0d42d071fdf539ec51ff5a27086063b4ea30900ddf7b3edccfba94",
+    "schedule.py": "c44d6a5cf6fd8dd54dcfa6f87dacbb11f329055e4d0e52147a6147dde6eece3b",
+    "schedule_env.py": "73a5e5f7dc7766dbc990e875922f232a61ada569b49a7ea2e42ec4a68cea1073",
+    "schedule_kernels.py": "21e51c6c541af190ff34aa31f2516150d454d62448781d07d75ccae53e747de5",
+    "schedule_measurement.py": "f54d3defa843a2eeefbaa038e8e393fe9913db48eea85a1b42ecd01ada4a1eab",
+    "schedule_study.py": "343f33b2e9b47f954ead8778bfefb43cb18c4f160047b1487b1d67d2c7b4e6bc"
+  },
+  "study_id": "sequential-schedules-live-v1",
+  "suite_id": "operator-generalization-v2",
+  "suite_sha256": "5ef382542f26ca5b351805b88ae794e676c175b438ba14a1d9caf047975fda7f",
+  "tasks": [
+    {
+      "features": [
+        0.0,
+        0.0,
+        0.75,
+        0.03125,
+        0.26745064728964574,
+        0.34375,
+        0.0,
+        0.3125
+      ],
+      "metadata": {
+        "split": "test",
+        "workload": {
+          "dtype": "float16",
+          "eps": 1e-05,
+          "num_groups": 32,
+          "operator": "geglu",
+          "seed": 21108,
+          "shape": [
+            2,
+            377,
+            2048
+          ]
+        }
+      },
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "features": [
+        0.0,
+        0.0,
+        0.75,
+        0.09375,
+        0.3066806622255324,
+        0.4033403311127662,
+        0.0,
+        0.3125
+      ],
+      "metadata": {
+        "split": "test",
+        "workload": {
+          "dtype": "float16",
+          "eps": 1e-05,
+          "num_groups": 32,
+          "operator": "geglu",
+          "seed": 21109,
+          "shape": [
+            8,
+            900,
+            7680
+          ]
+        }
+      },
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "features": [
+        0.0,
+        0.0,
+        0.75,
+        0.125,
+        0.2682800781475361,
+        0.41631025296523005,
+        0.0,
+        0.3125
+      ],
+      "metadata": {
+        "split": "test",
+        "workload": {
+          "dtype": "float16",
+          "eps": 1e-05,
+          "num_groups": 32,
+          "operator": "geglu",
+          "seed": 21110,
+          "shape": [
+            16,
+            384,
+            10240
+          ]
+        }
+      },
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "features": [
+        1.0,
+        0.0,
+        1.0,
+        0.03125,
+        0.23703007814753613,
+        0.15481863469958984,
+        0.17358090161492618,
+        0.25
+      ],
+      "metadata": {
+        "split": "test",
+        "workload": {
+          "dtype": "float16",
+          "eps": 1e-05,
+          "num_groups": 16,
+          "operator": "groupnorm_silu",
+          "seed": 21208,
+          "shape": [
+            2,
+            192,
+            31,
+            47
+          ]
+        }
+      },
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "features": [
+        1.0,
+        0.0,
+        1.0,
+        0.09375,
+        0.26006025296523005,
+        0.19281015629507225,
+        0.21875,
+        0.3125
+      ],
+      "metadata": {
+        "split": "test",
+        "workload": {
+          "dtype": "float16",
+          "eps": 1e-05,
+          "num_groups": 32,
+          "operator": "groupnorm_silu",
+          "seed": 21209,
+          "shape": [
+            8,
+            320,
+            72,
+            128
+          ]
+        }
+      },
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "features": [
+        1.0,
+        0.0,
+        1.0,
+        0.11203007814753613,
+        0.29131025296523005,
+        0.16156015629507225,
+        0.1875,
+        0.3125
+      ],
+      "metadata": {
+        "split": "test",
+        "workload": {
+          "dtype": "float16",
+          "eps": 1e-05,
+          "num_groups": 32,
+          "operator": "groupnorm_silu",
+          "seed": 21210,
+          "shape": [
+            12,
+            640,
+            36,
+            64
+          ]
+        }
+      },
+      "task_id": "test-groupnorm_silu-f10-float16"
+    }
+  ],
+  "warmups": 2
+}

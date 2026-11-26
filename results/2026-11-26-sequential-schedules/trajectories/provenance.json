@@ -1,0 +1,1917 @@
+{
+  "archive": {
+    "bytes": 1261352,
+    "file": "trajectories.jsonl.gz",
+    "sha256": "706675d1714754d4373c8c37ae35e9468c87af5302d8c7149a975dcd859259f4",
+    "uncompressed_bytes": 18128740,
+    "uncompressed_sha256": "50a4c85e198b6cb3f8f521cd3208a6099f92c37e43d06acbd45bb3a9b89f6e2a"
+  },
+  "consumed_sources": [
+    {
+      "bytes": 2021,
+      "sha256": "f52e0d8c76396ebcd92c6661d534f547d9594b3d92d7bad0fd18c459c34fd9f5",
+      "source": "analysis_plan"
+    },
+    {
+      "bytes": 404,
+      "sha256": "f31e9be59a6cca76c73fef2171e4fd20ff6fe745561afebecf01f1db495a563f",
+      "source": "completion"
+    },
+    {
+      "bytes": 1545183,
+      "sha256": "881bb299527ed8b7923ee209d21be94874deff72a60ff5c65b4e722755ca5750",
+      "source": "study_episodes"
+    },
+    {
+      "bytes": 12534,
+      "episode_id": "000",
+      "sha256": "a5910f50d668b828f93ea6273c24eb5d175474e17a6df30b5ea4047f5ce78c5f",
+      "source": "environment"
+    },
+    {
+      "bytes": 31115,
+      "episode_id": "000",
+      "sha256": "2dedbce5fab9fda2951262eca506b55610108c49a3b9bbc524150f54322bb752",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36780,
+      "episode_id": "000",
+      "sha256": "c12325881c3cf39cf119f5e79b492f14589157df73efd33bc7da199eb9919aac",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 2292080,
+      "episode_id": "001",
+      "sha256": "716993b4cc96cd99c3f1907b0a0d17c90bbb30e0e7e93b95b389cd9c0da182d3",
+      "source": "environment"
+    },
+    {
+      "bytes": 1145771,
+      "episode_id": "001",
+      "sha256": "ac1cf284f7f27a7cb0e96d3316cfce6505749c20ee06feb0f1a1fd700e5b7a2c",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36553,
+      "episode_id": "001",
+      "sha256": "bfd00a65cb3bdece390b76310886fe9d39b25e91b40a68c3c195e961a26ef7e3",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 2197101,
+      "episode_id": "002",
+      "sha256": "d4dcf2cae6817f54ae6a3dd2ba80fcbe23de991de1895cd0714202c09c1b966f",
+      "source": "environment"
+    },
+    {
+      "bytes": 1146064,
+      "episode_id": "002",
+      "sha256": "5b3d54bdd6550c1d3038fa6968e0a3eecc7e8af062a11c50181432af3e932450",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36534,
+      "episode_id": "002",
+      "sha256": "9ef4ef3407b0b43c6fd11100769a30a00c6f9536784daeab5faa846ee3598c14",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1092267,
+      "episode_id": "003",
+      "sha256": "ef125650c5d0d36e8863fcd914c5faf39287ffe72bc2f337ad3131f740869808",
+      "source": "environment"
+    },
+    {
+      "bytes": 553913,
+      "episode_id": "003",
+      "sha256": "c85870861480e910d102d536ec28fceef81f917b4d90dc614f48412cf148ccde",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36634,
+      "episode_id": "003",
+      "sha256": "92ea2b4efe9b09ebcab4379f6792ddd817143e5bb00794b21658be99bbacdc1a",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1083797,
+      "episode_id": "004",
+      "sha256": "a21f7e524985fde6532414c93c3f3a5410880ec1e3f4f0f991fce7d65bf53086",
+      "source": "environment"
+    },
+    {
+      "bytes": 571174,
+      "episode_id": "004",
+      "sha256": "c6cd70a3ec7b43730615ff8a2a95958aac195fbed94b5177457df2c9de0eb50d",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36651,
+      "episode_id": "004",
+      "sha256": "2029aeafd0f9e5c62be0dfd3f516a2206b80575a2da53d4fecefb7aa5fdd71e7",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12592,
+      "episode_id": "005",
+      "sha256": "d106e27e96472297ad73bb032c37ffd8ab93b30405e04b69bbf8c59d47406f69",
+      "source": "environment"
+    },
+    {
+      "bytes": 31258,
+      "episode_id": "005",
+      "sha256": "fd6c2f1865c3fd0ecc19b97b56f0a1e87099d2a436332906d0dc0ffbd8995900",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36923,
+      "episode_id": "005",
+      "sha256": "ef4694f8e7e1ed974424f52dcfb3f56608293c399f7a86688790f3dbdd1d63af",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 931884,
+      "episode_id": "006",
+      "sha256": "ed71baeb5eab9dc7f1d95ed6002093991e2528b5745125e2bba8fdd6ec62e76c",
+      "source": "environment"
+    },
+    {
+      "bytes": 492830,
+      "episode_id": "006",
+      "sha256": "5378c97d1ec72002077006b757bcf26f3679d87f75839c560f095efabadbc584",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36637,
+      "episode_id": "006",
+      "sha256": "3fcd5a077811c8c05a87f290512b11f584154823d0752275930900d427b1d27d",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12600,
+      "episode_id": "007",
+      "sha256": "a9115cdbd19a220e29826b3ec3c49d3a2cf1c078b538bfac0ae1ee28cfefbb92",
+      "source": "environment"
+    },
+    {
+      "bytes": 31254,
+      "episode_id": "007",
+      "sha256": "65771f70a638b2b46626cdd40b13c5f1d9af63b40fd7320140c62de7845289a6",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36911,
+      "episode_id": "007",
+      "sha256": "d77c57b716ec2e127116b47a4bc902ab0504d9ab7d3f98a0fe30ef1a33ab2b29",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1003038,
+      "episode_id": "008",
+      "sha256": "d4c7aa5c512a88b12cf19ed3414e621564db95da1205daec7afab40b0446beb3",
+      "source": "environment"
+    },
+    {
+      "bytes": 510437,
+      "episode_id": "008",
+      "sha256": "010c8af9a027ee05e37a9c382e13eb924958382d40c995e15417028715cb12b3",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36655,
+      "episode_id": "008",
+      "sha256": "cfaa56cb102f3c5cf481355f67564e9be9c161bd1d82b2b6a0dda71eba1ae3e8",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12957,
+      "episode_id": "009",
+      "sha256": "980744db489d81b5553cc3c09784a29b28723fc6019e8a0b9e11f7db8c323092",
+      "source": "environment"
+    },
+    {
+      "bytes": 31827,
+      "episode_id": "009",
+      "sha256": "4a32d30c42d795b304c8133152216642433996a64ddf76f27e3a34ccadb1e8ac",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37573,
+      "episode_id": "009",
+      "sha256": "ba9b0144afdda2661419a2a428da4a6c634608e4612152fd96e079cbd52ecd74",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 894186,
+      "episode_id": "010",
+      "sha256": "e78b2c1b1999db176b75faf1c8a317f561be3ddf0456ffbc9f9dd0291344ee56",
+      "source": "environment"
+    },
+    {
+      "bytes": 448816,
+      "episode_id": "010",
+      "sha256": "0be5160fdccbf4a4d80031d1d8f432bb4a7c57d0ca78d2a7ec3f22531be1a861",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 17449,
+      "episode_id": "010",
+      "sha256": "1d197f233a08d878c02ff94fdd0f4e048dc674b27a2f9e50c3584d08c8564d61",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 2247337,
+      "episode_id": "011",
+      "sha256": "12d9f7512713003ad9ec742651fe95dcf40962c9f95573037b644a4136cb6f29",
+      "source": "environment"
+    },
+    {
+      "bytes": 1164282,
+      "episode_id": "011",
+      "sha256": "8e4bcc64e4218d99f250a6fb299e3cc508ecffffb70c93b43b3c5d5a4bdfaf43",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37307,
+      "episode_id": "011",
+      "sha256": "bc9ef8bb5d76fdf24e1c2bf5ec90badb1d9318983b320a0c7ee30d52f3671653",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1592213,
+      "episode_id": "012",
+      "sha256": "4a36fd27285a8c9793ff8d522fcfb93d87bd4da556991ec5ed103d9b3c944758",
+      "source": "environment"
+    },
+    {
+      "bytes": 801987,
+      "episode_id": "012",
+      "sha256": "f8dcbe35557439c25bd6f40394cd016fd073d03a14a2279124004b23b8635a34",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37451,
+      "episode_id": "012",
+      "sha256": "6c3e6216315288da4b3737446cc781f8db1fce54f7bde6ff5440656e13ce48d4",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1633179,
+      "episode_id": "013",
+      "sha256": "7454de35cf42aeac72d516d56f34ab2ae31bf3a9e946d2012a3d9c9833986f6b",
+      "source": "environment"
+    },
+    {
+      "bytes": 846523,
+      "episode_id": "013",
+      "sha256": "cab5257bd94f17491d680c7bcef696f6a0beb3ee6899c2bdb6e327a5962206bd",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37445,
+      "episode_id": "013",
+      "sha256": "124861353acb2964352fc88f854296a4c9b5430a769c1031e4e7457cac39d1aa",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 13030,
+      "episode_id": "014",
+      "sha256": "77530229d802a15484d1a3c6679c03ac2d6800bccfb3f9688c908122da948cac",
+      "source": "environment"
+    },
+    {
+      "bytes": 31998,
+      "episode_id": "014",
+      "sha256": "f41420f762c25c54ef5b17e8804f0471b042e2a16c55a00076b47edaded9ed8b",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37739,
+      "episode_id": "014",
+      "sha256": "343649b4db895a017a6f7f44daa6a89ea1049c9fad03e15f0cec9f563919b29e",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1863299,
+      "episode_id": "015",
+      "sha256": "f900182e1a4f32d74cc2ca4e24a26c402e2424bd74b448ee022fb169082e0068",
+      "source": "environment"
+    },
+    {
+      "bytes": 970739,
+      "episode_id": "015",
+      "sha256": "35050253a123d36f75f72cd1039aef93a8f5a959ee7d9ed4d42b2e1cfb8e1625",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37480,
+      "episode_id": "015",
+      "sha256": "841a50c0150446feac4d2c3cb6d5ea12102e13534c9446faf4d6abee437919c5",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 13018,
+      "episode_id": "016",
+      "sha256": "9f275113e0c5cd5c731935c41604006f048fb285babacd9e92bb0091d36822f2",
+      "source": "environment"
+    },
+    {
+      "bytes": 31994,
+      "episode_id": "016",
+      "sha256": "bc75a684987bd2329e80b22adab79ee8895a3c14560d3062140b2714275c04fe",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37734,
+      "episode_id": "016",
+      "sha256": "6b1636e4856149e0b20cbac4751a65f67468b37443ac97f7d11b3bbec851da70",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 894639,
+      "episode_id": "017",
+      "sha256": "48f424b87db229085b84a374b0332d7ac7b5c0a95a68579462448d15db4bcfaf",
+      "source": "environment"
+    },
+    {
+      "bytes": 449109,
+      "episode_id": "017",
+      "sha256": "0446d1b77c9df67e09073b788cc9ddea0795720292ea609fde9cc564482d7763",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 17514,
+      "episode_id": "017",
+      "sha256": "0eaf764e14106e520f175fe513b086d5202bb73194727d447d0b4ba7c7973c8e",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 2293075,
+      "episode_id": "018",
+      "sha256": "cc3735c099733135dde092ec47d267ab52efde370ef6fc84302fbeb5db38049e",
+      "source": "environment"
+    },
+    {
+      "bytes": 1146074,
+      "episode_id": "018",
+      "sha256": "1496f437abd37037c62a24ebff4b3f18e2926c7c7bc3f350b187b2f7c240803e",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36532,
+      "episode_id": "018",
+      "sha256": "389c0e5e5e235033a07ca4e2376f7201fc8d30e8e19ed8eeaee56bc681a05c62",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 2210307,
+      "episode_id": "019",
+      "sha256": "ccb1ab0c72ef845644a1efae3a24414754035f3d000ae4db49f61aabb8531c96",
+      "source": "environment"
+    },
+    {
+      "bytes": 1146308,
+      "episode_id": "019",
+      "sha256": "38a446d2d3a7945fd383155e698568720ed061e5538cb2f63016c8592c9001d2",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36529,
+      "episode_id": "019",
+      "sha256": "be1ccfcfc40762c4aa3c5e8324b3ebd597534a35509fa1772a549ec101669d1a",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12536,
+      "episode_id": "020",
+      "sha256": "62dbd6b92391794edeb97a3972598067e294c296d48684802c88b630d6e7b7c3",
+      "source": "environment"
+    },
+    {
+      "bytes": 31131,
+      "episode_id": "020",
+      "sha256": "8ae958324612842aaacca2516ca6608e7f83a6366e3e9cd50bace32cb75b426d",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36797,
+      "episode_id": "020",
+      "sha256": "4ec4140aa6214ff03ed73a6d96073f70fae67900b6979ad3943cf3932e14352f",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1168300,
+      "episode_id": "021",
+      "sha256": "0c993bfc4872d49ebb17d32f24b8f85cb09b94907dd1203167a0dfc22f1a454a",
+      "source": "environment"
+    },
+    {
+      "bytes": 614795,
+      "episode_id": "021",
+      "sha256": "f3afeee3a09eacdaa558e1018481c61b15df56eff07f2fcbd8f86b11f2fd16df",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36644,
+      "episode_id": "021",
+      "sha256": "a367dcbfbb4d69c6a480af82246f059425dc78026090d2685615a6d29e4318ee",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12602,
+      "episode_id": "022",
+      "sha256": "06c2c7e488c11851a25dfae81bf063ed484546db24ed90d2bf447a286b5589ab",
+      "source": "environment"
+    },
+    {
+      "bytes": 31265,
+      "episode_id": "022",
+      "sha256": "3da5d64184432cac7f670954063f928a331f59cf108a6314b0552b5c4eb2ffcf",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36923,
+      "episode_id": "022",
+      "sha256": "f627fbfc170908949aec6390b4fcb58b72c691a9b82bbf07751ebe6d96a51a17",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1107231,
+      "episode_id": "023",
+      "sha256": "796a76a72ecab2d857ced023ce2130e72f25a994fbc2fadc6bc35ee58fa0e2ca",
+      "source": "environment"
+    },
+    {
+      "bytes": 562763,
+      "episode_id": "023",
+      "sha256": "2999cd0ccbc0880077ebbd344338d7e8d5249b106dc23d471b80789ae0165d7e",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36656,
+      "episode_id": "023",
+      "sha256": "f0fe8b1a67a5f160721955623268ca039845c889cbec1d4ab067296e031b3429",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12601,
+      "episode_id": "024",
+      "sha256": "2ee02516a9fd995a43ee55b358c9afa0e3b2077d341820f32623e3ff4b2136b8",
+      "source": "environment"
+    },
+    {
+      "bytes": 31256,
+      "episode_id": "024",
+      "sha256": "069aa033846b252e1c4d7ab5abcb567797b20ba5b4d6da6aec668821744abc32",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36912,
+      "episode_id": "024",
+      "sha256": "19a472f0ccc2044cb95c461295ae7a45fbd0ac2a31b211534a2dc316c487bac3",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 968870,
+      "episode_id": "025",
+      "sha256": "ed811c3925591b699f5d5218706185a9f26f8b4fcd299abc877ce863c884fde5",
+      "source": "environment"
+    },
+    {
+      "bytes": 493122,
+      "episode_id": "025",
+      "sha256": "a43353f215564f14e661cfcdfddfacd300e05a7b05b53aba283f58d31d804513",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36622,
+      "episode_id": "025",
+      "sha256": "e0fd8bf85fbbbaa76f2457b0c134dd70a1ce8315f50179819f6540dd551e192a",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 983322,
+      "episode_id": "026",
+      "sha256": "f8b848225f9aebe71af79a6ed2ea6d1d85f80f3870dd077a578f413dc21df3fc",
+      "source": "environment"
+    },
+    {
+      "bytes": 518987,
+      "episode_id": "026",
+      "sha256": "bc57b69356b19449b577f8c0dda8f8b0aa246e5d67d299606867a9a5186a7b4a",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36640,
+      "episode_id": "026",
+      "sha256": "1efd9170c7e2352ac595551abd519042a785226ae25be4a9a99e6ac36f9d5a9e",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 249015,
+      "episode_id": "027",
+      "sha256": "0b965b77356022d6671c6fd7511d3ede574c83294e563e7d691f6ca10b8e5f64",
+      "source": "environment"
+    },
+    {
+      "bytes": 130158,
+      "episode_id": "027",
+      "sha256": "5c798f009507fec453569a0bd864350e1142b185660392b0826ea765fe7ac169",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 17444,
+      "episode_id": "027",
+      "sha256": "eab452624f3595db0591a32808537a90c9682eece8a107be80f6f627aec3577b",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 2245902,
+      "episode_id": "028",
+      "sha256": "99aaa7fc258f3e6a171a1990a45a8f7008fcddfa81c2a9afa58df0d0db62973d",
+      "source": "environment"
+    },
+    {
+      "bytes": 1164386,
+      "episode_id": "028",
+      "sha256": "9446cfd9660a4824577d26f3e648d27e4becda3cbeb60bed58be0b209793b562",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37387,
+      "episode_id": "028",
+      "sha256": "c4d3481f588a411252d2f45b00ece5326789ffda08aa387e4252ad76c8f2cc3c",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12948,
+      "episode_id": "029",
+      "sha256": "c4046e228e9b77390041b690ba570a50d9fbb5cbcedcd67e9925f9a73d70c01f",
+      "source": "environment"
+    },
+    {
+      "bytes": 31822,
+      "episode_id": "029",
+      "sha256": "c3ea4305c3e8b43026e0ee33f45096aa1e3e7a74dfa6332bb506c72bd0a1d5b2",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37568,
+      "episode_id": "029",
+      "sha256": "25dbc7efac0d2bfdbb446849119cd504a7f4566459d53c37680097ddca564a11",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1652666,
+      "episode_id": "030",
+      "sha256": "c3c15bd0fc6f71be477deed1592ed9a2a19b990d3cf5403ebe96a3e1676ebe9b",
+      "source": "environment"
+    },
+    {
+      "bytes": 855355,
+      "episode_id": "030",
+      "sha256": "c56fcfb30818b9fd797dd9948c4362fe794671a67f3970d7bca625b720a537bf",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37436,
+      "episode_id": "030",
+      "sha256": "cc6367c0bf736635b33fdcfc9b878bb607d14223da35c1d884116d6ad27684a4",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 13026,
+      "episode_id": "031",
+      "sha256": "041293799dbfb831b91ac0cf71ebfd50d5c30d42a3470a6aafcbb40c14b998ef",
+      "source": "environment"
+    },
+    {
+      "bytes": 31997,
+      "episode_id": "031",
+      "sha256": "f4c0c00c11215f142f5651e57f9a486949b129e964ea4efdc18f34d8901af5a0",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37741,
+      "episode_id": "031",
+      "sha256": "9d6104890061ac56be2d6bdba97add1e09b10a8849cbbe11b5ac8e36218a50ff",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1592996,
+      "episode_id": "032",
+      "sha256": "e09d0c18266a26b4800027ccdf6c4628a6fef88ce3a90edecadffab247df3a7f",
+      "source": "environment"
+    },
+    {
+      "bytes": 801937,
+      "episode_id": "032",
+      "sha256": "95ff1d9bb3eca93a8d127f693499157967667afb2a0705976d33e3eaf6555c18",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37449,
+      "episode_id": "032",
+      "sha256": "526828a863bc965ee4e05ac5420978b63ed56d07097366a3e9dfb191ad506fcb",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 13034,
+      "episode_id": "033",
+      "sha256": "f78d015cd57019bb9fc03182362a9dd03e698a2cf1733e2bee8bb5db7b2ef369",
+      "source": "environment"
+    },
+    {
+      "bytes": 32002,
+      "episode_id": "033",
+      "sha256": "8067ed043cbffd29dbcecaaa284cec49777e59f4c021a3be375b2e05042fee39",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37742,
+      "episode_id": "033",
+      "sha256": "78bd854731e5a2960f768b7d2d7a921f73df9e13786d14846f5ead4f4994ea01",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 249110,
+      "episode_id": "034",
+      "sha256": "0087c51f8602adeafb6a063225c0af75bdf1c96b572e70bdfbbb9ee3b2cf1a97",
+      "source": "environment"
+    },
+    {
+      "bytes": 130272,
+      "episode_id": "034",
+      "sha256": "127e634cd8de01637316ef9d302bae0998f1713ae918dd6487d18a713449816b",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 17527,
+      "episode_id": "034",
+      "sha256": "04353d483a3da88e9213e7778147a24223a44b06c496ac9fd9670ca2dfdaad29",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1562256,
+      "episode_id": "035",
+      "sha256": "9e99fa1661fb19afa82b3a3921c40f9820db372c2bf9be476c4034e3b6be95ba",
+      "source": "environment"
+    },
+    {
+      "bytes": 793462,
+      "episode_id": "035",
+      "sha256": "8f8ff25ab78eacc02b2747013397e42fc3aa12e651efd63e24af373518dcfdc7",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37468,
+      "episode_id": "035",
+      "sha256": "87cd46ddbf09e902c98469eb9a819faf12a7d915dd8182fecde14622ced8581c",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 2209221,
+      "episode_id": "036",
+      "sha256": "a4fd202a112eb75c0e7697b110b5506beff1ef2e1471f205183011112c8f4af4",
+      "source": "environment"
+    },
+    {
+      "bytes": 1146204,
+      "episode_id": "036",
+      "sha256": "0c6d01663f565326094cd0687807176536afab5cc1e6ac43ba667c2d922b48a8",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36572,
+      "episode_id": "036",
+      "sha256": "2ea6e90ad64886cab2b232b7598e26ab9ccf0f9f52962cb31e4b825e8535e8a2",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12563,
+      "episode_id": "037",
+      "sha256": "217c8621f8b35b3103a676f1e85f77c7229437f93c219bc5f48b0f1c47cb9f3c",
+      "source": "environment"
+    },
+    {
+      "bytes": 31216,
+      "episode_id": "037",
+      "sha256": "d63672fc4c42ef83650c5e1b0ce2b4077525f951d661eb7ff48329c31a0abbb5",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36881,
+      "episode_id": "037",
+      "sha256": "559e22a3fd420b7f506dabed07f994f0287f9c50c89eff53881af3e79a0c0ad6",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 2291801,
+      "episode_id": "038",
+      "sha256": "f5abc711ccdb21b5eafbeb4c20e3bceb9440a71623cf1ddbc7af51f6f05122ec",
+      "source": "environment"
+    },
+    {
+      "bytes": 1146193,
+      "episode_id": "038",
+      "sha256": "0825d6b57412e452b57d3fa9bd1d9da177e0fbe507847643def54f49c1470d8d",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36547,
+      "episode_id": "038",
+      "sha256": "39f501f9a72195ef1db737f0233ffee2cbefbaf32d57c506bfb12ec6a57aa242",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12575,
+      "episode_id": "039",
+      "sha256": "8d00faba5b1cfe917261d4b8411f2071cc69901d47ab508c1082fb92de8f4b5b",
+      "source": "environment"
+    },
+    {
+      "bytes": 31187,
+      "episode_id": "039",
+      "sha256": "b5679cb4f4b952163a094411e92455b95a9c2f8adcd1228417dc49eae78fcde7",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36853,
+      "episode_id": "039",
+      "sha256": "2933906abb7e349fcaaa0ebe32ab87641c3b0e3bb38668a390e2132a084ba920",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1072791,
+      "episode_id": "040",
+      "sha256": "0ea8b2cfb0555616cd97b6a07ae6f2819ce5080b35d0b2794e4bde5b7e7043f4",
+      "source": "environment"
+    },
+    {
+      "bytes": 545364,
+      "episode_id": "040",
+      "sha256": "a1cae0e8cf985063a89eea90a86da3533768a49b21411ed1f3e84f4d1f09f228",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36652,
+      "episode_id": "040",
+      "sha256": "982ee6e3735c3cb34451721a5e95361b2ec2ce3e74f167e381a82ef07aad69c0",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1141504,
+      "episode_id": "041",
+      "sha256": "c86616dccf975a20ba43a4ce247d425619dab3ca211a154d5d30483021e7bffd",
+      "source": "environment"
+    },
+    {
+      "bytes": 597300,
+      "episode_id": "041",
+      "sha256": "5f4368a715cc8dee251ab5536ee197fc5f99262558714ed8a1030f7d3dc958e7",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36639,
+      "episode_id": "041",
+      "sha256": "5c5d1b504ddb76df8679e05d9444795536bd5c85cc1cc5150dbb0fe141935095",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1038244,
+      "episode_id": "042",
+      "sha256": "f489038a045034de028af62584f279035a0dc370be944a5b34b84f2317960c4a",
+      "source": "environment"
+    },
+    {
+      "bytes": 528047,
+      "episode_id": "042",
+      "sha256": "c63c14b4fe9e05f9379f298f786c3d0cdea2d06c8bdcaf0ad2ce233625cf4787",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36648,
+      "episode_id": "042",
+      "sha256": "ef7137973ca0d51d631dfa95406de7e4a88a57ceb230e5aa8b2ed4b471802245",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1017068,
+      "episode_id": "043",
+      "sha256": "25b5785f99264d197d48a19df719546741776c5bd86ba74ea7ea8607a405abe2",
+      "source": "environment"
+    },
+    {
+      "bytes": 536434,
+      "episode_id": "043",
+      "sha256": "c34a050da3a72b63926c5b9d5b61fb82143d69c9e7d92cdcc81c95db62354e97",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36662,
+      "episode_id": "043",
+      "sha256": "c49d270a5971592c6ac49343327107ef3a9a661a9055deb695403bd8b8eb3171",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12601,
+      "episode_id": "044",
+      "sha256": "58fa1af0f73e259e362d8d14b3e7d63eeeb2a3da46a78459be41201506db23ae",
+      "source": "environment"
+    },
+    {
+      "bytes": 31269,
+      "episode_id": "044",
+      "sha256": "12ef6c030301189bfa00c47ed06815ae2d528abe283e6bcb4a34f13f4d95ebb9",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 36926,
+      "episode_id": "044",
+      "sha256": "def995d8df905b44bdf95d7e704d062a094784e5b5047719ca2004b7b2b745b0",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 2250252,
+      "episode_id": "045",
+      "sha256": "1ba50ffcfebebc517b1c71b6766490ed55617b1341024d3244bae29a22c19152",
+      "source": "environment"
+    },
+    {
+      "bytes": 1164463,
+      "episode_id": "045",
+      "sha256": "8c83fb7db6a5ec39e50fe20f475560723e69bed3ad3eebffdb76f9eea96c9f2a",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37289,
+      "episode_id": "045",
+      "sha256": "5df9df708be0cd46fa0013cd9964bf71dbca93896bbb87b022583e2ec559ee12",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 12951,
+      "episode_id": "046",
+      "sha256": "fc985c0857ace03554bb151b6a06701b22a5ce35133f6e9daf8bbcd410eaf60a",
+      "source": "environment"
+    },
+    {
+      "bytes": 31826,
+      "episode_id": "046",
+      "sha256": "6ae1c59a322c6a4725908ec815904cc405376a6295bf003f6df73fd98bc36a99",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37572,
+      "episode_id": "046",
+      "sha256": "d2b6f9ebb8c134d7453e22633dcddd8a4ce0344567b83a4aec2df4d47265f3c1",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 392340,
+      "episode_id": "047",
+      "sha256": "d60903a6550e857f1f0c36455b2c9b7cfe1ae83aaaa8784ea98097689999b73c",
+      "source": "environment"
+    },
+    {
+      "bytes": 200931,
+      "episode_id": "047",
+      "sha256": "40e893c496844442b7ca58bc123a5cc6ed81d2a26142b212ea40330605fbb6ac",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 17432,
+      "episode_id": "047",
+      "sha256": "7b008e627cd2973d9b91a1df2b5ffdcaeb1047e1902db80d0cfa5a2855992632",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 13027,
+      "episode_id": "048",
+      "sha256": "45d2365a833df16844d6717fa1b88dc6e1d03d87a852c872be09b41348b6a5a4",
+      "source": "environment"
+    },
+    {
+      "bytes": 32000,
+      "episode_id": "048",
+      "sha256": "8fcb13839449595b9e4d297b9672a638785627c6aff41e817fbfaff8e299a1ff",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37709,
+      "episode_id": "048",
+      "sha256": "ea7dd89bbefbd15790cdb0afb6a9a26df64dfb689bd57e7e894ede5b03c11d96",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1611891,
+      "episode_id": "049",
+      "sha256": "c85e35d43ee70903b5da61e4946afef544be02f2fd4d8f85e061e07cf4a30608",
+      "source": "environment"
+    },
+    {
+      "bytes": 810891,
+      "episode_id": "049",
+      "sha256": "ab4307df4894ae3393dec0941652b2d5ef9e0ad009aa526f633b98c61718832f",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37454,
+      "episode_id": "049",
+      "sha256": "db26335d3d4507ee6935f0e22d7b062ce0eb74c3d45d4d28479cd00eedf2b74c",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1713085,
+      "episode_id": "050",
+      "sha256": "dbef848c3c72c73d0e05cec3071be1d4f2463dd7095d555c7ae7f4dc52e35b11",
+      "source": "environment"
+    },
+    {
+      "bytes": 890993,
+      "episode_id": "050",
+      "sha256": "eb1f15fecdfe04a933f11faa624bd9473dd4d057bfe3c8140aaf25010523558f",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37453,
+      "episode_id": "050",
+      "sha256": "7c7c239efbb37e1a97a1ffbd9f3ddfaa553cc9edb42e6db21bb81b445fc9f7f1",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 392611,
+      "episode_id": "051",
+      "sha256": "83f58590e629fb225a387ef9986fb54c9ffb4b42d485248146ca483beddd5e54",
+      "source": "environment"
+    },
+    {
+      "bytes": 201118,
+      "episode_id": "051",
+      "sha256": "63785683e7064a3ef6a33f1a7fdea7543434ec8b833901f2206d5ec621dcbb74",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 17515,
+      "episode_id": "051",
+      "sha256": "b1e96f0decab28f3ddd2f1da8afc054b2041a284a4054da91cf695c32bb30b46",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 1392608,
+      "episode_id": "052",
+      "sha256": "4cb382082cb1977a51e6429df9f759b7bf08198d634dea1577f6fcfb9650abef",
+      "source": "environment"
+    },
+    {
+      "bytes": 704987,
+      "episode_id": "052",
+      "sha256": "e851003890c83cd88187bf0b632ce604196ffa7e023456a8019644149de8444a",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37468,
+      "episode_id": "052",
+      "sha256": "1b913a8bedc5815a07a31f3b54c617367d4c634fe53ae789f255044f59bd900c",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 13036,
+      "episode_id": "053",
+      "sha256": "3e3d1d89ca205c8d0c51d4ac05216baa1eb1f5ecb2fee18504752632170ce0a5",
+      "source": "environment"
+    },
+    {
+      "bytes": 32004,
+      "episode_id": "053",
+      "sha256": "1ee5ef5039ad20e069962a044590d5ff908c554140132d89fd4a30874ec956a5",
+      "source": "evaluator"
+    },
+    {
+      "bytes": 37744,
+      "episode_id": "053",
+      "sha256": "1f68adc0321ec87c4aa0af9830127046f41f0aa249121caf154366850fd08bce",
+      "source": "episode_result"
+    },
+    {
+      "bytes": 15679,
+      "sha256": "29cc4a98235a8defa84c910673bedbddf6887aa57c09731053ae8245b85d0f05",
+      "source": "frozen_protocol"
+    },
+    {
+      "bytes": 15679,
+      "sha256": "29cc4a98235a8defa84c910673bedbddf6887aa57c09731053ae8245b85d0f05",
+      "source": "protocol"
+    },
+    {
+      "bytes": 3049,
+      "module": "_schedule_triton.py",
+      "sha256": "5a31b2fc13b7db2fb32c83a5d3e51a2f2d5590a17f7f41ff567c3e06368043a1",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 3999,
+      "module": "_triton_kernels.py",
+      "sha256": "3a81a48d6e157f1d1c55387cb7ac4651c0b01995a65ec057a6a16574e6adcc4c",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 17686,
+      "module": "benchmark.py",
+      "sha256": "54d11da83f6f4655abeee9368d0dfbcd85539e2b202a3cd3a0c90d7c5ba03750",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 3589,
+      "module": "contract.py",
+      "sha256": "134e029e73ac87c8149212cb76ee12002f27ba3c80e817a603279a93dc03ff1d",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 8880,
+      "module": "kernels.py",
+      "sha256": "4c934f15bb0d42d071fdf539ec51ff5a27086063b4ea30900ddf7b3edccfba94",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 6945,
+      "module": "schedule.py",
+      "sha256": "c44d6a5cf6fd8dd54dcfa6f87dacbb11f329055e4d0e52147a6147dde6eece3b",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 19209,
+      "module": "schedule_env.py",
+      "sha256": "73a5e5f7dc7766dbc990e875922f232a61ada569b49a7ea2e42ec4a68cea1073",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 6866,
+      "module": "schedule_kernels.py",
+      "sha256": "21e51c6c541af190ff34aa31f2516150d454d62448781d07d75ccae53e747de5",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 22813,
+      "module": "schedule_measurement.py",
+      "sha256": "f54d3defa843a2eeefbaa038e8e393fe9913db48eea85a1b42ecd01ada4a1eab",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 25549,
+      "module": "schedule_study.py",
+      "sha256": "40ddd2fa8f715cd52cabfdf2a9dd0f3a705d28aad3f16c1ba2d779901784c387",
+      "source": "scientific_code"
+    },
+    {
+      "bytes": 12626,
+      "sha256": "1f5de1f69872276c6720c6934432518b37c6beb6c36e26408f723e9e9bd76826",
+      "source": "source_manifest"
+    },
+    {
+      "bytes": 2715,
+      "sha256": "52946b73a571eedc2e5bf2400eed3731f7aeadc7c3b992fa19c5bd133827d79c",
+      "source": "study_summary"
+    },
+    {
+      "bytes": 22372,
+      "sha256": "fef17c5861116008c187390ddba0fcd6711b4a1879b6b726192e826d4d0526cb",
+      "source": "validated_analysis_provenance"
+    },
+    {
+      "bytes": 134844,
+      "sha256": "e5bfdf889400cf5319136f1369ac23cea51e47835a9a2e8068fe12acf9e4fa88",
+      "source": "validated_public_episodes"
+    }
+  ],
+  "cost_definition": "Environment step deltas include elapsed reset/policy/measurement time since the preceding step. Evaluator elapsed times overlap those costs; do not sum the two streams.",
+  "episodes": [
+    {
+      "environment_events": 2,
+      "episode_id": "000",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "environment_events": 520,
+      "episode_id": "001",
+      "evaluator_events": 264,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "random_walk",
+      "queries_finished": 131,
+      "queries_started": 131,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "environment_events": 399,
+      "episode_id": "002",
+      "evaluator_events": 264,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "greedy_local",
+      "queries_finished": 131,
+      "queries_started": 131,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "environment_events": 248,
+      "episode_id": "003",
+      "evaluator_events": 128,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "random_walk",
+      "queries_finished": 63,
+      "queries_started": 63,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "environment_events": 201,
+      "episode_id": "004",
+      "evaluator_events": 132,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "greedy_local",
+      "queries_finished": 65,
+      "queries_started": 65,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "005",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "environment_events": 174,
+      "episode_id": "006",
+      "evaluator_events": 114,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "greedy_local",
+      "queries_finished": 56,
+      "queries_started": 56,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "007",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "environment_events": 227,
+      "episode_id": "008",
+      "evaluator_events": 118,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "random_walk",
+      "queries_finished": 58,
+      "queries_started": 58,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "009",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "environment_events": 201,
+      "episode_id": "010",
+      "evaluator_events": 103,
+      "failed_queries": 1,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "random_walk",
+      "queries_finished": 51,
+      "queries_started": 51,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "environment_events": 421,
+      "episode_id": "011",
+      "evaluator_events": 264,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "greedy_local",
+      "queries_finished": 131,
+      "queries_started": 131,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "environment_events": 356,
+      "episode_id": "012",
+      "evaluator_events": 182,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "random_walk",
+      "queries_finished": 90,
+      "queries_started": 90,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "environment_events": 314,
+      "episode_id": "013",
+      "evaluator_events": 192,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "greedy_local",
+      "queries_finished": 95,
+      "queries_started": 95,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "014",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "environment_events": 343,
+      "episode_id": "015",
+      "evaluator_events": 220,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "greedy_local",
+      "queries_finished": 109,
+      "queries_started": 109,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "016",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "environment_events": 201,
+      "episode_id": "017",
+      "evaluator_events": 103,
+      "failed_queries": 1,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "random_walk",
+      "queries_finished": 51,
+      "queries_started": 51,
+      "queries_without_recorded_completion": 0,
+      "seed": 7101,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "environment_events": 520,
+      "episode_id": "018",
+      "evaluator_events": 264,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "random_walk",
+      "queries_finished": 131,
+      "queries_started": 131,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "environment_events": 415,
+      "episode_id": "019",
+      "evaluator_events": 264,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "greedy_local",
+      "queries_finished": 131,
+      "queries_started": 131,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "020",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "environment_events": 216,
+      "episode_id": "021",
+      "evaluator_events": 142,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "greedy_local",
+      "queries_finished": 70,
+      "queries_started": 70,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "022",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "environment_events": 248,
+      "episode_id": "023",
+      "evaluator_events": 130,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "random_walk",
+      "queries_finished": 64,
+      "queries_started": 64,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "024",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "environment_events": 220,
+      "episode_id": "025",
+      "evaluator_events": 114,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "random_walk",
+      "queries_finished": 56,
+      "queries_started": 56,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "environment_events": 184,
+      "episode_id": "026",
+      "evaluator_events": 120,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "greedy_local",
+      "queries_finished": 59,
+      "queries_started": 59,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "environment_events": 57,
+      "episode_id": "027",
+      "evaluator_events": 31,
+      "failed_queries": 1,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "random_walk",
+      "queries_finished": 15,
+      "queries_started": 15,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "environment_events": 419,
+      "episode_id": "028",
+      "evaluator_events": 264,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "greedy_local",
+      "queries_finished": 131,
+      "queries_started": 131,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "029",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "environment_events": 320,
+      "episode_id": "030",
+      "evaluator_events": 194,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "greedy_local",
+      "queries_finished": 96,
+      "queries_started": 96,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "031",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "environment_events": 357,
+      "episode_id": "032",
+      "evaluator_events": 182,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "random_walk",
+      "queries_finished": 90,
+      "queries_started": 90,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "033",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "environment_events": 57,
+      "episode_id": "034",
+      "evaluator_events": 31,
+      "failed_queries": 1,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "random_walk",
+      "queries_finished": 15,
+      "queries_started": 15,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "environment_events": 336,
+      "episode_id": "035",
+      "evaluator_events": 180,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "greedy_local",
+      "queries_finished": 89,
+      "queries_started": 89,
+      "queries_without_recorded_completion": 0,
+      "seed": 7102,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "environment_events": 414,
+      "episode_id": "036",
+      "evaluator_events": 264,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "greedy_local",
+      "queries_finished": 131,
+      "queries_started": 131,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "037",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "environment_events": 518,
+      "episode_id": "038",
+      "evaluator_events": 264,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "random_walk",
+      "queries_finished": 131,
+      "queries_started": 131,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-geglu-f08-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "039",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "environment_events": 241,
+      "episode_id": "040",
+      "evaluator_events": 126,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "random_walk",
+      "queries_finished": 62,
+      "queries_started": 62,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "environment_events": 219,
+      "episode_id": "041",
+      "evaluator_events": 138,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "greedy_local",
+      "queries_finished": 68,
+      "queries_started": 68,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-geglu-f09-float16"
+    },
+    {
+      "environment_events": 234,
+      "episode_id": "042",
+      "evaluator_events": 122,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "random_walk",
+      "queries_finished": 60,
+      "queries_started": 60,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "environment_events": 190,
+      "episode_id": "043",
+      "evaluator_events": 124,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "greedy_local",
+      "queries_finished": 61,
+      "queries_started": 61,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "044",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-geglu-f10-float16"
+    },
+    {
+      "environment_events": 424,
+      "episode_id": "045",
+      "evaluator_events": 264,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "greedy_local",
+      "queries_finished": 131,
+      "queries_started": 131,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "046",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "environment_events": 89,
+      "episode_id": "047",
+      "evaluator_events": 47,
+      "failed_queries": 1,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "random_walk",
+      "queries_finished": 23,
+      "queries_started": 23,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f08-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "048",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "environment_events": 362,
+      "episode_id": "049",
+      "evaluator_events": 184,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "random_walk",
+      "queries_finished": 91,
+      "queries_started": 91,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "environment_events": 321,
+      "episode_id": "050",
+      "evaluator_events": 202,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "greedy_local",
+      "queries_finished": 100,
+      "queries_started": 100,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f09-float16"
+    },
+    {
+      "environment_events": 89,
+      "episode_id": "051",
+      "evaluator_events": 47,
+      "failed_queries": 1,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 0,
+      "policy": "random_walk",
+      "queries_finished": 23,
+      "queries_started": 23,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "environment_events": 308,
+      "episode_id": "052",
+      "evaluator_events": 160,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 1,
+      "policy": "greedy_local",
+      "queries_finished": 79,
+      "queries_started": 79,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    },
+    {
+      "environment_events": 2,
+      "episode_id": "053",
+      "evaluator_events": 8,
+      "failed_queries": 0,
+      "missing_environment_journal": false,
+      "missing_evaluator_journal": false,
+      "order_position": 2,
+      "policy": "compiled_eager_no_edit",
+      "queries_finished": 3,
+      "queries_started": 3,
+      "queries_without_recorded_completion": 0,
+      "seed": 7103,
+      "task_id": "test-groupnorm_silu-f10-float16"
+    }
+  ],
+  "error_policy": "Only recognized exception class names are retained; other classes become OtherError. Messages and stderr are omitted.",
+  "events": 16485,
+  "evidence_kind": "measured-cuda-study",
+  "exporter_sha256": "9278d5ac23f103ea18bf28ea1de74e0ac66bb6968b0e8456de5fa2b92a06f6a2",
+  "ordering": "Event indices preserve each parent journal independently. No cross-stream interleaving is inferred.",
+  "protocol_sha256": "cee48654a1055da038e1101c49d6678c4e7bf057d14e1ff1adfd5edb52aa30cc",
+  "schema_version": 1,
+  "scientific_results": true,
+  "seed_evidence": "Evaluator sampling seed is checked against the protocol episode seed. Environment reset records the fixed workload/input seed; it does not separately record a policy seed.",
+  "source_evidence_modified": false,
+  "statistical_aggregates": false,
+  "streams": {
+    "environment": 10399,
+    "evaluator": 6086
+  },
+  "study_id": "sequential-schedules-live-v2"
+}

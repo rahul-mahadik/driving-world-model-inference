@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "snapshot_scope": "sequential_schedule_revision2_admission_fix",
+  "files": [
+    {
+      "path": "extensions/kernel_tuning/LICENSE",
+      "bytes": 1070,
+      "sha256": "42af04bd90329ff3c47173b57622f0ee3c7335e0084c77568b9e1f299f9bd8e9"
+    },
+    {
+      "path": "extensions/kernel_tuning/README.md",
+      "bytes": 10417,
+      "sha256": "866c8e4e14f9b3045d0d04c341ad139ca681d6100922d3b441d1610d7151ae37"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/__init__.py",
+      "bytes": 867,
+      "sha256": "f451eccba3836e52d586b75876d9ecae155164b5de5caa8b0942b351b20ef7a1"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/_schedule_triton.py",
+      "bytes": 3049,
+      "sha256": "5a31b2fc13b7db2fb32c83a5d3e51a2f2d5590a17f7f41ff567c3e06368043a1"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/_triton_kernels.py",
+      "bytes": 3999,
+      "sha256": "3a81a48d6e157f1d1c55387cb7ac4651c0b01995a65ec057a6a16574e6adcc4c"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/adapters.py",
+      "bytes": 4219,
+      "sha256": "e4033aec2e6e9508bd64313267e52e27f25be7c6ea8e34a5134b1c196bdebd92"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_artifacts.py",
+      "bytes": 21637,
+      "sha256": "4333a08f6ffb5d43dfeaa5b4b921f040615270236262f82b222433f26e69c590"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_budget.py",
+      "bytes": 23095,
+      "sha256": "6d6f4e8f83022f7416ea3ce3042c4fd138d3ed36e14f7469842a3afc9f584aeb"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_cohort.py",
+      "bytes": 13098,
+      "sha256": "9601cd107a2ad46e4f5ace6cd14e238973c40328797607c35b317f8d3b223847"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_demo.py",
+      "bytes": 9668,
+      "sha256": "bd6a3e4d839631eb2f2826a6d886d07a040eeb64896dbfc06e07fa701fcb672e"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_evidence.py",
+      "bytes": 26195,
+      "sha256": "08f3121739dbb724ca714785358f63afe9cba4c617ec559241b38fd6d80aace5"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_metrics.py",
+      "bytes": 3281,
+      "sha256": "b97719837c5685eb7518b28bd860bb485f18757595c672c04b0b63069f1c015f"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_metrics_worker.py",
+      "bytes": 23306,
+      "sha256": "8268514d4dc6fe62481f881a6cdae41483920f109a22a86eef0fc53ca4ddc513"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_policy.py",
+      "bytes": 17669,
+      "sha256": "fa9c0825ae586ed8be86cfadfafb727ab92f145b95bc0b8e5eb1d9a237154007"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_scoring.py",
+      "bytes": 29072,
+      "sha256": "746cabf7e88febe4f2d18661b7f708afeea2a580fb767fb7f0ddd84cab286c7d"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_session.py",
+      "bytes": 30220,
+      "sha256": "47a1e34a8d8a0dbaeb2d972cd2764cd75dd769bf26ef1069952289641a6167e3"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/agent_trials.py",
+      "bytes": 41027,
+      "sha256": "6e0415a93df11203589e66b72ae253167450bd382f1f1a86de10b4f52d95dd5c"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/attribution.py",
+      "bytes": 7248,
+      "sha256": "46ed3e75ef7bfe81ebfd9a40f8fb7cbbc1b4eeaa5d54ad73eb5eb691c6b5ca65"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/benchmark.py",
+      "bytes": 17686,
+      "sha256": "54d11da83f6f4655abeee9368d0dfbcd85539e2b202a3cd3a0c90d7c5ba03750"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/cli.py",
+      "bytes": 4769,
+      "sha256": "e548bc9a92be46ed17b4ffd38fc468a5a1cd163a61cc8f1adfa25b368825eedb"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/confirmation.py",
+      "bytes": 8995,
+      "sha256": "007598fb6bd0367f759c2a365f0198f92a202dd0af9524a2d2e0ac4982d7de37"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/contract.py",
+      "bytes": 3589,
+      "sha256": "134e029e73ac87c8149212cb76ee12002f27ba3c80e817a603279a93dc03ff1d"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/eager_completion.py",
+      "bytes": 3126,
+      "sha256": "4f063b084c65caf4d4e1cbf7ad3f92bcdbda38dee99b5f56c4a8b2cdecec3017"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/env.py",
+      "bytes": 15921,
+      "sha256": "7c75fc368520b02ebb2092e8ca292284928d80a30d99845cb472d8cfce82c0de"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/evaluation.py",
+      "bytes": 18480,
+      "sha256": "05c400d1b674e7d8c96954cf7be840e076fe8ff28aee75914d20de64d5252837"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/generalization.py",
+      "bytes": 16477,
+      "sha256": "a4d96017223dd637baabc8eca6c93fa1b2b768982f22c5167e47f13bea353e99"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/generalization_analysis.py",
+      "bytes": 16275,
+      "sha256": "cb260d5ffb92907671aac6f5e20c634998f4476ca4512ca98454dd68a843f42d"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/generalization_cli.py",
+      "bytes": 15477,
+      "sha256": "62aab2299444257882712c05a7d0f52652827447174ec3714768df7c628990de"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/inference.py",
+      "bytes": 20687,
+      "sha256": "cd56b5cd7fe0441bf913342c380dd3b4711d27bd78504c9fd02d9658b1664bed"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/kernels.py",
+      "bytes": 8880,
+      "sha256": "4c934f15bb0d42d071fdf539ec51ff5a27086063b4ea30900ddf7b3edccfba94"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/modern_attention.py",
+      "bytes": 5834,
+      "sha256": "fa88d1d1b960658796b493c7cf1a677a08ed355644136514553224956682aac1"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/modern_profile.py",
+      "bytes": 8950,
+      "sha256": "38fd7a6866adef973244dff7fdbdd6b4c32fe7171d9c5eb8715f7b81e8267386"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/modern_verify_environment.py",
+      "bytes": 12469,
+      "sha256": "2baa19a95aea4d5496863d0c80e020284e75917891dc355360c6f1b80fb50376"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/modern_vista.py",
+      "bytes": 14075,
+      "sha256": "1f7e04c12f47427e4d831a373d44738c20ad12715dec7b07f92c3eea0d8074cf"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/native_audit.py",
+      "bytes": 17555,
+      "sha256": "eed657fea258419b68d4ba70eb18a2f554fa2d3e020c55ef499fbaacee76f16e"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/native_autotune.py",
+      "bytes": 23203,
+      "sha256": "15832eb67f9d50194aabb640f26bc70d97c356f2a0101b5b5c940f350e973fac"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/policy.py",
+      "bytes": 12934,
+      "sha256": "57678bbea84ef5f6d1a879b22bed1cb8b49e8bee3607020ef2431e314bd55eb4"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/ppo.py",
+      "bytes": 17427,
+      "sha256": "54aca01b6bee0a581b267440fd7525016b9720f99ce5271de246dc21cde450a4"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/ppo_analysis.py",
+      "bytes": 14493,
+      "sha256": "5b980f99ff7cdd041260506527f17dd38e1ac20d8ca9b06d386af89c1cb40b84"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/ppo_cli.py",
+      "bytes": 8809,
+      "sha256": "acd55b4aee4467cf05149fc6d89d8e2c8f9f9050f07c740b5d6770f5a21f01a8"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/registration.py",
+      "bytes": 2721,
+      "sha256": "eadc6157c89dfa445353a0eaac1de92bc7b0ab06369ea6dbf9a0d585766e38ed"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/replay.py",
+      "bytes": 9438,
+      "sha256": "973c825508dd64130469cbd6d8740d7798b77ac6ccd86a4814edff09f343bd14"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/replay_cli.py",
+      "bytes": 6593,
+      "sha256": "42ef40d383e21095c9f52b81c3bfa959eecb3fbf58ef8d37c16282ede49fda3c"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/replay_policy.py",
+      "bytes": 11613,
+      "sha256": "096656733a8d9b74d88b3443e2a28f98daa34d5bed8155fe3f0e79cb18ff8a7f"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/restart_measurement.py",
+      "bytes": 41725,
+      "sha256": "1f0b3c33c6063ab94ef721e992f86851bdad90d89232d849549499e0fb75fc44"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/schedule.py",
+      "bytes": 6945,
+      "sha256": "c44d6a5cf6fd8dd54dcfa6f87dacbb11f329055e4d0e52147a6147dde6eece3b"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/schedule_env.py",
+      "bytes": 19209,
+      "sha256": "73a5e5f7dc7766dbc990e875922f232a61ada569b49a7ea2e42ec4a68cea1073"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/schedule_kernels.py",
+      "bytes": 6866,
+      "sha256": "21e51c6c541af190ff34aa31f2516150d454d62448781d07d75ccae53e747de5"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/schedule_measurement.py",
+      "bytes": 22813,
+      "sha256": "f54d3defa843a2eeefbaa038e8e393fe9913db48eea85a1b42ecd01ada4a1eab"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/schedule_study.py",
+      "bytes": 25549,
+      "sha256": "40ddd2fa8f715cd52cabfdf2a9dd0f3a705d28aad3f16c1ba2d779901784c387"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/search.py",
+      "bytes": 23024,
+      "sha256": "1f111221dd65a15009b11d5a714c8a84abf4250367cce6f0c5d6957f04ad3ace"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/search_cli.py",
+      "bytes": 7497,
+      "sha256": "1959c443bb380b6e5554c97726f0c7bce44802bba563939dcbd08eda2755bc02"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/study.py",
+      "bytes": 6130,
+      "sha256": "1f78980b8d3934b208a58555491e8bac8cde6a5963ab712ddaa5ab91ae6e1358"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/study_cost.py",
+      "bytes": 4145,
+      "sha256": "c9c33e4409265dfac7507e74d351d9eea650709c6c418e7534454a33f14f3b4c"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/suite.py",
+      "bytes": 6260,
+      "sha256": "dce7cc30d3b4b2fddf960d83d43dc3071e1efc523df2a5490b572379f8bc750f"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/suites/operator-generalization-v2.json",
+      "bytes": 25612,
+      "sha256": "5ef382542f26ca5b351805b88ae794e676c175b438ba14a1d9caf047975fda7f"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/suites/operator-search-v1.json",
+      "bytes": 6175,
+      "sha256": "3413eeda654a677ead96547581a01e7fb8f5145f99aa02e5481b84ec0b8a3e76"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/table_collection.py",
+      "bytes": 23344,
+      "sha256": "16403c37cd7ce658b3c0e8b557db87189d49fdfc8707d87852947c132257cd45"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/vista_adapter.py",
+      "bytes": 13935,
+      "sha256": "2d367e101b5792be520159d1be00cb53251feb95e95147fe559947075a4d4c2f"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/vista_agent.py",
+      "bytes": 18822,
+      "sha256": "057f6ff7ea470e8e0e1b50bea212f9f7f42a136381536064de94d56e8c586b16"
+    },
+    {
+      "path": "extensions/kernel_tuning/drivebench_tuning/vista_batch.py",
+      "bytes": 17699,
+      "sha256": "015bf57f01c54097f36ffd11b73d4c2a7493008f48ecf0140b5b388603de97ff"
+    },
+    {
+      "path": "extensions/kernel_tuning/pyproject.toml",
+      "bytes": 1404,
+      "sha256": "cd7ca0156a33018dd861ed304c55503c11e3166b95ac79838127b70c5708adae"
+    },
+    {
+      "path": "extensions/kernel_tuning/tests/test_schedule_kernels.py",
+      "bytes": 14027,
+      "sha256": "dd31a450c4f641d3f1e93e01d4ba077a3930aaa9f8a4747a13fc68800675ccf6"
+    },
+    {
+      "path": "extensions/kernel_tuning/tests/test_schedule_measurement.py",
+      "bytes": 16525,
+      "sha256": "863038b157e1bec2ee20bcf466cfff7384357aa446288531c468039874e4413a"
+    },
+    {
+      "path": "runtime-inputs/study-protocol.json",
+      "bytes": 15679,
+      "sha256": "29cc4a98235a8defa84c910673bedbddf6887aa57c09731053ae8245b85d0f05"
+    }
+  ]
+}

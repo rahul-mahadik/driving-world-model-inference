@@ -26,6 +26,26 @@ The [policy guide](docs/operator-generalization.md) describes callbacks and
 recorded-table evaluation. A submission uses `run_replay_policy` to keep the
 same recorded-repeat schedule as the published baselines.
 
+## Submit a sequential schedule policy
+
+Use `DriveBench/KernelSchedule-v0` to edit the current schedule, measure it, and
+submit a final candidate. Policies may use the observation, legal-action mask
+and their own history. Keep the evaluator and numerical checks unchanged.
+
+For comparison with the [live schedule study](reports/sequential-schedule-study-v2/README.md),
+use its six workloads, three seeds and 90-second episode ceilings. Include
+reference setup, compilation, policy execution, failed queries and worker
+cleanup in elapsed time. Reserve time for a fresh reference measurement and
+final candidate confirmation; do not admit a query whose full timeout cannot
+fit before that reserve.
+
+Submit the prospective protocol, policy code or pinned model, runtime and cache
+settings, every action and measurement, and all failed or unconfirmed episodes.
+Use a new result directory and retain the original journals privately when
+they contain machine identifiers; publish an allowlisted export. The study's
+primary score includes failed submissions. It is not oracle regret, and results
+from different GPUs or software cohorts belong in separate comparisons.
+
 ## Development
 
 ```sh
@@ -46,7 +66,7 @@ CUDA tests require NVIDIA hardware and skip when it is unavailable. Use them to 
 
 ## Policies
 
-Policies consume observations and choose candidate indices. Compare them with equal candidate budgets and matched task/runtime/objective identities. Include search without replacement and a fixed-order baseline, with additional baselines appropriate to the method. Report training cost and choose policy settings on validation data before testing.
+Configuration-bandit policies consume observations and choose candidate indices. Compare them with equal candidate budgets and matched task/runtime/objective identities. Include search without replacement and a fixed-order baseline, with additional baselines appropriate to the method. Schedule policies instead choose transformations and use elapsed-time budgets. Report training cost and choose policy settings on validation data before testing.
 
 The [agent interface](docs/agent-environment.md) also accepts structured `inspect`, `propose`, `profile`, `trial` and `submit` actions. Keep policy-visible observations explicit and small, excluding evaluator paths, raw exceptions, credentials and final inputs. State whether the policy uses pretrained inference or additional RL training. For a new executor, provide a synthetic integration that exercises its evidence reader and scoring functions. Claims of GPU execution require a separately recorded real-runtime validation.
 
